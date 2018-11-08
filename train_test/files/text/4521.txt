@@ -1,0 +1,1792 @@
+SAGE Open
+January-March 2015: 1
+­12
+© The Author(s) 2015
+DOI: 10.1177/2158244015575555
+sgo.sagepub.com
+Creative Commons CC BY: This article is distributed under the terms of the Creative Commons Attribution 3.0 License
+(http://www.creativecommons.org/licenses/by/3.0/) which permits any use, reproduction and distribution of the work without further
+permission provided the original work is attributed as specified on the SAGE and Open Access page (http://www.uk.sagepub.com/aboutus/openaccess.htm).
+Article
+Introduction
+Minimizing the sum of squared residuals is a common esti-
+mation method for regression functions, but regression func-
+tions are not always known or of interest, particularly when
+motivated by an underlying structural equation. If a distribu-
+tion for random terms is specified, maximizing the likeli-
+hood function is an alternative estimation method that does
+not require an explicit regression function. However, cases
+can arise in which the regression function is not known, no
+additional moment conditions are indicated, and we have a
+distribution for the random quantities, but maximum likeli-
+hood estimation is difficult to implement. This article pres-
+ents a simulated moments estimation method for such cases
+similar to the simulation-based extensions of other common
+estimators such as maximum simulated likelihood and simu-
+lated scores (Gourieroux & Monfort, 1993; McFadden,
+1989; McFadden & Ruud, 1994; Stern, 1997; Train, 2003).
+Consider a simple example in which a response y to exog-
+enous variable x for each person w in a population of interest
+is modeled as y x
+w w
+w
+= + 
+  
+( ) , with x 0, > 0, > 0, and
+ (0,1). The model implies an idealized relation y =  + ·x
+from which each person's response relationship is modified
+to a curve by a personal parameter 
+w
+. Suppose the data gen-
+erating process implies a probability model for each data
+observation i as y x
+i i
+i
+= + 
+  
+( ) , with i
+denoting a latent
+(i.e., unmeasured) variable (see Figure 1 for examples of this
+function). The regression equation is not known explicitly, so
+minimizing the sum of squared errors is not immediately
+applicable. For the same reason, the parameterization for the
+conditional likelihood function for y is not explicit. The least
+squared simulated errors (LSSE) estimator presented below
+provides a simple means of estimating such models.
+In the following section, we present the estimator and its
+asymptotic properties. We then present a Monte Carlo inves-
+tigation of finite sample properties via two examples. In the
+final section, we discuss implications and limitations of the
+LSSE estimator.
+LSSE
+To understand the LSSE estimator and its asymptotic proper-
+ties, consider a response or dependent variable y, for an
+observation i, expressed as a function g of observed
+575555
+SGOXXX10.1177/2158244015575555SAGE OpenVeazie and Cai
+research-article2015
+1University of RochesterSchool of Medicine and Dentistry, NY, USA
+Corresponding Author:
+Peter J. Veazie, Department of Public Health Sciences, University of
+Rochester School of Medicine and Dentistry, 265 Crittenden Blvd., CU
+420644, Rochester, NY 14642, USA.
+Email: peter_veazie@urmc.rochester.edu
+Least Squared Simulated Errors: An
+Estimator for Structural Models With
+Unspecified Regression Functions
+Peter J. Veazie1 and Shubing Cai1
+Abstract
+Estimation by minimizing the sum of squared residuals is a common method for parameters of regression functions; however,
+regression functions are not always known or of interest. Maximizing the likelihood function is an alternative if a distribution
+can be properly specified. However, cases can arise in which a regression function is not known, no additional moment
+conditions are indicated, and we have a distribution for the random quantities, but maximum likelihood estimation is difficult
+to implement. In this article, we present the least squared simulated errors (LSSE) estimator for such cases. The conditions
+for consistency and asymptotic normality are given. Finite sample properties are investigated via Monte Carlo experiments
+on two examples. Results suggest LSSE can perform well in finite samples. We discuss the estimator's limitations and
+conclude that the estimator is a viable option. We recommend Monte Carlo investigation of any given model to judge bias
+for a particular finite sample size of interest and discern whether asymptotic approximations or resampling techniques are
+preferable for the construction of tests or confidence intervals.
+Keywords
+least squares analysis, nonlinear regression, Monte Carlo methods, simulation experiments
+2 SAGE Open
+covariates x, unobserved quantities , and model parameters
+= (, ):
+y g
+i i i
+= ( )
+x , | ,
+  (1)
+with
+ 
+i F
+~ . (2)
+The function g represents the structural model under con-
+sideration (e.g., a theory-derived model of an underlying
+mechanism, not a regression function), and the unobserved
+quantity 
+i
+has distribution F
+, with parameters . Assuming
+that the conditional expectation of y exists, the relationship
+y
+i
+= E(y
+i
+|x
+i
+) + 
+i
+can be expressed as
+y g x dF
+i i i i
+= ( ) +
+ , | ,
+  
+ (3)
+where the integral represents the regression and 
+i
+is the
+regression error term having expectation of 0.
+Monte Carlo integration provides an unbiased estimator,
+yi
+ ( )
+ , of the regression function E(y
+i
+|x
+i
+) (Robert & Casella,
+2004; Train, 2003). The Monte Carlo estimate for observa-
+tion i is the average of the function g evaluated at x
+i
+across
+the R samples of  drawn from the distribution F
+:
+y
+R
+g x
+i i r
+r
+R
+    
+( ) = ( )
+( )
+
+=
+1
+1
+, | . (4)
+The term 
+r
+represents the rth random drawn from distribu-
+tion F
+.
+Denoting the simulated residual as
+e y y
+i i i
+ 
+ 
+( ) = - ( ), (5)
+and, for sample size N, denoting the corresponding N× 1
+sample vector of simulated residuals as e
+R ( ),
+ then the defi-
+nition of the LSSE estimator is given as follows.
+For N observations and N×N positive definite matrix M,
+the LSSE estimator is
+  
+
+  
+= ( )   ( )
+
+
+
+
+
+
+arg min .
+e e
+R R
+M (6)
+The LSSE estimator is the value of  that minimizes the
+sample residual vector relative to the metric determined by
+M. For M, an identity matrix (i.e., a square matrix with ones
+in the diagonal elements and zeroes in the off-diagonal ele-
+ments), the estimator simply minimizes the sum of squared
+simulated errors:
+  
+
+  
+= ( )  ( )
+
+
+
+
+
+
+arg min .
+e e
+R R
+(7)
+The large-sample properties of the LSSE estimator are
+established by showing that the LSSE estimator is asymp-
+totically equivalent to the standard nonlinear least squares
+estimator (NLS). Essentially, for each property considered, it
+can be shown that the key quantities of interest can be
+expressed as the standard NLS estimator plus a simulation
+bias that is asymptotically zero.
+As shown in Appendix A, we see that if the assumptions
+underlying consistency and normality of the NLS estimator
+hold for the model under consideration, then for increasing
+number of Monte Carlo iterations used in the numeric integra-
+tion (R) and increasing sample size (N), the LSSE estimator is
+consistent, and if R rises faster than the square root of N, the
+LSSE estimator has an asymptotic normal distribution.
+Essentially, as R and N go to infinity with R rising faster than
+the square root of N, the LSSE estimator is asymptotically
+equivalent to the NLS (Seber & Wild, 2003). This is somewhat
+comforting perhaps, but empirical researchers are doomed to
+finite sample sizes and are therefore concerned about an esti-
+mator's performance with finite samples. Unfortunately, as
+with the maximum likelihood estimator, the finite sample
+properties of the LSSE estimator cannot be generally estab-
+lished--each model needs to be investigated to determine its
+own properties. In the next section, we present Monte Carlo
+experiments investigating two models with different levels of
+complexity. Results suggest that the LSSE estimator can be a
+viable method of estimation in finite samples.
+Simulation Experiments
+In this section, we present two Monte Carlo experiments to
+show how the LSSE estimator works. The first experiment
+presents the estimation of parameters for a simple model,
+Figure 1. Graphs of the equation y = 1 + (0.2·x) for three
+values of .
+Veazie and Cai 3
+and the second experiment presents the estimation of the
+parameters for a more complex model. We then extend the
+second experiment by including 10 regressors using a large
+sample size to show how the LSSE estimator can function in
+the multiple variable setting and to consider computational
+speed. As with any estimator for which only the asymptotic
+properties are generally known (e.g., maximum likelihood
+and generalized method of moments), the finite sample prop-
+erties of the estimator will depend on the function being con-
+sidered. Consequently, these examples of the LSSE estimator
+do not reflect general convergence rates of other models; like
+the maximum likelihood estimator, each model needs to be
+investigated separately.
+Because the LSSE estimator optimizes nonlinear func-
+tions, some randomly generated data sets can produce degen-
+erate estimates (variance estimates near zero) or simply do
+not converge from the automatically generated initial values.
+Although in a real-world analysis we would carefully con-
+sider the model, parameterization, and initial values to
+achieve proper estimates, such an approach is not practical
+when running a Monte Carlo experiment across thousands of
+samples. Consequently, we drop such data sets and sample
+new ones; we base the results only on such data sets that
+provide reasonable convergence.
+In this section, we discuss the general process of obtain-
+ing the LSSE estimates. However, we do not present pro-
+grammingdetailsastheyareidiosyncratictotheprogramming
+language used, which in our case is that of the STATA soft-
+ware. For those familiar with STATA, we present inAppendix
+B the details of our programs used with STATA's nl com-
+mand (nonlinear regression) to produce LSSE estimates.
+The Simple Model
+Our first example is the estimation of parameters for the
+model y =  + (·x) in which  has a log-normal distribution.
+The purpose of this article is to show the functioning of the
+LSSE estimator and not to address specific scientific prob-
+lems: We cannot foresee the structural models that scientists
+will create in the future, and consequently, we focus on
+mathematical forms that challenge estimation rather than
+with their current scientific motivation. Nonetheless, to pro-
+vide some context, we could motivate this model by consid-
+ering it as representing response curves in which each
+individual in a population has a response y to values of x
+governed by his or her own  value. The model allows  to be
+greater than 1, reflecting an increasing rate of change, and
+also allows  to be less than 1, reflecting a decreasing rate of
+change (see Figure 1 for examples). Perhaps our interest is in
+estimating a curve representing the response for the average
+. Regardless of the purpose, however, we must estimate the
+model parameters. There is not an evident closed-form
+expression for the expected value of y given x, so the com-
+mon least squares and maximum likelihood estimators are
+not applicable. Fortunately, we can use LSSE. Figure 2
+provides a heuristic outline of how to obtain the estimates for
+this problem. In practice, it is easiest to use software that
+minimizes the sum of squared errors based on a user-sup-
+plied program that calculates Step 2b; such software will
+then likely return the estimates, standard errors, confidence
+intervals, and various fit statistics--for this example, we
+used STATA's nl command for nonlinear regression (see
+Appendix B for STATA code).
+Data samples were drawn from the preceding model with
+x~ Uniform(0,10), ~ lnNormal(µ, ). The parameters were
+set to  = 1,  = 2, µ = -0.1, and ln() = -2. To consider stan-
+dard error estimates and yet facilitate the experiment using
+thousands of data sets, we automatically account for poten-
+tial heteroscedasticity in the regression error by using a het-
+eroscedasticity-consistent robust standard error estimator.
+We use the LSSE estimator on 3,000 Monte Carlo data sets
+for each of sample sizes 300, 500, and 5,000.
+In Step 2a of Figure 2, we draw a sample of values from
+the specified distribution of  for each individual in the data
+set: It is computationally more effective to draw a systematic
+sample from the distribution rather than a random sample (or
+the pseudo-random sample that a computer's "random"
+number generator would obtain). For example, suppose we
+want to represent the distribution of a variable X that has a
+standard normal distribution. We could draw a random sam-
+ple u from a uniform(0,1) distribution and then obtain ran-
+dom values x from the inverse cumulative distribution
+function (CDF; that is, x = -1(u)). Alternatively, we would
+select an equally spaced grid of values u* from the uni-
+form(0,1) and obtain the random values x associated with the
+inverse CDF of these x = -1(u*). Figure 3 shows the histo-
+grams of 200 draws from each method and shows lines rep-
+resenting a kernel density estimator of the histogram: Notice
+that the grid sample fills out a normal shape better than the
+random sample, and the kernel estimator for the grid sample
+Heuristic algorithm for the LSSE estimation of the simple model:
+Step 1. Set parameters values ^
+ 
+= , ^
+ 
+= , ^
+ 
+= , and ln  ln
+.
+These are arbitrary initial values at the first iteration and values
+calculated by the optimization algorithm thereafter.
+Step 2. For each observation i in the data set:
+a) Draw a sample of R values
+,1 ,
+^ ^
+{ , }
+i i R
+ 
+... from the
+distribution LnNormal( ^
+ ,
+)
+b) Calculate
+( )
+^
+,
+1
+1 ^
+^
+^ ( )
+R
+i r
+i i
+r
+y x
+R
+
+ 
+=
+= + 
+
+Step 3. Calculate the sum or squared residuals:
+2
+1
+^
+( )
+N
+i i
+i
+SSR y y
+=
+= -
+
+Step 4. Use an appropriate numerical optimization algorithm (e.g.
+Newton-Raphson) to iterate Steps 1 through 3 and find the parameter
+values that minimize the SSR.
+Figure 2. LSSE procedure for the simple model.
+Note. LSSE = least squared simulated errors; SSR = sum or squared
+residuals.
+4 SAGE Open
+is closer to a normal curve. For the purpose of Monte Carlo esti-
+mation of an integral over a variable's full domain, the grid sam-
+ple will provide a more accurate estimate because it fills out the
+distribution better. The benefit to the systematic sample is that,
+for a given precision, one can use fewer draws from the distribu-
+tion to evaluate the integral--This provides greater computa-
+tional efficiency thereby decreasing the estimation time.
+For computational efficiency then, we use a 200-element
+(i.e., R = 200) Modified Latin Hypercube Sampling (a type
+of grid sampling) for the Monte Carlo integration estimates
+of the regression equation (Hess, Train, & Polak, 2006). This
+method allows each observation to have a different grid by
+shifting it a small randomly selected amount. Specifically, to
+draw R values of a variable  from its distribution F (using
+specified parameter values for µ and ), we first randomly
+draw a uniform value un
+from a uniform distribution for each
+observation n (this will provide the random shift in the grid
+for each observation). Then we generate R values across a
+uniform distribution as u
+n,r
+= (r- 1) / R + u
+n
+/ R for which the
+index r takes on integer values of 1 to R. We get values 
+n,r
+=
+F-1(u
+n,r
+) to obtain the sample {n,1
+, . . ., n,R
+} from F for each
+observation n of our sample with size N (this is Step 2a in
+Figure 2). The estimated expected value of y given x and
+parameter values  and  is then calculated as
+y
+R
+x
+i i
+r
+R
+i r
+ = + 
+( )
+( )
+
+=
+1
+1
+   , , (7)
+for each observation i in the data set. The optimization pro-
+gram will find the values of µ, , , and  that minimize the
+sum of the weighted squared errors (Equation 6) based on
+y
+i
+ .
+Table 1 presents the results of our Monte Carlo experi-
+ment. In conformance with the asymptotic properties, the
+mean of the parameter estimates approaches the true values
+for all parameters as sample size increases (the absolute bias
+spans 0.001 to 0.28 across parameters in the models with
+sample sizes of 5,000 where absolute bias is the absolute
+value of the difference between the estimate and the true
+value). However, the variance parameter ln() has a slower
+convergence rate and therefore exhibits a larger bias for the
+sample sizes used here (absolute bias of 0.28 as compared
+with the next largest absolute bias of 0.03 for the µ parame-
+ter). Also, as expected, the standard deviation of the estima-
+tor's sampling distribution decreases with sample size (e.g.,
+the standard deviation for the  estimator is 1.154 using a
+sample size of 300 but only 0.21 using a sample size of
+5,000). Moreover, as the histograms and both skewness and
+kurtosis indicate, the distribution of parameter estimates is
+converging toward normality as sample size increases (a nor-
+mal distribution has a skewness of 0 and a kurtosis of 3). The
+averages of the robust standard error estimators are approxi-
+mating the standard deviation of the parameter sampling dis-
+tributions in all cases except for the variance parameter
+(absolute bias spanning 0.017 for  to 4.275 for ln() in the
+N = 5,000 experiment). The variance parameter has not yet
+-4 -2 0 2 -4 -2 0 2
+Grid sample Random sample
+x
+Figure 3. Comparison between a grid sample and a random sample of a normal variable.
+Veazie and Cai 5
+Table 1. Simulation Results for the y =  + (·x) Model Using 3,000 Monte Carlo Samples.
+Sample size
+Parameters 300 500 5,000
+True  = 1
+ M 0.907 0.932 0.999
+ SD 0.534 0.400 0.123
+Skewness 0.112 0.077 -0.076
+Kurtosis 3.470 3.558 2.954
+ MSE 0.543 0.423 0.140
+True  = 2
+ M 2.513 2.328 2.020
+ SD 1.154 0.780 0.210
+Skewness 1.864 1.380 0.537
+Kurtosis 8.874 6.739 3.385
+ MSE 1.194 0.850 0.254
+True µ = -0.1 
+ M -0.189 -0.170 -0.103
+ SD 0.154 0.125 0.053
+Skewness 0.023 -0.045 -0.399
+Kurtosis 3.003 2.757 2.851
+ MSE 0.224 0.184 0.077
+True ln() = -2
+ M -1.793 -1.833 -2.280
+ SD 0. 748 0.705 0. 813
+Skewness -2.891 -2.876 -2.446
+Kurtosis 13.980 14.413 11.746
+ MSE 8.885 6.800 5.688
+Note. Histograms are of the LSSE estimates. LSSE = least squared simulated errors.
+6 SAGE Open
+converged sufficiently close to normal for this model and
+sample sizes; consequently, this standard error estimator is
+not yet accurate.
+The Complex Model
+Veazie and Cai (2007) proposed a model of the relationship
+between a person's sense of uniqueness  (i.e., how dissimi-
+lar from others a person believes herself to be, which can be
+expressed as a function of other variables w), a stated statisti-
+cal proposition x (e.g., "x% of people who purchase Product
+A report not being satisfied with the purchase" or "x% of
+people who take Medication A get Side Effect B"), personal
+experience  with the context of the proposition (e.g., the
+person's experience with similar products or the person's
+experience with medication side effects in general), and the
+person's believed likelihood y that she is subject to the claim
+of the proposition (e.g., her believed probability she will not
+be satisfied with the purchase of Product A or her believed
+probability she would have Side Effect B from taking
+Medication A). In essence, they model how a person's sense
+of being unique () impacts her belief of how likely she will
+experience an effect (y) given information about how often
+the effect is experienced in a population (x): a model of risk
+perception given population risk information. Examples of
+the relationship are shown in Figure 4. For the current pur-
+pose, however, the importance of this example is not the
+logic of its derivation (see reference Veazie & Cai, 2007) but
+rather that the model clearly provides a complex estimation
+problem. A simplified version of the model, which we use, is
+y
+e e
+e e
+u u du
+i
+e e
+x i i i
+i i i
+i i i
+i
+=
++
+( )
+( ) ( ) -
+( ) 
++
++
+- -
++
+
+ 
+  
+  
+  
+1 1
+0
+1
+
+ , (8)
+for
+  
+i i
+w
+= + 
+0 1 , (9)
+and
+i F
+~ , (10)
+with y, x, and w as measured variables, and  an unmeasured
+quantity with distribution F. Not only does the conditional
+expectation of y not have a closed-form solution, but the inte-
+gral equation itself that models y does not have a closed-form
+solution (Equation 8). Moreover, there are explanatory vari-
+ables in the integrand (x) as well as in the parameterization of
+the model (w). The standard methods do not apply to this
+model, but as the Monte Carlo results show below, the LSSE
+can achieve reasonable estimates with little bias in finite
+samples. Figure 5 provides a heuristic outline of how to
+obtain the estimates for this problem.
+Data samples were drawn from this model, with x~
+Uniform(0,1), w~ Normal(0,1), and ~ Normal(0, ). The
+parameters were set to 
+0
+= -1, 
+1
+= 2, and ln() = 0 yielding the
+variance 2 = e0 = 1. Again, to automatically account for poten-
+tial heteroscedasticity in the regression error, we use a robust
+standard error estimator. We use the LSSE estimator on 3,000
+Monte Carlo data sets for each of sample sizes 300, 500, and
+5,000. For computational efficiency, we again use 200-element
+Modified Latin Hypercube Sampling for the Monte Carlo inte-
+gration estimates of the regression equation (Hess et al., 2006).
+Heuristic algorithm for the LSSE estimation of the complex model:
+Step 1. Set parameters values
+0 0
+^
+ 
+= ,
+1 1
+^
+ 
+= , and ln  ln
+ . These are
+arbitrary initial values at the first iteration and values calculated by the optimization
+algorithm thereafter.
+Step 2. For each observation i in the data set:
+a) Draw a sample of R values
+,1 ,
+^ ^
+{ , }
+i i R
+ 
+... from the distribution Normal
+( ^
+ ,
+ )
+b) Calculate
+0 1
+^ ^ ^
+i i
+w
+  
+= + 
+c) Calculate
+^ ^
+^ , ^ ^
+^ ,
+1 1
+^ ^
+^ ,
+1 0
+1 ( )
+^ (1 )
+( ) ( )
+i i r
+i
+x
+R i i i r
+i
+e e
+i
+i i r
+i
+r
+e e
+y u u du
+R e e
+ 
+
+ 
+
+ 
+
++
++
+- -
++
+=
+ 
+ +
+=  - 
+ 
+ 
+ 
+ 
+ 
+(note the integral is the CDF of a Beta distribution that many statistical
+software will be able to calculate)
+Step 3. Calculate the sum or squared residuals:
+2
+1
+^
+( )
+N
+i i
+i
+SSR y y
+=
+= -
+
+Step 4. Use an appropriate numerical optimization algorithm (e.g. Newton-Raphson)
+to iterate Steps 1 through 3 and find the parameter values that minimize the SSR.
+Figure 5. LSSE procedure for the complex model.
+Note. LSSE = least squared simulated errors; CDF = cumulative distribution
+function; SSR = sum or squared residuals.
+Figure 4. Graphs of Equation 8 with  = 0 (an inexperienced
+person).
+Note. The dashed line represents a model of perceived risks, given
+information on a population risk, for individuals with a strong sense of
+uniqueness (i.e., < 1); in this case, individuals believe they are different
+from the majority and are less likely to experience what the majority
+experiences. The solid line represents perceived risks, given information
+on a population risk, for individuals with a weak sense of uniqueness (i.e.,
+> 1); in this case, individuals will believe themselves to be more like the
+majority and will have a greater chance of experiencing what the majority
+experiences.
+Veazie and Cai 7
+Table 2 shows the results for estimates of 
+0
+, 
+1
+, and ln().
+The estimator converges rapidly to the true parameter values
+(absolute bias spans 0.012 for ln() to less than 0.001 for 
+0
+in the N = 5,000 experiment) as well as to normality for 
+0
+and 
+1
+(as indicated by the skewness and kurtosis parameters
+approaching 0 and 3, respectively). As in the preceding
+example, convergence to normality for the variance parame-
+ter is slower. Again, the averages of the robust standard error
+estimates approximate the standard deviations of the param-
+eter sample distributions. Notice, unlike the preceding
+model, at the sample size of 5,000, the ln() parameter is
+near normal and consequently the average standard error is
+closer to the sample standard deviation (absolute bias of
+0.005 in the N = 5,000 experiment).
+To show that the estimator applies to a multivariable set-
+ting, we expanded the preceding model such that the param-
+eter 
+i
+is specified as a combination of 10 variables:
+  
+i k i k
+k
+w
+= + 
+=
+
+0
+1
+10
+, . (11)
+Table 3 shows the average parameter estimates across
+1,000 data sets, each with a sample size of 10,000 observa-
+tions, and again using the Modified Latin Hypercube to
+obtain 200 samples for numeric integration. In this experi-
+ment, we used a larger sample size along with more variables
+to provide a sense of computational cost: Analysis was done
+using desktop computer with a 32-bit operating system, 3.2
+GHz quad-processor (although STATA only used two
+Table 2. Simulation Results for the Complex Model (3,000 Monte Carlo Samples).
+Sample size
+Parameters 300 500 5,000
+True 
+0
+= -1
+ M -0.953 -0.982 -0.999
+ SD 0.340 0.250 0.078
+Skewness 1.450 0.653 0.175
+Kurtosis 8.969 4.045 3.270
+ MSE 0.322 0.241 0.075
+True 
+1
+= 2
+ M 2.200 2.112 2.005
+ SD 0.686 0.514 0.147
+Skewness 1.716 1.316 0.140
+Kurtosis 9.164 7.387 2.918
+ MSE 0.651 0.479 0.145
+True ln() = 0
+ M -0.172 -0.132 -0.012
+ SD 0.703 0.569 0.115
+Skewness -2.549 -3.251 -0.701
+Kurtosis 11.243 18.576 4.332
+ MSE 2.820 1.728 0.110
+Note. Histograms are of the LSSE estimates. LSSE = least squared simulated errors.
+8 SAGE Open
+processors)--Each estimate took approximately 1.5 min to
+obtain. Results indicate that the LSSE estimator does well
+when the model includes more explanatory variables (i.e.,
+the true values and mean of the estimates are similar--the
+largest bias being 0.009 for the variance parameter).
+Moreover, as in the preceding examples, the average of the
+robust standard error estimates closely approximates the
+standard deviations of the parameter sample distributions
+(bias spanning 0.01 to less than 0.001).
+Discussion
+The LSSE estimator is consistent in sample size and number
+of simulation draws, and if the number of simulation draws
+rises faster than the square root of the samples size, it is
+asymptotically normal. This suggests that the LSSE is a
+promising estimator for structural models that do not have
+explicit regression functions but for which we have a proba-
+bility model of unmeasured quantities. The two example
+Monte Carlo experiments using finite samples of 300, 500,
+and 5,000 indicate that the estimator indeed converges
+toward a normal distribution with diminishing bias and
+increasing precision.
+To automate the Monte Carlo experiments across thou-
+sands of samples, and to focus on the main properties of the
+LSSE estimator, we did not directly address the potential for
+heteroscedasticity in each model but used a robust standard
+error estimator instead, which uses a diagonal matrix for M
+in which the diagonal elements are a function of a consistent
+estimator of the variance for each observation. In practice, if
+study design or inspection of the residuals indicates that
+homoscedasticity is plausible, then setting M to be an iden-
+tity matrix is advisable (or equivalently, ignoring M and
+using Equation 7). However, the LSSE estimator is amenable
+to addressing heteroscedasticity and autocorrelation directly
+through the specification of M as is done with the usual fea-
+sible generalized least squared error estimators. It should be
+kept in mind, however, that homoscedasticity in the specified
+random term (, on our examples) does not imply homosce-
+dasticity in the regression error: The assumption of homosce-
+dasticity in the regression error needs to be assessed
+regardless of the specification of the random component of
+the structural model (or a robust standard error estimator
+used, which would be less efficient). The assessment can be
+made using the regression residuals from the LSSE estima-
+tor. Such an assessment would proceed as recommended in
+the common linear and nonlinear regression modeling
+literature.
+The robust standard error estimator used in the Monte
+Carlo experiments performed well (as indicated by the simi-
+larity between the standard deviation of estimates and the
+mean standard error estimates). However, the estimator was
+that for the nonsimulated nonlinear least squares standard
+errors typically reported by the statistical software, which
+does not account for noise due to the simulation process. It
+should be noted that using a typical standard error estimator
+(i.e., a nonsimulated nonlinear least squared errors estimator)
+will underestimate the true standard error. The LSSE estima-
+tor that uses direct random draws is approximately 1 1
++
+R
+times the usual nonsimulated standard error estimator
+(McFadden & Ruud, 1994). Using the number of simulations
+in the hundreds (in our case, we used R = 200) makes this
+bias trivial (the factor for 200 is 1.003) at the third decimal
+place. Our use of a quasi­Monte Carlo sequence of draws
+(i.e., our use of the Modified Latin Hypercube Sampling)
+diminishes the bias further (Hess et al., 2006). Nonetheless,
+if a researcher is concerned with the underestimated standard
+error, he or she can increase R, inflate the standard error
+accordingly, or, if otherwise appropriate, use a bootstrapped
+standard error, which will automatically account for the sim-
+ulation noise.
+There are limitations to the LSSE method. First, the
+asymptotic properties depend on the regularity conditions
+and asymptotic properties of an unknown regression func-
+tion. A pragmatic solution is to engage a Monte Carlo inves-
+tigation of the finite sample properties of a proposed model
+Table 3. Parameters Estimates for the Complex Model With 10 Regressor Variables.
+Parameter True value M estimate SD MSE
+
+0
+-1.0 -0.998 0.052 0.050
+
+1
+0.2 0.201 0.026 0.025
+
+2
+-0.1 -0.102 0.024 0.024
+
+3
+0.1 0.100 0.024 0.024
+
+4
+-0.1 -0.101 0.025 0.024
+
+5
+0.1 0.100 0.024 0.024
+
+6
+-0.1 -0.101 0.025 0.024
+
+7
+0.1 0.101 0.024 0.024
+
+8
+-0.1 -0.100 0.024 0.024
+
+9
+0.2 0.201 0.025 0.025
+
+10
+-0.2 -0.200 0.025 0.025
+ln() 0.0 -0.009 0.120 0.110
+Veazie and Cai 9
+prior to its estimation on real data. This is achieved by run-
+ning a Monte Carlo experiment similar to those presented
+above, only in this case based on the model being considered
+and the sample size of interest. If the model produces reason-
+able results for the specified sample size, then the use of
+LSSE would be indicated. If the LSSE cannot satisfactorily
+reproduce model parameters for the given sample size, then
+either the unknown regression function is not amenable to
+consistent estimation by standard NLS or the rate of conver-
+gence is too slow for the model and sample size to be
+useful.
+Second, convergence to normality of some parameters
+(particularly the variance parameters) can be slower than
+others, but it is clear that convergence toward normality is
+being achieved, as we expect from the estimator's asymp-
+totic properties. If convergence to approximate normality is
+not yet achieved (which often can be determined by inspect-
+ing the estimator's bootstrapped distribution), then resam-
+pling techniques such as the bootstrap or jackknife may be
+used to obtain standard errors, p values, and/or confidence
+intervals for these parameters.
+Finally, LSSE estimation employs the minimization of
+squared errors, but unlike ordinary least squares and nonlin-
+ear least squares it is not asymptotically immune to distribu-
+tional assumptions. If the distribution of random quantities is
+misspecified, then the simulated mean will not converge to
+the proper expectation. In this respect, the LSSE estimator is
+similar to the maximum likelihood estimator because it
+depends on the specification of a probability model. Hence,
+like maximum likelihood estimation, care must be taken in
+specifying the distribution.
+As with maximum likelihood estimation, specification
+tests can be useful in identifying a statistically adequate
+model; however, the usefulness of such tests for the distribu-
+tion of latent variables will depend on the structural model's
+form and characteristics of the distributions being consid-
+ered. For the simple Monte Carlo experiment presented
+above, such tests worked reasonably well. Using a data set of
+1,000 observations, we compared the LSSE estimator based
+on the correct log-normal distribution for  with one mis-
+specified as  having a normal distribution and one misspeci-
+fied as  having a beta distribution on the unit interval.
+Clarke's (2003, 2007) test for non-nested models rejected
+both the normal and the beta distributions in favor of the cor-
+rect log-normal distribution (p values 0.01 and 0.004,
+respectively).
+Similarly, specification of the model's functional form can
+also be investigated using methods appropriate to linear and
+nonlinear regression. For example, using a sample of 1,000
+observations from our simple Monte Carlo experiment, we
+compared the correct specification of y x
+i i
+i
+= + 
+  
+( ) with a
+misspecified model y x
+i i
+i
+= + 
+  
+( ) : Clarke's (2003, 2007)
+test rejected the misspecified model in favor of the correct
+model (p value = .001).
+General advice for use of LSSE estimation follows that
+for estimation of nonlinear models by any means. Because
+asymptotic properties of estimators for nonlinear models can
+be of little comfort in finite samples, Monte Carlo investiga-
+tions for the given sample size ought to be used to determine
+whether the potential bias is acceptable, to determine the
+proper standard error estimator and test statistic, and, for
+simulation estimators such as this one, to select the number
+of simulations R for evaluating the integrals.
+The applied researcher should find the LSSE estimator a
+useful tool when other methods are not available. This is par-
+ticularly true for those familiar with standard statistical soft-
+ware that can estimate nonlinear least squares based on
+user-specified functions. For example, we used the nonlinear
+least squares command (i.e., "nl" command) in the common
+statistical analysis software STATA Version 11 to implement
+the Monte Carlo experiments presented above; the required
+user-written program that calculates the conditional expecta-
+tions for each observation merely needs to embed a loop,
+across observations, that implements a Monte Carlo integra-
+tion routine. The main pragmatic trade-off is that better
+results accrue to larger data sets, but larger data sets require
+greater computational time. However, rapid increase in com-
+putational speed available in today's computers makes this
+trade-off a diminishing concern.
+Appendix A
+In this appendix, we provide the proofs of the least squared
+simulated errors (LSSE) properties of consistency and
+asymptotic normality.
+Consistency: Denoting SN R R R
+, ( ) ( ) ( )
+  
+=  
+e e
+ 
+M and
+given standard regularity assumptions for nonlinear least
+squares estimators (NLS; see Amemiya, 1985, and Seber &
+Wild, 2003, for necessary conditions), the LSSE is consistent
+if
+plim
+N R
+N R N R
+N
+S
+N
+S
+,
+, , * ,
+1 1
+0
+ 
+
+( )- ( )
+
+
+
+
+
+ = (A1)
+where * represents the true parameter value. Although the
+Monte Carlo estimator y
+i R
+ ,
+( )
+ is unbiased for m
+i
+(), S
+N,R
+()
+is a nonlinear function of the residuals and is not unbiased
+with respect to  for its nonsimulated true counterpart.
+Because SN,R
+() is the sum of observation specific compo-
+nents Si,R
+(), the bias is the sum of individual biases associ-
+ated with each component. Each component Si,R
+() is a
+squared residual and can be expressed as a function of the
+mean for which we have an unbiased estimator. Using the
+notation of dx
+k to indicate the kth derivative with respect to x
+(and further simplifying by denoting the first derivative as
+d
+x
+), a Taylor's series expansion about the true regression
+m
+i
+() and evaluating at y
+i R
+ ,
+( )
+ , yields
+S S y S m
+S m y m
+i R i R i R i i
+m i i i R i
+i
+, , ,
+,
+  
+  
+( ) = ( )
+( )= ( )
+( )+
+( )
+( ) ( )-
+
+
+d (
+( )
+( )+
+ ( )
+( ) ( )- ( )
+( )
+=
+
+ 1
+2
+p m
+p
+i i i R i
+p
+p
+i
+S m y m
+! ,
+.
+d   
+
+(A2)
+10 SAGE Open
+Therefore, for a given R, the expectation with respect to 
+of S
+i,R
+() is
+E S S m
+S m E y m
+i R i i
+A
+m i i i R i
+i
+
+
+ 
+  
+,
+,
+( )
+( )= ( )
+( )+
+( )
+( ) ( )- ( )
+(
+d ))+
+ ( )
+( ) ( )- ( )
+( )
+=
+B
+p m
+p
+i i i R i
+p
+p
+i
+S m E y m
+1
+! ,
+d   
+
+1
+1
+
+
+C
+.
+(A3)
+Notice that part B is zero, and because y
+i R
+ ,
+( )
+ is based on the
+sum of the function g evaluated at R independent draws from F
+, the
+expectation in part C can be restated as
+E y m
+R
+E g x m
+i r i
+p
+p
+i r i
+p
+
+
+ 
+   
+ ,
+, | .
+( )- ( )
+( ) = 
+( )
+( )- ( )
+( )
+-
+1
+1
+If we define
+Q S m E g x m
+i
+p
+p m
+p
+i i i r i
+p
+i
+( ) ( ( )) ( ( , ( ) | ) ( )) ,
+!
+     
+
+   -
+1 d
+then
+1 1
+1 1
+1
+1
+1
+N
+S
+N
+S m
+R N
+Q
+N R i i
+i
+N
+A
+p i
+p
+i
+N
+B
+,  
+
+( ) =  ( )
+( )
++   ( )
+=
+-
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=
+
+
+p
+C
+2
+.
+(A4)
+Part A of this equation is the sample average of the least
+squared residuals associated with the NLS estimator, which
+is consistent for increasing N (Seber & Wild, 2003); part B
+are sample averages of Qi
+p ( )
+ that with respect to increasing
+N are finite for well-behaved data; therefore, part C is the
+sum of components that converge to zero as R increases.
+Consequently, with increasing R, the impact of Monte Carlo
+simulation error disappears, and
+1 1
+N
+S
+N
+S
+N R N
+, ( ) ( )
+ 
+ . It
+follows that regarding increasing N and R,
+plim
+plim
+N R
+N R N R
+N
+N N
+N
+S
+N
+S
+N
+S
+N
+S
+,
+, , *
+*
+1 1
+1 1
+ 
+ 
+
+
+( )- ( )
+
+
+
+
+
+ =
+( )- ( )
+
+
+
+
+
+
+ = 0.
+(A5)
+Proof that the right-hand side of this equation is zero fol-
+lows the well-established proof of consistency for the NLS
+(Seber & Wild, 2003). Hence, the LSSE estimator is consis-
+tent with respect to increasing N and R if the standard NLS
+estimator is consistent.
+Asymptotic Normality: For the consistent LSSE estimator
+
+ , d )
+SN R
+, ( converges to 0 and by the mean-value theo-
+rem we can write
+d d
+d
+ 
+
+ = 
+ 
+S S
+S
+N R N R
+N R
+, ,
+, ,
+( ) ( )+
+( ) -
+( )=
+
+
+2 0
+
+(A6)
+for some   
+( , *) . This implies
+N S
+S
+N R
+A
+N R
+  
+
+
+
+-
+( )= - ( )
+
+
+
+
+
+
+( )
+
+
+
+
+
+-
+*
+,
+,
+*
+1
+N
+d
+N
+N
+d
+2
+1
+
+
+
+
+B
+.
+(A7)
+Asymptotic normality holds if part A of this equation con-
+verges to a constant and part B converges to a normal
+distribution.
+Consider part B first. Note that d )
+SN R
+, ( is the sum of
+individualcomponents, d d
+ 
+ 
+S S
+N R i R
+i
+N
+, ,
+( ) ( )
+=
+=
+ 1
+, and each
+component can be expressed as a function of the simulated
+regressionfunction y
+i R
+ ,
+( )
+ suchthat d d
+ 
+ 
+S S y
+i R i i R
+, ,
+( ) ( ( )).
+= 
+Expanding about the regression function m
+i
+(), we get
+d d
+d d
+ 
+
+ 
+ 
+S y S m
+S m y
+i i R i i
+A
+m i i i R
+i
+,
+,
+( )
+( )= ( )
+( )
++ ( )
+( ) ( )-
+- ( )
+( )+
+ ( )
+( ) ( )-
+m
+S m y m
+i
+B
+p m
+p
+i i i R i
+i
+
+  
+
+1
+! ,
+d d (
+( )
+( )
+=
+
+ p
+p
+C
+2
+.
+Regarding the expectation of this term with respect to , note that
+theexpectedvalueofpartA withrespecttodrawsof
+r
+isjustA,the
+expectedvalueofpartB is0because,again, E y m
+i R i
+  
+ ,
+( ) ( )
+= ,
+andtheexpectedvalueofpartCisthesumof
+1
+1
+R
+W
+p i
+p
+-
+ ( )
+ ,where
+W S m E g x m
+i
+p
+p m
+p
+i i i r i
+p
+i
+( ) ( ( )) ( ( , ( ) | ) ( )) .
+!
+     
+ 
+=   -
+1 d d
+Therefore,
+limit
+N
+N
+d limit
+d
+N,R
+N R
+N,R
+i
+i
+N
+A
+S
+N
+S
+
+
+
+
+,
+*
+*
+( )
+
+
+
+
+
+
+
+
+=
+( )
+=
+
+1
+1
++  ( )
+( )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+=
+=
+
+
+ N
+R N
+W
+p i
+i
+N
+p
+B
+1
+1
+2
+1
+*
+
+
+
+
+
+.
+(A8)
+Veazie and Cai 11
+The limit of part A of this equation is the limit for the
+standard NLS, which is asymptotically normal, (Seber &
+Wild, 2003); the limit of part B is 0 if N R
+/ goes to 0, that
+is if R rises faster than the square root of N. Consequently,
+N
+N N R
+S
+d 
+, ( ) converges to a normally distributed variable
+if R rises faster than the square root of N and does not con-
+verge otherwise.
+Regarding part A of Equation A7, the limit of
+( / ) (
+,
+1 2
+N SN R
+d
+
+)
+ is addressed similarly to that of part B.
+Expressing d
+
+2SN R
+, ( )
+ in terms of the unbiased Monte Carlo
+estimator for the mean function and expanding around the
+true mean yields
+d d
+d d
+2 2
+2
+ 
+
+ 
+
+S y S m
+S m y
+i i R i i
+A
+m i i i R
+i
+,
+,
+( )
+( )= ( )
+( )+
+( )
+( ) 
+ 
+ 
+
+( )
+( )- ( )+
+ ( )
+( ) ( )
+m
+S m y
+i
+B
+p m
+p
+i i i R
+i
+1
+! ,
+d d2 -
+- ( )
+( )
+=
+
+ mi
+p
+p
+C
+
+2
+.
+(15)
+As before, the expected value of part B of this equation,
+with respect to the random draws of , is 0; therefore, the
+limit of ( / ) (
+,
+1 2
+N SN R
+d
+
+)
+ reduces to the sum of the limits for
+parts A and C. The expected value of Part C, again asum over
+p 2 of 1 1
+/ Rp- times functions of the pth centered moments
+of the simulated estimator for the regression mean, converges
+to zero as R goes to infinity. Hence, as R goes to infinity
+plim d plim d
+1
+1 2 2
+N N R N N
+S S
+ 
+ 
+, ( ) ( )
+ 
+= , which is the limit of
+part A: This is the standard NLS that converges to a constant
+given the standard assumptions underlying nonlinear least
+squares (Seber & Wild, 2003).
+Appendix B
+In this appendix, we present the STATA 11 code used to esti-
+mate the models in the Monte Carlo experiments.
+Figure B1 presents the STATA program and the nl com-
+mand used to estimate the model of example 1. Lines 1
+through 25 specify the program that calculates the expected
+value for each observation. Lines 30 and 31 specify user-
+specified parameters (not model parameters) used by the pro-
+gram--in this case, the number of Monte Carlo samples to
+use for numeric integration (i.e., the quantity indicated as R
+in the manuscript). And, line 34 is the STATA nl command
+line that calls the program defined above and applies it to the
+data (in this case, to variables y and x). See the STATA user
+manuals for the details of the nl command.
+Lines 1 through 10 of the program are STATA-specific
+commands that name the program (line 1), variables (lines 4
+and 5), and model parameters (lines 7 through 10). Line 2 is
+used to specify the allowable syntax of the nl command (see
+the STATA user manual for details). Line 12 sets the seed for
+the STATA's random number generator to a user-supplied
+constant determined at line 31 (we used the computer time
+clock to specify the seed). It is important to set the seed to the
+same constant each time the program is called so that the
+calculations yield the same result when STATAgives the pro-
+gram the same parameter values, and only differ when the
+program is given different parameter values. Lines 17
+through 22 calculate the Monte Carlo integration for the
+expected values. In this example, we set the number of Monte
+Carlo samples for the integration to 200 (line 30), so a loop
+is set to iterate 200 times (line 17). Notice that rather than
+calculating each observation's integral separately (i.e., loop-
+ing over observation), which can be done, we are simultane-
+ously calculating all integrals at once by generating and
+adding results from random vectors for each of the 200 itera-
+tions. Once the sum of these draws across the 200 iterations
+is obtained, we divide the sum by the number of iterations to
+obtain the vector of expected values for all observations (line
+23). This is the result that STATA uses in constructing the
+residuals used to find parameter values that minimize the
+sum of the squared residuals. Line 34 contains the STATA nl
+command that uses the program nllnnorm to estimate model
+parameters (notice the program name has a prefix of "nl" in
+line 1, but the nl command in line 34 requires reference to the
+program name without the "nl" prefix). See the nl command
+in the STATA user manual for an explanation of the proper
+specification of this command.
+Figure B2 presents the STATA program and the nl com-
+mand used to estimate the model of example 2. Lines 1
+through 28 specify the program that calculates the expected
+value for each observation. Lines 31 and 32 specify user-
+specified parameters used by the program. Line 35 is the
+STATA nl command line that calls the program defined
+above and applies it to the data (in this case to variables
+y, x, w).
+Lines 1 through 10 of the program are STATA-specific
+commands that name the program (line 1), variables (lines 5
+through 7), and model parameters (lines 10 through 12). Line
+14 sets the seed for the STATA's random number generator to
+a constant determined at line 32. Lines 19 through 26 calcu-
+late the Monte Carlo integration for the expected values. As
+Figure B1. STATA code for estimation of Model 1.
+12 SAGE Open
+in the preceding example, we set the number of Monte Carlo
+samples for the integration to 200 (line 31), so a loop is set to
+iterate 200 times (line 19). Once the sum of the calculations
+across the 200 iterations is obtained, we divide the sum by
+the number of iterations to obtain the vector of expected val-
+ues for all observations (line 26). As before, this is the result
+that STATA uses in constructing the residuals used to find
+parameter values that minimize the sum of the squared resid-
+uals. Line 35 contains the STATA nl command that uses the
+program nlcomplex to estimate model parameters. It should
+be noted that it only takes 28 lines of code to write the pro-
+gram required to estimate the complex model, much of which
+are STATA required standard lines.
+Declaration of Conflicting Interests
+The author(s) declared no potential conflicts of interest with respect
+to the research, authorship, and/or publication of this article.
+Funding
+The author(s) received no financial support for the research and/or
+authorship of this article.
+References
+Amemiya, T. (1985). Advanced econometrics. Cambridge, MA:
+HarvardUniversity Press.
+Clarke, K. A. (2003). Nonparametric model discrimination in inter-
+national relations. Journal of Conflict Resolution, 47, 72-93.
+doi:10.1177/0022002702239512
+Clarke, K. A. (2007). A simple distribution-free test for nonnested
+model selection. Political Analysis, 15, 347-363. doi:10.1093/
+Pan/Mpm004
+Gourieroux, C., & Monfort, A. (1993). Simulation-based inference:
+A survey with special reference to panel data models. Journal
+of Econometrics, 59, 5-33.
+Hess, S., Train, K. E., & Polak, J. W. (2006). On the use of a
+Modified Latin Hypercube Sampling (MLHS) method in
+the estimation of a Mixed Logit Model for vehicle choice.
+Transportation Research Part B: Methodological, 40,
+147-163. doi:10.1016/j.trb.2004.10.005
+McFadden, D. (1989). A method of simulated moments for estima-
+tion of discrete response models without numerical integration.
+Econometrica, 57, 995-1026.
+McFadden, D., & Ruud, P. A. (1994). Estimation by simula-
+tion. Review of Economics and Statistics, 76, 591-608.
+doi:10.2307/2109765
+Robert, C. P., & Casella, G. (2004). Monte Carlo statistical meth-
+ods (2nd ed.). New York, NY: Springer.
+Seber, G. A. F., & Wild, C. J. (2003). Nonlinear regression.
+Hoboken, NJ: John Wiley.
+Stern, S. (1997). Simulation-based estimation. Journal of Economic
+Literature, 35, 2006-2039.
+Train, K. (2003). Discrete choice methods with simulation. New
+York, NY: CambridgeUniversity Press.
+Veazie, P. J., & Cai, S. (2007). A connection between medication
+adherence, patient sense of uniqueness, and the personalization
+of information. Medical Hypotheses, 68, 335-342.
+Author Biographies
+Peter J. Veazie, PhD, is associate professor in the Department of
+Public Health Sciences, Chief of the Division of Health Policy and
+Outcomes Research, and Director of the Health Services Research
+and Policy Doctoral Program at the University of Rochester. His
+research focuses on medical and healthcare decision making, health
+and quality of life outcomes, and research methods.
+Shubing Cai received her PhD in Health Services Research and
+currently is an assistant professor in the Department of Public
+Health Sciences at the University of Rochester. Her main research
+interests are focused on quality of care received by the elderly.
+She is also interested in statistical modeling and causal
+inference.
+Figure B2. STATA code for estimation of Model 2.
+

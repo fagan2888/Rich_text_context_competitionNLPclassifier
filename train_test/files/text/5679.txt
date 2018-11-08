@@ -1,0 +1,509 @@
+Commentary
+Crowd-Sourced Intelligence Agency:
+Prototyping counterveillance
+Jennifer Gradecki1 and Derek Curry2
+Abstract
+This paper discusses how an interactive artwork, the Crowd-Sourced Intelligence Agency (CSIA), can contribute to
+discussions of Big Data intelligence analytics. The CSIA is a publicly accessible Open Source Intelligence (OSINT) system
+that was constructed using information gathered from technical manuals, research reports, academic papers, leaked
+documents, and Freedom of Information Act files. Using a visceral heuristic, the CSIA demonstrates how the statistical
+correlations made by automated classification systems are different from human judgment and can produce false-
+positives, as well as how the display of information through an interface can affect the judgment of an intelligence
+agent. The public has the right to ask questions about how a computer program determines if they are a threat to
+national security and to question the practicality of using statistical pattern recognition algorithms in place of human
+judgment. Currently, the public's lack of access to both Big Data and the actual datasets intelligence agencies use to train
+their classification algorithms keeps the possibility of performing effective sous-dataveillance out of reach. Without this
+data, the results returned by the CSIA will not be identical to those of intelligence agencies. Because we have replicated
+how OSINT is processed, however, our results will resemble the type of results and mistakes made by OSINT systems.
+The CSIA takes some initial steps toward contributing to an informed public debate about large-scale monitoring of open
+source, social media data and provides a prototype for counterveillance and sousveillance tools for citizens.
+Keywords
+Dataveillance, information access, transparency, social media, counterveillance, sousveillance
+Introduction
+With the release of the Snowden leaks, debates about
+dataveillance practices used by intelligence agencies
+have finally entered public discourse. Unfortunately,
+people without familiarity with techniques for data col-
+lection or analysis often do not understand how large
+troves of unstructured data (and metadata) become
+intelligence and often assume that if they have nothing
+to hide, these systems should not concern them.
+Consequently, dataveillance of social media or other
+publicly available information has not faced the same
+public scrutiny over privacy as bulk collection of emails
+or cell phone data. To address this deficit, we have
+created an interactive artwork, the Crowd-Sourced
+Intelligence Agency (CSIA), that replicates the data
+processing of an open source intelligence (OSINT) sur-
+veillance system monitoring the popular microblogging
+platform, Twitter. By allowing users to experience how
+these systems frame social media posts and (mis)inter-
+pret natural language, especially slang, jokes, and sar-
+casm, we hope to provide a visceral heuristic of the
+process to help participants of our app to ask questions
+and make informed decisions about the large-scale
+monitoring of open source, social media data. This
+type of awareness can facilitate new tactics for sousveil-
+lance and counterveillance.
+1Department of Art, Art History and Design, Michigan State University,
+USA
+2Department of Media Study, State University of New York at Buffalo,
+USA
+Corresponding author:
+Jennifer Gradecki, Department of Art, Art History and Design, Michigan
+State University, 600 Auditorium Road, 113 Kresge Art Center,
+East Lansing, MI 48824, USA.
+Email: jgradeck@buffalo.edu
+Big Data & Society
+January­June 2017: 1­7
+! The Author(s) 2017
+DOI: 10.1177/2053951717693259
+journals.sagepub.com/home/bds
+Creative Commons CC-BY: This article is distributed under the terms of the Creative Commons Attribution 3.0 License (http://
+www.creativecommons.org/licenses/by/3.0/) which permits any use, reproduction and distribution of the work without further
+permission provided the original work is attributed as specified on the SAGE and Open Access pages (https://us.sagepub.com/en-us/nam/open-access-
+at-sage).
+The state of the public debate
+Part of what impedes a public understanding of large-
+scale OSINT surveillance is made possible by the rise of
+Big Data and analytic tools to process it. Big Data is
+``fundamentally networked'' (boyd and Crawford,
+2011) and has been facilitated by the ``widespread avail-
+ability of electronic storage media, specifically main-
+frame computers, servers and server farms, and
+storage area networks'' (Gitelman and Jackson, 2013:
+6­7). However, Big Data is inherently inaccessible to
+the public, both in terms of access to the database and
+the ability to process it. The public does not have access
+to the same amount of data that intelligence agencies
+do, but even when the public does gain access to
+massive troves of data, they generally do not have the
+computational capacity to quickly process and analyze
+all of the data or the time to develop the technical
+competencies needed to understand the intentionally
+coded, specialized documents. Twitter, for example,
+only offers a limited amount of its datastream to the
+public and academic researchers through its
+Application Program Interface (API). However, the
+full ``firehose'' is available to companies (including gov-
+ernment contractors) who have the ability to pay for
+and process it. Lev Manovich created a hierarchy of
+``data-classes'' for a ``Big Data society'' that places
+those with the expertise to analyze it at the top. The
+middle class is comprised of people and organizations
+who have the ability to collect Big Data, while the
+bottom contains those who only make data, con-
+sciously or not (Manovich, 2011).
+The danger of using Big Data to identify threats to
+national security is that it tends to provoke apophenia,
+or the perception of meaningful patterns in random
+data (boyd and Crawford, 2011: 2). The tools for hand-
+ling Big Data, such as machine-learning classification
+and techniques for making different data types compat-
+ible with one another, have restrictions and difficulties
+that data scientists are often in disagreement over how
+to address. Statistician and computer scientist Jesper
+Andersen points out that simply the process of cleaning
+the data (determining which characteristics of the data
+are important) ``removes the objectivity from the data
+itself'' (Bollier, 2010: 13). The manner in which data is
+presented to an agent and the context in which it is
+(re)framed can also influence how the data is perceived,
+thus affecting the agent's judgment. In the CSIA, we are
+interested in reproducing problems faced when process-
+ing and displaying data for intelligence analysis.
+Intelligence agencies and Big Data
+The dataveillance practices currently employed by intel-
+ligence agencies are spawned from a `collect-it-all'
+mentality that assumes that if enough data can be col-
+lected, future actions can be predicted with a high level
+of accuracy. Consequently, the amount of data now
+being collected and processed necessitates the use of
+tools developed for handling Big Data. This toolkit
+not only includes instruments for data capture, but
+also software that scans massive troves of unstructured
+data, returning elements determined to be suspicious
+through an algorithmic process. In the CSIA, we are
+using some of the same classification techniques used to
+parse and analyze Big Data for predictive policing pur-
+poses. We focus on open-source intelligence (OSINT)
+data because it is the easiest to obtain, and perhaps the
+least controversial because it is already publicly
+available.
+For the last 20 years, intelligence agencies have been
+developing and refining large-scale, automated data
+gathering and processing software (Arnold, 2015:
+36),1 in order to address the growing problem of
+``data deluge'' or ``ever-growing data sets [sic]'' (IBM
+Software Whitepaper, 2012: 2).2 Today, intelligence
+agencies routinely process massive amounts of struc-
+tured and unstructured data, derived from both private
+and public sources, including: financial, medical, pro-
+fessional and academic records, transactional data,
+search queries, emails, texts, telephony metadata, geo-
+graphic information system (GIS) data, public records,
+social media posts (Facebook, Instagram, Twitter),
+websites and blogs, news articles, video, audio,
+images, and the list goes on. The Big Data that intelli-
+gence analytics systems have been developed to deal
+with consists mainly of public data: in 2004, it was
+estimated that over 80% of the intelligence database
+came from open sources (Mercado, 2004: 49). Because
+the number of people using social media has grown
+substantially since 2004, it is likely that this percentage
+is even higher today. Agencies feel the need to automate
+the processing of this disparate data in order to gain
+situational awareness and predict outcomes. We are
+interested in how this process of automation impacts
+the conclusions that intelligence agents come to.
+The Crowd-Sourced Intelligence
+Agency (CSIA)
+CSIA is an online application and interactive artwork
+that replicates and displays some of the known tech-
+niques used by intelligence agencies to collect and pro-
+cess open source information.3 The app uses technical
+manuals, research reports, academic papers, leaked
+documents, and Freedom of Information Act files to
+construct an OSINT system that is accessible to the
+public. OSINT is intelligence collected from publicly
+available sources, such as the media (including social
+media), academic records, and public data, and has
+2 Big Data & Society
+been described as ``the basic building block for secret
+intelligence'' (Mercado, 2004: 49).
+The purpose of the CSIA is to openly show how
+publicly available information is processed and ana-
+lyzed, with a focus on social media posts. We pieced
+together an incomplete mosaic of information that
+became the basis for constructing a technological arti-
+fact that replicates many of the features commonly used
+to process publicly available data, including: nai¨ve
+Bayes supervised machine-learning classification for
+predictive analytics, keyword search results for words
+known to be used by intelligence agencies,4 and an
+interface that allows users to evaluate social media
+posts based on their threat to national security. Once
+we were able to build and interact with this surveillance
+system, assumptions and problems inherent in the
+system started to become visible. For example, we rea-
+lized that if someone has a similar speech pattern or
+Twitter user description as a known target, they could
+potentially end up on a watch list.
+The CSIA app consists of several components: (1)
+The Social Media Monitor, a surveillance interface
+where users evaluate Tweets based on their threat to
+national security. (2) Two nai¨ve Bayes supervised
+machine-learning classifiers that automatically label
+tweets as suspicious or not suspicious. The Agent
+Bayes classifier is trained on a corpus of manually
+labeled tweets created by researching and simulating
+the process and judgments of intelligence agents. The
+Crowd-Sourced Classifier is trained on a corpus labeled
+by visitors to Science Gallery Dublin's SECRET exhib-
+ition.5 Users can review the algorithms' suggestions for
+accuracy and idiosyncrasies. (3) The Social Media Post
+Inspector, where users can submit text to see if a post is
+likely to be considered threatening by intelligence agen-
+cies and choose whether or not to share it on social
+media. (4) The Watchlist, where users can target them-
+selves and others as subjects of social media monitor-
+ing, and which provides automated evaluations
+from our machine-learning classifiers to show how
+social media posts may be treated by OSINT surveil-
+lance systems (Figure 1). (5) A Resource Library
+that links to documents that informed the creation of
+the app.
+The goal of the CSIA is to expose potential prob-
+lems, assumptions, or oversights inherent in current
+dataveillance processes in order to help people
+understand the effectiveness of OSINT processing
+and its impact on our privacy. We aim to facilitate a
+critical and practice-based understanding of a socio-
+technical system that typically evades public scrutiny.
+Ultimately, the CSIA provides firsthand experience
+with social media monitoring, allowing users to
+choose how they want to navigate social media
+surveillance.6
+Creating an informed public debate and
+model for resistance
+The release of the Snowden documents revealed the
+extent to which governments and private contractors
+are monitoring the communications of their citizens,
+including social media posts and exchanges. This type
+of dataveillance would fall under what Bakir (2015) has
+termed the ``veillant panoptic assemblage'', which
+includes, among other things, governmental re-appro-
+priation of citizen's social media communications for
+disciplinary purposes. Technology and tactics for coun-
+terbalancing the power differential amplified by older
+forms of optical surveillance have already been devel-
+oped and are currently in use by the public. Among
+these is counterbalancing surveillance by the state
+(oversight) with citizen-based sousveillance (under-
+sight) to achieve a `democratic homeostasis', or equi-
+veillance, where the veillant forces of the state and
+citizens are balanced. Since sousveillance is at a
+power disadvantage, a socio-technical assemblage of
+new media and social networks may need to be lever-
+aged to compensate for the power differential. A
+common example of equiveillance is when citizens use
+cell phone cameras to film abuses of power by police or
+the power elite and post the videos online.
+Bakir (2015: 21) poses the question of if it is possible
+to achieve an ``equiveillant panoptic assemblage'' where
+the intelligence-power elite could face public scrutiny
+for their dataveillance practices in a similar way that
+citizen-produced videos can hold police accountable for
+their actions. We agree with her conclusion (2015: 22)
+that the current civic infrastructure for ``genuine public
+debate'' over mass surveillance is currently too weak to
+facilitate ``change from below'', and her assessment that
+when it comes to surveillance, counterveillance and uni-
+veillance ``making people understand and care about
+such issues is challenging given their abstract, complex
+nature'' (18).7 We would add to this list of difficulties
+the inability of citizens to either collect or process Big
+Data. Despite these obstacles, we intend the CSIA to be
+a step toward facilitating a genuine public debate about
+the dataveillance of social media and a prototype for
+counterveillance and sousveillance tools for citizens. By
+demonstrating that what a dataveillance program `sees'
+when it `reads' social media posts is nothing like what a
+human being sees, we hope to create a debate over cur-
+rent dataveillance technologies as well as the efficacy
+and ethics of mass automated dataveillance more
+broadly.
+The CSIA highlights the importance of the training
+corpus in machine-learning by allowing participants to
+create a corpus used to train the Crowd-Sourced
+Classifier and by providing another classifier, Agent
+Bayes, for comparison. The algorithm in both classifiers
+Gradecki and Curry 3
+is identical--the only difference between the two classi-
+fiers is the data, which was selected and labeled by users
+of the CSIA application. The ratio of tweets found to
+be suspicious versus not suspicious is surprisingly simi-
+lar between the two corpuses. In the Crowd-Sourced
+Classifier, museum visitors in Dublin labeled 22.11%
+of the tweets they reviewed as suspicious (Figure 2).
+In the Agent Bayes corpus, 21.00% of the tweets were
+identified as threatening by an individual who simu-
+lated the judgment criteria used by intelligence agents
+based on leaked documents and ethnographic
+accounts.8 However, the predictions made by the two
+classifiers varied greatly. When Agent Bayes and the
+Crowd-Sourced Classifier were tested against each
+other using a dataset containing 9,430 Twitter posts,
+they disagreed 35% of the time.
+Automated classification does not make erroneous
+data more accurate, it only automates the same errors
+across a larger dataset. This raises questions about the
+accuracy of the data intelligence agencies use to train
+their predictive policing systems, and whether the
+public should have access to that data for transparency
+and oversight purposes. There are already documented
+instances of intelligence agencies misinterpreting social
+media data as threatening. In 2012, two British students
+were detained by the US Department of Homeland
+Security and denied entrance to the US for posts they
+made on Twitter. In one post identified as a threat,
+Leigh Van Bryan tweeted a joke from the cartoon
+Family Guy about ``diggin' Marilyn Monroe up'',
+which prompted authorities to search the couple's lug-
+gage for shovels (Compton, 2012). Less humorously, in
+the trial of Dzhokhar Tsarnaev, the man convicted of
+planting a bomb made from a pressure cooker at the
+Boston Marathon, the evidence initially presented from
+his Twitter account was exceptionally flawed. Song
+lyrics and jokes from the television show Key and
+Peel were presented as evidence of wrongdoing and
+the background image of Tsarnaev's home mosque in
+Grozny had been labeled as ``Mecca'' by the FBI. Upon
+Figure 1. Crowd-Sourced Intelligence Agency watchlist interface.
+4 Big Data & Society
+cross-examination, the agent admitted that they did not
+bother to look at a picture of Mecca for a comparison
+(Woolf, 2015). Because there was ample physical evi-
+dence linking Tsarnaev to the bombing, the FBI may
+have simply assumed that his Twitter posts were incri-
+minating. If all of the social media posts made by
+known terrorists are labeled as threatening and used
+in a training corpus for a machine-learning classifier,
+we can expect to find Twitter users who have similar
+taste in television and music being algorithmically iden-
+tified as threats to national security. People who believe
+they will not be targeted by these systems because they
+are not doing anything wrong need to understand that
+automated classification systems only find statistical
+correlations between data: if you happen to make
+posts using language similar to a known target, you
+may be flagged as a potential threat by the system.
+The CSIA also provides a model for possible coun-
+terveillance and sousveillance tools. The Social Media
+Post Inspector feature, which allows users to type a
+tweet and process the text with both keyword and algo-
+rithmic analysis to see if it might be flagged as suspi-
+cious by an OSINT dataveillance system, enables
+counterveillance by showing social media users how
+their posts might be interpreted. The user then has
+the option to tweet directly from the Post Inspector's
+interface, giving them the option to rephrase the post to
+avoid algorithmic scrutiny or even overload a post with
+language that creates false positives. An informed user
+may even decide to refrain from tweeting altogether.
+The CSIA Watchlist can be used for sousveillance:
+users may choose to include law enforcement, intelli-
+gence agencies, government contractors or other mem-
+bers of the intelligence­power elite, to keep track of
+their social media posts using dataveillance techniques
+and participate in a crowd-sourced and distributed
+watching of the watchers.
+Conclusion
+The CSIA fosters an informed public debate by making
+abstract ideas about surveillance into concrete, inter-
+active replications of intelligence techniques and tech-
+nologies to allow participants to see some aspects of
+how dataveillance works in practice. The CSIA pro-
+vides a visceral heuristic: as CSIA agents (users of the
+app) monitor their own posts and the posts of their
+friends, they can see how the automated processing
+changes, reinterprets, reframes, and recontextualizes
+their posts without needing a background in data
+Figure 2. Visitors to Science Gallery Dublin reviewing Twitter posts.
+Gradecki and Curry 5
+science. The inaccessibility of Big Data keeps the pos-
+sibility of performing effective sousveillance on OSINT
+technologies out of reach, prohibiting the prospect of
+achieving equiveillance under the current situation.
+However, technologies in this area are developing rap-
+idly enough that it is conceivable that consumer grade
+equipment will be able to perform these types of ana-
+lytics in the near future. The CSIA is taking some of the
+first steps towards creating tools for sous-dataveillance
+and counter-dataveillance.
+Ideally, the effectiveness of specific algorithms for
+language processing, translation, and classification
+could become topics of public debate and scrutiny.
+The public has the right to ask questions about how a
+computer program determines if they are a threat to
+national security and to question the practicality of
+using statistical pattern recognition algorithms in
+place of human judgment. Ethical and legal questions
+will also need to be addressed, such as who is held
+accountable when someone is wrongfully detained or
+arrested due to a statistical similarity to a known
+threat? What is badly needed for both the public
+debate and to create effective counterveillance and
+sousveillance tools is the actual data intelligence agen-
+cies use to train their dataveillance algorithms. Without
+this data, the results returned by the CSIA will only
+resemble the results and mistakes made by OSINT sys-
+tems currently in use. These limitations may be over-
+come in the near future through leaked information,
+FOIA requests, or public pressure. Despite these limi-
+tations, by reproducing the type of problems inherent
+in the processing and displaying of Big Data for intel-
+ligence analysis, the CSIA fosters a critical awareness of
+the assumptions in dataveillance technology and begins
+to enable the development of counterveillance tactics.
+Acknowledgments
+The CSIA was made possible by the generous support of the
+Science Gallery Dublin.
+Declaration of conflicting interests
+The author(s) declared no potential conflicts of interest with
+respect to the research, authorship, and/or publication of this
+article.
+Funding
+The author(s) received no financial support for the research,
+authorship, and/or publication of this article.
+Notes
+1. Beginning in 1996, Autonomy was the first company to
+automate the processing of Big Data for intelligence
+purposes.
+2. IBM's i2 Analyst's Notebook is a Big Data analytics system
+widely used in both intelligence and law enforcement.
+3. Crowd-Sourced Intelligence Agency Website: http://www.
+crowdsourcedintel.org/
+4. From the 2011 Analyst's Desktop Binder technical manual
+for the Department of Homeland Security's social media
+monitoring program, released through a FOIA lawsuit by
+the Electronic Privacy Information Center: https://epic.
+org/foia/epic-v-dhs-media-monitoring/Analyst-Desktop-
+Binder-REDACTED.pdf
+5. Website for the SECRET exhibition: http://dublin.science
+gallery.com/secret/
+6. Informational video about the CSIA: https://vimeo.com/
+150759598
+7. Univeillance is veillance with one party's consent (i.e. rec-
+ording something you are a part of). Counterveillance per-
+tains to the measures taken to block both surveillance and
+sousveillance. Counterveillant technologies include soft-
+ware for anonymization and encryption, and tactics
+include going `off the grid'. See: Mann (2013: 7).
+8. Jennifer Gradecki read ethnographic reports, including
+Curing Analytic Pathologies: Pathways to Improved
+Intelligence Analysis (Cooper, 2005) and Information
+Sharing and Collaboration in the United States Intelligence
+Community: An Ethnographic Study of the National
+Counterterrorism Center (Nolan, 2013), as well as leaked
+documents, such as entries from the NSA's intranet
+column ``The SIGINT Philosopher'' and GCHQ files per-
+taining to the Lovely Horse OSINT software, and replicated
+the practices of an intelligence agent as closely as possible.
+References
+Arnold SE (2015) CyberOSINT: Next-generation Information
+Access, Law Enforcement, Security and Intelligence
+Edition. Louisville, KY: Arnold Information Technology.
+Bakir V (2015) `'Veillant panoptic assemblage'': Mutual
+watching and resistance to mass surveillance after
+Snowden. Media and Communication 3(3): 12­25.
+Available at: http://www.cogitatiopress.com/ojs/index.
+php/mediaandcommunication/article/view/277 (accessed
+3 February 2017).
+Bollier D (2010) The Promise and Peril of Big Data. Report
+for the Communications and Society Program,
+Washington, DC: The Aspen Institute.
+boyd d and Crawford K (2011) A decade in internet time.
+In: Symposium on the dynamics of the internet and society,
+Oxford Internet Institute, UK, 21 September. Available at:
+http://dx.doi.org/10.2139/ssrn.1926431 (accessed 3
+February 2017).
+Compton A (2012) British tourists detained, deported for
+tweeting `destroy America'. Huffington Post, 30 January.
+Available at: http://www.huffingtonpost.com/2012/01/30/
+british-tourists-deported-for-tweeting_n_1242073.html
+(accessed 23 October 2016).
+Cooper JR (2005) Curing analytic pathologies: Pathways to
+improved intelligence analysis. Washington, DC: Center
+for the Study of Intelligence.
+Gitelman L and Jackson V (2013) Introduction. In: Gitelman
+L (ed.) ``Raw Data'' is an Oxymoron. Cambridge, MA:
+MIT Press, pp. 1­14.
+6 Big Data & Society
+IBM Software Whitepaper (2012) IBM i2 Analyst's
+Notebook social network analysis. October. Available at:
+https://cryptome.org/2013/12/ibm-i2-sna.pdf (accessed 23
+October 2016).
+Mann S (2013) Veillance and reciprocal transparency: surveil-
+lance versus sousveillance, AR glass, lifelogging, and wear-
+able computing. Available at: http://wearcam.org/
+veillance/veillance.pdf (accessed 3 February 2017).
+Manovich L (2011) Trending: The promises and the chal-
+lenges of big social data. Available at: http://manovich.
+net/index.php/projects/trending-the-promises-and-the-ch
+allenges-of-big-social-data (accessed 26 October 2016).
+Mercado SC (2004) Sailing the sea of OSINT in the informa-
+tion age. Studies in Intelligence 48(3): 45­55.
+Nolan BR (2013) Information sharing and collaboration in the
+United States Intelligence community: an ethnographic
+study of the National Counterterrorism Center. Doctoral
+dissertation, Princeton University.
+Woolf N (2015) Boston Marathon bomb trial: FBI agent mis-
+takes Grozny for Mecca in Twitter photo. The Guardian 10
+March. Available at: https://www.theguardian.com/us-n
+ews/2015/mar/10/fbi-testimony-boston-marathon-bomb-
+trial-dzhokhar-tsarnaev (accessed 23 October 2016).
+This commentary is a part of special theme on Veillance and Transparency. To see a full list of all articles in this special
+theme, please click here: http://bds.sagepub.com/content/veillance-and-transparency
+Gradecki and Curry 7
+

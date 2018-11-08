@@ -1,0 +1,1512 @@
+Discussion Paper
+Deutsche Bundesbank
+No 38/2015
+The credit quality channel:
+modeling contagion in the interbank market
+Kilian Fink
+(Goethe Universität Frankfurt am Main)
+Ulrich Krüger
+(Deutsche Bundesbank)
+Barbara Meller
+(Deutsche Bundesbank)
+Lui-Hsian Wong
+(Deutsche Bundesbank)
+Discussion Papers represent the authors` personal opinions and do not
+necessarily reflect the views of the Deutsche Bundesbank or its staff.
+Editorial Board: Daniel Foos
+Thomas Kick
+Jochen Mankart
+Christoph Memmel
+Panagiota Tzamourani
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978­3­95729­201­8 (Printversion)
+ISBN 978­3­95729­202­5 (Internetversion)
+Non-technical summary
+Research Question
+How can the costs of contagion in the network of banks due to exogenous shocks to individual banks,
+which are transmitted to other banks through interbank credits, be measured in an economically mean-
+ingful way? Existing models on how external shocks to banks spread to other banks often assume that
+some banks in the network actually default and do not consider less severe forms of distress such as asset
+devaluations and deterioration in the credit quality of certain exposure classes. We establish a framework
+which quantifies the impact of contagion and develop a measure of systemic risk which is associated
+with the interbank lending channel.
+Contribution
+The proposed framework computes the aggregate Tier 1 capital loss to the banking system as a unit
+to measure the costs of interconnectedness. An initial shock propagates through the network of banks
+by increasing the expected losses of the credit portfolios of all directly and indirectly connected banks.
+The mechanism relies on the empirically observed relationship between banks' capital ratios and their
+probabilities of default. In combination with regulatory requirements and accounting standards we do
+not only simulate the propagation of big shocks such as bank failures, but also of smaller shocks such as
+a decrease in the credit quality of mortgages. The algorithm is put to the test using the bilateral interbank
+credit exposure of the entire German banking system.
+Results
+We find that the contagion risk in the German interbank network is concentrated around four of the
+1,710 banks. When analyzing the effectiveness of additional capital buffers of up to 2.5pp (buffer for
+systemically important financial institutions, SIFIs), we conclude that their buffers are not high enough
+to absorb the costs of the failure of any other SIFI. Moreover, we find that the losses from indirect credit
+exposure is much higher than from direct exposure in case a SIFI defaults. From this we conclude that
+it is crucial to account not only for direct exposure but rather the entire network when evaluating the
+interconnectedness of banks. In a different policy application we find that a shock to the mortgage sector
+hits the banking system twice: once in the form of write-downs to their own portfolio and also, in equal
+measure, in the form of the losses of their counterparties in the financial system. Properly calibrated
+capital buffers can effectively reduce the losses from contagion.
+Nichttechnische Zusammenfassung
+Fragestellung
+Wie können Ansteckungskosten im Bankensystem auf Grund von exogenen Schocks, die nur einzel-
+ne Banken betreffen und durch Verknüpfungen am Interbankmarkt an andere Banken weitergegeben
+werden, in ökonomisch sinnvoller Weise gemessen werden? Existierende Modelle zur Übertragung von
+Schocks auf benachbarte Banken setzen häufig voraus, dass einige Banken im Netzwerk tatsächlich
+ausfallen und betrachten weniger schwerwiegende Formen finanziellen Stresses, zum Beispiel Wertmin-
+derungen von Aktiva oder die Verschlechterung der Kreditqualität in bestimmten Forderungsklassen,
+in nur ungenügender Weise. Wir entwickeln einen theoretischen Rahmen zur Messsung des Einflusses
+von Ansteckung und leiten ein Maß für systemische Risiken ab, die durch den Interbanken-Kreditkanal
+verursacht werden.
+Beitrag
+In dem von uns entwickelten Modell wird der aggregierte Verlust des Kernkapitals infolge eines exter-
+nen Schocks als Maß für die Kosten der Vernetzung ermittelt. Die Übertragung eines externen Schocks
+im Bankennetzwerk führt zu erhöhten erwarteten Verlusten bei allen direkt und indirekt verbundenen
+Banken. Der Mechanismus nutzt die empirisch beobachtete Assoziation zwischen den Kapitalquoten der
+Banken und deren Ausfallwahrscheinlichkeit. In Zusammenwirkung mit regulatorischen Kapitalanfor-
+derungen und Rechnungslegungsvorschriften können wir nicht nur große Schocks, wie den Zusammen-
+bruch einer großen Bank, modellieren, sondern auch weniger drastische Ereignisse, wie zum Beispiel
+eine Verschlechterung der Kreditqualität von Hypothekendarlehen. Der Algorithmus wird für die bilate-
+ralen Forderungen des gesamten deutschen Bankensystems getestet.
+Ergebnisse
+Die Anwendung des Verfahrens zeigt, dass das Ansteckungsrisiko bei deutschen Banken auf etwa vier
+der insgesamt 1.710 Banken konzentriert ist. Hinsichtlich der Effektivität eines zusätzlichen Eigenka-
+pitalpuffers von bis zu 2,5 Prozentpunkten (Puffer für systemrelevante Finanzintermediäre, SIFIs) zeigt
+sich allerdings, dass dieser nicht hoch genug ist, um in jedem Falle die Kosten des Ausfalls eines an-
+deren SIFIs zu absorbieren. Zudem zeigt sich, dass die Verluste aus der indirekten Ansteckung um ein
+Vielfaches höher sein können als die direkten Verluste bei Ausfall eines SIFIs. Daraus folgern wir, dass
+es wichtig ist, das ganze Netzwerk und nicht nur direkte Gegenparteien zu berücksichtigen, wenn man
+den Vernetzungsgrad einer Bank evaluiert. Ein Schock des Immobiliensektors beispielsweise trifft das
+Bankensystem in zweifacher Weise: neben den Verlusten aus dem eigenen Portfolio an Immobilienkre-
+diten sind die Verluste für die Geschäftspartner ebenso relevant. Zusätzliche Puffer, die der Höhe nach
+angemessen kalibriert sind, können effektiv zur Reduktion der indirekten Verluste beitragen.
+The credit quality channel: Modeling contagion in the
+interbank market
+Kilian Fink1, Ulrich Krüger2, Barbara Meller2, Lui-Hsian Wong2
+1 Goethe Universität Frankfurt am Main
+2 Deutsche Bundesbank
+Abstract
+We propose an algorithm to model contagion in the interbank market via what we term
+the credit quality channel. In existing models on contagion via interbank credit, external
+shocks to banks often spread to other banks only in case of a default. In contrast, shocks
+are transmitted via asset devaluations and deteriorations in the credit quality in our algo-
+rithm: First, the probability of default (PD) of those banks directly affected by some shock
+increases. This increases the expected loss of the credit portfolios of the initially affected
+banks' counterparties, thereby reducing the counterparties' regulatory capital ratio. From
+a logistic regression, we estimate the increase in the counterparties' PD due to a reduced
+capital ratio. Their increased PDs in turn affect the counterparties' counterparties, and so
+on. This coherent and flexible framework is applied to bilateral interbank credit exposure
+of the entire German banking system in order to examine policy questions. For that pur-
+pose, we propose to measure the potential cost of contagion of a given shock scenario by
+the aggregated regulatory capital loss computed in our algorithm.
+Keywords: contagion, systemic risk, macroprudential policy, policy evaluation, intercon-
+nectedness
+JEL classification: C63, G01, G17, G21, G28
+Contact address: Deutsche Bundesbank, Wilhelm-Epstein-Str. 14, 60431 Frankfurt am Main, Ger-
+many. Phone: +49 69 9566-8613. E-Mail: kilianfink@gmx.de, ulrich.krueger@bundesbank.de, bar-
+bara.meller@bundesbank.de, lui-hsian.wong@bundesbank.de. The authors wish to thank Thilo Liebig and
+Alexander Schulz as well as Iman van Lelyveld, Rama Cont and other participants of the 3rd EBA Policy Re-
+search Workshop on "How to measure the riskiness of banks" and the Cambridge Workshop on "Controlling sys-
+temic risk: insights from mathematical modeling" for helpful comments. Discussion Papers represent the authors'
+personal opinions and do not necessarily reflect the views of the Deutsche Bundesbank or its staff.
+BUNDESBANK DISCUSSION PAPER NO 38/2015
+1 Introduction
+We propose a framework to compute the regulatory capital loss to the banking system caused by the
+propagation of an external shock through interbank loans. The impact of interbank lending on financial
+stability is twofold. On the one hand, interconnected banks may improve risk sharing and diversification,
+thereby alleviating their exposure to idiosyncratic shocks, as noted by Allen and Gale (2000) and Freixas,
+Parigi, and Rochet (2000). On the other hand, the network exposes all banks to the risk of contagion,
+that is, of an adverse shock to one bank or a group of banks spreading to other interconnected banks,
+resulting in distress, or ­ in the worst case ­ in default. In this spirit, BCBS (2013) classifies the level of
+interconnectedness as one main driver of systemic risk in the banking system.1 In the light of the recent
+financial crisis, the risk of contagion has increasingly become a matter of importance to regulators.
+Therefore, this paper focuses on the adverse effect of interbank credits as a source of contagion.
+To simulate contagion in the interbank market, we analyze the impact of an increase in the debtor
+bank's probability of default (PD) on its creditor banks' PD, its creditor banks' creditor banks' PD, and
+so on. First, we follow regulatory and accounting requirements to compute the reduction of the cred-
+itor bank's Tier 1 capital ratio (Tier 1 capital over risk-weighted assets) induced by the debtor bank's
+lower PD. In essence, we aim to mimic banks' risk management practices based on external reporting
+requirements. An increase in the debtor bank's PD results in a deterioration of the credit quality of the
+portfolio of its creditor banks because the creditor banks are exposed to higher expected and unexpected
+credit losses. This will ultimately reduce the creditor banks' Tier 1 capital ratios. Then, we estimate the
+impact of a decrease in a bank's Tier 1 capital ratio on its own PD using a logistic regression. Given
+the relationship between the debtor banks' PD and the creditor banks' PD, our algorithm then simulates
+a multiple-round contagion process where the PD of all the creditor banks deteriorates, which are con-
+nected (directly and indirectly via their counterparties) with those debtor banks subject to an exogenous
+shock. The increase in banks' PDs results in higher expected credit losses in the banking system. The
+corresponding reduction in regulatory Tier 1 capital is proposed as a measure of the adverse effects of
+interconnectedness caused by contagion via interbank credits.
+The paper contributes to the academic literature and policy toolkit in several ways. Firstly, we are
+the first to use banks' PD in combination with regulatory requirements and accounting standards as a
+contagion mechanism in the interbank market, which we term the credit quality channel. In so doing,
+we are able to simulate the propagation not only of big shocks such as bank failures, but even of small
+shocks such as a deterioration in the credit quality of mortgages.
+Secondly, we propose an economically meaningful metric to summarize the cost of interconnected-
+ness: the reduction in regulatory Tier 1 capital of all banks in the network. This metric, called BSLoss
+for short, also allows for an alternative interpretation. By construction it equals the balance sheet loss
+due to an increase in loan loss allowances. Thirdly, we test our algorithm on the bilateral interbank credit
+exposure of the entire German banking system. We quantify the contagion cost of single bank failures
+and compute the benefit of a capital buffer for systemically important banks. Moreover, we compute the
+BSLoss which results from a shock to house prices and study the effectiveness of sectoral risk buffers in
+reducing this loss. The proposed model allows policy makers to monitor the build up of vulnerabilities
+over time and gives them a better understanding of the effectiveness of policy actions in response to
+different types of shocks.
+In our policy application, we find that the contagion risk in the German interbank network is con-
+centrated around four or five of the 1,710 banks. Moreover, losses from indirect credit exposure can be
+much higher than from direct exposure. In the case of a failure of one of the five most interconnected
+banks, the costs from indirect exposure exceed the costs from direct exposure by a factor up to 15. From
+1Systemic risk, as defined by BIS, IMF, and OECD (2001), is a risk that an event will trigger a loss of confidence
+in a substantial portion of the financial system that is serious enough to have adverse consequences for the real
+economy.
+1
+this we conclude that it is crucial to account not only for direct exposure but rather the entire network
+when evaluating the interconnectedness of banks. When analyzing the effectiveness of additional capital
+buffers of up to 2.5pp (buffer for systemically important financial institutions, SIFIs), we conclude that
+their buffers are not high enough to absorb the costs of the failure of any other SIFI. In a different policy
+application, we find that a shock to the mortgage sector hits the banking system twice: once in the form
+of write-downs to their own portfolio and also, in equal measure, in the form of the losses incurred by
+their counterparties in the financial system. An additional capital buffer which is proportional to each
+bank's exposure to the mortgage sector (systemic risk buffer) can effectively reduce the losses from con-
+tagion if they are calibrated well. Given a certain stress scenario, our framework can be used for such
+calibration.
+The paper is structured as follows. Section 2 gives an overview of the relevant literature with a focus
+on the DebtRank. In Section 3 we introduce the algorithm of the BSLoss. Section 4 presents the results
+of two policy experiments. Section 5 concludes.
+2 Literature
+Most of the studies on the adverse effects of interbank credits on the stability of the banking system
+follow two strands of literature. The first one refers to default cascade models: A bank default triggers a
+loss on interbank lending for its creditor banks. This, in turn, may trigger a default of the creditor banks
+and a corresponding loss to the creditors' creditor banks, and so forth. In this spirit, Eisenberg and Noe
+(2001) propose a static model in which a clearing payment vector describes a fair allocation of losses
+that result from an external shock. This vector represents a function of the operating cash flows of the
+members of the financial network and satisfies the requirements of limited liability, debt priority and pro-
+rata reimbursements. Rogers and Veraart (2012) extend the modeling framework of Eisenberg and Noe
+(2001) by introducing default costs in the system. They analyze situations in which solvent banks have an
+incentive to rescue failing banks and conclude how such a rescue consortium might be constructed. More
+recently, Acemoglu, Ozdaglar, and Tahbaz-Salehi (2015) have generalized the results of Eisenberg and
+Noe (2001) by showing that, regardless of the structure of the financial network, a payment equilibrium
+­ consisting of a mutually consistent collection of asset liquidations and repayments of interbank loans ­
+always exists and is generically unique. They provide a comprehensive theoretical analysis between the
+structure of the financial network and the likelihood of systemic failure due to contagion of counterparty
+risk. As long as negative shocks imposed on banks are sufficiently small a dense interconnected financial
+network enhances financial stability. In contrast, beyond a certain threshold, dense interconnections serve
+as a mechanism for the propagation of shocks and thus threatens financial stability. Focusing more on
+empirical findings, Mistrulli (2011) explores how banks' defaults propagate within the Italian interbank
+market. He finds that contagion based on actual exposure patterns tends to exceed contagion based on
+hypothetical exposure patterns (eg entropy maximization method) which previous works often had to
+rely on due to the lack of actual bilateral exposure information. Memmel and Sachs (2011) develop
+a default cascade model with stochastic losses given default (LGDs) which follow approximately a u-
+shaped Beta distribution and is calibrated on realized recovery rates from defaulted interbank exposures.
+They conclude that contagion in the German interbank market can occur and that the number of bank
+defaults increases on average if a stochastic LGD is assumed instead of a constant one.
+The second strand of literature refers to centrality measures, which are used to identify the most
+important node in a network. Different centrality measures exist which reflect different interpretations
+of importance. Landherr, Friedl, and Heidemann (2010) provide a critical review of different central-
+ity measures. One of the most simplistic measures is the degree centrality which counts the number of
+connections one node has to other nodes. More complex measures are recursive centrality measures.
+According to this concept, the centrality of one node in the network depends not only on the amount of
+2
+its direct connections, but also on the centrality of the nodes it is connected to. As a result, the centralities
+of all (connected) nodes influence each other recursively. Recursive centrality can also be described as a
+weighted sum of all direct and indirect connections of any length. This concept is formalized mathemat-
+ically in the standard eigenvector centrality by Bonacich (1972). Another version of recursive centrality
+measures is the PageRank, developed by Google's co-founder Larry Page, to assess the importance of
+websites. In the wake of the recent financial crisis the concept of recursive centrality measures has
+gained popularity as an indicator of interconnectedness in the banking system. To name a few, ECB
+(2012) and Brunnermeier, Clerc, and Scheicher (2013) applied recursive centrality measures to assess
+structural vulnerabilities and the level of interconnection of banks. Alter, Craig, and Raupach (2015)
+apply different centrality concepts to capital rules on the banking system. They find that capital rules
+based on eigenvector centrality dominate traditional capital requirements and capital rules based on any
+other centrality measure. Martinez-Jaramillo, Alexandrova-Kabadjova, Bravo-Benitez, and Solorzano-
+Margain (2014) propose a unified measure of centrality. Conducting a principal component analysis,
+they suggest a unique index of centrality which incorporates information of several centrality measures.
+Default cascade models and centrality measures have their merits and limitations, as outlined by Bat-
+tiston, Puliga, Kaushik, Tasca, and Caldarelli (2012). Default cascade models provide an easy economic
+interpretation of contagion. Their measure, which is the loss occurring in the banking system conse-
+quently to a bank's default, allows comparisons to be made between different banking systems and for
+one banking system at various points in time. However, default cascade models are typically restricted
+to the case that only a default of a bank can result in adverse spill-over effects. Once no further bank
+fails, the contagion usually stops. This ignores the fact that a relatively small deterioration in the credit
+rating of an asset class or bank could already have negative consequences for the creditor banks' sol-
+vency, because their portfolio is exposed to a higher expected loss from an ex-ante perspective. Default
+cascade models are therefore indifferent to small changes in risk. By contrast, centrality measures are
+sensitive to all links in the system; vulnerabilities due to an increased level of interconnectedness can be
+captured before losses have materialized. While centrality measures are useful for rankings, the numbers
+are hard to interpret in economic terms. Thus, centrality measures can be used neither to quantify adverse
+effects from interconnectedness nor to assess the benefit of macroprudential action. Finally, they are not
+comparable between different banking systems and for one banking system at various points in time.
+Against this background, Battiston et al. (2012) develop the DebtRank, which combines the benefits
+of recursive centrality measures and default cascade models to overcome the above-mentioned limita-
+tions. The DebtRank aims at measuring the economic loss caused by contagion after some predefined
+shock has hit one bank or a group of banks. In essence, the transmission of a shock results in an increase
+in the level of distress of the connected banks. Battiston et al. (2012) describe the level of distress for
+banks by a continuous variable ranging between zero and one, where the lower boundary means "undis-
+tressed" and the upper boundary means "default". They construct an algorithm which postulates how
+banks' levels of distress depend on each other. Accordingly, the level of distress of a bank, say bank A,
+is influenced by the level of distress of its debtor banks weighted by the relative exposure. The relative
+exposure describes a debtor-specific ratio and equals the loans between bank A and its debtors over Tier 1
+capital of bank A. It reflects the relative portion of the Tier 1 capital of bank A which would be lost if the
+debtor banks default and a recovery value of zero. To prevent reverberations, it is assumed that each bank
+can propagate its distress only once. To measure the economic loss the difference between the banks'
+total assets weighted by the levels of distress after contagion and before contagion is calculated.
+The DebtRank provides plenty of interesting insights into the adverse effects of interconnectedness.
+We add to this measure a refined propagation mechanism and an enhanced interpretation and policy appli-
+cation. While the level of distress, one key variable of the DebtRank, remains abstract and unobservable,
+we propose a model which defines the banks' level of distress as their PD. Further, the contagion and
+mutual interference process of banks' distress postulated by the DebtRank is proportional to banks' rel-
+ative exposure. While intuitive, there is no verification that distress just spreads in this way. To address
+3
+this issue, our model derives the contagion effect from the empiric relationship between a bank's Tier 1
+capital ratio and its PD.
+3 Methodology
+To simulate the contagion process we focus on assessing the impact a change in the debtor bank's PD has
+on the creditor bank's PD. In this respect, we choose a two-step approach: First, we analyze the impact
+a bank's Tier 1 capital ratio has on its own PD. In a second step, we investigate the impact the debtor
+bank's PD has on the creditor bank's Tier 1 capital ratio.
+In the first step, we use a logistic regression to estimate the effect in a change of a bank's Tier 1
+capital ratio on its PD. According to Packer and Tarashev (2011) high-quality capital measures, such
+as the Tier 1 capital ratio, are one important factor to assess a bank's credit quality. We use a logistic
+regression in order to estimate the effect of the Tier 1 capital ratio has on PD. In the second step, we
+compute the influence the debtor bank's PD has on the creditor bank's Tier 1 capital ratio following
+regulatory and accounting requirements. In essence, we aim to mimic banks' risk management practices
+based on external reporting requirements. An increase in the debtor bank's PD results in a deterioration
+of the credit quality of the portfolio of its creditor banks because the creditor banks may be exposed to
+higher expected credit losses and to higher unexpected credit losses. The former is captured by an asset
+devaluation on the creditor banks' balance sheet according to the applicable accounting standards, eg
+in the form of loan loss allowances (LLA) which are deducted from their Tier 1 capital.2 The latter is
+reflected by higher regulatory charges according to the Basel Accords, eg in the form of risk-weighted
+assets (RWA). Both effects drive down their Tier 1 capital ratios ­ defined as Tier 1 capital over RWA.
+We then develop an algorithm which iteratively computes the change in each bank's PD after an
+exogenous shock has hit one bank or several banks. Exogenous shocks lead to a sudden deterioration in
+the credit quality of the directly affected banks resulting in their distress or default. Given the relationship
+between the debtor bank's PD and the creditor bank's PD, default or distress of one bank or a group
+of banks may result in a subsequent increase of PDs of its creditor banks, and the creditors' creditor
+banks, and so on. In order to capture this mechanism, the algorithm models a multiple-round contagion
+process where the PDs of all the creditor banks deteriorate, which are connected (directly and indirectly)
+with those debtor banks subject to the exogenous shock. The increase in banks' PDs results in higher
+expected credit losses in the banking system. The corresponding reduction in Tier 1 capital is proposed as
+a measure for the adverse effects of interconnectedness caused by contagion through interbank lending.
+3.1 Contagion algorithm
+After having explained the conceptual idea of our algorithm in a narrative way, we will now put it into
+a mathematical format. Before doing so we need to introduce some notation. Let us denote by Wij the
+interbank loan by bank i to bank j. The variable PD0(i) describes bank i's initial PD at iteration step
+k = 0, before the shock occurs. The PD reflects the bank's probability of failing within the next year.
+Furthermore, let PDk(i|A) be the PD of bank i at iteration step k conditional on the exogenous shock
+event A that takes place at k = 1. Each PDk(i|A) is a continuous variable with PDk(i|A)  [0, 1],
+where PDk(i|A) = 1 means that bank i is in default status at iteration step k.3 The leverage ratio of
+bank i at iteration step k, defined by Tier 1 capital divided by total assets (net of LLA), is denoted by
+Levi,k = Tier1i,k/TAi,k. Similarly, the capital ratio is a risk-based measure under supervisory capital
+2Our approach, which refers to the 1-year expected credit losses with 1-year PDs, follows common risk man-
+agement practices and is compatible with LLA under the currently applicable International Accounting Standard
+(IAS 39); see Appendix A1.
+3Note that PD0
+(i|A) = PD0
+(i).
+4
+standards and is denoted by CapRati,k = Tier1i,k/RWAi,k. In order to compute the risk weights,
+denoted by RWij, and ultimately the risk-weighted assets for bank i at iteration step k, RWAi,k, we
+follow the methodology adopted for the Internal Ratings Based (IRB) approach of the Basel supervisory
+capital frameworks. In this context, LGD denotes loss given default and M the residual maturity.
+An exogenous shock is introduced in the banking system. Denote by S the set of banks subject to
+the exogenous shock. There are two different ways by which the shock can affect the Tier 1 capital ratios
+of those banks which belong to the set S. The first is an abrupt reduction in Tier 1 capital. The second is
+a sudden increase in risk-weighted assets. Consequently, the changes in the relevant variables due to the
+shock event A at iteration step k = 1 can be expressed by
+Tier1A
+i,1
+=
+Tier1i,0 - 1i for all i  S
+Tier1i,0 for all i /
+ S
+RWAA
+i,1
+=
+RWAi,0 + 2i for all i  S
+RWAi,0 for all i /
+ S
+,
+where 1i, 2i  0 reflect the level of stress imposed on the banks which belong to S. Then CapRatA
+i,1
+=
+Tier1A
+i,1
+/RWAA
+i,1
+.
+We compute the effect of the change in the banks' capital ratio on their PDs using a logistic regres-
+sion:
+PDi,t = F( + caprat · ln(CapRati,t-1)), (1)
+where F(z) = ez/(1 + ez) is the cumulative logistic distribution and PDi,t is the probability that the
+bank will fail in time (t - 1, t].4 From Equation (1) we obtain
+ln(
+PDi,t
+1 - PDi,t
+) - ln(
+PDi,t-1
+1 - PDi,t-1
+) = ^
+ · (CapRati,t-1 - CapRati,t-2). (2)
+Before returning to our algorithm a remark on terminology is necessary. Since we empirically es-
+timate the relationship between the capital ratio and the PD, the logistic regression described above
+obviously includes a time aspect. However, it is important to highlight that the iteration below is not
+necessarily related to time. Most of the adjustments in the balance-sheet variables do not occur within a
+pre-specified time-horizon. In order to clearly emphasize this important fact we use index k rather than
+t as a reference to a specific iteration step in the contagion process.
+Rearranging terms and using the algorithm rather than the regression notation, Equation (2) can be
+rewritten as:
+PDk(i|A) =
+PDk-1(i|A)
+1-PDk-1(i|A)
+CapRati,k
+CapRati,k-1
+^
+
+1 + PDk-1(i|A)
+1-PDk-1(i|A)
+CapRati,k
+CapRati,k-1
+^
+
+. (3)
+Formula (3) enables us to compute a new PD (conditional on event A) as a function of banks' previous
+PD, its current and previous Tier 1 capital ratio, as well as the estimated coefficient ^
+ in an iterative
+procedure. For simplicity we use (CapRati,k, CapRati,k-1, PDk-1(i|A), ^
+) as an abbreviation for
+the right side of formula (3).
+4Indeed, we will later add time-invariant control variables which we omit in this section for ease of notation as
+they do not affect the derivation of the formulas. Moreover, one might also want to add some time-varying control
+variables in order to isolate the impact of the Tier 1 capital ratio on the PD from other variables. However, the
+estimated relation between the capital ratio and the PD would then only be correct if all other explanatory variables
+remained constant. This is however not the case, neither in our algorithm nor in reality. Therefore, we will use ^
+
+from (1) as our base case. Nevertheless, as a robustness check in our empirical aplication, we will also present the
+main results for the case that time-variant control variables are used.
+5
+We consider a bank as defaulted and set its PD to one, if some pre-defined default criteria are met.
+The default criteria may reflect insolvency in the strict sense, ie Tier1 < 0. More sensitive default
+criteria may reflect minimum regulatory requirements, or other boundaries which are not set by the
+supervisor, but implicitly set by the market. We denote the default criteria by CapRatcrit and Levcrit
+which reflect critical values for the capital ratio and the leverage ratio.
+After the initial shock, for k  2, the algorithm updates the banks' balance sheet variables with
+respect to the changed counterparties' PDs of round k - 1:
+TAi,k = TAi,k-1 -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A))
+Tier 1i,k = Tier 1i,k-1 -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A))
+kRWj = RW(PDk-1(j|A), LGD, M) - RW(PDk-2(j|A), LGD, M)
+RWAi,k = RWAi,k-1 +
+j
+kRWj · Wij.
+In these formulae the index j runs through all counterparties of bank i. For more details on the computa-
+tion of Tier 1i,k, TAi,k and RWAi,k we refer to Appendix A1. The algorithm then updates the banks'
+current PD using Equation (3) if the bank has not defaulted in an earlier step of the iteration and sets it
+equal to 1 otherwise.
+The algorithm stops after a finite number of steps, in round K, once the change in the PD for each
+bank is smaller than some small, positive value . We may assume that the algorithm terminates because
+the sequence PD0(A), PD1(A),..., PDk(A),... of vectors of the PDs has a monotonic limit for the
+following two reasons: By construction it has the vector 1 (each component equals 1) as an upper bound;
+and furthermore, it is monotonically increasing if ^
+caprat > 0. Then PDk-1(i|A) - PDk-1(i|A)2 
+0 and CapRati,k+1  CapRati,k imply that the slope of the PD curve expressed as a function of
+ln(CapRat) is negative. This reasoning refers to formulae (1) and (2) above as well as (5) and (6) in
+Appendix A2.
+Finally, we define the banking system loss as
+BSLoss1,K
+A
+=
+j
+(TAj,1 - TAj,K) =
+j
+(Tier 1j,1 - Tier 1j,K), (4)
+where K is the last round before the algorithm stops, ie it is the number of iterations carried out by the
+contagion algorithm and the index j runs through all banks of the network. The metric BSLoss measures
+the accumulated loss of Tier 1 capital, or equivalently the balance sheet loss due to a devaluation of
+assets, to the banking system induced by the contagion effect following the event A.5
+Note that we chose to not capture the initial shock, as BSLoss is meant to be a measure of conta-
+gion. Nevertheless, we could easily include the initial loss using the following measure: BSLoss0,K
+A
+=
+j
+(Tier 1j,0 - Tier 1j,K). Further, policy makers could be interested in the costs borne solely by the
+direct counterparties of the initially shocked institutions. This cost can be measured by: BSLoss1,2
+A
+=
+j
+(Tier 1j,1 - Tier 1j,2). Similarly, policy makers could be interested in the costs from indirect con-
+tagion effects from round 2 onwards. This cost can be measured by: BSLoss2,K
+A
+= j
+(Tier 1j,2 -
+Tier 1j,K). On a different note, policy makers might want to know how many institutions failed during
+the contagion process: DF1,K
+A
+= j
+x(j), where x(j) = 1 if PDK(j|A) = 1 and x(j) = 0 else. More
+so, they could be interested by how much the average PD in the system has decreased as a consequence
+of event A: PDA = j
+(PDK (j|A)-PD0(j|A))
+N
+.
+5For notational ease, we will drop the subscript A and the superscript 1, K in most instances.
+6
+In addition, it may be of interest not only to quantify the BSLoss given one bank or a group of
+banks are hit by a shock, but also how likely the shock and the resulting BSLoss will occur. A practical
+approach to consider the expected BSLoss is to multiply the BSLoss with the initial PD of the bank
+subject to the initial shock A.6 This expected BSLoss would be suited to benchmark certain policy
+interventions, such as the introduction of a SIFI-buffer (see Section 4.2).
+3.2 Properties of the algorithm
+In this section we want to show that the sequence of PDs and the corresponding losses that are generated
+by the algorithm described in the previous section converge and are unique if the network of banks is
+specified by an initial state of capital ratios, ie both the numerator and denominator of the Tier 1 capital
+ratios are given for each bank, and by the matrix W of the interbank network of bilateral exposures.
+By construction BSLoss is a function of both the vector PD0 of initial PDs of the banks in the
+network and the size of the shock  which is imposed on the banks in the set S, ie
+BSLoss : {[0, 1]n , R+
+0
+} - R+
+0
+,
+with n describing the number of banks and R+
+0
+the set of non-negative real numbers.7 The iterative
+procedure which generates BSLoss may be interpreted as a limit
+BSLoss = lim
+k
+BSLossk(PDk),
+with BSLossk being the cumulated loss until the iteration step k and with PDk = (PDk(1, A), . . . ,
+PDk(n, A)) for each k  1. An operator  : [0, 1]n - [0, 1]n assigns a new vector of PDs to an
+initial vector of PDs in each step of the iteration, ie PDk+1 = (PDk). Since a PD is a real number in
+the interval [0, 1] the domain of  is the cube [0, 1]n. Therefore, the sequence of the PD vectors has a
+monotonic limit
+PD = lim
+k
+PDk.
+By construction, the operator  which generates the sequence of PDs is continuous from the left.
+The reason for this property is that a jump in the operator  can only occur if a bank is assigned to the
+default state in a certain step of the iteration. This happens if one of the values of the capital ratio or the
+leverage ratio falls below the critical values. In the event a bank reaches the critical values for one of
+these ratios, but does not fall below it, this bank is still considered to be compliant with the regulatory
+standards.
+More formally, the property of being continuous from the left reads as follows: For each sequence
+PDk such that limk PDk = PD and PDk < PD for all k the order of limit and operator can be
+interchanged, ie limk (PDk) = (limk PDk). Consequently, monotonicity of the sequence
+of the PD vectors PDi in combination with the property that  is continuous from the left ensures that
+the iterative procedure converges and has the limit (PD). Hence, the contagion algorithm can be
+interpreted as a fixed point iteration. It generates a unique fixed point PD (ie a vector of PDs) and the
+corresponding BSLoss under the assumptions described above. This fixed point describes a steady state
+after the network of banks has reacted to an external shock.
+6In case a group of banks are hit by the shock, one would need to specify the initial joint PD for the respective
+group of banks.
+7To keep the presentation in this subsection and the academic example simple we assume here that the size of
+the shock is the same for each bank and applies to Tier 1 capital, ie the numerator of the capital ratio. However,
+all the statements hold true for more general shocks 1i, 2i, which may apply to both the numerator and the
+denominator and are not necessarily equal in size for each bank.
+7
+Due to the fact that the matrix W describes a very complex network, it turns out to be difficult
+to describe properties of each sequence PDk(i|A) or for BSLossk that go beyond the fact that these
+quantities converge. For this reason, we rely on a simple academic example to develop some intuition for
+the algorithm and the sequences it generates and some of their basic properties. The academic example
+can be found in Appendix A4.
+It can be seen in this example that
+· BSLoss(PD0, ) is monotonic in the size of the shock , ie a, b with a  b imply
+BSLoss(PD0, a)  BSLoss(PD0, b),
+· BSLoss(PD0, ) is not continuous in its second argument  because the function may jump for
+certain values of  (in the example the function jumps for a  in the interval [0.0670, 0.0671]) ,
+· the function BSLoss(PD0, ) is not continuous in the vector of initial PDs because small changes
+of PD0 may cause a jump in BSLoss (in the example, the function jumps if the initial PD of
+0.0750 is increased by a small  10-4) .
+3.3 Benefit of policy intervention
+Next to quantifying the cost of contagion, policy makers are interested in determining the benefit of a
+policy intervention. Our framework can easily accommodate this need by simulating the effect on the
+BSLoss if the Tier 1 capital of a group of banks SR is raised before the shock occurs, at k = 0:
+Tier1R
+i,0
+=
+Tier1i,0 +  for all i  SR
+Tier1i,0 else
+,
+where  is some positive number which denotes the magnitude of the regulatory intervention. In line
+with Subsection 3.1,
+CapRatR
+i,0
+= Tier1R
+i,0
+/RWAi,0 and PDR
+0
+(i) = (CapRatR
+i,0
+, CapRati,0, PD0(i), ^
+).
+We then use Tier1R
+i,0
+instead of Tier1i,0 and PDR
+0
+(i) instead of PD0(i) in the general algorithm to
+compute BSLossA,R, the banking system loss due to event A and regulation R where SR = . In order
+to compute the benefit of the regulation, we compute by how much the intervention was able to reduce
+contagion of the shock event A: BA = BSLossA - BSLossA,R, where BSLossA is the banking
+system loss for the case in which no regulatory buffer is imposed, SR = .
+8
+Implementation of the framework: policy intervention and contagion
+Throughout this box we use
+(CapRati,k, CapRati,k-1, PDi,k-1, ^
+) :=
+PDk-1(i|A)
+PDk-1(i|A)-1
+CapRati,k
+CapRati,k-1
+^
+
+1 + PDk-1(i|A)
+PDk-1(i|A)-1
+CapRati,k
+CapRati,k-1
+^
+
+as an abbreviation.
+k = 0, regulatory intervention possible
+Tier1R
+i,0
+=
+Tier1i,0 +  for all i  SR
+Tier1i,0 otherwise
+CapRatR
+i,0
+= Tier1R
+i,0
+/RWAi,0
+PDR
+0
+(i) = (CapRatR
+i,0
+, CapRati,0, PD0(i), ^
+)
+k = 1, shock occurs
+Tier1i,1 =
+Tier1R
+i,0
+- 1i for all i  S
+Tier1R
+i,0
+otherwise
+RWAi,1 =
+RWAi,0 + 2i for all i  S
+RWAi,0 otherwise
+CapRati,1 = Tier1i,1/RWAi,1
+PD1(i|A) =
+1 if CapRati,k < CapRatcrit or Levi,k < Levcrit
+min 1, (CapRati,1, CapRatR
+i,0
+, PDR
+0
+(i), ^
+) else
+k = 2, iterate
+TAi,k = TAi,k-1 -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A))
+Tier 1i,k = Tier 1i,k-1 -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A))
+kRWj = max{0, RW(PDk-1(j|A), LGD, M) - RW(PDk-2(j|A), LGD, M)}
+RWAi,k = RWAi,k-1 +
+j
+kRWj · Wij
+CapRati,k = Tier1i,k/RWAi,k
+PDk(i|A) =
+1 if CapRati,k < CapRatcrit or Levi,k < Levcrit
+min 1, (CapRati,k, CapRati,k-1, PDi,k-1, ^
+) else
+k = k + 1, until PDK(i|A) - PDK-1(i|A) < .
+BSLoss = j
+(Tier 1j1 - Tier 1jK)
+9
+4 Policy applications
+Our algorithm can be applied to various kinds of analyses related to macroprudential policy. It can be
+used to analyze the level of banking system loss for different types of shocks, such as idiosyncratic bank
+failures or macroeconomic shocks. Furthermore, it allows us to compute by how much the banking
+system loss will be absorbed if we increase the Tier 1 capital for certain banks or in proportion to certain
+asset holdings. This makes our algorithm a useful tool to estimate the contagion cost of a forecast shock
+scenario and to determine the benefit of different types of capital surcharges that aim to curb potential
+contagion.
+In this section, we will first compute the BSLoss that results from the failure of each individual bank.
+Subsequently, we will analyze by how much BSLoss is reduced if a capital buffer for the most important
+banks (SIFI-buffer) is introduced. Then, we will compute the BSLoss that results from an adverse shock
+to mortgages. Lastly, we will impose banks to hold more capital proportional to their investment in
+mortgages (sectoral risk buffer). We then compute by how much this policy intervention reduces the
+BSLoss that results from the adverse shock to mortgages.
+4.1 Data and parameter specification
+For our analysis, we use end-of-year 2013 data on interbank loans obtained from the Deutsche Bun-
+desbank's credit register of large exposures and loans of A
+C1.5 million or more. The interbank lending
+network has the following properties. It is a directed graph (or "digraph") with 1, 710 nodes (banks) and
+20, 425 arcs (single loans from one bank to another). The average in-degree, ie the average number of
+loans a bank receives, is 12, ranging from 0 to 1, 357 loans. The number of loans a bank gives, ranges
+from 0 to 997. The average path length in the network is 2 with a diameter, ie the largest path between
+any two nodes in the network, of 5. The average clustering coefficient, which is a measure of cliquishness
+in a network ranging from 0 (very loose network) to 1 (very dense network), amounts to 0.71. Figure 1
+shows an extract of the network we use.8
+8In the network literature a path is defined as a sequence of links connecting two nodes such that no node is hit
+twice. This fact distinguishes a path from a walk, since in the course of a walk every node in the network can be
+hit several times. The intuition behind the clustering coefficient can be illustrated by a simple example: imagine
+three nodes of a network a,b and c with arcs ab and ac. The clustering coefficient gives the probability that there
+also exists an arc bc.
+10
+Figure 1: Extract of bank network
+Note: For illustrative purposes the graph only shows the top 6 banks whose default generates the largest BSLoss;
+see Subsection 4.2. The graph contains 46 nodes and 1, 188 edges. Label, size and color of the nodes depend on
+their importance measured as the BSLoss their default generates. The thickness and the color of the edges represent
+the size of the respective loan.
+The end-of-year 2013 balance sheet data used in the algorithm stems from various sources: Tier 1
+capital, total assets and RWAs are taken from German banks' reports to the Deutsche Bundesbank, the
+Common Reporting Framework and the Banking Statistics. The unconditional PDs for the start of the
+iteration k = 0 for German banks are derived from their credit ratings assigned by the three major rating
+agencies, namely Fitch Ratings, Moody's, and Standard & Poor's. In order to combine the information
+obtained from the three rating agencies, the average of the historically observed default rates per credit
+ranking is calculated. If a bank is not rated by one of the three major rating agencies, then a standard
+rating investment grade range is assumed. For our application to the house price bubble, we use the
+absolute amount of loans every bank holds in the real estate sector, which we obtain from the German
+banks' reports to the Deutsche Bundesbank. Furthermore, the PD for mortgage loans is set to PDMg =
+1.5%, the average value for mortgage loans reported by a representative selection of German banks,
+based on supervisory reports.
+For the estimation of the elasticity parameter  which we need for Equation (3) we use a logistic
+11
+regression as in Equation (1). Our unbalanced panel consists of 8, 288 observations over six years. The
+dependent variable equals one if a bank defaults as recorded by the Deutsche Bundesbank and zero oth-
+erwise. The independent variable is Tier 1 capital over RWA. We use lagged dependent variables in order
+to avoid endogeneity. Further, we include banking group dummies and regional dummies. The estimated
+coefficients show the expected signs and can be found in Table 3 in Appendix A2. Most importantly, the
+Tier 1 capital ratio is significant at the 1% significance level and ^
+ = -1.25. Consequently, a higher
+capital ratio significantly reduces a bank's PD. Figure 2 illustrates the estimated relationship between
+capital ratio and the PD based on Equation (3).
+Figure 2: Estimated effect of capital ratio on probability of default
+Note: Assuming that a capital ratio of 11% is associated with a PD of 4%, we exemplarily compute the PD for
+different values of the capital ratio based on Equation (3).
+For the BSLoss algorithm, we choose the following parameters. The propagation of the exogenous
+shock stops when the changes in the PDs of all counterparties are smaller than a threshold value =
+10-6. We apply the following default criteria: A bank is considered as defaulted if its Tier 1 capital ratio
+falls below 6%, reflecting the minimum capital requirements of the Basel 3 framework. To comply with
+the rules of the Foundation IRB approach we apply a loss given default, or LGD, of 45%. This value
+reflects a conservative approach by assuming all interbank loans are unsecured. Furthermore, we assume
+a residual maturity, M, of 2.5 years for exposures to the banking sector.
+4.2 Systemic importance of single institutions
+In our first application, we compute the BSLoss of each institution's failure in turn. This exercise provides
+a ranking of banks according to the danger their interconnectedness poses to the banking system and gives
+policy makers an indication of the relative importance of each bank in the system. Supervisory resources
+might be assigned according to this relative importance.
+Table 1 displays an excerpt of the results for the top 20 banks in the network whose default causes
+the largest banking system loss. To accommodate confidentiality requirements, banks' identities are not
+revealed and BSLoss is normalized, assigning a value of 1 to the bank with the greatest BSLoss. We can
+deduce from column 2 of Table 1 that the contagion risk in the German interbank market is concentrated
+around four banks. In particular, the top three banks stand out. Based on the BSLoss the top three banks
+are almost equally important for the German banking system with regard to interconnectedness. In fact,
+a default of one of these three banks results in a subsequent default of the remaining two banks due to
+their high level of interconnectedness.9 On the contrary, the failure of the sixth most interconnected bank
+9This fact explains why the BSLoss nearly equals for this group of banks. Note that the BSLoss measures the
+12
+would cause less than a tenth of the loss that the failure of one of the three most dangerous institutions
+would cause. In the same vein, the failure of the 20nd most dangerous bank is estimated to lead to less
+than one percent of the loss induced by one of the three most dangerous banks. From this we conclude
+that the contagion risk in the German interbank network is rather concentrated.
+Table 1: Ranking according to BSLoss in descending order
+Total effect Indirect effect Unconditional effect
+Rank
+BSLoss
+1,K
+i
+BSLoss
+1,K
+1
+K
+DF
+1,K
+i
+DF
+1,K
+1
+BSLoss
+1,K
+i
+j Wji
+BSLoss
+2,K
+i
+BSLoss
+1,K
+i
+DF
+2,K
+i
+DF
+1,K
+i
+PD0(i)·BSLoss
+1,K
+i
+PD0(1)·BSLoss
+1,K
+1
+(1) (2) (3) (4) (5) (6) (7) (8)
+1 1 15 1 5.51 91.8% 96.1% 0.868
+2 1 14 1 7.19 93.7% 96.2% 1.000
+3 1 10 1 4.68 90.4% 95.4% 0.605
+4 0.34 10 0.692 1.23 63.5% 20.5% 0.101
+5 0.11 8 0.020 0.94 52.5% 53.6% 0.110
+6 0.09 8 0.015 0.76 40.7% 28.6% 0.039
+7 0.08 8 0.034 0.73 38.4% 16.7% 0.036
+8 0.07 7 0.119 0.69 34.7% 1.8% 0.022
+9 0.07 8 0.044 0.59 23.4% 7.9% 0.029
+10 0.06 7 0.008 0.96 53.3% 45.5% 0.041
+11 0.06 6 0.004 0.47 3.6% 60.0% 0.012
+12 0.03 6 0.004 0.47 4.9% 16.7% 0.018
+13 0.03 7 0.013 0.61 26.0% 44.4% 0.017
+14 0.02 6 0.002 0.45 0.7% 33.3% 0.002
+15 0.02 6 0.003 0.69 35.0% 25.0% 0.007
+16 0.02 6 0.004 0.54 17.3% 33.3% 0.010
+17 0.01 7 0.014 0.58 22.8% 15.0% 0.008
+18 0.01 5 0.002 0.45 1.1% 33.3% 0.008
+19 0.01 6 0.003 0.70 35.6% 25.0% 0.005
+20 0.01 6 0.005 0.52 14.1% 28.6% 0.007
+Note: The first column displays the rank of the bank according to the BSLoss in descending order. Column 2
+shows BSLoss for the respective bank as a fraction of the BSLoss of the highest ranked bank (bank 1). The third
+column lists the round at which the contagion algorithm stopped (ie the number of iterations). Column 4 indicates
+how many institutions failed during the contagion process following the failure of the relevant bank as a fraction of
+the number of failures caused by the default of bank 1. Column 5 expresses BSLoss in relation to the total amount
+of loans which the respective bank received from other banks. Column 6 displays the BSLoss from rounds two to
+K (that is the second and later round effects) as proportion of the total BSLoss. Column 7 gives the percentage
+of defaulting banks in rounds two to K with respect to the total number of defaulting banks. Column 8 displays
+the unconditional effect (BSLoss weighted with the respective bank's PD) as fraction of the bank with the largest
+value (bank 2 in this scenario).
+Another noteworthy observation which can be deduced from column 6 of Table 1 is that the losses
+are borne mostly by counterparties' counterparties, rather than the first round direct counterparties, in
+case one of the more "interconnected" banks fails. That is, the indirect effect of contagion for rounds
+k  2 is much bigger than the direct contagion effect of round k = 1. From this we conclude that
+it is crucial to account not only for direct exposure but rather the entire network when evaluating the
+interconnectedness of banks. So far, the indicator-based methodology of the Basel Committee to deter-
+mine the interconnectedness of domestic systemically important banks (D-SIBs) only accounts for direct
+reduction in Tier1 of the creditor banks due to a credit deterioration of their debtor banks. In case the creditor
+banks default, they still have to account for additional Tier1 loses due to a subsequent credit deterioration of their
+debtor banks, ie we allow for negative Tier1 levels.
+13
+exposure.
+Column 8 of Table 1 shows the unconditional contagion effect, which reflects the BSLoss weighted
+by the initial PD of the bank subject to shock A. According to this measure the ranking of the top 20
+banks does not materially change compared to the ranking based on the unweighted BSLoss. Following
+the expected BSLoss the contagion risk in the German interbank market is concentrated around the top
+five banks. This group of top five banks includes the same banks as the group of top five banks according
+to the BSLoss (see column 2).
+As a plausibility check, we compare the ranking derived from BSLoss to rankings obtained from
+other, established measures of interconnectedness. To this end, Table 2 displays the Spearman's rank
+correlation coefficient  between our ranking derived from BSLoss and the following rankings: First,
+the total score of the indicator-based methodology of the Basel Committee to determine D-SIBs. This
+method comprises four different dimensions: size, interconnectedness, complexity and substitutability.
+Second, the sub-score for interconnectedness of the D-SIBs score, which is mainly based on the volume
+of interbank loans. Third, the rank correlation with the Bonacich centrality measure. This eigenvector-
+based measure takes into account the entire network structure of the interbank market. Following
+Nacaskul (2010), we weight the adjacency matrix with the corresponding interbank matrix. Fourth,
+the number of loans to each bank. The results in Table 2 show that the more established rankings are
+(highly) correlated with ours derived from BSLoss.
+The relatively low positive correlation between the D-SIBs' interconnectedness ranking and ours can
+be explained by its broader scope, as it takes into account not only interbank exposure but also exposure
+to the non-bank financial sector. It might, however, also point to the importance of counterparties'
+counterparties, which is captured in our ranking. The high correlation with the Bonacich eigenvector-
+based centrality measure emphasizes that the BSLoss shares the same merits in terms of using the
+information of the whole network. In addition, BSLoss also takes into account the interbank loan
+quality and the inherent relationship between the PD of the debtor bank and the PD of the creditor bank.
+Most importantly, in contrast to the more established rankings, BSLoss provides policy makers with an
+economic interpretation.
+Table 2: Rank correlation between BSLoss and other measures of interconnectedness
+D-SIBs D-SIBs Bonacich In-Degree
+(Total score) (Intercon.) centrality measure
+ 0.39 0.66 0.96 0.70
+The table displays the Spearman's rank correlation coefficient  between BSLoss and the following four mea-
+sures: 1) ranking based on the methodology of the Basel Committee to determine domestic systemically important
+banks; 2) the part of the former measure which captures interconnectedness; 3) the -centrality measure developed
+by Bonacich and Lloyd (2001) and 4) the in-degree.
+As a robustness check for the specification of our logit regression, we now estimate the relationship
+between PD and capital ratio with additional control variables. Following Craig, Kötter, and Krüger
+(2014), we add Tier 1 capital over RWA, depreciation and adjustments over equity, administration ex-
+penses over total assets, return on equity, cash and overnight interbank loans over total assets and the
+log of total assets. These variables follow the CAMEL approach and reflect capital adequacy, asset
+quality, quality of management, profitability, and liquidity as well as size. Further, we include banking
+group dummies and regional dummies. The estimated coefficients show the expected signs and can be
+found in Table 3. Most importantly, the Tier 1 capital ratio is significant at the 1% significance level and
+^
+ = -2.01. Consequently, a higher capital ratio significantly reduces a bank's PD.
+Table 4 in the Appendix 6 is the equivalent to Table 1 and displays an excerpt of the results for the
+top 20 banks whose default cause the largest BSLoss. While BSLoss of most banks are very similar using
+14
+either one of the beta coefficients, most importantly, the BSLoss ranked as bank 1 and 2 are 14 and 12
+times higher using the beta of the multivariate regression. This sharp increase is due to the cliff effect
+inherent in our algorithm whenever a bank fails and stresses the importance of robustness checks in a
+policy context. Excluding those two banks, the BSLoss for the remaining top 20 banks is only 0.2%
+higher when using the alternative beta coefficient. Further, almost the same group of banks forms the top
+20 banks in the two tables, except for the identities of bank 14 and 18 in Table 4 and for the the identities
+of bank 17 and 18 in Table 1, which are not included in the other tables. Similar to the results in Table 1
+we can observe from column 6 of Table 4 that the indirect effect of contagion for rounds k  2 is much
+bigger than the direct contagion effect of round k = 1.
+Having determined the importance of banks in terms of their interconnectedness, we will now sim-
+ulate the benefits of a policy intervention. We found that the risk of contagion is rather concentrated
+on five banks in the network. Therefore, we analyze by how much the BSLoss is reduced if a capital
+buffer for the most important banks (SIFI-buffer) is introduced. To do so, we follow the methodology
+outlined in Subsection 3.3. To each of the five most interconnected institutions we assign more capital
+such that the new capital ratio is 0.5, 1, 1.5, 2, 2.5 or 3 percentage points higher than the initial one. We
+then repeat the previous analysis and let each of the SIFIs fail in turn. We find the buffers to be largely
+ineffective in curbing contagion among SIFIs. The BSLoss is reduced significantly only if the buffers
+exceed 2.5pp. In the case the buffers amount to 3.0pp, the BSLoss of two of the five most interconnected
+banks is substantially reduced in each case by 21% and their expected BSLoss is reduced by 42% and
+45% respectively. However, the BSLoss of any of the other three banks is not considerably reduced by
+the policy intervention, although their expected BSLoss is reduced by 8%, 17% and 18% respectively.
+The aim of the SIFI-buffers is to increase the shock-absorbing capacity of the identified SIFIs, so that
+they are less likely to default if they are hit by a shock. We conclude that the buffers are not high enough
+to prevent the other SIFIs from failing in case that one of the SIFIs fails, if the buffers are capped at
+2.5pp.
+4.3 Shock to the real estate sector
+The burst of a house price bubble was at the center of the last financial crises and others before. Therefore,
+our second application of the algorithm is a scenario analysis of the consequences of a decline in real
+estate prices. Using our algorithm, we determine how this shock is propagated and amplified by interbank
+lending. In a first step, we calculate the banking system loss caused by such a decline in real estate prices.
+In a second step we assess the benefit of a policy intervention.
+We proxy a decline in house prices by an increase in the loss that banks incur if a mortgage is not
+repaid, ie the loss given mortgage default. We argue that if a mortgage defaults and house prices have
+dropped, banks are left with a house whose value has declined. In that way, a decrease in house prices
+translates into higher LGDs of mortgages, LGDMg. The increase in the loss given mortgage default then
+influences the values of Tier 1 capital and the RWAs due to accounting rules and risk management prac-
+tices and, consequently, decreases the capital ratio of each bank which has an exposure to the mortgage
+sector. Bank i's exposure to the mortgage sector is denoted by Mgi. Each institution exposed to the real
+estate sector will then also experience a rise in its PD as a consequence of the decline in its capital ratio.
+The rise in bank's PDs triggers the credit quality contagion spiral in the interbank market. We use our
+algorithm to compute the banking system loss from contagion caused by a real estate shock modeled as
+follows:
+15
+The shocked balance sheet items at k = 1 are given by
+TAi,1 = TAi,0 - LGDMg · PDMg · Mgi
+Tier1i,1 = Tier1i,0 - LGDMg · PDMg · Mgi
+RWi,1 = RWMgi(PDMg, LGDMgi, 1)
+RWAi,1 = RWAi,0 + RWi,1 · Mgi
+CapRati,1 =
+Tier1i,1
+RWAi,1
+Note that LGDMg · PDMg · Mgi = 1i and RWi,1 · Mgi
+= 2i in our algorithm and S contains all
+banks for which Mgi > 0. In these formulae the linearity of risk weights in the LGD is exploited. The
+formula for the computation of risk weights for exposures to retail costumers can be found in Appendix
+6. As a relevant aspect of this computation it has to be noted that the residual maturities for residential
+mortgage loans are assumed to be 1 year, ie M = 1, in the Basel capital framework. Based on supervisory
+reports for a representative selection of German banks, the probability of default for mortgage loans is
+set to PDMg = 0.015, and is not affected by the shock.10
+Figure 3: Initial shock, direct and indirect contagion for different LGDMg
+The figure shows different specifications of the banking system loss for different changes in the loss given mortgage
+default. It shows the loss from the total effect including the initial shock and contagion (BSLoss0,K
+Mg
+), the loss
+from direct and indirect contagion (BSLoss1,K
+Mg
+) and the loss from indirect contagion only (BSLoss2,K
+Mg
+).
+Figure 3 illustrates the banking system loss for different loss given mortgage defaults. The evolution
+of BSLoss as a function of LGD is not smooth, but follows a pattern with alternating sharp and
+moderate increases. This shape of the function results from the dynamic of the defaults. A small increase
+in LGD may result in an abrupt increase in BSLoss in the event that higher losses cause bank failures.
+The figure is quite revealing for policy makers. Comparing BSLoss1,K
+Mg
+(the gray and dark gray
+area) with BSLoss0,1
+Mg
+(the light gray area), we find that across the different scenarios for LGDMg
+(aggregated) contagion effects from interconnectedness are nearly as high as the (aggregated) initial loss
+due to the macroeconomic shock. In other words, the losses to banks' counterparties (and counterpar-
+ties' counterparties) are nearly as high as the losses realized by banks on their own mortgage portfolio.
+10Another interesting application would be to shock the PDMg instead of the LGDMg.
+16
+Moreover, we find that the direct contagion losses (gray shaded area) are almost always higher than the
+losses from indirect contagion (dark gray area). Obviously, the costs of the shock triggered by the real
+estate sector depend on its size. For a 15pp change in the loss given mortgage default, the initial loss to
+the banking system is A
+C2.02 billion and the loss due to contagion is A
+C2.04 billion. This amounts to both
+around 0.50% of the accumulated banking system capital.
+Subsequently, we assess the effectiveness of capital surcharges, the so-called systemic risk buffer, to
+curb contagion from the mortgage sector to the interbank market. Before any shock hits the system, all
+institutions are forced to increase their capital ratio by the variable  relative to their exposure to the real
+estate sector. Banks have to comply with this requirement by increasing their Tier 1 capital accordingly:
+Tier1R
+i,0
+RWAi,0
+=
+Tier1i,0
+RWAi,0
++ 0.01 ·  ·
+Mgi
+TAi,0
+,
+where Tier1R
+i,0
+denotes the Tier 1 capital that banks hold after the regulatory intervention. As a result,
+the new Tier 1 capital ratio translates into a decrease in a bank's own PD which we use as the starting
+PD in the algorithm; see Subsection 3.3 for more detail. To evaluate the effectiveness of the systemic
+risk buffer, we compare the banking system loss for   {1, 2, 3} to the banking system loss without
+regulatory intervention,  = 0.
+Figure 4: Illustration of different scales of policy intervention for several shock scenarios
+The figure illustrates the level of BSLoss1,K
+Mg
+for different changes in loss given default. The different shaded areas
+indicate the BSLoss for different degrees of regulatory intervention, ranging from no regulatory intervention,
+ = 0, to an increase in the capital ratio of  = 3 relative to banks' exposure to the real estate sector. Note that
+BSLoss1,K
+Mg
+measures loss due to contagion within the banking system, excluding the direct adjustments due to
+the initial real estate shock.
+Figure 4 illustrates the level of BSLoss for different changes in loss given default and different de-
+grees of regulatory intervention. The buffers effectively absorb the macroeconomic shock and reduce
+contagion if they are set adequately. Consider, for example, a rise in the loss given default of 15pp.
+Given an intervention of  = 1, the banking system loss can be reduced by roughly C0.99 billion and
+for an intervention of  = 2 by an additional C0.85 billion. In relative terms, a policy intervention of
+ = 1 will mitigate the consequences of the exogenous shock in the system by almost 50% compared
+to the situation without regulatory intervention. A stronger intervention of  = 2 reduces the scale of
+consequences for the system by a total of 91%. In contrast, a systemic risk buffer of 3pp barely adds any
+17
+additional benefit. The banking system loss can be reduced only by C3 million compared to the level
+reached by a risk buffer of 2pp. We conclude that the systemic risk buffers can effectively reduce the
+losses from contagion if they are chosen well. Given a certain stress scenario, our framework leads itself
+to such calibration.
+4.4 Discussion of the model and the results
+When working with a complex, non-linear network system, we have to make simplifying assumptions
+and make some choices on our parameters. In this section, we briefly discuss these choices and possible
+consequences or extensions.
+In our model, we assume that banks know when their counterparties are hit directly or indirectly by
+an adverse shock and, as a result, account for the increased credit risk in their credit portfolio instantly.
+This does not imply that each bank has complete information about the entire network structure, but that
+each bank has complete information about the credit quality of its direct counterparties, and accounts
+any credit deterioration immediately. However, in reality, this adjustment process tends to occur with
+some time lag ­ it might be the case that shocks are covered up and adjustments in the balance sheet take
+longer in the beginning. But sooner or later the bank's credit portfolio will be reassessed and changes in
+expected credit losses will be crystallized.
+We take the simplifying assumption of a static network structure. In reality, network structures may
+change while a shock propagates through the banking system. While this certainly leaves room for future
+research, we argue that lending relationships, at least in the German banking system, are usually long
+lasting and are likely to be stable in the short run. It is more likely that banks will change their (long-
+run) lending and borrowing habits in response to a policy intervention, exposing our policy evaluation
+to the Lucas critique. In order to assess the usefulness of additional capital buffers to reduce contagion,
+one could take into account the cost of capital surcharges in terms of reduced lending, as was done by
+Kashyap and Stein (2004). If a SIFI-buffer is imposed, banks might try to reduce their centrality or
+importance as lender and borrower in the network in order to reduce their surcharge. If systemic risk
+buffers for the mortgage sector are imposed, banks might reduce their exposure to the real estate sectors.
+In both cases, contagion to the analyzed shock is reduced. In that way, the benefit of regulation that we
+compute is a lower bound and might be bigger once we account for a change in banks' behavior.
+Our algorithm is very flexible in the way a shock can be introduced. It is possible to shock one single
+bank, a set of banks or all banks at once. Variables which might introduce the shock range from banks'
+Tier 1 capital over risk weights up to LGDs and banks' PDs. Therefore, a sophisticated risk analysis can
+be used in order to identify relevant shock scenarios and feed them into the proposed algorithm. Besides
+the chosen shock scenario, the results of the model also depend on other parameter choices which affect
+the persistence and severity of the contagion process. For example, changes in LGDs or the critical values
+of the default criteria (CapRatcrit or Levcrit) may result in jumps in BSLoss if these changes alter the
+number of defaulting banks ("cliff effect"). In order to take this into account, a sensitivity analysis with
+respect to the chosen parameters is important in a policy context.
+Due to data availability restrictions, we use data on the German banking system only. In order
+to get a more complete view, it is certainly desirable to include cross-border lending and borrowing
+relationships. On a similar note, the framework can be extended to assess the interconnectedness within
+or across financial networks, such as the insurance sector or the shadow banking system. In this case,
+however, the propagation mechanism needs to be modified since the Basel framework does not apply
+to non-bank financial institutions, accounting rules vary and the relationship between other types of
+financial intermediaries may be substantially different. Nevertheless, the Macroeconomic Assessment
+Group on Derivatives (2013) led by the BIS has applied a comparable methodology to identify changes
+in the probability of a crisis in the OTC-Derivatives market. Finally, the model is restricted to one
+contagion channel (interbank lending). One extension could be to combine other contagion channels (eg
+18
+the liquidity channel) into the model to better measure systemic risk.
+5 Conclusion
+In this paper we develop an analytical framework to quantify the cost of contagion in the interbank mar-
+ket. Our contagion process which we term the credit quality channel has several merits. It is modeled in
+a more realistic fashion because it does not rely on "true" defaults, as does a domino default mechanism.
+Rather, it is responsive to small changes in credit risk brought about by an increase in the likelihood of
+bank defaults in the future (over a 1-year time horizon). In addition, we propose a metric termed BSLoss
+which estimates the potential regulatory capital loss to the banking system due to contagion via interbank
+loans. This measure is expressed in a monetary unit and is therefore easy to interpret. This framework
+is useful in the context of macroprudential surveillance, instrument calibration and policy evaluation.
+We demonstrate the practicality of our algorithm in two examples: we compute the contagion costs
+associated with a single bank failure as well as with a shock to the real estate sector.
+When working with a complex, non-linear network system, we have to make simplifying assump-
+tions. For example, we take the simplifying assumption of a static network structure. While this certainly
+leaves room for future research, we argue that lending relationships are usually long-lasting and are likely
+to be stable in the short run. It is more likely that banks will change their (long-run) lending and bor-
+rowing habits in response to a policy intervention, exposing our policy evaluation to the Lucas critique.
+We argue that the resulting change in the network is likely to reduce contagion even further, causing the
+estimated benefit of the policy intervention to possibly underestimate the real benefit.
+Our model can easily be refined, adjusted and extended to different policy questions and different
+regulatory environments. For example, one could analyze the effect of a capital buffer which is propor-
+tional to each bank's exposure to the most contagious banks. Apart from a reduction in BSLoss, this
+would also give an incentive to be less connected to the most contagious banks, transforming the net-
+work and making it less prone to contagion. Further, policy makers could use their stress tests to identify
+relevant macro shocks and feed them into our algorithm to analyze contagion in the interbank network.
+We see this flexibility as a virtue of our algorithm.
+19
+6 Appendix
+A1: Calculation of risk weights, Tier 1 capital and total assets
+Risk weights are calculated using the IRB formula
+RW(PD, LGD, M) = 1.06 · 12.5 · LGD· N
+N-1(PD) + (PD) · N-1(q99.9%
+)
+1 - (PD)
+- PD
+·
+1 + b(PD) · (M - 2.5)
+1 - 1.5 · b(PD)
+where b(PD) = (0.11852 - 0.05478 · ln(PD))2 and  is the asset correlation, which is defined by
+(PD) =
+1 - e-50·PD
+1 - e-50
+· 0.12 + (1 -
+1 - e-50·PD
+1 - e-50
+) · 0.24.
+This formula applies to risk weight for the Banks, Sovereigns and Corporates exposure classes.
+For exposures to retail borrowers a slightly different formula applies. Instead of a PD-dependent asset
+correlation a constant asset correlation of  = 0.15 is used.
+Expected losses are deducted from the Tier 1 capital. The expected loss of bank i on the interbank
+loan W granted to bank j in round k equals
+ELi,k = Wij · PDk(i|A) · LGD.
+Accordingly, the Tier 1 capital in k + 1 which has changed due a change in the PD of the debtor bank j
+in the previous round amounts to
+Tier1i,k+1 = Tier1i,k -
+j
+(ELi,k - ELi,k-1)
+= Tier1i,k -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A)).
+Total assets are calculated net of LLAs. Under IAS 39 LLAs reflect incurred losses. That means
+LLAs can only be recognized if there is objective evidence that a loss event has been incurred (eg 90
+days past due). A PD of one is assigned to loans which are subject to a loss event. That means in the
+context of the expected loss approach the LLAs under IAS 39 would be calculated only for defaulted
+loans (PD = 1) and simply reflect LGD times EAD. However, two types of LLAs exist: specific
+LLAs, where the loss event has been incurred and identified (and consequently a PD of one has been
+assigned to the defaulted loan), and general LLAs, where the loss event has been incurred, but has not
+been identified yet (and consequently a PD of one has not yet been assigned to the loan). Against this
+background a common practice among banks is to calculate the general LLAs for all the loans where
+a loss event has not been identified using the 1-year expected loan loss, ie LGD times exposure times
+(1-year) PD.
+We follow this approach and assume LLAs can be described approximately by the 1-year expected
+loan loss based on regulatory risk parameters.11 Hence, the loan loss allowance charged to bank i on the
+11Under the new International Financial Reporting Standard (IFRS) 9, banks will have to calculate LLAs for
+expected loan losses instead of actual loan losses. The new standard will come into effect on 1 January 2018
+(with early application permitted). According to this standard, depending on whether there has been a significant
+increase in the credit risk, the lifetime expected loan loss or the 1-year expected loan loss is taken into account
+to measure LLAs. Hence, factoring IFRS 9 into our model would require a modification by taking into account
+20
+interbank loan W granted to bank j in round t equals to
+LLAi,k = Wij · PDk(i|A) · LGD.
+As a result, the total assets in k + 1 which have changed due to a change in probability of default of the
+debtor banks j amounts to
+TAi,k+1 = TAi,k -
+j
+(LLAi,k - LLAi,k-1)
+= TAi,k -
+j
+Wij · LGD · (PDk-1(j|A) - PDk-2(j|A)).
+A2: Logistic regression
+In order to estimate the effect of a change in a bank's capital ratio on its probability of default, we run
+the following logistic regression:
+PDi,t =
+e+·ln(CapRati,t-1)+Xi,t-1
+1 + e+·ln(CapRati,t-1)+Xi,t-1
+.
+where PD is the probability of default, CapRat is the capital ratio and X is the matrix of control
+variables. In order to know by how much the probability of default changes if the capital ratio changes,
+we take the derivative:
+dPDi,t
+dln(CapRati,t-1)
+= 
+e+·ln(CapRati,t-1)+Xi,t-1
+(1 + e+·ln(CapRati,t-1)+Xi,t-1 )2
+=  · (PDi,t - PD2
+i,t
+).
+Rearranging terms gives
+dPDi,t =  · (PDi,t - PD2
+i,t
+) · dln(CapRati,t-1) (5)
+or, equivalently,
+dPDi,t
+PDi,t - PD2
+i,t
+=  · dln(CapRati,t-1).
+Formula (5) is referred to in the main text because it reveals monotonicity properties of the PD as
+a dependent function of the capital ratio of the previous period. Eg the PD is monotone decreasing for
+negative .
+Taking into account that dPDi,t
+PDi,t(PDi,t-1)
+= ln PDi,t
+1-PDi,t
++c, with a constant c, and applying simple
+rules for the logarithm, we obtain
+ln
+PDi,t
+1 - PDi,t
+=  · (ln(CapRati,t) - ln(CapRati,t-1)) + ln
+PDi,t-1
+1 - PDi,t-1
+.
+Putting both sides of this equality into the exponent of the ex-function, rearranging terms and applying
+lifetime PDs or 1-year PDs on a case-by-case basis.
+21
+rules for the logarithm once more gives
+PDi,t =
+CapRati,t
+CapRati,t-1
+ PDi,t-1
+1-PDi,t-1
+1 + CapRati,t
+CapRati,t-1
+ PDi,t-1
+1-PDi,t-1
+. (6)
+In the table below, we present the estimated coefficients of the logistic regression which we use in
+our policy application.
+Table 3: Regression results
+univariate multivariate
+PDi,t
+= F( + caprat
+· ln(CapRati,t-1
+) + 1
+· Xi,t-1
++ 2
+· Zi
+)
+constant -6.478*** -29.734***
+(0.000) (0.965)
+ln(Tier 1 capital/RWA) -1.246*** -2.005***
+(0.000) (0.000)
+depreciation & adjustments/equity -0.001
+(0.729)
+administrative expenses/TA 0.017**
+(0.050)
+return on equity -0.077***
+(0.000)
+cash & overnight interbank loans/TA 0.031***
+(0.002)
+ln(TA) 0.309***
+(0.000)
+(pseudo) R2 0.011 0.136
+Notes: F(z) = ez/(1 + ez) is the cumulative logistic distribution. Our unbalanced panel consists of 10, 159
+observations over six years (from 2001 to 2006) and the total number of banks is 1,821. The dependent variable
+equals one if the bank defaults and zero otherwise. Distress events are systematically recorded by the German
+central bank, Deutsche Bundesbank. There are six different types of distress events that are drawn from the German
+Banking Act ("Kreditwesengesetz, KWG"), see also Kick and Koetter (2007). The first three are early indications
+of potential future problems: annual operating profit contractions in excess of 25 percent, losses of 25 percent
+of regulatory capital or above requiring a notification of the regulator according to ï¿½24(1) KWG, and general
+notifications by banks that the existence of the bank might be at risk in line with ï¿½29(3) KWG. Additional distress
+categories are capital injections received by banks from sector-specific insurance funds, restructuring mergers and
+revocations of a charter by a moratorium. We control for banking group as well as regional effects. Standard errors
+are given in parentheses and the 1% and 5% significance levels are indicated by *** and **, respectively.
+22
+A3: Robustness check for the specification of our logit regression
+Table 4: Ranking according to BSLoss in descending order
+Total effect Indirect effect Unconditional effect
+Rank
+BSLoss
+1,K
+i
+BSLoss
+1,K
+1
+K
+DF
+1,K
+i
+DF
+1,K
+1
+BSLoss
+1,K
+i
+j Wji
+BSLoss
+2,K
+i
+BSLoss
+1,K
+i
+DF
+2,K
+i
+DF
+1,K
+i
+PD0(i)·BSLoss
+1,K
+i
+PD0(1)·BSLoss
+1,K
+1
+(1) (2) (3) (4) (5) (6) (7) (8)
+1 1 16 1 8.64 94.8% 97.2% 0.421
+2 1 14 1 8.34 94.6% 95.9% 0.409
+3 1 14 1 5.52 91.9% 96.1% 0.868
+4 1 14 1 7.20 93.8% 96.2% 1
+5 1 10 1 4.68 90.4% 95.4% 0.605
+6 0.35 11 0.69 1.23 63.6% 20.9% 0.101
+7 0.11 10 0.02 0.95 52.8% 53.6% 0.111
+8 0.09 11 0.015 0.76 41.0% 28.6% 0.039
+9 0.07 9 0.119 0.69 35.0% 2.4% 0.022
+10 0.06 10 0.008 0.98 54.0% 50.0% 0.041
+11 0.06 9 0.004 0.47 4.4% 66.7% 0.013
+12 0.03 9 0.005 0.49 7.7% 28.6% 0.019
+13 0.03 10 0.014 0.62 28.3% 50.0% 0.017
+14 0.02 8 0.002 0.45 1.0% 33.3% 0.002
+15 0.02 8 0.003 0.70 35.5% 25.0% 0.007
+16 0.02 8 0.004 0.55 18.4% 33.3% 0.010
+17 0.02 9 0.015 0.59 24.1% 22.7% 0.008
+18 0.01 6 0.002 0.46 1.6% 33.3% 0.008
+19 0.01 8 0.003 0.70 35.9% 25.0% 0.005
+20 0.01 8 0.005 0.53 14.7% 28.6% 0.007
+Note: The first column displays the rank of the bank according to the BSLoss in descending order. Column 2
+shows BSLoss for the respective bank as a fraction of the BSLoss of the highest ranked bank (bank 1). The third
+column lists the round at which the contagion algorithm stopped (ie the number of iterations). Column 4 indicates
+how many institutions failed during the contagion process following the failure of the relevant bank as a fraction of
+the number of failures caused by the default of bank 1. Column 5 expresses BSLoss in relation to the total amount
+of loans which the respective bank received from other banks. Column 6 displays the BSLoss from rounds two to
+K (that is the second and later round effects) as proportion of the total BSLoss. Column 7 gives the percentage
+of defaulting banks in rounds two to K with respect to the total number of defaulting banks. Column 8 displays
+the unconditional effect (BSLoss weighted with the respective bank's PD) as fraction of the bank with the largest
+value (bank 2 in this scenario).
+23
+A4: Academic example
+We assume an interbank lending market where each bank is connected to all other banks. Three banks
+exist, each with PDi(0) = 100 bp, TAi,0 = 20, RWAi,0 = 10, Tier1i,0 = 0.8 for i  {1, 2, 3}. The
+bilateral exposures are given by the following matrix
+
+
+0 3 3
+2 0 2
+0 2 2
+
+.
+Table 5 displays the BSLoss metric for different levels of shocks and over various rounds. From
+the results it can be seen that BSLoss is monotonically increasing in . BSLoss has a discontinuity in
+the interval between  = 670 bp and  = 671 bp. Above this threshold the default of banks leads to
+a jump in the PDs and in BSLoss. Any additional increment exceeding that shock level does not lead
+to a further increase in BSLoss. Notably, an additional increase in the initial shock would only imply
+that these banks default in an earlier step of the iteration, leaving the overall BSLoss unchanged. The
+sequences of the PDs for different levels of the shock  are shown in Figure 5.
+Table 6 displays BSLoss for different initial PD vectors and over various rounds if a shock ( = 500
+bp) has hit one bank. From the simulation results it can be seen that, for low levels, an increase in
+initial PDs results in higher BSLoss due to the logarithmic relationship between CapRat and PD.
+However, BSLoss jumps in the interval (750bp, 751bp). The default of one bank implies the default
+of the two other banks in the system and results in an abrupt increase BSLoss. Interestingly, any
+additional increment exceeding that level of the initial PD vector does not lead to a further increase
+in BSLoss, but actually a decrease. Given that the PDs are bounded by 1, any additional increase in
+initial PDs (ie PD0  751 bp) results ceteris paribus in a smaller jump in stressed PDs and hence a
+corresponding reduction in BSLoss. The development of stressed PDs depending on the level of initial
+PDs is illustrated in Figure 6.
+Table 5: Development of BSLoss for different shocks over the rounds of the algorithm
+Round  = 400bp  = 600bp  = 670bp  = 671bp  = 800bp  = 1000bp
+1 0.0720 0.1080 0.1206 0.1208 0.1440 0.1800
+2 0.0819 0.1221 0.1361 0.1363 0.1622 4.6350
+3 0.0883 0.1336 0.1497 0.1499 4.6148 6.2370
+4 0.2374 0.1358 0.1523 0.1526 6.2370
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+8 0.0901 0.1372 0.1541 0.1544
+9 0.0901 0.1373 0.1541 4.5902
+10 0.0901 0.1373 0.1541 6.2370
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+14 0.0901 0.1373 0.1541
+.
+.
+.
+.
+.
+.
+.
+.
+.
+16 0.1373 0.1541
+24
+Figure 5: Development of the banks' PDs for different shock sizes
+Table 6: Development of BSLoss for different values of the initial PD vectors
+Round PD0 =
+
+
+200
+200
+200
+
+ PD0 =
+
+
+600
+600
+600
+
+ PD0 =
+
+
+750
+750
+750
+
+ PD0 =
+
+
+751
+751
+751
+
+ PD0 =
+
+
+1000
+1000
+1000
+
+ PD0 =
+
+
+1400
+1400
+1400
+
+
+1 0.0900 0.0900 0.0900 0.0900 0.0900 0.0900
+2 0.1103 0.1379 0.1448 0.1448 0.1525 0.1585
+3 0.1213 0.1724 0.1874 0.1875 0.2045 0.2168
+4 0.1244 0.1927 0.2156 0.2157 0.2426 0.2625
+5 0.1258 0.2064 0.2363 0.2364 0.2729 0.3004
+6 0.1262 0.2149 0.2505 0.2508 0.2959 0.3310
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+9 0.1264 0.2265 0.2732 0.2736 0.3390 0.3947
+10 0.2280 0.2770 0.2773 4.2257 0.4093
+11 0.2289 0.2796 0.2799 5.6700 4.0694
+12 0.2295 0.2815 0.2818 5.4180
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+18 0.2306 0.2856 0.2859
+.
+.
+.
+.
+.
+.
+.
+.
+.
+23 0.2861 0.2864
+24 4.3175
+25 5.8269
+25
+Figure 6: Development of the banks' PDs for different values of the initial PD vectors
+26
+References
+Acemoglu, D., A. Ozdaglar, and A. Tahbaz-Salehi (2015). Systemic risk and stability in financial net-
+works. American Economic Review 105 No. 2, 564­608.
+Allen, F. and D. Gale (2000). Financial contagion. The Journal of Political Economy 108, 1­33.
+Alter, A., B. Craig, and P. Raupach (2015). Centrality-based capital allocations. Discussion Paper
+Deutsche Bundesbank 03/2015.
+Battiston, S., M. Puliga, R. Kaushik, P. Tasca, and G. Caldarelli (2012). Debtrank: Too central to fail?
+financial networks, the fed and systemic risk. scientific reports 2:541.
+BCBS (2013). Global systemically important banks: Updated assessment methodology and the higher
+loss absorbency requirement. Committee publications.
+BIS, IMF, and OECD (2001). G-10 report on financial sector consolidation.
+Bonacich, P. (1972). Factoring and weighting approaches to status scores and clique identification.
+Journal of Mathematical Sociology 2, 113­120.
+Brunnermeier, M., L. Clerc, and M. Scheicher (2013). OTC derivatives: New rules, new actors, new
+risks. Financial Stability Review Banque de France 17, 123­134.
+Craig, B., M. Kötter, and U. Krüger (2014). Interbank lending and distress: Observables, unobservables,
+and network structure. Discussion Paper Deutsche Bundesbank 18/2014.
+ECB (2012). Financial stability review.
+Eisenberg, L. and T. H. Noe (2001). Systemic risk in financial systems. Management Science 47, 236­
+249.
+Freixas, X., B. Parigi, and J.-C. Rochet (2000). Systemic risk, interbank relations and liquidity provision
+by the central bank. Journal of Money, Credit and Banking 32, 611­638.
+Kashyap, A. K. and J. S. Stein (2004). Cyclical implications of the Basel 2 capital standards. Economic
+Perspectives 10, 18­31.
+Kick, T. and M. Koetter (2007). Slippery slopes of stress: Ordered failure events in German banking.
+Journal of Financial Stability 3, 132­148.
+Landherr, A., B. Friedl, and J. Heidemann (2010). A critical review of centrality measures in social
+networks. Business and information systems engineering 2, 371­385.
+Macroeconomic Assessment Group on Derivatives (2013). Macroeconomic impact assessment of OTC
+derivatives regulatory reforms. Final report, available at http://www.bis.org/publ/othp20.pdf.
+Martinez-Jaramillo, S., B. Alexandrova-Kabadjova, B. Bravo-Benitez, and J. P. Solorzano-Margain
+(2014). An empirical study of the Mexican banking system's network and its implications for sys-
+temic risk. Journal of Economics Dynamics and Control 1, 242­265.
+Memmel, C. and A. Sachs (2011). Contagion in the interbank market and its determinants. Discussion
+Paper Deutsche Bundesbank 17/2011.
+27
+Mistrulli, P. E. (2011). Assessing financial contagion in the interbank market: Maximum entropy versus
+observed interbank lending patterns. Working Paper Banca d' Italia No. 641.
+Nacaskul, P. (2010). Systemic importance analysis (sia): Application of entropic eigenvector centrality
+(eec) criterion for a priori ranking of financial institutions in terms of regulatory-supervisory concern.
+Working paper.
+Packer, F. and N. Tarashev (2011). Rating methodologies for banks. BIS Quarterly Review June, 39­52.
+Rogers, L. C. G. and L. A. M. Veraart (2012). Failure and rescue in an interbank network. Management
+Science 59, 882­898.
+28
+

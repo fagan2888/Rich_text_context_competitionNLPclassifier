@@ -1,0 +1,1431 @@
+Measuring business sector concentration
+by an infection model
+Klaus Düllmann
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 03/2006
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431, fax +49 69 5601071
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Reproduction permitted only if source is stated.
+ISBN 3­86558­149­8 (Printversion)
+ISBN 3­86558­150­1 (Internetversion)
+Measuring Business Sector Concentration
+by an Infection Model
+Abstract
+Results from portfolio models for credit risk tell us that loan concentration
+in certain industry sectors can substantially increase the value-at-risk (VaR).
+The purpose of this paper is to analyze whether a tractable "infection model"
+can provide a meaningful estimate of the impact of concentration risk on the
+VaR. I apply rather parsimonious data requirements, which are comparable
+to those for Moody's Binomial Expansion Technique (BET) and considerably
+lower than for a multi-factor model.
+The infection model extends the BET model by introducing default in-
+fection into the hypothetical portfolio on which the real portfolio is mapped
+in order to obtain a simple solution for the VaR. The infection probability is
+calibrated for a range of typical values of input parameters, which capture the
+concentration of a portfolio in industry sectors, default dependencies between
+exposures and their credit quality.
+The accuracy of the new model is measured for test portfolios with a re-
+alistic industry-sector composition, obtained from the German central credit
+register. I find that a carefully calibrated infection model provides a rea-
+sonably close approximation to the VaR obtained from a multi-factor model
+and outperforms by far the BET model. The simulation results suggest that
+the calibrated infection model promises to provide a fit-for-purpose tool to
+measure concentration risk in business sectors that could be useful for risk
+managers and banking supervisors alike.
+Keywords: asset correlation, concentration risk, credit risk, multi-factor model,
+value-at-risk
+JEL Classification: G 21, C 15, C 20
+Non­technical Summary
+Concentration risk in business sectors is widely perceived to be one of the most im-
+portant causes of major problems in banks. The empirical challenges in estimating
+asset correlations for a multi-factor model and the computational burden of calcu-
+lating the value-at-risk of large credit portfolios by Monte Carlo simulations inspire
+research for more tractable models which pose less severe data requirements.
+The "Binomial Expansion Technique", developed by Moody's constitutes a simple
+approach to measure risk in heterogeneous credit portfolios. As shown in this paper,
+it fails, however, in producing a reasonably accurate value-at-risk in the presence of
+material default correlations.
+In this paper the infection model by Davis und Lo (2001) is applied and the param-
+eter "infection probability" is determined in such a way that the loss distribution is
+calibrated to that of a multi-factor model in the adverse 99.9% quantile of the loss
+distribution. In this way the impact of the asset correlation on the value-at-risk is
+captured by the infection probability.
+The calibrated model allows to determine the value-at-risk of a credit portfolio based
+on quite parsimonious data requirements and without the need to run Monte Carlo
+simulations. The only input data which are required are the following four parame-
+ters: the average default probability of a loan portfolio, sector­weighted average
+intra­sector and inter­sector asset correlations, and the Hirschmann-Herfindahl-
+Index, calculated from the aggregate sector exposures.
+The evaluation of the calibrated infection model is based on relative errors in the
+value-at-risk for a wide range of realistic default probabilities and asset correlations.
+The median of these errors is only around 5% for a portfolio which reflects the aggre-
+gated sector distribution of the German banking system. In this way the infection
+model outperforms the"Binomial Expansion Technique"for which the corresponding
+median error is 34%.
+Nichttechnische Zusammenfassung
+Kreditkonzentrationen in Industriesektoren k¨
+onnen eine wesentliche Risikoquelle
+f¨
+ur Kreditinstitute darstellen. Die Messung dieser Risiken wird erschwert durch
+Schwierigkeiten bei der Sch¨
+atzung von Assetkorrelationen sowie durch den hohen
+Rechenaufwand, der mit der Bestimmung eines Value­at­Risk durch Monte Carlo­
+Simulationen in einem Mehrfaktorenmodell verbunden ist. Diese zwei Problemkreise
+motivieren die Suche nach Modellans¨
+atzen, die m¨
+oglichst geringe Datenanforderun-
+gen stellen und rechentechnisch einfach umsetzbar sind.
+Die Binomial Expansion Technique von Moody's liefert ein Beispiel f¨
+ur einen einfach
+umsetzbaren Modellansatz um das Risiko in heterogenen Kreditportfolien zu messen.
+Dieses Arbeitspapier zeigt, dass sich mit diesem Verfahren der Value­at­Risk bei
+korrelierten Ausfallereignissen nicht mehr hinreichend genau bestimmen l¨
+aßt.
+Daher wird als Alternative zu diesem Modell das Ansteckungsmodell von Davis und
+Lo (2001) untersucht. Der Modellparameter Ansteckungswahrscheinlichkeit wird so
+kalibriert, dass die zugeh¨
+orige Verlustverteilung mit derjenigen eines Mehrfaktoren-
+modelles im 99.9%­Quantil ¨
+ubereinstimmt. Dadurch wird der Korrelationseinfluss
+auf den Value­at­Risk in der Ansteckungswahrscheinlichkeit ber¨
+ucksichtigt.
+Das auf diese Weise kalibrierte Modell erlaubt die Bestimmung des Value-at-Risk
+f¨
+ur ein Kreditportfolio mit relativ niedrigen Datenanforderungen und ohne R¨
+uck-
+griff auf Monte Carlo-Simulationen. Als Eingangsdaten werden lediglich die fol-
+genden vier Parameter ben¨
+otigt: die durchschnittliche Ausfallwahrscheinlichkeit des
+Kreditportfolios, die Sektor-gewichteten durchschnittlichen Intra-Sektor- und Inter-
+Sektor-Korrelationen, sowie der Herfindahl-Hirschmann-Index, errechnet aus den
+aggregierten Kreditforderungen je Sektor.
+Als Grundlage zur Bewertung des kalibrierten Ansteckungsmodelles dienen die prozen-
+tualen Fehler in der Value­at­Risk-Messung f¨
+ur eine breite Auswahl von Ausfallwahr-
+scheinlichkeiten und Assetkorrelationen. Der Median der Messfehler betr¨
+agt ca. 5%
+f¨
+ur ein Portfolio, welches die ¨
+uber Industriesektoren des deutschen Bankensystems
+aggregierte Kreditverteilung widerspiegelt. Das Ansteckungsmodell liefert damit
+wesentlich genauere Werte als die Binomial Expansion Technique, bei welcher der
+Median der Messfehler bei 34% liegt.
+Contents
+1 Introduction 1
+2 Binomial Expansion Methodology 4
+2.1 Model Setup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2 Evaluation of VaR Estimates from the BET Model . . . . . . . . . . 6
+3 The Infection Model 8
+3.1 Model Setup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2 Calibration of the Infection Model . . . . . . . . . . . . . . . . . . . . 10
+4 Evaluation of the Infection Model 15
+5 Summary and Conclusions 21
+1. Introduction
+The purpose of this paper is to develop a robust "tool" that sufficiently approxi-
+mates the value-at-risk of loan portfolios which are concentrated in certain sectors.
+In a portfolio of credit­risky exposures, such as bank loans, sector concentration risk
+arises if the portfolio is unbalanced in exposures to certain sectors, which entails de-
+pendencies between default events. In the following the focus is on industry sectors,
+however, sectors can also be defined geographically, in which case the methodology
+still applies.
+The importance of concentration risk in loan portfolios has become evident in past
+banking failures. Banks specializing in loans to economically weak industry sectors
+or less developed regions have sustained significant losses. A well­known example is
+the failure of the German Schmidt Bank in 2001. This bank was heavily concentrated
+in a less­developed region, which was close to the former East German border and
+characterized by a fragile and concentrated industry structure. Basel Committee on
+Banking Supervision (2004) lists examples from other countries which highlight the
+importance of prudently managing concentration risk.
+The relevance of sector concentration risk is also recognized by financial supervisors,
+although existing supervisory rules usually only govern single-name concentration,
+for example, large exposure rules.1 Supervisory concerns are revealed, for exam-
+ple, by the statement of the Basel Committee on Banking Supervision that "risk
+concentrations are arguably the single most important cause of major problems in
+banks." 2
+In the following it is assumed that default dependencies are sufficiently well described
+by (linear) default correlations. For a portfolio with given default probabilities and
+a given exposure distribution across names, sector concentration can be defined as
+an interim state between two extremes "perfect sector concentration" and "perfect
+sector diversification". Perfect sector concentration would be the (undesirable) case
+in which, ceteris paribus no change in the sector allocation of at least one exposure
+would increase the value-at-risk (VaR) of this portfolio. Conversely, perfect sector
+diversification would be achieved with a portfolio in which no change in the sector
+allocation of an individual exposure would decrease the VaR.
+1See Council of the European Union (2005) for EU banks.
+2See Basel Committee on Banking Supervision (2005).
+1
+Sector concentration needs to be distinguished from "single-name concentration" or
+granularity which is caused by an unbalanced distribution across single borrowers.
+Single-name concentration has been comprehensively discussed in the literature on
+granularity adjustments in a single risk factor model, closely linked to the develop-
+ment of the New Basel Accord.3 This paper focuses, however, solely on sector con-
+centration. For this purpose I further differentiate between intra­sector correlation
+and inter­sector correlation. Intuitively, intra­sector correlation should generally
+be the higher of the two correlations if the definition of sectors is meaningful. De-
+pending on the model, a distinction also needs to be made between asset correlation,
+which is the correlation of the unobservable, normalized asset returns, and default
+correlation, which refers to the correlation of the default events of two borrowers.
+Depending on the model applied, both correlation definitions will be necessary.
+A key motivation for analyzing a new approach is the recognition that the"binomial
+expansion technique" (BET) developed by Moody's does not provide sufficiently ac-
+curate estimates of the VaR. This is shown in Section 2 using numerical examples
+of VaR calculations for realistic levels of default correlations. This paper explores
+how the deficiencies of the BET approach can be remedied by extending the model
+to incorporate infectious defaults as inspired by Davis und Lo (2001). This model
+condenses loss dependencies, which are usually modelled by sector correlations, into
+an infection probability. The new model imposes rather parsimonious data require-
+ments, which are comparable to those for the BET model and considerably lower
+than for a multi­factor model. Therefore, the new model is not only transparent
+but also tractable, in terms of both the required computational effort and the data
+requirements.
+In spite of its relatively simple structure, the infection model presented in this paper
+may provide a good VaR approximation since it is calibrated exactly to the tail
+of the loss distribution in the multi­factor model. This approach is expected to
+deliver better results than a moment­matching methodology, which is also used,
+for example, in the BET model, and which can easily fail to capture the true tail
+behavior.
+To verify its accuracy, I compare the VaR in the new infection model to the VaR
+3The Second Consultative Paper on Basel II, published in January 2001, contained a (later
+abandoned) proposal for a "granularity adjustment" of the risk-weight functions of the internal
+ratings based (IRB) approach. See Gordy (2004) for an overview of recent academic work on this
+subject.
+2
+calculated in a multi­factor model setting, in which various sectors constitute the
+systematic factors for a set of test portfolios. These test portfolios comprise expo-
+sure distributions across sectors which reflect the aggregate sector distribution of
+corporate lending in the German banking system as well as sector distributions of
+existing banks with more concentrated portfolios. Furthermore, the portfolios differ
+in terms of default probabilities and asset correlations. The purpose of comparing
+these two models is to determine, how much accuracy is lost by applying the infec-
+tion model and whether it still provides a reasonably accurate, but technically much
+more easily computable, VaR.
+The idea of calibrating a model with a simple structure and closed-form solution to
+the VaR is also pursued in recent work by Cespedes et al. (2005). However, their
+approach comprises a single­factor model with a scaling factor which is calibrated to
+capture diversification across sectors. The scaling factor is defined as a function of a
+Herfindahl­Hirschman index4, based on the economic capital required in each sector
+by a single­factor model. It does not capture individual estimates of intra­sector
+and inter­sector correlations which feed into the infection model. Furthermore, the
+infection model differentiates between the contribution of the level of the probability
+of default (PD) and the impact of the asset correlations on the VaR. The Pykhtin
+(2004) approach retains the multi­factor model but provides a closed-form solution
+for the VaR which is based on a methodology previously employed by Wilde (2001)
+for a VaR adjustment which accounts for single-name concentration. Pykhtin's
+closed-form solution, however, is more complex than the proposal in this paper
+and does not reduce the data requirements compared with a multi­factor model.
+Instead of reducing the complexity of a multi­factor model, Witt (2004) comes from
+the opposite direction and extends Moody's BET model to form the "correlated
+binomial approach". However, his proposal requires estimates of default correlations
+as inputs which are difficult to obtain in the real world.
+If the infection model presented in this paper proves to be sufficiently accurate, it
+could be used as a fit­for­purpose tool for risk managers in banks or for banking
+supervisors. Risk managers may also find it useful as a benchmark for the results of
+more sophisticated internal models.
+The paper is organized as follows. Section 2 describes the concept of the BET model
+and shows the limitations of its accuracy in calculating VaR if default events are
+4See Hirschmann (1964).
+3
+correlated. The infection model is introduced and calibrated in Section 3. The
+key parameter in the calibration procedure is the degree of default infection, which
+is determined by minimizing the squared error in the VaR calculation over a wide
+range of realistic input parameter values.
+In Section 4, the model performance is evaluated by applying the calibrated infec-
+tion model to a range of test portfolios. The purpose of these tests is to verify if
+the calibrated model provides a valid VaR approximation over the entire relevant
+parameter space. Section 5 summarizes and concludes.
+2. Binomial Expansion Methodology
+2.1. Model Setup
+An important area where default correlation needs to be measured is the assessment
+of credit risk in securitization structures such as CDOs and CLOs. Therefore, it
+is not surprising that external rating agencies were among the first to develop a
+suitable methodology for that purpose. The BET model developed by Moody's was
+one of the first approaches and emerged as a market standard, not least because its
+underlying principles are very transparent.5
+The key idea of the BET model is to map the real portfolio into a hypothetical
+homogenous portfolio that consists of loans sharing the same probability of default
+(PD) and the same exposure volume and in which default events of all exposures
+are pairwise independent. The number of defaults in this hypothetical portfolio is
+binomially distributed so that the VaR can easily be determined. The calculation
+of the VaR requires only two input parameters: the PD and the modified diversity
+score, which is defined as the number of exposures in the hypothetical portfolio. The
+mapping between the two portfolios is defined by matching the first two moments
+of the portfolio loss distribution.
+Let Ai,k
+denote exposure k in sector i of the real portfolio, m the number of sectors,
+n(i) the number of exposures in sector i, and D the modified diversity score. For ease
+of presentation it is assumed that every exposure belongs to a different borrower,
+5See Cifuentes et al. (1996), Cifuentes und O`Connor (1996), and Cifuentes und Wilcox (1998).
+4
+eliminating the need to differentiate between exposures and borrowers. Let A refer
+to the total exposure, which is the same for both portfolios:
+A =
+m
+i=1
+n(i)
+j=1
+Ai,j
+. (1)
+The uniform exposure size in the hypothetical portfolio is given by A/D. It is
+assumed that exposures in the same sector share the same PD. The average PD of
+the exposures in the hypothetical portfolio, ¯
+p, is calculated by setting the mean loss
+of the real portfolio equal to the mean loss of the hypothetical portfolio, where LGD
+denotes the loss given default:
+m
+i=1
+n(i)
+j=1
+pi
+· Ai,j
+· LGD = D · ¯
+p ·
+A
+D
+· LGD. (2)
+From (2) it follows that ¯
+p equals the weighted average PD of the real portfolio:
+¯
+p =
+m
+i=1
+pi
+· n(i)
+j=1
+Ai,j
+A
+. (3)
+Let Ui,j
+denote the indicator function that signals a default of exposure j in sector
+i in the original portfolio and Uk
+a default of the k-th exposure in the hypothetical
+portfolio. Matching the variances of losses in the real and the hypothetical portfolio
+provides an explicit expression for the modified diversity score:
+V ar
+
+
+m
+i=1
+n(i)
+j=1
+Ai,j
+· LGD · Ui,j
+
+ = V ar
+A
+D
+· LGD ·
+D
+k=1
+Uk
+. (4)
+Note that the value of the LGD parameter does not affect the result of the moment
+matching because this parameter cancels out in (4) and (2).
+It is assumed that the pairwise default correlation i,k
+j,l
+of two exposures k and l in
+sectors i and j is the same within each sector (intra
+i
+, intra
+j
+) and between any two
+sectors (inter):
+For i  {1, ..., m} : i,k
+j,l
+=
+
+
+
+
+
+1 : i = j and k = l
+intra
+i
+: i = j and k = l
+inter : i = j.
+(5)
+Let pi
+denote the default probability, which is the same for all borrowers in sector
+i. Then, from (4) it follows for the modified diversity score D that
+D =
+A2 ¯
+p (1 - ¯
+p)
+m
+i=1
+m
+j=1
+n(i)
+k=1
+n(j)
+l=1
+Ai,k
+Aj,l
+i,k
+j,l
+pi
+(1 - pi
+) pj
+(1 - pj
+)
+. (6)
+5
+Since the number of defaults in the hypothetical portfolio is binomially distributed,
+calculation of the VaR for a confidence level of 99.9% requires the 99.9% percentile
+of the binomial distribution with parameters D and ¯
+p. Then, the VaR is computed
+by multiplying this percentile by the average exposure size, A/D, and the LGD.
+V aRBET =
+A
+D
+· LGD · Bin-1
+99.9%
+(D, ¯
+p). (7)
+2.2. Evaluation of VaR Estimates from the BET Model
+In the following I evaluate the accuracy of the BET model for a VaR calculation.
+The "real" portfolio that is used as the benchmark comprises 1,000 credit­risky
+exposures. It is homogeneous in terms of the notional amount (one currency unit),
+the default probability (2%) and the pairwise asset correlation (either 0.0, 0.1 or
+0.2). The last property implies a single­sector model.
+The well­known single risk factor model is used as a benchmark. Default is trig-
+gered if the unobservable, normalized asset value Xk
+of exposure k falls below an
+exogenous default threshold, -1(¯
+p), where (.)-1 denotes the inverse of the cumu-
+lative standard normal distribution function. The loss distribution is obtained by
+sampling the model equation
+Xk
+=
+
+ Y + 1 -  k
+, (8)
+in which Y denotes the systematic factor and k
+a disturbance term which are both
+independent and standard­normally distributed.
+Table 1 compares VaR estimates obtained from Monte Carlo simulation with the
+corresponding VaR estimates, based on the BET model. The number of exposures
+in the hypothetical portfolio is given by the diversity score and the exposure size by
+the ratio of the total exposure of the real portfolio divided by the diversity score.
+The VaR estimate in the BET model is obtained by invoking (7). For an asset
+correlation of 0.1, for example, the VaR estimate is calculated as 6 · 1, 000/63 and
+rounded up to 95. The increasing asset correlation, therefore, has two consequences
+which affect the VaR estimate in opposite directions. It reduces the diversity score
+in the denominator of (7) which c. p. increases the VaR estimate. Since the inferred
+number of defaults in the hypothetical portfolio decreases with a lower number of
+6
+Table 1
+Comparison of VaR estimates from the Binomial Expansion Technique
+with simulation-based estimates
+The following table compares VaR estimates from Monte Carlo simulation,
+V aRMC, based on a single risk factor model with VaR estimates from applying
+the BET model, V aRBET . The confidence level is 99.9%. The portfolio com-
+prises 1,000 credit­risky exposures and is homogeneous in terms of the notional
+amount (one currency unit), the default probability (2%) and the pairwise asset
+correlation (either 0.0, 0.1 or 0.2).
+Asset correlation Hypothetical portfolio Real portfolio
+ Diversity score D Inferred no. of defaults V aRBET V aRMC
+0.0 1000 35 35 35
+0.1 63 6 95 130
+0.2 27 4 148 227
+exposures D, VaR also c. p. decreases. The net effect, however, is always an increase
+in the VaR estimate.
+In the special case of uncorrelated default events, the BET model provides the correct
+VaR of 35, as expected. If the asset correlation is increased to 0.1 and afterwards
+to 0.2, the VaR estimate obtained from the BET model also increases. However, it
+substantially underestimates the true VaR in both cases. For an asset correlation of
+0.1, the VaR estimate from the BET model is 27% below its true value, and for an
+asset correlation of 0.1, the shortfall increases to 35%. These results suggest that
+the BET model does not provide a sufficiently accurate estimate to recommend its
+application as a measure for sector­concentration risk. However, they say nothing
+about how well the BET model performs in capturing granularity in the VaR.
+7
+3. The Infection Model
+3.1. Model Setup
+The key idea of the new model is to extend the BET model by introducing a new
+type of default dependency into the hypothetical portfolio. This initially appears
+to be counter­intuitive because the hypothetical model was constructed precisely in
+order to be tractable through the assumption that default events are independent.
+However, instead of mapping the real portfolio into a portfolio with independent ex-
+posures, it is mapped into a portfolio with default dependencies which are judiciously
+constructed in order to obtain an easy-to-calculate solution for the VaR.
+The number of exposures in the hypothetical portfolio is given by the diversity score
+D, as in the BET model. Let Z1
+, ..., ZD
+denote indicator variables signaling that an
+exposure in the hypothetical portfolio has defaulted.
+Following the approach by Davis und Lo (2001), it is assumed that any asset in
+the hypothetical portfolio can either "autonomously" default or default because
+it is "infected" by the default of another asset. Let Uautonom
+j
+and Uinfected
+j,k
+de-
+note indicator functions which equal 1 if an "autonomous" default of exposure j
+occurs or if exposure j is "infected" by exposure k. Uautonom
+j
+and Uinfected
+j,k
+are
+independent for j, k  {1, ..., D} and j = k. Let Zj
+be the indicator function
+that signals a default of exposure j, either because it has "autonomously" de-
+faulted or because it has been infected by the default of another exposure. Let
+pj
+= P Uautonom
+j
+= 1 denote the autonomous default probability in the hypotheti-
+cal portfolio and qj,k
+= P Uinfected
+j,k
+= 1 the probability that an infection can take
+place, in this case triggered by a default of exposure k. The default indicator Zj
+is
+defined as follows:
+Zj
+= Uautonom
+j
++ (1 - Uautonom
+j
+) 1 -
+k,k=j
+1 - Uautonom
+k
+· Uinfected
+j,k
+. (9)
+It is assumed that all exposures in the hypothetical portfolio share the same au-
+tonomous default probability and the same infection probability. The autonomous
+default probability is determined as the exposure­weighted average of the default
+probabilities in the real portfolio. Therefore, pj
+= ¯
+p and qj
+= q for j  {1, ..., D}.
+8
+The probability of  defaults in the hypothetical portfolio is then given by6
+f(; D, ¯
+p, q) =
+D
+
+¯
+p (1 - ¯
+p)D- (1 - q) (D-)+
+-1
+i=1
+
+i
+¯
+pi (1 - ¯
+p)D-i(1 - (1 - q)i)-i (1 - q)i (D-) .
+Therefore, the loss distribution FIM for up to N defaults, 0  N  D,7
+FIM
+L · D
+A · LGD
+= P(L 
+N · A · LGD
+D
+) =
+N
+=0
+f(; D, ¯
+p, q), (10)
+depends on five parameters: the loss given default, LGD, the total exposure A, the
+diversity score D, the "autonomous" default probability ¯
+p, and the probability of
+infection q. Since LGD enters the loss distribution as a linear factor in the same
+way as it enters the VaR in the BET model (see (7)), its value does not change the
+outcome of a comparison between the two models. Therefore, LGD is set equal to
+100% in the following.
+Davis und Lo (2001) regard the estimation of q as the "main outstanding problem".
+I do not attempt to estimate this parameter but instead to "calibrate" it such that
+it delivers roughly the same VaR as a multi­factor model.
+Since EL is generally easier to measure than higher moments or extreme quantiles
+of the loss distribution, it seems natural to calibrate EL in the infection model such
+that it matches EL in the original portfolio. In the BET framework, the EL of the
+hypothetical portfolio corresponds with the EL of the real portfolio.
+ELBET =
+D
+j=1
+LGD · j ·
+A
+D
+·
+D
+j
+¯
+pj (1 - ¯
+p)(D-j) = A · LGD · ¯
+p. (11)
+In the infection model the EL is given by8
+ELIM = LGD · A · 1 - (1 - ¯
+p)(1 - ¯
+p · q)D-1 . (12)
+As long as the autonomous default probability in the infection model is defined
+by the average default probability ¯
+p in the real portfolio, the EL generally differs
+6See theorem 1 in Davis und Lo (2001).
+7[x] denotes the rounding function which rounds x down to the nearest natural number.
+8See Davis und Lo (2001).
+9
+between both portfolios. The EL coincides only in the special case in which q equals
+zero. In this trivial case, the infection model collapses to the binomial model.
+In order to match EL for the infection model for positive values of q, it would be
+necessary to adjust ¯
+p depending on the parameter q. However, in the calibration
+methodology q is not known ex ante but is the parameter which is determined at
+the very end in order to achieve a match in the VaR of the multi-factor model and
+the infection model. In principle it is possible to determine q and ¯
+p simultaneously
+by requiring that the VaR and the EL both be matched. However, due to numerical
+problems I did not pursue this approach further. Instead, I focus on matching only
+the VaR and accept a discrepancy in the EL.
+3.2. Calibration of the Infection Model
+The analysis of the BET model is carried out in two steps. The first step comprises
+a linear regression in order to calibrate the infection parameter q, based on fictive
+exposure distributions across sectors. This step is described in the following section.
+The second step, described in Section 4, comprises an evaluation of the accuracy of
+the calibrated model for portfolios with empirically observed exposure distributions
+across sectors.
+For a given portfolio and a parameter set of PDs and asset correlations, an optimal
+value q can, in principle, be obtained by equating the VaR in the multi­factor model
+with the VaR in the infection model and solving numerically for q. The solution q,
+thus obtained, achieves a match in the adverse 99.9% quantile of the loss distribution
+of both models. Since q depends on the portfolio characteristics, particularly the
+exposure distribution across sectors and asset correlations, it is not possible to find a
+unique q for all portfolios. However, intuition suggests that q depends on a limited
+number of factors which sufficiently capture portfolio characteristics, such as the
+distribution of exposures across sectors, correlation of default events, and default
+probabilities. Therefore, in the following I apply a linear model to determine a proxy
+of q for every portfolio, dependent on three systematic factors. This regression
+model is given by
+ln(q) = 0
++ 1
+ln(HHI) + 2
+ln(¯
+p) + 3
+ln(¯
+intra) + 4
+ln(¯
+inter) + . (13)
+10
+HHI denotes the Hirschman-Herfindahl index, calculated as the sum of squared
+relative exposure shares of the sectors in the portfolio. ¯
+intra is the weighted­
+average intra­sector asset correlation of all exposures, weighted by the total exposure
+amounts to the individual sectors, ¯
+inter the average inter­sector asset correlation,
+and the idiosyncratic disturbance term. Note that here I use asset correlations as
+explanatory variables instead of default correlations, which are necessary to calcu-
+late the diversity score. However, the asset correlation i,j
+can be transformed into
+the default correlation i,j
+by invoking the ratio
+i,j
+=
+2
+(-1(pi
+), -1(pj
+), i,j
+) - pi
+pj
+pi
+(1 - pi
+) pj
+(1 - pj
+)
+. (14)
+where 2
+(.) denotes the cumulative distribution function of the bivariate normal
+distribution.
+The regression coefficients 0
+, ..., 4
+in (13) are estimated by minimizing the squared
+differences between VaR for portfolios with different sector concentrations and vari-
+ous typical parameter sets of ¯
+intra, ¯
+inter and ¯
+p. The optimization is carried out by
+a linear regression based on (13), in which q is replaced by the "optimal" q which
+equates the VaR in both models for the respective parameter set.
+In the special case of zero inter­sector correlation, the regression function has a
+jump discontinuity. Therefore, I estimate the model separately under the restriction
+4
+= 0.
+The benchmark or "true" model is a multi­factor model in which the factors are
+defined by business sectors. The normalized one­period asset return of borrower k
+in sector i is defined by a single­factor model
+Xi,k
+= ri
+Yi
++ 1 - r2
+i
+i,k
+(15)
+where i,k
+denotes the idiosyncratic disturbance term. The parameter r2
+i
+describes
+the correlation between a borrower's normalized, unobservable asset return process
+and the systematic risk factor Yi
+. The sector­dependent systematic factor Yi
+can
+be written as a linear combination of m orthogonal factors. Borrower k in sector
+i defaults if his normalized asset value process Xi,k
+crosses an exogenous default
+barrier -1(pi,k
+) where pi,k
+denotes the unconditional default probability.
+The value of ri
+is given by r2
+i
+= intra
+i
+. Given ri
+and rj
+, the factor correlations
+cor(Yi
+, Yj
+) can be computed from the inter­sector asset correlations inter
+i,j
+in different
+11
+sectors i and j as follows:
+cor(Yi
+, Yj
+) =
+inter
+i,j
+ri
+rj
+. (16)
+The VaR of the real portfolio is determined by MC simulation of the portfolio losses,
+LMC, given by
+LMC =
+m
+i=1
+n(i)
+k=1
+Ai,k
+1{Xi,k-1(pi,k)}
+, (17)
+exploiting the assumption that the LGD equals 100%.
+The portfolios used for calibration comprise 2000 exposures of one euro each. These
+fine-grained portfolios ensure that the impact of sector concentration is not limited
+by the granularity of the portfolios. In order to get meaningful results from the
+calibration exercise, I focus on a subset of the parameter space which captures the
+relevant range of typical values for HHI, ¯
+intra, ¯
+inter, and ¯
+p.
+In terms of sector concentration I explore four portfolios with sectors of different
+sizes. I start with the relatively concentrated portfolio 1 that comprises only three
+sectors which have a relative share of 50%, 30%, and 20% of the total exposure. I
+proceed to portfolios 2, 3, and 4 using the following algorithm. The sector size in
+every new portfolio is determined by splitting every sector share of the old portfolio
+into two sectors which contain one-third and two-thirds respectively. The resulting
+composition of the portfolios is presented in Table 8 in the Appendix. The maximum
+of 24 sectors in portfolio 4 is inspired by the two­digit GICS classification scheme
+of CreditMetrics which is based on 24 industry groups.
+Other vendor models, such as Moody's KMV, employ an even greater number of
+sectors. However, increasing the number of sectors by adjusting the sector defini-
+tion without changing the portfolio will decrease concentration in individual sectors
+and increase correlation across sectors. Broadly speaking sector concentration risk
+would be transformed into overall correlation risk. Since the focus is here on sector
+concentration risk, higher numbers of factors are not considered. Another motiva-
+tion for not considering more factors is the fact that fit­for­purpose tools such as
+the infection model could be most valuable for regionally focused and medium­size
+banks because such tools impose relatively parsimonious data requirements with a
+limited number of sectors.
+For the calibration exercise, uniform intra­sector correlations ¯
+intra for all sectors
+and also uniform inter­sector correlations ¯
+inter are assumed. This specification is
+12
+motivated by balancing parsimony and accuracy but also by a requirement of the
+infection model which needs correlation values on a sector­by­sector basis for the
+calculation of the diversity score. In cases where this information is not available
+to banks, supervisors may consider providing a rough estimate of an average asset
+correlation based on their own experience. This value could also be used for the
+calculation of the diversity score, thereby further reducing data requirements.
+Defining a realistic range of typical asset correlations for the calibration exercise
+is not straightforward. The results of numerous empirical studies which have been
+carried out in recent years are quite diverse.9 It seems fair to summarize that a
+generally accepted industry consensus about the range of asset correlations has not
+emerged so far. However, the relatively broad range (between 0.05 and 0.4) appears
+to cover all relevant values. The 15 pairs of asset correlations ¯
+intra and ¯
+inter which
+are used for the calibration are listed in Table 2.10
+Table 2
+Correlation parameters for model calibration
+The following table lists the intra­sector asset correlations and the correspond-
+ing inter­sector correlations used to calibrate the infection probability.
+No. 1 2 3 4 5 6
+intra­sector 0.05 0.1 0.15 0.2 0.3 0.4
+inter­sector 0.025 0.025 0.025 0.05 0.05 0.05
+0.05 0.05 0.075 0.1 0.1
+0.075 0.1 0.15 0.15
+Realistic PD values were taken from historical default rates observed for common
+rating categories, in particular 0.03%, 0.2%, 0.5%, 1%, 2%, and 5%. As common
+intuition tells us that corporate loans have, on average, lower PDs than retail ex-
+posures and also that systematic risk decreases with the default probability, PDs of
+up to 5% are considered to be most relevant for the analysis.
+With 4 different sector distributions, 6 PDs and 15 pairs of intra­sector and inter­
+9See, for example, Lopez (2002) as an example of relatively high estimates of asset correlations
+and Roesch (2003) who estimates relatively low values.
+10In the special case of zero inter­sector correlation (4 = 0), I also consider values of 0.02 and
+0.5 for the intra­sector asset correlation.
+13
+sector asset correlations, a total of 360 parameter sets are considered. For every
+parameter set the VaR is determined in the multi­factor model by simulation. Af-
+terwards the optimal q is computed which generates roughly the same VaR in the
+infection model. The linear regressions are carried out using the q values as "ob-
+servations" of the dependent variable. The estimates of the regression coefficients
+0
+, ..., 4
+in (13) are summarized in Table 3 for the two cases with and without
+inter­sector correlation. The regression coefficients are highly significant with one
+Table 3
+Regression results
+The following table presents the results of regressing the natural logarithm
+of the "optimal" infection parameter q on the Hirschman-Herfindahl index
+(HHI), the average asset correlations (¯
+intra and ¯
+inter), and the default prob-
+ability ¯
+p. "***" signals significance at the 99% confidence level.
+Regressor Intercept HHI ¯
+p ¯
+intra ¯
+inter
+coefficient 0 1 2 3 4
+a) Zero inter­sector correlation
+estimate -0.286 1.060*** 0.349*** 1.795*** ­
+Standard error 0.146 0.045 0.019 0.030 ­
+b) With inter­sector correlation
+estimate 0.813*** 0.466*** 0.488*** 1.067*** 0.688***
+Standard error 0.097 0.022 0.009 0.036 0.036
+exception. Since the coefficient of the intercept is insignificant in the case of zero
+inter­sector correlation, this regression model is also estimated without intercept
+with only marginal changes in the other coefficient estimates. The signs of the esti-
+mated coefficients are as expected in all cases. The infection probability increases, as
+expected, with sector concentration, measured by HHI, with the default probability
+¯
+p, and also with the asset correlations ¯
+intra and ¯
+inter.
+The adjusted R2 of the regression estimation is 96% without inter­sector correlation
+and 95% with inter­sector correlation. These results indicate that the explanatory
+power of the regression models is sufficient to keep the calibration error from unex-
+plained noise in the residuals within reasonable bounds.
+14
+4. Evaluation of the Infection Model
+When evaluating the model, the calibrated model is applied to various test portfolios
+in order to measure the accuracy of the VaR. For the test portfolios in the analyses
+the distribution of exposures across sectors was constructed from credit register data
+on real bank portfolios. This test is extremely important because of three different
+sources of error which can distort the results of the calibration when applied to real
+portfolios.
+The first error component derives from a discrete diversity score and does not de-
+pend, therefore, directly on the calibration procedure. The diversity score has to be
+an integer since the loss distribution, defined by (10), is a discrete distribution. This
+error decreases as the number of exposures increases in the portfolio.
+The second error component depends on the unexplained variation in the regression
+model, defined by (13). In order to reduce this error, various specifications of (13)
+were tried until an adjusted R2 of 96% seemed satisfactory.
+The third, and arguably most important, error component derives from the difference
+between the parameter set of the real portfolio and the parameter sets used for
+calibration. A realistic range of parameters was used in order to reduce this effect,
+yet this difference still constitutes a potential source of error, especially with respect
+to the sector concentration, measured by HHI.
+To evaluate the accuracy of the model calibration, three test portfolios were used
+with realistic sector distributions. The first test portfolio represents the overall
+business­sector concentration of the German banking system, including branches
+of foreign banks, on German corporate, non­financial borrowers. I consider this
+to be a reasonable approximation of a balanced portfolio. This view is guided by
+the intuition that banks' portfolios, on average, cannot be more diversified than
+the average relative sector distribution of the national banking system. However,
+a VaR-minimizing portfolio could be better diversified and could yield a different
+and possibly more uniform distribution of exposures across sectors. Portfolio 1
+was constructed by aggregating large corporate exposures11 from the loan portfolios
+of 2224 German banks at the end of September 2004. The data were extracted
+from the German central credit register, which collects commercial, industrial, and
+11See sections 13 and 14 of the German Banking Act ("Kreditwesengesetz").
+15
+consumer loans. Since the credit register reports only national industry codes which
+are compatible with the NACE classification scheme, the sector exposures were
+mapped to the Global Industry Classification Standard (GICS). For every sector
+the total exposure, aggregated over all banks in the sample, was scaled so that the
+sum of all sectors is consistent with the hypothetical total volume of EUR 6,000,000.
+The calibration accuracy is subsequently measured for two more concentrated test
+portfolios which were constructed to resemble real bank portfolios with respect to
+the HHI. The sector distribution of all three portfolios is shown in Table 4. With
+HHI ranging from 17.6% for the first portfolio to 61.7% for the last, the portfolios
+cover a relatively broad range of exposure concentrations in sectors.
+Table 4
+Sector decomposition of the test portfolios
+The following table presents the sector decomposition of test portfolios 1­3
+according to the GICS classification scheme, together with the Herfindahl-
+Hirschman index (HHI), based on the aggregated sector exposures.
+Sector Portfolio 1 Portfolio 2 Portfolio 3
+A: Energy 0.2% 0.1% 0.1%
+B: Materials 6.0% 4.0% 1.5%
+C1: Goods 11.5% 41.0% 77.9%
+C2: Commercial services 33.7% 22.5% 8.4%
+C3: Transportation 7.14% 4.8% 1.8%
+D: Consumer discretionary 15.0% 10.0% 3.8 %
+E: Consumer staples 6.5% 4.3% 1.6%
+F: Health care 9.1% 6.1% 2.3%
+H: Information technology 3.2% 2.1% 0.8%
+I: Telecommunication services 1.1% 0.7% 0.3%
+J: Utilities 6.7% 4.5% 1.7%
+HHI 17.6% 24.0% 61.7%
+Little computational work is required to apply the calibrated infection model. The
+VaR is determined as the 99.9% adverse percentile of the loss distribution defined by
+(10). This calculation requires the parameter q which is determined from (13) with
+estimates of the regression coefficients 0
+, ..., 4
+given in Table 3 and the portfolio­
+dependent parameter values HHI, ¯
+intra, ¯
+inter, and ¯
+p.
+16
+When analyzing each test portfolio, the parameter HHI is kept constant because
+it is defined by the exposure distribution across sectors which is also constant for
+each test portfolio. In order to increase the representativeness of the results ¯
+p, ¯
+intra,
+and ¯
+inter are varied in each test portfolio in the same range as for the calibration.
+For 3 test portfolios, 6 PDs and 15 pairs of ¯
+intra and ¯
+inter, this produces 270 VaR
+estimates for the multi­factor model, for the BET model, and for the infection model
+respectively.
+Table 5 shows descriptive statistics of the VaR for portfolios 1, 2, and 3. The
+relatively strong increase in the HHI for portfolio 3 compared with portfolios 1 and
+2 is mirrored by a strong increase of 66% and 48% in the VaR.
+Table 5
+Descriptive statistics of the VaR for portfolio 1­3
+The following table contains the median, standard deviation, and 75% quantile
+of the VaR over 90 tuples of default probabilities and intra­sector and inter­
+sector asset correlations. The VaR was determined by MC simulations. All
+numbers are given in percent.
+Test portfolio 1 2 3
+Median 5.6 6.3 9.3
+Standard deviation 8.5 9.2 13.4
+75% quantile 12.6 14.2 19.4
+Table 6 shows descriptive statistics of the infection probabilities for the three test
+portfolios. For each portfolio the median, standard deviation, and the 75% quantile
+are reported for 90 tuples of default probabilities and intra­sector and inter­sector
+asset correlations. The results are relatively similar for portfolio 1 and 2 but for the
+more concentrated portfolio 3 the level and the dispersion of the infection probabil-
+ities roughly double.
+Table 9 in the Appendix provides an extraction of VaR estimates and VaR errors for
+selected combinations of ¯
+intra, ¯
+inter, and ¯
+p for portfolio 1. Column 4 of the table
+contains the VaR (in percent), obtained from MC simulations, and the percentage
+errors of the BET model and the infection model relative to the simulation-based
+VaR.
+17
+Table 6
+Descriptive statistics of the calibrated infection probabilities for
+portfolio 1­3
+The following table contains the median, standard deviation, and 75% quantile
+of the infection probabilities over 90 tuples of default probabilities and intra­
+sector and inter­sector asset correlations. All numbers are given in percent.
+Test portfolio 1 2 3
+Median 0.17 0.20 0.41
+Standard deviation 0.40 0.47 0.80
+75% quantile 0.42 0.53 0.94
+According to Table 9, the relative error in the VaR estimate is substantially lower
+for the infection model than for the BET model. With few exceptions, it is below
+10% and may be regarded as sufficiently small for practical purposes to measure
+the impact of sector concentration on the VaR with the infection model. The re-
+gions in which the infection model produces the highest relative errors in VaR are
+characterized by low PDs in combination with relatively high asset correlations.
+Figure 1 visualizes the percentage error in the VaR for two selected values of ¯
+p,
+namely 20bp and 2%. The inter­sector correlation is set to zero. Figure 1 shows
+that in the infection model the relative errors increase with ¯
+intra only for the lower
+PD of 20 bp. For ¯
+intra > 0.15 and ¯
+pi
+= 0.2% the approximation error exceeds the
+10% boundary; however, this occurs relatively rarely in the 270 considered cases.
+For the BET model the relative errors are considerably higher and increase with the
+asset correlations, as expected.
+Figure 2 differs from Figure 1 in that the inter­sector correlation is set to 5% instead
+of zero. The results are qualitatively very similar to the case of zero inter­sector
+correlation. Again, there is no monotonic relation between the intra­sector corre-
+lation and the accuracy of the infection model. This suggests that the calibration
+of the infection model achieves its purpose of accounting for changes in the asset
+correlation. Only for relatively extreme combinations of low PDs and high asset
+correlations, not shown in Figure 2, are peaks in the relative VaR errors observed.
+This is different from the BET model, for which a positive relationship can overall
+be observed between the asset correlation and the VaR error can be observed.
+18
+Figure 1. Percentage absolute error in the VaR estimate in the BET
+model and in the infection model for portfolio 1 (with zero inter­sector
+asset correlation)
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45
+intra-sector asset correlation
+error in VaR (%)
+BET;PD=20bp infection model;PD=20bp
+BET;PD=2%p infection model;PD=2%
+Figure 2. Percentage absolute error in the VaR estimate in the BET
+model and in the infection model for portfolio 1 (with inter­sector asset
+correlation of 2.5% for an intra­sector correlation of 5% and 5% for higher
+intra­sector correlations)
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45
+intra-sector asset correlation
+error in VaR (%)
+BET;PD=20bp infection model;PD=20bp
+BET;PD=2%p infection model;PD=2%
+19
+Figure 3. Percentage absolute error in the VaR estimate in the BET
+model and in the infection model for portfolio 3 (with zero inter­sector
+asset correlation)
+0%
+10%
+20%
+30%
+40%
+50%
+60%
+70%
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45
+intra-sector asset correlation
+error in VaR (%)
+BET;PD=20bp infection model;PD=20bp
+BET;PD=2%p infection model;PD=2%
+Figure 3 shows the approximation error in a heavily concentrated single­sector port-
+folio. Again, the relative errors of the infection model appear to be relatively robust
+against changes in the asset correlation.
+Table 7 summarizes descriptive statistics of the absolute values of the relative VaR
+errors. Results are presented for both models and for all three test portfolios, calcu-
+lated from 90 tuples of ¯
+intra, ¯
+intra, and ¯
+p for each portfolio. The gain in accuracy
+by using the infection model instead of the BET model is considerable and amounts
+to 28.8­31.8 percentage points for the median errors. For the infection model the
+median error and also the other two statistics are considerably higher for portfolio 3
+(which has the highest concentration) than for the other two portfolios. This may
+at least partly be explained by the fact that the most concentrated portfolio is out­
+of­sample in the sense that the highest HHI for the calibration was 38% compared
+with a considerably higher value of 61.7% in portfolio 3. If portfolios with such a
+concentrated sector distribution are relevant for practical purposes, a re­calibration
+can be carried out based on more concentrated portfolios. With one exception,12,
+12For the smallest parameter values, which means for ¯
+intra = 0.05, ¯
+inter = 0 and ¯
+p = 0.03%,
+both models achieve roughly the same accuracy.
+20
+Table 7
+Accuracy of value-at-risk estimates for the three test portfolios
+The following table contains the median, standard deviation, and 75% quantile
+of the absolute VaR approximation errors for test portfolios 1­3. The approxi-
+mation error is defined as the absolute value of the relative difference between
+the value­at­risk (VaR) in the multi­factor model and the benchmark model
+which is either the original BET model or the calibrated infection model. All
+numbers are given in percent.
+test portfolio 1 2 3
+BET model Median 34.1 36.7 39.9
+Standard deviation 10.9 11.6 10.0
+75% quantile 42.4 44.7 47.9
+Infection model Median 5.3 4.9 9.8
+Standard deviation 5.1 6.0 9.6
+75% quantile 8.9 10.4 17.1
+replacing the BET model by the infection model substantially reduces the error in
+the VaR. It is up to the practitioner to decide whether the results are sufficiently
+accurate for his purposes given the "fit­for­purpose" character of the approach.
+5. Summary and Conclusions
+Results from portfolio models for credit risk tell us that exposure concentrations
+in certain industry sectors can substantially increase the VaR. The purpose of this
+paper is to analyze a tractable "infection model" that permits a meaningful estimate
+of the impact of concentration risk on the VaR. The required input parameters ­
+the sector­based Herfindahl­Hirschman index, the average (intra­sector and inter­
+sector) asset correlations, weighted by total sector exposures, and the average default
+probability in each sector ­ can be calculated from the data which are already
+required to calculate a diversity score for the BET model. Therefore, the new
+model imposes no additional data requirements compared with the BET model and
+considerably fewer than a multi­factor model.
+The infection model extends the Binomial Expansion Technique (BET) developed by
+21
+Moody's for the valuation of CDOs. The key idea is to introduce default infection for
+the hypothetical portfolio on which the real portfolio is mapped in order to obtain
+a simple solution for the VaR. The infection probability is calibrated for a range
+of typical values of the input parameters to the VaR obtained from a multi­factor
+model.
+The accuracy of the new model and its calibration are measured for three test port-
+folios. The exposure distributions across sectors of these portfolios are defined based
+on information from the German public credit register. The first portfolio reflects the
+average sector distribution of the German banking system whereas the second and
+third portfolios are more concentrated and resemble those of real banks. The tests
+also consider a broad range of realistic values of default probabilities and intra­sector
+as well as inter­sector asset correlations. I find that a carefully calibrated model ap-
+proximates the VaR obtained from a multi­factor model reasonably closely. The
+highest errors are observed for combinations of very low default probabilities and
+high asset correlations. With a reduction of roughly 30 percentage points in the
+median of the relative VaR approximation errors, the infection model out­performs
+by far the BET approach, which is dismissed for its lack of accuracy.
+Future work will comprise further robustness checks, with attention given to the
+heterogeneity of intra­sector correlations and PDs. A comparison of the specific
+shape of the loss distribution implied by the infection model with alternatives is also
+warranted. The loss distribution can be replaced by another distribution, for ex-
+ample a beta­binomial distribution, and the additional parameter can be calibrated
+similarly to q in the infection model.
+Parsimonious data requirements constitute an important, practical advantage of the
+infection model. Instead of a fully specified correlation matrix, it is sufficient to
+provide an average intra­sector and an average inter­sector correlation as inputs.
+From the evaluation of the calibrated infection model, it can be concluded that the
+model offers a fit­for­purpose tool to measure concentration risk in business sectors.
+It could be useful for risk managers in banks as well as banking supervisors, and may
+be especially suited for application in regionally focused and medium­sized banks
+because of its relatively sparse data requirements.
+22
+References
+Basel Committee on Banking Supervision (2004): Bank Failures in Mature
+Economies. http://www.bis.org/publ/bcbs\_wp13.pdf.
+Basel Committee on Banking Supervision (2005): International Convergence of
+Capital Measurement and Capital Standards, A Revised Framework. http://
+www.bis.org/publ/bcbsca.htm.
+Cespedes, J. C. G.; Juan Herrero, J. A. de; Kreinin, A. and Rosen, D. (2005): A
+Simple Multi­Factor "Factor Adjustment" for the Treatment of Diversification in
+Credit Capital Rules. Working Paper.
+Cifuentes, A.; Murphy, E. and O`Connor, G. (1996): Emerging Market Collater-
+alized Bond Obligations: An Overview. In: Moody's Investor Service, Special
+Report, October.
+Cifuentes, A. and O`Connor, G. (1996): The Binomial Expansion Method Applied
+to CBO/CLO Analysis. In: Moody's Investor Service, Special Report, December.
+Cifuentes, A. and Wilcox, C. (1998): The Double Binomial Method and its Appli-
+cation to a Special Case of CDO Structures. In: Moody's Investor Service, Special
+Report, March.
+Council of the European Union (2005): Proposal for a Directive of the European Par-
+liament and of the Council relating to the taking up and pursuit of the business of
+credit institutions (recast). http://europa.eu.int/comm/internal\_market/
+bank/docs/regcapital/com-2004-486/volume1\_en.pdf.
+Davis, M. and Lo, V. (2001): Infectious Defaults. In: Quantitative Finance 1,
+382­387.
+Gordy, M. (2004): Risk Measures for the 21st Century, chapter Granularity Adjust-
+ment in Portfolio Credit Risk Measurement. Risk Measures for the 21st Century.
+Hirschmann, A. O. (1964): The paternity of an Index. In: American Economic
+Review 54, 761­762.
+Lopez, J. A. (2002): The Empirical Relationship between Average Asset Correlation,
+Firm Probability of Default and Asset Size. Working Paper, BIS Workshop: "Basel
+II: An Economic Assessment".
+23
+Pykhtin, M. (2004): Multi­factor adjustment. In: Risk Magazine 17 (3), 85­90.
+Roesch, D. (2003): Correlations and Business Cycles of Credit Risk: Evidence from
+bankruptcies in Germany. In: Financial Markets and Portfolio Management 17,
+309­331.
+Wilde, T. (2001): Probing Granularity. In: Risk Magazine 14 (8), 103­106.
+Witt, G. (2004): Moody's Correlated Binomial Default Distribution. In: Moody's
+Investor Service, Special Report, August.
+24
+Appendix
+Table 8
+Composition of portfolios used for calibration
+The following table presents the sector decomposition of the four portfolios
+that were used for the calibration as a percentage. The last row contains the
+Herfindahl-Hirschman index (HHI) of the respective portfolio.
+Sector Portfolio no. 1 Portfolio no. 2 Portfolio no. 3 Portfolio no. 4
+1 50 33.33 22.22 14.81
+2 30 16.67 11.11 7.41
+3 20 20 11.11 7.41
+4 10 5.56 3.70
+5 13.33 13.33 7.41
+6 6.67 6.67 3.70
+7 6.67 3.70
+8 3.33 1.85
+9 8.89 8.89
+10 4.44 4.44
+11 4.44 4.44
+12 2.22 2.22
+13 4.44
+14 2.22
+15 2.22
+16 1.11
+17 5.93
+18 2.96
+19 2.96
+20 1.48
+21 2.96
+22 1.48
+23 1.48
+24 0.74
+HHI 0.38 0.21 0.18 0.065
+25
+Table 9
+Accuracy of value-at-risk estimates for the test portfolio
+The following table lists the value-at-risk (normalized for a total exposure of
+100 currency units) obtained from simulation in a multi­factor model and the
+relative errors of the BET model and the calibrated infection model.
+Value­at­risk Approximation error in percent
+¯
+intra ¯
+inter ¯
+p multi­factor BET model infection model
+0.05 0.025 0.0003 0.2 21.9% 9.4%
+0.05 0.025 0.002 0.9 26.3% 1.4%
+0.05 0.025 0.005 2.0 20.9% 5.0%
+0.05 0.025 0.01 3.6 24.6% 4.0%
+0.05 0.025 0.02 6.3 18.8% 6.3%
+0.05 0.025 0.05 12.9 12.3% 4.1%
+0.15 0.025 0.0003 0.4 39.5% 5.9%
+0.15 0.025 0.002 1.5 36.9% 5.3%
+0.15 0.025 0.005 3.1 33.1% 4.4%
+0.15 0.025 0.01 5.2 30.0% 3.7%
+0.15 0.025 0.02 8.6 26.0% 1.4%
+0.15 0.025 0.05 16.7 19.4% 2.5%
+0.15 0.05 0.0003 0.4 34.1% 15.3%
+0.15 0.05 0.002 1.8 37.9% 0.6%
+0.15 0.05 0.005 3.7 34.3% 1.4%
+0.15 0.05 0.01 6.1 27.1% 6.3%
+0.15 0.05 0.02 10.2 31.3% 1.8%
+0.15 0.05 0.05 19.7 21.1% 5.2%
+0.2 0.05 0.0003 0.5 46.0% 8.0%
+0.2 0.05 0.002 2.1 47.2% 7.6%
+0.2 0.05 0.005 4.3 41.1% 5.8%
+0.2 0.05 0.01 7.0 33.4% 0.0%
+0.2 0.05 0.02 11.5 26.8% 4.6%
+0.2 0.05 0.05 21.4 23.8% 4.7%
+0.3 0.1 0.0003 0.9 55.2% 12.0%
+0.3 0.1 0.002 3.8 50.0% 0.0%
+0.3 0.1 0.005 7.1 39.7% 9.6%
+0.3 0.1 0.01 11.3 42.7% 0.4%
+0.3 0.1 0.02 17.0 30.0% 2.1%
+0.3 0.1 0.05 30.4 24.13% 1.2%
+26
+27
+The following Discussion Papers have been published since 2005:
+Series 1: Economic Studies
+1 2005 Financial constraints and capacity adjustment
+in the United Kingdom ­ Evidence from a Ulf von Kalckreuth
+large panel of survey data Emma Murphy
+2 2005 Common stationary and non-stationary
+factors in the euro area analyzed in a
+large-scale factor model Sandra Eickmeier
+3 2005 Financial intermediaries, markets, F. Fecht, K. Huang,
+and growth A. Martin
+4 2005 The New Keynesian Phillips Curve
+in Europe: does it fit or does it fail? Peter Tillmann
+5 2005 Taxes and the financial structure Fred Ramb
+of German inward FDI A. J. Weichenrieder
+6 2005 International diversification at home Fang Cai
+and abroad Francis E. Warnock
+7 2005 Multinational enterprises, international trade,
+and productivity growth: Firm-level evidence Wolfgang Keller
+from the United States Steven R. Yeaple
+8 2005 Location choice and employment S. O. Becker,
+decisions: a comparison of German K. Ekholm, R. Jäckle,
+and Swedish multinationals M.-A. Muendler
+9 2005 Business cycles and FDI: Claudia M. Buch
+evidence from German sectoral data Alexander Lipponer
+10 2005 Multinational firms, exclusivity, Ping Lin
+and the degree of backward linkages Kamal Saggi
+28
+11 2005 Firm-level evidence on international Robin Brooks
+stock market comovement Marco Del Negro
+12 2005 The determinants of intra-firm trade: in search Peter Egger
+for export-import magnification effects Michael Pfaffermayr
+13 2005 Foreign direct investment, spillovers and
+absorptive capacity: evidence from quantile Sourafel Girma
+regressions Holger Görg
+14 2005 Learning on the quick and cheap: gains James R. Markusen
+from trade through imported expertise Thomas F. Rutherford
+15 2005 Discriminatory auctions with seller discretion:
+evidence from German treasury auctions Jörg Rocholl
+16 2005 Consumption, wealth and business cycles: B. Hamburg,
+why is Germany different? M. Hoffmann, J. Keller
+17 2005 Tax incentives and the location of FDI: Thiess Buettner
+evidence from a panel of German multinationals Martin Ruf
+18 2005 Monetary Disequilibria and the Dieter Nautz
+Euro/Dollar Exchange Rate Karsten Ruth
+19 2005 Berechnung trendbereinigter Indikatoren für
+Deutschland mit Hilfe von Filterverfahren Stefan Stamfort
+20 2005 How synchronized are central and east
+European economies with the euro area? Sandra Eickmeier
+Evidence from a structural factor model Jörg Breitung
+21 2005 Asymptotic distribution of linear unbiased J.-R. Kurz-Kim
+estimators in the presence of heavy-tailed S.T. Rachev
+stochastic regressors and residuals G. Samorodnitsky
+29
+22 2005 The Role of Contracting Schemes for the
+Welfare Costs of Nominal Rigidities over
+the Business Cycle Matthias Paustian
+23 2005 The cross-sectional dynamics of German J. Döpke, M. Funke
+business cycles: a bird's eye view S. Holly, S. Weber
+24 2005 Forecasting German GDP using alternative Christian Schumacher
+factor models based on large datasets
+25 2005 Time-dependent or state-dependent price
+setting? ­ micro-evidence from German
+metal-working industries ­ Harald Stahl
+26 2005 Money demand and macroeconomic Claus Greiber
+uncertainty Wolfgang Lemke
+27 2005 In search of distress risk J. Y. Campbell,
+J. Hilscher, J. Szilagyi
+28 2005 Recursive robust estimation and control Lars Peter Hansen
+without commitment Thomas J. Sargent
+29 2005 Asset pricing implications of Pareto optimality N. R. Kocherlakota
+with private information Luigi Pistaferri
+30 2005 Ultra high frequency volatility estimation Y. Aït-Sahalia,
+with dependent microstructure noise P. A. Mykland, L. Zhang
+31 2005 Umstellung der deutschen VGR auf Vorjahres-
+preisbasis ­ Konzept und Konsequenzen für die
+aktuelle Wirtschaftsanalyse sowie die ökono-
+metrische Modellierung Karl-Heinz Tödter
+30
+32 2005 Determinants of current account developments
+in the central and east European EU member
+states ­ consequences for the enlargement of Sabine Herrmann
+the euro erea Axel Jochem
+33 2005 An estimated DSGE model for the German
+economy within the euro area Ernest Pytlarczyk
+34 2005 Rational inattention: a research agenda Christopher A. Sims
+35 2005 Monetary policy with model uncertainty: Lars E.O. Svensson
+distribution forecast targeting Noah Williams
+36 2005 Comparing the value revelance of R&D report- Fred Ramb
+ing in Germany: standard and selection effects Markus Reitzig
+37 2005 European inflation expectations dynamics J. Döpke, J. Dovern
+U. Fritsche, J. Slacalek
+38 2005 Dynamic factor models Sandra Eickmeier
+Jörg Breitung
+39 2005 Short-run and long-run comovement of
+GDP and some expenditure aggregates
+in Germany, France and Italy Thomas A. Knetsch
+40 2005 A"wreckers theory" of financial distress Ulf von Kalckreuth
+41 2005 Trade balances of the central and east
+European EU member states and the role Sabine Herrmann
+of foreign direct investment Axel Jochem
+42 2005 Unit roots and cointegration in panels Jörg Breitung
+M. Hashem Pesaran
+43 2005 Price setting in German manufacturing:
+new evidence from new survey data Harald Stahl
+31
+1 2006 The dynamic relationship between the Euro
+overnight rate, the ECB's policy rate and the Dieter Nautz
+term spread Christian J. Offermanns
+2 2006 Sticky prices in the euro area: a summary of Álvarez, Dhyne, Hoeberichts
+new micro evidence Kwapil, Le Bihan, Lünnemann
+Martins, Sabbatini, Stahl
+Vermeulen, Vilmunen
+3 2006 Going multinational: What are the effects
+on home market performance? Robert Jäckle
+4 2006 Exports versus FDI in German manufacturing:
+firm performance and participation in inter- Jens Matthias Arnold
+national markets Katrin Hussinger
+5 2006 A disaggregated framework for the analysis of Kremer, Braz, Brosens
+structural developments in public finances Langenus, Momigliano
+Spolander
+6 2006 Bond pricing when the short term interest rate Wolfgang Lemke
+follows a threshold process Theofanis Archontakis
+7 2006 Has the impact of key determinants of German
+exports changed?
+Results from estimations of Germany's intra
+euro-area and extra euro-area exports Kerstin Stahn
+8 2006 The coordination channel of foreign exchange Stefan Reitz
+intervention: a nonlinear microstructural analysis Mark P. Taylor
+9 2006 Capital, labour and productivity: What role do Antonio Bassanetti
+they play in the potential GDP weakness of Jörg Döpke, Roberto Torrini
+France, Germany and Italy? Roberta Zizza
+10 2006 Real-time macroeconomic data and ex ante J. Döpke, D. Hartmann
+predictability of stock returns C. Pierdzioch
+32
+11 2006 The role of real wage rigidity and labor market
+frictions for unemployment and inflation Kai Christoffel
+dynamics Tobias Linzert
+12 2006 Forecasting the price of crude oil via
+convenience yield predictions Thomas A. Knetsch
+13 2006 Foreign direct investment in the enlarged EU:
+do taxes matter and to what extent? Guntram B. Wolff
+14 2006 Inflation and relative price variability in the euro Dieter Nautz
+area: evidence from a panel threshold model Juliane Scharff
+33
+Series 2: Banking and Financial Studies
+1 2005 Measurement matters ­ Input price proxies
+and bank efficiency in Germany Michael Koetter
+2 2005 The supervisor's portfolio: the market price
+risk of German banks from 2001 to 2003 ­ Christoph Memmel
+Analysis and models for risk aggregation Carsten Wehn
+3 2005 Do banks diversify loan portfolios? Andreas Kamp
+A tentative answer based on individual Andreas Pfingsten
+bank loan portfolios Daniel Porath
+4 2005 Banks, markets, and efficiency F. Fecht, A. Martin
+5 2005 The forecast ability of risk-neutral densities Ben Craig
+of foreign exchange Joachim Keller
+6 2005 Cyclical implications of minimum capital
+requirements Frank Heid
+7 2005 Banks' regulatory capital buffer and the
+business cycle: evidence for German Stéphanie Stolz
+savings and cooperative banks Michael Wedow
+8 2005 German bank lending to industrial and non-
+industrial countries: driven by fundamentals
+or different treatment? Thorsten Nestmann
+9 2005 Accounting for distress in bank mergers M. Koetter, J. Bos, F. Heid
+C. Kool, J. Kolari, D. Porath
+10 2005 The eurosystem money market auctions: Nikolaus Bartzsch
+a banking perspective Ben Craig, Falko Fecht
+11 2005 Financial integration and systemic Falko Fecht
+risk Hans Peter Grüner
+34
+12 2005 Evaluating the German bank merger wave Michael Koetter
+13 2005 Incorporating prediction and estimation risk A. Hamerle, M. Knapp,
+in point-in-time credit portfolio models T. Liebig, N. Wildenauer
+14 2005 Time series properties of a rating system U. Krüger, M. Stötzel,
+based on financial ratios S. Trück
+15 2005 Inefficient or just different? Effects of J. Bos, F. Heid, M. Koetter,
+heterogeneity on bank efficiency scores J. Kolatri, C. Kool
+01 2006 Forecasting stock market volatility with J. Döpke, D. Hartmann
+macroeconomic variables in real time C. Pierdzioch
+02 2006 Finance and growth in a bank-based economy: Michael Koetter
+is it quantity or quality that matters? Michael Wedow
+03 2006 Measuring business sector concentration
+by an infection model Klaus Düllmann
+35
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a Ph D and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+

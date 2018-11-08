@@ -1,0 +1,1174 @@
+© 2006 Royal Statistical Society 0964­1998/06/169723
+J. R. Statist. Soc. A (2006)
+169, Part 4, pp. 723­743
+Latent class logistic regression: application to
+marijuana use and attitudes among high school
+seniors
+Hwan Chung,
+Michigan State University, East Lansing, USA
+Brian P. Flaherty
+University of Washington, Seattle, USA
+and Joseph L. Schafer
+Pennsylvania State University, University Park, USA
+[Received April 2005. Revised November 2005]
+Summary. Analysing the use of marijuana is challenging in part because there is no widely
+accepted single measure of individual use. Similarly, there is no single response variable that
+effectively captures attitudes toward its social and moral acceptability. One approach is to view
+the joint distribution of multiple use and attitude indicators as a mixture of latent classes. Pooling
+items from the annual `Monitoring the future'surveys of American high school seniors from 1977
+to 2001, we find that marijuana use and attitudes are well summarized by a four-class model.
+Secular trends in class prevalences over this period reveal major shifts in use and attitudes.
+Applying a multinomial logistic model to the latent response, we investigate how class mem-
+bership relates to demographic and life style factors, political beliefs and religiosity over time.
+Inferences about the parameters of the latent class logistic model are obtained by a combination
+of maximum likelihood and Bayesian techniques.
+Keywords: Categorical data; Data augmentation; Finite mixture; Markov chain Monte Carlo
+methods; Multiple imputation
+1. Introduction
+Many theories of substance use and dependence describe behaviour in terms of population
+classes or developmental stages. For example, the acquisition of nicotine dependence is often
+depicted as a behavioural sequence that includes the initial trying of tobacco, experimenta-
+tion and regular smoking before dependence (Leventhal and Cleary, 1980; Flay, 1993; Mayhew
+et al., 2000). Additional types of smokers have been identified such as non-dependent irregular
+smokers (called `chippers') (Shiffman et al., 1994). Stage sequential models have been used to
+describe the onset of substance use (Graham et al., 1991; Lanza and Collins, 2002) and to test
+the gateway hypothesis, which regards marijuana as a potential conduit to more harmful sub-
+stances such as heroin or cocaine (Collins, 2002). A common theme of these theories is that,
+at any moment, individuals are placed into distinct categories or groups rather than along a
+continuum.
+Address for correspondence: Hwan Chung, Department of Epidemiology, Michigan State University, B 601
+West Fee Hall, East Lansing, MI 48824, USA.
+E-mail: hchung@epi.msu.edu
+724 H. Chung, B. P. Flaherty and J. L. Schafer
+Latent class (LC) analysis (Goodman, 1974; Clogg and Goodman, 1984) is ideally suited to
+theories of this type. In LC analysis, relationships between categorical variables are explained
+by positing the existence of an unobserved or latent classifier that makes them conditionally
+independent--i.e. categorical variables are conditionally independent within each latent classi-
+fier. If an LC model fits well, it may provide a parsimonious and intuitively appealing summary
+of the cell frequencies in a high dimensional contingency table and reveal features that are not
+apparent from an item-by-item analysis. Another advantage of an LC analysis is that, rather
+than taking each response at face value, the items are treated as fallible indicators of unseen
+states. Logical inconsistencies--e.g. a subject claiming use in the last 30 days but no lifetime
+use--are allowed by the model and do not need to be edited out of the data. In recent years,
+LC modelling has become an increasingly popular strategy for quantifying measurement error
+in substance use self-reports (Flaherty, 2002). Indeed, Biemer and Wiesen (2002) have demon-
+strated that LC models may yield plausible estimates of the rates of misreporting, comparable
+with what we would obtain from an expensive process of reinterview. Recent extensions to the
+traditional LC model allow covariates to predict class membership (Bandeen-Roche et al., 1997).
+They allow the marginal distribution of class membership to be affected by covariates through
+a binary or polytomous logistic regression. In this framework, influences of covariates on items
+are completely mediated by the class membership. The LC logistic regression model allows the
+distributions of class membership to vary with covariates, but the meaning of the unseen class
+is still determined only by the items. As in classical logistic regression theory, the covariates are
+non-stochastic, assumed known and fixed.
+In this paper we apply LC logistic regression to items on self-reported use of marijuana and
+attitudes in representative samples of American high school seniors from 1977 to 2001. The data
+were drawn from `Monitoring the future' (MTF), an on-going survey that explores changes in
+values, behaviours and life style orientations of contemporary American youth (Johnston et al.,
+2001). Analyses of MTF show that rates of use of marijuana among seniors have fluctuated
+dramatically over the last three decades. Prevalence rose during the late 1960s and throughout
+most of 1970s, declined steadily and substantially throughout the 1980s and began to rise again
+during the 1990s (Johnston et al., 2002). The use of marijuana is known to be strongly correlated
+with individuals' attitudes towards its social and moral acceptability (Johnston, 1982, 1985). If
+attitudinal measures are treated as exogenous predictors, interpretation of the estimated rela-
+tionships is clouded by the strong possibility that patterns of use may influence attitudes. Rather
+than attempting to disentangle use and attitudes, we use LC analysis to examine how they have
+jointly co-occurred and changed over time.
+Our work reveals that throughout this period the population has been dominated by four
+groups: non-users who disapprove of use, non-users who are somewhat approving, experiment-
+ers who disapprove of regular use and regular users who approve of regular use. Previous anal-
+yses from MTF revealed significant relationships between the use of marijuana and a variety of
+other factors including demographic characteristics, life style and beliefs (Bachman et al., 1998).
+Accordingly, we use these as covariates to predict jointly the prevalence of group membership.
+We show how the rates of group membership have historically changed and we examine group
+composition in terms of the covariates.
+In most applications of LC models to date, parameters have been estimated by maximum like-
+lihood (ML). ML may lead to reasonable estimates but often fails to provide useful measures of
+uncertainty. Even with a large sample and well fitting model, ML estimates for some quantities
+may lie on or near a boundary of the parameter space, rendering the usual Hessian-based stan-
+dard errors ineffective (Chung, 2003). As an alternative to ML, Bayesian analysis by Markov
+chain Monte Carlo (MCMC) sampling has been applied to LC models by Hoijtink (1998),
+Latent Class Logistic Regression 725
+Garrett and Zeger (2000) and Garrett et al. (2002). We extend the work of these researchers by
+showing how to incorporate covariates and how to account for missing items. Moreover, we
+demonstrate how the technique of multiple imputation (MI) (Rubin, 1987) can be applied to
+LC indicators to simplify aspects of modelling, inference and diagnosis.
+2. A latent class logistic regression model
+2.1. A traditional latent class model
+Let Yi =.Yi1,. . . , YiM/ be a vector of M survey items for the ith individual, where variable Yim
+takes possible values 1,2,. . . , rm. The basic idea of the LC model is that associations between
+items are assumed to arise because the population is composed of different unseen classes. In
+other words, the population is assumed to consist of mutually exclusive and exhaustive groups
+(LCs), and the distributions of the items vary across classes. Let li =1, 2, . . . ,L be the LC mem-
+bership of the ith individual, and let I.y=k/ denote the indicator function which takes the value
+1 if y =k and 0 otherwise.
+If li were observed, the joint probability that the ith individual belongs to class l and provides
+responses yi =.yi1,. . . , yiM/ would be
+Pr.Yi =yi,li =l/=l
+M
+m=1
+rm
+k=1
+I.yim=k/
+mk|l
+,
+where l = Pr.li = l/ denotes the marginal rate of lth-class membership in the population, and
+mk|l = Pr.Yim = k|li = l/ represents the probability of response k to the mth item given class
+membership in l. We refer to the -parameter as the `item response probability'. Therefore,
+the marginal probability of item responses without regard for the unseen class membership
+is
+Pr.Yi =yi/=
+L
+l=1
+l
+M
+m=1
+rm
+k=1
+I.yim=k/
+mk|l
+: .1/
+Here we have assumed that the items Yi1,. . . , YiM are conditionally independent or unrelated
+within each class of li. This assumption, called `local independence' by (Lazarsfeld and Henry
+(1968), is the crucial feature of the LC model that allows us to draw inferences about the unseen
+class variable.
+2.2. A latent class logistic regression model
+A natural way to extend the LC model (1) is to include stratification or grouping variables
+and to investigate whether a common LC structure holds across groups. Clogg and Goodman
+(1984) introduced an observed variable gi =1,2,. . . ,G and allowed the - and/or -parameters
+to vary across groups. This approach, which represents a first attempt to incorporate covari-
+ates into LC analysis, is obviously limited to situations where the grouping variable is discrete
+and the number of groups is small. Dayton and Macready (1988) proposed a more general
+way to incorporate subject-specific covariates, allowing them to influence  through a logistic
+link. They computed ML estimates by a computationally intensive simplex method, whereas
+Bandeen-Roche et al. (1997) applied an EM algorithm. Pfeffermann et al. (1998) described a
+generalization where not only  but also  is functionally related to covariates. ML routines for
+these models have been implemented in the software packages Mplus (Muthén and Muthén,
+1998) and Latent GOLD (Vermunt and Magidson, 2000). Allowing  to depend on covariates
+726 H. Chung, B. P. Flaherty and J. L. Schafer
+can be problematic, because the covariates may introduce associations between the items within
+an LC, violating local independence. In such a model, the LC structure changes as covariates
+are added or deleted. If  is allowed to covary with predictor variables, then the composition
+of the LCs is no longer constant over the population, and the meaning of  becomes unclear
+(Clogg and Goodman, 1984).
+We apply a generalized version of the Dayton and Macready (1988) model in which a grouping
+variable gi is allowed to affect either the values of  or  or both, but  is not allowed to change
+with covariates. Let xi = .xi1,xi2,. . . , xip/ denote a vector of covariates for the ith individual.
+Implicitly conditioning on x1,. . . , xn and g1,. . . , gn, our model is
+Pr.Y1
+=y1,. . . , Yn =yn/=
+G
+g=1 ig
+L
+l=1
+l|g.xi/
+M
+m=1
+rm
+k=1
+I.yim=k/
+mk|lg
+, .2/
+where ig denotes the product over the set of individuals in subgroup g. Rates of class mem-
+bership are related to covariates by
+l|g.xi/=Pr.li =l|xi, gi =g/
+=
+exp.xi
+l|g
+/
+1+
+L-1
+j=1
+exp.xi
+j|g
+/
+.3/
+for l = 1,. . . ,L - 1, with L|g.xi/ available as 1 - 1|g.xi/ - . . . - L-1|g.xi/. In equation (3),
+l|g
+=.1l|g, . . . , pl|g/ is a p×1 vector of logistic regression coefficients for subgroup g influ-
+encing the log-odds that an individual falls into class l relative to the base-line class L.
+We compute ML estimates for the unknown - and -parameters in model (2) by a hybrid pro-
+cedure which combines EM iterations with steps of the Newton­Raphson algorithm (Chung,
+2003). Our algorithm allows missing values to occur among the items in yi, provided that they are
+missing at random (Rubin, 1976). Asymptotic standard errors for the estimated parameters are
+computed in the usual way, which assumes that the log-likelihood is a concave function. Infor-
+mally, we can think of concave functions as functions that `spill water'--i.e. they are shaped like
+an inverted bowl. (More formally, concave functions lie above lines connecting any two points.)
+If the observed data log-likelihood is concave, the inverse of (-1 times) the Hessian matrix of
+this log-likelihood consistently estimates the covariance matrix for the ML estimates. In many
+cases, however, this procedure fails because the log-likelihood is not concave. For example, if
+any of the estimated s is close to 0 or 1--which happens when the item in question is a strong
+predictor of class membership--then we cannot obtain standard errors either for the s or for
+the s. If the sample is not sufficiently large, or if the variation in -parameters across the LCs
+is not sufficiently strong, the log-likelihood can be fairly constant over the regions where it is
+high, distorting the contours of the log-likelihood and causing the Hessian matrix to approach
+singularity. Large fluctuations in curvature are an inherent feature of finite mixtures, so the
+value of Hessian-based standard errors is often questionable. This stems from the fact that
+the log-likelihood function from this finite mixture is invariant with respect to the L! possi-
+ble reorderings of the class labels. Confidence regions sometimes extend into portions of the
+parameter space where the class labels have permuted from their order at the current mode,
+making the interpretation of the region unclear (Chung, 2003; Chung et al., 2004). Because of
+these common difficulties with ML, we have also developed Bayesian alternatives, which we
+now describe.
+Latent Class Logistic Regression 727
+3. Bayesian approaches based on Markov chain Monte Carlo sampling
+3.1. Parameter simulation via Markov chain Monte Carlo sampling
+Bayesian methods for LC models have been described by Hoijtink (1998), Garrett and Zeger
+(2000) and Lanza et al. (2005). Without covariates, a simple MCMC algorithm may be imple-
+mented as an iterative two-step procedure which can be regarded as a form of data augmentation
+(Tanner and Wong, 1987) or Gibbs sampling (Gelfand and Smith, 1990). Covariates introduce
+a minor complication because there is no simple conjugate prior family for the coefficients of
+a multinomial logistic model. We overcome this difficulty by embedding steps of a Metropolis
+algorithm (Metropolis et al., 1953) for the s into the Gibbs sampler (Robert and Casella, 2004).
+Let zi be an L-dimensional vector of binary variables indicating the latent class to which the
+ith individual belongs, i.e., if individual i belongs to class l, then zi contains a 1 in position l and 0
+in every other position. In the first step of our MCMC procedure--the imputation or I-step--we
+generate a random draw for each zi given the observed data yi and current parameter guesses.
+In the second step--the posterior or P-step--we draw new random values for the parameters
+from the augmented data posterior distribution which regards the LC membership indicators
+zi as known. Repeating this two-step procedure creates a sequence of iterates converging to the
+stationary observed data posterior distribution. Details of this two-step procedure are given
+below.
+In the I-step, given current simulated parameter values, we calculate the posterior probabili-
+ties of class membership by using
+il|g =Pr.li =l|Yi =yi, gi =g/
+=
+l|g.xi/
+M
+m=1
+rm
+k=1
+I.yim=k/
+mk|jg
+L
+j=1
+j|g.xi/
+M
+m=1
+rm
+k=1
+I.yim=k/
+mk|jg
+.4/
+for l =1,. . . ,L. Then we draw zi from a multinomial.1, i|g/ distribution independently for all
+individuals in group g, where i|g =.i1|g,. . . , iL|g/.
+Once class membership has been imputed, the augmented data likelihood factors into inde-
+pendent likelihood functions for the - and -parameters. Let B represent coefficients vectors
+.1|1
+,. . . , L-1|G
+/, and let  denote the vectorized item response probability containing all
+-parameters. The augmented data posterior given class membership may be expressed as
+Pr.B,|y,z/ Pr.B/
+G
+g=1 ig
+L
+l=1
+l|g.xi/zil Pr./
+G
+g=1
+L
+l=1
+M
+m=1
+rm
+k=1
+nmk|lg
+mk|lg
+, .5/
+where y =.y1, . . . , yn/, z =.z1,. . . , zn/, nmk|lg =ig I.yim =k, zil =1/ and Pr.B/ and Pr./ are
+the priors for B and  respectively.
+In the P-step, we draw new random values for  and B independently from distribution
+(5). Applying a Jeffreys prior to m|lg
+= .m1|lg,. . . , mrm|lg/, new random values for m|lg are
+drawn from a Dirichlet.nm1|lg + 1
+2
+,. . . , nmrm|lg + 1
+2
+/ distribution independently for m=1, . . . ,M,
+l = 1,. . . ,L and g = 1,. . . , G. A draw from the Dirichlet distribution can be obtained by nor-
+malizing a vector of rm independent gamma variates (Kennedy and Gentle, 1980).
+In Bayesian approaches to regression, coefficients are often treated as exchangeable in their
+prior distributions when attempting to make prior information vague. Goldstein (1976) noted
+that ridge regression (Hoerl and Kennard, 1970) can be viewed as a Bayesian technique with
+an exchangeable normal prior distribution on the coefficients. The analogue to a ridge prior for
+728 H. Chung, B. P. Flaherty and J. L. Schafer
+our multinomial logit model may be represented by a product of p-dimensional multivariate
+normal distributions. Another prior distribution, which was suggested by Clogg et al. (1991),
+has the conjugate form
+Pr.g
+/
+ig
+L
+l=1
+l|g.xi/ail
+for g
+= .1|g,. . . , L-1|g
+/, where the hyperparameters ail could possibly depend on the data.
+For example, Clogg et al. (1991) chose
+ail 
+ig
+.zil =1/
+n
+i=1
+I.ig/
+so that the prior distribution smooths g towards an intercept-only model. When the sample
+size is large relative to the number of parameters, the choice of prior has little effect on the final
+inferences. We use an improper uniform prior (i.e. ail = 0) for our study. This choice may be
+somewhat arbitrary but, given the large sample size that we have, the difference in inferential
+output among different sets of prior distributions is inconsequential.
+We then generate g by the following Metropolis algorithm. At iteration t, a candidate for
+the next g is sampled from a multivariate Student t proposal distribution t..t/
+g
+, c2/ with 4
+degrees of freedom, where .t/
+g
+is the parameter value at iteration t. Following the advice of
+Gelman et al. (2004) for an efficient Metropolis jumping rule, we set c  2:4
+
+{p.L-1/}. For
+our guess of , we invert the g-submatrix of the Hessian evaluated at the ML estimates ^
+B
+and ^
+,
+=-
+@2l
+@g
+@g
+-1
+B= ^
+B,= ^
+
+, .6/
+where l is the logarithm of the likelihood function that is defined in model (2). (This inverse
+typically exists even if ^
+ lies on a boundary, because we are ignoring the cross-derivatives with
+respect to B and .) Expressions for the elements of the Hessian are similar to those which were
+given by Bandeen-Roche et al. (1997). The candidate point c
+g
+is then accepted with probability
+..t/
+g
+,c
+g
+/=min 1,
+ig
+L
+l=1
+l.xi/|c
+g
+l.xi/|
+.t/
+g
+zil
+:
+Extending this procedure to a data set with missing items in yi is straightforward. In the
+I-step, given the current parameter guesses, the posterior probabilities are calculated only from
+the observed part of yi,
+obs
+il|g
+=Pr.li =l|Yobsi
+=yobsi
+, gi =g/
+=
+l|g.xi/
+mobsi
+rm
+k=1
+I.yim=k/
+mk|lg
+L
+j=1
+j|g.xi/
+mobsi
+rm
+k=1
+I.yim=k/
+mk|jg
+,
+where obsi denotes the sets of items responded to by the ith individual. The class membership zi
+is drawn from a multinomial.1,obs
+i|g
+/ distribution independently for all individuals in group g.
+In the I-step, we also generate the missing part of each yi as follows. Suppose that the mth item
+is missing for individual i who belongs to group g and class l; then yim is randomly drawn from a
+Latent Class Logistic Regression 729
+multinomial.1,m|lg
+/ distribution, where m|lg is a set of samples from the previous iteration. In
+the P-step, the updated B and  are simulated in the manner that was described above, treating
+the imputed values for the missing elements of yi as known.
+3.2. Methods of inference
+In a typical application of MCMC sampling, the analyst runs the algorithm for a burn-in period
+to eliminate dependence on the starting values. After the burn-in, averaging the output stream of
+simulated parameters produces estimates for the posterior means and variances (Tierney, 1994).
+Various methods for choosing the length of the series and the burn-in period have appeared in
+the literature (Geweke, 1992; Roberts, 1992; Gelman and Rubin 1992; Best et al., 1995). We use
+time series plots and autocorrelation functions to monitor visually the behaviour of output val-
+ues from the MCMC algorithm and to confirm our choice for the length of the burn-in period.
+After burn-in, we typically use 10000 or more cycles of MCMC sampling to estimate posterior
+means and variances.
+As an alternative to averaging over the simulated parameters, the output from the MCMC
+algorithm may also be summarized through MI (Rubin, 1987). In MI, we retain a few (say,
+10­20) simulated draws of the LC variables l1,. . . , ln and missing parts of y1, . . . ,yn from the
+I-steps, spacing them enough cycles apart to ensure that they are essentially independent. Treat-
+ing these imputed values as known, we compute point and variance estimates for the s and
+s by standard complete-data methods for proportions and logistic regression coefficients. The
+results are then combined by using Rubin's (1987) rules for scalar estimands.
+Direct simulation of parameters via MCMC sampling and MI will yield similar inferen-
+tial summaries. Parameter simulation can be more efficient, particularly when based on a long
+sequence of random parameters drawn at P-steps. In contrast, MI retains the drawn values from
+just a few I-steps and is more convenient for analyses that are more exploratory. More discussion
+on the relative merits of MI versus direct simulation of parameters by MCMC sampling is given
+by Schafer (1997), section 4.5.1.
+A potentially troublesome aspect of MCMC sampling for LC models is label switching. As
+mentioned previously, the likelihood function from an LC model is invariant to permutations
+of the class labels. If the priors are also symmetric with respect to class labels, the posterior
+distribution will be similarly invariant. This invariance makes the output stream for parameters
+difficult to interpret if the class labels switch during the MCMC run. Time series plots of the
+output stream must be examined for evidence of label switching. Label switching did not occur
+in our analyses of data from MTF. It could be argued that non-occurrence of label switching
+is a sign of poor convergence, as the algorithm remains trapped around a local mode (Justel
+and Peña, 1996). For our purposes this is advantageous because, if the algorithm were to switch
+between the equivalent modes, the substantive meaning of the parameters would change, and
+summarizing the posterior would become difficult. A variety of strategies for resolving problems
+that are related to label switching are reviewed by Chung et al. (2004).
+4. Application to `Monitoring the future'
+4.1. Data
+MTF has been conducted annually since 1975. Each year, a sample of 14000­18000 students
+is selected from 125­140 schools to represent a cross-section of high school seniors in the 48
+contiguous United States. Each participant receives one of five different questionnaire forms
+with items pertaining to drug use, attitudes towards the Government, social institutions, race
+730 H. Chung, B. P. Flaherty and J. L. Schafer
+relations, changing roles of women, educational aspirations, occupational aims and marital and
+family plans.
+In MTF, the use of marijuana is retrospectively measured by self-reported frequency of use
+over various periods of time. Subjects report how often they have used marijuana in their life-
+times (Life), over the last 12 months (12Mo) and over the last 30 days (30Da). Responses fall
+into ordered seven categories ranging from none to heavy use (0, 1­2, 3­5, 6­9, 10­19, 20­39
+and 40 or more). Ordinal response items can be viewed as discretized continuous variables. Thus,
+the LC model can be assumed to have a mixture of multivariate normal distributions using the
+multivariate probit model (Chib and Greenberg, 1998). This would introduce complication and
+require further research. For this study, we reduced each of these items to a binary indicator,
+denoting use for a given period (1­2, 3­5, 6­9, 10­19, 20­39 and 40 or more) by 1 and non-use
+(0) by 2. A fourth item asks how likely it is that the subject will use marijuana in the next 12
+months (Nxt12Mo), with four possible responses ranging from `definitely will' to `definitely will
+not'; this item was recoded to 1 for `will use' and 2 for `will not use'.
+Like use of marijuana itself, no single item effectively summarizes an individual's attitudes
+towards use. MTF's form 3 included three items for attitudes. Subjects were asked whether they
+disapprove of people trying marijuana once or twice (TryMJ), smoking marijuana occasionally
+(OccUse) and smoking marijuana regularly (RegUse). Once again, the possible responses to
+these items were simplified to binary values of 1, do not disapprove, or 2, disapprove.
+Our logistic LC regression models are based on these seven dichotomized use and attitude
+items. Our covariates included sex (male or female), race (white or non-white), political beliefs
+(conservative, moderate or liberal), importance of religious beliefs (not important, important
+or very important), number of skipped classes, grades and number of evenings out per week.
+Dummy variables were created for sex, race and political and religious beliefs. Including an
+intercept term, the full covariate vector xi for each individual had length 10.
+Because of differences in questionnaire formats in the first two years of MTF (1975 and 1976),
+we omitted those years and began our analyses with 1977. Year (1  1977, . . . , 25  2001) was
+specified as a grouping variable g, and the logistic coefficients l|g were estimated separately for
+each year g =1,. . . ,25. In some cases we allowed the -parameters to vary by year, but in other
+cases we constrained them to be equal across years.
+Our estimation procedures allow for missing values in the use and attitude items but not in
+the covariates. After combining the samples from 1977 to 2001 and removing individuals with
+missing covariates, our pooled data set contained 40690 individuals. Deleting subjects may
+introduce bias if those with missing covariates are systematically different from the complete
+cases (Little and Rubin, 2002). These biases may be reduced by reweighting the complete cases
+by estimated inverse probabilities of response (Robins et al., 1994). In this case, however, a
+dearth of strong predictors for non-response would make the effect of weighting adjustments
+inconsequential.
+4.2. Unconstrained latent class analyses
+The first and most crucial step in an LC regression analysis is to choose an appropriate class
+structure. As shown by Bandeen-Roche et al. (1997), model (2) has an appealing marginalization
+property: averaging over an arbitrary distribution for the covariates xi produces a conventional
+LC model with the same number of classes and identical values for the s. Therefore, we do not
+need to consider covariates when selecting the number of LCs or interpreting them.
+Choosing the number of classes in LC analysis and other finite mixture models is an important
+but difficult statistical problem which has not been completely resolved. Models with different
+numbers of classes are typically compared by using penalized likelihood criteria such as AIC
+Latent Class Logistic Regression 731
+Table 1. Fit statistics, degrees of freedom and normed fit index
+for a series of unconstrained LC models without covariates
+Number of -2 log- G2 Degrees of Normed
+classes likelihood freedom fit index
+2 222066.89 28571.91 2800
+3 207345.49 13850.51 2600 0.52
+4 197589.88 4094.90 2400 0.70
+5 196395.72 2900.74 2200 0.29
+(Akaike, 1987) and BIC (Schwarz, 1978). Lo et al. (2001) have suggested an adjusted log-like-
+lihood ratio statistic for testing the number of classes in a normal mixture. Rubin and Stern
+(1994) and Garrett and Zeger (2000) assessed the number of classes through Bayesian posterior
+predictive checks. Richardson and Green (1997) treated the number of classes as an unknown
+parameter and used reversible jump MCMC methods to obtain a full joint posterior distribution
+including the number of classes.
+In the absence of strong prior beliefs, the number of classes is usually chosen to strike a bal-
+ance between parsimony, fit and interpretability. If the number is too small, the model may give
+a poor fit to the joint distribution of observed item responses. If the number is too large, we
+may find that the -parameters for some classes are too similar to attach substantively different
+meanings to them, or that some classes have estimated prevalence rates that are nearly 0.
+Because we have pooled samples over a 25-year period, there is a strong possibility that
+the number of LCs or their -parameters could vary over time. To allow for that possibility,
+we fit a sequence of unconstrained LC models without covariates that allow the -parameters
+to vary by year. We started with two classes and increased to three, four and five. Log-like-
+lihood values, deviance statistics (G2) and degrees of freedom for these models are shown in
+Table 1. Deviance statistic G2 must be interpreted carefully when the data contain missing values.
+As noted by Little and Rubin (2002), chapter 13, fit statistics are aggregated over the cross-
+classified contingency tables for all missingness patterns appearing in the data set. Models that
+fit well may have large values of G2, because this statistic also detects departures from the (usu-
+ally implausible) hypothesis of data missing completely at random. To overcome this difficulty,
+we adjusted each G2-statistic by removing the portion corresponding to the saturated model.
+Details of this adjustment are described by Schafer (1997), section 8.5.2.
+Evaluating the significance of these G2-statistics by the usual 2-approximation is not appro-
+priate because, despite the large sample size, estimated expected counts for many of the 25×27 =
+3200 cells are close to 0. Differences in G2 should not be compared with 2-distributions either,
+because likelihood ratio statistics for testing the fit of an L-class model against an .L+1/-class
+alternative do not have limiting 2-distributions (Aitkin and Rubin, 1985; Lindsay, 1995). The
+relative decrements in G2, called the normed fit indices, are reported in Table 1. The normed
+fit index is defined as the proportion of the .L+1/-class model's drop in G2 compared with the
+G2-value of the L-class model. This comparative fit index is a popular descriptive statistic in
+structural equation modelling (Bentler and Bonett, 1980). Table 1 shows large drops in G2 as
+the number of classes increases from 2 to 3 (52%) and from 3 to 4 (70%), but a much smaller
+drop from four classes to 5 (29%).
+As suggested by Garrett and Zeger (2000), we also compared the estimated probabilities of
+major response patterns under the three-, four- and five-class models by a posterior predictive
+check distribution. This comparison is based on the following process. Let r represent the
+732 H. Chung, B. P. Flaherty and J. L. Schafer
+marginal probability of the rth response pattern from model (2). The posterior predictive check
+distribution is defined as
+Pr.r|y/= Pr.r|B,/ Pr.B,|y/d.B, /,
+where Pr.B,|y/ is the observed data posterior distribution. By comparing the probability r
+with an observed response probability obs
+r
+, we can see how well a model reproduces the observed
+data. We estimated r for the 36 most prevalent patterns under the three-, four- and five-class
+models. The three-class model did not fit well because, out of 36 most prevalent patterns, 12
+patterns of obs
+r
+lay outside the estimated intervals of rs. We found that five classes did not
+fit much better than four: the intervals for 32 patterns of r contained their observed response
+probabilities under four classes, but only 29 intervals did under five classes.
+Another reason for preferring the four-class model is that its item response probabilities
+(-parameters) are more stable over time. Temporal stability of these parameters is necessary to
+assign a clear interpretation to trends in class prevalence and composition. If they vary strongly
+over time, then the meaning of a statement such as `Membership in class 1 increased from 40%
+in 1980 to nearly 70% by 1992' becomes dubious, because `class 1' may have very different
+meanings in 1980 and 1992. Plots of the estimated s by year for each use and attitude item are
+shown for the four-class model in Fig. 1 and for the five-class model in Fig. 2. The five-class
+versions show large fluctuations from one year to the next. Even more troubling are the many
+places where the plotted curves cross each other, because the interpretation of the classes is
+largely derived from their ordering with respect to these parameters. In contrast, the plots for
+the four-class model show less variation and fewer crossings.
+Examining Fig. 1 closely, however, we do see a few troublesome features. Consider the
+response probability for the regular use item (RegUse) in class 4. Members of class 4 have
+a high probability (almost 80%) of endorsing regular use at the beginning of the study period,
+but it drops to nearly 40% by 1990 and then rises again to about 60% by the end of the study.
+The item measuring attitude towards occasional use (OccUse) has two unusual aspects. First,
+the probability of endorsing occasional use in class 3 drops from about 60% in 1977 to almost
+0 by 1990 before rising again. Second, the rate of endorsement in class 2 is generally high, but
+there are four years in which it suddenly drops. Aside from these few difficulties, the overall
+picture that emerges from Fig. 1 is that the four-class model is quite well behaved.
+4.3. Four-class model with equality constraints
+To smooth out the temporal fluctuations, we fit another four-class model in which the -prob-
+abilities are constrained to be equal for all 25 years. G2 for this constrained model is 5981.59
+with 3072 degrees of freedom. Comparing this with the unconstrained four-class model that
+is reported in Table 1, we find a G2 difference value of 1886.69 with 672 degrees of freedom.
+Although this drop appears to be statistically significant--which is not surprising, given the
+large sample size--the relative stability of the parameter estimates gives us confidence that this
+constrained model captures the most essential features of the class structure over the 25-year
+period. For example, Fig. 3 displays for one of the items (Nxt12Mo) the point and 95% interval
+estimates for the unconstrained s for all years superimposed over the constrained estimates. For
+each class, the constrained estimate and interval end points appear as horizontal lines, and the
+dots with vertical lines represent the unconstrained estimates and intervals. A large majority of
+the intervals from the unconstrained model overlap the estimates from the constrained model.
+Using a constrained model, even if it ignores some of the fine details of the item distributions
+Latent Class Logistic Regression 733
+Class 1
+Class 2
+Class 3
+Class 4
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+Year
+Year
+Year
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+Year
+(a) (b)
+(c) (d)
+(e)
+(g)
+(f)
+Fig. 1. Estimated item response probabilities (-parameters) under the unconstrained four-class model:
+(a) Life; (b) 12Mo; (c) 30Da; (d) Nxt12Mo; (e) TryMJ; (f) OccUse; (g) RegUse
+for some years, it is a sensible way to strengthen inferences about the other model parameters
+and to facilitate comparisons of prevalence rates and covariate effects across years. Although
+we acknowledge some decrement in fit, we gain much in terms of interpretability.
+Estimates and 95% intervals for all the -parameters from the constrained four-class model
+are shown in Table 2. These were computed by three methods: ML using a combination of
+the Newton­Raphson and EM algorithms (ML), our data augmentation MCMC algorithm
+taking long run averages of the simulated parameters (DA) and MI of the LCs and missing items
+(MI). Point estimates from the three methods are nearly indistinguishable. Standard errors are
+734 H. Chung, B. P. Flaherty and J. L. Schafer
+Class 1
+Class 2
+Class 3
+Class 4
+Class 5
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+Year
+Year
+Year
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+1980 1985 1990 1995 2000
+Year
+Year
+(a) (b)
+(c) (d)
+(e)
+(g)
+(f)
+Fig. 2. Estimated item response probabilities (-parameters) under the unconstrained five-class model:
+(a) Life; (b) 12Mo; (c) 30Da; (d) Nxt12Mo; (e) TryMJ; (f) OccUse; (g) RegUse
+not available for the ML method; the Hessian matrix could not be inverted, because some of
+the estimates lie at or near boundaries. The Bayesian intervals from methods DA and MI are
+nearly identical and very narrow, owing to the large sample size. The value of these intervals
+seems limited, given that there is some fluctuation in the s over time. But the point estimates
+clearly reveal the nature of each of the four classes.
+Examining the estimates from class 1 which we now call `non-users who disapprove of any
+use', we see that this group is comprised of non-users who strongly disapprove of use of mar-
+Latent Class Logistic Regression 735
+0.041
+0.016
+0.001
+0.343
+0.110
+0.016
+0.446
+0.222
+0.050
+0.981
+0.869
+0.654
+1980 1985
+prob.
+prob.
+prob.
+prob.
+1990 1995 2000
+Year
+Year
+Year
+Year
+(a)
+1980 1985 1990 1995 2000
+(b)
+1980 1985 1990 1995 2000
+(c)
+1980 1985 1990 1995 2000
+(d)
+Fig. 3. Constrained and unconstrained estimates and 95% intervals for item response probabilities
+(-parameters) for Nxt12Mo in (a) class 1, (b) class 2, (c) class 3 and (d) class 4
+ijuana. Although a small minority of them have tried marijuana at some point, they have not
+done so recently, do not intend to do so and do not approve of it. Class 2 (`non-users who
+approve of experimentation') contains those who apparently do not use marijuana themselves
+but tend to approve of others doing so on an experimental basis. Class 3 (`experimenters who
+disapprove of occasional use') consists of individuals who use marijuana on occasion but do
+not approve of occasional use. Members of class 4 (`regular users who approve of any use') are
+regular users who generally approve of use. Speaking broadly, classes 1 and 2 are non-users of
+marijuana, whereas classes 3 and 4 are users. In terms of attitudes, however, classes 1 and 3 are
+the most disapproving, and classes 2 and 4 are more approving.
+4.4. Historical trends in class prevalence
+Although this four-class model imposes constraints on the -parameters, the class prevalence
+rates freely vary by year. Estimated prevalences for the classes over time are plotted in Fig. 4.
+Fig. 4(a) shows the prevalence for each class separately, and Fig. 4(b) shows the combined prev-
+alence for users (classes 3 and 4) and approvers (classes 2 and 4). From these plots, we see that
+the use of marijuana declined steadily from 1980 to 1992 owing to very strong growth in class
+1 and shrinking of class 4. After 1992, use rose again until 1999. Approval of use of marijuana,
+736 H. Chung, B. P. Flaherty and J. L. Schafer
+Table 2. Estimated item response probabilities (-parameters) and 95% confidence intervals of `1, any use'
+and `1, do not disapprove' from methods ML, DA and MI
+Method Class Use of marijuana Attitudes towards marijuana
+Life 12Mo 30Da Nxt12Mo TryMJ OccUse RegUse
+ML 1 0.128 0.000 0.000 0.016 0.131 0.003 0.001
+2 0.350 0.000 0.000 0.110 0.980 0.890 0.338
+3 1.00 0.867 0.245 0.225 0.682 0.277 0.009
+4 1.00 1.00 0.818 0.869 0.998 0.996 0.586
+DA 1 0.127 0.000 0.000 0.016 0.131 0.004 0.001
+(0.12, 0.13) (0.00, 0.00) (0.00, 0.00) (0.01, 0.02) (0.12, 0.14) (0.00, 0.01) (0.00, 0.00)
+2 0.345 0.001 0.000 0.110 0.981 0.897 0.343
+(0.33, 0.37) (0.00, 0.00) (0.00, 0.00) (0.10, 0.12) (0.97, 0.99) (0.85, 0.93) (0.32, 0.37)
+3 1.00 0.860 0.242 0.222 0.682 0.277 0.009
+(1.00, 1.00) (0.84, 0.88) (0.23, 0.26) (0.21, 0.24) (0.67, 0.70) (0.26, 0.29) (0.01, 0.01)
+4 1.00 1.00 0.817 0.869 0.998 0.995 0.584
+(1.00, 1.00) (1.00, 1.00) (0.81, 0.83) (0.86, 0.88) (1.00, 1.00) (0.99, 1.00) (0.57, 0.60)
+MI 1 0.127 0.000 0.000 0.016 0.131 0.004 0.001
+(0.12, 0.13) (0.00, 0.00) (0.00, 0.00) (0.01, 0.02) (0.12, 0.14) (0.00, 0.01) (0.00, 0.00)
+2 0.345 0.001 0.000 0.110 0.981 0.897 0.344
+(0.33, 0.37) (0.00, 0.00) (0.00, 0.00) (0.10, 0.12) (0.97, 0.99) (0.85, 0.93) (0.32, 0.37)
+3 1.00 0.860 0.242 0.222 0.682 0.277 0.009
+(1.00, 1.00) (0.84, 0.88) (0.23, 0.26) (0.21, 0.24) (0.67, 0.70) (0.26, 0.29) (0.01, 0.01)
+4 1.00 1.00 0.817 0.869 0.998 0.995 0.584
+(1.00, 1.00) (1.00, 1.00) (0.81, 0.83) (0.86, 0.88) (1.00, 1.00) (0.99, 1.00) (0.57, 0.60)
+as seen in the combined membership of classes 3 and 4, declined throughout the 1980s and rose
+through the early and mid-1990s. Interestingly, Fig. 4(b) shows that shifting trends in attitudes
+anticipated the trends in use by 2­3 years. Approval of use of marijuana began to rise after 1990,
+2 years before use itself began to rise; approval then levelled off after 1996, 3 years before use
+stopped rising. The most stable class in terms of rate of membership has been class 2 (non-users
+who approve of experimentation), whereas the most vigorous fluctuations over time occurred
+in the behaviourally and attitudinally polarized groups (classes 1 and 4).
+The estimates in Fig. 4 were generated from a model that includes the covariate vector xi
+for each individual as described in Section 4.1. To obtain prevalence rates from a model with
+covariates, we can recommend several approaches. One approach is to average the ML estimates
+of the subject-specific class probabilities over the sample,
+¯
+l|g =
+1
+n
+n
+1=1
+exp.xi
+^
+l|g
+/
+1+
+L-1
+j=1
+exp.xi
+^
+j|g
+/
+.
+If the sample was obtained from an unequal probability design, then a weighted average over
+the sample should be taken, with weights proportional to the inverse probabilities of selection.
+(Although MTF has an unequal probability design, its samples are quite representative of the
+overall population of high school seniors in the 48 contiguous states, and taking weighted rather
+than unweighted averages over the sample had almost no discernible effect in any of our anal-
+yses.) When using MCMC sampling rather than ML, we would average the simulated values
+of l|g.xi/ over the sample at each cycle using the simulated values for l|g, and then average
+these over the cycles of MCMC sampling. A third approach is to retain MIs of the latent class
+Latent Class Logistic Regression 737
+Fig. 4. Estimated class prevalence by year
+variables l1, . . . , ln for all subjects and to estimate the proportions directly from these. With a
+large sample, the differences between these methods tend to be negligible.
+4.5. Covariates
+Our four-class model estimates 30 regression coefficients for each of the 25 years. For brevity
+we shall only summarize these results. Effects of gender on class membership were small, but
+the effects of race were quite substantial. Across the years, the odds of membership in class 4
+(regular users who approve of any use) relative to class 1 (non-users who disapprove of any use)
+were 2­4 times as high for non-whites relative to whites, controlling for the other covariates.
+This confirms a well-known result that rates of use of marijuana among black youths tend to
+be lower than among their white counterparts.
+Life style factors tended to be related to class membership in directions that we would expect.
+High school seniors who have better grades and less truancy and spend fewer evenings out for fun
+each week were less likely to use marijuana and to approve of use. Interestingly, these covariates
+are more strongly related to actual use than to attitudes. Fig. 5 shows the odds ratios comparing
+class 1 (non-users who disapprove of any use) with each of the other classes for grades in school
+and number of evenings out. Neither of these covariates has much power to distinguish class 2
+738 H. Chung, B. P. Flaherty and J. L. Schafer
+1.0
+1.1
+0.9
+1.2
+1.6
+0.8
+1980 1985 1990 1995 2000 1980 1985 1990 1995 2000
+(a)
+1.0
+1.1
+0.9
+1980 1985 1990 1995 2000
+(c)
+1.0
+1.1
+0.9
+1980 1985 1990 1995 2000
+(e)
+(b)
+1.2
+1.6
+0.8
+1980 1985 1990 1995 2000
+(d)
+1.2
+1.6
+0.8
+1980 1985 1990 1995 2000
+(f)
+Fig. 5. Estimated odds ratios ( ) and 95% confidence intervals (-------) by year for grades and number
+of evenings out: (a) grades (class 2 versus class 1); (b) evenings out (class 2 versus class 1); (c) grades
+(class 3 versus class 1); (d) evenings out (class 3 versus class 1); (e) grades (class 4 versus class 1);
+(f) evenings out (class 4 versus class 1)
+(non-users who approve of experimentation) from class 1, but they consistently and significantly
+distinguish class 3 (experimenters who disapprove of occasional use) and class 4 (regular users
+who approve of any use) from class 1.
+Religiosity, in contrast, seems to correlate more strongly with attitudes than behaviour. Des-
+ignating those who regard their religious beliefs as `very important' as the base-line, we created
+dummy indicators for those who responded `not important' and those who responded `impor-
+tant'. The odds ratios that are associated with these dummy indicators are plotted in Fig. 6.
+Those who responded not important or important rather than very important had dramatically
+higher odds of falling into class 2 rather than into class 1, which are distinguished by attitudes
+Latent Class Logistic Regression 739
+20
+15
+10
+5
+0
+20
+15
+10
+5
+0
+20
+15
+10
+5
+0
+10
+8
+6
+4
+2
+0
+10
+8
+6
+4
+2
+0
+10
+8
+6
+4
+2
+0
+1980 1985 1990 1995 2000
+(a)
+1980 1985 1990 1995 2000
+(b)
+1980 1985 1990 1995 2000
+(c)
+1980 1985 1990 1995 2000
+(d)
+1980 1985 1990 1995 2000
+(e)
+1980 1985 1990 1995 2000
+(f)
+Fig. 6. Estimated odds ratios ( ) and 95% confidence intervals (-------) for religious importance (not
+important and important versus very important): (a) not important (class 2 versus class 1); (b) important (class
+2 versus class 1); (c) not important (class 3 versus class 1); (d) important (class 3 versus class 1); (e) not
+important (class 4 versus class 1); (f) important (class 4 versus class 1)
+but not behaviour. The less religiously inclined groups also had dramatically higher odds of
+falling into class 4 versus class 1, which reflects a difference in both attitudes and behaviour. But
+the odds ratios comparing class 3 (experimenters who disapprove) with class 1 (non-users who
+disapprove), although significantly different from 1.0, are not as large as the other odds ratios,
+suggesting that religion has a smaller effect in discouraging the use of marijuana among those
+who already disapprove of it.
+Many questions still remain about why marijuana use and attitudes have shifted over the
+years. The -parameters of the LC regression model, which relate the probabilities of class
+740 H. Chung, B. P. Flaherty and J. L. Schafer
+Class 1 total very important
+0.8
+0.6
+0.4
+0.2
+0.0
+0.8
+0.6
+0.4
+0.2
+0.0
+0.15
+0.10
+0.05
+0.00
+0.2
+0.1
+0.0
+1980 1985
+prob.
+Class 2 total
+Class 3 total
+Class 4 total
+prob.
+prob.
+prob.
+1990
+(a)
+(b)
+(c)
+(d)
+1995 2000
+1980 1985 1990 1995 2000
+1980 1985 1990 1995 2000
+1980 1985 1990 1995 2000
+important
+not important
+very important
+important
+not important
+very important
+important
+not important
+very important
+important
+not important
+Fig. 7. Joint prevalence of class and religious importance by year: (a) class 1; (b) class 2; (c) class 3;
+(d) class 4
+membership to demographic, life style and belief factors, do not directly reveal how the com-
+position of the classes themselves may have changed due to the influx or exodus of various
+types of individual. With MI, however, we can address these questions in a very straightfor-
+ward manner. After imputing the unseen class variables l1, . . . ,ln for the sampled individuals,
+we can divide each year's sample into classes and examine their composition with respect to any
+covariate.
+To illustrate, we imputed the latent variables 20 times. In each imputed data set, we sub-
+divided each of the four classes by categories of each covariate, and then averaged the resulting
+proportions across the imputed data sets. The composition of each class with respect to the three
+categories of religious belief is plotted in Fig. 7. In each of the four plots in Fig. 7, the total class
+prevalence (denoted by a full curve) reproduces the total prevalence that is shown in Fig. 4(a).
+Each full curve is also the sum of the three curves below it. These plots show that the prevalences
+of the highly religious (very important) and irreligious (not important) youth in each of the four
+classes has been remarkably stable over the entire 25 years. The moderately religious (important)
+youth, however, shows dramatic shifts that closely parallel the national trends, i.e. the national
+trends have been largely driven by changes in attitude and behaviour among the moderately
+religious. In one sense, this is not surprising, because the moderately religious are the largest of
+the three groups. However, the relative intransigence of the not important and very important
+Latent Class Logistic Regression 741
+belief groups suggests that efforts to influence their attitudes and behaviour towards marijuana
+may prove to be less effective.
+We examined plots that were similar to those in Fig. 7 for the other covariates and did not
+see any dramatically different trends across the response categories. In general, for all other
+covariates, the prevalences for each category of the covariate tended to rise and fall with the
+overall class prevalence.
+5. Discussion
+LC analysis has long been used by social scientists to summarize the joint distribution of atti-
+tudinal items and to identify population subgroups that might not be apparent in item-by-item
+analyses (McCutcheon, 1987). Advances in computing power and new computational algo-
+rithms now allow us to fit richer models to larger data sets. Traditional applications of LC
+models focused on identifying and validating the latent structure. With LC regression, we can
+now relate a latent structure to large numbers of covariates at once.
+Because ML routines for LC regression are available in two software packages (Latent GOLD
+and Mplus), we expect the popularity of these models to grow. Properties of the likelihood have
+alsobeenexploredtoalimitedextent.Forexample,identifiabilityconditionshavebeendescribed
+by Bandeen-Roche et al. (1997). Because we are accustomed to thinking of ML as the default
+method, it is tempting to believe that reliable inferences for LC models are simply not possible
+with the usual way when the shape of the likelihood is abnormal (e.g. when estimates lie on a
+boundary). We have found, however, that Bayesian inference by MCMC sampling is an attrac-
+tive alternative to ML. Simulations by Chung (2003) have shown that Bayesian methods usually
+perform as well as or better than ML by the traditional frequentist criteria of bias, variance,
+interval coverage and width. MI can be used in tandem with Bayesian methods to perform many
+innovative analyses that would be difficult if we limited ourselves simply to averaging simulated
+parameters over the MCMC output stream.
+In our analyses of MTF, we could identify a plausible latent structure from survey items that
+are related to both attitudes and behaviours. Supporting evidence for this latent structure was
+provided not only by quantitative measures (e.g. fit statistics) but also by its interpretability
+and relative stability over a long period of time. This will not always be so. For example, MTF
+has several items that measure the perceived risks of use of marijuana. When we applied LC
+analyses to the perceived risk and use items, we could not identify a plausible latent structure
+that fitted well over a long period of time.
+References
+Aitkin, M. and Rubin, D. B. (1985) Estimation and hypothesis testing in finite mixture models. J. R. Statist. Soc.
+B, 47, 67­75.
+Akaike, H. (1987) Factor analysis and AIC. Psychometrika, 52, 317­332.
+Bachman, J. G., Johnston, L. D. and O'Malley, P. M. (1998) Explaining recent increases in students' marijuana
+use: impacts of perceived risks and disapproval, 1976 through 1996. Am. J. Hlth, 88, 887­892.
+Bandeen-Roche, K., Miglioretti, D. L., Zeger, S. L. and Rathouz, P. J. (1997) Latent variable regression for
+multiple discrete outcomes. J. Am. Statist. Ass., 92, 1375­1386.
+Bentler, P. M. and Bonett, D. G. (1980) Significance tests and goodness of fit in the analysis of covariance struc-
+tures. Psychol. Bull., 88, 588­606.
+Best, N., Cowles, M. and Vines, S. (1995) Coda: convergence diagnostics and output analysis software for gibbs
+sampler output, version 0.3. Technical Report. Medical Research Council Biostatistics Unit, Cambridge.
+Biemer, P. P. and Wiesen, C. (2002) Measurement error evaluation of self-reported drug use: a latent class analysis
+of the US National Household Survey on Drug Abuse. J. R. Statist. Soc. A, 165, 97­119.
+Chib, C. and Greenberg, E. (1998) Analysis of multivariate probit models. Biometrika, 85, 347­361.
+Chung, H. (2003) Latent-class modeling with covariates. PhD Thesis. Pennsylvania State University, University
+Park.
+742 H. Chung, B. P. Flaherty and J. L. Schafer
+Chung, H., Loken, E. and Schafer, J. L. (2004) Difficulties in drawing inferences with finite-mixture models:
+a simple example with a simple solution. Am. Statistn, 58, 152­158.
+Clogg, C. C. and Goodman, L. A. (1984) Latent structure analysis of a set of multidimensional contingency tables.
+J. Am. Statist. Ass., 79, 762­771.
+Clogg, C. C., Rubin, D. B., Schenker, N., Schultz, B. and Weidman, L. (1991) Multiple imputation of industry
+and occupation codes in census public-use samples using bayesian logistic regression. J. Am. Statist. Ass., 86,
+68­78.
+Collins, L. M. (2002) Using latent transition analysis to examine the gateway hypothesis. In Stages and Pathways of
+Drug Involvement: Examining the Gateway Hypothesis (ed. D. B. Kandel), pp. 254­269. Cambridge: Cambridge
+University Press.
+Dayton, C. M. and Macready, G. B. (1988) Concomitant-variable latent-class models. J. Am. Statist. Ass., 83,
+173­178.
+Flaherty, B. P. (2002) Assessing the reliability of categorical substance use measures with latent class analysis.
+Drug Alc. Depend., 68, S7­S20.
+Flay, B. R. (1993) Youth tobacco use: risks, patterns, and control. In Nicotine Addiction (eds C. Orleans and
+J. Slade), pp. 360­384. New York: Oxford University Press.
+Garrett, E. S., Eaton, W. W. and Zeger, S. L. (2002) Methods for evaluating the performance of diagnostic tests
+in the absence of a gold standard: a latent class model approach. Statist. Med., 21, 1289­1307.
+Garrett, E. S. and Zeger, S. L. (2000) Latent class model diagnosis. Biometrics, 56, 1055­1067.
+Gelfand, A. E. and Smith, A. F. M. (1990) Sampling-based approaches to calculating marginal densities. J. Am.
+Statist. Ass., 85, 398­409.
+Gelman, A., Carlin, J. B., Stern, H. S. and Rubin, D. B. (2004) Bayesian Data Analysis, 2nd edn. London: Chapman
+and Hall.
+Gelman, A. and Rubin, D. B. (1992) Inference from iterative simulation using multiple sequences. Statist. Sci., 7,
+457­511.
+Geweke, J. (1992) Evaluating the accuracy of sampling-based approaches to calculating posterior moments. In
+Bayesian Statistics 4 (eds J. M. Bernardo, J. O. Berger, A. P. Dawid and A. F. M. Smith), pp. 169­193. Oxford:
+Oxford University Press.
+Goldstein, M. (1976) Bayesian analysis of regression problems. Biometrika, 63, 52­58.
+Goodman, L. A. (1974) Exploratory latent structure analysis using both identifiable and unidentifiable models.
+Biometrika, 61, 215­231.
+Graham, J. W., Collins, L. M., Wugalter, S. E., Chung, N. K. and Hansen, W. B. (1991) Modeling transitions in
+latent-sequential processes: a substance use prevention example. J. Consltng Clin. Psychol., 59, 48­57.
+Hoerl, A. E. and Kennard, R. W. (1970) Ridge regression: biased estimation for nonorthogonal problems. Techno-
+metrics, 12, 55­67.
+Hoijtink, H. (1998) Constrained latent class analysis using the gibbs sampler and posterior predictive p-values:
+applications to educational testing. Statist. Sin., 8, 691­711.
+Johnston, L. D. (1982) A Review and Analysis of Recent Changes in Marijuana Use by American Young People,
+Marijuana: the National Impact on Education. New York: American Council on Marijuana.
+Johnston, L. D. (1985) The etiology and prevention of substance use: what can we learn from recent historical
+changes? In Etiology of Drug Abuse: Implications for Prevention (eds C. L. Johnes and R. J. Battes). Washington
+DC: US Government Printing Office.
+Johnston, L. D., Bachman, J. G. and O'Malley, P. M. (2001) Monitoring the Future: a Continuing Study of American
+Youth (12th-grade Survey) 2000. Ann Arbor: Interuniversity Consortium for Political and Social Research.
+Johnston, L. D., O'Malley, P. M. and Bachman, J. G. (2002) Monitoring the Future National Survey Results on
+Drug Use, 1975­2001, vol. I, Secondary School Students. Bethesda: National Institute on Drug Abuse.
+Justel, A. and Peña, D. (1996) Gibbs sampling will fail in outlier problems with strong masking. J. Computnl
+Graph. Statist., 5, 176­189.
+Kennedy, W. J. and Gentle, J. E. (1980) Statistical Computing. New York: Dekker.
+Lanza, S. T. and Collins, L. M. (2002) Pubertal timing and the onset of substance use in females during early
+adolescence. Prevn Sci., 3, 69­82.
+Lanza, S. T., Collins, L. M., Schafer, J. L. and Flaherty, B. P. (2005) Using data augmentation to obtain standard
+errors and conduct hypothesis tests in latent class and latent transition analysis. Psychol. Meth., 10, 84­100.
+Lazarsfeld, P. F. and Henry, N. W. (1968) Latent Structure Analysis. Boston: Houghton Mifflin.
+Leventhal, H. and Cleary, P. D. (1980) The smoking problem: a review of the research and theory in behavioral
+risk modification. Psychol. Bull., 88, 370­405.
+Lindsay, B. G. (1995) Mixture Models: Theory, Geometry and Applications. Hayward: Institute of Mathematical
+Statistics.
+Little, R. J. A. and Rubin, D. B. (2002) Statistical Analysis with Missing Data, 2nd edn. New York: Wiley.
+Lo, Y., Mendell, N. R. and Rubin, D. B. (2001) Testing the number of components in a normal mixture. Biometrika,
+88, 767­778.
+Mayhew, K. P., Flay, B. R. and Mott, J. A. (2000) Stages in the development of adolescent smoking. Drug Alc.
+Depend., 59, S61­S81.
+McCutcheon, A. L. (1987) Sexual morality, pro-life values, and attitudes toward abortion: a simultaneous latent
+Latent Class Logistic Regression 743
+structure analysis for 1978­1983. Sociol. Meth. Res., 16, 256­275.
+Metropolis, M., Rosenbluth, A. W., Rosenbluth, M. N., Teller, A. H. and Teller, E. (1953) Equations of state
+calculations by fast computing machine. J. Chem. Phys., 21, 1087­1091.
+Muthén, L. K. and Muthén, B. O. (1998) Mplus User's Guide. Los Angeles: Muthén and Muthén.
+Pfeffermann, D., Skinner, C. and Humphreys, K. (1998) The estimation of gross flows in the presence of mea-
+surement error using auxiliary variables. J. R. Statist. Soc. A, 161, 13­32.
+Richardson, S. and Green, P. J. (1997) On Bayesian analysis of mixtures with an unknown number of components
+(with discussion). J. R. Statist. Soc. B, 59, 731­792; correction, 60 (1998), 661.
+Robert, C. P. and Casella, G. (2004) Monte Carlo Statistical Methods, 2nd edn. New York: Springer.
+Roberts, G. O. (1992) Convergence diagnostics of the gibbs sampler. In Bayesian Statistics 4 (eds J. M. Bernardo,
+J. O. Berger, A. P. Dawid and A. F. M. Smith), pp. 775­782. Oxford: Oxford University Press.
+Robins, J. M., Rotnitzky, A. and Zhao, L. P. (1994) Estimation of regression coefficients when some regressors
+are not always observed. J. Am. Statist. Ass., 89, 846­866.
+Rubin, D. B. (1976) Inference and missing data. Biometrika, 63, 581­592.
+Rubin, D. B. (1987) Multiple Imputation for Nonresponse in Surveys. New York: Wiley.
+Rubin, D. B. and Stern, H. S. (1994) Testing in latent class models using a posterior predictive check distribu-
+tion. In Latent Variables Analysis: Applications for Developmental Research (eds A. von Eye and C. C. Clogg),
+pp. 420­438. Thousand Oaks: Sage.
+Schafer, J. L. (1997) Analysis of Incomplete Multivariate Data. London: Chapman and Hall.
+Schwarz, G. (1978) Estimating the dimension of a model. Ann. Statist., 6, 461­464.
+Shiffman, S., Kassel, J. D., Paty, J. A. and Gnys, M. (1994) Smoking typology profiles of chippers and regular
+smokers. J. Subst. Abuse, 6, 21­35.
+Tanner, W. A. and Wong, W. H. (1987) The calculation of posterior distributions by data augmentation. J. Am.
+Statist. Ass., 82, 528­540.
+Tierney, L. (1994) Markov chains for exploring posterior distributions (with discussion). Ann. Statist., 22, 1701­
+1762.
+Vermunt, J. K. and Magidson, J. (2000) Latent GOLD User's Guide. Statistical Innovations.
+

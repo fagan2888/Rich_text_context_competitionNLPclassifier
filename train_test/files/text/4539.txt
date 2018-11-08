@@ -1,0 +1,1085 @@
+Creative Commons Non Commercial CC-BY-NC: This article is distributed under the terms of the Creative Commons
+Attribution-NonCommercial 3.0 License (http://www.creativecommons.org/licenses/by-nc/3.0/) which permits non-commercial use,
+reproduction and distribution of the work without further permission provided the original work is attributed as specified on the SAGE and Open
+Access pages (https://us.sagepub.com/en-us/nam/open-access-at-sage).
+https://doi.org/10.1177/1759313116679672
+The International Journal of
+Ocean and Climate Systems
+2017, Vol. 8(2) 71
+­83
+© The Author(s) 2016
+Reprints and permissions:
+sagepub.co.uk/journalsPermissions.nav
+DOI: 10.1177/1759313116679672
+journals.sagepub.com/home/ocs
+Introduction
+Estimating the bathymetry of ocean is one of the important
+parameters which plays a significant role in planning near-
+shore structure activities such as engineering work, port
+management, pipeline laying, fishing, dredging operation,
+oil drilling, and aquaculture, and it is also significantly
+important to determine the underwater topography and
+movement of sediments and to generate hydrographic
+charts for safe transportation. Moreover, in the port, main-
+taining the depth of man-made channel throughout the
+year is important for the smooth navigation of large ships.
+Typically, the measurement of ocean depth is done
+using conventional methods such as pre-measured rope
+or cable passage, placed on the side of the vessel and
+allowed to reach the seabed (Doxani et al., 2012). This
+method can retrieve the depth of a single point in time.
+This method was rapidly replaced by hydrographic ships
+carrying echo sounder instruments such as single-beam
+and multi-beam echo sounders. The echo-sounding
+method is capable of determining the depth accurately
+over clear water coastal environment, whereas in turbid
+water, the method lacks performance due to infiltration of
+sound waves to the bottom of the ocean. Generally, the
+speed of ship constrains the surveyors to map the ocean
+region at a slightly different scale than the desired scale.
+It is to be noted that the method would take 200years of
+survey time to complete swath survey of deep ocean, and
+it would take even more time for shallow coastal areas
+(Carron et al., 2001).
+In order to overcome this inefficiency, various airborne
+laser bathymetric (ALB) and light detection and ranging
+(LiDAR) systems such as scanning hydrographic opera-
+tional airborne lidar survey (SHOLAS), compact hydro-
+graphic airborne rapid total survey (CHARTS), laser
+airborne depth sounder (LADS), and experimental
+advanced airborne research lidar (EAARL) were estab-
+lished to infer the bathymetry of oceans. This method can
+effectively determine the depth of both shallow and clear
+Estimation of bathymetry along the coast
+of Mangaluru using Landsat-8 imagery
+Jagalingam Pushparaj and Arkal Vittal Hegde
+Abstract
+Determining the bathymetry of ocean is important for many aspects such as generating navigational charts, to study
+changes in the seafloor profile, sea level rise, and beach erosion. Traditionally, the bathymetry of ocean was determined
+by a hydrographic ship carrying an echo sounder instrument which was cost effective but time consuming and also often
+inaccessible in shallow water regions. The alternate solution to infer the bathymetry of ocean is remote sensing technology.
+The multispectral satellite platform such as Ikonos and WorldView images are commercially available, whereas the Landsat-8
+imagery is freely accessible and therefore the Landsat-8 imagery is used. In this study, the first objective was to evolve a
+procedure to determine the bathymetry of ocean using the ratio transform algorithm. The second objective was to find the
+effectiveness of improving the spatial resolution of Landsat-8 imagery to estimate the bathymetry of ocean, and the results
+of both before and after improving the spatial resolution are compared. The statistical indices, root mean square error and
+mean absolute error, are computed between the algorithm results and the reference hydrographic chart values, and it was
+found that the improved spatial resolution of Landsat-8 imagery provided better estimation up to 10m depth.
+Keywords
+Satellite-derived bathymetry, ratio transform algorithm, image fusion, sun glint correction, high-pass filter
+National Institute of Technology Karnataka, Surathkal, Mangaluru, India
+Corresponding author:
+Jagalingam Pushparaj, National Institute of Technology Karnataka,
+Surathkal, Mangaluru 575025, India.
+Email: lingam.jai10@gmail.com
+679672
+OCS0010.1177/1759313116679672The International Journal of Ocean and Climate SystemsPushparaj and Hegde
+research-article2016
+Original Article
+72 The International Journal of Ocean and Climate Systems 8(2)
+water coastal environment, but this technique is limited by
+its high purchasing and maintenance costs.
+Almost all of the above methods take a long interval
+of time to revisit the same location and thus it is difficult
+to monitor the frequent changes of seabed morphology.
+It is very difficult to infer the bathymetry of shallow
+water region, as those areas are inflexible to access by
+hydrographic ships carrying echo-sounding instruments.
+Accurate estimation of bathymetry of shallow water
+region is important for the navigation safety of small
+boats like fishing and for benthic studies (Ma et al.,
+2014). Remote sensing technology can be regarded
+as one of the most promising alternative tools to map
+the bathymetry of shallow water regions by pairing
+remote sensing data with ground-based measurements
+(Winterbottom and Gilvear, 1997). Remote sensing tech-
+nology has various advantages such as wide coverage of
+area, repetivity of the area over certain period of time,
+and also easy access of data. Therefore, this technology
+provides a fast solution to map bathymetry of the region,
+where rapid change of coastal environment is observed
+(Deng et al., 2008).
+Bathymetry mapping using remote sensing technology
+is attained from the principle in which the total amount of
+electromagnetic energy observed and reflected from the
+water body determines the water depth. The remote sens-
+ing technique is available to determine the depth of ocean,
+for the reason that the water attenuates signal from the bot-
+tommost part of ocean with a strong wavelength depend-
+ency (Dekker et al., 2011). However, penetration of
+electromagnetic wave energy is limited. Therefore, remote
+sensing technique is primarily adopted to infer the depth of
+clear and shallow water region (Zheng et al., 2014).
+The two important approaches such as analytical
+method and empirical method are adopted to retrieve the
+bathymetry of ocean using satellite image. A number of
+analytical algorithms are available in the literature, which
+are proposed by Lyzenga (1978, 1981), Lyzenga et al.
+(2006), and Philpot (1989). In order to use the analytical
+method for mapping the bathymetry of ocean, a number of
+input parameters such as water column, properties of
+atmosphere and bottom reflectance, and spectral signa-
+tures of suspended and dissolved materials are required
+(Spitzer and Dirks, 1986). Although the analytical method
+is moderately complex and difficult, it has been adopted by
+Mobley et al. (2005), Brando et al. (2009), and Giardino
+et al. (2012). On the other hand, the empirical method
+establishes the relationship between the remotely sensed
+radiance of a water body and the depth at sampled loca-
+tions is established empirically without regard to how light
+is transmitted in water (Gao, 2009). In comparison, empir-
+ical method requires only few parameters as input which
+are simple and do not require water column parameters.
+However, for the calibration function, the method requires
+hydrographically measured data.
+A number of empirical algorithms are proposed to
+retrieve the bathymetry of ocean, among which the most
+commonly used algorithm is the ratio transform algorithm
+developed by Stumpf et al. (2003). The ratio transform
+algorithm operates by the mixture of two bands (blue and
+green) to detach the difference in depth from difference in
+bottom albedo. The algorithm works on the principle that
+the observance of water differs from band to band when
+the depth of water increases. Generally, the spectral band
+of green is high in absorptivity, in which the reflected irra-
+diance declines quicker than in the low absorptivity of blue
+band (Pe'eri et al., 2014). Therefore, the ratio between the
+green and blue bands declines linearly with penetration,
+when they are log transformed. It is important to note that
+both bands are affected similarly with the changes in the
+bottom albedo, but the high absorption band green is
+affected more when the depth varies.
+The mapping of bathymetry in the clear ocean water is
+successfully mapped up to the depth of 25­30m by adopting
+the remote sensing technique (Eugenio et al., 2015; Lyzenga
+et al., 2006; Mishra et al., 2007). To determine the depth of
+ocean and marine water environment, the blue and green
+bands (visible bands) of spectrum wavelength are selected for
+remotely sensing bathymetry. In the visible bands, light infil-
+trates the water column, an exponential attenuation of radi-
+ance as a function of both depth and wavelength, and delivers
+the primary principle for estimating the depth (Gao, 2009).
+Some of the important literatures for estimating the
+bathymetry of ocean using remote sensing technology are
+discussed below.
+Vahtmäe and Kutser (2016) investigated linear band
+model and the log-transformed band ratio model for deter-
+mining the bathymetry of optically complex Baltic Sea
+region using airborne HySpex hyperspectral images. The
+results of both the models are compared by the statistical
+indices of R2 and root mean square error (RMSE). The
+values of these indices indicate that the linear band model
+is outperformed by the log-transformed band ratio model
+by accurately estimating the depth of 4
+m. The log trans-
+form model provides inaccurate results for the reason of
+high albedo in the near-coastal regions.
+Eugenio et al. (2015) implemented the multichannel
+physical s-based algorithm to determine the bathymetry
+of Granadilla de Abona (Tenerife Island) and Corralejo
+(Fuerteventura Island) areas using WorldView-2 imagery. In
+order to retrieve the depth accurately, the physical s-based
+algorithm is coupled with radiative transfer model. The cou-
+pled model estimates the depth effectively up to 25m. The
+model declines the prediction of depth greater than 25m.
+Su et al. (2014) used a geographically adaptive inversion
+and conventional global inversion model to estimate the bot-
+tom depth over Kauai and Barbuda Islands using high-
+resolution Ikonos and Landsat ETM+ satellite imagery.
+The performance of conventional global inversion model is
+limited, when the bottom type and water quality vary
+Pushparaj and Hegde 73
+spatially within the scene. The geographically adaptive
+inversion model divides the image scene into local areas to
+calibrate the inversion models for each submission to
+improve the accuracy and reliability of retrieving the bathym-
+etry from remote sensing imagery. It is demonstrated that the
+geographically adaptive inversion model estimates the
+bathymetry better than the conventional model.
+Su et al. (2008) developed an automated method for
+calibrating the parameters for a non-linear inversion model
+based on the Levenberg­Marquardt optimization algo-
+rithm for determining the bathymetry of south shore of
+Molokai Island, Hawaii, using Ikonos satellite imagery.
+Depth data derived from the non-linear inversion model
+are compared with the conventional log-linear inversion
+model. It is observed that the overall performance of both
+the models is similar. The non-linear inversion model pro-
+duced slightly better and accurate estimation of deeper
+depth of 10­15m, but slightly less accurate for very shal-
+low regions (i.e. <5m).
+The following literature represents the estimation of
+bathymetry along the coast of India.
+Pattanaik et al. (2015) used a simple radioactive model
+and a linear radioactive model for estimating the depth
+along the coast of Odisha, India, using Indian Remote
+Sensing (IRS) Linear Imaging Self Scanning Sensor
+(LISS-III) multispectral imagery. The statistical index R2
+is calculated to compare the result of two models. The
+index value indicates that the linear radioactive model
+outperformed the simple radioactive model. However,
+both the methods are very effective to determine the depth
+of 4­5m.
+The common errors associated while estimating the
+depth from remote sensing images are as follows: first,
+error may be presented in the reference bathymetry data
+set (i.e. ground data). Second, water turbidity is one of the
+most significant factors which decline the accuracy of
+remotely sensed bathymetry. Third, the existence of sub-
+merged vegetation canopies in the study area also affects
+the accuracy of remotely sensed bathymetry.
+The first objective of this study was to evolve a proce-
+dure based on ratio transform algorithm for estimating the
+bathymetry of near shore along the Mangaluru coast of
+Karnataka, India, using Landsat-8 imagery. The second
+was to adopt the same procedure to find the effectiveness
+of improving the spatial resolution of Landsat-8 imagery.
+The coefficient of determination R2 is calculated between
+the pixel value and the reference hydrographic data which
+identifies the extinction of depth. The results of both before
+and after improving the spatial resolution are compared.
+Materials and methodology
+Study area
+The coastal region of Dakshina Kannada district of
+Karnataka state, India, stretches from Talapady in the
+south to Baindur in the north over a distance of about
+140km. The region is enclosed by the Arabian Sea on the
+west and the Western Ghats on the east. Generally, the
+coast of Dakshina Kannada adores the tropical hot mon-
+soon climate due to its latitudinal position. The coast is
+influenced by the southwest monsoon which receives
+heavy rainfall during the months from June to September,
+ranging from 3000 to 3900
+mm. The coast experiences
+high temperature throughout the year with relatively con-
+stant high humidity. During the monsoon period, wave
+height of 6.5
+m is recorded along the coast of Dakshina
+Kannada, and in the non-monsoon period, the height of
+wave is less than 1m.
+The present study area covers a total length of 25
+km
+(approximately), extending from Ullal region in the south
+to Surathkal in the north, roughly (12°510S 74°500E)
+shown in Figure 1. Mangaluru is the major city in the coast
+of Dakshina Kannada and gains economic importance due
+to urbanization and industrialization. The Netravathi and
+Gurpur rivers originate from the Western Ghats and flows
+westward and takes a right angle bend near the coast and
+then flow either northward or southward close to and par-
+allel to the coast. These rivers join together at some point
+before they merge into the Arabian Sea. The study area
+along the coast of Mangaluru covers the range of depth up
+to 25
+m and also encompasses the New Mangalore Port
+Trust (NMPT).
+Methodology
+The important steps for determining the bathymetry of
+near-shore ocean along the coast of Mangaluru using
+Landsat-8 imagery are shown in Figure 2.
+First, the procedure is adopted on the original imagery
+of Landsat-8. Second, the same procedure is adopted on
+the Landsat-8 imagery after improving spatial resolution.
+Third, range of depth obtained from the original and after
+improving spatial resolution of Landsat-8 imagery is
+compared.
+Bathymetry from space
+Generally, the bathymetry of ocean is surveyed by ships
+carrying echo sounders.
+Although most of the areas are unexplored due to the
+complications of transporting the ship to the deep ocean,
+estimating the bathymetry by ship is cost effective.
+The remote sensing­based technique has advantages in
+comparison with the present echo sounder technique. The
+remote sensing technique absorbs the globe with uniform
+resolution, and repetivity of collecting data over the same
+area helps to monitor changes in the bathymetry of ocean.
+There are several commercially available multispectral
+satellite data acquired through Ikonos and WorldView,
+which can be used to determine the bathymetry of ocean.
+74 The International Journal of Ocean and Climate Systems 8(2)
+However, the Landsat-8 satellite imagery is available
+freely in the open domain. Hence, Landsat-8 imagery is
+utilized for determining the bathymetry of near-shore
+ocean. The Landsat-8 imagery used for this study is down-
+loaded from the United States Geological Survey (USGS)
+website, acquired on 13 March 2014. The Landsat-8 satel-
+lite acquires total of 11 bands, including blue and green
+with the spatial resolution of 30m and panchromatic (pan)
+band with the spatial resolution of 15m.
+For this study, blue, green, and near-infrared (NIR)
+bands of Landsat-8 imagery are used. The spatial resolu-
+tion of blue, green, and NIR bands is 30m. The reason for
+applying the blue and green bands in the coastal environ-
+ment is that the radiance in the blue band (450­515
+nm)
+decreases more rapidly with depth than radiance in the
+green band (525­600nm). Generally, light at wavelengths
+above 700
+nm has a very low transmittance in sea water.
+Therefore, water appears dark and the land appears bright.
+For this reason, the NIR band (845­885
+nm) is used for
+distinguishing water from land.
+The bathymetry of near-shore ocean is estimated using
+the blue and green band pair, and most importantly,
+hydrographic chart of the same area is acquired on 18
+March 2014. The acquisition dates of both satellite image
+and hydrographic chart are close to each other. Therefore,
+both the data are co-registered correctly and used for the
+estimation of bathymetry. The hydrographic chart repre-
+sents the ground data with respect to the chart datum. The
+depth soundings of hydrographic chart were used to ref-
+erence the satellite-derived bathymetry to the chart
+datum. To perform the ratio transform algorithm, the gain
+and offset (i.e. m0
+and m1
+) values are computed from the
+soundings (i.e. hydrographic chart), which are used as
+control points for the algorithm results. During the satel-
+lite image acquisition, instant water level is very unlikely
+to correspond with the chart datum (e.g. mean lower low
+water (MLLW) or lowest astronomical tide (LAT)), and
+the measurement of tide height during the acquisition of
+satellite image is not needed because it is automatically
+accounted for using the control points which are selected
+from a hydrographic chart to define the transformation
+parameters. Generally, the water levels over small spatial
+magnitude are normally well approximated as a vertical
+offset and do not harm the linear relationship between the
+hydrographic chart soundings and the algorithm results.
+Thus, the procedure excludes the need for tide-corrected
+satellite imagery and for tide correctors (Pe'eri et al.,
+2014).
+Spatial filtering
+Before performing spatial filtering, technique float is per-
+formed to convert each pixel of satellite image into a float-
+ing point representation. Later, a spatial filtering technique
+called low-pass filter (kernel size of 5
+×
+5) is applied on
+the blue, green, and NIR bands of Landsat-8 imagery to
+remove the speckle noise.
+Figure 1. Location map of study area.
+Figure 2. Methodology for estimating the bathymetry of near-
+shore ocean.
+Pushparaj and Hegde 75
+Water separation
+It is important to separate land from water to estimate the
+bathymetry of ocean. For this purpose, band NIR is used
+due to the appearance of water in dark and land in bright.
+Here, the land/water threshold value is obtained by draw-
+ing a line that crosses from land (bright areas) into the
+water (dark areas). The obtained threshold value is applied
+on the blue and green bands of Landsat-8 imagery to sepa-
+rate land from water.
+Glint and cloud correction
+This step is intended to correct the radiometric contribu-
+tion from sun glint and low clouds; the method proposed
+by Hedley et al. (2005) is performed to rectify the radio-
+metric correction on blue and green bands. The linear rela-
+tionship between the NIR and visible bands (i.e. green and
+blue) is established using the linear regression, based on a
+selected sample area of the image pixels. Following the
+recommendation of Hochberg et al. (2003), sample region
+of image is selected which is evident of sun glint, but the
+spectral brightness of the selected region is expected to be
+consistent, wherein the region of deep water is ultimate for
+this. The equation for removing the sun glint and low
+clouds is shown below
+ = - -
+( )
+R R b R Min
+i i i NIR NIR
+(1)
+where Ri
+is the pixel value in blue and green bands, bi
+is
+the regression slope, R Min
+NIR NIR
+- is the difference
+between the pixel NIR value of RNIR
+and the ambient NIR
+level MinNIR
+which gives the 
+Ri
+sun glint­corrected pixel
+brightness in blue and green bands. The value of MinNIR
+indicates the pixel brightness of NIR with no sun glint, and
+can be assessed by the minimum NIR value, which is
+found in the regression sample. Generally, the minimum
+NIR pixel is less prone to problematic outliers than the
+maximum NIR pixel. The following steps are implemented
+to remove the radiometric correction on blue and green
+bands (Hedley et al., 2005):
+·
+· Select the sample area where the range of sun glint is
+evident. It is important to note that the image might
+be more or less homogeneous, and if the sun glint
+was not present (in deep water), then estimate the
+minimum NIR brightness MinNIR
+in the sample.
+·
+· To remove the sun glint from the bandi
+(bandblue
+,
+bandgreen
+), perform the linear regression using the
+selected pixels of NIR brightness (x-axis) against
+bandi
+(y-axis). And determine the slope of the
+regression line for the bandi
+, which is denoted as bi
+.
+·
+· To remove the sun glint from the bandi
+(for all pix-
+els in the image), subtract the outcome of bi
+and the
+NIR brightness of the pixel minus MinNIR
+from the
+pixel value in the bandi
+.
+Ratio transform algorithm
+A ratio transform algorithm was proposed by Stumpf et al.
+(2003) to estimate the bathymetry of near-shore ocean.
+The algorithm makes use of two bands in order to reduce
+the number of parameters to infer the depth of ocean. It
+decreases the bottommost radiance of one band more rap-
+idly with respect to depth, when compared to another band.
+This leads to the ratio between the two bands to differ with
+respect to the depth. A near-constant attenuation value will
+be preserved between the ratio of two bands which is noth-
+ing but the difference of the diffuse attenuation coefficient
+at two different wavelengths; just depending on notion that
+water column is uniformly mixed. The algorithm can cut
+down the error coupled with varying radiation in the
+atmosphere, water column, and seafloor, for the reason
+that both bands are distributed equally.
+Typically in the coastal environment, radiance in the
+blue wavelength (400­500
+nm) attenuates faster with
+depth than light in the green wavelength (500­600
+nm)
+(Jerlov, 1976). Thus, the variation in ratio between the
+bands is affected further by the depth than by bottom
+reflectance. To infer the bathymetry, the algorithm estab-
+lishes the linear relationship between the ratio of radi-
+ance in two bands (green and blue) and water depth
+(Stumpf et al., 2003). The algorithm relies on the circum-
+stance that the absorptivity of water differs spectrally
+from band to band. As the depth of water increases,
+reflectance values of the band with higher absorption will
+decrease proportionately faster than reflectance value of
+the band with lower absorption. Therefore, when two
+bands are transformed, there exists a linear decrease
+between a ratio of high absorption band to a low absorp-
+tion band and water depth.
+The following equation is used to determine the depth
+of the near-shore ocean
+z m
+L Band
+L Band
+m
+obs i
+obs j
+=
+( )
+( )
+( )
+( )
+
+
+
+
+
+
+
+
+
+
+-
+1 0
+ln
+ln
+(2)
+where Lobs
+is observed radiance of bands, m1
+and m0
+are
+offset and gain which are determined empirically, i refers
+to blue band and j refers to green band, and z is depth in
+meters. The advantage of ratio transform algorithm is that
+it takes very few parameters and does not require any opti-
+cal properties to determine the depth of ocean.
+Identifying the extinction depth
+The statistical analysis R2 (the coefficient of determina-
+tion) is adopted to estimate the extinction of depth. The
+parameters such as m1
+and m0
+are obtained from the anal-
+ysis of coefficient of determination. The R2 closest to 1
+indicates that there exists a linear relationship between the
+pixel value and the reference hydrographic chart datum.
+76 The International Journal of Ocean and Climate Systems 8(2)
+Here, the reference hydrographic chart is overlaid on the
+output of ln( ( )) / ln( ( ))
+L Band L Band
+obs blue obs green
+, and the
+corresponding pixel value from the satellite image and cor-
+responding hydrographic chart value (in meter) is obtained
+to determine the extinction of depth. The region deeper
+than the extinction depth do match the pixel value with the
+reference hydrographic chart; therefore, the value of R2
+does not show clear correlation.
+Finally, the calculated parameter such as observed radi-
+ance of band from the ratio of blue and green and the val-
+ues of m1
+and m0
+are provided as input to the ratio
+transform algorithm and identified the depth along the
+near-shore ocean of Mangaluru coast, Karnataka. The
+above procedure for estimating the bathymetry is pro-
+cessed using the ArcGIS 10.2 environment.
+Improving the spatial resolution of Landsat-8
+imagery
+In order to improve the spatial resolution of satellite image,
+various image fusion methods are proposed, such as prin-
+cipal component analysis (PCA) (Chavez and Kwarteng,
+1989), modified intensity hue saturation (M-IHS)
+(Siddiqui, 2003), Brovey transform (BT) (Hallada and
+Cox, 1983), high-pass filter (HPF) (Chavez et al., 1991),
+and wavelet coupled with IHS and PCA (Gonzalez-
+Audicana et al., 2005; Ranchin and Wald, 1993). Image
+fusion is the process of transferring high spatial resolution
+of pan image to the multispectral image in order to obtain
+a single image with both high spatial and high spectral
+resolution. The important conditions for fusing the satellite
+image are (1) both pan band and multispectral band should
+cover the same area and should be acquired at the same
+time and (2) wavelength range of pan band and multispec-
+tral band should be close to each other. Here, the wave-
+length ranges of blue (0.450­0.515
+µm) and green
+(0.525­0.600µm) bands are close to the wavelength range
+of pan (0.500­0.680µm).
+Therefore, the original blue and green bands with the
+spatial resolution of 30m are fused separately with the pan
+band of 15-m spatial resolution. Improved spatial resolu-
+tion of blue and green bands is obtained using the HPF
+image fusion method as shown in Figure 3(a) and (b).
+HPF
+The only pan-sharpening HPF tool (ERDAS Imagine 2014
+software) provides single-band fusion option. Therefore,
+the HPF method has been used for fusing the pan band
+with blue and green bands individually. The method com-
+putes the ratio R between the spatial size of the pan and
+blue and also pan and green bands. The kernel size of 5×5
+is used based on the suggestion in the ERDAS software
+manual as the ratio of multispectral band to pan band reso-
+lution is <2.5. A small HPF is placed on the pan band, and
+the pixel size of the blue and green bands is resampled to
+that of the high-pass pan band. The filtered high-pass pan
+band is added to the resampled blue and green bands to
+obtain a merged blue and green band with both high spatial
+and rich spectral information.
+After improving spatial resolution, it is important to
+assess the quality of blue and green bands, before it is used
+for estimating the bathymetry of near-shore ocean. The
+quantitative index, spatial correlation coefficient (SCC)
+(Choi, 2006; Zhou et al., 1998), is used to assess the spatial
+quality of blue and green bands (i.e. improved spatial reso-
+lution). In order to process this index, the reference blue
+and green band with the spatial resolution of pan band is
+needed, but in reality it is difficult to obtain the blue and
+green band with this requirement. Nevertheless, a refer-
+ence image can be obtained by resampling the original
+blue and green bands to the size of the pan band
+(Gangkofner et al., 2008). The index value of SCC close to
+1 indicates that the bands have good spatial quality.
+Here, the value of SCC for the blue band is 0.8995 and
+for the green band is 0.8815, which is close to the original
+value of 1. Therefore, the HPF method generates improved
+spatial resolution of blue and green bands with high spatial
+quality. The HPF method is processed using the ERDAS
+2014 software based on the suggestions in the software
+manual and also on the basis of existing literature, and the
+spatial quality of fused image is assessed using MATLAB
+2015b. The improved spatial resolution of blue and green
+bands is used to estimate the bathymetry of near-shore
+ocean by applying the above procedure. The extinction of
+Figure 3. Improved spatial resolution of (a) blue band and (b)
+green band.
+Pushparaj and Hegde 77
+depth before and after improving the spatial resolution is
+also compared.
+Results and discussion
+In this study, a procedure was evolved to estimate the
+bathymetry of near-shore ocean using the Landsat-8 satel-
+lite imagery. The results of the procedure implemented are
+presented in Figures 4 to 14. It is important to pre-process
+the satellite image before estimating the near-shore
+bathymetry. Therefore, the low-pass filter is applied on the
+blue, green, and NIR bands as shown in Figure 4(a) to (c),
+respectively. To separate the land from water, the threshold
+value is estimated from the NIR band as shown in Figure
+5, which indicates the smooth section with low values rep-
+resenting water, whereas the fluctuating high values
+represent land. Thus, the threshold value 7000 is applied
+on the blue and green bands to separate water from land as
+shown in Figure 6(a) and (b).
+In order to remove the silver glint, Hedley et al.'s (2005)
+method is adopted.
+First, the polygon is drawn which covers only the
+water area (from the recommendations of Hochberg
+et al., 2003, areas of deep water are ideal for this). The
+polygon is created over the NIR band (i.e. band contains
+both dark (water) and bright (land) areas). The extracted
+polygon covers only the water area and is next used to
+extract the water body of the blue and green bands, as
+shown in Figure 7(a) and (b).
+Figure 4. Low-pass filter of (a) blue band, (b) green band, and
+(c) NIR band.
+Figure 5. Threshold value to separate the land from water.
+Figure 6. Removal of land from water for (a) blue band and
+(b) green band.
+78 The International Journal of Ocean and Climate Systems 8(2)
+Second, linear regression is established for all the
+selected areas of each visible band against the NIR band,
+as shown in Figure 8(a) for blue band and Figure 8(b) for
+green band, where x-axis represents the NIR band bright-
+ness and y-axis represents the visible band. To remove the
+sun glint and cloud, the parameters such as Ri
+, bi
+, RNIR
+,
+and MinNIR
+are needed. Ri
+is the pixel value in the corre-
+sponding blue and green bands, and the regression slope
+bi
+is calculated for the blue and green bands using the fol-
+lowing equation
+Slope =
+y y
+x x
+2 1
+2 1
+-
+-
+(3)
+where the values of x1
+, x2
+, y1
+, y2
+, and MinNIR
+(pixel
+brightness of NIR) are obtained from Figure 8(a) for blue
+band and Figure 8(b) for green band. RNIR
+is the pixel
+value of NIR band. Consequently, the removal of sun glint
+of blue and green bands is shown in Figure 9(a) and (b).
+The ratio transform algorithm is adopted on the pre-
+processed blue and green bands and estimates the bathym-
+etry of near-shore ocean. The hydrographic chart used as a
+reference depth which is overlaid on the outcome of
+ln( ( )) / ln( ( ))
+L Band L Band
+obs blue obs green
+(i.e. named as
+bathy image) is shown in Figure 10(a) and (b). It is impor-
+tant to note that the hydrographic chart is prepared using
+the in situ data collected using multi-beam echo sounders,
+and it is corrected to MLLW. The pixel value of the bathy
+image is obtained with the reference of hydrographic chart
+value, and so there is no need to measure the tidal height
+during the image acquisition.
+From Figure 10(b), depth points in the hydrographic
+chart and the corresponding pixel values from the bathy
+image are obtained, and the scatter plot is plotted which is
+shown in Figures 11 and 12, in which x-axis represents the
+hydrographic chart depth and y-axis represents the corre-
+sponding pixel value. To estimate the bathymetry of near-
+shore ocean using ratio transform algorithm, certain
+parameters are required, such as Lobs
+, m1
+, and m0
+, where
+Lobs
+is observed radiance of bands, obtained from the ratio
+of blue and green bands which is shown in Figure 10(a),
+and m1
+and m0
+are obtained empirically by correlating the
+corresponding pixel value to the hydrographic chart value
+(Figures 11 and 12).
+The effectiveness of improving the spatial resolution of
+Landsat-8 imagery for determining the bathymetry of near-
+shore ocean is examined by comparing the results of both
+Figure 7. Extraction of polygon for (a) blue band and (b)
+green band.
+Figure 8. Linear regression is established for bands (a) blue
+and (b) green to determine the MinNIR
+.
+Pushparaj and Hegde 79
+before improving the spatial resolution of 30
+m and after
+improving the spatial resolution of 15
+m. To validate the
+ratio transform algorithm, the statistical indices such as
+RMSE and mean absolute error (MAE) are computed
+between the algorithm results and hydrographic chart depth.
+Figure 11 represents the result of estimating the bathym-
+etry of near-shore ocean before improving the spatial reso-
+lution of satellite image (i.e. 30m), where the top portion
+of the image shows the scatter plot of the corresponding
+pixel value against the hydrographic chart depth, which
+indicates good correlation value of R2=0.8503 for depth
+up to 5m. It is also seen that the value of R2=0.5132 for
+the depth from 5 to 16m indicates that the corresponding
+pixel moderately matches the hydrographic chart depth,
+and the value of R2=0.3943 for the depth from 16 to 25m
+Figure 9. Removal of sun glint for (a) blue band and (b) green
+band.
+Figure 10. Representation of (a) bathy image and (b)
+hydrographic chart overlaid on bathy image.
+Figure 11. Extinction of depth before improving the spatial
+resolution.
+Figure 12. Extinction of depth after improving the spatial
+resolution.
+80 The International Journal of Ocean and Climate Systems 8(2)
+indicates that the pixel value and hydrographic chart depth
+do not match.
+The bottom portion of the image explains the pixel
+value and its relation to the depth of extinction. Areas
+deeper than the extinction depth (i.e. 5
+m) do not have a
+good correlation between the pixel value and the reference
+hydrographic chart depth. Therefore, the ratio transform
+algorithm can retrieve the depth up to 5m for the 30m spa-
+tial resolution of Landsat-8 imagery.
+Figure 12 represents the result of estimating the bathym-
+etry of near-shore ocean (i.e. after improving the spatial
+resolution of satellite image to 15m), where the top portion
+of the image shows the scatter plot of the corresponding
+pixel value against the hydrographic chart depth which indi-
+cates the good correlation value of R2=0.8951 for the depth
+up to 10m. It is also seen that the value of R2=0.6214 for the
+depth from 10 to 16m indicates that the pixel value moder-
+ately matches the hydrographic chart depth, and the value of
+R2=0.4512 for the depth from 16 to 25m indicates that the
+pixel value and hydrographic chart depth matches unlikely.
+The bottom portion of the image explains that the areas
+deeper than the extinction depth 10m do not have a good
+correlation between the pixel value and the reference
+hydrographic chart depth. Therefore, it is evident that
+improving the spatial resolution of satellite image helps to
+determine the higher depth.
+The required parameters such as Lobs
+(obtained from
+the ratio of blue and green bands) and m1
+and m0
+(obtained
+empirically by correlating the corresponding pixel value to
+the hydrographic chart value) are provided as input to the
+ratio transform algorithm and depth ( )
+z is obtained. In
+order to validate the ratio transform algorithm, statistical
+indices RMSE and MAE are calculated between the algo-
+rithm results and the reference hydrographic chart as
+shown in Tables 1 and 2.
+Table 1 indicates that the range of depths between 0 and
+5 has higher accuracy (RMSE=0.94; MAE=0.89). From
+Table 2, it is observed that the highest accuracy
+(RMSE
+=
+0.86; MAE
+=
+0.79) is achieved for the range of
+depths between 0 and 10. It is seen that the ratio transform
+algorithm tends to underestimate the depths in water
+deeper than 10m. Therefore, the ratio transform algorithm
+can better estimate the depth up to 10m for the improved
+spatial resolution of Landsat-8 imagery.
+Figure 13. Estimation of depth before improving the spatial
+resolution.
+Figure 14. Estimation of depth after improving the spatial
+resolution.
+Pushparaj and Hegde 81
+Figures 13 and 14 represent the estimation of bathym-
+etry before and after improving the spatial resolution of
+satellite image along the coast of Mangaluru, Karnataka.
+The Landsat-8 image with the spatial resolution of 30m
+(i.e. before improving the spatial resolution) provided bet-
+ter estimation of depth up to 5
+m, which is indicated in
+light blue and shown in Figure 13, the depth from 5 to 16m
+is shown in blue, and the depth from 16 to 25m is shown
+in dark blue in which the algorithm results and hydro-
+graphic chart depth do not match. Therefore, the Landsat-8
+image with spatial resolution of 30m better estimates the
+depth up to 5m.
+The Landsat-8 image with the spatial resolution of 15m
+(i.e. after improving the spatial resolution) provided the
+better estimation of depth up to 10m (which is colored in
+light blue) is shown in Figure 14, the depth from 10 to
+16
+m is shown in blue, and the depth from 16 to 25
+m is
+shown in dark blue indicates that the algorithm results and
+hydrographic chart depth do not match. Therefore, the
+Landsat-8 image with improved spatial resolution of 15m
+better estimates the depth up to 10m.
+Conclusion
+·
+· In this study, the procedure is evolved for estimat-
+ing near-shore bathymetry using Landsat-8 satellite
+imagery based on the ratio transform algorithm. In
+effect, this procedure can be best used as an explo-
+ration tool to infer the bathymetry of coastal region
+before a high-resolution hydrographic survey is
+operated using an expensive instrument such as
+multi-beam echo sounder.
+·
+· The results of satellite image show a good correla-
+tion of R2=0.8503 with the hydrographic chart data
+for the depth up to 5m for the 30-m spatial resolu-
+tion of Landsat-8 imagery.
+·
+· The results of satellite image after improving the
+spatial resolution to 15
+m show a good correlation
+of R2=0.8951 with the hydrographic chart data for
+the depth up to 10m. Therefore, improving the spa-
+tial resolution helps to infer the higher depth in the
+region of coast.
+·
+· The results of RMSE and MAE between the algo-
+rithm results and hydrographic chart indicate that
+the ratio transform algorithm can better estimate the
+depth up to 10m for the improved spatial resolution
+of Landsat-8 imagery.
+·
+· The procedure used for deriving the satellite
+bathymetry can be used by marine surveyors and
+hydrographic officers. Using the results of this
+procedure, marine surveyors can assess the cur-
+rent amount of change in depth, and if a weaker
+R2 value is observed, it necessitates the update of
+high-resolution hydrographic chart to the exist-
+ing one.
+·
+· To derive the bathymetry using the satellite
+imagery, environmental conditions such as water
+clarity, cloud cover, and sun glint are needed to be
+considered that could deteriorate the accuracy of
+estimated depth.
+·
+· It is also to be noted that the selection of reference
+hydrographic chart is important due to the age of
+the hydrographic survey or the old technique and
+equipment used to conduct the survey.
+·
+· Finally, regardless of improvement in the satellite-
+derived bathymetry, the procedure evolved can be
+used as an exploration tool for operating the hydro-
+graphic survey, and this is not an alternative for
+acoustic hydrographic survey.
+Acknowledgements
+The authors thank Dr Richard P. Stumpf, Oceanographer, NOAA
+(National Center for Coastal Ocean Science), and Dr Shachak
+Pe'eri, Research Associate Professor, Center for Coastal and
+Ocean Mapping, University of New Hampshire, for providing
+the necessary support for research execution. The authors also
+acknowledge the support from the authorities of New Mangalore
+Port Trust (NMPT), Mangaluru, Karnataka, India, for providing
+the necessary data required for research and also lending a hand
+to understand the working of the single-beam echo sounder
+instrument. The authors thank the Director, NITK, Surathkal and
+also the Head, Department of Applied Mechanics and Hydraulics,
+NITK, Surathkal.
+Declaration of conflicting interests
+The author(s) declared no potential conflicts of interest with
+respect to the research, authorship, and/or publication of this
+article.
+Funding
+The author(s) received no financial support for the research,
+authorship, and/or publication of this article.
+Table 1. RMSE and MAE values before improving the spatial
+resolution of Landsat-8 imagery.
+Range of depth (m) RMSE (m) MAE (m)
+0­5 0.94 0.89
+5­16 2.51 2.47
+16­25 5.63 5.59
+RMSE: root mean square error; MAE: mean absolute error.
+Table 2. RMSE and MAE values after improving the spatial
+resolution of Landsat-8 imagery.
+Range of depth (m) RMSE (m) MAE (m)
+0­10 0.86 0.79
+10­16 2.39 2.25
+16­25 5.21 5.09
+RMSE: root mean square error; MAE: mean absolute error.
+82 The International Journal of Ocean and Climate Systems 8(2)
+References
+Brando VE, Anstee JM, Wettle M, et al. (2009) A physics based
+retrieval and quality assessment of bathymetry from sub-
+optimal hyperspectral data. Remote Sensing of Environment
+113(4): 755­770.
+Carron MJ, Vogt PR and Jung W (2001) A proposed interna-
+tional long-term project to systematically map the world's
+ocean floors from beach to trench: GOMaP (Global Ocean
+Mapping Program). International Hydrographic Review
+2(3): 49­50.
+Chavez PS and Kwarteng AY (1989) Extracting spectral con-
+trast in Landsat Thematic Mapper image data using selec-
+tive principal component analysis. Photogrammetric
+Engineering and Remote Sensing 55(3): 339­348.
+Chavez PS, Sides SC and Anderson JA (1991) Comparison of three
+different methods to merge multi resolution and multispectral
+data: Landsat TM and SPOT panchromatic. Photogrammetric
+Engineering and Remote Sensing 57(3): 295­303.
+Choi M (2006) A new intensity-hue-saturation fusion approach to
+image fusion with a tradeoff parameter. IEEE Transactions
+on Geoscience and Remote Sensing 44(6): 1672­1682.
+Dekker AG, Phinn SR, Anstee J, et al. (2011) Intercomparison
+of shallow water bathymetry, hydro-optics, and benthos
+mapping techniques in Australian and Caribbean coastal
+environments. Limnology and Oceanography: Methods 9:
+396­425.
+Deng Z, Ji M and Zhang Z (2008) Mapping bathymetry from
+multi-source remote sensing images: A case study in the
+Beilun Estuary, Guangxi, China. The International Archives
+of the Photogrammetry, Remote Sensing and Spatial
+Information Sciences 37(Part B8): 1321­1326.
+Doxani G, Papadopoulou M, Lafazani P, et al. (2012) Shallow-
+water bathymetry over variable bottom types using multi-
+spectral worldview-2 image. The International Archives
+of the Photogrammetry, Remote Sensing and Spatial
+Information Sciences 39(1): 159­164.
+Eugenio F, Marcello J and Martin J (2015) High-resolution maps
+of bathymetry and benthic habitats in shallow-water envi-
+ronments using multispectral remote sensing imagery. IEEE
+Transactions on Geoscience and Remote Sensing 53(7):
+3539­3549.
+Gangkofner UG, Pradhan PS and Holcomb DW (2008)
+Optimizing the high-pass filter addition technique for image
+fusion. Photogrammetric Engineering and Remote Sensing
+74(9): 1107­1118.
+Gao J (2009) Bathymetric mapping by means of remote sensing:
+Methods, accuracy and limitations. Progress in Physical
+Geography 33(1): 103­116.
+Giardino C, Candiani G, Bresciani M, et al. (2012) Bomber:
+A tool for estimating water quality and bottom properties
+from remote sensing images. Computers & Geosciences 45:
+313­318.
+Gonzalez-Audicana M, Otazu X, Fors O, et al. (2005) Comparison
+between Mallat's and the "à trous" discrete wavelet trans-
+form based algorithms for the fusion of multispectral and
+panchromatic images. International Journal of Remote
+Sensing 26(3): 595­614.
+Hallada W and Cox S (1983) Image sharpening for mixed spa-
+tial and spectral resolution satellite systems. International
+Symposium on Remote Sensing of Environment 17: 9­13.
+Hedley JD, Harborne AR and Mumby PJ (2005) Technical note:
+Simple and robust removal of sun glint for mapping shal-
+low water benthos. International Journal of Remote Sensing
+26(10): 2107­2112.
+Hochberg EJ, Andrefouet S and Tyler MR (2003) Sea surface
+correction of high spatial resolution Ikonos images to
+improve bottom mapping in near-shore environments. IEEE
+Transactions on Geoscience and Remote Sensing 41(7):
+1724­1729.
+Jerlov N (1976) Preface to the second edition. In: Jerlov N (ed.)
+Marine Optics, Elsevier Oceanography Series, vol. 14.
+Amsterdam: Elsevier, pp. vii­x.
+Lyzenga DR (1978) Passive remote sensing techniques for map-
+ping water depth and bottom features. Applied Optics 17(3):
+379­383.
+Lyzenga DR (1981) Remote sensing of bottom reflectance and
+water attenuation parameters in shallow water using aircraft
+and Landsat data. International Journal of Remote Sensing
+2(1): 71­82.
+Lyzenga DR, Malinas NP and Tanis FJ (2006) Multispectral
+bathymetry using a simple physically based algorithm.
+IEEE Transactions on Geoscience and Remote Sensing
+44(8): 2251­2259.
+Ma S, Tao Z, Yang X, et al. (2014) Bathymetry retrieval from
+hyperspectral remote sensing data in optical-shallow water.
+IEEE Transactions on Geoscience and Remote Sensing
+52(2): 1205­1212.
+Mishra DR, Narumalani S, Rundquist D, et al. (2007) Enhancing
+the detection and classification of coral reef and associated
+benthic habitats: A hyperspectral remote sensing approach.
+Journal of Geophysical Research 112: C08014.
+Mobley CD, Sundman LK, Davis CO, et al. (2005) Interpretation
+of hyperspectral remote-sensing imagery by spectrum match-
+ing and look-up tables. Applied Optics 44(17): 3576­3592.
+Pattanaik A, Sahu K and Bhutiyani MR (2015) Estimation of
+shallow water bathymetry using IRS-multispectral imagery
+of Odisha Coast, India. Aquatic Procedia 4: 173­181.
+Pe'eri S, Parrish C, Azuike C, et al. (2014) Satellite remote sens-
+ing as a reconnaissance tool for assessing nautical chart ade-
+quacy and completeness. Marine Geodesy 37(3): 293­314.
+Philpot WD (1989) Bathymetric mapping with passive multi-
+spectral imagery. Applied Optics 28(8): 1569­1578.
+Ranchin T and Wald L (1993) The wavelet transform for the
+analysis of remotely sensed images. International Journal
+of Remote Sensing 14(3): 615­619.
+Siddiqui Y (2003) The modified IHS method for fusing satellite
+imagery. In: Proceedings of the ASPRS 2003 annual con-
+ference, Anchorage, AK, 5­9 May, pp. 153­158. American
+Society of Photogrammetry and Remote Sensing (ASPRS).
+Spitzer D and Dirks RWJ (1986) Classification of bottom compo-
+sition and bathymetry of shallow waters by passive remote
+sensing. Remote Sensing for Resources Development and
+Environmental Management 2(2): 775­777.
+Stumpf RP, Holderied K and Sinclair M (2003) Determination of
+water depth with high-resolution satellite imagery over vari-
+able bottom types. Limnology and Oceanography: Methods
+48(1): 547­556.
+Su H, Liu H and Heyman WD (2008) Automated derivation
+of bathymetric information from multi-spectral satel-
+lite imagery using a non-linear inversion model. Marine
+Geodesy 31: 281­298.
+Pushparaj and Hegde 83
+Su H, Liu H, Wang L, et al. (2014) Geographically adaptive
+inversion model for improving bathymetric retrieval from
+satellite multispectral imagery. IEEE Transactions on
+Geoscience and Remote Sensing 52(1): 465­476.
+Vahtmäe E and Kutser T (2016) Airborne mapping of shal-
+low water bathymetry in the optically complex waters of
+the Baltic Sea. Journal of Applied Remote Sensing 10(2):
+025012.
+Winterbottom SJ and Gilvear DJ (1997) Quantification of chan-
+nel bed morphology in gravel-bed rivers using airborne
+multispectral imagery and aerial photography. Regulated
+Rivers: Research & Management 13(6): 489­499.
+Zheng P, Deng Z and Ye X (2014) Retrieval study of lake
+water depth by using multi-spectral remote sensing in
+Bangong Co Lake. Sciences in Cold and Arid Regions
+6(3): 266­272.
+Zhou J, Civco DL and Silander JA (1998) A wavelet
+transform method to merge Landsat TM and SPOT pan-
+chromatic data. International Journal of Remote Sensing
+19(4): 743­757.
+Author biographies
+Jagalingam Pushparaj is a research student at National Institute
+of Technology Karnataka (NITK), Surathkal, India. He received
+his Bachelor of Engineering Degree in Computer Science and
+Engineering from Anna University, India. His Masters was in
+Remote Sensing and GIS from Adhiyamaan Engineering
+College, Hosur, India. His research interests are Pan-sharpening,
+Bathymetry studies and Remote Sensing & GIS applications.
+Arkal Vittal Hegde is a professor of Applied Mechanics and
+Hydraulics Department at National Institute of Technology
+Karnataka, Surathkal, India. He received his Bachelor of
+Engineering Degree in Civil Engineering from the Karnataka
+Regional Engineering College (Now NITK). He received his
+Master Degree in Offshore Engineering from Indian Institute of
+Technology Bombay, India, and Doctor of Philosophy (PhD)
+Degree from Mangalore University, India. His research interests
+are Soft computing applications in coastal engineering, Coastal
+zone management and coastal erosion, Breakwaters, Coastal
+wetlands, etc.
+

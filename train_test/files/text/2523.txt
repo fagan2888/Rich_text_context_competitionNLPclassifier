@@ -1,0 +1,843 @@
+RESEARCH ARTICLE
+The Effect of Geography and Citizen
+Behavior on Motor Vehicle Deaths in the
+United States
+Nicole Abaid1*, James Macinko2, Diana Silver3, Maurizio Porfiri4
+1 Department of Biomedical Engineering and Mechanics, Virginia Polytechnic Institute and State University,
+Blacksburg, Virginia, United States of America, 2 Departments of Health Policy and Management and
+Community Health Sciences, University of California Los Angeles, Los Angeles, California, United States of
+America, 3 Department of Nutrition, Food Studies, and Public Health, New York University, New York, New
+York, United States of America, 4 Department of Mechanical and Aerospace Engineering, New York
+University Polytechnic School of Engineering, Brooklyn, New York, United States of America
+* nabaid@vt.edu
+Abstract
+Death due to motor vehicle collisions (MVCs) remains a leading cause of death in the US
+and alcohol plays a prominent role in a large proportion of these fatalities nationwide. Rates
+for these incidents vary widely among states and over time. Here, we explore the extent to
+which driving volume, alcohol consumption, legislation, political ideology, and geographical
+factors influence MVC deaths across states and time. We specify structural equation mod-
+els for extracting associations between the factors and outcomes for MVC deaths and com-
+pute correlation functions of states' relative geographic and political positions to elucidate
+the relative contribution of these factors. We find evidence that state-level variation in MVC
+deaths is associated with time-varying driving volume, alcohol consumption, and legislation.
+These relationships are modulated by state spatial proximity, whereby neighboring states
+are found to share similar MVC death rates over the thirty-year observation period. These
+results support the hypothesis that neighboring states exhibit similar risk and protective
+characteristics, despite differences in political ideology.
+Introduction
+Human interactions within a society create complex systems, which depend on phenomena at
+both individual and group levels [1]. Such systems are influenced by a variety of formal and in-
+formal rules, which reflect desirable outcomes for the society and behaviors to achieve them
+[2]. In this context, public policies are powerful tools, yet many aspects of their adoption and
+diffusion are not well understood [3].
+Over the past three decades, states in the US have expanded the use of public policies, such as
+laws, regulations, taxes, and other enforcement mechanisms, to attain public health goals and to
+facilitate the change of complex health behaviors [4­7]. In spite of growing evidence for the ef-
+fectiveness of numerous individual laws, important public policy questions remain unanswered,
+such as how different combinations of health laws and policies work in concert or at odds with
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 1 / 15
+OPEN ACCESS
+Citation: Abaid N, Macinko J, Silver D, Porfiri M
+(2015) The Effect of Geography and Citizen Behavior
+on Motor Vehicle Deaths in the United States. PLoS
+ONE 10(4): e0123339. doi:10.1371/journal.
+pone.0123339
+Academic Editor: Mohammad Ali, Johns Hopkins
+Bloomberg School of Public Health, UNITED
+STATES
+Received: September 16, 2014
+Accepted: March 2, 2015
+Published: April 7, 2015
+Copyright: © 2015 Abaid et al. This is an open
+access article distributed under the terms of the
+Creative Commons Attribution License, which permits
+unrestricted use, distribution, and reproduction in any
+medium, provided the original author and source are
+credited.
+Data Availability Statement: Data are available in
+the Health and Medical Care Archive referenced as:
+Silver, Diana, and James Macinko. State Health
+Policy Research Dataset (SHEPRD): 1980-2010.
+ICPSR34789-v2. Ann Arbor, MI: Inter-university
+Consortium for Political and Social Research
+[distributor], 2013-12-16. Persistent URL: http://doi.
+org/10.3886/ICPSR34789.v2.
+Funding: This work was supported by the National
+Science Foundation under Grant # CMMI-1129820
+and Grant # CMMI-0745753, the National Institutes of
+Health, National Institute on Alcohol Abuse and
+one another, how states' internal political and economic profiles affect the policy-making pro-
+cess, and whether states that are geographically or politically similar tend to emulate one anoth-
+er with regard to policies intended to tackle public health problems.
+The study of complex systems [8, 9] offers novel approaches for handling large datasets. For
+example, public health problems (e.g., tobacco control and pandemic flu [10­14]), the spread
+of invasive species driven by the global shipping industry [15], models of energy flows evidenc-
+ing climate [16], and analysis of cholera epidemics [17] have already benefitted from these ap-
+proaches. Complex systems tools may be particularly beneficial for the analysis of
+policymaking among states, as they allow for a quantitative understanding of the complex in-
+teractions within a group of interconnected units (e.g., policymakers) who are responsible for
+the production of an observable and emergent phenomenon (e.g., state health policy land-
+scape) [18], for example to study the relationship between adopting mandatory seat belt laws
+and preventing injury and death as a result of traffic accidents [19].
+A pressing public health problem is to understand and predict the relationship between al-
+cohol consumption, motor vehicle collisions (MVCs), and traffic fatalities. Although traffic fa-
+tality rates have been halved during the past thirty years, MVCs remain the second largest
+contributor to years of life lost before age 75 in the US and are the single largest cause of death
+among youth aged fifteen to twenty-four [20, 21]. Moreover, MVC-related death rates vary
+widely among states, from 0.84 deaths per 100 million vehicle miles of travel in Iowa to 4.35
+deaths per 100 million vehicle miles of travel in New Jersey.
+Alcohol use is a major contributor to MVCs and was involved in nearly one-third of all fatal
+crashes in 2009 [22]. Much of the decline in deaths over the past thirty years has been attribut-
+ed to more effective state policies regulating motor vehicle safety and reducing drunk driving.
+Yet, despite early progress, the rate of alcohol involvement in fatal collisions has remained near
+32% since 1994 and currently ranges from about 25% in Kentucky to 48% in Hawaii [22]. In
+this context, we posit that complex systems approaches may offer fundamental insight into
+temporal and spatial processes underlying the persistence of this public health problem.
+In this paper, we explore the dynamics of state MVC deaths and the factors associated with
+changes in death rates over time. We investigate the extent to which a set of key state characteris-
+tics and geographical factors influence MVC deaths. MVC deaths are measured by total counts
+of deaths, rates of deaths per vehicle miles travelled, and the percentage of deaths that are alco-
+hol-related. Explanatory variables comprise the driving volume (the total amount of vehicle
+miles travelled in each state and year), alcohol consumption (gallons per capita), legislation (the
+proportion of an ensemble of alcohol- and driving-related laws adopted), and political ideology.
+The relationships between MVC deaths and explanatory variables are studied using structural
+equation models (SEMs) on data from all fifty states over a recent thirty year period. SEMs are se-
+lected as they enable the simultaneous measurement of relationships among multiple indepen-
+dent variables and a dependent variable, which allows for assessing potential confounders
+between the variables. Spatial and political measures are leveraged to determine how state geo-
+graphic and ideological similarities contribute to such relationships. Based on the knowledge that
+the interactions among states are able to inform their public policies, we expect to find significant
+dependencies between MVC deaths and the selected variables. We further anticipate that states
+that are geographically closer and ideologically similar exhibit comparable patterns.
+Results
+MVC outcomes and relationship to alcohol
+We find that MVC deaths, denoted D, have decreased at the national level from 51,050 in 1980
+to 32,788 in 2010. Most states experienced a decline over time, but overall rates varied largely
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 2 / 15
+Alcoholism under Grant # 1R21AA021523-01A1, and
+by New York University under a SEED grant. The
+funders had no role in study design, data collection
+and analysis, decision to publish, or preparation of
+the manuscript.
+Competing Interests: The authors have declared
+that no competing interests exist.
+by state, see Fig 1a. This variation is further demonstrated in Fig 1b, which shows D at three
+evenly spaced years in the studied thirty year period, 1980, 1995, and 2009. In this figure, D is
+normalized over all states with respect to the annual maximum value; thus, the state with larg-
+est D is shown with a value of 1 and the state with the smallest D is shown with a value of 0 for
+each map, where numerical values are given in the color bar. We consistently see that the large
+and populous states- CA, FL, and TX- have the highest number of MVC deaths. Interestingly,
+although NY is both large and populous, it fails to reach similarly high values of D.
+The percentage of MVC deaths involving alcohol, denoted Da
+, shows similar nationwide
+trends to D, decreasing from 37.0% in 1980 to 18.3% in 2010. The variation of this quantity be-
+tween states is generally narrow, see Fig 1c. However, considering Da
+normalized over all states
+in 1980, 1995, and 2009, we see that the footprint of alcohol-related traffic deaths is more com-
+plex than the previous case, see Fig 1d. The patterns among the states do not appear to be con-
+stant over time, nor are they dependent on geographic location over time.
+Association between MVC outcomes and potential determinants of
+variation among states
+We analyze four state descriptors: vehicle miles travelled (M), per capita alcohol consumption
+(A), the proportion of selected laws related to reducing risky and drunk driving and increasing
+driver and occupant protection (e.g. seatbelts) (L), and state ideology (I). The state ideology is
+between 0 and 1, with 1 indicating most liberal political ideology. The computation of these de-
+scriptors is described in detail in the Materials and Methods section. These quantities are re-
+ported nationwide, normalized with respect to the annual maximum values over all states, in
+1980, 1995, and 2009 in Fig 2. The results from the SEMs are presented in Table 1 and summa-
+rized in network form in Fig 3.
+Comparing the dependence of D on M, we find significant positive associations when the
+states are partitioned into decades and when they are combined over the thirty years. From this
+analysis, we notice that the regression coefficients are positive and decrease in time. Neverthe-
+less, such analysis using the raw number of MVC deaths does not allow for an objective com-
+parison between states of varying populations and geographic sizes. Thus, we consider D/M as
+the focal outcome in the rest of the analyses, which eliminates the over-emphasis of states with
+higher populations or more roads.
+Studying the dependence of Da
+on the state characteristics, we find a significant association
+with M over all decades and years and the regression coefficients change through the decades;
+these negative coefficients increase towards zero over time. The association with A shows sig-
+nificant positive associations over all decades and all years combined. Here, the regression coef-
+ficients vary non-monotonically over the decades. Significant negative associations are found
+between L and Da
+when the decades are considered separately and when all years are com-
+bined. The regression coefficients show a strong increase from the 1980s to the 1990s, after
+which they stay approximately constant. Considering Da
+'s variation with I, we do not find sig-
+nificant association for any decade, nor when combining all years.
+Considering the association between D/M and A, L, and I, we find a significant and positive
+association with A for all years combined and in the 1980s separately; for the 1990s and the
+2000s, we do not find any association for the regression coefficients. We further find significant
+negative associations between L and I when the decades are considered separately and when all
+years are combined. The regression coefficients are negative and increase toward zero with
+time, by an approximate factor of 1.5 per decade.
+Among the independent factors in these two SEMs, we find a complex pattern of depen-
+dence among factors and over time. Notably, we see that L has significant positive and negative
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 3 / 15
+Fig 1. Synopsis of MVC deaths and the percentage of which are related to alcohol. a) Contour plot of the frequency distribution of MVC deaths (raw
+counts) D over all states computed annually for 30 years. Dark/light colors indicate small/large numbers of states with the given value of D. b) Snapshots of D
+normalized between zero and one for three representative years. c) Contour plot of the frequency distribution of the percentage of MVC deaths related to
+alcohol Da
+for all states over thirty years. Dark/light colors indicate small/large numbers of states with the given value of Da
+. d) Snapshots of Da
+values
+normalized between zero and one for three representative years. All colored maps were created with the MATLAB Mapping toolbox.
+doi:10.1371/journal.pone.0123339.g001
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 4 / 15
+associations with M and A, respectively, over all years and in all but one decade in the SEM
+with Da
+. The relationship between A and L is further mirrored in the SEM with D/M. For the
+computed errors, we find that the coefficients mitigating possible time-varying confounding
+factors are relatively small compared to the coefficients between pairs of factors.
+Fig 2. Snapshots of state characteristics for three representative years. Characteristics are: a) vehicle
+miles travelled M, b) per capita alcohol consumption A, c) proportion of relevant laws adopted L, and d) state
+political ideology I. Each characteristic is normalized between zero and one for all states independently for
+each year. All colored maps were created with the MATLAB Mapping toolbox.
+doi:10.1371/journal.pone.0123339.g002
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 5 / 15
+Similarity analysis of state pairs
+Following the analysis in Gallos et al. [23], we compute a correlation function to identify trends
+between different state characteristics and the MVC outcomes for pairs of states separated by a
+certain "distance". The distance between states is defined in two ways: the location of geograph-
+ic state center and the political ideology of the state population. A correlation coefficient is eval-
+uated for all pairs of states separated by a given distance, computed in any of the previously
+defined outcomes and characteristics. Further technical details are provided in the Materials
+Table 1. Results of structural equation models.
+All years
+Di
+= 0.93*Mi
++ 0.022* + 0.005*2i
+Dai
+= -0.18*Mi
++ 0.32*Ai
+--0.19*Li
+--0.043Ii
++ 0.27* + 0.013*21i
+Li
+= 0.24*Mi
+--0.45*Ai
++ 0.47*Ii
++ 0.20* + 0.033*22i
+Ii
+= 0.032**Mi
++ 0.073*Ai
++ 0.72* + 0.007*23i
+Ai
+= -0.11*Mi
++ 0.43* + 0.010*24i
+(D/M)i
+= 0.13*Ai
+--0.37*Li
+--0.57*Ii
++ 0.88* + 0.009*25i
+Li
+= -0.51*Ai
++ 0.49Ii
++ 0.24* + 0.034*26i
+Ii
+= 0.065*Ai
++ 0.73* + 0.007*27i
+1980s
+Di
+= 1.49*Mi
++ 0.007** + 0.002*2i
+Dai
+= -0.27*Mi
++ 0.39*Ai
+--0.25*Li
+--0.057Ii
++ 0.27* + 0.019*21i
+Li
+= -0.007Mi
+--0.27*Ai
++ 0.12**Ii
++ 0.25* + 0.012*22i
+Ii
+= 0.033Mi
++ 0.057Ai
++ 0.72* + 0.007*23i
+Ai
+= -0.061Mi
++ 0.46* + 0.014*24i
+(D/M)i
+= 0.11**Ai
+--0.23*Li
+--0.78*Ii
++ 1.07* + 0.012*25i
+Li
+= -0.27*Ai
++ 0.12**Ii
++ 0.25* + 0.012*26i
+Ii
+= 0.055Ai
++ 0.72* + 0.007*27i
+1990s
+Di
+= 0.95*Mi
++ 0.012* + 0.002*2i
+Dai
+= -0.24*Mi
++ 0.18*Ai
+--0.16*Li
+--0.10Ii
++ 0.35* + 0.011*21i
+Li
+= 0.089*Mi
+--0.023Ai
++ 0.021Ii
++ 0.37* + 0.011*22i
+Ii
+= 0.012Mi
++ 0.057Ai
++ 0.73* + 0.005*23i
+Ai
+= -0.078*Mi
++ 0.40* + 0.007*24i
+(D/M)i
+= 0.020Ai
+--0.13*Li
+--0.54*Ii
++ 0.77* + 0.005*25i
+Li
+= -0.044Ai
++ 0.026Ii
++ 0.39* + 0.011*26i
+Ii
+= 0.054Ai
++ 0.73* + 0.005*27i
+2000s
+Di
+= 0.79*Mi
++ 0.009* + 0.002*2i
+Dai
+= -0.12*Mi
++ 0.24*Ai
+--0.17*Li
++ 0.012Ii
++ 0.23* + 0.009*21i
+Li
+= 0.15*Mi
+--0.18**Ai
++ 0.40*Ii
++ 0.32* + 0.018*22i
+Ii
+= 0.024Mi
++ 0.20*Ai
++ 0.69* + 0.007*23i
+Ai
+= -0.091*Mi
++ 0.42* + 0.006*24i
+(D/M)i
+= -0.003Ai
+--0.087*Li
+--0.42*Ii
++ 0.64* + 0.004*25i
+Li
+= -0.25*Ai
++ 0.42*Ii
++ 0.36* + 0.019*26i
+Ii
+= 0.19*Ai
++ 0.70* + 0.007*27i
+Coefficients with statistical significance p<0.01 and p<0.05 are denoted by * and **, respectively.
+doi:10.1371/journal.pone.0123339.t001
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 6 / 15
+Fig 3. Path diagram of structural equation models for state characteristics and outcomes. Each
+variable is normalized between 0 and 1 by dividing all values by its largest value in the thirty year time span.
+SEM diagrams are shown for the models in a) Eq (1), b) Eq (2), and c) Eq (3). All relationships, shown as
+arrows, denote free parameters identified by the model and given in Table 1 with their statistical significances.
+doi:10.1371/journal.pone.0123339.g003
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 7 / 15
+and Methods section. Fig 4 shows the correlation function computed using geographic and
+ideological distances versus D/M, Da
+, M, A, and L.
+Considering the left column of Fig 4, we find that the outcome D/M and characteristics
+A and L show positive correlations for small geographic distances, indicating that nearby
+states are more similar than states that are further apart. These short-distance correlations
+vary in time, whereby D/M tends to be more correlated as time increases (greater than
+one standard deviation difference in the mean values) and A displays an opposite trend.
+Correlations of the state characteristics and outcomes generally decrease with increasing
+geographic distances, converging near zero. In a few cases, such correlations tend to
+negative values, as for D/M which attains negative values for geographic distances larger
+than 0.4.
+When we use ideological differences to define distances, we uncover strikingly different pat-
+terns than in the previous case, see the right column of Fig 4. For no quantity except D/M do
+we find any correlation among near neighbors, whereby states which are ideologically similar
+display correlations near zero. Increasing the ideological distance does not produce noticeable
+variations, except for D/M which attains nonnegligible negative values for distances larger than
+0.3. In contrast to our analysis of geographic distances, the data variation remarkably increases
+with growing distance. Such wide variations are likely due to the smaller number of state pairs
+which are ideologically very dissimilar, see Fig 5.
+Discussion
+This study supports the hypothesis that MVC deaths are associated with a set of policy and en-
+vironmental factors, which explains a large proportion of state variations in outcomes. More-
+over, these factors (i.e., M, A, and L) are modified by state characteristics and are influenced by
+geographic proximity and less so by ideological differences, as demonstrated through the
+SEM results.
+Our results confirm the notion that the main measure of risk of an MVC is the amount of
+time spent driving and suggest that, in spite of increased driving volume, the risk of MVC
+deaths has decreased over the past three decades. One explanation for this trend has been the
+increased attention towards the design of safer vehicles [24]. However, our findings support
+the importance of regulations promoting safer driving behavior in reducing MVC deaths. Spe-
+cifically, we find that MVC death rate and the proportion of those related to alcohol are nega-
+tively associated with the number of laws aimed at reducing drunk driving and promoting
+driver and passenger safety. Similarly, we observe that MVC deaths per miles travelled de-
+creases as the state political ideology grows more liberal, although liberal states do not necessar-
+ily have a larger number of laws.
+We also confirm that the percentage of alcohol-related MVC deaths increases with per
+capita alcohol consumption [25] in line with intuitive expectations. Interestingly, we further
+observe that the alcohol-related MVC deaths are negatively associated with driving volume,
+whereby in states where the amount of driving is higher, the percentage of alcohol-related
+MVC deaths is lower. This evidence is unlikely to be explained by variations in the legisla-
+tion across states, since we find no association between the driving volume and the number
+of laws.
+Considering results from the geographic analysis, we find that states' physical proximity
+is a predictor of MVC deaths, whereby states that are close by tend to have similar MVC
+deaths per unit vehicle mile. Likely, this reflects the composition of the transportation infra-
+structure in the US, where high density urban centers are connected through interstate high-
+ways and smaller shared roads, while low traffic volume areas are connected to similar
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 8 / 15
+Fig 4. Mean correlation function for state characteristics and outcomes, computed using geographic
+and ideological distance as indicated by the column heading. Horizontal axes show distance r and
+vertical axes C(r). Distances are normalized from zero to one based on the maximum distance between state
+centers and discretized into eleven equal bins. The largest four bins are combined to lessen the effect of
+sparse occupancy at large distances, and the value for the correlation function of the set of state pairs in the
+combined bin is shown at 0.82 on the horizontal axis. Points indicate mean value and error bars one standard
+deviation taken over selected decade.
+doi:10.1371/journal.pone.0123339.g004
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 9 / 15
+areas. However, the role of physical proximity appears to be secondary in explaining state
+differences in alcohol-related deaths. The negative correlation between alcohol-related MVC
+deaths and traffic volume may be related to the lack of correlation we observe between traffic
+volume in physically proximal states. It may indicate that alcohol-related MVC deaths are
+associated with specific driving patterns involving smaller travel distances [26].
+Another explanation for the importance of physical distances on MVC deaths is the finding
+that proximal states have similar legal environments. The political science literature suggests
+that, all else equal, states are more likely to adopt laws that have been successful in another
+state because this simplifies policymakers' task of finding a solution to a given problem [27,
+28]. There are several reasons why states should cooperate on laws regarding traffic fatalities.
+First, roads and highways cross state borders, necessitating communication and coordination
+among law enforcement agencies and state departments of transportation. Second, policy-
+makers and policy analysts in neighboring states may have opportunities to learn from one
+Fig 5. Histograms of frequency of state pairs separated by a distance r computed using geographic location and political ideology. Horizontal axes
+show distance and vertical axes percentage of state pairs. Distances are normalized from zero to one and discretized into eleven equal bins; the largest four
+are combined to lessen the effect of sparse occupancy at large distances. Types of distances are given in the subfigure titles. For subfigures using
+ideological distances, error bars indicate one standard error over the selected decade.
+doi:10.1371/journal.pone.0123339.g005
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 10 / 15
+another through regional associations and conferences or other formal mechanisms to ex-
+change information. They may also be more willing to look to neighboring states for solutions
+to policy problems because of regional similarities in populations, geography, or economic cir-
+cumstances. We note that state proximity also predicts similar patterns of alcohol consump-
+tion, reflecting an underlying risk factor for MVC deaths. This could also be a result of the fact
+that geographically contiguous states necessarily share some aspects of their legal environ-
+ments, including alcohol, taxes, and sales restriction.
+In contrast with our expectations, our results indicate that political ideology is less predic-
+tive of MVC deaths than geography and appears to exert an influence only for states which are
+ideologically very different. Specifically, states with different ideologies tend to be negatively
+correlated in their MVC deaths, suggesting that differences in political ideology may be associ-
+ated with additional risk or protective factors for MVC deaths. One specific pathway identified
+through the SEM is that more liberal ideology is positively associated with greater laws in-
+tended to regulate behaviors which may explain its indirect effect on outcomes in different
+state contexts.
+In conclusion, we have demonstrated that MVC deaths in US are related to multiple factors,
+spanning citizens' and policy makers' behaviors as well as inherent geographical and ideologi-
+cal factors determining state relationships. Moreover, influencing factors are somewhat differ-
+ent for MVC deaths overall compared to MVC deaths related to alcohol. This complexity hints
+at the need for stimulating further interdisciplinary research to elucidate the interplay between
+similarity and dissimilarity across states in shaping public health problems in the US.
+Materials and Methods
+Datasets
+The study uses data from the State Health Policy Research Dataset (SHePRD), which includes
+traffic and alcohol policies from all 50 states 1980­2010 [29]. SHePRD is publicly available
+through ICPSR and includes data retrieved, validated, standardized, and merged from public
+use datasets, as well as original legal research. The data included in analysis of vehicle miles
+travelled, and state alcohol consumption are obtained from the NHTSA. MVC deaths per state
+come from the Fatal Accident Reporting System (FARS). MVC deaths are taken as total counts
+of annual deaths per state and the percentage of deaths that are alcohol-related. Total vehicle
+miles travelled is the statewide annual sum of the average amount of time motor vehicles are
+on the road multiplied by the length of roadway. This measure takes into account both the
+types of vehicles and the types of roadways on which they typically drive and it is officially
+computed for each state by the NHTSA. Alcohol consumption is the annual gallons of alcohol
+sold per capita. Laws were selected for inclusion in the dataset if there was evidence of their ef-
+fectiveness in reducing morbidity and mortality in the literature. Binary variables in the dataset
+indicate the presence or absence of each law in each state and year during the study period and
+the proportion of these laws adopted (ranging from zero to one) is taken as an annual
+state descriptor.
+State ideology measures the average location of the elected officials in each state on a liberal-
+conservative continuum based on weighted ideology scores for the governor and the major
+party delegations in each house of the state legislature derived from interest group ratings,
+opinion polls, and roll call data. The scale ranges from zero (representing the most conservative
+value) to one hundred (representing the most liberal position) and directly follows the proce-
+dure in [27]. However, this quantity is normalized between zero and one for the purposes of
+this study. We used the haversine formula to compute the distances between state geographic
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 11 / 15
+centers; Alaska and Hawaii were excluded from this calculation since they would result in arti-
+ficially large distances. Statistics on the data used for the analysis are given in Table 2.
+Analysis and statistics
+We specify three structural equation models [30] to extract the associations between state char-
+acteristics and outcomes with p-values less than 0.01 and 0.05 used for significance; these mod-
+els are shown in Eqs (1), (2), and (3) below. To ensure the feasibility of this analysis, and in
+particular that the covariance matrix of all variables is well-conditioned, we normalize each
+variable (D, Da
+, M, A, L, and I) between zero and one by dividing each variable by its largest
+value over the thirty year interval. The normalization allows us to compare the relative highs
+and lows of the variables with each other and, as a result, we expect that the trends we find are
+valid for both the scaled and unscaled data. The consistency of behavior in the raw and normal-
+ized data can be seen by comparing rows in Table 2.
+The three SEMs consider the state characteristics and outcomes as measured variables,
+which may be influenced by error terms defined as exogenous latent variables. This formu-
+lation is a special case of the general SEM called a simultaneous equation model [31]. In
+addition to the linear relationships between the measured variables, each model contains a
+constant intercept term to account for a constant off-set between the variables in the re-
+gression analysis [32]. The models are specified as follows. The dependence of D on M is
+computed using a SEM with the following straightforward equation defined for each state:
+D
+i
+¼ aM
+i
+þ b þ g2
+i
+ð1Þ
+where Di
+is the normalized raw number of MVC deaths in year i, Mi
+is the normalized vehi-
+cle miles travelled in year i, 2i
+is a time-varying error, and , , and  are the coefficients
+computed by the SEM. The dependence of Da
+on all the state characteristics, and their in-
+terdependences, are computed using a SEM which simultaneously regresses the system of
+Table 2. Raw and normalized data used for statistical analysis.
+All years 1980s 1990s 2000s
+M 4.7 x104 ± 1.0x104 3.5 x104 ± 0.41 x104 4.8 x104 ± 0.38 x104 5.8 x104 ± 0.19 x104
+M (norm.) 0.78 ± 0.17 0.58 ± 0.067 0.79 ± 0.063 0.96 ± 0.031
+A 2.4 ± 0.19 2.6 ± 0.13 2.3 ± 0.087 2.4 ± 0.082
+A (norm.) 0.86 ± 0.067 0.94 ± 0.047 0.81 ± 0.031 0.84 ± 0.029
+L 0.317 ± 0.134 0.170 ± 0.0656 0.312 ± 0.0357 0.470 ± 0.0504
+L (norm.) 0.59 ± 0.25 0.32 ± 0.12 0.59 ± 0.067 0.88 ± 0.095
+I 0.759 ± 0.0265 0.748 ± 0.0232 0.751 ± 0.0158 0.776 ± 0.0306
+I (norm.) 0.93 ± 0.032 0.91 ± 0.028 0.92 ± 0.019 0.95 ± 0.037
+D/M 2.00 ± 0.594 2.72 ± 0.412 1.81 ± 0.155 1.48 ± 0.128
+D/M (norm.) 0.57 ± 0.17 0.77 ± 0.12 0.51 ± 0.044 0.42 ± 0.036
+Da
+21.1 ± 5.19 25.9 ± 6.26 19.7 ± 1.97 17.6 ± 1.21
+Da
+(norm.) 0.55 ± 0.14 0.68 ± 0.16 0.51 ± 0.052 0.46 ± 0.032
+For each variable, means are taken over the states and years and standard deviations are taken of the mean state values over the years. Results are
+shown as mean ± one standard deviation. We comment the normalized data is dimensionless and takes values between zero and one, while the raw data
+is dimensional following the definitions of the characteristics and outcomes.
+doi:10.1371/journal.pone.0123339.t002
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 12 / 15
+equations defined for each state:
+D
+ai
+¼ a
+1
+M
+i
+þ a
+2
+A
+i
+þ a
+3
+L
+i
+þ a
+4
+I
+i
+þ b
+1
+þ g
+1
+
+1i
+L
+i
+¼ a
+5
+M
+i
+þ a
+6
+A
+i
+þ a
+7
+I
+i
+þ b
+2
+þ g
+2
+
+2i
+I
+i
+¼ a
+8
+M
+i
+þ a
+9
+A
+i
+þ b
+3
+þ g
+3
+
+3i
+A
+i
+¼ a
+10
+M
+i
+þ b
+4
+þ g
+4
+
+4i
+ð2Þ
+8
+>
+>
+>
+>
+<
+>
+>
+>
+>
+:
+where Dai
+is the percent MVC deaths involving alcohol in year i, Ai
+is the normalized per
+capita alcohol consumption in year i, Li
+and Ii
+are the proportion of adopted laws and state
+ideology in year i, 21i
+,. . ., 24i
+are time-varying errors, and 1
+,. . .,10
+, 1
+,. . .,
+4
+, and 1
+,. . .,4
+are the coefficients computed by the SEM. The dependence of D/M on all other state char-
+acteristics, and their interdependences, are computed using a SEM with the equation de-
+fined for each state:
+ðD=MÞ
+i
+¼ a
+11
+A
+i
+þ a
+12
+L
+i
+þ a
+13
+I
+i
+þ b
+5
+þ g
+5
+
+5i
+L
+i
+¼ a
+14
+A
+i
+þ a
+15
+I
+i
+þ b
+6
+þ g
+6
+
+6i
+I
+i
+¼ a
+16
+A
+i
+þ b
+7
+þ g
+7
+
+7i
+ð3Þ
+8
+>
+<
+>
+:
+where (D/M)i
+is the normalized MVC deaths scaled by the vehicle miles travelled in year i,
+25i
+,. . ., 27i
+are time-varying errors, and 11
+,. . .,16
+, 5
+,. . .,
+7
+, and 5
+,. . .,7
+are the coeffi-
+cients computed by the SEM. This analysis is performed using the statistics software R (ver-
+sion 3.1.2) [33] with both built-in functions [32] and the associated lavaan package for
+SEM [33, 34]. The models and statistical significances of the coefficients are reported in
+Table 1, along with network representations of the models in Fig 3.
+Following the analysis in Gallos et al. [23], we define the correlation function as
+C r
+ð Þ ¼
+1
+s2
+P
+ij
+ðx
+i
+À xÃÞðx
+j
+À xÃÞdðr
+ij
+À rÞ
+P
+ij
+dðr
+ij
+À rÞ
+where xi
+is the outcome or characteristic of state i, xÃ is the mean outcome or characteristic
+over all states, rij
+is the distance between state i and state j, 2 is the variance
+P
+50
+i ¼ 1
+ðx
+i
+À xÃÞ2,
+ is the delta symbol taking the value one if its argument is zero and being zero otherwise, and
+i,j = 1,. . .,50. We note that the argument of the  function is equal to zero when the distance be-
+tween state i and state j is equal to the target distance set by the argument of the C function. As
+with the correlation coefficient, large magnitude values indicate a strong correlation and values
+close to zero indicate a weak correlation. However, C(r) may take values greater than one, since
+the mean and variance are taken over all states, but the delta function selects only a subset of
+these as summands. To facilitate comparison of results using both geographic and ideological
+distances, we normalize the pairwise distances between 0 and 1 by dividing all distances by the
+largest value in each case. The normalized distances are combined in eleven equal bins, and the
+largest four bins are merged to lessen the effect of data sparseness at large distances. This analy-
+sis is performed with the computing software MATLAB, version 2013b. We note that this cor-
+relation analysis is performed on the un-normalized values of each variable.
+Author Contributions
+Conceived and designed the experiments: NA JM DS MP. Performed the experiments: NA
+MP. Analyzed the data: NA JM DS MP. Contributed reagents/materials/analysis tools: NA JM
+DS MP. Wrote the paper: NA JM DS MP.
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 13 / 15
+References
+1. Macy MW, Willer R. From factors to actors: Computational sociology and agent-based modeling. Annu-
+al Review of Sociology. 2002; 28:143­166.
+2. Jackson MO. Social and economic networks. Princeton, NJ: Princeton University Press; 2008.
+3. Macinko J, Silver D. Improving state health policy assessment: An agenda for measurement and analy-
+sis. American Journal of Public Health. 2012; 102:1697­1705. doi: 10.2105/AJPH.2012.300716 PMID:
+22813417
+4. Burris SC. Law in a social determinants strategy: a public health law research perspective. Public
+Health Reports. 2011; 126:22­27. PMID: 21836733
+5. Burris SC, Anderson ED. Making the case for laws that improve health: the work of the public health law
+research national program office. Journal of Law, Medicine & Ethics. 2011; 39:15­20.
+6. Dietz WH, Benken DE, Hunter AS. Public health law and the prevention and control of obesity. Milbank
+Quarterly. 2009; 87:215­227. doi: 10.1111/j.1468-0009.2009.00553.x PMID: 19298421
+7. Pomeranz JL, Teret SP, Sugarman SD, Rutkow L, Brownell KD. Innovative legal approaches to ad-
+dress obesity. Milbank Quarterly. 2009; 87:185­213. doi: 10.1111/j.1468-0009.2009.00552.x PMID:
+19298420
+8. Sun J, Bollt EM, Nishikawa T. Judging model reduction of complex systems. Physical Review E. 2011;
+83:046125. PMID: 21599258
+9. Boccaletti S, Latora V, Moreno Y, Chavez M, Hwang DU. Complex networks: Structure and dynamics.
+Physics Reports. 2006; 424:175­308.
+10. Modeling infectious diseases fact sheet, Models of Infectious Disease Agent Study. http://www.
+nigms.nih.gov/Research/FeaturedPrograms/MIDAS/Background/Factsheet.htm, Accessed 22
+March 2013.
+11. Blachman DR, Abrams D. Behavioral and social science contributions to preventing teen motor
+crashes: systems integrative and interdisciplinary approaches. American Journal of Preventive Medi-
+cine. 2008; 35:S285­S288. doi: 10.1016/j.amepre.2008.06.003 PMID: 18702983
+12. Levy DT, Hyland A, Higbee C, Remer L, Compton C. The role of public policies in reducing smoking
+prevalence in California: results from the California tobacco policy simulation model. Health Policy.
+2007; 82:167­185. PMID: 17055104
+13. Matrajt L, Longini IM. Optimizing vaccine allocation at different points in time during an epidemic. PLOS
+ONE. 2010; 5:e13767. doi: 10.1371/journal.pone.0013767 PMID: 21085686
+14. Auchincloss AH, Diez Roux AV. A new tool for epidemiology: the usefulness of dynamic-agent models
+in understanding place effects on health. American Journal of Epidemiology. 2008; 168:1­8. doi: 10.
+1093/aje/kwn118 PMID: 18480064
+15. Kaluza P, Kölzsch A, Gastner MT, Blasius B. The complex network of global cargo ship movements.
+Journal of The Royal Society Interface. 2010; 7:1093­1103
+16. Donges JF, Zou Y, Marwan N, Kurths J. The backbone of the climate network. Europhysics Letters.
+2009; 87:48007.
+17. Mari L, Bertuzzo E, Righetto L, Casagrandi R, Gatto M, Rodriguez-Iturbe I, et al. Modelling cholera epi-
+demics: the role of waterways, human mobility and sanitation. Journal of The Royal Society Interface.
+2012; 9:376­388. doi: 10.1098/rsif.2011.0304 PMID: 21752809
+18. Diez Roux AV. Complex systems thinking and current impasses in health disparities research. Ameri-
+can Journal of Public Health. 2011; 101:1627­1634. doi: 10.2105/AJPH.2011.300149 PMID:
+21778505
+19. Carpenter CS, Stehr M. The effects of mandatory seatbelt laws on seatbelt use, motor vehicle fatalities,
+and crash-related injuries among youths. Journal of Health Economics. 2008; 27:642­662. doi: 10.
+1016/j.jhealeco.2007.09.010 PMID: 18242744
+20. Health, United States, 2010: With Special Feature on Death and Dying, US Department of Health and
+Human Services, National Center for Health Statistics. http://www.cdc.gov/nchs/data/hus/hus10.pdf,
+Accessed 22 March 2013.
+21. Cummings P, Rivara FP, Olson CM, Smith KM. Changes in traffic crash mortality rates attributed to use
+of alcohol, or lack of a seat belt, air bag, motorcycle helmet, or bicycle helmet, United States, 1982­
+2001. Injury Prevention. 2006; 12:148­154. PMID: 16751443
+22. National Highway Traffic Safety Administration Traffic Safety Facts 2009, US Department of Transpor-
+tation. http://www-nrd.nhtsa.dot.gov/Pubs/811402.pdf, Accessed 22 March 2013.
+23. Gallos LK, Barttfeld P, Havlin S, Sigman M, Makse HA. Collective behavior in the spatial spreading of
+obesity. Scientific Reports. 2012; 2:454. doi: 10.1038/srep00454 PMID: 22822425
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 14 / 15
+24. Lives saved by the federal motor vehicle safety standards and other vehicle safety technologies, Na-
+tional Highway Traffic Safety Administration. Washington, DC, 2004.
+25. Jewell RT, Brown RW. Alcohol availability and alcohol-related motor-vehicle accidents. Applied Eco-
+nomics. 1995; 27:759­765.
+26. O'Donnell MA. Research on drinking locations of alcohol-impaired drivers: implications for prevention
+policies. Journal of Public Health Policy. 1985; 6:510­525. PMID: 3912407
+27. Berry FS, Berry W. Innovation and diffusion models in policy research. In: Sabatier P, editor. Theories
+of the policy process: Westview Press; 2007.
+28. Volden C. States as policy laboratories: emulating success in the children's health insurance program.
+American Journal of Political Science. 2006; 50:294­312.
+29. Silver D, Macinko J, Bae JY, Jimenez G, Paul M, Mueller A. The State Health Policy Research Dataset
+(SHEPRD) ICPSR34789-v1. Inter-university Consortium for Political and Social Research. Ann Arbor,
+MI: http://www.icpsr.umich.edu/icpsrweb/HMCA/studies/34789 2013.
+30. Bollen KA, Long JS. Testing structural equation models: Sage; 1993.
+31. Hoyle RH. Structural equation modeling: Concepts, issues, and applications: Sage 1995.
+32. Fox J. Teacher's corner: structural equation modeling with the sem package in R. Structural Equation
+Modeling. 2006; 13:465­486.
+33. The R Project for Statistical Computing. http://www.r-project.org/, Accessed 26 December 2014.
+34. Rosseel Y. lavaan: An R package for structural equation modeling. Journal of Statistical Software.
+2012; 48:1­36.
+Interstate Relationships and US Motor Vehicle Deaths
+PLOS ONE | DOI:10.1371/journal.pone.0123339 April 7, 2015 15 / 15
+

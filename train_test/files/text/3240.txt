@@ -1,0 +1,1469 @@
+Discussion Paper
+Deutsche Bundesbank
+No 02/2018
+Mixed frequency models with MA components
+Claudia Foroni
+(Deutsche Bundesbank)
+Massimiliano Marcellino
+(Bocconi University, IGIER and CEPR)
+Dalibor Stevanovi
+(Université du Québec à Montréal, CIRANO)
+Discussion Papers represent the authors` personal opinions and do not
+necessarily reflect the views of the Deutsche Bundesbank or the Eurosystem.
+Editorial Board:
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978­3­95729­­ (Printversion)
+ISBN 978­3­95729­­ (Internetversion)
+Daniel Foos
+Thomas Kick
+Malte Knüppel
+Jochen Mankart
+Christoph Memmel
+Panagiota Tzamourani
+Non-technical summary
+Research question
+Temporal aggregation generally introduces a moving average (MA) component in the
+model for the aggregate variable. A similar feature should be present in the mixed frequency
+models, and indeed we show formally that this is in general the case. The effects of
+neglecting the MA component have been rarely explicitly considered in a single frequency
+context. For mixed frequency models, there are no results available.
+Contribution
+We close this gap and analyze the relevance of the inclusion of an MA component in
+mixed-data sampling (MIDAS) and unrestricted mixed-data sampling (UMIDAS) mod-
+els, with the resulting specifications labeled, respectively, MIDAS-ARMA and UMIDAS-
+ARMA. We first compare the forecasting performance of the mixed frequency models with
+and without the MA component in a set of Monte Carlo experiments, using a variety of
+Data Generating Processes (DGPs). Next, we carry out an empirical investigation, where
+we predict several quarterly macroeconomic variables using timely monthly indicators. In
+particular, we forecast three relevant quarterly U.S. macroeconomic variables: real GDP
+growth, real private non residential fixed investment (PNFI) growth and GDP deflator
+inflation.
+Results
+In the Monte Carlo simulations, the short-term forecasting performance is better when
+including the MA component, and the gains are higher the more persistent is the se-
+ries. Moreover, in general the MIDAS-ARMA specifications are slightly better than the
+UMIDAS-ARMA specifications. This pattern suggests that adding the MA component to
+the MIDAS model helps somewhat in reducing the potential misspecification due to impos-
+ing a specific lag polynomial structure. In the empirical exercise, the inclusion of an MA
+component generally improves the forecasting performance substantially. For all variables,
+and in line with the simulation results, MIDAS-ARMA is better than UMIDAS-ARMA.
+Nichttechnische Zusammenfassung
+Fragestellung
+Durch zeitliche Aggregation einer hochfrequenten Variablen entsteht eine Variable mit niedri-
+gerer Frequenz. In Folge der Aggregation tritt in der Dynamik der niederfrequenten Variablen
+dann üblicherweise eine Komponente auf, die einem (gewichteten) gleitenden Durchschnitt
+(GD) entspricht. Eine vergleichbare Komponente sollte auch in Modellen mit gemischten
+Frequenzen, also in Modellen mit hoch- und niederfrequenten Daten vorhanden sein. Wie
+sich die Nichtbeachtung der GD-Komponente auswirkt, ist in den üblichen Zeitreihenmodel-
+len bislang kaum explizit betrachtet worden. Für gemischt-frequente Modelle, die sogenann-
+ten MIDAS-Modelle, liegen indes überhaupt keine Ergebnisse vor.
+Forschungsbeitrag
+Wir untersuchen die Auswirkungen auf MIDAS- und unrestringierte MIDAS-Modelle (UM-
+IDAS-Modellen), wenn eine GD-Komponente mit einbezogen wird. Die sich daraus ergeben-
+den Spezifizikationen werden als ,,MIDAS-ARMA" bzw. ,,UMIDAS-ARMA" bezeichnet. Zu-
+nächst wird die Prognosegüte der gemischt-frequenten Modelle mit und ohne GD-
+Komponente in einer Monte-Carlo-Simulation unter Berücksichtigung verschiedener Daten-
+generierungsprozesse verglichen. Anschließend werden in einer empirischen Untersuchung
+drei makroökonomische US-amerikanische Quartalsvariablen ­ das reale BIP-Wachstum,
+das Wachstum der realen privaten Anlageinvestitionen (ohne Wohnungsbau) und die Wachs-
+tumsrate des BIP-Deflators ­ unter Verwendung zeitnaher monatlicher Indikatoren prognosti-
+ziert.
+Ergebnisse
+In der Monte-Carlo-Simulation zeigt sich bei der Kurzfristprognose eine höhere Treffgenauig-
+keit, wenn die GD-Komponente einbezogen wird. Die Prognosegüte verbessert sich umso
+stärker, je höher die Persistenz der Zeitreihe ist. Zudem schneiden die MIDAS-ARMA-
+Modelle allgemein etwas besser ab als die UMIDAS-ARMA-Modelle. Daraus lässt sich
+schlussfolgern, dass die Einbeziehung der GD-Komponente dazu beiträgt, potenzielle Fehl-
+spezifikationen in MIDAS-Modellen zu verringern. Auch in der empirischen Analyse verbes-
+sert die Einbeziehung einer GD-Komponente die Prognosegüte oft deutlich, und MIDAS-
+ARMA-Modelle liefern ­ im Einklang mit den Simulationsergebnissen ­ treffgenauere Prog-
+nosen als UMIDAS-ARMA-Modelle.
+Mixed frequency models with MA components 
+Claudia Foroni  Massimiliano Marcellino  Dalibor Stevanovi´
+c §
+January 16, 2018
+Abstract
+Temporal aggregation in general introduces a moving average (MA) component
+in the aggregated model. A similar feature emerges when not all but only a few vari-
+ables are aggregated, which generates a mixed frequency model. The MA component
+is generally neglected, likely to preserve the possibility of OLS estimation, but the
+consequences have never been properly studied in the mixed frequency context. In
+this paper, we show, analytically, in Monte Carlo simulations and in a forecasting
+application on U.S. macroeconomic variables, the relevance of considering the MA
+component in mixed-frequency MIDAS and Unrestricted-MIDAS models (MIDAS-
+ARMA and UMIDAS-ARMA). Specifically, the simulation results indicate that the
+short-term forecasting performance of MIDAS-ARMA and UMIDAS-ARMA is bet-
+ter than that of, respectively, MIDAS and UMIDAS. The empirical applications on
+nowcasting U.S. GDP growth, investment growth and GDP deflator inflation confirm
+this ranking. Moreover, in both simulation and empirical results, MIDAS-ARMA is
+better than UMIDAS-ARMA.
+Keywords: Temporal aggregation, MIDAS models, ARMA models.
+JEL Classification Code: E37, C53.
+The views expressed in this paper are those of the authors. No responsibility for them should be
+attributed to the Deutsche Bundesbank. Aniss Benmoussa has provided excellent research assistance.
+We thank Ana Galv~
+ao, Pierre Gu´
+erin, Christian Schumacher and the participants to the ECB Workshop
+in Advances in short-term forecasting, the IWH-CIREQ-GW Macroeconometric Workshop and the CFE
+conference for the very useful comments. The third author acknowledges financial support from the Fonds
+de recherche sur la soci´
+et´
+e et la culture (Qu´
+ebec) and the Social Sciences and Humanities Research Council.
+Deutsche Bundesbank
+Bocconi University, IGIER and CEPR
+§Universit´
+e du Qu´
+ebec `
+a Montr´
+eal, CIRANO
+Deutsche Bundesbank Discussion Paper No 0/2018
+1 Introduction
+The use of mixed-frequency models has become increasingly popular among academics
+and practitioners. It is in fact by now well recognized that a good nowcast or short-term
+forecast for a low frequency variable, such as GDP growth and its components, requires
+to exploit the timely information contained in higher frequency macroeconomic or finan-
+cial indicators, such as surveys or spreads. A growing literature has flourished proposing
+different methods to deal with the mixed-frequency feature. In particular, models cast in
+state-space form, such as vector autoregressions (VAR) and factor models, can deal with
+mixed-frequency data, taking advantage of the Kalman filter to interpolate the missing ob-
+servations of the series only available at low frequency (see, among many others, Mariano
+and Murasawa (2010) and Giannone et al. (2008) in a classical context, and Chiu et al.
+(2011) and Schorfheide and Song (2015) in a Bayesian context). A second approach has
+been proposed by Ghysels (2016). He introduces a different class of mixed-frequency VAR
+models, in which the vector of endogenous variables includes both high and low frequency
+variables, with the former stacked according to the timing of the data releases. A third
+approach is the mixed-data sampling (MIDAS) regression, introduced by Ghysels et al.
+(2006), and its unrestricted version (UMIDAS) by Foroni et al. (2015). MIDAS models are
+tightly parameterized, parsimonious models, which allow for the inclusion of many lags of
+the explanatory variables. Given their non-linear form, MIDAS models need to be esti-
+mated by non-linear least squares (NLS). UMIDAS models are the unrestricted counterpart
+of MIDAS models, which can be estimated by simple ordinary least squares (OLS), but
+work well only when the frequency mismatch is small.1
+In this paper, we start from the observation that temporal aggregation generally in-
+troduces a moving average (MA) component in the model for the aggregate variable (see,
+e.g., Marcellino (1999) and the references therein). A similar feature should be present in
+the mixed frequency models, and indeed we show formally that this is in general the case.
+The MA component is often neglected, both in same frequency and in mixed frequency
+1The literature on mixed-frequency approaches is vast. The papers cited in the text are a non-exhaustive
+list of key contributions to the field. For a review of the mixed-frequency literature, see Bai et al. (2013)
+and Foroni and Marcellino (2013) among many others.
+1
+models, likely to preserve the possibility of OLS estimation and on the grounds that it can
+be approximated by a sufficiently long autoregressive (AR) component.
+The effects of neglecting the MA component have been rarely explicitly considered. In
+a single frequency context, Lutkepohl (2006) showed that VARMA models are especially
+appropriate in forecasting, since they can capture the dynamic relations between time se-
+ries with a small number of parameters. Further, Dufour and Stevanovic (2013) showed
+that a VARMA instead of VAR model for the factors provides better forecasts for several
+key macroeconomic aggregates relative to standard factor models, as well as producing a
+more precise representation of the effects and transmission of monetary policy. Leroux
+et al. (2017) found that ARMA(1,1) models predict well the inflation change and outper-
+form many data-rich models, confirming the evidence on forecasting inflation by Stock and
+Watson (2007), Faust and Wright (2013) and Marcellino et al. (2006). Finally, VARMA
+models are often the correct reduced form representation of DSGE models (see, for example,
+Ravenna (2007)). For mixed frequency models, there are no results available.
+We close this gap and analyze the relevance of the inclusion of an MA component
+in MIDAS and UMIDAS models, with the resulting specifications labeled, respectively,
+MIDAS-ARMA and UMIDAS-ARMA. We first compare the forecasting performance of
+the mixed frequency models with and without the MA component in a set of Monte Carlo
+experiments, using a variety of Data Generating Processes (DGPs). It turns out that
+the short-term forecasting performance is better when including the MA component, and
+the gains are higher the more persistent is the series. Moreover, in general the MIDAS-
+ARMA specifications are slightly better than the UMIDAS-ARMA specifications, though
+the differences are minor. This pattern is in contrast with the findings in Foroni et al. (2015),
+and suggests that adding the MA component to the MIDAS model helps somewhat in
+reducing the potential misspecification due to imposing a specific lag polynomial structure.
+Next, we carry out an empirical investigation, where we predict several quarterly macroe-
+conomic variables using timely monthly indicators. In particular, we forecast three relevant
+quarterly U.S. macroeconomic variables: real GDP growth, real private non residential fixed
+investment (PNFI) growth and GDP deflator inflation. The latter variable is particularly
+relevant, as Stock and Watson (2007) show that the MA component for US inflation is
+important, especially after 1984. In fact, while during the 1970s the inflation process could
+be very well approximated by a low order AR, after the 1980s this has become less accurate
+and the inclusion of an MA component more relevant. Evidence on the importance of the
+2
+MA component for the U.S. inflation is also found by Ng and Perron (2001) and Perron
+and Ng (1996). As monthly explanatory variables, we consider industrial production and
+employment for the real GDP growth and the PNFI growth, CPI inflation and personal
+consumption expenditures (PCE) inflation for the GDP deflator. The inclusion of an MA
+component generally improves the forecasting performance substantially. In particular,
+adding the MA part to forecast GDP growth one-year ahead ameliorates the MSE up to
+10%, while for PNFI we obtain even bigger gains, up to 30% one-year ahead. Also in the
+case of GDP deflator we obtain robust improvements, which go up to 15%. For all variables,
+and in line with the simulation results, MIDAS-ARMA is better that UMIDAS-ARMA.
+Lastly, full sample estimates of MA coefficients are significant and important in most of
+MIDAS-ARMA and UMIDAS-ARMA specifications.
+The remainder of the paper proceeds as follows. In Section 2 we show that temporal
+aggregation generally creates an MA component also in mixed frequency models. In Section
+3 we describe parameter estimators for the MIDAS-ARMA and UMIDAS-ARMA models.
+In Section 4 we present the design and results of the simulation exercises. In Section 5
+we develop the empirical applications on forecasting U.S. quarterly variables with monthly
+indicators. In Section 6 we summarize our main results and conclude.
+2 The rationale for an MA component in mixed fre-
+quency models
+The UMIDAS regression approach can be derived by aggregation of a general dynamic
+linear model in high frequency, as shown by Foroni et al. (2015), while the MIDAS model
+imposes specific restrictions on the UMIDAS coefficients in order to reduce their number,
+which is particularly relevant when the frequency mismatch is large (for example, with
+daily and quarterly series). In Section 2.1, we briefly review the derivation of the UMIDAS
+model, highlighting that, in general, there should be an MA component, even though it is
+generally disregarded. In Section 2.2, we provide two simple analytical examples in which,
+starting from a high-frequency model without MA term, we end up with a mixed frequency
+model in which the MA component is present. We discuss estimation of mixed frequency
+models with an MA component in a separate section.
+3
+2.1 UMIDAS regressions and dynamic linear models
+Let us assume that the Data Generating Process (DGP) for the variable y and the N
+variables x is an ARDL(p, q) process, as in Foroni et al. (2015):
+a(L)ytm
+= b1
+(L)x1tm
++ ... + bN
+(L)xNtm
++ eytm
+(1)
+where a(L) = 1 - a1
+L - ... - ap
+L, bj
+(L) = bj1
+L + ... + bjq
+Lq, j = 1, ..., N, and the error eytm
+is white noise. We assume, for simplicity, that p = q and the starting values y-p
+, ..., y0
+and
+x-p
+, ..., x0
+are all fixed and equal to zero.
+We then assume that x can be observed for each period tm
+, while y can be only observed
+every m periods. We define t = 1, ..., T as the low frequency (LF) time unit and tm
+=
+1, ..., Tm
+as the high frequency (HF) time unit. The HF time unit is observed m times in
+the LF time unit. As an example, if we are working with quarterly (LF) and monthly (HF)
+data, it is m = 3 (i.e., three months in a quarter). Moreover, L indicates the lag operator
+at tm
+frequency, while Lm is the lag operator at t frequency.
+We also introduce the aggregation operator
+(L) = 0
++ 1
+L + ... + m-1
+Lm-1, (2)
+which characterizes the temporal aggregation scheme. For example, (L) = 1 + L + ... +
+Lm-1 indicates the sum of the high-frequency observations over the low-frequency period,
+typically used in the case of flow variables, while (L) = 1 corresponds to point-in-time
+sampling and is typically used for stock variables. As we will see, different aggregation
+schemes will play a role in generating MA components.
+To derive the generating mechanism for y at mixed frequency (MF), we introduce a
+polynomial in the lag operator, (L), whose degree in L is at most equal to pm - p and
+which is such that the product h(L) = (L)a(L) only contains powers of Lm, so that
+h(L) = h(Lm). It can be shown that such a polynomial always exists, and its coefficients
+depend on those of a(L), see Marcellino (1999) for details.
+In order to determine the AR component of the MF process, we then multiply both
+sides of (1) by (L) and (L) to get
+h(Lm)(L)ytm
+= (L)b1
+(L)(L)x1tm
++ ... + (L)bN
+(L)(L)xNtm
++ (L)(L)eytm
+. (3)
+4
+Hence, the autoregressive component only depends on LF values of y. Let us consider now
+the x variables, which are observable at high frequency tm
+. Each HF xitm
+influences the
+LF variable y via a polynomial (L)bj
+(L)(L) = bj
+(L)(L)(L), j = 1, ..., N. We see that
+it is a particular combination of high-frequency values of xj
+, equal to (L)(L)xjtm
+, that
+affects the low-frequency values of y.
+Only under certain, rather strict conditions, it is possible to recover the polynomials
+a(L) and bj
+(L) that appear in the HF model for y from the MF model, and in these cases
+also (L) can be identified. Therefore, when (L) cannot be identified, we can estimate a
+model as
+c(Lk)(L)ytm
+= 1
+(L)x1tm-1
++ ... + N
+(L)xNtm-1
++ tm
+, (4)
+tm
+= m, 2m, 3m, ...
+where c(Lm) = (1 - c1
+Lm - ... - cc
+Lmc), j
+(L) = (j,0
++ j,1
+L + ... + j,v
+Lv), j = 1, ..., N.
+We can focus now on the error term of equation (3). In general, there is an MA
+component in the MF model, q(Lm)uytm
+, with q(Lm) = (1+q1
+Lm +...+qq
+Lmq). The order
+of q(Lm), q, coincides with the highest multiple of m non zero lag in the autocovariance
+function of (L)(L)eytm
+. The coefficients of the MA component have to be such that the
+implied autocovariances of q(Lm)uytm
+coincide with those of (L)(L)eytm
+evaluated at all
+multiples of m. Consequently, also the error term tm
+in the approximate mixed frequency
+model (4), which is the UMIDAS model, in general has an MA structure. It can be shown
+that the maximum order of the MA structure is p for average sampling and p-1 for point-
+in-time sampling, where p is the order of the AR component in the high frequency model
+for ytm
+(see, e.g., Marcellino (1999) for a derivation of this results).
+2.2 Two analytical examples
+In this section, we consider two simple DGPs and show that, even in these basic cases,
+an MA component appears in the mixed frequency model. In the first example, we consider
+an ARDL(1,1) with average sampling, in the second one an ARDL(2,2) with point-in-time
+sampling. In both cases, we work with monthly and quarterly variables, therefore m = 3,
+as in the empirical applications that will be presented later on. The examples could be
+easily generalized to consider higher order models and different frequency mismatches m.
+5
+ARDL(1,1) with average sampling
+Let us assume an ARDL(1,1) as HF DGP:
+ytm
+= aytm-1
++ bxtm-1
++ eytm
+, (5)
+where ytm
+is a variable unobservable at HF, xtm
+is the high-frequency variable, eytm
+is white
+noise, and tm
+is the high-frequency time index. Although we do not observe ytm
+, we observe
+the quarterly aggregated values of the series.
+In order to obtain the model for the quarterly aggregated series, let us write (5) as
+(1 - aL) ytm
+= bLxtm
++ eytm
+. (6)
+We consider average sampling, and therefore we define the aggregation operator  (L) =
+1 + L + L2. Then, we first introduce a polynomial in the lag operator, (L), which is such
+that the product h(L) = (L) (1 - aL) only contains powers of L3. This polynomial exists
+and it is equal to (1 + aL + a2L2) . We then multiply both sides of equation (6) by  (L)
+and  (L) and we obtain:
+1 + aL + a2L2 (1 - aL) 1 + L + L2 ytm
+= 1 + aL + a2L2 bL 1 + L + L2 xtm
++
+1 + aL + a2L2 1 + L + L2 eytm
+, (7)
+or equivalently:
+1 - a3L3 ytm
+= 1 + aL + a2L2 bL 1 + L + L2 xtm
++
+1 + (a + 1) L + a2 + a + 1 L2 + a2 + a L3 + a2L4 eytm
+, (8)
+where ytm
+= (1 + L + L2) ytm
+and tm
+= 3, 6, 9, ... .
+As we saw it in Section 2.1, the order of the MA component coincides with the highest
+multiple of 3 non zero lag in the autocovariance function of the error term in equation (8),
+and it is bounded above by the AR order of the model for ytm
+.
+Eq. (8) is then estimated at quarterly frequency, but making use of all the information
+available in the HF variable xtm
+, and including the MA component, which is of order 1
+in this case (being the relevant lag for the quarterly model L3). The model in eq. (8) is
+therefore a UMIDAS-AR with an MA(1) component.
+6
+ARDL(2,2) with point-in-time sampling
+Let us now assume an ARDL(2,2) as HF DGP:
+ytm
+= a1
+ytm-1
++ a2
+ytm-2
++ b1
+xtm-1
++ b2
+xtm-2
++ eytm
+, (9)
+or, equivalently,
+1 - a1
+L - a2
+L2 ytm
+= b1
+L + b2
+L2 xtm
++ eytm
+, (10)
+where ytm
+, xtm
+, eytm
+and tm
+are defined as in the previous example.
+We consider point-in-time sampling, and therefore  (L) = 1. Next, we need to multiply
+both sides of equation (9) by (L) and find a polynomial (L) such that the product
+h(L) = (L) (1 - a1
+L - a2
+L2) only contains powers of L3. In can be easily shown that
+ (L) exists and it is equal to
+1 + a1
+L + a2
+1
++ a2
+L2 - a1
+a2
+L3 + a2
+2
+L4 .
+The resulting mixed frequency model for the low-frequency variable is:
+1 - a3
+1
++ 3a2
+a1
+L3 - a3
+2
+L6 ytm
+= 1 + a1
+L + a2
+1
++ a2
+L2 - a1
+a2
+L3 + a2
+2
+L4 b1
+L + b2
+L2 xtm
++
+1 + a1
+L + a2
+1
++ a2
+L2 - a1
+a2
+L3 + a2
+2
+L4 eytm
+, (11)
+with tm
+= 3, 6, 9, ... Hence, also in this case there is an MA component in the mixed
+frequency model for y. Its order coincides with the highest multiple of 3 non zero lag
+in the autocovariance function of (1 + a1
+L + (a2
+1
++ a2
+) L2 - a1
+a2
+L3 + a2
+2
+L4) eytm
+, and it is
+bounded above by the AR order of the model for ytm
+minus one, which is 1 in this example.
+Following the same line of reasoning as in the previous example, the MA component is of
+order 1.
+3 UMIDAS-ARMA and MIDAS-ARMA: forecasting
+specifications and estimation
+We describe now in more detail the model specifications we consider for forecasting,
+and the estimation details. We first recall the main features of the standard MIDAS
+7
+regression, introduced by Ghysels et al. (2006), and its unrestricted version, as in Foroni
+et al. (2015). Then, we discuss their extensions to allow for an MA component and we
+discuss the estimation of the models.
+The starting point for our MF models is equation (4). In order to simplify the notation,
+we assume (L) = 1 and one explanatory variable xtm
+2. Further, we allow for incorporat-
+ing leads of the high frequency variable in the projections, which captures asynchronous
+releases.
+The equation we are going to estimate to generate an hm
+-step ahead forecast is the
+following:
+ytm
+= ~
+c(Lm)ytm-hm
++ (L)xtm-hm+w
++ tm
+, (12)
+where ~
+c(Lm) is a modified lag structure of equation (4) to obtain a direct forecast and w
+is the number of months with which x is leading y.
+If tm
+is serially uncorrelated, equation (12) represents the UMIDAS-AR model. Given
+that the model is linear, the UMIDAS-AR regression can be estimated by simple OLS.
+Empirically, the lag length of the high frequency variable x is often selected by means of
+an information criterion, such as the BIC.
+Adding an MA component to the UMIDAS-AR yields the UMIDAS-ARMA model:
+ytm
+= ~
+c(Lm)ytm-hm
++ (L)xtm-hm+w
++ utm
++ q(Lm)utm-hm
+, (13)
+where utm
+is a (weak) white noise with E(utm
+) = 0 and E(utm
+utm
+) = 2
+u
+< , and all
+the remaining terms stay the same as in equation (12). Given that MIDAS models are
+direct forecasting tools, we decided to follow a direct approach also when modelling the
+MA component.
+OLS estimation of the UMIDAS-ARMA model is no longer possible, because of the
+MA component in the residuals. We then estimate the model as in the standard ARMA
+literature, by maximum likelihood or, as we will actually do to be coherent with the MIDAS
+literature, by non-linear least squares (NLS).
+2This is an innocuous simplification, as with a generic aggregation scheme (L) = 1 we could just work
+with the redefined variable ~
+ytm
+= (L)ytm
+.
+8
+The MIDAS-AR specification is a restricted version of the UMIDAS-AR. The MIDAS-
+AR model as in Ghysels et al. (2006), specified for forecasting hm
+periods ahead, can be
+written as follows:
+ytm
+= ~
+c(Lm)ytm-hm
++ B(L, )xtm-hm+w
++ tm
+, (14)
+where
+B(L, ) =
+K
+j=0
+b(j, )Lj,
+b(j, ) =
+exp(1
+j + 2
+j2)
+K
+j=0
+exp(1
+j + 2
+j2)
+,
+and K is the maximum number of lags included of the explanatory variable.
+As it is clear by comparing equation (12) and equation (14), the MIDAS model is nested
+into the UMIDAS model.
+The MIDAS-AR model in equation (14) is estimated by NLS. Given that it is hm
+-
+dependent, as in the UMIDAS case it has to be re-estimated for each forecast horizon.
+Exactly as for the UMIDAS, we extend the MIDAS-AR in equation (14) to incorporate
+an MA component:
+ytm
+= ~
+c(Lm)ytm-hm
++ B(L, )xtm-hm+w
++ utm
++ q(Lm)utm-hm
+, (15)
+where the error term is defined as in (13). Given the nonlinearity of the model, we estimate
+its parameters by NLS. Appendix A provides additional details on the NLS estimation
+procedures.
+To conclude, it is worth briefly comparing the use for forecasting of UMIDAS-ARMA
+versus the Kalman filter. The latter is clearly optimal in the presence of mixed frequency
+data and linear models. However, UMIDAS-ARMA is equivalent if it is theoretically derived
+from a known high frequency linear dynamic model, as UMIDAS-ARMA coincides with
+the mixed frequency data generating process. The ranking of the two approaches is unclear
+if the high frequency model is mis-specified. Moreover, the Kalman filter can incur into
+computational problems when the frequency mismatch is large. Something similar happens
+to UMIDAS-ARMA, due to parameter proliferation, and in this case the parsimony of
+MIDAS-ARMA can be particularly helpful. Bai et al. (2013) propose a more detailed
+comparison of the Kalman filter and the MIDAS approach.
+9
+4 Monte Carlo evaluation
+We now assess the forecasting relevance of including an MA component in MIDAS and
+UMIDAS models by means of simulation experiments. We use two designs, closely related
+to the two analytical examples described in Section 2.2. We present first the Monte Carlo
+designs and then the results.
+4.1 Monte Carlo design
+In the first design, the DGP is the HF ARDL(1,1):
+ytm
+= ytm-1
++ l
+xtm-1
++ ey,tm
+, (16)
+where ytm
+is unobservable at HF, but available at LF, while xtm
+is the HF variable, tm
+is the
+HF time index, the aggregation frequency is m = 3 (as in the case of quarterly and monthly
+frequencies), and t is the LF time index, with t = 3tm
+. We assume that (L) = 1 + L + L2,
+corresponding to average sampling.
+The shocks ey,tm
+are independent and sampled from a normal distribution with zero
+mean and variance chosen such that the unconditional variance of y is equal to one. We
+consider different combinations of  and l
+, representing different degrees of persistence
+and correlation between the HF and the LF variables. In detail, we evaluate the following
+parameter sets:
+(, l
+) = {(0.1, 0.1) , (0.5, 0.1) , (0.9, 1) , (0.94, 1)} . (17)
+Finally, xtm
+is generated as an AR(1) with coefficient .
+In the second design, the DGP is the HF ARDL(2,2):
+ytm
+= 1
+ytm-1
++ 2
+ytm-2
++ l1
+xtm-1
++ l2
+xtm-2
++ ey,tm
+. (18)
+We still assume m = 3 but now (L) = 1, so that the LF variable is skip-sampled every
+m = 3 observations.
+In this second DGP, we consider the following parameter combinations:
+(1
+, 2
+, l1
+, l2
+) = {(0.05, 0.1, 0.5, 1) , (0.125, 0.5, 0.125, 0.5) , (0.25, 0.5, 0.5, 1)} . (19)
+10
+All the other design features are as in the first DGP.
+We focus on typical sample sizes for the estimation sample, with T = 50, 100. The size
+of the evaluation sample is set to 50, and the estimation sample is recursively expanded as
+we progress in the recursive forecasting exercise. The number of replications is 500.
+The competing forecasting models are the following:
+1. A MIDAS-AR model, with 12 lags in the exogenous HF variable and 1 lag in the AR
+component;
+2. A MIDAS-ARMA model, as in the previous point but with the addition of an MA
+component;
+3. A MIDAS-ARMA model, with only 3 lags in the exogenous HF variable and 1 AR
+lag;
+4. A UMIDAS-AR model, with lag length selected according to the BIC criterion, where
+the maximum lag length is set equal to 12;
+5. A UMIDAS-ARMA model, as in the previous point, with the addition of an MA
+component;
+6. A UMIDAS-ARMA, fixing at 3 the number of lags of the HF exogenous variable.
+In all ARMA models there is an MA(1) component, in line with the theoretical results,
+but an higher order can be allowed.
+We evaluate the competing one-step ahead forecasts on the basis of their associated
+mean square prediction error (MSE), assuming that information on the first two months
+of the quarter is available (as it is common in nowcasting exercises).
+11
+4.2 Results
+In Tables 1 to 4 we report the mean relative MSE across simulations, and numbers
+smaller than one indicate that the model is better than the benchmark (model 1, the
+standard MIDAS). We also report the 10th, 25th, 50th, 75th and 90th percentiles, to provide
+a measure of the dispersion in the results.
+Tables 1 and 2 present the results for the first DGP (the ARDL(1,1) with average
+sampling), using T = 100 in Table 1 and T = 50 in Table 2. The corresponding Tables 3
+and 4 are based on the second DGP (the ARDL(2,2) with point-in-time sampling).
+A few key findings emerge. First, adding an MA component to the MIDAS model
+generally helps. The gains are not very large but they are visible at all percentiles, with a
+few exceptions for the second DGP. The gains are larger either with substantial persistence
+( = 0.9 or  = 0.94 in the first DGP and 1
+= 0.25, 2
+= 0.5 in the second DGP) or with
+low persistence in the first DGP ( = 0.1), but in the latter case the result is mainly due
+to a deterioration in the absolute performance of the standard MIDAS model. The more
+parsimonious specification with 3 lags only of the HF variable is generally better, except
+when  = 0.5.
+Second, adding an MA component to the UMIDAS model is also generally helpful,
+though the gains remain small.
+Third, in general the MIDAS-ARMA specifications are slightly better than the UMIDAS-
+ARMA specifications, though the differences are minor. This pattern is in contrast with
+the findings in Foroni et al. (2015), and suggests that adding the MA component to the
+MIDAS model helps somewhat in reducing the potential misspecification due to imposing
+a specific lag polynomial structure.
+Finally, results are consistent across sample sizes, and the models do not seem sensitive
+to short sample sizes.
+5 Empirical applications
+In this section, we look at the performance of our MA augmented mixed frequency mod-
+els in forecasting exercises with actual data. The analysis focuses on forecasting quarterly
+U.S. variables.
+12
+In particular, we consider three relevant quarterly U.S. macroeconomic variables: real
+GDP growth, real private non residential fixed investment (PNFI) growth and GDP de-
+flator inflation. As monthly explanatory variables, we consider industrial production and
+employment for the real GDP growth and the PNFI growth, while we consider CPI infla-
+tion and personal consumption inflation for the GDP deflator. A complete description of
+data sources and transformations is available in Table 5.
+The total sample spans over 50 years of data, from the first quarter of 1960 to the end
+of 2015. The forecasts are computed in pseudo real time, with progressively expanding
+samples. The evaluation period goes from 1980Q1 to the end of the sample, covering
+roughly 35 years. As a robustness check, we will also analyze a shorter sample ending
+in 2007Q3, to assess the effects of the recent crisis. At each point in time, we compute
+forecasts from 1- up to 4-quarter ahead. The forecasting target is the annualized growth
+rate. Although the information contained in the monthly variables updates every month,
+we focus on the case in which the first two months of the quarter are already available.3
+We consider the models (1) to (7) as described in Section 4.1, plus a simple low frequency
+AR(1) model as a further benchmark for the usefulness of the mixed-frequency data. In
+particular, we consider the direct forecast resulting from the model:
+yt
+= c + yt-h
++ et
+. (20)
+We evaluate the forecasts both in terms of mean squared errors (MSE) and in terms of
+mean absolute errors (MAE). We then compare the forecasting performance relative to a
+standard MIDAS model with an autoregressive component and 12 lags of the explanatory
+variable (as the model (1) in Section 4).
+In Tables 6 to 8 we report the results for, respectively, the real GDP growth, the real
+PNFI growth and the GDP deflator inflation rate. Each table is organized in the same way:
+it reports the value of MSE and MAE for each model, the ratio of those criteria for each
+model relative to the MIDAS-AR, our benchmark model, and the p-value of the Diebold-
+Mariano test, to check the statistical significance of the differences in forecast measures
+with respect to the benchmark (see Diebold and Mariano (1995)).
+3With the MIDAS setup, we could also report the results when no information or only one month of
+information is available. However, for the sake of conciseness we focus only on the case in which we are
+two months into the quarter, to have the shortest nowcast horizon. Given that our models are all mixed
+frequency, this choice does not bias the comparison.
+13
+The tables are broadly supportive of the inclusion of the MA component in the mixed
+frequency models, as the MSE and MAE ratios are often smaller than one for the MIDAS-
+ARMA and UMIDAS-ARMA models when compared with their versions without MA.4
+More in detail: for forecasting GDP growth, adding the MA component does not provide
+substantial improvements with respect to standard mixed frequency models for h = 1,
+with industrial production being the best indicator. When h = 2, employment becomes
+better than industrial production, and adding an MA term matters, with gains of 8% for
+the MIDAS-ARMA model. A similar results holds for h = 3, with gains increasing to
+20%. Four-quarter ahead, industrial production returns best, and MIDAS-ARMA leads to
+a decrease of 10% in the MSE. For PNFI growth, MIDAS-ARMA is best at all horizons,
+with employment preferred to industrial production except for h = 1. The gains are
+small for h = 1, 2, 3, in the range 1%-8%, but increase to 30% for h = 4. For GDP
+deflator, PCE inflation is systematically better than CPI, and MIDAS-ARMA yields gains
+for h = 1 and 2 of, respectively, 15% and 10%. It is also worth mentioning that MSE
+and MAE lead to the same rankings, and that the gains from adding the MA parts are
+generally statistically significant. Finally, the models perform well with respect to the AR
+benchmark. Confirming the widespread evidence in the literature, the mixed frequency
+models perform the best at short horizons. However, we get satisfactory results also up to
+h = 4.
+We now decompose the MSE in bias and variance, as:
+MSE = (E(e))2
+Bias
++ V ar(e)
+Variance
+(21)
+with e = y - ^
+y. We find that the MA part helps especially in reducing the bias, suggesting
+that the MA part is important to well approximate the conditional mean of y (the optimal
+forecast under the quadratic loss). When the models with the MA component are not
+performing well, this is due especially to the variance term, instead. Detailed results on
+the bias/variance decomposition are presented in Table 9. In particular, in the table we
+report the ratio of the bias and of the variance of each model relative to the bias and
+variance of the MIDAS-AR model, which is taken as a benchmark.
+The MSE and MAE are computed over the entire evaluation sample. To check whether
+the performance of our models remains good across the entire sample, in Figure 1 we report
+4The models which include an MA component are indicated in bold in the tables, while the lowest MSE
+and MAE values are underlined.
+14
+the one-quarter ahead forecasts of the benchmark MIDAS-AR model and of one of the MA
+augmented models, together with the realized series. In Figure 2, instead, we report the
+4-quarter ahead forecasts.5 It turns out that, on average, MIDAS models perform well
+throughout the sample, both with and without an MA component.
+Tables 10 and 11 report the full-sample estimates of MA coefficients in MIDAS-ARMA
+and UMIDAS-ARMA models that have been used in the forecasting exercise. The cor-
+responding t-statistics are shown in parentheses. We observe that many MA coefficients
+are significant. For instance, MA(1) coefficient in MIDAS-ARMA-3lags model on GDP
+growth equation with employment growth is precisely estimated at horizons h = 1, 2, 3.
+This MIDAS-ARMA model was also the best in out-of-sample forecasting exercise, see ta-
+ble 6. In case of PNFI, when forecasting one quarter ahead with industrial production as
+high frequency predictor, MA coefficient is significant in all models. Same result holds at
+longer horizons with employment growth. When it comes to GDP deflator prediction, an
+interesting finding is that the MA(2) component is highly strong and significant for most
+of the horizons and models.
+Finally, to assess whether our results are robust to the exclusion of the recent crisis,
+we have rerun the forecast evaluation over a sample ending in 2007Q3. Results do not
+change substantially, and remain broadly supportive of the inclusion of the MA component
+in the mixed-frequency models. In most of the cases, the best performing model up to
+2007 remains the best in the full sample. The magnitude of improvements is also very
+comparable. Detailed results are provided in Appendix B.
+6 Conclusions
+In this paper, we start from the observation that temporal aggregation in general in-
+troduces a moving average component in the aggregated model. We show that a similar
+feature also emerges when not all but only a few variables are aggregated, which generates
+a mixed frequency model. Hence, an MA component should be added to mixed frequency
+models, while this is generally neglected in the literature.
+We illustrate in a set of Monte Carlo simulations that indeed adding an MA compo-
+nent to MIDAS and UMIDAS models further improves their nowcasting and forecasting
+5Figures 1 and 2 focus only on a small portion of results that we have available. The same figures for
+other models, other forecast horizons and other explanatory variables are available upon request.
+15
+abilities, though in general the gains are limited and particularly evident in the presence
+of persistence. Interestingly, the relative performance of MIDAS versus UMIDAS further
+improves when adding an MA component, with the latter attenuating the effects of impos-
+ing a particular polynomial structure in the dynamic response of the low frequency to the
+high frequency variable.
+A similar pattern emerges in an empirical exercise based on actual data. Specifically,
+we find that the inclusion of an MA component can substantially improve the forecasting
+performance of quarterly macroeconomic U.S. variables, as GDP growth, PNFI growth and
+GDP deflator inflation. MIDAS-ARMA models perform particularly well, suggesting that
+the addition of an MA component to the MIDAS model helps somewhat in reducing the
+potential misspecification due to imposing a specific lag polynomial structure. Finally, full
+sample estimates of MA coefficients are significant and important in most of MIDAS-ARMA
+and UMIDAS-ARMA specifications.
+16
+References
+Bai, J., Ghysels, E., and Wright, J. (2013). State Space Models and MIDAS Regressions.
+Econometric Reviews, 32:779­813.
+Chiu, C. W. J., Eraker, B., Foerster, A. T., Kim, T. B., and Seoane, H. D. (2011). Esti-
+mating VAR's sampled at mixed or irregular spaced frequencies : a Bayesian approach.
+Research Working Paper RWP 11-11, Federal Reserve Bank of Kansas City.
+Diebold, F. X. and Mariano, R. S. (1995). Comparing Predictive Accuracy. Journal of
+Business & Economic Statistics, 13(3):253­263.
+Dufour, J.-M. and Stevanovic, D. (2013). Factor-Augmented VARMA Models With
+Macroeconomic Applications. Journal of Business & Economic Statistics, 31(4):491­
+506.
+Faust, J. and Wright, J. H. (2013). Forecasting Inflation. Handbook of Economic Forecast-
+ing, 2(A):1063­1119.
+Foroni, C. and Marcellino, M. (2013). A survey of econometric methods for mixed-frequency
+data. Working Paper 2013/06, Norges Bank.
+Foroni, C., Marcellino, M., and Schumacher, C. (2015). U-MIDAS: MIDAS regressions
+with unrestricted lag polynomials. Journal of the Royal Statistical Society - Series A,
+178(1):57­82.
+Ghysels, E. (2016). Macroeconomics and the reality of mixed-frequency data. Journal of
+Econometrics, 193:294­314.
+Ghysels, E., Santa-Clara, P., and Valkanov, R. (2006). Predicting volatility: getting the
+most out of return data sampled at different frequencies. Journal of Econometrics, 131(1-
+2):59­95.
+Giannone, D., Reichlin, L., and Small, D. (2008). Nowcasting: The real-time informational
+content of macroeconomic data. Journal of Monetary Economics, 55(4):665­676.
+Leroux, M., Kotchoni, R., and Stevanovic, D. (2017). Forecasting economic activity in
+data-rich environment. EconomiX Working Papers 2017-5, University of Paris West -
+Nanterre la Dfense, EconomiX.
+17
+Lutkepohl, H. (2006). Forecasting with VARMA Models, volume 1 of Handbook of Economic
+Forecasting, chapter 6, pages 287­325. Elsevier.
+Marcellino, M. (1999). Some Consequences of Temporal Aggregation in Empirical Analysis.
+Journal of Business & Economic Statistics, 17(1):129­36.
+Marcellino, M., Stock, J. H., and Watson, M. W. (2006). A comparison of direct and
+iterated multistep AR methods for forecasting macroeconomic time series. Journal of
+Econometrics, 135(1-2):499­526.
+Mariano, R. S. and Murasawa, Y. (2010). A Coincident Index, Common Factors, and
+Monthly Real GDP. Oxford Bulletin of Economics and Statistics, 72(1):27­46.
+Ng, S. and Perron, P. (2001). LAG Length Selection and the Construction of Unit Root
+Tests with Good Size and Power. Econometrica, 69(6):1519­1554.
+Perron, P. and Ng, S. (1996). Useful Modifications to some Unit Root Tests with Dependent
+Errors and their Local Asymptotic Properties. Review of Economic Studies, 63(3):435­
+463.
+Ravenna, F. (2007). Vector autoregressions and reduced form representations of DSGE
+models. Journal of Monetary Economics, 54(7):2048­2064.
+Schorfheide, F. and Song, D. (2015). Real-Time Forecasting With a Mixed-Frequency VAR.
+Journal of Business & Economic Statistics, 33(3):366­380.
+Stock, J. H. and Watson, M. W. (2007). Why Has U.S. Inflation Become Harder to Forecast?
+Journal of Money, Credit and Banking, 39(s1):3­33.
+18
+Table 1: Monte Carlo simulations results: MSE(model) relative to MSE(MIDAS) - DGP:
+ARDL(1,1) with average sampling, T = 100.
+PANEL (A):
+ = 0.94, l = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.974 0.986 0.981 0.968 0.970 0.967
+MIDAS-ARMA-3 (3) 0.966 0.981 0.969 0.962 0.959 0.966
+UMIDAS-AR (4) 0.997 0.997 0.986 1.005 0.994 0.990
+UMIDAS-ARMA (5) 0.969 0.983 0.974 0.970 0.961 0.973
+UMIDAS-ARMA-3 (6) 0.971 0.977 0.974 0.971 0.964 0.975
+PANEL (B):
+ = 0.9, l = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.976 0.989 0.984 0.979 0.973 0.976
+MIDAS-ARMA-3 (3) 0.975 0.983 0.988 0.969 0.978 0.971
+UMIDAS-AR (4) 1.030 1.024 1.023 1.029 1.038 1.040
+UMIDAS-ARMA (5) 1.019 1.018 1.023 1.012 1.024 1.028
+UMIDAS-ARMA-3 (6) 0.976 0.979 0.984 0.977 0.977 0.981
+PANEL (C):
+ = 0.5, l = 0.1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.986 0.990 0.994 0.984 0.983 0.978
+MIDAS-ARMA-3 (3) 1.184 1.197 1.178 1.174 1.202 1.176
+UMIDAS-AR (4) 1.005 1.000 1.003 1.006 1.013 0.995
+UMIDAS-ARMA (5) 1.000 1.005 0.992 0.998 0.993 0.992
+UMIDAS-ARMA-3 (6) 1.182 1.212 1.185 1.175 1.198 1.179
+PANEL (D):
+ = 0.1, l = 0.1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.981 0.985 0.989 0.983 0.980 0.972
+MIDAS-ARMA-3 (3) 0.833 0.848 0.846 0.834 0.827 0.828
+UMIDAS-AR (4) 0.825 0.837 0.834 0.823 0.824 0.819
+UMIDAS-ARMA (5) 0.832 0.841 0.844 0.833 0.831 0.836
+UMIDAS-ARMA-3 (6) 0.833 0.846 0.846 0.834 0.829 0.829
+Note: The four panels report the results for four different DGPs for 1-quarter ahead horizon (with the infor-
+mation of the first two months of the quarter available). The numbers (2) to (6) refer to the corresponding
+models described in Section 4. The results reported are the average, median and the 10th, 25th, 75th, 90th
+percentiles of the MSE of the indicated model relative to the average, median and the 10th, 25th, 75th, 90th
+percentiles of the MSE of the benchmark MIDAS (model (1) in Section 4) computed over 500 replications.
+19
+Table 2: Monte Carlo simulations results: MSE(model) relative to MSE(MIDAS) - DGP:
+ARDL(1,1) with average sampling, T = 50
+PANEL (A):
+ = 0.94, l = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.985 0.975 0.996 0.983 0.990 0.968
+MIDAS-ARMA-3 (3) 0.957 0.949 0.982 0.947 0.957 0.944
+UMIDAS-AR (4) 0.982 0.984 0.998 0.968 0.986 0.979
+UMIDAS-ARMA (5) 0.957 0.950 0.984 0.954 0.965 0.939
+UMIDAS-ARMA-3 (6) 0.968 0.950 1.003 0.962 0.975 0.955
+PANEL (B):
+ = 0.9, l = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.997 1.001 1.012 0.994 0.986 0.982
+MIDAS-ARMA-3 (3) 0.973 0.978 1.006 0.964 0.961 0.977
+UMIDAS-AR (4) 1.033 1.074 1.041 1.025 1.034 1.013
+UMIDAS-ARMA (5) 1.020 1.041 1.040 1.018 1.019 1.016
+UMIDAS-ARMA-3 (6) 0.981 0.982 1.023 0.968 0.971 0.983
+PANEL (C):
+ = 0.5, l = 0.1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 1.013 1.007 1.010 1.022 0.999 1.014
+MIDAS-ARMA-3 (3) 1.188 1.182 1.172 1.179 1.168 1.249
+UMIDAS-AR (4) 1.038 1.056 1.054 1.026 1.046 1.064
+UMIDAS-ARMA (5) 1.061 1.089 1.059 1.049 1.049 1.062
+UMIDAS-ARMA-3 (6) 1.197 1.186 1.181 1.181 1.173 1.241
+PANEL (D):
+ = 0.1, l = 0.1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.984 0.987 0.989 0.983 0.989 0.973
+MIDAS-ARMA-3 (3) 0.824 0.809 0.807 0.825 0.830 0.846
+UMIDAS-AR (4) 0.810 0.791 0.814 0.819 0.814 0.820
+UMIDAS-ARMA (5) 0.834 0.824 0.826 0.831 0.834 0.853
+UMIDAS-ARMA-3 (6) 0.830 0.826 0.816 0.827 0.832 0.859
+Note: See Table 2.
+20
+Table 3: Monte Carlo simulations results: MSE(model) relative to MSE(MIDAS) - DGP:
+ARDL(2,2) with point-in-time sampling, T = 100
+PANEL (A):
+1 = 0.05, 2 = 0.1, l1 = 0.5, l2 = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 1.007 1.010 1.003 1.007 1.010 1.025
+MIDAS-ARMA-3 (3) 1.006 1.006 0.997 1.003 1.014 1.018
+UMIDAS-AR (4) 1.014 1.007 1.016 1.005 1.006 1.030
+UMIDAS-ARMA (5) 1.015 1.000 1.014 1.007 1.014 1.026
+UMIDAS-ARMA-3 (6) 1.007 0.998 1.004 1.006 1.016 1.023
+PANEL (B):
+1 = 0.125, 2 = 0.5, l1 = 0.125, l2 = 0.5
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.956 0.955 0.960 0.963 0.949 0.959
+MIDAS-ARMA-3 (3) 0.940 0.932 0.950 0.950 0.931 0.943
+UMIDAS-AR (4) 0.938 0.921 0.938 0.945 0.929 0.946
+UMIDAS-ARMA (5) 0.921 0.927 0.922 0.926 0.908 0.939
+UMIDAS-ARMA-3 (6) 0.943 0.921 0.950 0.947 0.932 0.948
+PANEL (C):
+1 = 0.25, 2 = 0.5, l1 = 0.5, l2 = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 0.984 0.968 0.981 0.985 0.991 0.998
+MIDAS-ARMA-3 (3) 0.980 0.981 0.982 0.968 0.981 0.999
+UMIDAS-AR (4) 1.021 1.032 1.020 1.006 1.032 1.036
+UMIDAS-ARMA (5) 0.992 0.987 0.986 0.988 1.001 1.004
+UMIDAS-ARMA-3 (6) 0.983 0.978 0.979 0.980 0.985 0.998
+Note: The four panels report the results for three different DGPs. The numbers (2) to (6) refer to
+the corresponding models described in Section 4. The results reported are the average, median and the
+10th, 25th, 75th, 90th percentiles of the MSE of the indicated model relative to the average, median and the
+10th, 25th, 75th, 90th percentiles of the MSE of the benchmark MIDAS (model (1) in Section 4) computed
+over 500 replications.
+21
+Table 4: Monte Carlo simulations results: MSE(model) relative to MSE(MIDAS) - DGP:
+ARDL(2,2) with point-in-time sampling, T = 50
+PANEL (A):
+1 = 0.05, 2 = 0.1, l1 = 0.5, l2 = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 1.020 1.003 1.024 1.021 1.009 1.017
+MIDAS-ARMA-3 (3) 1.003 0.990 1.015 1.014 0.986 0.994
+UMIDAS-AR (4) 1.006 0.982 1.036 1.019 1.011 0.988
+UMIDAS-ARMA (5) 1.018 0.955 1.033 1.037 1.023 1.030
+UMIDAS-ARMA-3 (6) 1.018 1.000 1.024 1.028 1.021 1.010
+PANEL (B):
+1 = 0.125, 2 = 0.5, l1 = 0.125, l2 = 0.5
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 1.017 0.980 1.006 1.004 1.019 1.042
+MIDAS-ARMA-3 (3) 0.967 0.934 0.970 0.995 0.953 0.991
+UMIDAS-AR (4) 0.971 0.973 0.979 0.979 0.961 0.997
+UMIDAS-ARMA (5) 0.983 0.983 0.977 1.000 0.958 0.980
+UMIDAS-ARMA-3 (6) 1.009 0.970 1.002 1.016 1.000 1.023
+PANEL (C):
+1 = 0.25, 2 = 0.5, l1 = 0.5, l2 = 1
+mean 10 prct 25 prct median 75 prct 90 prct
+MIDAS-ARMA-12 (2) 1.016 1.003 0.991 1.005 1.012 1.010
+MIDAS-ARMA-3 (3) 0.990 0.993 0.965 0.984 0.988 0.979
+UMIDAS-AR (4) 1.046 1.024 1.016 1.047 1.059 1.039
+UMIDAS-ARMA (5) 1.041 1.051 1.035 1.018 1.045 1.038
+UMIDAS-ARMA-3 (6) 1.016 1.008 1.014 0.991 1.024 1.018
+Note: see Table 3.
+22
+Table 5: Data description
+Series Source Source Code Transformation Frequency
+US data
+GDP Deflator FRED GDPDEF Log-difference Quarterly
+Real GDP FRED GDP Log-difference Quarterly
+Private Nonresidential Fixed Investment FRED PNFI Level Quarterly
+Nonresidential (implicit price deflator) FRED A008RD3Q086SBEA Level Quarterly
+Real Private Nonresidential Fixed Investment PNFI / A008RD3Q086SBEA Log-difference Quarterly
+Consumer Price Index (CPI) FRED CPIAUCSL Log-difference Monthly
+Personal Consumption Expenditures: Price Index (PCE) FRED PCEPI Log-difference Monthly
+Employment FRED PAYEMS Log-difference Monthly
+Industrial Production FRED INDPRO Log-difference Monthly
+23
+Table 6: Forecasting U.S. GDP growth
+Explanatory variable: Explanatory variable:
+Industrial production growth Employment growth
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 4.06 1.00 NaN 1.58 1.00 NaN 4.84 1.00 NaN 1.73 1.00 NaN
+MIDAS-ARMA-12lags 4.05 1.00 0.41 1.59 1.01 0.13 4.73 0.98 0.33 1.72 0.99 0.37
+MIDAS-ARMA-3 4.27 1.05 0.07 1.60 1.01 0.22 4.76 0.98 0.39 1.72 0.99 0.42
+UMIDAS-biclags 4.21 1.04 0.15 1.58 1.00 0.41 4.70 0.97 0.31 1.73 1.00 0.49
+UMIDAS-ARMA-biclags 4.18 1.03 0.19 1.59 1.01 0.26 4.37 0.90 0.05 1.67 0.96 0.17
+UMIDAS-ARMA-3 4.27 1.05 0.07 1.60 1.01 0.22 4.76 0.98 0.39 1.72 0.99 0.42
+AR 7.60 1.87 0.01 1.97 1.25 0.01 7.60 1.57 0.02 1.97 1.14 0.05
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 6.68 1.00 NaN 1.86 1.00 NaN 6.07 1.00 NaN 1.79 1.00 NaN
+MIDAS-ARMA-12lags 6.35 0.95 0.03 1.84 0.99 0.29 5.58 0.92 0.03 1.76 0.98 0.22
+MIDAS-ARMA-3 6.59 0.99 0.31 1.90 1.02 0.16 5.78 0.95 0.12 1.78 1.00 0.41
+UMIDAS-biclags 7.05 1.05 0.00 1.94 1.04 0.00 6.07 1.00 0.06 1.79 1.00 0.05
+UMIDAS-ARMA-biclags 6.89 1.03 0.12 1.92 1.03 0.02 5.81 0.96 0.15 1.78 1.00 0.45
+UMIDAS-ARMA-3 7.04 1.05 0.09 1.89 1.01 0.19 6.10 1.00 0.46 1.82 1.01 0.20
+AR 7.77 1.16 0.10 1.98 1.06 0.06 7.77 1.28 0.02 1.98 1.10 0.01
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 8.14 1.00 NaN 2.01 1.00 NaN 8.85 1.00 NaN 2.10 1.00 NaN
+MIDAS-ARMA-12lags 8.22 1.01 0.34 2.04 1.01 0.28 9.39 1.06 0.21 2.31 1.10 0.03
+MIDAS-ARMA-3 7.44 0.91 0.00 1.89 0.94 0.00 7.06 0.80 0.00 1.90 0.90 0.00
+UMIDAS-biclags 8.12 1.00 0.45 1.99 0.99 0.19 7.62 0.86 0.00 1.94 0.92 0.00
+UMIDAS-ARMA-biclags 12.00 1.47 0.01 2.46 1.22 0.00 15.23 1.72 0.00 3.11 1.48 0.00
+UMIDAS-ARMA-3 8.24 1.01 0.42 1.97 0.98 0.16 7.93 0.90 0.07 1.99 0.95 0.07
+AR 8.77 1.08 0.11 2.05 1.02 0.19 8.77 0.99 0.43 2.05 0.98 0.19
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 9.14 1.00 NaN 2.11 1.00 NaN 11.11 1.00 NaN 2.31 1.00 NaN
+MIDAS-ARMA-12lags 8.56 0.94 0.09 2.07 0.98 0.24 11.20 1.01 0.46 2.43 1.05 0.13
+MIDAS-ARMA-3 8.27 0.90 0.03 2.02 0.96 0.05 10.14 0.91 0.02 2.16 0.94 0.01
+UMIDAS-biclags 8.77 0.96 0.19 2.05 0.97 0.10 10.37 0.93 0.05 2.17 0.94 0.01
+UMIDAS-ARMA-biclags 8.91 0.98 0.40 2.10 0.99 0.45 11.13 1.00 0.49 2.38 1.03 0.30
+UMIDAS-ARMA-3 10.01 1.09 0.30 2.08 0.99 0.40 9.52 0.86 0.00 2.10 0.91 0.00
+AR 8.69 0.95 0.11 2.05 0.97 0.10 8.69 0.78 0.00 2.05 0.89 0.00
+Note: The table reports the results on the forecasting performance of the different models. In the columns
+"value" we report the MSE and the MAE respectively. In the columns "ratio" we report the MSE and
+MAE of each model relative to the MIDAS-AR benchmark. In the columns "DM" we report the p-value of
+the Diebold-Mariano test. The forecasts are evaluated over the sample 1980Q1-2015Q4. The lowest values
+for each variable are underlined.
+24
+Table 7: Forecasting U.S. Real Private Nonresidential Fixed Investment growth
+Explanatory variable: Explanatory variable:
+Industrial production growth Employment growth
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 30.70 1.00 NaN 4.40 1.00 NaN 33.01 1.00 NaN 4.56 1.00 NaN
+MIDAS-ARMA-12lags 29.32 0.96 0.06 4.25 0.97 0.02 33.38 1.01 0.18 4.57 1.00 0.33
+MIDAS-ARMA-3 28.13 0.92 0.01 4.19 0.95 0.01 33.15 1.00 0.40 4.57 1.00 0.37
+UMIDAS-biclags 31.91 1.04 0.22 4.45 1.01 0.24 33.31 1.01 0.18 4.58 1.01 0.12
+UMIDAS-ARMA-biclags 29.27 0.95 0.13 4.27 0.97 0.06 34.11 1.03 0.20 4.64 1.02 0.11
+UMIDAS-ARMA-3 28.15 0.92 0.01 4.19 0.95 0.01 32.98 1.00 0.48 4.57 1.00 0.37
+AR 44.91 1.46 0.01 5.11 1.16 0.01 44.91 1.36 0.02 5.11 1.12 0.05
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 38.90 1.00 NaN 4.72 1.00 NaN 36.33 1.00 NaN 4.71 1.00 NaN
+MIDAS-ARMA-12 38.59 0.99 0.34 4.74 1.00 0.37 36.13 0.99 0.40 4.74 1.01 0.32
+MIDAS-ARMA-3 41.46 1.07 0.07 4.86 1.03 0.11 36.70 1.01 0.29 4.76 1.01 0.21
+UMIDAS-biclags 41.92 1.08 0.00 4.87 1.03 0.00 37.84 1.04 0.03 4.78 1.02 0.08
+UMIDAS-ARMA-biclags 44.76 1.15 0.00 5.11 1.08 0.00 38.40 1.06 0.03 4.85 1.03 0.07
+UMIDAS-ARMA-3 43.93 1.13 0.03 4.92 1.04 0.06 36.69 1.01 0.36 4.80 1.02 0.11
+AR 47.14 1.21 0.08 5.18 1.10 0.05 47.14 1.30 0.04 5.18 1.10 0.05
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 43.65 1.00 NaN 5.15 1.00 NaN 43.77 1.00 NaN 5.20 1.00 NaN
+MIDAS-ARMA-12 41.97 0.96 0.07 4.99 0.97 0.05 40.70 0.93 0.02 5.00 0.96 0.01
+MIDAS-ARMA-3 45.90 1.05 0.13 5.21 1.01 0.25 41.31 0.94 0.05 5.06 0.97 0.06
+UMIDAS-biclags 52.95 1.21 0.02 5.51 1.07 0.00 45.51 1.04 0.05 5.25 1.01 0.17
+UMIDAS-ARMA-biclags 47.52 1.09 0.07 5.26 1.02 0.17 42.62 0.97 0.16 5.06 0.97 0.06
+UMIDAS-ARMA-3 45.86 1.05 0.14 5.21 1.01 0.28 41.36 0.95 0.07 5.08 0.98 0.11
+AR 55.91 1.28 0.03 5.60 1.09 0.04 55.91 1.28 0.04 5.60 1.08 0.08
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 52.70 1.00 NaN 5.72 1.00 NaN 69.36 1.00 NaN 6.18 1.00 NaN
+MIDAS-ARMA-12 50.68 0.96 0.21 5.48 0.96 0.04 59.35 0.86 0.02 5.78 0.94 0.01
+MIDAS-ARMA-3 50.04 0.95 0.17 5.44 0.95 0.02 48.38 0.70 0.00 5.29 0.86 0.00
+UMIDAS-biclags 53.47 1.01 0.41 5.59 0.98 0.16 57.78 0.83 0.01 5.73 0.93 0.01
+UMIDAS-ARMA-biclags 54.95 1.04 0.26 5.60 0.98 0.18 56.52 0.81 0.03 5.70 0.92 0.05
+UMIDAS-ARMA-3 52.92 1.00 0.48 5.48 0.96 0.12 53.55 0.77 0.01 5.55 0.90 0.01
+AR 63.44 1.20 0.04 5.91 1.03 0.17 63.44 0.91 0.01 5.91 0.96 0.03
+Note: See Table 6.
+25
+Table 8: Forecasting U.S. GDP Deflator
+Explanatory variable: Explanatory variable:
+CPI inflation PCE inflation
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.65 1.00 NaN 0.61 1.00 NaN 0.51 1.00 NaN 0.52 1.00 NaN
+MIDAS-ARMA-12 0.65 0.99 0.42 0.61 1.00 0.45 0.50 0.98 0.37 0.51 0.99 0.28
+MIDAS-ARMA-3 0.61 0.94 0.09 0.59 0.97 0.17 0.43 0.85 0.07 0.49 0.95 0.20
+UMIDAS-biclags 0.65 0.99 0.42 0.60 0.98 0.22 0.53 1.04 0.24 0.52 1.00 0.47
+UMIDAS-ARMA-biclags 0.61 0.94 0.09 0.59 0.97 0.17 0.51 1.01 0.44 0.52 1.00 0.47
+UMIDAS-ARMA-3 0.61 0.94 0.09 0.59 0.97 0.17 0.49 0.96 0.11 0.51 0.98 0.14
+AR 0.79 1.20 0.11 0.68 1.11 0.07 0.79 1.55 0.00 0.68 1.32 0.00
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.79 1.00 NaN 0.67 1.00 NaN 0.55 1.00 NaN 0.55 1.00 NaN
+MIDAS-ARMA-12 0.68 0.86 0.08 0.64 0.95 0.09 0.56 1.01 0.38 0.55 1.01 0.36
+MIDAS-ARMA-3 0.68 0.86 0.13 0.64 0.96 0.16 0.50 0.90 0.14 0.53 0.96 0.24
+UMIDAS-biclags 0.74 0.94 0.31 0.66 0.99 0.38 0.55 1.00 0.49 0.56 1.01 0.44
+UMIDAS-ARMA-biclags 0.70 0.89 0.15 0.67 1.00 0.46 0.52 0.95 0.30 0.55 1.00 0.47
+UMIDAS-ARMA-3 0.68 0.87 0.13 0.64 0.96 0.16 0.50 0.90 0.14 0.53 0.96 0.24
+AR 0.82 1.04 0.43 0.71 1.05 0.27 0.82 1.48 0.00 0.71 1.28 0.00
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.80 1.00 NaN 0.69 1.00 NaN 0.57 1.00 NaN 0.57 1.00 NaN
+MIDAS-ARMA-12 0.87 1.08 0.29 0.73 1.07 0.15 0.64 1.13 0.04 0.61 1.06 0.07
+MIDAS-ARMA-3 0.73 0.91 0.23 0.68 0.99 0.42 0.60 1.05 0.28 0.58 1.01 0.46
+UMIDAS-biclags 0.84 1.05 0.31 0.72 1.05 0.17 0.71 1.24 0.05 0.63 1.10 0.03
+UMIDAS-ARMA-biclags 0.84 1.05 0.36 0.74 1.07 0.15 0.76 1.33 0.00 0.66 1.15 0.01
+UMIDAS-ARMA-3 0.75 0.93 0.25 0.68 0.99 0.43 0.60 1.05 0.27 0.58 1.01 0.45
+AR 0.85 1.05 0.39 0.73 1.05 0.26 0.85 1.49 0.00 0.73 1.27 0.00
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.86 1.00 NaN 0.74 1.00 NaN 0.63 1.00 NaN 0.61 1.00 NaN
+MIDAS-ARMA-12 1.08 1.25 0.00 0.84 1.13 0.00 0.81 1.27 0.00 0.70 1.16 0.00
+MIDAS-ARMA-3 0.85 0.98 0.42 0.73 0.99 0.36 0.69 1.09 0.09 0.63 1.04 0.14
+UMIDAS-biclags 1.00 1.16 0.00 0.80 1.07 0.01 0.74 1.17 0.01 0.65 1.08 0.02
+UMIDAS-ARMA-biclags 1.06 1.23 0.01 0.81 1.09 0.02 0.83 1.31 0.00 0.70 1.15 0.00
+UMIDAS-ARMA-3 0.98 1.13 0.06 0.77 1.03 0.20 0.73 1.15 0.02 0.65 1.07 0.05
+AR 0.89 1.03 0.41 0.76 1.01 0.41 0.89 1.41 0.00 0.76 1.25 0.00
+Note: See Table 6.
+26
+Table 9: Bias/Variance decomposition of MSE
+Bias Variance
+h=1 h=2 h=3 h=4 h=1 h=2 h=3 h=4
+GDP with MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+Industrial MIDAS-ARMA-12lags 0.72 0.68 0.59 0.89 1.00 0.97 1.04 0.94
+Production MIDAS-ARMA-3lags 0.85 0.97 1.01 0.90 1.06 0.99 0.91 0.90
+UMIDAS-biclags 1.09 1.04 1.08 0.87 1.04 1.06 0.99 0.97
+UMIDAS-ARMA-biclags 0.96 1.03 1.13 1.06 1.03 1.03 1.50 0.97
+UMIDAS-ARMA-3lags 0.85 1.12 1.23 0.98 1.06 1.05 1.00 1.10
+AR 3.06 1.02 1.23 1.01 1.84 1.17 1.07 0.95
+GDP with MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+Employment MIDAS-ARMA-12lags 0.26 0.70 2.22 1.69 0.98 0.92 0.95 0.93
+MIDAS-ARMA-3lags 0.18 1.44 0.51 0.65 0.98 0.94 0.82 0.94
+UMIDAS-biclags 5.60 1.00 0.51 0.74 0.97 1.00 0.89 0.95
+UMIDAS-ARMA-biclags 19.59 1.52 1.88 1.30 0.90 0.95 1.71 0.97
+UMIDAS-ARMA-3lags 0.18 1.40 0.56 0.61 0.98 1.00 0.93 0.88
+AR 348.15 4.11 0.87 0.56 1.51 1.24 1.00 0.81
+PNFI with MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+Industrial MIDAS-ARMA-12lags 5.39 0.94 0.86 0.86 0.95 0.99 0.96 0.96
+Production MIDAS-ARMA-3lags 10.55 1.13 1.54 1.12 0.91 1.07 1.05 0.95
+UMIDAS-biclags 0.09 1.38 1.31 1.01 1.04 1.08 1.21 1.01
+UMIDAS-ARMA-biclags 1.52 1.50 1.65 1.20 0.95 1.15 1.08 1.04
+UMIDAS-ARMA-3lags 10.59 1.54 1.54 0.92 0.91 1.13 1.05 1.01
+AR 33.09 2.46 2.77 2.10 1.45 1.20 1.27 1.19
+PNFI with MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+Employment MIDAS-ARMA-12lags 0.99 1.15 0.00 0.73 1.01 0.99 0.93 0.86
+MIDAS-ARMA-3lags 0.78 0.42 4.78 0.17 1.01 1.01 0.94 0.72
+UMIDAS-biclags 0.91 0.85 0.35 0.24 1.01 1.04 1.04 0.86
+UMIDAS-ARMA-biclags 0.81 0.32 7.20 0.23 1.04 1.06 0.97 0.84
+UMIDAS-ARMA-3lags 0.78 0.44 4.22 0.23 1.01 1.01 0.94 0.80
+AR 0.25 2.53 230.03 0.58 1.40 1.29 1.25 0.93
+GDP Deflator MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+with CPI MIDAS-ARMA-12lags 1.08 0.79 0.83 0.95 0.98 0.88 1.15 1.35
+inflation MIDAS-ARMA-3lags 0.87 0.61 0.51 0.72 0.94 0.92 1.03 1.07
+UMIDAS-biclags 0.63 0.61 0.63 0.98 1.02 1.01 1.18 1.21
+UMIDAS-ARMA-biclags 0.87 0.64 0.59 0.76 0.94 0.95 1.19 1.37
+UMIDAS-ARMA-3lags 0.87 0.61 0.53 0.69 0.94 0.92 1.06 1.27
+AR 0.79 0.62 0.67 0.89 1.24 1.13 1.17 1.07
+GDP Deflator MIDAS1-AR-12lags 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+with PCE MIDAS-ARMA-12lags 1.23 1.00 0.88 1.04 0.97 1.01 1.19 1.33
+inflation MIDAS-ARMA-3lags 0.45 0.58 0.62 0.77 0.87 0.95 1.15 1.17
+UMIDAS-biclags 0.70 0.58 0.60 0.87 1.06 1.07 1.39 1.24
+UMIDAS-ARMA-biclags 0.96 0.70 0.49 0.81 1.01 0.99 1.51 1.43
+UMIDAS-ARMA-3lags 0.90 0.58 0.62 0.73 0.96 0.95 1.15 1.26
+AR 2.09 1.16 1.24 1.45 1.52 1.53 1.54 1.40
+Note: The table the decomposition of the MSE of the different models as presented in Section 4 into
+bias and variance, for different forecasting horizons. The forecasts are evaluated over the sample 1980Q1-
+2015Q4. The numbers reported are the ratio of the bias and of the variance of each model relative to the
+bias and variance of the MIDAS-AR model.
+27
+Table 10: Full-sample estimated MA coefficients
+Forecasting U.S. GDP growth
+Explanatory variable: Explanatory variable:
+Industrial Production Employment
+h=1 h=2 h=3 h=4 h=1 h=2 h=3 h=4
+MA(1) MA(1) MA(2) MA(1) MA(1) MA(1) MA(1) MA(1) MA(1)
+MIDAS-ARMA-12lags 0.06 0.03 0.11 0.29 0.26 0.39 0.35 0.24 0.12
+(0.45) (0.46) (0.72) (1.33) (0.78) (3.59) (2.26) (1.18) (0.42)
+MIDAS-ARMA-3lags -0.10 0.05 0.17 0.31 0.32 0.41 0.44 0.37 0.26
+(-0.89) (0.73) (1.13) (1.71) (1.20) (4.00) (2.85) (1.95) (1.01)
+UMIDAS-ARMA-biclags 0.01 0.06 0.19 0.11 0.25 0.05 0.42 0.25 0.28
+(0.08) (0.84) (1.14) (0.43) (1.22) (0.18) (2.98) (1.47) (1.15)
+UMIDAS-ARMA-3lags -0.10 0.05 0.17 0.31 0.16 0.41 0.45 0.33 0.27
+(-0.89) (0.73) (1.13) (1.80) (0.60) (4.00) (3.03) (1.70) (1.07)
+Forecasting PNFI growth
+Explanatory variable: Explanatory variable:
+Industrial Production Employment
+h=1 h=2 h=3 h=4 h=1 h=2 h=3 h=4
+MA(1) MA(1) MA(1) MA(1) MA(1) MA(1) MA(1) MA(1)
+MIDAS-ARMA-12lags -0.33 -0.14 0.13 -0.03 0.13 0.29 0.35 0.46
+(-3.82) (-1.15) (0.65) (-0.13) (1.27) (2.22) (2.37) (2.67)
+MIDAS-ARMA-3lags -0.39 -0.14 0.15 -0.07 0.11 0.27 0.37 0.48
+(-5.83) (-1.54) (1.14) (-0.43) (1.23) (2.86) (2.65) (2.94)
+UMIDAS-ARMA-biclags -0.31 0.05 0.17 -0.09 -0.04 0.26 0.35 0.48
+(-3.70) (0.50) (1.33) (-0.51) (-0.42) (2.78) (2.41) (2.46)
+UMIDAS-ARMA-3lags -0.39 -0.12 0.15 -0.07 0.08 0.29 0.37 0.48
+(-5.83) (-1.24) (1.14) (-0.43) (0.83) (3.00) (2.65) (2.98)
+Note: The table reports the estimated values of MA coefficients using the full sample 1960-2015. The
+values in parentheses are t-statistics calculated with Newey-West standard errors to take into account the
+serial autocorrelation of order h - 1, possibly induced by direct forecasting.
+28
+Table 11: Full-sample estimated MA coefficients
+Forecasting U.S. GDP deflator
+Explanatory variable:
+Consumer Price Index
+h=1 h=2 h=3 h=4
+MA(1) MA(2) MA(1) MA(2) MA(1) MA(2) MA(1) MA(2)
+MIDAS-ARMA-12lags .-0.09 -0.31 0.18 -0.30 0.29 -0.08 0.19 0.14
+(-1.03) (-2.43) (1.89) (-2.78) (2.78) (-0.67) (1.70) (1.46)
+MIDAS-ARMA-3lags -0.09 -0.36 0.20 -0.34 0.28 -0.10 0.18 0.11
+(-1.13) (-4.65) (2.09) (-4.48) (2.99) (-0.93) (1.76) (1.08)
+UMIDAS-ARMA-biclags -0.09 -0.36 0.18 -0.35 0.25 -0.12 0.16 0.09
+(-1.13) (-4.65) (1.78) (-4.58) (2.62) (-1.09) (1.58) (0.91)
+UMIDAS-ARMA-3lags -0.09 -0.36 0.20 -0.34 0.28 -0.10 0.18 0.11
+(-1.13) (-4.65) (2.06) (-4.44) (2.99) (-0.93) (1.76) (1.08)
+Explanatory variable:
+PCE Price Index
+h=1 h=2 h=3 h=4
+MA(1) MA(2) MA(1) MA(2) MA(1) MA(2) MA(1) MA(2)
+MIDAS-ARMA-12lags -0.06 0.09 0.13 -0.22 0.25 -0.03 0.19 0.19
+(-0.68) (0.55) (1.50) (-1.62) (2.48) (-0.30) (1.84) (2.07)
+MIDAS-ARMA-3lags 0.15 0.32 0.14 -0.30 0.24 -0.05 0.18 0.16
+(1.97) (3.25) (1.56) (-3.86) (2.95) (-0.53) (1.91) (1.53)
+UMIDAS-ARMA-biclags -0.13 -0.29 0.14 -0.30 0.22 -0.06 0.17 0.16
+(-1.84) (-3.60) (1.56) (-3.86) (2.63) (-0.63) (1.82) (1.51)
+UMIDAS-ARMA-3lags -0.13 -0.29 0.14 -0.30 0.24 -0.05 0.18 0.16
+(-1.84) (-3.60) (1.56) (-3.86) (2.95) (-0.53) (1.91) (1.53)
+Note: The table reports the estimated values of MA coefficients using the full sample 1960-2015. The
+values in parentheses are t-statistics calculated with Newey-West standard errors to take into account the
+serial autocorrelation of order h - 1, possibly induced by direct forecasting.
+29
+Figure 1: Out-of-sample performance: one-quarter ahead
+(a) GDP with monthly industrial production (b) PNFI with monthly industrial production
+(c) GDP deflator with monthly CPI (d) GDP deflator with monthly PCE
+30
+Figure 2: Out-of-sample performance: four-quarters ahead
+(a) GDP with monthly employment (b) PNFI with monthly employment
+(c) GDP deflator with monthly CPI (d) GDP deflator with monthly PCE
+31
+A Estimation of (U)MIDAS-ARMA models
+In this section we detail the algorithm used to estimate the (U)MIDAS-ARMA models
+with non-linear least squares (NLS).
+A.1 NLS estimation of MIDAS-ARMA
+The MIDAS-ARMA specification is as in (15):
+ytm
+= ~
+c(Lm)ytm-hm
++ B(L, )xtm-hm+w
++ utm
++ q(Lm)utm-hm
+.
+The estimation procedure, for given orders of the lag polynomials, consists of the following
+steps:
+Step 1 Get initial values for all the parameters but q(Lm) following Foroni et al. (2015) (the
+starting values are chosen with a grid search over a set of values for , which minimize
+the residual sum of squares). Set the initial values for q(Lm). We initialize the MA
+coefficients by a draw from the uniform U(0.1, 0.5) distribution. In principle, it is
+possible to include the selection of initial value of q(Lm) into the grid search.
+Step 2 Estimate all the parameters, including the weights in the Almon polynomial, simul-
+taneously by NLS, numerically minimizing the residual sum of squares, starting from
+the initial values obtained in Step 1.
+A.2 NLS estimation of UMIDAS-ARMA
+The UMIDAS-ARMA specification is as in (13):
+ytm
+= ~
+c(Lm)ytm-hm
++ (L)xtm-hm+w
++ utm
++ q(Lm)utm-hm
+,
+with p, d and r being the lag orders of ~
+c(Lm), (L) and q(Lm) respectively. The
+estimation procedure consists of the following steps:
+32
+Step 1 Get the initial values for all the parameters but q(Lm) by projecting ytm
+on p
+j=0
+ytm-hm-j
+and d
+j=0
+xtm-hm+w-j
+. Set the initial value for q(Lm). We initialize the MA coeffi-
+cients by a draw from the uniform U(0.1, 0.5) distribution. In principle, it is possible
+to perform a grid search and find a set of starting values of q(Lm) which minimize
+the residual sum of squares.
+Step 2 Estimate all the parameters simultaneously by NLS, numerically minimizing the resid-
+ual sum of squares, starting from the initial values obtained in Step 1.
+B Evaluation excluding the Great Recession
+To see whether our results are robust, and not driven by the Great Recession, we
+recompute the forecast evaluation stopping our evaluation sample in 2007Q3.
+Tables 12 to 14 are the equivalent of Tables 6 to 8 for the full sample. Results do not
+change substantially, and remain broadly supportive of the inclusion of the MA component
+in the mixed-frequency models. In most of the cases, the best performing model up to
+2007 stays the best in the full sample also. Also the magnitude of improvements is very
+comparable.
+33
+Table 12: Forecasting U.S. GDP growth: evaluation sample 1980Q1- 2007Q3
+Explanatory variable: Explanatory variable:
+Industrial production growth Employment growth
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 3.81 1.00 NaN 1.51 1.00 NaN 4.82 1.00 NaN 1.71 1.00 NaN
+MIDAS-ARMA-12 3.83 1.01 0.36 1.53 1.01 0.04 4.81 1.00 0.48 1.70 1.00 0.44
+MIDAS-ARMA-3 3.89 1.02 0.26 1.51 1.00 0.47 4.86 1.01 0.45 1.71 1.00 0.49
+UMIDAS-biclags 3.88 1.02 0.30 1.51 1.00 0.44 4.74 0.98 0.39 1.72 1.01 0.43
+UMIDAS-ARMA-biclags 3.86 1.01 0.35 1.52 1.01 0.36 4.43 0.92 0.10 1.66 0.97 0.24
+UMIDAS-ARMA-3 3.89 1.02 0.26 1.51 1.00 0.47 4.86 1.01 0.45 1.71 1.00 0.49
+AR 7.37 1.93 0.01 1.94 1.29 0.01 7.37 1.53 0.04 1.94 1.14 0.09
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 6.59 1.00 NaN 1.85 1.00 NaN 6.15 1.00 NaN 1.80 1.00 NaN
+MIDAS-ARMA-12 6.26 0.95 0.05 1.84 0.99 0.40 5.63 0.92 0.06 1.76 0.98 0.20
+MIDAS-ARMA-3 6.53 0.99 0.39 1.91 1.03 0.10 5.76 0.94 0.11 1.77 0.98 0.26
+UMIDAS-biclags 7.04 1.07 0.00 1.96 1.06 0.00 6.15 1.00 0.12 1.80 1.00 0.09
+UMIDAS-ARMA-biclags 6.74 1.02 0.22 1.92 1.04 0.03 5.76 0.94 0.12 1.77 0.98 0.26
+UMIDAS-ARMA-3 6.71 1.02 0.21 1.86 1.00 0.42 6.19 1.01 0.45 1.82 1.01 0.30
+AR 7.45 1.13 0.19 1.94 1.05 0.16 7.45 1.21 0.06 1.94 1.08 0.04
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 7.76 1.00 NaN 2.00 1.00 NaN 8.79 1.00 NaN 2.12 1.00 NaN
+MIDAS-ARMA-12 7.91 1.02 0.27 2.02 1.01 0.28 9.38 1.07 0.23 2.35 1.11 0.04
+MIDAS-ARMA-3 6.91 0.89 0.00 1.85 0.93 0.00 6.88 0.78 0.00 1.89 0.89 0.00
+UMIDAS-biclags 7.67 0.99 0.32 1.96 0.98 0.12 7.36 0.84 0.01 1.93 0.91 0.01
+UMIDAS-ARMA-biclags 11.40 1.47 0.02 2.44 1.22 0.02 16.27 1.85 0.00 3.35 1.58 0.00
+UMIDAS-ARMA-3 7.33 0.94 0.12 1.90 0.95 0.04 7.90 0.90 0.13 1.99 0.94 0.09
+AR 8.22 1.06 0.23 2.00 1.00 0.49 8.22 0.94 0.03 2.00 0.94 0.03
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 8.26 1.00 NaN 2.03 1.00 NaN 10.56 1.00 NaN 2.26 1.00 NaN
+MIDAS-ARMA-12 8.08 0.98 0.28 2.04 1.00 0.44 10.94 1.04 0.36 2.43 1.08 0.09
+MIDAS-ARMA-3 7.73 0.94 0.06 1.97 0.97 0.14 9.85 0.93 0.09 2.12 0.94 0.03
+UMIDAS-biclags 8.26 1.00 0.50 2.00 0.98 0.27 9.89 0.94 0.10 2.11 0.94 0.02
+UMIDAS-ARMA-biclags 7.04 0.85 0.04 1.96 0.96 0.26 11.10 1.05 0.31 2.39 1.06 0.18
+UMIDAS-ARMA-3 9.45 1.14 0.29 2.01 0.99 0.43 9.26 0.88 0.01 2.06 0.91 0.01
+AR 8.09 0.98 0.30 1.99 0.98 0.23 8.09 0.77 0.01 1.99 0.88 0.00
+Note: The table reports the results on the forecasting performance of the different models. In the columns
+"value" we report the MSE and the MAE respectively. In the columns "ratio" we report the MSE and
+MAE of each model relative to the MIDAS-AR benchmark. In the columns "DM" we report the p-value of
+the Diebold-Mariano test. The forecasts are evaluated over the sample 1980Q1-2007Q3. The lowest values
+for each variable are underlined.
+34
+Table 13: Forecasting U.S. Real Private Nonresidential Fixed Investment growth growth:
+evaluation sample 1980Q1- 2007Q3
+Explanatory variable: Explanatory variable:
+Industrial production growth Employment growth
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 33.02 1.00 NaN 4.56 1.00 NaN 33.56 1.00 NaN 4.55 1.00 NaN
+MIDAS-ARMA-12 30.91 0.94 0.01 4.41 0.97 0.02 34.30 1.02 0.06 4.60 1.01 0.07
+MIDAS-ARMA-3 29.68 0.90 0.00 4.37 0.96 0.03 33.90 1.01 0.30 4.60 1.01 0.16
+UMIDAS-biclags 34.77 1.05 0.19 4.65 1.02 0.19 33.97 1.01 0.15 4.60 1.01 0.01
+UMIDAS-ARMA-biclags 30.99 0.94 0.09 4.44 0.97 0.10 35.23 1.05 0.16 4.69 1.03 0.03
+UMIDAS-ARMA-3 29.70 0.90 0.00 4.37 0.96 0.03 33.58 1.00 0.49 4.59 1.01 0.26
+AR 43.71 1.32 0.01 5.13 1.12 0.03 43.71 1.30 0.03 5.13 1.13 0.06
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 39.79 1.00 NaN 4.87 1.00 NaN 36.79 1.00 NaN 4.75 1.00 NaN
+MIDAS-ARMA-12 39.82 1.00 0.48 4.89 1.00 0.42 37.40 1.02 0.21 4.82 1.02 0.13
+MIDAS-ARMA-3 42.43 1.07 0.09 5.04 1.03 0.13 37.83 1.03 0.08 4.85 1.02 0.08
+UMIDAS-biclags 42.57 1.07 0.00 5.04 1.03 0.00 38.74 1.05 0.03 4.84 1.02 0.09
+UMIDAS-ARMA-biclags 46.29 1.16 0.00 5.34 1.10 0.00 39.91 1.08 0.01 4.96 1.05 0.03
+UMIDAS-ARMA-3 45.18 1.14 0.04 5.11 1.05 0.07 37.75 1.03 0.22 4.89 1.03 0.04
+AR 44.72 1.12 0.22 5.20 1.07 0.15 44.72 1.22 0.07 5.20 1.09 0.06
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 43.65 1.00 NaN 5.24 1.00 NaN 42.71 1.00 NaN 5.18 1.00 NaN
+MIDAS-ARMA-12 42.16 0.97 0.13 5.11 0.97 0.11 40.70 0.95 0.07 5.06 0.98 0.06
+MIDAS-ARMA-3 44.05 1.01 0.36 5.25 1.00 0.47 41.21 0.96 0.19 5.11 0.99 0.22
+UMIDAS-biclags 48.10 1.10 0.00 5.46 1.04 0.04 44.94 1.05 0.05 5.25 1.01 0.17
+UMIDAS-ARMA-biclags 45.37 1.04 0.10 5.30 1.01 0.28 42.65 1.00 0.48 5.10 0.98 0.19
+UMIDAS-ARMA-3 44.00 1.01 0.37 5.24 1.00 0.49 41.27 0.97 0.21 5.14 0.99 0.33
+AR 50.82 1.16 0.07 5.52 1.05 0.12 50.82 1.19 0.05 5.52 1.07 0.10
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 50.48 1.00 NaN 5.71 1.00 NaN 63.84 1.00 NaN 6.13 1.00 NaN
+MIDAS-ARMA-12 47.04 0.93 0.12 5.39 0.94 0.02 54.59 0.86 0.05 5.74 0.94 0.04
+MIDAS-ARMA-3 46.28 0.92 0.10 5.34 0.93 0.01 45.45 0.71 0.01 5.21 0.85 0.00
+UMIDAS-biclags 47.34 0.94 0.06 5.46 0.96 0.02 54.11 0.85 0.01 5.63 0.92 0.01
+UMIDAS-ARMA-biclags 50.38 1.00 0.49 5.50 0.96 0.08 52.81 0.83 0.06 5.67 0.93 0.10
+UMIDAS-ARMA-3 48.15 0.95 0.30 5.35 0.94 0.07 52.06 0.82 0.03 5.54 0.91 0.03
+AR 56.22 1.11 0.08 5.76 1.01 0.40 56.22 0.88 0.01 5.76 0.94 0.01
+Note: See Table 12.
+35
+Table 14: Forecasting U.S. GDP Deflator: evaluation sample 1980Q1- 2007Q3
+Explanatory variable: Explanatory variable:
+CPI inflation PCE inflation
+h=1 h=1
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.63 1.00 NaN 0.60 1.00 NaN 0.42 1.00 NaN 0.48 1.00 NaN
+MIDAS-ARMA-12 0.63 1.00 0.49 0.61 1.02 0.29 0.43 1.03 0.29 0.49 1.02 0.23
+MIDAS-ARMA-3 0.58 0.92 0.09 0.58 0.96 0.15 0.39 0.95 0.32 0.48 1.02 0.36
+UMIDAS-biclags 0.59 0.93 0.19 0.58 0.97 0.19 0.43 1.04 0.29 0.49 1.02 0.29
+UMIDAS-ARMA-biclags 0.58 0.92 0.09 0.58 0.96 0.15 0.45 1.08 0.18 0.49 1.03 0.19
+UMIDAS-ARMA-3 0.58 0.92 0.09 0.58 0.96 0.15 0.41 1.00 0.47 0.48 1.01 0.39
+AR 0.77 1.23 0.15 0.68 1.14 0.06 0.77 1.86 0.00 0.68 1.43 0.00
+h=2 h=2
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.83 1.00 NaN 0.68 1.00 NaN 0.51 1.00 NaN 0.53 1.00 NaN
+MIDAS-ARMA-12 0.69 0.83 0.08 0.65 0.95 0.14 0.54 1.05 0.11 0.54 1.01 0.15
+MIDAS-ARMA-3 0.64 0.77 0.04 0.64 0.93 0.09 0.43 0.84 0.08 0.52 0.98 0.35
+UMIDAS-biclags 0.71 0.85 0.14 0.66 0.97 0.27 0.48 0.93 0.30 0.54 1.02 0.40
+UMIDAS-ARMA-biclags 0.66 0.80 0.04 0.64 0.94 0.12 0.44 0.85 0.08 0.52 0.98 0.40
+UMIDAS-ARMA-3 0.64 0.77 0.04 0.64 0.93 0.09 0.43 0.84 0.08 0.52 0.98 0.35
+AR 0.81 0.97 0.46 0.71 1.04 0.33 0.81 1.57 0.01 0.71 1.35 0.00
+h=3 h=3
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.83 1.00 NaN 0.70 1.00 NaN 0.51 1.00 NaN 0.54 1.00 NaN
+MIDAS-ARMA-12 0.92 1.10 0.28 0.75 1.08 0.14 0.60 1.18 0.03 0.58 1.07 0.08
+MIDAS-ARMA-3 0.72 0.87 0.18 0.69 0.99 0.42 0.53 1.04 0.38 0.55 1.02 0.40
+UMIDAS-biclags 0.83 0.99 0.48 0.72 1.03 0.32 0.56 1.11 0.18 0.58 1.07 0.14
+UMIDAS-ARMA-biclags 0.85 1.01 0.46 0.74 1.06 0.25 0.64 1.26 0.03 0.61 1.13 0.06
+UMIDAS-ARMA-3 0.74 0.89 0.19 0.69 0.99 0.43 0.53 1.04 0.37 0.55 1.02 0.40
+AR 0.84 1.00 0.49 0.73 1.05 0.29 0.84 1.65 0.00 0.73 1.35 0.00
+h=4 h=4
+MSE MAE MSE MAE
+Value Ratio DM Value Ratio DM Value Ratio DM Value Ratio DM
+MIDAS-AR-12 0.85 1.00 NaN 0.75 1.00 NaN 0.55 1.00 NaN 0.59 1.00 NaN
+MIDAS-ARMA-12 1.11 1.31 0.00 0.86 1.14 0.00 0.74 1.34 0.00 0.68 1.16 0.00
+MIDAS-ARMA-3 0.80 0.95 0.28 0.73 0.97 0.28 0.60 1.08 0.18 0.60 1.03 0.27
+UMIDAS-biclags 0.97 1.14 0.03 0.79 1.05 0.05 0.62 1.13 0.08 0.61 1.05 0.14
+UMIDAS-ARMA-biclags 1.02 1.21 0.04 0.80 1.06 0.11 0.68 1.23 0.01 0.65 1.11 0.01
+UMIDAS-ARMA-3 0.97 1.14 0.10 0.78 1.03 0.23 0.65 1.18 0.05 0.62 1.06 0.10
+AR 0.89 1.04 0.39 0.76 1.01 0.43 0.89 1.61 0.00 0.76 1.30 0.00
+Note: See Table 12.
+36
+

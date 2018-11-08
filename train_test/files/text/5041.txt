@@ -1,0 +1,1065 @@
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 325
+Solving Traffic Problems
+in the State of Kerala,
+India: Forecasting,
+Regression and
+Simulation Models
+Ramesh Bollapragada, Sudesh Poduval, Chetty Bingi S, and
+Bhoomi Brahmbhatt
+R E S E A R C H
+KEY WORDS
+Traffic Accidents
+Redesign of Traffic and
+Road Networks
+Forecasting
+Regression
+Simulation
+includes research articles
+that focus on the analysis and
+resolution of managerial and
+academic issues based on
+analytical and empirical or
+case research
+Indian states have been facing traffic related issues including traffic congestions and
+accidents for decades. The situation has worsened with time due to the increasing popu-
+lation. This article investigates the causes behind the accidents and provides recommen-
+dations and measures that would bring forth an improvement in the traffic conditions.
+The research uses forecasting models to confirm the existence of traffic problem in the
+State of Kerala. The various reasons for the accidents were enumerated and classified.
+Using regression models, the relationship between the number of accidents, deaths,
+and injured were obtained. In addition, the relationship between the number of acci-
+dents and the number of vehicles on road were examined along with the type of vehicle,
+design of the roads, the design of traffic, and the design of road network.
+In addition, a simulation model is presented to study the effect of the change in design
+of roads on the traffic situation. As an example, a 15-minute time period can be used
+to count the number of vehicles of each type (buses, cars, and trucks) travelling in
+both directions on a major highway. This data can then be categorized into slow and
+fast moving traffic. The Mean time between arrivals, percentages of slow and fast
+vehicles, percentages of vehicles travelling in both directions can be calculated and used
+in ARENA simulation software to perform discrete event simulation. Various scenarios
+are simulated; and waiting times and potential number of accidents are found for each
+of the scenarios.
+Based on forecasting, regression and simulation models, this article provides several
+recommendations and managerial insights, which are believed to alleviate the traffic
+problems in the State of Kerala. The solution approaches from this research could be
+used for addressing similar traffic situations in other states of India, which could result
+in saving millions of lives over the next decade.
+VIKALPA
+The Journal for Decision Makers
+41(4) 325­343
+© 2016 Indian Institute of
+Management, Ahmedabad
+SAGE Publications
+sagepub.in/home.nav
+DOI: 10.1177/0256090916675532
+http://vik.sagepub.com
+Executive
+Summary
+326 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+Kerala has been facing traffic related issues for
+decades. The situation has worsened with time
+due to the increasing population. In the recent
+past, a project sponsored by the World Bank announced
+an award to any organization or an individual, who
+could successfully address the traffic situation in the
+state. Subsequently, IBS Software Services developed
+a software system for the police department to help
+identify the traffic problems. However, the system did
+not help significantly in reducing the number of acci-
+dents. This research, conducted in year 2007­2008, is
+an attempt to investigate the causes behind the acci-
+dents and provides recommendations and measures
+that would bring forth a reduction in traffic accidents
+in Kerala.
+LITERATURE REVIEW
+There is extensive literature in the area of fatalities
+related to traffic. We first present the research articles
+from the Western countries and then discuss those from
+India, as the vehicle types and traffic conditions are
+significantly different in both contexts.
+Clarke et al. (2010) studied a sample of 1,185 fatal acci-
+dents in 10 UK police jurisdictions during the years
+1994­2005. They showed that the primary causes
+of accidents were excessive speeding and drunken
+driving with the drivers having alcohol levels beyond
+the permissible limit. In addition, the young age of
+the drivers, driving in the night, and the failure to
+wear seat belt are contributors to these fatalities.
+Gjerde et al. (2011) studied 204 fatally injured drivers
+in South-eastern Norway from 2003­2008. The risk for
+fatal injury in a road traffic accident was estimated using
+logistic regression adjusting for gender, age, season of
+the year, and time of the week. They showed that the
+risk for fatal accidents was high with intake of multiple
+drugs or alcohol by the drivers. Spoerri, Egger, and Von
+(2011) examined socio-demographic and geograph-
+ical determinants of road traffic accident mortality
+in Switzerland by linking 2000 census data to the
+mortality records from 2000­2005. Data from 5.5 million
+residents aged 18­94 years, 1,744 study areas, and 1,620
+accidental deaths were analysed, including 978 deaths
+(61.2 per cent) among motor vehicle occupants, 254
+(15.89 per cent) among motorcyclists, 107 (6.69 per cent)
+among cyclists, and 259 (16.21 per cent) among
+pedestrians. Weibull survival models and Bayesian
+methods were used to calculate hazard ratios (HR) and
+standardized mortality ratios (SMR) across study
+areas. They showed a u-shaped relationship with age
+in motor vehicle occupants and motorcyclists. For
+cyclists and pedestrians, mortality increased after the
+age of 55 years. Mortality as a function of education
+(primary, tertiary) and civil status (single, married) was
+also discussed. They suggested that preventive efforts
+should aim to reduce inequities across socio-demo-
+graphic and educational groups, and across geograph-
+ical areas, with interventions targeted at high-risk
+groups. Ayuso, Guillén, and Alcañiz (2010) used multi-
+nomial logistic regression to analyse accidents with
+victims and calculate the influence of different types of
+traffic violations on the probability of having a serious
+or fatal accident, compared to a smaller accident. The
+data for this study was based on accidents that occurred
+in Spain from 2003 to 2005. The average cost per victim
+and the average number of victims per accident were
+then used to find the estimated cost of an accident with
+victims, given the information on the type of traffic
+violation incurred. They presented some recommenda-
+tions on the severity of penalties, and suggested that
+regulators penalize the occurrences of some specific
+combinations of traffic violations more rigorously.
+In the Indian context, Mohan and Bawa (1985)
+attempted to understand fatal crash patterns in Delhi in
+the 1980s. The results of the study indicated that fatality
+patterns in Delhi were different from those in highly
+industrialized countries. Pedestrians, two-wheeler
+riders, and bus commuters comprised 80 per cent of the
+fatalities while motor-vehicle occupants comprised a
+small minority. The authors proposed some short-term
+and long-term safety countermeasures for Delhi which
+were significantly different from those in more indus-
+trialized high-income countries. Sahdev et al. (1994)
+undertook a study of road traffic fatalities in South
+Delhi to determine the injury patterns and incidence of
+deaths that could be prevented by optimal utilization of
+available medical resources. According to them, the
+majorityofthepreventabledeathsresultedfromafailureto
+diagnose or treat an injury and that an improvement
+in hospital management of intracavitory hemorrhage
+could prevent 70 per cent of the deaths. Sood (1988)
+studied the different factors influencing the fatality of
+injury among two-wheeler motor accidents. One key
+observation was that the helmet users had a much lower
+incidence and severity of head injury than the riders
+who did not use helmets. Jain et al. (2009) studied the
+trend of two-wheeler accidents over the period, 2000­
+2004, with respect to age and sex of the victim, type
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 327
+of injury sustained, type of vehicle involved, and time
+distribution of accidents. Among 1,231 accidents, 77 per
+cent of the victims were in the age group of 18­44 years,
+and the accident rate among males (83 per cent) was
+higher than those among females (17 per cent). They
+further concluded that the highest number of accidents
+occurred at a certain time of the day (6 p.m.­10 p.m.).
+THE STUDY
+This article contains three separate areas of analysis
+that are linked to each other in the following order:
+(1) The first step was to evaluate the existing traffic acci-
+dent problem in Kerala. This consisted of forecasting
+the number of accidents, number of people died in
+accidents, and number of people injured in acci-
+dents, using standard forecasting techniques. Time
+series models such as Moving Averages, Single and
+Double Exponential Smoothing, Winters' Method,
+and Neural Networks were used.
+(2) The second step was to verify the impact of acci-
+dents. This was achieved by regressing the number
+of accidents with the number of deaths and the
+number of injured.
+Once the impact of accidents was measured, the
+factors contributing to the increase in the number of
+accidents were determined. To achieve this, regres-
+sion analysis was performed with the number of
+accidents against the vehicle type, the number of
+vehicles, and the density of vehicles. In addition,
+regression was used to identify the relationship
+between the increasing number of vehicles on the
+roads and the accidents. Using data from all the
+states in India, another set of regression was done
+with the number of deaths against the number and
+type of vehicle. When the number of vehicles did
+not give a good regression coefficient, various trans-
+formations were applied on the number of vehicles,
+in search of a higher regression coefficient.
+Pareto analysis of accidents vs. vehicle type was
+used to determine the highest contributors to the
+accidents by vehicle type, and this information
+was then used in the regression analysis of vehicle
+type vs. number of deaths. The Pareto analysis also
+ranked the accidents by vehicle type which helped
+in focusing on accident causing vehicles.
+(3) The third step was to present a simulation method-
+ology to redesign the road network which would
+reduce the traffic accidents significantly on national
+highways. We used Discrete Event Simulation models
+to study the effect of the change in the design of roads,
+traffic, and road networks on the traffic accidents.
+Here, the dataset was obtained by direct observation
+of traffic on a national highway. A 15-minute time
+period was used to count the number of vehicles of
+each type (buses, cars, and trucks) travelling in both
+directions on NH-47, a major highway in Kerala. This
+data was then categorized into slow and fast moving
+traffic. The mean time between arrivals, percentages
+of slow and fast vehicles, and percentages of vehicles
+travelling in both directions were calculated and used
+in ARENA simulation software to perform discrete
+event simulation. Various scenarios were simulated;
+and waiting times and potential number of accidents
+were found for each of the scenarios. Based on the
+analysis of these scenarios, we present several recom-
+mendations and trade-offs.
+DATA
+The data on road accidents, the number of deaths in
+accidents, and the number of people injured in acci-
+dents were obtained from online sources such as: Public
+Works Department, Government of Kerala and the
+Kerala State Crime Records Bureau. (Edayaranmula,
+2005; Table 1, Appendix I).
+The data collected from these sources were used for
+performing statistical analysis and making recommen-
+dations for reducing traffic accidents using forecasting,
+regression, and simulation models discussed above.
+ANALYSIS
+An analysis of the number of accidents, deaths, and
+injuries in accidents, using forecasting, regression and
+simulation techniques are presented below.
+Forecast of Accidents
+The data on the number of accidents in Kerala from
+1990 to 2005 showed an increase over the years (Table
+1, Appendix I). The number of accidents was forecasted
+based on the publicly available data from the State
+Crime Records Bureau, Kerala Police (Edayaranmula,
+328 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+2005). A summary of errors for the various forecasting
+methods used to forecast accidents is given in Table 1.
+Table 1: Summary of errors ­ Forecast of accidents
+Forecasting method MAD MAPE
+3-period moving average 2937 8
+Single exponential smoothing 1356 4
+Double exponential smoothing 1505 5
+Winters' method 4653 13
+Neural networks 1143 3
+Source: Authors' analysis.
+Notes: MAD = Median Absolute Deviation; MAPE = Mean Absolute
+Percentage Error.
+From Table 1, neural network method appears to be
+the best method for forecasting. The forecasting exer-
+cise indicates an increase in the number of accidents--
+39,917 accidents in year 2007 to 42,197 accidents in year
+2017; (Table 1a, Appendix I). If no measures are taken,
+the number of accidents will continue to increase.
+Forecast of Number of Deaths in Accidents
+The number of deaths in traffic accidents in Kerala was
+forecasted with the same data and techniques used for
+forecasting the number of accidents. The actual data on
+the number of deaths has an upward trend from 1990 to
+2004 with a downward dip from 1995 to 1998 (Appendix
+I, Table 1b). A summary of errors for the various fore-
+casting methods used to forecast the number of deaths
+in the accidents is given in Table 2.
+Table 2: Summary of errors ­ Forecast of number of deaths in
+accidents
+Forecasting method MAD MAPE
+3-period moving average 195 7.4
+Single exponential smoothing 86 3.6
+Double exponential smoothing 340 14
+Winters' method 97 3.8
+Neural networks 73 3
+Source: Authors' analysis.
+It can be inferred from Table 2 that neural network fore-
+casting is the most appropriate method. The forecast
+using this method indicates that the number of deaths
+in accidents would remain at more than 3,000 per year
+for the next 10 years (Appendix I, Table 1b). The actual
+number of deaths in accidents for the years 2005 to 2007
+substantiates this forecast.
+Forecast of Number Injured in Accidents
+The actual data on the number of injured in accidents
+in Kerala has an upward trend from 1990 to 2004 with
+a downward dip during 1995­1998 (Table 1c, Appendix
+I). A summary of errors for the various forecasting
+methods used to forecast the number injured in the
+accidents is given in Table 3.
+Table 3: Summary of errors ­ Forecast of number injured in
+accidents
+Forecasting method MAD MAPE
+3-period moving average 4036 8
+Single exponential smoothing 1550 4
+Double exponential smoothing 9187 21
+Winters' method 2318 5
+Neural networks 1649 4.1
+Source: Authors' analysis.
+Based on the above MAD and MAPE, Single Exponen-
+tial Smoothing method appears to be the most accurate.
+The forecasts using this method as well as the Neural
+Network method indicates that there is no significant
+decrease in the number of people injured over a span
+of 10 years.
+Regression
+Number of Accidents vs. Number of Deaths
+A regression analysis was performed to understand
+the relationship between Number of accidents and
+Number of deaths. An R-Square of 94.9 per cent
+confirms the general understanding that accident
+deaths are correlated to the number of accidents. The
+regression equation is:
+Number died = 829.9243 + 0.05039 * Number of accidents.
+This shows that the number of deaths increases with
+the increase in accidents (See Table 2a, Appendix I for
+summary regression output).
+Number of Accidents vs. Number of Injured
+An R-Square of 96.32 per cent confirms that accident
+injuries are correlated to the number of accidents. The
+regression equation is:
+Number of injuries = 1970.081 + 1.292561 * Number of
+accidents
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 329
+This shows that injuries increase with the increase in
+the number of accidents (See Table 2b, Appendix I for
+summary regression output).
+Pareto Analysis--Accidents vs. Vehicle Type
+Figure 1 demonstrates the results of the Pareto analysis
+of the publicly available data (NATPAC, n.d.) to inves-
+tigate the correlation between the number of accidents
+and the vehicle type.
+As can be seen from the Pareto chart, two-wheelers
+contribute to 41.4 per cent of the accidents. Auto-
+rickshaws, cars, and private buses, add up to make 79.2
+per cent of all accidents.
+Vehicle Type vs. Number of Deaths
+The R-square was significant only in one case;
+two-wheelers, at 87.9 per cent, indicating a high corre-
+lation between two-wheelers and the number of deaths
+in accidents (Table 2c, Appendix I). The regression
+equation is:
+Number died = 287.519 + 0.001462 * Total number of
+two-wheelers.
+Reciprocal of Vehicles vs. Number of Accidents
+A regression was run to determine the correlation
+between the number of accidents and the number
+of vehicles on the roads. As this did not yield an
+R-square of more than 80 per cent, regressions were
+tried with various transformations on the number of
+vehicles, which included squaring, taking a square
+root, using logarithm and a reciprocal. The regres-
+sion with the reciprocal was the only transformation
+that yielded an R-square close to 80 per cent (Table
+2d, Appendix I).
+The regression equation is:
+Number of accidents = 48496 - 1.64E + 10 reciprocal of
+vehicles.
+The R-square obtained (78.9 per cent) shows a high
+correlation between the reciprocal of the number of
+vehicles and the number of accidents.
+Vehicles per km vs. Number of Accidents
+The R-square of 83.4 per cent indicates a high correla-
+tion between the number of vehicles per kilometre and
+the number of accidents (Table 2e, Appendix I).
+Figure 1: Pareto chart of accidents vs. vehicle types
+Source: Authors' analysis.
+330 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+Simulation
+Based on the findings of the regression methodology, a
+simulation model is presented here to redesign the roads,
+traffic, and the road network, that could help reduce the
+traffic accidents significantly on national highways.
+The goal of the simulation model was to reduce the
+number of unsuccessful switches by redesigning traffic
+and/or roads, and at the same time minimizing the
+waiting time.
+A two-lane highway is defined as one that has traffic
+in both directions (one lane going North and one lane
+South). The traffic rules do not legally allow vehicles to
+pass other vehicles by switching temporarily to the lane
+with incoming traffic. However, many vehicles do not
+adhere to these rules. Typically, they tend to pass the
+vehicle in the same lane, by crossing into the lane in the
+opposite direction. It then tries to switch back to the orig-
+inal lane, which cannot be accomplished, if the original
+lane is busy. All of this slows down the traffic resulting
+in traffic congestion, or may lead to a head-on collision.
+Main Features of the Model
+The simulation was modelled using ARENA soft-
+ware. The lanes were considered as resources. Each
+resource could accommodate only one vehicle at a
+time. Slow vehicles took a longer time to be processed
+when compared to the fast moving vehicles. Direction,
+lane, speed (1 or 2), and entity type were assigned.
+If the lane (resource) was busy, the vehicle switched.
+The false branch from the next switch decision within
+a decide module gave rise to a number that we called
+"possible accidents." The objective was to reduce that
+number without significantly increasing the waiting
+time of the vehicles. The following five scenarios were
+considered: Base, No passing at all, No passing for slow
+traffic, Passing only for North-bound fast traffic, and
+Four-lane highway (implies upgrading and rede-
+signing of the highway). The fifth scenario required a
+separate model. Refer to Appendix II for an illustration
+of the simulation models.
+Major Data Needed (Input)
+The following data was needed for simulating the
+scenarios in ARENA: (1) Mean time between arrivals of
+vehicles (both South-bound and North-bound); (2) The
+fraction of slow and fast vehicles (both South-bound
+and North-bound); (3) The process or value added
+times for slow and fast traffic (assumed to be 8 and 3
+seconds, respectively); (4) The switch or transfer times
+(assumed to be 2 seconds).
+Key Performance Measures (Output)
+The following key performance measures were consid-
+ered: (1) Waiting time for each entity type (categorized
+by direction, speed and lane); (2) Total time for each
+entity type that includes value added, waiting and
+transfer times; (3) Possible accidents.
+Data Collected by Direct Observation
+Different types of vehicles were counted by physically
+observing the traffic between 5:15 p.m. and 5:45 p.m.
+during three different weekdays on NH-47 between
+Thrissur and Palakkad. This data was used to calcu-
+late the mean time between arrivals, as well as the
+percentage of slow and fast vehicles in both directions.
+Simulation Results
+The base scenario reflects the existing traffic situation
+and places no restriction on overtaking. Although the
+waiting time is the lowest for this scenario, it is the
+main reason behind traffic accidents on the highways.
+The second scenario is where no passing is allowed.
+This yields the highest waiting times, but presumably
+would result in zero accidents. So, the traffic was cate-
+gorized into fast (tempos, KSRTC buses, private buses,
+cars, and two-wheelers) and slow vehicles (trucks).
+The third scenario is to allow fast vehicles to pass and
+prohibit slow vehicles from overtaking. This seems to
+be a good trade-off as it can be seen from the waiting
+times and the total travel time on the highway. The
+fourth scenario allows only fast North-bound vehicles
+to pass. North-bound was chosen because it has more
+traffic than South-bound. Nevertheless, as it can be seen
+from the simulation results, this significantly increases
+the waiting times for the South-bound traffic.
+"Possible accident" implies that a vehicle that has
+switched to the opposite lane would not be able to
+come back to the original lane due to traffic. This
+would lead to two possible scenarios: (1) The vehicle
+would wait to get into the original lane and as a result it
+would force the traffic in the opposite direction to wait.
+(2) It would collide head-on with the vehicle coming
+from the opposite direction. "Possible accidents" are
+highest for the base scenario and none for the second
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 331
+scenario (where no passing is allowed). Even though
+the second scenario is preferred, it leads to increased
+waiting times. The third scenario looks promising, as
+it reduces potential accidents by 17 per cent without
+significantly increasing waiting times. While the fourth
+scenario reduces potential accidents by 47 per cent, this
+solution may not be acceptable to the commuters trav-
+elling South-bound.
+Therefore, the third scenario (prohibiting slow vehi-
+cles like trucks from passing) seems to be the best
+option, but it still results in accidents. Thus we recom-
+mend Scenario 5, where we upgrade two-lane high-
+ways to four lanes (with two lanes in each direction).
+This decreases waiting times, eliminates head-on colli-
+sions, and reduces the "Possible accidents". Scenario 5
+could be expensive to implement due to the high costs
+involved in building the new lanes (construction, main-
+tenance, land acquisition), as well as the relocation costs
+for residents living near the highways. See Appendix
+III for detailed simulation results.
+Recommendations
+Design of Roads
+Design of roads is an aspect worth reviewing in order
+to reduce accidents on the roads of Kerala.
+Conversion of one-way highway to a four-lane
+highway (two lanes in each direction) is one solution
+that can ease traffic accidents. The simulation model
+supports this by showing that the waiting time is
+reduced significantly. The simulation also shows the
+complete absence of the module "possible accidents".
+The possibility of head-on collision is brought to zero
+in this model, because the rule permits changing lanes
+in the same direction as the traffic. Nonetheless, the
+trade-offs involved with increasing one-way to a four-
+lane highway cannot be neglected. Apart from the huge
+cost of construction and maintenance of the highway,
+land acquisition for expansion has cost, effort, time,
+legal and ethical implications.
+Design of Traffic
+Considering the problems in redesigning of the roads,
+redesigning of traffic seems more feasible. We now
+experiment with simulation models that implement
+restrictions on overtaking, conditionally and uncondi-
+tionally. In this set of models, restrictions are imposed
+on passing (changing to the opposite lane while
+overtaking). Currently, there are no restrictions on
+passing and any vehicle can pass any other vehicle at
+any time. This is the base scenario for the simulation.
+In this scenario, if a vehicle sees another vehicle in the
+same lane, it tries to overtake that vehicle by changing
+to the lane with on-coming traffic (provided there is no
+vehicle in that lane). After switching to the opposite
+lane, it is necessary that they come back to the original
+lane immediately. However, the original lane may not
+have space for this vehicle, and that may result in two
+possible scenarios: Either this vehicle waits for the orig-
+inal lane to be available or it collides head-on with the
+vehicle from the on-coming traffic. In the first scenario,
+it slows down the traffic, sometimes confusing vehi-
+cles in the opposite lane, and even the vehicles in the
+original lane. The second scenario results in a head-on
+collision. Combined, these two scenarios constitute
+the module "potential accidents". The objective of the
+simulation experiments is to minimize this number.
+There are three variations from the base scenario. The
+first is where no passing is allowed for any vehicle.
+Even though this solution results in zero "potential
+accidents", it would be rejected by the public because
+it adds to the waiting time of the fast moving vehicles.
+Another experiment allows passing only for fast vehi-
+cles in one direction (in this case, North-bound) that has
+higher traffic. But this was found to increase waiting
+times for South-bound traffic significantly. Thus, a
+reasonably good solution implied placing restriction
+on just the slow moving traffic.
+An advantage of redesigning the traffic lies in the
+opportunity to implement changes that address the
+peak hour traffic, and any condition specific to the
+roads in consideration. Even though only highway
+traffic was studied for the simulation, with additional
+appropriate data, the results could be applied to state
+highways as well.
+The Pareto analysis indicates that two-wheelers are
+involved in 41.4 per cent of the accidents. The regres-
+sion analysis also revealed a high correlation (R-square
+= 87.9 per cent) between two-wheelers and the number
+of deaths. The corresponding regression equation is:
+Number died = 287.519 + 0.001462 * Total number of
+two-wheelers.
+The above results indicate the significant role of
+two-wheelers in accidents. So, a possible solution is
+to have a separate lane for two-wheelers which may
+contribute significantly to the efforts of reducing the
+332 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+number of accidents. This would not incur huge costs,
+as it would involve reserving a part of the existing road
+space for two-wheelers.
+Design of Road Networks
+A couple of regressions were run to determine the
+correlation between the number of vehicles and acci-
+dents. An R-Square close to 80 per cent was found
+between the reciprocal of the number of registered
+vehicles and the number of accidents (Table 2d,
+Appendix I). An R-square of more than 83 per cent
+was discovered between the number of vehicles per
+kilometre and the number of accidents (Table 2e,
+Appendix I). The main reason behind traffic acci-
+dents was the significant increase in the number of
+vehicles without a corresponding increase in the road
+space. Thus, more roads need to be constructed, espe-
+cially from the suburbs to the city. This would result
+in commuters taking different routes, and therefore,
+reducing traffic accidents.
+The Kerala expressway was planned to connect the
+tips of Kerala's northern and southern boundaries.
+This would benefit business and regular commuters.
+Unfortunately, the construction work is moving at
+a slow pace, as the infrastructure costs are extremely
+high; therefore, enhancing existing roads seems to be a
+better option.
+The redesign of traffic provides an opportunity to
+implement changes that address the peak hour traffic.
+Even though only national highway traffic was studied
+for the simulation, with additional appropriate data,
+the results could be applied to state highways as well.
+Design of Road Networks
+The regression results show significant correlation
+between the number of vehicles and accidents, the
+number of vehicles per kilometre and the number of
+accidents. The main reason behind traffic accidents
+is the significant increase in the number of vehicles
+without a corresponding increase in the road space.
+Thus, more roads need to be constructed, especially
+from the suburbs to the city. This would result in
+commuters taking different routes, thereby reducing
+traffic accidents. The planned addition of over 12,000
+kilometres of expressways in the next 10 years may
+help address some of such issues (Wikipedia, n.d.).
+Due to high construction costs and the amount of
+time taken to build new expressways, we recommend
+enhancing the existing roads.
+FUTURE RESEARCH OPTIONS
+Though the following factors are not part of our research
+study, we briefly mention these miscellaneous recom-
+mendations that deserve consideration and could be a
+part of future research topic.
+The Time of Day
+The increase in accidents at night seems to be concen-
+trated in two districts in Kerala and therefore further
+investigation in this area is required.
+Enforcing Traffic Rules
+The drivers and pedestrians should comply with
+the traffic rules and this must be strictly enforced.
+For instance, it is not uncommon to see two adults
+and two children on a two-wheeler, where only 2
+adults and 1 child are legally allowed to travel by a
+two-wheeler. Further, concerned over the rising number
+of two-wheeler accidents, the Kerala High Court has
+suggested an amendment of the Motor Vehicles Act and
+Rules, prohibiting women in sarees from riding pillion
+on two wheelers and carrying more than one child on
+the vehicle (Sebastian, 2008).
+Emergency Calling System
+Having an efficient emergency calling system like the
+911 in the United States and expanding the 108 emer-
+gency services to all the states across India (currently
+operational in about 20 states and two Union Territories
+in India), might help decrease the number of deaths
+and injured in accidents.
+Prohibition of Alcohol
+AstudyconductedbytheAlcoholandDrugInformation
+Centre (ADIC) has revealed that around 40 per cent of
+the road accidents in India in general and 72 per cent
+on the national highways are due to drunk driving
+(Edayaranmula, 2005). Kerala has one of the highest
+per capita consumption of alcohol in the country.
+Prohibition of alcohol may help reduce the road acci-
+dents to a great extent.
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 333
+Improvement in Quality of Roads
+Defective road condition affects two-wheelers the
+most and there could be a correlation between bad
+road conditions and two-wheeler accidents. Thus, it is
+suggested to construct better roads with quality mate-
+rials and increase the frequency of road maintenance.
+Enhancing Efficiency of Police:
+Despite the fact that speeding and traffic violations are
+very common, the commuters are not held accountable
+for these violations like in western countries such as the
+United States. A large and efficient police force can help
+in strict implementation of laws for safety.
+Curbing Corruption
+Corruption may be in the form of bribing officials for
+granting drivers' licence without taking the road test.
+There should be a process to strictly enforce the licensing
+procedure and take action against corrupt officials.
+CONCLUSIONS AND FUTURE RESEARCH
+To conclude, the traffic accident situation in Kerala is
+projected to worsen over the years based on the fore-
+cast of accidents and the number of deaths and injured
+in accidents. Among the different contributing factors,
+two-wheelers and vehicle overtaking are found to be the
+primary factors causing accidents. This research finds
+that redesign of the traffic is an effective way to address
+these two issues. We recommend reserving a separate
+lane for two-wheelers in suburbs and cities, and strictly
+enforcing the helmet law. For commuters on highways, it
+is recommended to implement restrictions on overtaking
+based on the speed of the vehicle and traffic specific to
+that region. The other recommendations are to improve
+the condition of roads and upgrading the two-lane high-
+ways to four-lane highways. We believe this would
+effectively address the traffic accidents currently faced
+by the state of Kerala.
+The simulation models discussed in this article could
+be extended to include "the time of the day when
+accidents occur" besides the other miscellaneous
+factors discussed in the article as potential areas of
+future research. In addition, this methodology could
+be used for addressing similar traffic situations in
+other states/cities of India (Transport Research Wing,
+2001­02). These recommendations and the underlying
+managerial insights might alleviate the traffic accidents
+in the country.
+ACKNOWLEDGEMENTS
+The authors wish to acknowledge the outstanding and
+invaluable feedback from anonymous referees whose
+suggestions have improved the quality of this article
+significantly. The second author, Sudesh Poduval would
+like to acknowledge the learning experience and use
+of the ARENA simulation software from Prof. Robert
+Saltzman's class at San Francisco State University.
+APPENDIX I
+Table 1: Road accident related statistics
+Year Total Road Length (kms) Accidents Killed Injured Vehicles Vehicles per km
+1979 83,566 7,064 1,186 9,913 194,597 2.328662
+1984 100,622 10,348 1,560 14,441 361,617 3.593816
+1990 119,305 20,900 1,717 27,972 647,742 5.429295
+1995 129,783 37,123 2,707 53,475 1,170,241 9.016905
+2000 108,602 37,072 2,710 49,403 2,111,885 19.4461
+2002 138,196 38,762 2,792 49,460 2,315,372 16.7542
+2003 145,704 39,496 2,905 48,640 2,552,171 17.51614
+2004 154,679 41,306 3,055 51,352 2,792,074 18.05076
+2005 160,944 42,295 3,122,082 19.39856
+Source: Edayaranmula (2005).
+334 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+Table 1a: Forecasts--number of accidents neural networks
+(Alyuda)
+Year Number of accidents
+1990 20,900
+1991 24,677
+1992 27,185
+1993 32,513
+1994 36,087
+1995 37,123
+1996 34,702
+1997 33,820
+1998 33,296
+1999 34,387
+2000 37,072
+2001 38,361
+2002 38,762
+2003 39,496
+2004 41,306
+2005 42,295
+2006 41,647
+2007 39,917
+Forecast
+2008 41406.83
+2009 42150.63
+2010 41566.66
+2011 39893.38
+2012 41400.76
+2013 42187.05
+2014 41584.41
+2015 39885.68
+2016 41398.8
+2017 42197
+Table 1b: Forecasts--Number of deaths in accidents--neural
+networks (Alyuda)
+Year Number of deaths in accidents
+1990 1717
+1991 1952
+1992 2157
+1993 2264
+1994 2519
+1995 2707
+1996 2707
+1997 2668
+1998 2506
+1999 2590
+2000 2710
+2001 2674
+2002 2792
+2003 2905
+2004 3055
+Forecast
+2005 3041.382
+2006 3036.801
+2007 3035.124
+2008 3034.49
+2009 3034.247
+2010 3034.153
+2011 3034.117
+2012 3034.103
+2013 3034.098
+2014 3034.096
+Table 1c: Forecasts--Number injured in accidents--neural
+networks (Alyuda)
+Year Number of injured in accidents
+1990 27,972
+1991 32,421
+1992 39,930
+1993 44,882
+1994 49,950
+1995 53,475
+1996 51,160
+1997 47,668
+1998 46,597
+1999 47,860
+2000 49,403
+2001 49,675
+2002 49,460
+2003 48,640
+2004 51,352
+Forecast
+2005 47444.92
+2006 49073.63
+2007 49881.16
+2008 53403.05
+2009 47410.12
+2010 49025.03
+2011 49895.6
+2012 53483.28
+2013 47429.83
+2014 49043.84
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 335
+Table 2a: Regression summary output (number of accidents vs. number of deaths in accidents)
+Regression statistics
+Multiple R 0.974121
+R­square 0.948912
+Adjusted R­square 0.945506
+Standard Error 120.3658
+Observations 17
+ANOVA
+df SS MS F Significance F
+Regression 1 4036515 4036515 278.6123 4.26E-11
+Residual 15 217318.9 14487.92
+Total 16 4253834
+Coefficients
+Standard
+Error t­Stat P-value Lower 95%
+Upper
+95%
+Lower
+95.0%
+Upper
+95.0%
+Intercept 829.9243 98.04849 8.464427 4.27E-07 620.9388 1038.91 620.9388 1038.91
+X Variable 1 0.05039 0.003019 16.69168 4.26E-11 0.043955 0.056824 0.043955 0.056824
+Table 2b: Regression summary output (number of accidents vs. number injured in accidents)
+Regression statistics
+Multiple R 0.981429
+R­square 0.963203
+Adjusted R­square 0.96075
+Standard Error 2600.845
+Observations 17
+ANOVA
+df SS MS F Significance F
+Regression 1 2.66E+09 2.66E+09 392.6437 3.61E-12
+Residual 15 1.01E+08 6764393
+Total 16 2.76E+09
+Coefficients Standard Error t­Stat P-value Lower 95% Upper 95%
+Lower
+95.0%
+Upper
+95.0%
+Intercept 1970.081 2118.616 0.929891 0.367152 -2545.64 6485.807 -2545.64 6485.807
+X Variable 1 1.292561 0.065231 19.81524 3.61E-12 1.153525 1.431597 1.153525 1.431597
+Table 2c: Regression summary output (number of two-wheelers vs. number of deaths in accidents)
+Summary output
+Regression Statistics
+Multiple R 0.937335
+R­square 0.878596
+Adjusted R­square 0.874917
+Standard Error 1066.426
+Observations 35
+ANOVA
+df SS MS F Significance F
+Regression 1 2.72E+08 2.72E+08 238.8202 1.14E-16
+Residual 33 37529724 1137264
+Total 34 3.09E+08
+Coefficients Standard Error t-Stat P-value Lower 95% Upper 95%
+Lower
+95.0%
+Upper
+95.0%
+Intercept 287.519 228.4792 1.258404 0.217077 -177.325 752.3634 -177.325 752.3634
+X Variable 1 0.001462 9.46E-05 15.45381 1.14E-16 0.00127 0.001655 0.00127 0.001655
+336 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+Table 2d: Regression summary output (reciprocal of number of vehicles vs. number of accidents)
+Summary output
+Regression statistics
+Multiple R 0.888174
+R-square 0.788854
+Adjusted R-square 0.753663
+Standard Error 2928.71
+Observations 8
+ANOVA
+df SS MS F Significance F
+Regression 1 1.92E+08 1.92E+08 22.4163 0.003209
+Residual 6 51464054 8577342
+Total 7 2.44E+08
+Coefficients Standard error t­Stat P-value Lower 95%
+Upper
+95%
+Lower
+95.0%
+Upper
+95.0%
+Intercept 48496.18 3862.977 12.5541 1.56E-05 39043.81 57948.55 39043.81 57948.55
+X Variable 1 -1.6E+10 3.46E+09 ­4.73459 0.003209 -2.5E+10 -7.9E+09 -2.5E+10 ­7.9E+09
+Table 2e: Regression summary output (vehicles per km vs. accidents)
+Regression Statistics
+Multiple R 0.9134712
+R-square 0.8344296
+Adjusted R-square 0.8107767
+Standard Error 6034.6526
+Observations 9
+ANOVA
+df SS MS F Significance F
+Regression 1 1.285E+09 1.285E+09 35.278098 0.0005761
+Residual 7 254919221 36417032
+Total 8 1.54E+09
+Coefficients
+Standard
+Error t­Stat P-value Lower 95%
+Upper
+95%
+Lower
+95.0%
+Upper
+95.0%
+Intercept 8672.8965 4187.2049 2.0712854 0.0770704 ­1228.2627 18574.056 -1228.2627 18574.056
+X Variable 1 1760.0835 296.33346 5.9395369 0.0005761 1059.3667 2460.8003 1059.3667 2460.8003
+Appendix II
+Simulation Logic
+Scenarios 1­4, Part 1
+Scenarios 1­4, Part 2
+Scenarios 1­4, Part 3
+Scenario 5, Part 1
+Scenario 5, Part 2
+Scenario 5, Part 3
+342 SOLVING TRAFFIC PROBLEMS IN THE STATE OF KERALA, INDIA: FORECASTING, REGRESSION AND SIMULATION MODELS
+Appendix III
+Simulation results
+Scenario 1(base)
+VA time Wait time Transfer time Total time Possible accidents
+Entity
+Fast north bound 2.47 0.83 2.91 6.21
+Fast south bound 2.63 0.73 2.94 6.30
+Slow north bound 6.61 1.07 6.63 14.31
+Slow south bound 7.06 0.90 7.03 14.99
+Total for all vehicles 41.81 2435
+Scenario 2 (No passing at all)
+Fast north bound 3 2.06 8 13.06
+Fast south bound 3 1.40 8 12.40
+Slow north bound 8 2.10 8 18.10
+Slow south bound 8 1.34 8 17.34
+Total for all vehicles 60.89 0
+Scenario 3 (No passing for slow vehicles)
+Fast north bound 2.41 0.94 2.89 6.23
+Fast south bound 2.62 0.80 2.93 6.35
+Slow north bound 8 1.72 8 17.72
+Slow south bound 8 1.15 8 17.15
+Total for all vehicles 47.45 2007
+Scenario 4 (Passing only for fast north bound)
+Fast North bound 2.43 0.96 2.89 6.28
+Fast south bound 3 1.40 8 12.40
+Slow north bound 8 1.71 8 17.71
+Slow south bound 8 1.34 8 17.34
+Total for all vehicles 53.72 1290
+Scenario 5 (4 lane)
+Fast NB lane 1 3 0.64 3.35 6.99
+Fast NB lane 2 3 0.60 3.34 6.94
+Fast SB lane 1 3 0.36 3.25 6.61
+Fast SB lane 2 3 0.40 3.26 6.66
+Slow NB lane 1 8 0.93 8.31 17.24
+Slow NB lane 2 8 0.71 8.36 17.07
+Slow SB lane 1 8 0.58 8.29 16.87
+Slow SB lane 2 8 0.69 8.27 16.96
+Total for all vehicles 95.33 0
+REFERENCES
+Ayuso, M., Guillén, M., & Alcañiz, M. (2010). The impact of
+traffic violations on the estimated cost of traffic acci-
+dents with victims. Accident Analysis & Prevention,
+42(2), 709­717.
+Clarke, D. D., Ward, P., Bartle, C., & Truman, W. (2010). Killer
+crashes: Fatal road traffic accidents in the UK. Accident
+Analysis & Prevention, 42(2), 764­770.
+Edayaranmula, J. J. (2005). Road accidents in Kerala. The Globe,
+Institute of Alcohol Studies, 2. Retrieved 14 August, 2016
+VIKALPA · VOLUME 41 · ISSUE 4 · OCTOBER-DECEMBER 2016 343
+from http://www.ias.org.uk/What-we-do/Publication-
+archive/The-Globe/Issue-2­2005/Road-accidents-in-
+Kerala.aspx
+Gjerde, H., Normann, P. T., Christophersen, A. S., Samuelsen,
+S. O., & Mørland, J. (2011). Alcohol, psychoactive drugs
+and fatal road traffic accidents in Norway:Acase­control
+study. Accident Analysis & Prevention, 43(3), 1197­1203.
+Jain, A., Menezes, R. G., Kanchan, T., Gagan, S., & Jain, R.
+(2009). Two wheeler accidents on Indian roads: A study
+from Mangalore, India. Journal of Forensic and Legal
+Medicine, 16(3), 130.
+Mohan, D., & Bawa, P. S. (1985). An analysis of road traffic
+fatalities in Delhi, India. Accident Analysis & Prevention,
+17(1), 33­45.
+NATPAC (2001, December). Handbook of accident statistics.
+Retrieved 14 August, 2015 from http://www.natpac.
+kerala.gov.in/
+Sahdev, P., Lacqua, M. J., Singh, B., & Dogra, T. D. (1994).
+Road traffic fatalities in Delhi: Causes, injury patterns,
+and incidence of preventable deaths. Accident Analysis &
+Prevention, 26(3), 377­384.
+Sebastian, D. (2009). Wearing sari and riding pillion?
+DNA, August 24. Retrieved 14 September, 2016 from
+http://www.dnaindia.com/india/report-wearing-
+sari-and-riding-pillion-1185347
+Sood, S. (1998). Survey of factors influencing injury among
+riders involved in motorized two-wheeler accidents in
+India: A prospective study of 302 cases. The Journal of
+Trauma and Acute Care Surgery, 28(4), 530­534.
+Spoerri, A., Egger, M., & Von E. E. (2011). Mortality from
+road traffic accidents in Switzerland: Longitudinal and
+spatial analyses. Accident Analysis & Prevention, 43(1),
+40­48.
+Transport Research Wing (2001­02). Motor transport statistics
+of India. Ministry of Road Transport and Highways. New
+Delhi: Government of India. Retrieved 2 October, 2007
+fromhttp://morth.nic.in/writereaddata/sublinkimages/
+table-75344250295.htm
+Wikipedia (n.d.). Indian road network. Retrieved 14
+September, 2016 from https://en.wikipedia.org/wiki/
+Indian_road_network
+Ramesh Bollapragada is a Professor in the Decision Sciences
+Department of the College of Business, San Francisco State
+University (SFSU), San Francisco, USA since 2002. He has
+worked as a Research Scientist at Bell Laboratories, Lucent
+Technologies in Holmdel, NJ for six years. He has a B.Tech.
+and M.S. in Electrical & Electronics Engineering from India
+and an M.S. and Ph.D. in Management of Manufacturing
+and Automation from the Graduate School of Business and
+School of Computer Science at Carnegie Mellon University,
+Pittsburgh, U.S.A. His research interests are in the areas of
+scheduling and economic lot-sizing, forecasting, inven-
+tory and supply chain optimization, telecommunication
+network planning, transportation, quality management and
+outsourcing.
+e-mail: rameshb@sfsu.edu
+Sudesh Poduval has a B.Tech in Computer Science &
+Engineering from Government Engineering College, Calicut
+University, India, and an MBA from San Francisco State
+University, San Francisco, USA. He has been Manager of
+Product Design at Phoenix American Inc., San Rafael CA for
+the past 3 years.
+Sudesh has been involved in the entire software develop-
+ment life cycle and has used programming languages from
+Java to C+, tools from PowerBuilder to .NET, and database
+systems from Sybase to Oracle. He has worked in the mutual
+fund and insurance industries in Mumbai, Boston and San
+Rafael (California). He has taken certifications in Java and
+Oracle over the course of his career as a software professional
+spanning 24 years. At San Francisco State University, Sudesh
+served as a member of Beta Gamma Sigma.
+e-mail: sudeshpoduval@gmail.com
+Chetty Bingi S is currently the Chief Executive Officer
+(Diversification), Global Procurement Consultants Limited,
+Mumbai.HeholdsaBachelorandMasterDegreesinEngineering
+from SV University and Doctorate in Management from the
+Indian Institute of Science, Bangalore. Earlier, he was with the
+Administrative Staff College (ASCI), Hyderabad, India as a
+management consultant/faculty from 1978 till 2006; At ASCI, he
+served as the BHEL Chair professor for six years and the Dean
+of Consultancy from 1998­2003. He was with Massachusetts
+Institute of Technology as senior research fellow with the Centre
+for Manufacturing and Productivity during 1992 and was
+trained by the World Bank in 1997 as anAccredited Procurement
+Specialist Trainer. He worked as international procurement
+consultant with Nepal, Iran, Cambodia, Sri Lanka, Kenya and
+Malawi; and also worked as consultant with World Bank offices
+in Nepal and India. He published several referred articles in
+ASCI Journal of Management, Management View, Productivity and
+South Asian Journal of Management.
+e-mail: chetty@gpcl.in
+Bhoomi Brahmbhatt works as an independent consultant in
+the San Francisco Bay Area, USA. She is currently helping
+global e-commerce web team at a leading luxury brand
+with their website re-design project. In the past, Bhoomi has
+worked in both B2B and B2C tech industries; helping fortune
+500 brands to emerging start-ups, with various roles and
+responsibilities in the areas of Marketing, Digital Strategy,
+and Analytics.
+e-mail: bhoomi.brm@gmail.com
+

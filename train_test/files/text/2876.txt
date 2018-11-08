@@ -1,0 +1,2409 @@
+Sector concentration in loan portfolios
+and economic capital
+Klaus Düllmann
+(Deutsche Bundesbank)
+Nancy Masschelein
+(National Bank of Belgium)
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 09/2006
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431, fax +49 69 5601071
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Reproduction permitted only if source is stated.
+ISBN 3­86558­216­8 (Printversion)
+ISBN 3­86558­217­6 (Internetversion)
+Abstract:
+The purpose of this paper is to measure the potential impact of business-sector concentration on
+economic capital for loan portfolios and to explore a tractable model for its measurement. The
+empirical part evaluates the increase in economic capital in a multi-factor asset value model for
+portfolios with increasing sector concentration. The sector composition is based on credit
+information from the German central credit register. Finding that business sector concentration
+can substantially increase economic capital, the theoretical part of the paper explores whether
+this risk can be measured by a tractable model that avoids Monte Carlo simulations. We analyze
+a simplified version of the analytic value-at-risk approximation developed by Pykhtin (2004),
+which only requires risk parameters on a sector level. Sensitivity analyses with various input
+parameters show that the analytic approximation formulae perform well in approximating
+economic capital for portfolios which are homogeneous on a sector level in terms of PD and
+exposure size. Furthermore, we explore the robustness of our results for portfolios which are
+heterogeneous in terms of these two characteristics. We find that low granularity ceteris paribus
+causes the analytic approximation formulae to underestimate economic capital, whereas
+heterogeneity in individual PDs causes overestimation. Indicative results imply that in typical
+credit portfolios, PD heterogeneity will at least compensate for the granularity effect. This
+suggests that the analytic approximations estimate economic capital reasonably well and/or err
+on the conservative side.
+Keywords: sector concentration risk, economic capital
+JEL-Classification: G18, G21, C1
+Non Technical Summary
+An unbalanced exposure distribution of a loan portfolio, either across regional or business
+sectors, generally increases the associated credit risk. If credit risk is measured by a single
+systematic risk factor, sector concentration is usually not accounted for. The purpose of this
+paper is twofold. The empirical part measures the potential impact of business-sector
+concentration on the economic capital (or unexpected loss) of several loan portfolios. The sector
+composition of these portfolios is based on information from the German central credit register
+(Millionenkreditmeldewesen) on the sector composition of real bank portfolios. In this way it is
+ensured that our results are representative of real banks.
+The model used in the empirical part requires Monte Carlo simulations for the calculation of
+economic capital, which can be noisy and time-consuming for the high-confidence levels
+typically used for the calculation of economic capital for credit risk. Therefore, in the theoretical
+part of the paper we explore a simpler, more tractable model for measuring portfolio risk which
+has a closed-form solution for economic capital and only requires input parameters, in particular
+exposure size and default probability, on a sector level. The model assumptions of PD
+homogeneity in every sector and fully diversified idiosyncratic credit risk are indeed not met by
+real credit portfolios. Indicative results nevertheless suggest that the analytic approximation still
+estimates economic capital reasonably well for typical credit portfolios and/or errs on the
+conservative side.
+Nicht technische Zusammenfassung
+Forderungskonzentrationen in einem Kreditportfolio, entweder in bestimmten geografischen
+Regionen oder in Industrie- bzw. Dienstleistungssektoren, erhöhen im Allgemeinen das
+Portfoliorisiko. Wird das Kreditrisiko mit einem Ein-Faktor-Modell gemessen, bleiben
+Sektorkonzentrationen üblicherweise unberücksichtigt. Das Diskussionspapier gliedert sich in
+einen empirischen und einen theoretischen Teil. Im empirischen Teil wird die mögliche
+Auswirkung von Branchenkonzentrationen auf das ökonomische Kapital (oder den unerwarteten
+Verlust) von ausgewählten Kreditportfolios bestimmt. Die Sektorverteilung dieser Portfolios
+beruht auf Informationen über die Sektorverteilung realer Bankportfolios aus dem
+Millionenkreditmeldewesen. Diese Datenbasis soll sicherstellen, dass unsere Ergebnisse
+repräsentativ für reale Banken sind.
+Das im empirischen Teil verwendete Modell erfordert Monte-Carlo-Simulationen, welche bei
+den hohen Konfidenzniveaus, die typischerweise für die Bestimmung des ökonomischen
+Kapitals für Kreditrisiken verwendet werden, verrauscht und zeitaufwändig sein können. Aus
+diesem Grund untersuchen wir im theoretischen Teil ein einfacheres Modell zur Bestimmung
+des Portfoliorisikos, welches eine geschlossene Näherungsformel für das ökonomische Kapital
+liefert und nur Eingangsparameter, insbesondere Forderungshöhe und Ausfallwahrschein-
+lichkeit, auf Sektorebene verlangt. Zwar sind die in diesem Modell getroffenen Annahmen
+homogener Ausfallwahrscheinlichkeiten innerhalb der Sektoren und eines vollständig
+diversifizierten firmenspezifischen Risikos in realen Kreditportfolios so nicht erfüllt. Die
+Ergebnisse unserer Untersuchungen deuten aber gleichwohl an, dass die Näherungsformel auch
+in typischen Kreditportfolios noch relativ gute bzw. konservative Näherungswerte für das
+ökonomische Kapital liefert.
+Contents
+1. Introduction ................................................................................................................................1
+2. Measuring concentration risk in a multi-factor model................................................................4
+2.1. General framework......................................................................................................4
+2.2. The CreditMetrics default-mode model.......................................................................5
+2.3. Analytic EC approximation.........................................................................................6
+3. Portfolio composition .................................................................................................................8
+3.1. Data set and definition of sectors.................................................................................8
+3.2. Comparison with French, Belgian and Spanish banking systems ...............................9
+3.3. Description of the benchmark portfolio.....................................................................10
+3.4. Sequence of portfolios with increasing sector concentration ....................................11
+3.5. Intra and inter-sectoral correlations...........................................................................12
+4. Impact of sector concentration on economic capital ................................................................14
+5. Evaluation of the EC approximations for sector-dependent PDs and high granularity............15
+6. Evaluation of the EC approximations for sector-dependent PDs and low granularity.............20
+7. Evaluation of EC approximations for heterogeneous sectors...................................................22
+8. Summary and conclusions........................................................................................................24
+1
+Sector Concentration in Loan Portfolios
+and Economic Capital1
+1. Introduction
+The failure of not recognizing diversification within banks' credit portfolios was a key
+criticism of the 1988 Basel Accord. The minimum regulatory capital requirements (Pillar 1)
+even in the internal ratings based (IRB) approach of the Basel Framework of June 2004,
+however, still do not differentiate between portfolios with different grades of diversification.
+Recognizing that banks' portfolios can exhibit credit risk concentrations, Basel II stipulates
+that this risk be addressed in the supervisory review process (Pillar 2), thus creating a need for
+an appropriate methodology to measure this risk.
+Concentration risk in banks' credit portfolios arises either from an excessive exposure to
+certain names (often referred to as name concentration or coarse granularity) or from an
+excessive exposure to a single sector or to several highly correlated sectors (i.e. sector
+concentration). In the past, financial regulation and previous research have focused mainly on
+the first aspect of concentration risk.2 Therefore, in this paper our focus is on sector
+concentration risk, although granularity is also analyzed. Sectors are defined in the following
+as business sectors. Sectors defined by geographical regions are not considered in this paper
+but our methodology would still be applicable in that case.
+The critical role credit risk concentration has played in past bank failures has been
+documented in the literature.3 Therefore, the importance of prudently managing sectoral
+concentration risk in banks' credit portfolios is generally well recognized. However, existing
+literature does not provide much guidance on how to measure sectoral concentration risk.
+Consequently, whether particular levels of concentration need to be translated into an
+additional capital buffer remains an open question.
+This paper contributes to the literature in the following ways. First, in the empirical part, we
+measure economic capital in a CreditMetrics-type multi-factor model and evaluate how
+important the increase in economic capital is in a sequence of portfolios with increasing sector
+1 For their comments we thank, Alexandre Adam, Marc Carey, Marc De Ceuster, Michael Gordy, Thilo Liebig,
+Janet Mitchell, Joël Petey, Peter Raupach, Andrea Resti, participants in the Research Task Force of the Basel
+Committee on Banking Supervision as well as participants at the 2006 AFSE conference on "Recent
+Developments in Financial Economics", the 2006 European Banking Symposium, the 6th Annual Bank
+Research Conference (FDIC/JFSR), the 2006 C.R.E.D.I.T. Conference "Risks in Small Business Lending", the
+13th Annual Meeting of the German Finance Association (DGF), and the 2006 Annual Meeting of the Financial
+Management Association. We thank Eva Lütkebohmert, Christian Schmieder and Björn Wehlert for their
+invaluable support in compiling the German credit register data and Julien Demuynck and Jesus Saurina for
+providing us with data from the French and the Spanish credit registers.
+The views expressed here are our own and do not necessarily reflect those of the Deutsche Bundesbank or the
+National Bank of Belgium.
+2 See EU Directive 93/6/EEC, Joint Forum (1993) and Gordy (2003).
+3 See, for example, BCBS (2004a).
+2
+concentration. The analysis is based on portfolios which were constructed from German
+central credit register data on 2224 banks. The benchmark portfolio reflects the average
+business-sector distribution of the banking system as some of the more concentrated portfolios
+mirror sector concentrations observed in individual banks. Information on business-sector
+concentration of banks is not publicly available, thus central credit registers represent unique
+sources of data on sector concentrations in existing banks. Our emphasis on empirically
+observable sector concentrations is therefore an important contribution.
+We find that economic capital can substantially increase with sector concentration. Its increase
+from a credit portfolio representing the average sector distribution of the German banking
+system to a portfolio that is concentrated in a single sector can be as high as 50%.
+Second, in the theoretical part we evaluate the accuracy of an analytic approximation for
+value-at-risk (VaR) and economic capital (EC) which was proposed in Pykhtin (2004) and
+offers a tractable closed-form solution for the measurement of concentration risk. EC is
+defined as the difference between the VaR and the expected loss of a credit portfolio. We have
+applied a simplified version of the Pykhtin model which further reduces the computational
+burden by requiring the input parameters exposure size and probability of default (PD) only on
+a sector level. Such a methodology could be useful for risk managers and supervisors in search
+of robust, fit-for-purpose tools to measure sector concentration in a bank's loan portfolio. The
+model allows banks and supervisors to approximate economic capital for loan portfolios
+without running computationally intensive Monte Carlo simulations.
+The methodological framework of the Pykhtin model builds on earlier work by Gordy (2003)
+and Wilde (2001) on granularity adjustments in the asymptotic single risk factor (ASRF)
+model. Whereas the granularity adjustment deals with an unbalanced exposure distribution
+across names, the Pykhtin model offers a treatment for an unbalanced distribution across
+(correlated) sectors. EC is given in closed form as the sum of the EC in a single risk factor
+model (in which the correlation with the single systematic risk factor depends on the sector)
+and a multi-factor adjustment term. We explore the approximation performance both before
+the multi-factor adjustment is applied and afterwards which means we consider two
+approximation formulae.
+We find that for portfolios with highly granular sectors and homogeneous PDs in every sector,
+both analytic approximation formulae perform extremely well. Moreover, the multi-factor
+adjustment term is relatively small, so that EC in the single risk factor model is already close
+to the true EC values obtained by simulations. Our results hold for portfolios with different
+levels of sector concentration, a different number of sectors as well as under various weights
+of the sector factors (i.e. factor weights sometimes referred to in literature as factor loadings)
+and various assumptions about factor correlations. Furthermore, we explore the accuracy of
+our model when we relax the assumptions that the portfolio is infinitely granular within each
+sector and that all exposures in the same sector have the same PD. We find that the model cp
+3
+underestimates EC in cases of low granularity, whereas it cp overestimates EC in the presence
+of heterogeneity in individual PDs, in particular if creditworthiness increases with exposure
+size. The resulting errors in EC from both effects together were less than 10% in the cases
+under study. Which of the two effects prevails depends on the specific input parameters. The
+results seem to suggest, however, that for representative credit portfolios, the effect of PD
+heterogeneity is likely to be stronger than the effect of granularity. This implies that the
+analytic approximations err on the conservative side.
+To our knowledge there is only one recent empirical paper that considers the impact of sector
+concentration risk on economic capital. Burton et al (2005) simulate the distribution of
+portfolio credit losses for a number of real US syndicated loan portfolios. They find that,
+although name concentration can meaningfully increase EC for smaller portfolios (which are
+defined as portfolios with exposures of less than US$10 billion), sector concentration risk is
+the main contributor to EC for portfolios of all sizes.
+Two other models that measure concentration risk in a tractable model are presented by Garcia
+Cespedes et al (2005) and Düllmann (2006). Garcia Cespedes et al (2005) developed an
+adjustment to the single risk factor model in the form of a scaling factor to the economic
+capital required by the ASRF model. This "diversification factor" is an approximately linear
+function of a Hirschmann-Herfindahl index, calculated from the aggregated sector exposures.
+This model, however, does not allow for different asset correlations across sectors. Contrary to
+the approach in our paper, it cannot distinguish between a portfolio which is highly
+concentrated towards a sector with a high correlation with other sectors, and another portfolio
+which is equally highly concentrated, but towards a sector which is only weakly correlated
+with other sectors. Düllmann (2006) extends Moody's Binomial Expansion Technique by
+introducing default infection into the hypothetical portfolio on which the real portfolio is
+mapped in order to retain a simple solution for VaR. Unlike the Pykhtin model, the models
+developed by Garcia Cespedes et al and Düllmann require the calibration of parameters using
+Monte Carlo simulations.
+The paper is organized as follows. In Section 2 we present the default-mode version of the
+well-established multi-factor CreditMetrics model which serves as a benchmark. Furthermore,
+we discuss the simplified version of the Pykhtin model.
+The empirical part of our paper comprises Sections 3 and 4. The credit portfolios on which the
+empirical analyses are based are described in Section 3. In Section 4 we explore the impact of
+sector concentration on EC by gradually increasing sector concentration, starting from a
+benchmark portfolio.
+In the theoretical part, which comprises Sections 5 to 7, we evaluate the performance of
+Pykhtin's (2004) analytic approximation for economic capital by comparison with EC
+estimates from Monte Carlo simulations. Section 5 focuses on highly granular portfolios
+which are homogeneous on a sector level and, in particular, on the sensitivity of the results to
+4
+the number of risk factors and correlation figures. Section 6 deals with portfolios characterized
+by lower granularity and Section 7 introduces PD heterogeneity on an exposure level. Section
+8 summarizes and concludes.
+2. Measuring concentration risk in a multi-factor model
+2.1. General framework
+We assume that every loan in a portfolio can be assigned to a different borrower, so that the
+number of exposures or loans equals the number of borrowers. Each borrower i can uniquely
+be assigned to a single specific sector. In practice, (large) firms often comprise business lines
+from different industry sectors. However, we make this assumption here for practical and
+presentational purposes. Let M denote the number of borrowers or loans in the portfolio, Ms
+the number of borrowers in sector s, S the number of sectors and wsi
+the weight of the
+exposure of borrower i in sector s relative to the total portfolio exposure.
+The general framework is a multi-factor default-mode Merton-type model.4 The dependence
+structure between borrower defaults is driven by sector-dependent systematic risk factors
+which are usually correlated. Each risk factor can be uniquely assigned to a different sector, so
+that the number of sectors and the number of factors are the same. Credit risk occurs only as a
+default event at the end of a one-year horizon, which is consistent with traditional book-value
+accounting. The unobservable, normalized asset return Xsi
+of the i-th borrower in sector s
+triggers the default event if it crosses the default barrier si
+. The corresponding unconditional
+default probability psi
+is defined as
+( ).
+
+= 
+si si si
+p P X
+The latent variable Xsi
+follows a factor model and can be written as a linear function of an
+industry sector risk factor
+s
+Y and an idiosyncratic risk factor
+si
+ :
+(1a) 2
+1 
+= + -
+si s s s si
+X rY r
+where { }
+1,...,
+s S
+ and { }
+1,...,
+s
+i M
+ . The higher the value of the sector-dependent factor
+weight rs
+, the more sensitive the asset returns of firm i in sector s are to the sector factor. The
+disturbance term
+si
+ follows a standard normal distribution. The assumed weight on the
+idiosyncratic risk guarantees that Xsi
+has a standard normal distributioni
+.
+4 See also Gupton et al (1997), Gordy (2000), and Bluhm et al (2003) for more detailed information on this type
+of models. The origin of these models can be found in the seminal work by Merton (1974).
+5
+The correlations between the systematic sector risk factors Ys
+and Yt
+are denoted by 
+st
+and
+are often referred to as factor correlations. The sector factors can be expressed as a linear
+combination of independent, standard normally distributed factors Z1
+,...,ZS
+.
+(1b)
+1
+
+=
+= 
+S
+s st t
+t
+Y Z with 2
+1
+1
+
+=
+=
+
+S
+st
+t
+for { }
+1,...,
+s S
+ .
+The matrix ( )
+1 ,
+
+ 
+st s t S
+is obtained from a Cholesky decomposition of the factor correlation
+matrix. The asset correlation st
+for each pair of borrowers in sectors s and t, respectively, can
+be shown to be given by
+(2)
+1
+=
+S
+st s t st s t sn tn
+n
+r r r r
+   
+=
+=  .
+Dependencies between borrowers arise only from their affiliation with the industry sector and
+from the correlations between the systematic sector factors. The intra-sector asset correlation
+for each pair of borrowers is simply the factor weight 2
+s
+r squared.
+If a firm defaults, the amount of loss depends on the stochastic loss severity 
+si
+whose
+realization is assumed to be known at the time of default. The credit losses of the whole
+portfolio are given by
+(3) { }
+1 ( )
+1 1
+1
+
+-
+
+= =
+= 
+s
+si si
+M
+S
+si si X N p
+s i
+L w .
+where
+{.}
+1 gives the indicator function.
+We assume the same expected loss severity [ ]
+ 
+=
+si
+E for all borrowers and that all
+idiosyncratic risk in loss severities is diversified away in the portfolio.5
+In summary, the model needs the following input parameters:
+· relative exposure size wsi
+and default probability psi
+of the i-th borrower in sector s
+· the factor correlation matrix and
+· the sector-dependent factor weight rs
+2.2. The CreditMetrics default-mode model
+To obtain the loss distribution, CreditMetrics applies Monte Carlo simulations by generating
+asset returns and counting the default events. In each simulation run the portfolio loss is
+determined from equation (3). For each exposure, the asset returns for the corresponding
+borrower are generated according to equations (1a/b) and compared with the default threshold,
+5 The models analyzed in this paper can also be extended to incorporate idiosyncratic risk in loss severities, if
+required.
+6
+which can be determined given the borrower's default probability. If the realized value of the
+asset return falls below the threshold 
+si
+, the borrower is in default. The portfolio loss of a
+simulation run is calculated by adding up the incurred losses from the defaulted borrowers.
+The number of simulation runs in our analyses is typically 200,000. Portfolio losses obtained
+in each simulation run are then sorted to form the distribution of portfolio losses, from which
+EC can be calculated as the difference between the q-quantile of this loss distribution (i.e., the
+VaR) and the expected loss. Since it is obtained by simulation, we refer to it in the following
+as
+sim
+EC .
+2.3. Analytic EC approximation
+In this section, we describe an analytical approximation to the VaR in the framework of a
+multi-factor model. We use a simplified version of the model developed by Pykhtin (2004).
+The model approximates the VaR in a multi-factor model by adding a "multi-factor"
+adjustment term to the VaR in a single factor model in which the correlation of the firm's asset
+returns with the single factor depends on the firm's sector. The main advantage of this model is
+its tractability, since it does not require Monte Carlo simulations. Furthermore, we have
+simplified the model in such a way that it only requires exposure size and PD on a sector level
+instead of an individual borrower level. The factor correlation matrix and the factor weights
+are still needed as in the CreditMetrics model.
+On the basis of the work by Gouriéroux et al (2000) and Martin and Wilde (2002), we can
+approximate the portfolio loss L (see equation 3) by a perturbed loss variable *
+L L U
+
+
+= +  ,
+where *
+L is a random variable constructed such that the q-quantile of its distribution given in
+closed form is close to the q-quantile of the distribution of L. U is defined as the perturbation
+*
+-
+L L and  is its scaling parameter. *
+L depends on the default probability *
+^( )
+p Y ,
+conditional on a single systematic risk factor *
+Y :
+(4)
+( )
+* *
+1
+^
+S
+s s
+s
+L w p Y
+
+=
+=  with
+1 *
+*
+2
+( )
+^ ( )
+1
+-
+ 
+-
+ 
+=
+ 
+-
+ 
+s s
+s
+s
+N p c Y
+p Y N
+c
+where cs
+is the correlation between the systematic risk factor *
+Y and the asset returns of the
+firms in sector s. In oder to relate relate *
+L to L, *
+Y finally needs to be related to the risk
+factors Z1
+, ...,ZS
+in the original model. If *
+Y in (4) is replaced by the realization corresponding
+to the q-quantile
+( )
+*
+q
+t Y , then *
+L equals the VaR
+( )
+*
+q
+t L for a confidence level q in the
+asymptotic single risk factor (ASRF) model with infinitely granular sectors. Note that this
+single risk factor model differs from the well-known ASRF model in that the asset correlation
+cs
+is determined by the sector to which the borrower belongs. To avoid confusion, we call this
+7
+model the "ASRF* model", reserving the term "ASRF model" for the model with uniform
+asset correlations.
+The q-quantile of the loss distribution, tq
+(L) can then be approximated by ( )
+
+q
+t L , or as the
+sum of the VaR in the ASRF model *
+( )
+q
+t L and a multi-factor adjustment
+q
+t
+ . This multi-
+factor adjustment can be determined from a Taylor series expansion of ( )
+
+q
+t L . The first-order
+effect
+* *
+0
+( )
+( )
+q
+q
+dt L
+E U L t L
+d
+
+
+
+=
+ 
+= =
+ 
+vanishes because we require that *
+L for all portfolio compositions equals the expected loss
+conditional on *
+Y , that is * *
+|
+ 
+=  
+L E L Y . By keeping terms up to quadratic order and
+neglecting higher-order terms, we can approximate the portfolio loss quantile ( )
+q
+t L as
+follows:6
+(5)
+2
+*
+2
+0
+( )
+1
+( ) ( )
+2
+q
+q q
+d t L
+t L t L
+d
+
+
+
+=
+ +
+q
+t
+
+The first summand in (5) denotes the VaR
+( )
+*
+q
+t L in the single risk factor model. The second
+summand denotes the multi-factor adjustment,
+q
+t
+ , which can be calculated according to
+Pykhtin (2004) by
+(6)
+1 (1 )
+1 ( )
+( ) ( )
+2 ( ) ( )
+q
+y N q
+l y
+t v y v y y
+l y l y
+-
+= -
+ 
+
+ 
+
+ = - - +
+ 
+ 
+ 
+ 
+ 
+where ( )
+l y
+ and ( )
+l y
+ denote, respectively, the first and second derivative of the portfolio
+loss function given by equation (4) and setting  =
+Y y . ( )
+v y gives the variance of L
+conditional on * =
+Y y . Its first derivative is ( )
+v y
+ . The details and the inputs of these
+equations are presented in Appendix B.
+The link between L and *
+L is achieved by restricting *
+Y to the space of linear mappings of the
+risk factors Z1
+,...,ZS
+:
+*
+1
+=
+= 
+S
+s s
+s
+Y b Z .
+6 See Pykhtin (2004) for proofs.
+8
+The correlations between the industry risk factors
+s
+Y and the systematic risk factor *
+Y are
+denoted by *
+
+s
+. These are used to calculate the (also sector-dependent) correlations in the
+ASRF* model using the following mapping function for { }
+1,...,
+s S
+ :
+(7) *
+
+=
+s s s
+c r where *
+1
+ 
+=
+= 
+S
+s st t
+t
+b .
+Defining cs
+for { }
+1,...,
+s S
+ by (7) ensures that the required equality * *
+|
+ 
+=  
+L E L Y holds
+for any portfolio composition.
+There is no unique solution to determine the coefficients
+1
+,...,
+S
+b b . In the following, we will
+use the approach in Pykhtin (2004), which is briefly summarized in Appendix C.
+3. Portfolio composition
+3.1. Data set and definition of sectors
+Our analyses are based on loan portfolios which reflect characteristics of real bank portfolios
+obtained from European credit register data. Our benchmark portfolio represents the overall
+sector concentration of the German banking system and was constructed by aggregating the
+exposure values of loan portfolios of 2224 German banks in September 2004. The sample
+includes branches of foreign banks located in Germany. Credit exposures to foreign
+borrowers, however, are excluded. We deem this to be a reasonable approximation of a
+portfolio characterized by a degree of diversification which banks can on average achieve
+given that it represents the aggregate relative sector exposures of the national banking system.
+In principle, we could also have created a more diversified portfolio in the sense of having a
+lower VaR. However, such a portfolio would be specific to the credit risk model used and
+would not be obtainable for all banks.
+All credit institutions in Germany are required by the German Banking Act
+(Kreditwesengesetz) to report quarterly exposure amounts of those borrowers whose
+indebtedness to them amounts to 1.5 million or more at any time during the three calendar
+months preceding the reporting date. In addition, banks report national codes that are
+compatible with the NACE classification scheme and indicate the economic activity of the
+borrower and his country of residence. Banks are required to aggregate individual borrowers
+for regulatory reporting purposes to borrower units which are linked, for example, by equity
+holdings and constitute an entity sharing roughly the same risk. The aggregation of exposures
+on a business sector level was carried out on the basis of borrower units. If borrowers in the
+same unit belong to different sectors, the dominating exposure amount determines the final
+sector allocation. Therefore, the credit register includes not only exposures above 1.5 million,
+9
+but also smaller exposures to individual borrowers belonging to a borrower unit that exceeds
+this exposure limit. This characteristic substantially increases its coverage of the credit market.
+The industry classification chosen by CreditMetrics is the Global Industry Classification
+Standard (GICS), which was jointly launched by Standard & Poor's and Morgan Stanley
+Capital International (MSCI) in 1999. The classification scheme was developed to establish a
+global standard for categorizing firms into sectors and industries according to their principal
+business activities. It comprises 24 industries grouped into 10 broad sectors.7 GICS further
+divides these groups into industries and sub-industries. However, the latter more detailed
+schemes are not used by vendor models. In the following, we use the broad sector
+classification scheme. Because some of the industry groups that form the broad "Industrial"
+sector are very heterogeneous, we decided to split this sector into three industry groups:
+Capital Goods (including Construction), Commercial Services and Supplies, and
+Transportation.8
+Credit register datasets, however, use the NACE industry classification system, which is quite
+different from the GICS system. In order to use the information from the credit register, we
+mapped9 the NACE codes onto the GICS codes. Similar mappings are used by other vendor
+models, such as S&P's Portfolio Risk Tracker. We have excluded exposures to the financial
+sector (sector G) which comprises exposures to Banks (G1), Diversified Financials (G2),
+Insurance Companies (G3) and Real Estate (G4) because of the specificities of this sector.
+Exposures to the real estate sector are heavily biased as a large number of them are exposures
+to borrowers that are related to the public sector. Since we could not differentiate between
+private and public enterprises in the real estate sector, we have excluded this sector from the
+following analyses. We have also disregarded exposures to households since there is no
+representative stock index for them. This is a typical limitation of models relying on stock
+price returns for the estimation of asset correlations. In sum, we distinguish between 11
+sectors, which can be considered as broadly representing the Basel II asset classes Corporate
+and SMEs.
+3.2. Comparison with French, Belgian and Spanish banking
+systems
+A rough comparison of the relative share of the sector decomposition between the aggregated
+German, French, Belgian and Spanish banking systems shows that the numbers are similar.10
+The only noticeable difference is the greater share of the Capital Goods sector (33%) and the
+7 See Table 12 in Appendix A, which shows the broad sectors and the more detailed industry groups.
+8 Unreported simulations have shown that results are not affected by using the more detailed classification scheme.
+9 See Table 13 in Appendix A for the mapping.
+10 The exact figures are provided by Table 14 in Appendix A.
+10
+smaller share of the Commercial Services and Supplies sector in Spain compared to Germany
+and Belgium. In general, however, the average sector concentrations are very similar across
+the four countries, which suggests that our results are to a large extent transferable.
+Figure 1: Comparison of average sector concentration for Germany, Spain, Belgium, and
+France (*)
+0,00%
+5,00%
+10,00%
+15,00%
+20,00%
+25,00%
+30,00%
+35,00%
+40,00%
+Energy
+Materials
+Capital goods
+Commercial
+services and
+supplies
+Transportation
+Consumer
+discretionary
+Consumer staples
+Health care
+Information
+technology
+Telecommunication
+services
+Utilities
+Germany
+France
+Belgium
+Spain
+(*) A breakdown of Industrial sector C into the three categories Capital Goods, Commercial Services and Supplies,
+and Transportation is not available for France. The sector shares of the aggregated sector C, however, are quite
+similar for all four countries.
+3.3. Description of the benchmark portfolio
+The sectoral distribution of exposures in the benchmark portfolio, which is shown in Table 1,
+represents the sectoral distribution of aggregate exposures in the German banking system. The
+degree of concentration in this reference portfolio is purely national and driven by the firms'
+sector composition because we do not consider the impact of regional or country factors in our
+analysis. It is not uncommon for banks to use a more detailed sector classification scheme. We
+consider it more conservative to use a relatively broad sector classification scheme rather than
+a very detailed one. In a broad sector classification scheme, a larger proportion of exposures is
+attached to one sector. Therefore, correlations between exposures of the same sector (intra-
+sector correlations), which are typically greater than the correlations between exposures of
+different sectors (inter-sector correlations), will play a larger role.
+In order to focus on the impact of sector concentration, we assume an otherwise homogeneous
+portfolio by requiring that all other characteristics of the portfolio are uniform across sectors.
+We assume a total portfolio volume of 6 million that consists of 6,000 exposures of equal
+size which implies a highly granular portfolio in which each exposure represents only 0.017%
+of the total portfolio exposure. Every borrower has a probability of default (PD) of 2% and
+every exposure is to a different borrower, thus circumventing the need to consider multiple
+11
+exposure defaults. We set a uniform expected loss severity or loss given default (LGD) of
+45%, which is the corresponding supervisory value for a senior unsecured loan in the
+Foundation IRB approach of the Basel II framework.11 In the CreditMetrics approach, industry
+weights can be assigned to each borrower according to its participation. Here, we assume that
+every firm is exposed to only one sector as its main activity. Furthermore, we assume banks do
+not reduce exposure to certain sectors by purchasing credit protection.
+Table 1: Composition of the benchmark portfolio (using the GICS sector classification
+scheme)
+Total exposure
+Number of
+exposures % exposure
+A: Energy 11,000 11 0.18%
+B: Materials 361,000 361 6.01%
+C1: Capital Goods 692,000 692 11.53%
+C2: Commercial Services and Supplies 2,020,000 2,020 33.69%
+C3: Transportation 429,000 429 7.14%
+D: Consumer Discretionary 898,000 898 14.97%
+E: Consumer Staples 389,000 389 6.48%
+F: Health Care 545,000 545 9.09%
+H: Information Technology 192,000 192 3.20%
+I: Telecommunication Services 63,000 63 1.04%
+J: Utilities 400,000 400 6.67%
+Total 6,000,000 6,000
+3.4. Sequence of portfolios with increasing sector concentration
+In order to measure the impact on EC of more concentrated portfolios than the benchmark
+portfolio, we construct a sequence of six portfolios, each with increased sector concentration
+relative to the previous one. To this end, we gradually increase sector concentration in our
+benchmark portfolio by using the following algorithm. In each step we remove x exposures
+from all sectors and add them to a previously selected sector. This procedure is repeated until
+a single-sector portfolio, which is the portfolio with the highest possible concentration, is
+obtained. The sector which receives x exposures at every step and also the amount x that is
+transferred to this sector are determined in such a way that some of the generated portfolios
+reflect a degree of sector concentration that is actually observable in real banks.12
+Table 2 shows a sequence of seven portfolios in the order of increasing sector concentration.
+The increase in sector concentration is also reflected in the Herfindahl-Hirschmann Index
+(HHI),13 given in the last row which is calculated at sector level. Portfolio 1 has been
+constructed from the benchmark portfolio by re-allocating one third of each sector exposure to
+the sector Capital Goods. The even more concentrated portfolios 2, 3, 4 and 5 have been
+created by repeated application of this rule. Portfolios 2 and 5 are similar to portfolios of
+11 See BCBS (2004b).
+12 This procedure for generating a sequence of portfolios with increasing sector concentration is by no means
+unique. Results however are not sensitive to alternative rules of portfolio generation.
+13 See Hirschmann (1964).
+12
+existing banks14 insofar as the sector with the largest exposure size has a similar share of the
+total portfolio. Furthermore, the HHI is similar to what is observed in real-world portfolios.
+Finally, we created portfolio 6 with the highest degree of concentration as a one-sector
+portfolio by shifting all exposures to the Capital Goods sector.
+Table 2: Sequence of portfolios with increasing sector concentration
+Benchmark
+portfolio
+Portfolio
+1
+Portfolio
+2
+Portfolio
+3
+Portfolio
+4
+Portfolio
+5
+Portfolio
+6
+A: Energy 0% 0% 0% 0% 0% 0% 0%
+B: Materials 6% 4% 3% 2% 2% 1% 0%
+C1: Capital Goods 12% 41% 56% 71% 78% 82% 100%
+C2: Commercial Services & Supplies 34% 22% 17% 11% 8% 7% 0%
+C3: Transportation 7% 5% 4% 2% 2% 1% 0%
+D: Consumer Discretionary 15% 10% 7% 5% 4% 3% 0%
+E: Consumer Staples 6% 4% 3% 2% 2% 1% 0%
+F: Health Care 9% 6% 5% 3% 2% 2% 0%
+H: Information Technology 3% 2% 2% 1% 1% 1% 0%
+I: Telecommunication Services 1% 1% 1% 0% 0% 0% 0%
+J: Utilities 7% 4% 3% 2% 2% 1% 0%
+HHI 17.6 24.1 35.2 51.5 61.7 68.4 1
+3.5. Intra and inter-sectoral correlations
+Given that asset correlations are usually not observable, we have followed market practice in
+using sample correlations of stock index returns for their estimation. Table 3 shows the
+correlation matrix of the log-returns of those MSCI EMU industry indices which correspond
+to the 11 sectors. The sector factor correlations are based on weekly return data covering the
+period from November 2003 to November 2004. Sectors that are highly correlated with other
+sectors (i.e. sectors that have an average inter-sector correlation of greater than 65%) are
+Materials (B), Capital Goods (C1), Transportation (C3) and Consumer Discretionary (D).
+Sectors that are moderately correlated with other sectors, i.e. sectors that have an average
+inter-sector correlation of between 45% and 65%, are Commercial Services and Supplies (C2),
+Consumer Staples (E) and Telecommunication (I). Sectors that are the least correlated with
+other sectors, i.e. sectors that have an average inter-sector correlation of less than 45%, are
+Energy (A) and Health Care (F). The relative order of these sectors is broadly in line with
+results reported in other empirical papers.15 The heterogeneity between Capital Goods,
+Commercial Services and Supplies, and Transportation is confirmed by noticeable differences
+in correlations. The intra-sector correlations and/or inter-sector correlations between exposures
+14 Confidentiality requires those banks with a high sector concentration remain anonymous.
+15 See, for example, De Servigny and Renault (2001), FitchRatings (2004) and Moody's (2004). It is difficult to
+compare the absolute inter-sector correlation values as different papers report different types of correlations. De
+Servigny and Renault (2001) report inter-sector default correlation values, FitchRatings (2004) reports inter-
+sector equity correlations while Moody's (2004) provides correlation estimates inferred from co-movements in
+ratings and asset correlation estimates. Furthermore, the different papers distinguish between a different number
+of sectors.
+13
+are obtained by multiplying the sector correlations of Table 3 with the sector-dependent factor
+weights, see equation (2).
+Table 3: Correlation matrix based on MSCI EMU industry indices (based on weekly log
+return data covering the Nov 2003 - Nov 2004 period; in percent)
+A B C1 C2 C3 D E F H I J
+A: Energy 100 50 42 34 45 46 57 34 10 31 69
+B: Materials 100 87 61 75 84 62 30 56 73 66
+C1:Capital Goods 100 67 83 92 65 32 69 82 66
+C2:Commercial Svs & Supplies 100 58 68 40 8 50 60 37
+C3:Transportation 100 83 68 27 58 77 67
+D: Consumer discretionary 100 76 21 69 81 66
+E: Consumer staples 100 33 46 56 66
+F: Health Care 100 15 24 46
+H: Information Technology 100 75 42
+I: Telecommunication Services 100 62
+J: Utilities 100
+More difficult than the estimation of sector correlations is the determination of the factor
+weights, which determine the intra-sector asset correlations. We do not use the formula
+provided in CreditMetrics to compute the factor weights as recent research has suggested that
+this formula does not fit the German data very well.16 Instead, we assume a unique factor
+weight for all exposures and calibrate the value of the factor weight to match the
+corresponding IRB regulatory capital charge. More precisely, we determine a factor weight
+rs
+=0.50 for all sectors { }
+1,...,
+s S
+ such that the economic capital ECsim
+of the benchmark
+portfolio equals the IRB capital charge for corporate exposures, assuming a default probability
+of 2%, an LGD of 45% and a maturity of one year.
+Setting the sector factor weight to 0.5 is slightly more conservative than empirical results for
+German companies suggest. The average of all the correlation entries in the factor correlation
+matrix is 0.59, which implies by evoking equation (2) an average asset correlation of 0.14
+between exposures. Empirical evidence17 has shown that German SMEs typically have an
+average asset correlation of 0.09, which suggests 0.39
+s
+r = . Large firms, however, are
+typically more exposed to systematic risk than SMEs and therefore usually have higher asset
+correlation values.18
+Equation (2) implies that intra-sector asset correlations are thus fixed at 25%. Inter-sector asset
+correlations can be calculated by multiplying the factor weights of both sectors by the inter-
+sector factor correlation. The lowest correlation between the Energy sector index and the
+Information Technology sector index of 10% translates into an inter-sector asset correlation of
+2.5%. The highest correlation occurs between the Commercial Services and Supplies and the
+16 See Hahnenstein (2004) for a detailed analysis.
+17 See Hahnenstein (2004).
+18 See, for example, Lopez (2004) for empirical evidence of this relation for the US.
+14
+Consumer Discretionary sector indices. At 92%, it translates into an inter-sector asset
+correlation of 23%.
+4. Impact of sector concentration on economic capital
+In this section we analyze the impact of increasing sector concentration on economic capital,
+which is defined as the difference between the 99.9% percentile of the loss distribution and the
+expected loss. The results are given in Table 4. We observe for the corporate portfolios that
+economic capital increases from the benchmark portfolio to portfolio 2 by 20%. Economic
+capital for the concentrated portfolio 5 increases by a substantial 37% relative to the
+benchmark portfolio. These results demonstrate the importance of taking sector concentration
+into account when calculating EC.
+Typically, the corporate portfolio comprises only a fraction of the total loan portfolio (which
+also contains loans to sovereigns, other banks and private retail clients). Although the increase
+in sector concentration may have a significant impact on the EC of the corporate credit
+portfolio, it may have a much smaller impact in terms of a bank's total credit portfolio. For a
+meaningful comparison, we assume that the corporate credit portfolio comprises 30% of the
+total credit portfolio and that the banks need to hold capital amounting to 8% of their total
+portfolio. By assuming that there are no diversification benefits between corporate exposures
+and the bank's other assets, the EC of the total portfolio can be determined as the sum of the
+EC for the corporate exposures and the EC for the remaining exposures.
+Table 4: Impact of sector concentration on economic capital (
+sim
+EC ) for the sequence of
+corporate portfolios and for the sequence of total portfolios(*) of a bank (in percent)
+Benchmark
+portfolio
+Portfolio 1 Portfolio 2 Portfolio 3 Portfolio 4 Portfolio 5 Portfolio 6
+Corporate portfolio 7.8 8.8 9.5 10.1 10.3 10.7 11.7
+Total portfolio 8.0 8.2 8.5 8.7 8.8 8.9 9.2
+(*) Total portfolio includes 30% corporate credit and 70% other credit (to retail, sovereign,...)
+The results for the total portfolios of the bank are also shown in Table 4. As expected, the
+impact of an increase in sector concentration is much less severe when looking at the EC for
+the total portfolio. Economic capital for portfolio 5, for example, increases by about 16%
+relative to the benchmark portfolio instead of 37% if only the corporate portfolio is taken into
+account.
+In order to verify how robust our results are to the input parameters, we carried out the
+following three robustness checks (RC1 - RC3):
+· a lower uniform PD of 0.5% instead of 2% for all sectors (RC1),
+· a different factor correlation matrix (See Table 15, Appendix A) representing the
+correlation matrix with the highest average annual correlation over the period between
+1997 and 2005 (RC2) and
+15
+· a uniform intra-sector asset correlation of 15% and a uniform inter-sector asset
+correlation of 6% (RC3), which are values used by Moody's for the risk analysis of
+synthetic CDOs.19
+The results of the three robustness checks are summarized in Table 5. Although the absolute
+level of EC varies between these robustness checks, the relative increase in EC compared with
+the benchmark portfolio is similar to previous results in this section. For Moody's correlation
+assumptions in RC3, the increase in EC is stronger than for the other robustness checks. This
+can be explained by the larger difference between intra-sector and inter-sector correlations,
+which is justified by the higher number of sectors they use, and which leads to a stronger EC
+increase when the portfolio becomes more and more concentrated in a single sector. We
+conclude that the observed substantial relative increase in EC due to the introduction of sector
+concentration is robust against realistic variation of the input parameters. Furthermore, this
+increase in EC may be even greater, depending on the underlying dependence structure.
+Table 5: EC for the benchmark portfolio and its relative increase for the more concentrated
+portfolios 1 - 6 (in percent of total exposure)
+Portfolio Using "Initial rule" RC1: PD=0.5%
+RC2: Higher
+correlation
+RC3: Moody's
+EC
+Benchmark
+portfolio
+7.8 3.3 8.7 4.0
+Proportional change of EC in %
+Portfolio 1 +13 +12 +6 +6
+Portfolio 2 +20 +21 +13 +18
+Portfolio 3 +30 +29 +22 +39
+Portfolio 4 +35 +37 +24 +46
+Portfolio 5 +36 +42 +24 +51
+Portfolio 6 +49 +52 +33 +77
+5. Evaluation of the EC approximations for sector-dependent PDs
+and high granularity
+The purpose of this section is to use the model by Pykhtin to calculate EC and to compare
+these EC approximations with the EC obtained from simulations. In this section we assume
+first homogeneity within each sector and second a highly granular exposure distribution in
+each sector. Because of these two assumptions of our simplified model, the results can be
+understood as an upper bound in terms of approximation quality. We further test the accuracy
+of the EC approximations by varying the sector distributions, the factor correlations, the factor
+weights, the number of factors and the sector PD. Portfolios of coarser granularity and
+heterogeneous PDs on an exposure level are studied in Sections 6 and 7.
+19 See Fu et al (2004).
+16
+We again assume a confidence level q of 99.9% and employ the following three risk measures
+(where
+1 1
+s
+M
+S
+si si
+s i
+EL w p
+
+= =
+=  ):
+· economic capital in the ASRF* model, which is defined as
+( )
+* *
+99.9%
+= -
+EC t L EL
+· economic capital based on the multi-factor adjustment,
+( )
+*
+99.9% 99.9%
+= +  -
+MFA
+EC t L t EL
+· economic capital based on Monte Carlo (MC) simulations,
+sim
+EC
+Firstly, we present results for the benchmark portfolio and for the more concentrated portfolios
+1 - 6 in Table 6. The model parameters are the same as in Section 4.
+Table 6: Comparison of EC ,
+MFA
+EC and
+sim
+EC for different exposure distributions across
+sectors with increasing sector concentration given a default probability of 2% (in
+percent of total exposure)
+Portfolio EC
+MFA
+EC
+sim
+EC
+Relative error(*)
+of MFA
+EC
+Benchmark
+portfolio
+7.8 7.9
+7.8
+1.3%
+Portfolio 1 8.7 8.8 8.8 0.0%
+Portfolio 2 9.4 9.4 9.5 -1.1%
+Portfolio 3 10.1 10.1 10.1 0.0%
+Portfolio 4 10.5 10.5 10.3 1.9%
+Portfolio 5 10.7 10.7 10.7 0.0%
+Portfolio 6 11.6 11.6 11.7 -0.9%
+(*) The relative error is defined as the relative difference between
+sim
+EC and
+MFA
+EC .
+The EC figures for the benchmark portfolio in Table 6 show that EC and
+MFA
+EC provide
+extremely accurate proxies for
+sim
+EC . This result suggests that in the given examples the
+calculation of EC may, in practice, be sufficiently accurate for certain risk-management
+purposes. The four EC estimates for the more highly concentrated portfolios 1 - 6 indicate that
+economic capital increases as expected, but that our results for the approximation performance
+of EC and
+MFA
+EC still hold. According to Table 6, relative errors of
+MFA
+EC are in a
+relatively small range between 0.0% and 1.9%.
+Secondly, we check whether our results differ when we vary the underlying correlation
+structure. To this end, we calculate in Table 7 the three risk measures for different factor
+correlation matrices. More specifically, we assume homogeneous factor correlation matrices in
+which the entries (outside the main diagonal) vary between 0 and 1 in increments of 0.2. The
+last case, in which all factor correlations are equal to one, corresponds to the case of a single-
+factor model.
+17
+Table 7: Comparison of EC ,
+MFA
+EC and
+sim
+EC for different factor correlations , given a
+default probability of 2% (in percent of total exposure)
+Factor correlation
+ EC
+MFA
+EC
+sim
+EC
+Relative error of
+MFA
+EC
+0.0 3.3 3.9 4.0 -2.5%
+0.2 4.5 4.9 5.0 -2.0%
+0.4 6.1 6.3 6.3 0.0%
+0.6 7.9 7.8 8.0 -2.5%
+0.8 9.7 9.7 9.9 -2.0%
+1.0 11.6 11.6 11.7 -0.8%
+Table 7 shows
+sim
+EC and its proxies EC and
+MFA
+EC for increasing factor correlations. As
+expected, economic capital increases with increasing factor correlations, since a higher factor
+correlation reduces the diversification potential by shifting probability mass to the tail of the
+loss distribution. The highest relative error of
+MFA
+EC of all factor correlations considered is
+2.5% which still reveals a good approximation performance. With increasing factor
+correlations the multi-factor model approaches the structure of a one-factor model for which
+EC and
+MFA
+EC coincide. In all cases EC is relatively close to
+MFA
+EC . Therefore, our
+earlier results concerning the good approximation performance of EC and
+MFA
+EC also hold
+under different factor correlation assumptions.
+Thirdly, we vary the value of the factor weight r from 0.2 to 0.8. There is a strong increase in
+EC with the factor weight but this does not affect the approximation quality, neither of EC
+nor of
+MFA
+EC .
+Fourthly, we explore how the results depend on the number of factors. For this purpose we
+vary the number of factors from 2 to 16. Figure 2 shows how EC ,
+MFA
+EC and
+sim
+EC
+depend on the number of sectors and the factor correlation.
+MFA
+EC is only plotted for 2
+sectors because its values are indistinguishable from
+sim
+EC for 6 and for 16 sectors.
+18
+Figure 2: Economic capital ( EC ,
+MFA
+EC and
+sim
+EC ) for different factor correlation values
+for 2, 6 and 16 sectors (in percent of total exposure)
+0%
+2%
+4%
+6%
+8%
+10%
+12%
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+Factor correlation
+Economic capital (%
+EC*_2 Sec
+EC_sim_2 Sec
+EC*_6 Sec
+EC_sim_6 Sec
+EC*_16 Sec
+EC_sim_16 Sec
+EC MFA_2 Sec
+For a given number of sectors, EC increases in Figure 2 with factor correlation as expected. If
+the factor correlation approaches one, then EC values coincide, irrespective of the number of
+sectors. The reason is that in the limiting case of a factor correlation equal to one, the model
+collapses to a single-factor model.
+For a factor correlation of 0.6, which is also the average of the entries in the correlation matrix
+in Table 3, and also for higher factor correlations, the relative approximation error is below
+1% for
+MFA
+EC and below 2% for EC . Therefore, the previous results showing a good
+approximation performance of EC and an even better one for
+MFA
+EC are found to be robust
+with respect to the number of sectors, at least for realistic factor correlations.
+Figure 2 also shows that EC and
+sim
+EC generally decrease when the number of sectors
+increases for given asset correlation values. This result can be explained by risk reduction
+through diversification across sectors.
+Fifthly, we test whether our results for the approximation performance of EC and
+MFA
+EC
+are sensitive to PD heterogeneity on a sector level. For this purpose we employ the scaled
+default rates for sectors from Table 8.
+19
+Table 8: Average historical default rates (1990-2004; before and after scaling to an
+exposure-weighted expected average default rate of 2% for the benchmark portfolio;
+in percent)
+Sector Unscaled default rate Scaled default rate
+A: Energy 1.5 1.0
+B: Materials 2.8 1.9
+C1: Capital Goods 2.9 2.0
+C2: Commercial Services and Supplies 3.7 2.5
+C3: Transportation 2.9 2.0
+D: Consumer Discretionary 3.2 2.2
+E: Consumer Staples 3.5 2.4
+F: Health Care 1.6 1.1
+H: Information Technology 2.4 1.6
+I: Telecommunication Services 3.6 2.4
+J: Utilities 0.6 0.4
+Source: own calculation, based on S&P (2004)
+The historical default rates in Table 8 are, on average, higher than the value of 2% which is
+used for the PDs in the case of homogeneous PDs for all sectors. In order to isolate the effect
+of PD heterogeneity between sectors, we scale the historical default rate, hist
+s
+p , for every
+sector s as follows,
+(8)
+1
+0.02
+scaled hist
+s s S
+hist
+s s
+s
+p p
+w p
+=
+=
+
+
+.
+In this way, we ensure that the weighted average PD of the benchmark portfolio stays at 2%
+even in the case of PD heterogeneity across sectors.
+The results for
+sim
+EC and the two analytical approximations of EC, using the scaled historical
+default rates as PD estimates, are given in Table 9.
+Table 9: Comparison of EC ,
+MFA
+EC and
+sim
+EC (in percent of total exposure), based on
+sector-dependent default probabilities, estimated from historical default rates
+Portfolio EC
+MFA
+EC
+sim
+EC
+Relative error of
+MFA
+EC
+Benchmark
+portfolio
+8.0 8.0 8.0 0.0%
+Portfolio 1 8.8 8.9 8.8 1.1%
+Portfolio 2 9.4 9.4 9.5 -1.1%
+Portfolio 3 10.1 10.1 10.1 0.0%
+Portfolio 4 10.5 10.5 10.4 1.0%
+Portfolio 5 10.7 10.7 10.7 0.0%
+Portfolio 6 11.6 11.6 11.7 -0.9%
+For all risk measures the results in Table 9 are relatively close to those in Table 6. The more
+concentrated the exposures are in one sector, the smaller the difference to Table 6 becomes.
+20
+This is explained by the fact that the sector PDs are calibrated to an average value of 2%,
+which is also the PD used for Table 6. The approximation quality of EC and
+MFA
+EC is
+similar to Table 6. We conclude that, in qualitative terms, the results obtained for a uniform
+PD also hold for heterogeneous sector-dependent PDs.
+6. Evaluation of the EC approximations for sector-dependent PDs
+and low granularity
+Simulation results in the previous section, which reveal a reasonably good approximation
+quality for EC and
+MFA
+EC , were obtained conditional on a uniform PD in every sector and
+highly granular portfolios. However, portfolios of small banks, in particular, are less granular.
+In the following we explore the impact of lower granularity. From the set of seven portfolios,
+only the benchmark portfolio and portfolio 6 are considered as they have the lowest and the
+highest sector concentration. The impact of granularity is considered for the following two
+cases.
+In the first case, characterized by a portfolio of representative granularity, the distribution of
+exposure size was selected from a sample of typical small, regional German banks to reflect an
+average granularity in terms of the HHI. The purpose is to measure the impact of granularity
+for an exposure distribution that is representative for real banks. However, since the exposure
+distribution is based on central credit register data, only larger exposures are captured20 in the
+underlying data set with the consequence that this exposure distribution is less granular than
+what we can expect for real bank portfolios. The HHI of the portfolio, measured on single-
+exposure level, is 0.0067 compared with an HHI of 0.001 for the highly granular portfolios
+used in the previous section. Descriptive statistics on exposure size of the new portfolio are
+shown in Table 16 in Appendix D. Unfortunately, the borrower-specific data on exposure size
+contain no sector information.21 The allocation of exposures to sectors was achieved by
+randomly drawing exposures from the data set under the constraint that the generated
+distribution of exposures across sectors mirrors the sectoral distribution of the benchmark
+portfolio. To control for any sampling bias in the results we repeated this random assignment
+thereby creating several portfolios. These portfolios have the same sector distribution but vary
+in the distribution of individual exposure size in each sector. With these portfolios we verified
+the robustness of the results in this and the following section.
+20 See section 3.1 for more information on the characteristics of exposures included in the German central credit
+register.
+21 The reason for this missing information is that we do not use credit register data directly but a matched sample
+of credit register data and a second database which provides us also with individual borrower PDs not included
+in the credit register but required for the analysis of PD heterogeneity in section 7.
+21
+In the second case, characterized by low granularity, we consider the highest individual
+exposure shares that are admissible under the EU large exposure rules.22 In this way, we obtain
+an upper limit for the potential impact of granularity. According to the EU rules, an exposure
+is considered "large" if its amount requires 10% or more of regulatory capital. Banks are
+generally not allowed to have an exposure that requires at least 25% of regulatory capital.
+Furthermore, the sum of all large exposures must not require more than 8 times the regulatory
+capital.23
+We assume that a bank's regulatory capital is 8% of its total loan volume. For a total portfolio
+value of 6,000 currency units, banks are required to hold 480 currency units in capital. Each
+large exposure requires a minimum amount of capital of 48 currency units and a maximum
+amount of 120 currency units. The total sum of all large exposures must not exceed 3,840
+currency units. With these restrictions, the least granular admissible exposure distribution of
+our portfolio consists of
+· 3840/120 = 32 loans of 120 currency units
+· 2160/47 = 45 loan exposures of 47 currency units (just below the large exposure limit
+of 48) and
+· a remaining single exposure of 45 currency units
+The HHI of this portfolio, measured on a single-exposure level, is 0.015. Since this portfolio is
+charaterized by relatively coarse granularity, its HHI is considerably higher than for the
+portfolio with representative granularity. While keeping the average sector concentration of
+the portfolio constant, we increase the granularity of the portfolio to reflect the exposure size
+distribution of this least granular portfolio. More details of this portfolio can be found in Table
+17, Appendix D.
+Economic capital from simulations,
+sim
+EC , and the analytic proxies *
+EC and
+MFA
+EC are
+given in Table 10.
+Table 10: Comparison of EC ,
+MFA
+EC and
+sim
+EC (in percent of total exposure ) for
+portfolios with representative and low granularity using sector-dependent default
+probabilities
+Portfolio Granularity EC
+MFA
+EC
+sim
+EC
+Relative error of
+MFA
+EC
+Benchmark
+portfolio
+representative 8.0 8.0 8.6 -7%
+low 8.0 8.0 9.3 -14%
+Single sector
+portfolio
+low 11.6 11.6 12.7 -8%
+22 See Directive 93/6/EEC of 15 March 1993 on the capital adequacy of investment firms and credit institutions.
+23 The last two restrictions may be breached with permission of the German Federal Financial Supervisory
+Authority (BaFin), in which case the excess must be fully backed by capital.
+22
+The
+sim
+EC value of 9.3% for the low granular benchmark portfolio is 1.3 percentage points
+(or 14% in relative terms) higher than for the highly granular benchmark portfolio in Table 9.
+This difference appears to be substantial, but we have to consider that the granularity of the
+portfolio in Table 10 is very low since it reflects the lowest granularity permissible under
+European bank regulation.
+sim
+EC for the single sector portfolio 6 in Table 10 is higher than
+for the benchmark portfolio, which is consistent with earlier reported results.
+The
+sim
+EC value of 8.6% for the benchmark portfolio with representative granularity is
+relatively close to the value of 9.3% for the portfolio with low granularity, at least if compared
+with
+sim
+EC of 8.0% for the infinitely granular benchmark portfolio in Table 9. One reason is
+that some exposures in the portfolio with representative granularity technically violate the
+large exposure rules.24 Therefore, as mentioned before, the portfolio of "representative"
+granularity should still be regarded as conservative in terms of granularity.
+For the purpose of this analysis, the approximation errors of the EC proxies, *
+EC and
+MFA
+EC ,
+are more important than the level of EC. Both EC proxies are based on the assumption of
+infinite granularity in each sector, while the
+sim
+EC calculations take granularity into account.
+We find that *
+EC and
+MFA
+EC can substantially underestimate EC by up to 14%, in particular
+for portfolios with coarse granularity .
+7. Evaluation of EC approximations for heterogeneous sectors
+So far we have only considered sector-dependent PDs, which means PD variation on a sector
+level, but not on the exposure level. In the following we explore the impact of heterogeneous
+PDs inside a sector together with the impact of granularity. For the benchmark portfolio of
+representative granularity analyzed in the previous section, we also have individual borrower
+PDs which were computed from a logit model based on firms' accounting data. In order to
+apply the logit model, borrower information from the central credit register on exposure size
+had to be matched with a balance sheet database, also maintained by the Deutsche
+Bundesbank.25 Using empirical data on exposure size and PD automatically captures a
+potential dependence between these two characteristics.
+24 This can be explained either by special BaFin approval or, most likely, by data limitations given that our credit
+register data do not contain loans below 1.5 million. The latter implies that their sum is lower than the total
+portfolio exposure of the data-providing real bank and, therefore, our relative exposure weights are biased
+upwards. In other words, it is well possible that the large exposure limit is breached for our portfolio, although
+the limit is still met by the data-providing bank.
+25 More details on the database and the logit model that was used to determine the PDs can be found in Krüger et
+al. (2005).
+23
+In order to guarantee comparability with previous results, we apply the same scaling procedure
+as in Section 6 to ensure that the exposure-weighted average PD in each sector is the same as
+the corresponding scaled default rate given inTable 8. Information on this PD distribution is
+given in Table 18, Appendix D.
+The portfolio with the lowest granularity admissible under the EU large exposure rules is an
+artificially generated portfolio, so that we have no PD information for single exposures.
+Therefore, we randomly assign PDs from an empirical aggregate PD distribution based on the
+same balance sheet database, but this time aggregated over a sample of banks. The empirical
+PD distribution is given in Table 20 and information on the PD distribution of the low granular
+portfolio is provided in Table 19, Appendix D.26
+The results for PD heterogeneity in every sector are given in Table 11. The reduction of
+sim
+EC compared to Table 10, which occurs for both portfolios, is due to the PD heterogeneity
+on the exposure level. This impact of PD heterogeneity has also been noted by Hanson et al
+(2005) and can be explained by the concavity of the dependence of EC on PD.
+Table 11: Comparison of EC ,
+MFA
+EC and
+sim
+EC for portfolios with heterogeneous sectors
+(in percent of total exposure)
+Portfolio Granularity EC
+MFA
+EC
+sim
+EC
+Relative error of
+MFA
+EC
+Benchmark
+portfolio
+representative 8.0 8.0 7.7 +4%
+low 8.0 8.0 8.5 -6%
+Single sector
+portfolio
+low 11.6 11.6 10.8 +8%
+Since EC and
+MFA
+EC do not account for PD heterogeneity on the exposure level, these
+values stay unchanged from Table 10 while
+sim
+EC decreases. As a consequence, the
+underestimation by using EC and
+MFA
+EC instead of
+sim
+EC is reduced relative to Table 10,
+or even reversed to an overestimation of EC. This is confirmed by the approximation error in
+the last column of Table 11, which is lower when using heterogeneous PDs compared to the
+case of sector-dependent PDs in Table 10.
+For the single-sector portfolio and the benchmark portfolio with representative granularity, the
+approximation errors of the EC proxies are positive, implying that the effect of PD
+heterogeneity is stronger than the granularity effect, measured relative to the highly granular
+portfolio with homogeneous sector PDs. As a consequence, the EC proxies provide
+conservative estimates. Comparing the conservativeness of the single-factor portfolio and the
+26 Since a negative correlation between exposure size and PD emerged as a stylized fact in recent empirical
+literature (See, for example, Dietsch and Petey (2002) or Lopez (2004)), we also considered the case that the
+PDs are perfectly ordered in terms of decreasing exposure size. We found that our results are robust in this case.
+24
+benchmark portfolio in Table 11, we observe that the degree of overestimation halves from
++8% to +4%. This suggests further robustness checks, in particular for portfolios with a higher
+number of sectors.
+In summary, the approximation errors for all portfolios considered vary between -6% and
++8%. The results of Table 10 and Table 11 taken together demonstrate that the effect of PD
+heterogeneity counterbalances the effect of granularity. In general it is not possible to
+determine which of the two opposing effects dominates. For the portfolio with a representative
+granularity in Table 11, the effect of granularity is arguably weaker, which suggests that for
+portfolios of "average granularity" in real banks, PD heterogeneity would tend to
+overcompensate the granularity effect and EC and
+MFA
+EC would provide conservative
+estimates.
+Further empirical work is warranted to confirm this indicative result.
+Our analysis has shown that PD heterogeneity on the exposure level improves the performance
+of the analytic EC approximations relative to the situation of a granular portfolio with (only)
+sector-dependent PDs. The reason is that PD heterogeneity reduces the underestimation of EC
+that is caused by the granularity of the portfolio. This effect is even stronger if larger
+exposures or firms have lower PDs than smaller ones. Furthermore, PD heterogeneity appears
+not to affect the relative difference between
+MFA
+EC and *
+EC .
+8. Summary and conclusions
+The minimum capital requirements for credit risk in the IRB approach of Basel II implicitly
+assume that credit portfolios of banks are well diversified across business sectors. Potential
+concentration risk in certain business sectors is covered by Pillar 2 of the Basel II Framework,
+which comprises the supervisory review process.27 To what extent the regulatory minimum
+capital requirements can understate economic capital is an empirical question. In this paper we
+provide a tentative answer by using data from the German central credit register. Credit risk is
+measured by economic capital in a multi-factor asset value model and determined by Monte
+Carlo simulations.
+In order to measure the impact of concentration risk on economic capital, we start in the
+empirical part with a benchmark portfolio that reflects the aggregate exposure distribution
+across sectors of the German banking system. Since the exposure distributions across business
+sectors are similar in Belgium, France and Spain, we expect that our main results also hold for
+other European countries. Starting with the benchmark portfolio, we have successively
+increased sector concentration, considering degrees of sector concentration which are
+observable in real banks. The most concentrated portfolio contained exposures only to a single
+25
+sector. Compared with the benchmark portfolio, economic capital for the concentrated
+portfolios can increase by almost 37% and by 50% in the case of a one-sector portfolio. We
+have subjected our results to various robustness checks. We find that the increase in economic
+capital may be even greater, contingent on the dependence structure. This result clearly
+underlines the necessity to take inter-sector dependency into account for the measurement of
+credit risk.
+Since concentration in business sectors can substantially increase economic capital, a tractable
+and robust calculation method for economic capital which avoids the use of computationally
+burdensome Monte Carlo simulations is desirable. For this purpose the theoretical part
+evaluates the accuracy of a model developed by Pykhtin (2004), which provides an analytical
+approximation of economic capital in a multi-factor framework. We have applied a simplified,
+more tractable version of the model which requires only sector-aggregates of exposure size,
+PD and expected loss severity. The dependence structure is captured by the correlation matrix
+of the original multi-factor model. Furthermore, we have evaluated the extent to which EC ,
+as the first of two components in the analytic approximation of economic capital, already
+provides a reasonable proxy of economic capital. EC refers to the economic capital for a
+single-factor model in which the sector-dependent asset correlations are defined by mapping
+the richer correlation structure of the multi-factor model. The benchmark for the
+approximation quality is always the economic capital figure of the original multi-factor model
+which is obtained from MC simulations.
+We have shown that the analytic approximation formulae perform very well for portfolios
+with highly granular and homogeneous sectors. This result holds for portfolios with different
+sector concentrations and for various factor weights and correlation assumptions. Furthermore,
+we have found that EC is relatively close to the simulation-based economic capital for most
+of the realistic input parameter tupels considered.
+Finally, we explore the robustness of our results against the violation of two critical model
+assumptions, namely infinite granularity in every sector and sector-dependent PDs. We find
+that coarser granularity and PD heterogeneity (on the single exposure level) have
+counterbalancing effects on the performance of the analytic approximations for economic
+capital. Coarser granularity induces the analytic approximation formulae to have a downward
+bias which increases to 14% in extreme cases of portfolios with the lowest granularity
+permissible by EU large exposure rules, depending on the sector structure of the portfolio.
+Replacing sector-dependent PDs by heterogeneous PDs on the individual exposure level
+reduces economic capital, but does not affect the analytic approximations. As a consequence,
+the downward bias decreases. The relative error of the analytic approximation, measured
+27 See BCBS (2004b), paragraphs 770-777.
+26
+relative to the simulation-based economic capital figure, lies in a range between ­6% and
++8%, dependent on the exposure distribution across sectors and the number of factors. In
+summary, we find that heterogeneity in individual PDs and low granularity partly balance each
+other in their impact on the performance of the analytic approximations. Which effect prevails
+depends on the specific input parameters. Indicative results suggest that in representative
+credit portfolios, PD heterogeneity will at least compensate for the granularity effect, which
+suggests that the analytic formulae approximate economic capital reasonably well and err on
+the conservative side.
+In the cases studied, it is possible to use the analytic economic capital approximations of the
+simplified Pykhtin model without sacrificing much accuracy. This is an important result as it
+suggests, pending further robustness checks, that supervisors and banks can reasonably well
+approximate their economic capital for their credit portfolio by a relatively simple formula and
+without running computationally burdensome Monte Carlo simulations.
+Further research seems to be warranted, particularly in further advancing Pykhtin's
+methodology in a direction which improves its approximation accuracy while staying
+parsimonious in terms of data requirements. This could be achieved, for example, by exploring
+alternative ways to map the correlation matrix of the multi-factor model into sector-dependent
+asset correlations.
+27
+References
+BCBS (2004a), Basel Committee on Banking Supervision, "Bank Failures in Mature
+Economies", http://www.bis.org/publ/bcbs_wp13.pdf
+BCBS (2004b), Basel Committee on Banking Supervision, "International Convergence
+of Capital Measurement and Capital Standards: A revised Framework",
+http://www.bis.org/publ/bcbs107b.pdf.
+BLUHM, C., L. OVERBECK, AND C. WAGNER (2003), An Introduction to Credit Risk
+Modeling, Chapman&Hall/CRC.
+DE SERVIGNY A. AND O. RENAULT (2002), "Default correlation: Empirical evidence",
+Standard and Poors Working Paper.
+DIETSCH, M. AND J. PETEY (2002), "The Credit Risk in SME Loan Portfolios:
+Modeling Issues, Pricing and Capital Requirements", Journal of Banking and
+Finance 26, 303-322.
+DÜLLMANN, K. (2006), "Measuring Business Sector Concentration by an Infection
+Model", Deutsche Bundesbank Discussion Paper Series 2, No 3.
+FITCHRATINGS (2004), "Default Correlation and its Effect on Portfolios of Credit
+Risk", Credit Products Special Report.
+GARCIA CESPEDES, J. C., J.A DE JUAN HERRERO, A. KREININ, AND D. ROSEN (2005), "A
+Simple Multi-Factor Adjustment", for the Treatment of Diversification in Credit
+Capital Rules, Journal of Credit Risk 2 (3), 57-85.
+GORDY, M. (2000), "A Comparative Anatomy of Credit Risk Models", Journal of
+Banking and Finance 24 (1-2), 119-149.
+GORDY, M. (2003), "A Risk-Factor Model Foundation for Ratings-Based Bank Capital
+Rules", Journal of Financial Intermediation 12, 199-232.
+GOURIEROUX, C., J.-P. LAURENT, AND O. SCAILLET (2000), "Sensitivity Analysis of
+Values at Risk", Journal of Empirical Finance 7, 225-245.
+GUPTON, G., C. FINGER AND M. BHATIA (1997), "CreditMetrics - Technical
+Document".
+HAHNENSTEIN, L. (2004), "Calibrating the CreditMetrics Correlation Concept -
+Empirical Evidence from Germany", Financial Markets and Portfolio
+Management 18 (4), 358-381.
+HANSON, S., M.H. PESARAN, AND T. SCHUERMANN (2005), "Firm Heterogeneity and
+Credit Risk Diversification", Working Paper
+(http://www.cesifo.de/DocCIDL/cesifo1_wp1531.pdf)
+HEITFIELD, E., S. BURTON, AND S. CHOMSISENGPHET (2006), "Systematic and
+idiosyncratic risk in syndicated loan portfolios", Journal of Credit Risk 2 (3), 3-
+31.
+HESTON, L. and G. ROUWENHORST (1995), "Industry and Country Effects in
+International Stock Returns", Journal of Portfolio Management 21 (3), 53-58.
+HIRSCHMANN, A. O. (1964), "The Paternity of an Index", American Economic
+Review 54, 761-762.
+JOINT Forum (1999), "Risk Concentration Principles", Basel.
+28
+KRÜGER, U., M. STÖTZEL AND S. TRÜCK (2005), "Time Series Properties of a Rating
+System Based on Financial Ratios", Deutsche Bundesbank Discussion Paper
+Series 2, No 14.
+LOPEZ, J., (2004), "The Empirical Relationship between Average Asset Correlation,
+Firm Probability of Default and Asset Size", Journal of Financial
+Intermediation 13, 265-283.
+MARTIN, R. and T. WILDE (2002), "Unsystematic Credit Risk", Risk Magazine,
+November, 123-128.
+MERTON, R. (1974), "On the Pricing of Corporate Debt: The Risk Structure of Interest
+Rates", Journal of Finance 34, 449-470.
+MOODY'S (2004), "Moody's Revisits its Assumptions regarding Corporate Default
+(and Asset) Correlations for CDOs", November.
+PESARAN, M.H., T. SCHUERMANN AND B. TREUTLER (2005), "The Role of Industry,
+Geography and Firm Heterogeneity in Credit Risk Diversification", NBER
+Working Paper.
+PYKHTIN, M. (2004), "Multi-Factor Adjustment", Risk Magazine, March, 85-90.
+S&P (2004), "Ratings Performance 2003", S&P Special Report.
+ZENG, B. and J. ZHANG (2001), "Modeling Credit Correlation: Equity Correlation is
+not Enough", Moody' s KMV Working Paper.
+29
+Appendix A
+Table 12: GICS Classification Scheme: Broad Sector and Industry Groups
+A: Energy A1: Energy
+B: Materials B1: Materials
+C: Industrial C1: Capital goods
+C2: Commercial Services and Supplies
+C3: Transportation
+D: Consumer Discretionary D1: Automobiles and Components
+D2: Consumer Durables and Apparel
+D3: Hotels, Restaurants and Leisure
+D4: Media
+D5: Retailing
+E: Consumer Staples E1: Food and Drug Retailing
+E2: Food, Beverage and Tobacco
+E3: Household and Personal Products
+F: Health Care F1: Health Care Equipment and Services
+F2: Pharmaceuticals and Biotechnology
+G: Financials G1: Banks
+G2: Diversified Financials
+G3: Insurance
+G4: Real estate
+H: Information Technology H1: Software and Services
+H2: Technology Hardware & Equipment
+H3: Semiconductors & Semiconductor Equipment
+I: Telecommunication Services I1: Telecommunication Services
+J: Utilities J1: Utilities
+Table 13: Mapping NACE codes to GICS codes
+2 (or more) -digit code Description Mapped to GICS
+1 Agriculture and hunting E
+2 Forestry B
+5 Fishing E
+10 Coal mining B
+11 Crude petroleum and natural gas extraction A
+12 Mining of uranium and thorium B
+13 Mining of metal ores B
+14 Other mining and quarrying B
+15 Food and beverages manufacturing E
+16 Tobacco manufacturing E
+17 Textile manufacturing D
+18 Textile products manufacturing D
+19 Leather and leather products manufacturing D
+20 Wood products D
+21 Pulp, paper and paper products B
+22 Publishing and printing C2
+23 Manufacture of coke, refined petroleum products and nuclear fuel A
+30
+24 (excl 244) Chemicals and chemical products manufacturing B
+244 Pharmaceuticals F
+25 Rubber and plastic manufacturing D
+26 Other non-metallic mineral products B
+27 Basic metals manufacturing B
+28 Fabricated metal manufacturing B
+29 Machinery and equipment manufacturing C1
+30 Office machinery and computers manufacturing H
+31 Electrical machinery manufacturing H
+32 TV and communication equipment manufacturing H
+33 Medical and optical instruments manufacturing F
+34 Car manufacturing D
+35 Other transport equipment manufacturing D
+36 Furniture manufacturing D
+37 Recycling J
+40 Gas and electricity supply J
+41 Water supply J
+45 Construction C1
+50 Car sales, maintenance and repairs D
+51 Wholesale trade C2
+52 (excl 5211, 522,523) Retail trade D
+522, 523 Consumer staples E
+55 Hotels and restaurants D
+60 Land transport C3
+61 Water transport C3
+62 Air transport C3
+63 Transport supporting activities and travel agencies C3
+64 Post and telecommunication I
+65 Financial institutions G1
+66 Insurance G3
+67 Support to financial institutions G1
+70 Real estate G4
+71 Machinery and equipment leasing manufacturing C1
+72 Computer and related activities H
+85 Health care and social work F
+90 Sewage and refuse disposal J
+96 Residential property management G4
+31
+Table 14: Comparison of sector concentrations, aggregated exposure values over banks in
+Germany, France, Belgium and Spain
+Sector Germany France Belgium Spain
+A1: Energy 0.18% 0.88% 0.05% 1,05%
+B1: Materials 6.01% 3.97% 7.45% 9,34%
+C: Industrial28 52.36% 63.82% 54.77% 48,53%
+C1: Capital Goods 11.53% 9.89% 32,90%
+C2: Commercial Services and
+Supplies 33.69% 37.74% 10,20%
+C3: Transportation 7.14% 7.14% 5,43%
+D: Consumer Discretionary 14.97% 11.91% 15.77% 18,60%
+E: Consumer Staples 6.48% 7.21% 7.05% 10,20%
+F: Health Care 9.09% 5.00% 5.64% 1,85%
+H1: Software and Services 3.20% 1.47% 1.86% 1,99%
+I1: Telecommunication Services 1.04% 1.91% 0.54% 2,67%
+J1: Utilities 6.67% 3.82% 6.87% 5,77%
+Table 15: Correlation matrix based on MSCI EMU industry indices (based on weekly log
+return data covering the Nov 2002 - Nov 2003 period; in percentages).
+A B C1 C2 C3 D E F H I J
+A: Energy 100 62 66 43 62 67 78 70 50 47 72
+B: Materials 100 91 78 77 85 73 69 74 68 69
+C1:Capital Goods 100 76 80 92 74 68 81 72 75
+C2:Commercial Svs & Supplies 100 66 81 58 53 71 58 52
+C3:Transportation 100 78 68 59 70 65 64
+D: Consumer discretionary 100 71 66 86 72 70
+E: Consumer staples 100 75 62 60 70
+F: Health Care 100 55 44 70
+H: Information Technology 100 69 58
+I: Telecommunication Services 100 67
+J: Utilities 100
+28 Aggregate of C1, C2 and C3 only used for comparison with French data. Not used in the analysis.
+32
+Appendix B
+The multi-factor adjustment
+q
+t
+ can be calculated according to Pykhtin (2004) as follows:
+(A1)
+1 (1 )
+1 ( )
+( ) ( )
+2 ( ) ( )
+q
+y N q
+l y
+t v y v y y
+l y l y
+-
+= -
+ 
+
+ 
+
+ = - - +
+ 
+ 
+ 
+ 
+ 
+where y denotes the single systematic risk factor.
+The first and second derivatives of the loss distribution function in a one-factor model are
+(A2) 1
+1
+^
+( ) ( )
+^
+( ) ( )
+S
+s s
+s
+S
+s s
+s
+l y w p y
+l y w p y
+
+
+=
+=
+ 
+=
+ 
+=
+
+
+where ^ ( )
+s
+p y
+ and ^ ( )
+s
+p y
+ are, respectively, the first and the second derivatives of the
+conditional probability of default.
+(A3)
+( )
+1
+2 2
+1 1
+2 2 2
+( )
+^ ( )
+1 1
+( )
+^ ( ) .
+1 1 1
+s s s
+s
+s s
+s s
+s s s
+s
+s s s
+c N p c y
+p y N
+c c
+N p c y
+c N p c y
+p y N
+c c c
+-
+- -
+ 
+-
+ 
+ 
+= -
+ 
+- -
+ 
+ 
+- -
+ 
+ 
+= -
+ 
+- - -
+ 
+The factor weight in the ASRF* model is denoted by cs
+which can be written as *
+
+=
+s s s
+c r
+where *
+
+s
+denotes the correlation between the composite sector factor
+s
+Y and the systematic
+factor *
+Y in the ASRF* model.
+For the conditional variance ( )
+v y and its first derivative hold
+( ) ( )
+( )
+( ) ( )
+( )
+( )
+( )
+2 1 1
+2
+1 1
+2 2 1 1
+2
+1
+1
+2
+2
+1 1
+^ ^ ^ ^
+( ) ( ) , ( ) , ( ) ( )
+^ ^ ^
+( ) ( ) , ( ) ,
+^ ^
+( ) ( )
+^ ^
+( ) 2 ( ) ( )
+1
+S S
+Y
+s t s t st s t
+s t
+S
+Y
+s s s s ss
+s
+Y
+S S
+t st s
+s t s t
+Y
+s t
+st
+v y w w N N p y N p y p y p y
+w p y N N p y N p y
+N p y p y
+v y w w p y N p y
+ 
+ 
+
+
+
+- -
+= =
+- -
+=
+-
+= =
+ 
+= -
+ 
+ 
++ -
+ 
+ 
+ 
+-
+ 
+ 
+ 
+= -
+ 
+ 
+ 
+-
+ 
+ 
+ 
+
+
+
+( )
+2 2 1
+1
+1
+^ ^
+( ) 1 2 ( )
+1
+Y
+S
+ss
+s s s
+Y
+s ss
+w p y N N p y
+
+
+
+-
+=
+ 
+ 
+-
+  
++ -   
+ 
++
+ 
+ 
+ 
+
+33
+where ( )
+2
+N denotes the cumulative distribution function of the bivariate-normal
+distribution and Y
+st
+ has the meaning of a conditional asset correlation for two exposures in
+sectors t and s, conditional on *
+Y . This conditional asset correlation can be written as
+( )( )
+2 2
+1 1
+Y st s t
+st
+s t
+c c
+c c
+
+
+-
+=
+- -
+.
+34
+Appendix C
+In Pykhtin (2004) the coefficients
+1
+,...,
+S
+b b are obtained by maximizing the correlation
+between *
+Y and the risk factors Y1
+,...,YS
+which leads to the following optimization problem:
+1
+,
+,...,
+1 1
+max
+S
+S S
+s s t t
+b b
+s t
+b
+ 
+= =
+  .
+subject to 2
+1
+1
+S
+s
+s
+b
+=
+=
+ . The solution of this problem is given by
+1
+S
+s
+t st
+s
+b
+
+
+
+=
+=  .
+ is the Lagrange multiplier chosen to satisfy the constraint. Again, there is no unique solution
+for s
+. We follow Pykhtin who reported good results when defining
+( ) ( )
+1 1
+2
+1
+s s
+s s
+s
+N p r N q
+w N
+r
+ 
+- -
+ 
++
+ 
+=
+ 
+-
+ 
+.
+35
+Appendix D
+Table 16: Descriptive statistics of exposure distribution of a portfolio of 11 sectors,
+representative in terms of granularity
+Sector Exposure No. Minimum 25%
+percentile
+Median 75%
+percentile
+Maximum
+1 1 1 NA 1.2 NA 1.2
+2 36 0 1.3 4.7 8.9 43.2
+3 69 0 2.2 6.1 12.8 127.6
+4 203 0 1.7 5.3 10.5 152.3
+5 43 0.1 2.1 5.4 10.5 60.0
+6 90 0 1.4 5.1 9.3 112.2
+7 39 0.1 1.3 4.9 10.0 42.2
+8 55 0.2 1.8 4.8 11.3 74.2
+9 19 0.1 0.7 3.6 5.8 22.0
+10 6 0.2 0.6 3.0 7.8 8.5
+11 40 0.0 1.3 5.8 11.6 68.8
+Table 17: Descriptive statistics of exposure distribution of a low granular portfolio of 11
+sectors
+Sector Exposure No. Minimum 25%
+percentile
+Median 75%
+percentile
+Maximum
+1 1 11 NA 11 NA 11
+2 8 32 47 47 47 47
+3 6 92 120 120 120 120
+4 17 100 120 120 120 120
+5 10 6 47 47 47 47
+6 8 58 120 120 120 120
+7 9 13 47 47 47 47
+8 9 33 47 47 47 120
+9 5 4 47 47 47 47
+10 2 16 16 31.5 47 47
+11 9 24 47 47 47 47
+36
+Table 18: Scaled PD distribution of a portfolio of 11 sectors, representative in terms of
+granularity
+Sector Exposure No. Minimum 25%
+percentile
+Median 75%
+percentile
+Maximum
+1 1 1.0% NA 1.0% NA 1.0%
+2 36 0.0% 0.3% 0.6% 1.2% 7.4%
+3 69 0.1% 0.9% 1.6% 2.9% 21.8%
+4 203 0.0% 0.9% 1.7% 3.4% 15.5%
+5 43 0.0% 0.8% 1.8% 2.7% 6.0%
+6 90 0.1% 1.1% 2.2% 3.6% 14.0%
+7 39 0.0% 0.9% 1.6% 3.3% 11.1%
+8 55 0.0% 0.5% 1.0% 2.0% 5.6%
+9 19 0.0% 0.4% 1.1% 1.6% 4.1%
+10 6 1.0% 2.2% 3.4% 4.1% 5.9%
+11 40 0.0% 0.2% 0.3% 0.6% 2.2%
+Table 19: Scaled PD distribution of a low granular portfolio of 11 sector
+Sector Exposure No. Minimum 25%
+percentile
+Median 75%
+percentile
+Maximum
+1 1 1.0% NA 1.0% NA 1.0%
+2 8 0.3% 1.3% 1.3% 1.3% 4.2%
+3 6 0.4% 1.5% 1.5% 1.5% 5.1%
+4 17 0.1% 1.8% 1.8% 1.8% 5.9%
+5 10 0.1% 1.5% 1.5% 1.5% 4.9%
+6 8 0.4% 1.4% 1.4% 1.4% 4.7%
+7 9 0.1% 1.7% 1.7% 1.7% 5.8%
+8 9 0.1% 0.7% 0.7% 0.7% 2.4%
+9 5 0.3% 1.2% 1.2% 1.2% 3.9%
+10 2 2.4% 2.4% 2.4% 2.4% 2.4%
+11 9 0% 0.3% 0.3% 0.3% 1%
+Table 20: Quality distribution of German firms in the Bundesbank database
+Rating grade AAA AA A BBB BB B
+Share in percent 2 6 11 55 24 2
+PD in percent 0.01 0.02 0.07 0.26 0.87 3.27
+37
+The following Discussion Papers have been published since 2005:
+Series 1: Economic Studies
+1 2005 Financial constraints and capacity adjustment
+in the United Kingdom ­ Evidence from a Ulf von Kalckreuth
+large panel of survey data Emma Murphy
+2 2005 Common stationary and non-stationary
+factors in the euro area analyzed in a
+large-scale factor model Sandra Eickmeier
+3 2005 Financial intermediaries, markets, F. Fecht, K. Huang,
+and growth A. Martin
+4 2005 The New Keynesian Phillips Curve
+in Europe: does it fit or does it fail? Peter Tillmann
+5 2005 Taxes and the financial structure Fred Ramb
+of German inward FDI A. J. Weichenrieder
+6 2005 International diversification at home Fang Cai
+and abroad Francis E. Warnock
+7 2005 Multinational enterprises, international trade,
+and productivity growth: Firm-level evidence Wolfgang Keller
+from the United States Steven R. Yeaple
+8 2005 Location choice and employment S. O. Becker,
+decisions: a comparison of German K. Ekholm, R. Jäckle,
+and Swedish multinationals M.-A. Muendler
+9 2005 Business cycles and FDI: Claudia M. Buch
+evidence from German sectoral data Alexander Lipponer
+10 2005 Multinational firms, exclusivity, Ping Lin
+and the degree of backward linkages Kamal Saggi
+38
+11 2005 Firm-level evidence on international Robin Brooks
+stock market comovement Marco Del Negro
+12 2005 The determinants of intra-firm trade: in search Peter Egger
+for export-import magnification effects Michael Pfaffermayr
+13 2005 Foreign direct investment, spillovers and
+absorptive capacity: evidence from quantile Sourafel Girma
+regressions Holger Görg
+14 2005 Learning on the quick and cheap: gains James R. Markusen
+from trade through imported expertise Thomas F. Rutherford
+15 2005 Discriminatory auctions with seller discretion:
+evidence from German treasury auctions Jörg Rocholl
+16 2005 Consumption, wealth and business cycles: B. Hamburg,
+why is Germany different? M. Hoffmann, J. Keller
+17 2005 Tax incentives and the location of FDI: Thiess Buettner
+evidence from a panel of German multinationals Martin Ruf
+18 2005 Monetary Disequilibria and the Dieter Nautz
+Euro/Dollar Exchange Rate Karsten Ruth
+19 2005 Berechnung trendbereinigter Indikatoren für
+Deutschland mit Hilfe von Filterverfahren Stefan Stamfort
+20 2005 How synchronized are central and east
+European economies with the euro area? Sandra Eickmeier
+Evidence from a structural factor model Jörg Breitung
+21 2005 Asymptotic distribution of linear unbiased J.-R. Kurz-Kim
+estimators in the presence of heavy-tailed S.T. Rachev
+stochastic regressors and residuals G. Samorodnitsky
+39
+22 2005 The Role of Contracting Schemes for the
+Welfare Costs of Nominal Rigidities over
+the Business Cycle Matthias Paustian
+23 2005 The cross-sectional dynamics of German J. Döpke, M. Funke
+business cycles: a bird's eye view S. Holly, S. Weber
+24 2005 Forecasting German GDP using alternative Christian Schumacher
+factor models based on large datasets
+25 2005 Time-dependent or state-dependent price
+setting? ­ micro-evidence from German
+metal-working industries ­ Harald Stahl
+26 2005 Money demand and macroeconomic Claus Greiber
+uncertainty Wolfgang Lemke
+27 2005 In search of distress risk J. Y. Campbell,
+J. Hilscher, J. Szilagyi
+28 2005 Recursive robust estimation and control Lars Peter Hansen
+without commitment Thomas J. Sargent
+29 2005 Asset pricing implications of Pareto optimality N. R. Kocherlakota
+with private information Luigi Pistaferri
+30 2005 Ultra high frequency volatility estimation Y. Aït-Sahalia,
+with dependent microstructure noise P. A. Mykland, L. Zhang
+31 2005 Umstellung der deutschen VGR auf Vorjahres-
+preisbasis ­ Konzept und Konsequenzen für die
+aktuelle Wirtschaftsanalyse sowie die ökono-
+metrische Modellierung Karl-Heinz Tödter
+40
+32 2005 Determinants of current account developments
+in the central and east European EU member
+states ­ consequences for the enlargement of Sabine Herrmann
+the euro erea Axel Jochem
+33 2005 An estimated DSGE model for the German
+economy within the euro area Ernest Pytlarczyk
+34 2005 Rational inattention: a research agenda Christopher A. Sims
+35 2005 Monetary policy with model uncertainty: Lars E.O. Svensson
+distribution forecast targeting Noah Williams
+36 2005 Comparing the value revelance of R&D report- Fred Ramb
+ing in Germany: standard and selection effects Markus Reitzig
+37 2005 European inflation expectations dynamics J. Döpke, J. Dovern
+U. Fritsche, J. Slacalek
+38 2005 Dynamic factor models Sandra Eickmeier
+Jörg Breitung
+39 2005 Short-run and long-run comovement of
+GDP and some expenditure aggregates
+in Germany, France and Italy Thomas A. Knetsch
+40 2005 A"wreckers theory" of financial distress Ulf von Kalckreuth
+41 2005 Trade balances of the central and east
+European EU member states and the role Sabine Herrmann
+of foreign direct investment Axel Jochem
+42 2005 Unit roots and cointegration in panels Jörg Breitung
+M. Hashem Pesaran
+43 2005 Price setting in German manufacturing:
+new evidence from new survey data Harald Stahl
+41
+1 2006 The dynamic relationship between the Euro
+overnight rate, the ECB's policy rate and the Dieter Nautz
+term spread Christian J. Offermanns
+2 2006 Sticky prices in the euro area: a summary of Álvarez, Dhyne, Hoeberichts
+new micro evidence Kwapil, Le Bihan, Lünnemann
+Martins, Sabbatini, Stahl
+Vermeulen, Vilmunen
+3 2006 Going multinational: What are the effects
+on home market performance? Robert Jäckle
+4 2006 Exports versus FDI in German manufacturing:
+firm performance and participation in inter- Jens Matthias Arnold
+national markets Katrin Hussinger
+5 2006 A disaggregated framework for the analysis of Kremer, Braz, Brosens
+structural developments in public finances Langenus, Momigliano
+Spolander
+6 2006 Bond pricing when the short term interest rate Wolfgang Lemke
+follows a threshold process Theofanis Archontakis
+7 2006 Has the impact of key determinants of German
+exports changed?
+Results from estimations of Germany's intra
+euro-area and extra euro-area exports Kerstin Stahn
+8 2006 The coordination channel of foreign exchange Stefan Reitz
+intervention: a nonlinear microstructural analysis Mark P. Taylor
+9 2006 Capital, labour and productivity: What role do Antonio Bassanetti
+they play in the potential GDP weakness of Jörg Döpke, Roberto Torrini
+France, Germany and Italy? Roberta Zizza
+10 2006 Real-time macroeconomic data and ex ante J. Döpke, D. Hartmann
+predictability of stock returns C. Pierdzioch
+42
+11 2006 The role of real wage rigidity and labor market
+frictions for unemployment and inflation Kai Christoffel
+dynamics Tobias Linzert
+12 2006 Forecasting the price of crude oil via
+convenience yield predictions Thomas A. Knetsch
+13 2006 Foreign direct investment in the enlarged EU:
+do taxes matter and to what extent? Guntram B. Wolff
+14 2006 Inflation and relative price variability in the euro Dieter Nautz
+area: evidence from a panel threshold model Juliane Scharff
+15 2006 Internalization and internationalization
+under competing real options Jan Hendrik Fisch
+16 2006 Consumer price adjustment under the
+microscope: Germany in a period of low Johannes Hoffmann
+inflation Jeong-Ryeol Kurz-Kim
+17 2006 Identifying the role of labor markets Kai Christoffel
+for monetary policy in an estimated Keith Küster
+DSGE model Tobias Linzert
+18 2006 Do monetary indicators (still) predict
+euro area inflation? Boris Hofmann
+19 2006 Fool the markets? Creative accounting, Kerstin Bernoth
+fiscal transparency and sovereign risk premia Guntram B. Wolff
+20 2006 How would formula apportionment in the EU
+affect the distribution and the size of the Clemens Fuest
+corporate tax base? An analysis based on Thomas Hemmelgarn
+German multinationals Fred Ramb
+43
+21 2006 Monetary and fiscal policy interactions in a New
+Keynesian model with capital accumulation Campbell Leith
+and non-Ricardian consumers Leopold von Thadden
+22 2006 Real-time forecasting and political stock market Martin Bohl, Jörg Döpke
+anomalies: evidence for the U.S. Christian Pierdzioch
+23 2006 A reappraisal of the evidence on PPP:
+a systematic investigation into MA roots Christoph Fischer
+in panel unit root tests and their implications Daniel Porath
+24 2006 Margins of multinational labor substitution Sascha O. Becker
+Marc-Andreas Mündler
+25 2006 Forecasting with panel data Badi H. Baltagi
+26 2006 Do actions speak louder than words? Atsushi Inoue
+Household expectations of inflation based Lutz Kilian
+on micro consumption data Fatma Burcu Kiraz
+27 2006 Learning, structural instability and present H. Pesaran, D. Pettenuzzo
+value calculations A. Timmermann
+28 2006 Empirical Bayesian density forecasting in Kurt F. Lewis
+Iowa and shrinkage for the Monte Carlo era Charles H. Whiteman
+29 2006 The within-distribution business cycle dynamics Jörg Döpke
+of German firms Sebastian Weber
+30 2006 Dependence on external finance: an inherent George M. von Furstenberg
+industry characteristic? Ulf von Kalckreuth
+31 2006 Comovements and heterogeneity in the
+euro area analyzed in a non-stationary
+dynamic factor model Sandra Eickmeier
+44
+32 2006 Forecasting using a large number of predictors: Christine De Mol
+is Bayesian regression a valid alternative to Domenico Giannone
+principal components? Lucrezia Reichlin
+33 2006 Real-time forecasting of GDP based on
+a large factor model with monthly and Christian Schumacher
+quarterly data Jörg Breitung
+34 2006 Macroeconomic fluctuations and bank lending: S. Eickmeier
+evidence for Germany and the euro area B. Hofmann, A. Worms
+35 2006 Fiscal institutions, fiscal policy and Mark Hallerberg
+sovereign risk premia Guntram B. Wolff
+36 2006 Political risk and export promotion: C. Moser
+evidence from Germany T. Nestmann, M. Wedow
+45
+Series 2: Banking and Financial Studies
+1 2005 Measurement matters ­ Input price proxies
+and bank efficiency in Germany Michael Koetter
+2 2005 The supervisor's portfolio: the market price
+risk of German banks from 2001 to 2003 ­ Christoph Memmel
+Analysis and models for risk aggregation Carsten Wehn
+3 2005 Do banks diversify loan portfolios? Andreas Kamp
+A tentative answer based on individual Andreas Pfingsten
+bank loan portfolios Daniel Porath
+4 2005 Banks, markets, and efficiency F. Fecht, A. Martin
+5 2005 The forecast ability of risk-neutral densities Ben Craig
+of foreign exchange Joachim Keller
+6 2005 Cyclical implications of minimum capital
+requirements Frank Heid
+7 2005 Banks' regulatory capital buffer and the
+business cycle: evidence for German Stéphanie Stolz
+savings and cooperative banks Michael Wedow
+8 2005 German bank lending to industrial and non-
+industrial countries: driven by fundamentals
+or different treatment? Thorsten Nestmann
+9 2005 Accounting for distress in bank mergers M. Koetter, J. Bos, F. Heid
+C. Kool, J. Kolari, D. Porath
+10 2005 The eurosystem money market auctions: Nikolaus Bartzsch
+a banking perspective Ben Craig, Falko Fecht
+11 2005 Financial integration and systemic Falko Fecht
+risk Hans Peter Grüner
+46
+12 2005 Evaluating the German bank merger wave Michael Koetter
+13 2005 Incorporating prediction and estimation risk A. Hamerle, M. Knapp,
+in point-in-time credit portfolio models T. Liebig, N. Wildenauer
+14 2005 Time series properties of a rating system U. Krüger, M. Stötzel,
+based on financial ratios S. Trück
+15 2005 Inefficient or just different? Effects of J. Bos, F. Heid, M. Koetter,
+heterogeneity on bank efficiency scores J. Kolatri, C. Kool
+01 2006 Forecasting stock market volatility with J. Döpke, D. Hartmann
+macroeconomic variables in real time C. Pierdzioch
+02 2006 Finance and growth in a bank-based economy: Michael Koetter
+is it quantity or quality that matters? Michael Wedow
+03 2006 Measuring business sector concentration
+by an infection model Klaus Düllmann
+04 2006 Heterogeneity in lending and sectoral Claudia M. Buch
+growth: evidence from German Andrea Schertler
+bank-level data Natalja von Westernhagen
+05 2006 Does diversification improve the performance Evelyn Hayden
+of German banks? Evidence from individual Daniel Porath
+bank loan portfolios Natalja von Westernhagen
+06 2006 Banks' regulatory buffers, liquidity networks Christian Merkl
+and monetary policy transmission Stéphanie Stolz
+07 2006 Empirical risk analysis of pension insurance ­ W. Gerke, F. Mager
+the case of Germany T. Reinschmidt
+C. Schmieder
+47
+08 2006 The stability of efficiency rankings when
+risk-preferences and objectives are different Michael Koetter
+09 2006 Sector concentration in loan portfolios Klaus Düllmann
+and economic capital Nancy Masschelein
+48
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a Ph D and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+

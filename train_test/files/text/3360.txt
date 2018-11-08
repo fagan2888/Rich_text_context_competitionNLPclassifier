@@ -1,0 +1,1661 @@
+Environment and Planning B: Planning and Design, 1988, volume 15, pages 461-488
+The morphology of urban land use
+M Batty, P A Longley
+Department of Town Planning, University of Wales at Cardiff, PO Box 906, Cardiff CF1 3YN, Wales
+Received 20 June 1988
+Abstract. The irregularity of land uses and land parcels which constitute the morphology of a
+small English town is measured. Form is described by the digitised perimeters and areas of
+land-use parcels, and various methods are introduced which relate area to perimeter, and
+perimeter to scale, enabling the degree of irregularity to be assessed by means of the concept
+of fractal dimension. A theoretical exposition of scale and dimension leads to the definition of
+methods for relating area and scale to perimeter, which are then tested using land-use data
+for the town of Swindon, Wiltshire. Residential, commercial - industrial, educational, transport,
+and open space constitute the range of land uses defined, and three approaches based on
+area-perimeter, aggregated perimeter - scale, and individual perimeter - scale regressions are
+tested. The methods tested, although well established, are demonstrably inadequate, but some
+consistency in gauging the range of irregularity over the set of land uses is presented. It is
+suggested that future work be orientated towards more disaggregated measures of land-parcel
+irregularity.
+Introduction
+During the last twenty years, analysis of the regularities in the form of cities has
+been largely based on models which identify activities which scale with one another.
+Such scaling relations are central to social physics; they are manifest in the way
+movement between places is attenuated or scaled inversely with distance, and the way
+in which different sized places are clustered in the urban hierarchy. Distance, size,
+and frequency are embodied in spatial interaction models of movement and in central
+place theory, in which city size is structured around the idea of a rank-size rule.
+Hitherto, there has been little emphasis on the meaning of the scale coefficients
+associated with such models. In gravitational models, for example, departures from
+the inverse square law are defined away as behavioural effects, distinct from the
+physical constraints of space. In the last ten years, however, a powerful new
+geometry has emerged. This is not only able to interpret scaling relations in a new
+light and explain differences from theoretical postulates; it is able to demonstrate
+how the regularity posed by Euclidean geometry, with its emphasis on simple
+dimensions, can be generalised to embrace the kinds of irregularities empirically
+associated both with natural and with artificial realities. Fractal geometry, as it has
+been termed by its popularist Mandelbrot (1983), is able to explain many types of
+irregular form which have hitherto resisted scientific classification and explanation.
+This geometry enables 'order' to be extracted from what has always been considered
+'chaos', and it has heralded a new dawn for the age-old study of theories of form.
+There are three central constructs to fractal geometry. In essence, the geometry
+concerns relationships based on scaling, but with the characteristic that such
+relationships are invariant to scale: that is, relationships hold over several orders of
+magnitude. The consequence of this first idea is a second one which suggests that
+the form of the objects in question is similar over these orders of magnitude. In
+short, such objects appear the same when viewed at different scales, typical examples
+being rough terrain, branching structures such as trees, cloud formations, and so
+on. Fractal objects such as these are called self-similar. The third concept is the
+462 M Batty, P A Longley
+most powerful and involves dimension. Euclidean geometry deals with the integral
+dimensions: 1, 2, 3, and upwards to the higher dimensions. Fractal geometry is
+based on noninteger, 'fractional', or as it is now referred to, fractal dimension. The
+basis on which an object is fractal or not is its irregularity over scale, and if the
+object is self-similar, its form can be captured in the single measure of its fractal
+dimension. If such a dimension can be computed with confidence, the objects in
+question must clearly manifest self-similarity and scale invariance, albeit usually in
+a statistical sense.
+The simplest fractals to visualise are those whose dimensions lie between 1 and 2.
+The best example is that of a natural boundary such as a coastline which is more
+irregular than a straight line of dimension 1, but is clearly less than the area of a
+plane which has dimension 2. As such boundaries become more tortuous, the
+fractal dimension increases until the curve in question twists and turns to fill the
+space available. There are many conundrums in measuring such fractal curves, for
+it can easily be shown that the length of such curves depends upon the scale and
+sophistication of the measuring device, although the area enclosed by such curves
+is always finite. Natural phenomena such as coastlines and man-made boundaries
+such as frontiers are both fractals (Richardson, 1961). It is clear that a preliminary
+approach to measuring the extent and irregularity of urban areas must begin with
+an assessment of the extent to which the boundaries defining such areas are fractal.
+In this paper, we will extend our earlier work in measuring such boundaries (Batty
+and Longley, 1987a; 1987b) to different urban land uses constituting a medium
+sized English town, Swindon, Wiltshire which had a population of 125 000 in
+1981. This paper will also embrace an attempt to classify various land uses on the
+basis of their fractal dimensions.
+There have been many attempts in several disciplines to use fractal geometry to
+measure morphologies by defining edges which can be treated as boundaries. In
+fine particle science, there is a stream of work based on measuring the irregularity
+of two-dimensional outlines (Kaye, 1986). Much work exists in defining the fractal
+dimensions of coastlines (Kaproff, 1986) and terrain (Mark and Aronson, 1984), in
+the geometry of fracture (Aviles et al, 1987), and in cartographic line generalisation
+(Muller, 1987). This is apart from the enormous literature that now exists in the
+physics of phase transitions, metereology, the mathematics of iterated functions, and
+in computer graphics. We have referenced only those areas which involve the
+definition and measurement of identifiable boundaries in the plane, and the literature
+cited is the latest we have come across in a long line of related work. Interested
+readers are also referred to the review article by Goodchild and Mark (1987) for a
+recent survey of applications in spatial analysis.
+Methods for determining the fractal dimension, and hence the irregularity of
+curves, are comparatively straightforward. Richardson (1961) first demonstrated
+the usual method, which consists of measuring the length of a curve at different
+scales, and finding the least squares fit of length to scale from which the dimension
+is an immediate consequence. However, the method is sensitive to the way length is
+measured, and to the number of scales over which the relationship is likely to
+hold. We have demonstrated variations and problems in this method in earlier
+papers (Batty and Longley, 1987a; 1987b); here we will extend these ideas, but
+the main purpose of this paper is to explore the extent to which we can associate
+different boundaries with different areas, in this case of land uses, based on their
+fractal dimensions. An immediate problem which will be raised is the fact that
+most land uses share the same boundaries with other land uses; in a system of
+contiguous areas like a town, the boundary to each use will always consist of parts
+The morphology of urban land use 463
+of the boundary of other uses. The convoluted nature of every boundary poses
+severe conceptual problems which we will raise, if not resolve, for the first time here.
+We will begin by providing a consistent summary of the mathematics of scale
+and dimension involving the line and the plane. We will then present two models
+of scale dependence, and four methods or algorithms for extracting fractal dimensions
+from various boundary data. The application of these methods to land-use boundaries
+in Swindon is then presented beginning with a description of the characteristics of
+the urban area in question. Fractal dimensions based on area - perimeter relations
+across scales are then estimated, and these same dimensions are then derived by
+examining scale changes within the digital representation of the perimeters themselves.
+Last, individual dimensions of each of the land-use parcels are derived, and
+interpretations are made as to the extent to which land uses can be classified on
+the basis of their fractal dimensions. The analysis presented is inconclusive, but it
+is clear that careful measurement is required in such applications. The sensitivity
+of the analysis here to measurement differences casts considerable doubt on many of
+the applications presented so far in a variety of fields. Directions for further
+research are then indicated.
+The mathematics of scale and dimension
+In Euclidean geometry, the measure of size in a given dimension will scale directly
+with the measure in another (for example, adjacent) dimension; this scaling will be
+some product of the dimensions themselves. Consider area A and volume V based
+on two dimensions and three dimensions, respectively. Area has a size calculated
+as the square of the line measure P, that is P2, and volume has a size P3. If it is
+required to derive area from volume, it is clear that this can be done as A °c V2S.
+In the same way, if it is required to derive the base line P, which we will hence-
+forth call perimeter, from area A, the relation is
+P*A1/2. (1)
+All relationships such as those implied by equation (1) show that size in one
+dimension can be scaled directly if one knows the dimension of the object in a
+higher or lower dimension. For example, if A = jtr2, the area of a circle with
+radius r, P °c 7ir, and so on for a variety of regular forms. These types of relation
+appear widely in the natural sciences where they form an essential part of the
+study of relative growth, or allometry (Gould, 1966). If the relationship between
+line and area is as postulated in equation (1), this is the condition of isometry. If
+the power of A were greater than \, this would be positive allometry, if less, this
+would be negative allometry.
+Let us now define the area at a given scale n as An
+. If area is regarded as a
+measuring device for the perimeter, now called Pn
+, when the scale is increased to
+n+1, it is clear that
+*n+l ^ [A 1/2
+(2)
+because more and more scaled detail about the boundary will be picked up. In
+fact, the conundrum emerges that, in the limit as n -* °o, the ratio of areas in
+equation (2) will converge, but the ratio of the perimeters will continue to increase.
+From equation (1) it is clear that, to derive P from A, area must be rescaled by a
+parameter which is greater than 1 but less than 2. That is
+P °c {A1/2)D = ADa , (3)
+where 1 < D < 2. If D = 2, then perimeter would scale up as area, which would
+464 M Batty, P A Longley
+imply that area be defined as a space-filling curve, a physically impossible
+realisation for the kinds of systems dealt with here. If D = 1, perimeter would not
+scale more than the basic unit of measurement which would imply that no scale
+effects were present as area increased. The coefficient D is known as the
+Hausdorff-Besicovitch or fractal dimension (Mandelbrot, 1983). In this context it
+serves as an empirical measure of how much the curve in question departs from a
+straight line, thus indicating how 'crinkled' or tortuous the boundary across the
+space is. The relation in equation (3) is known as the area-perimeter relation and
+it clearly implies a way of estimating the value of D (Lovejoy, 1982).
+There is another way of showing how perimeter is related to the scale of
+measurement. Consider a scale defined by a unit Axn
+, where this is the basic unit
+used to define the perimeter Pn
+. When Axn
+is used to define the perimeter, it
+yields Nn
+chords such that Pn
+= Axn
+Nn
+. Assume that the scale is now halved, so
+that Axn+1
+= hAxn
+. This scale then yields Nn+l
+chords, but, as finer detail is
+picked up, Pn+1
+> Pn
+, which implies that
+% * > 2 , while - ^ " = 2 . (4)
+Equation (4) shows that halving the scale yields more than twice the number of
+chords or line segments.
+To derive Nn+1
+, hence Pn+i
+, from Axn+l
+, we can write equation (4) as
+Nn+1
+Ax, D
+Nn
+\Axn+1
+l
+where D > 1 in the given case. Equation (5) can also be written as
+p \D
+(5)
+Nn+l
+= -- n - \ , (6)
+\Axn+1
+;
+but, as Pn
+can be regarded as a base-level constant (a previous estimate of the
+perimeter), equation (6) can be simplified to
+A U = A A ^ . (7)
+The perimeter Pn+l
+is now calculated from equation (7) as
+= AA*,,1;/>. (8)
+More generally, the relation between any perimeter P and its scale Ax can be
+written as
+P O C A J C 1 " 0 . (9)
+We thus have two relationships for P, one in terms of area, as in equation (3), and
+one in terms of scale, as in equation (9). Combining these gives
+p oc AD/1 °c Axl~D . (10)
+It is tempting to try to equate these by considering how A relates to the scale, Ax.
+However, it is not possible to do this in general, for it is only meaningful in special
+cases where the geometry is known or assumed.
+Besides the area-perimeter, and perimeter-scale relations, there is a third which
+could be used to estimate the fractal dimension, D. This is the number-area rule,
+known as Korcak's law (Mandelbrot, 1977; 1983). It relates the number of or
+The morphology of urban land use 465
+fraction of areas, F[A), with an area greater than A, to the area itself as
+F(A) oc A~D/2 . (11)
+We will not use equation (11) in the sequel for it requires a much larger number of
+areas (in this case, land-use parcels) than the level of resolution of the example we
+have chosen permits. Nevertheless, there may be circumstances amongst the kinds
+of applications described here where it might be useful.
+Determining irregularity through the estimation of fractal dimension
+The area - perimeter and perimeter - scale relations in equations (3) and (9),
+respectively, are both power laws, the parameters of which can be estimated by
+means of least squares regression on their logarithmic transformations. However,
+the data for these estimations are quite different. For the area - perimeter relation,
+it would in theory be possible to measure the area and perimeter of an irregular
+object at different scales and perform the regression on these measurements; but
+the relation is more suited to estimation with a series of areas and perimeters
+associated with a set of objects, all of different sizes. If the relationship holds over
+many scales, more scaling detail will be picked up in larger objects than in smaller
+ones. In contrast, the perimeter-scale relation is best estimated by calculating
+perimeter lengths at different scales for the same object. Later in the paper, we
+will explore the consequences of these two methods and note some of the conceptual
+difficulties resulting from their comparison. In the rest of this section, however, we
+will concern ourselves solely with their estimation and with techniques for measuring
+the effects of scale.
+First, we will write the area - perimeter relation in equation (3) as
+P=0AfW (12)
+where </> is a constant of proportionality and t(D) is some power function involving
+the fractal dimension D, in this case f(D) = \D. Taking logs of equation (12) gives
+l n P = ln^ + f(X>)lnA , (13)
+where, in the case of equation (3), ln^ is the intercept and i(D) = \D is the slope
+of the regression line of the log of perimeter on the log of area. Clearly, the slope
+f(D) can take different functional forms from which D can always be derived, given
+an estimate of the slope. The perimeter - scale relation in equation (9) can also be
+generalised as
+P = AAx«W , (14)
+where A is a constant of proportionality and g(D) a power function, which in terms
+of equation (9) is g(Z>) = 1-D. Taking logs of equation (14) gives
+lnP = lnA + g(D)lnAx, (15)
+where In A is the intercept and g(D) = 1-D is the slope of the regression of the
+log of perimeter on the log of scale.
+The conventional fractal model based on the use of equation (3) in equation (13)
+and equation (9) in equation (15), has a linear form, which implies that D is scale-
+invariant. However, in some contexts, it can be hypothesised that dimension itself
+might vary with scale or area and, in this case, the linear form would be more
+complex. We have used a second model based on the notion that fractal dimension
+does vary systematically with scale to model the perimeter-scale relations for the
+boundaries of urban development in the town of Cardiff (Batty and Longley, 1987b).
+466 M Batty, P A Longley
+These models will also be tested here. In the case of the area-perimeter relation,
+the fractal dimension D can be hypothesised as f(D) = y^c+dA) which when used
+in equation (13) gives
+InP = Inf + hcXnA+hMlnA . (16)
+In equation (16), the coefficient \c has an analogous role to \D in equation (3) as
+applied to equation (13). The third term on the right-hand side of equation (1.6) is
+a dispersion factor which measures the nonlinearity of the area - perimeter relation.
+It is also clear that, as d -*- 0, c -+ D and equation (16) collapses back to the
+logarithmic transformation of equation (3).
+For the perimeter-scale relation, the hypothesis becomes g(D) = 1-D = a+bAx,
+where D is a linear function of the scale Ax. Using this in equation (15) gives
+InP = InX + alnAx+bAxlnAx. (17)
+As b -* 0, (1 -a)·-· D and equation (17) collapses back to the logarithmic
+transformation of equation (9) in equation (15). The third term on the right-hand
+side of equation (17) is a dispersion factor, again measuring the nonlinearity of the
+perimeter - scale relation, and thus acting as a kind of weighted entropy modulating
+the effect of the fractal dimension. In some contexts involving research into the
+stability of dimensions across scales, it has been postulated that the data are best
+fitted by a multifractal model in which several distinct regression lines can be
+discerned. In short, various ranges of scale are reflected by different dimensions
+(Kaye et al, 1985; Orford and Whalley, 1983). The model implied by equations (16)
+and (17) is the logical consequence of this multifractal specification (Suzuki, 1984).
+In the rest of the paper, this model based on the systematic variation of dimension
+with area or scale will be referred to as the modified model in contrast to the
+conventional model of equations (3) and (9) where dimension is scale-invariant.
+Estimating D for the two models from the area - perimeter relations in
+equations (13) and (16) is straightforward. For each land parcel, the area and
+perimeter can be easily measured and form the dependent and independent
+variables, respectively. The number of parcels in the study obviously affects the fit
+of the regression, and it may be necessary to identify and exclude outliers. However,
+the variation in scale within the observations forming the data set is only influenced
+by the prior selection of land parcels, not by any peculiarity of the area-perimeter
+measurement.
+In contrast, the perimeter - scale relations depend upon the choice of scale and
+the measurement of the perimeter associated with that scale for each individual
+object. In this case, we will form aggregate perimeters from more than one land
+parcel in the first instance. We have used four methods which enable these
+measurements to be made. These methods are examined in detail elsewhere
+(Longley and Batty, 1986), but they will be summarised here. The most accurate
+and time-consuming method involves traversing the perimeter of the object at
+different scales by 'walking' a pair of dividers set at an appropriate scale around
+the perimeter, thus enabling the perimeter to be derived as a function of the number
+of chords generated, Nn
+, and the divider length, Axn
+, used; that is, Pn
+= Axn
+Nn
+.
+This method was first used by Richardson (1961) to derive the log-log plots of
+perimeter versus scale, as implied by equation (15); these graphs have been
+subsequently called 'Richardson plots' by Kaye (1978) who also refers to the
+method as the structured walk, Richardson used a literal, hence manual, version of
+this method but here we are able to simulate the walk with a computer algorithm
+similar to that suggested by Shelby et al (1982).
+The morphology of urban land use 467
+The structured walk is time-consuming because it involves a trigonometric
+interpolation between the digitised points on the perimeter, to determine the
+location of the start and end points of each chord which approximate the perimeter
+at the given scale. To reduce the computer time required, a second method
+suggested by Kaye and Clark (1985), which they refer to as the equipaced polygon
+method, involves computing the approximation to the perimeter from chords based
+on successive sequences of every second, or third, or fourth (and so on) point
+defining the base-level perimeter. The chords at any level of aggregation are thus
+not equal to one another, but the aggregation is very quick. It is argued that this
+method enables deep fissures as well as heavily digitised sections of the base-level
+perimeter to be more clearly detected than by the structured walk method, since it
+takes account of the original digitisation of points which are rarely equally spaced.
+A third method which we call the hybrid walk method was first suggested by
+Clark (1986) as a compromise between the time-consuming structured walk and the
+quicker equipaced polygon method. As in the structured walk method, a divider
+length or scale, AJC, is fixed, but instead of interpolation of each chord onto the
+original base-level perimeter, the chord is fixed by approximating its end point as
+the nearest point on the original curve.
+The fourth and final method is based on approximating the perimeter by means
+of a grid of cells whose spacing is set at different scales over the range of scales
+adopted. At each scale, the perimeter is calculated by counting the number of
+cells which are astride the original curve, and it is thus called the cell count method
+(Goodchild, 1980). This is the only method in which scale aggregation is consistent
+over the entire area and perimeter of the object. In essence, it approximates the
+original curve by rasterised images at different scales, whereas the other three methods
+use the original curve to fix the scale at different levels. The cell count method is
+thus the least accurate with respect to the resolution of the original object, but is
+the most consistent with respect to objective scale aggregation.
+There are three additional features characterising the use of these methods.
+First, with N points defining the base-level curve, the perimeter values obtained
+are not independent of their starting point. Thus, each method has been applied
+by starting at each of the N digitised points and forming an average perimeter
+value from the N perimeter estimates obtained. For boundaries with several
+thousand points, a method such as the structured walk can take several hours of
+cpu time on a VAX 11/780 machine if an average perimeter is required for each
+scale. As we have had sole access to such a machine for several days at a time
+this has not constituted a problem; further details of these aspects of this kind of
+simulation are given in Longley and Batty (1986).
+Second, from each starting point, none of the methods will close exactly on the
+first and last points in the base-level curve. A fraction of the chord length will
+usually remain, and thus, in all applications, we have added these fractions to the
+perimeter values.
+Third, the range of aggregations used varies from scales which are fixed at the
+average chord length of digitised base-level data up to the value of the maximum
+spanning distance between any separate sets of points on the original object, this
+maximum being known as Feret's diameter (Kaye, 1978). Within this range, with a
+given number of aggregations to perform, the scales are determined in geometric
+progression so that they will be equally spaced with respect to the logarithmic
+regression.
+468 M Batty, P A Longley
+Applications to urban land use: the area-perimeter relations
+Swindon, Wiltshire, the town chosen for analysis, is located in south central
+England about 70 miles west of London. The town is quite compact and not
+affected in its form by any rapidly growing nearby towns. It has a reasonably
+buoyant economy which in the 1960s was a result of its designation as an expanded
+town, taking overspill population from Greater London. More recently, its
+favoured location in a rapidly expanding area of southern England has led to the
+location of new service and high-technology industries in and around the town
+itself. Figure 1 shows land use in the town in 1981. It is clear that, as the town
+has grown, it has absorbed villages in its immediate periphery. Figure 1 was
+compiled as a fairly aggregated land-use map from diverse data sources: remotely
+sensed data and local authority map records used by Rickaby (1987) as part of his
+studies into the energy requirements of small towns.
+The five land uses--residential, commercial - industrial, educational, transport,
+and open space--shown in figure 1 constitute the basic data for this study. The
+map was digitised with the Map Manager software (Bracken et al, 1987) and the
+land parcels were extracted in polygon form by means of conventional digital
+cartographic techniques in software developed by the authors. Figure 2 shows the
+polygons which constitute the land parcels; they are drawn to scale and classified
+according to the five land uses, but they are not arranged in any particular order.
+When one observes how these parcels fit together to form the overall map, the
+conundrum raised earlier relating to contiguous boundaries between different uses
+is immediately apparent. For example, the largest land parcel of all is part of the
+set of residential land uses shown in figure 2. In one sense, this parcel can be
+considered as the skeleton of the entire town, but it is clear that about half its
+Figure 1. Urban land use in Swindon, 1981.
+The morphology of urban land use · * 469
+boundary is common with other land uses; this raises the conceptual difficulty of
+making comparisons of the irregularity and form of this boundary with that of
+adjacent land uses. For the moment, we will assume that the different parcels can
+be treated separately, and we will pursue the estimation in this manner before
+commenting further on the problem later in this paper.
+Some characteristics of the digital representation of the five land uses are
+presented in table 1. There is considerable variation in the set of land uses and it
+is clear that no generalisations can be made about educational land use which
+comprises only three parcels; and there are limits to how far one can make
+inferences about the transport land use which comprises only six parcels. However,
+an examination of the average chord length of these data, which ranges from
+0.7266 to 0.8375 base-level units, indicates that the base-level digitisation is fairly
+independent of land-use type. The number of digitised points given in table 1 for
+each land use and for the total involves the double counting of common boundaries
+referred to above, in that the points which are common to any pair of land uses
+are included in each land use.
+Of the 6059 points which constitute the total number of points in each of the
+distinct land uses, there are only 2335 points which are not common to adjacent
+land-use boundaries. The remaining 3724 points which are common to various
+pairs of land uses are in fact counted twice (for each land use in each pair) and
+thus there are 1862 points which are common in the data set. In total, there are
+4197 distinct points in the set, 43% of these being common to adjacent land uses.
+In terms of the individual uses, 51% of the points defining the residential parcels are
+common to other uses, whereas over 90% of the points referring to open space are
+part of the boundaries of other land uses. These percentages, shown in table 1,
+give some indication of the position of the land uses within the town. For example,
+Residential
+Commercial - industrial
+j?^
+Educational
+Transport
+Open space
+A F
+Figure 2. Land parcels separated into distinct land uses.
+470 M Batty, P A Longley
+most of the open space is enclosed within the town itself, not on its edge, whereas
+educational land use is mainly on the town's edge. In table 1, the perimeter length
+refers to the sum of all the perimeters relating to a given land use and the Feret
+diameter represents the maximum spanning distance found amongst the parcels of
+any given land use. It is clear from this and from figure 2 that there is some
+considerable variation among land-use parcels with respect to size.
+We are now in a position to estimate the first set of fractal dimensions based on
+the area - perimeter relation. In figure 3, the log-log plots of perimeter against
+area are presented as scatter diagrams for each of the five sets of land uses in
+turn, and then for all five land uses making up the seventy-two land parcels in the
+town. These plots demonstrate strong relationships between perimeter and area,
+and it is difficult to detect any significant nonlinearity in their form. To these data
+we have fitted the conventional model based on using equation (3) in equation (13),
+which we can restate as
+l n P = l n ^ + i D l n A , (18)
+and the modified model given earlier in equation (16), which we will also repeat
+for convenience as
+InP = Infc + ^clnA+^dA^lnA (19)
+Note that we now distinguish the intercept terms in equations (18) and (19) as <f>x
+and <j>2
+, respectively.
+The results of these regressions are presented in table 2. With the exception of
+educational land use where there are only three observations, the adjusted R2
+(correlation) statistics for both sets of models are acceptable. There are no obvious
+outliers, for example, whose removal might improve these statistics. The modified
+model gives a slight improvement over the conventional one, but this is not
+significant. The fractal dimensions in the conventional model are as postulated,
+that is, 1 < D < 2, with the exception of the educational land use which we must
+exclude from serious analysis. Interpretations of the parameter c in the modified
+model are problematic because of the size of d. As d -+ 0, it is hypothesised that
+c -» D, but none of these results show any meaning in these terms in contrast to
+some previous work of the authors (Batty and Longley, 1987b). The conventional
+model is the only one acceptable here and excluding education, the analysis suggests
+that the commercial-industrial {D ~ 1.47) and transport land uses (D ~ 1.44) have
+more tortuous boundaries than those of residential (D ~ 1.33) and open space
+(D ~ 1.24). The dimension associated with all the land uses (D ~ 1.29) is clearly
+an average. All these results are consistent with other estimates from aerial data
+Table 1. Characteristics of digitised urban land use in Swindon.
+Land use Number Number of Number of Percentage
+of digitised common of common
+parcels points, N points points
+Residential
+Commercial - industrial
+Educational
+Transport
+Open space
+All land uses
+16
+18
+3
+6
+29
+72
+2989
+1030
+109
+510
+1421
+6059
+1534
+626
+17
+261
+1286
+3724
+51.4
+60.8
+15.6
+51.2
+90.5
+61.5
+The morphology of urban land use
+produced by applications of the area-perimeter method (Lovejoy, 1982; Woronow,
+1981) but the correlations are not as good. Nevertheless this provides a backcloth
+and comparison to the perimeter-scale analyses which now follow.
+2.0
+Residential
+§ 1.5 H
+O
+i.o H
+Commercial - industrial
+1 Transport
+O
+2.0 -i Open space
+1.5
+1.0
+0.5
+-i All land uses
+1 .
+· :
+*
+.
+·
+-i 1
+0.5 2.5
+1.0 1.5 2.0
+Log area (InA)
+Figure 3. Scatter plots of area-perimeter relations.
+Table 1 (continued).
+0.5 1.0 1.5 2.0
+Log area (InA)
+2.5
+Land use Mean Average Perimeter Feret's
+number of chord P = AxN diameter
+points per length AJC
+parcel
+Residential
+Commercial - industrial
+Educational
+Transport
+Open space
+All land uses
+186.8
+57.2
+36.3
+85.0
+49.0
+84.2
+0/7848
+0.8375
+0.7266
+0.8206
+0.7760
+0.7949
+2344.9
+861.8
+78.5
+417.7
+1106.2
+4816.3
+119.5
+42.4
+11.5
+52.8
+52.9
+119.5
+472 M Batty, P A Longley
+Table 2. Parameters associa
+Land use
+Residential
+Commercial -
+industrial
+Educational
+Transport
+Open space
+All land uses
+a See equation (18)
+b See equation (19)
+ted with the
+Conventional model3
+D
+1.3310
+1.4779
+0.5694
+1.4471
+1.2435
+1.2961
+I in text.
+> in text.
+100 xR2
+92.4
+92.3
+11.1
+91.3
+89.2
+88.0
+area-perimeter relations.
+Modified modelb
+c
+0.4996
+0.3068
+-15.4265
+3.9956
+-0.7104
+0.3398
+d
+0.2289
+0.3608
+5.4611
+-0.8450
+0.6932
+0.3006
+100 xR2
+92.5
+92.6
+not computed
+95.0
+92.5
+89.2
+Estimation using aggregated perimeter-scale relations
+Before we introduce the analysis based on perimeter-scale relations, it is worth
+discussing the degree of irregularity associated with different land-use patterns as
+we perceive them in a priori terms. In examining the five land uses, we might
+argue that open space is more likely to be defined according to the boundaries
+imposed by natural terrain, in contrast to more artificially determined land uses
+such as the commercial-industrial and transport uses. Residential land use is
+likely to have a degree of irregularity in its form somewhere between these
+extremes, as might educational use. With respect to the area - perimeter relations,
+this a priori ranking of open space, residential, educational, commercial-industrial,
+transport is not borne out at all by the fractal dimensions. Indeed, table 2 implies
+somewhat the reverse, but the Rh are lower than anticipated and it is possible that
+area-perimeter relations do not capture scale effects to the same precision as
+methods based on perimeter-scale relations.
+However, to be consistent with the area-perimeter analysis, it is necessary to
+devise a way of determining single fractal dimensions for each set of land parcels
+according to land-use types. In a later section, we will look at the variation in
+fractal dimension across land parcels and types, but here we will begin by defining
+a global (or total) perimeter for each land-use set. Were we simply to calculate a
+single total perimeter for each land use based on all its parcels, and regress these
+against scale, this would be similar to our previous analysis as scale would be a
+proxy for area. What we have done in fact is to calculate a total perimeter for
+each land use by stringing together the individual land-parcel perimeters in the
+arbitrary order in which the parcels and their coordinate points have been digitised.
+We have also derived a total of total perimeters in the same way which contains all
+the points relevant to each land parcel over all land uses.
+In figure 4, we show these total perimeters for each of the five land uses. These
+are not drawn to the common scales of the parcels contained in figures 1 and 2,
+but are scaled up or down to be roughly comparable in area when displayed on a
+graphics terminal. It should be quite straightforward to identify the land parcels
+from their classification in figure 2. The total perimeters are in fact derived by
+centring the first digitised point of each land parcel on a common point and
+producing a string of coordinates in the order in which each land use was digitised.
+The educational and transport land uses with the fewest land parcels show this
+most clearly in figure 4. We have not included the total of total perimeters because
+it is not possible to produce a clear and clean plot as a result of the continual over-
+lapping of boundaries; we will, however, use this total in the subsequent analysis.
+The morphology of urban land use 473
+From these base-level perimeters, aggregations across the given range of scales
+yielding approximate perimeters provide the data for estimating the parameters of
+the perimeter - scale relation. Two issues are important. First, the order and
+orientation of the land parcels forming the total perimeter could be crucial, and
+second the aggregations should not be so great as to pick up the aggregate shape
+of these composite perimeters which is clearly quite arbitrary. Order and orientation
+have been varied and this makes little difference to the subsequent results, but the
+Figure 4. Aggregate perimeters for the five land uses.
+474 M Batty, P A Longley
+aggregate shape problem does affect the estimated dimensions. In fact, this leads
+to a reestimation of the perimeter - scale relations with a reduced set of aggregations
+which will be reported in the next section.
+The number and scale of the aggregations for each of these perimeters, which
+provide the set of observations for the log-log regressions, are fixed so that each
+observation is of equal weight in the estimation. The limits of aggregation for the
+structured walk, hybrid walk, and cell count methods are first calculated as follows.
+The maximum spanning distance or Feret diameter, F, is computed from
+F = max{4,} , where ]
+"' . (20)
+dtj
+= [(x-x^ + iy-yjfr2 ; J
+dtj
+is the distance between two distinct points referred to as / and j in the base-
+level TV-coordinate data set which defines the total perimeter from the coordinate
+pairs xt
+yt
+(i = 1, ..., N). The average chord length, d, in this data set is given as
+*-?&· <2i»
+where there are N-- 1 chords making up the base-level perimeter.
+The sequence of aggregations where d represents the first chord size and F
+represents the last, and where m is the number of aggregations, is given by
+F = am~ld. (22)
+In fact, the starting point is set as the minimum, not average, chord size, and this
+can be represented as a fraction, JLL, of d. Therefore, equation (22) becomes
+JUF = am~xiid. (23)
+The weight a scales one chord size to the next in the sequence of aggregations
+and this is computed from equations (22) or (23) as
+a = expb^rJ- (24)
+This method of aggregating perimeters can only be applied to the structured walk,
+hybrid walk, and cell count methods of approximation, for the equipaced polygon
+method does not involve distances between points, only the order of points in the
+base-level data set.
+A similar method of weighting is used, however, involving numbers of base-level
+chords, not length based on distances. As the number of base-level chords used to
+form a new chord increases, the actual length of the new chord increases and this
+is akin to aggregation to larger distance scales. Then, if the number of original
+points needed to approximate the coarsest acceptable perimeter is Nm3LX
+and the
+minimum number Nmin
+, the sequence of chord sizes in the sequence of aggregations
+is given as
+M = a
+m~lN · (25)
+iymax ** iymin > \^uI
+from which a is determined in the same way as previously; that is, as
+(lnJVmax
+-lnJVmin
+^ . *
+a = exp . (26)
+\ m-\ J
+In fact, Nmin
+is always 2, and iVmax
+is set as N/6, thus implying that the number of
+chords defining the most aggregate perimeter is 6; this would make the top level of
+The morphology of urban land use 475
+The algorithm used to aggregate the original chords on each iteration into new
+perimeters uses a in equation (26) only as a guide. Clearly the number of chords
+must be integral, not real, thus equation (25) involves truncation or addition to
+create integer numbers. The number of aggregated chords on each iteration n+1
+is given as Nn+1
+= int{aNn
+). However, if Nn+1
+is equal to Nn
+, then Nn+1
+is increased
+by one chord length, that is Nn+1
+= Nn
++ 1. In the application of these algorithms,
+we have set m as 100 in each case. In fact, for the equipaced polygon method,
+although this also applies, the actual number of aggregations made is always less
+than 100 because of the discrete conditional nature of the aggregation.
+Residential
+V ^
+V *
+Commercial - industrial
+* \
+-i i r" r
+Educational Transport
+X ,
+"**»*·
+Open space
+- 1
+· * * * « * · *
+V
+V
+All land uses
+" H ^
++A
+1 2
+Log scale (InA*)
+1 2
+Log scale (InA*)
+Figure 5. Richardson plots of perimeter-scale with the structured walk method.
+476 M Batty, P A Longley
+The observations produced by applying each of these four methods to the five
+total perimeters and the total of totals are shown as Richardson plots in figures 5-8.
+Before the associated regressions are discussed there are several points to note.
+First, there are quite clear upper scale effects caused by aggregation to too high a
+level. These are seen as departures from the trend of each graph and as obvious
+twists and turns in the tails of some of the plots. Second, these plots show strong
+evidence of nonlinearity suggesting, as in previous work (Batty and Longley, 1987b;
+Orford and Whalley, 1983), that the modified model, where fractal dimension varies
+with scale, is more applicable than the conventional model. Third, the equipaced
+polygon method gives cause for concern in that the algorithm attempting equal
+Residential Commercial- industrial
+" 1 Educational
++ + +
+Transport
++ + + + ++^+4+
+- i 1 1 r
+Open space
+1
+All land uses
+0 1 2 3 4 - 1 0 1 2
+Log scale -(InAx) Log scale (InAx)
+Figure 6. Richardson plots of perimeter-scale with the equipaced polygon method.
+The morphology of urban land use 477
+weighting does not perform well in establishing equal spacing of observations or in
+meeting the fixed number (m = 100) of aggregations; and there are clear twists in
+the tails of the associated plots at the higher levels of aggregation. Last, the
+aggregation, in the case of educational land use, over 100 levels is problematic in
+that there are only 109 digitised points in the total perimeter set as shown in table 1.
+We will present the fractal dimensions derived from the conventional and modified
+models for all the plots shown in figures 5-8, notwithstanding the fact that the
+equipaced polygon method and educational land use are, in the sense just described,
+likely to yield unreliable results. In table 3, we show the fractal dimension D
+computed from the slope of the regression line, g{D) = 1 -D, as in equation (9)
+Residential
+\
++ ^ V
+Commercial - industrial
+\
+- i 1 1 -- T -- r
+9 "I Educational
+~ \
+JX
+Transport
+4rt**%*^,
+"·"V
+9 "I Open space i All land uses
+^-x
+\
+- 1 0 1 2 3
+Log scale (InA*) Log scale (InA*)
+Figure 7. Richardson plots of perimeter-scale with the hybrid walk method.
+478 M Batty, P A Longley
+applied to equation (15) which involves the conventional model; and we also show
+the performance of the model in terms of 100 x R2 statistics. In table 4, we show the
+same for the modified model as given in equation (17)., In this table, we first give the
+fractal dimension D derived from the coefficient a as 1 - a, and then we give the
+dispersion coefficient, b, noting of course that as b ~* 0, D ~* 1 -- a.
+It is immediately clear from tables 3 and 4 that the modified model in which
+dimension is a function of scale gives by far the best performance over all methods
+and land uses. Yet the equipaced polygon and hybrid walk methods produce
+strange results for the modified model, in that fractal dimensions are less than 1 in
+four cases. In the case of the conventional model, these methods also appear to
+give D values higher than anticipated. With respect to the ranking of D values
+Residential Commercial - industrial
+Educational
+9 -| Open space
+Transport
+All land uses
+0 - 1 0
+1 2 3 4
+Log scale (InAx) Log scale (InA*)
+Figure 8. Richardson plots of perimeter-scale with the cell count method.
+The morphology of urban land use 479
+from table 3, there is, however, a fairly consistent order over all methods in which
+open space, all land uses, and commercial - industrial have higher fractal dimensions
+than residential, which in turn is higher than educational and transport.
+A more disordered set of ranks is associated with the modified model, although
+there are some similarities with the conventional model results, and in any case,
+the dispersion coefficients pick up the nonlinearity in the relations and hence
+influence the value of D. In this respect, the dispersion coefficients are quite low
+for most land uses. To summarise, then, if the equipaced polygon and hybrid
+methods which seem to pick up inappropriate larger scale effects, are ignored, the
+structured walk and cell count methods produce a ranking of fractal dimensions
+across all land uses (with the exception of educational) according to our a priori
+expectations. At this stage, it is even possible to say that variations in dimension
+and coefficients between land uses are clearly wider than between methods, and
+this implies that the choice of method is less significant than the division into
+standard types of land use.
+Table 3. Fractal dimensions based on the conventional model.
+Methoda'b
+Structured
+walk
+Equipaced
+polygon
+Hybrid
+walk
+Cell count
+Residential
+1.4505
+(90.3)
+1.6941
+(85.3)
+1.4957
+(90.4)
+1.4475
+(93.9)
+Commercial -
+industrial
+1.5080
+(77.3)
+2.0660
+(61.9)
+1.5661
+(75.7)
+1.4988
+(87.2)
+Educational
+1.3964
+(84.2)
+1.2738
+(82.7)
+1.4424
+(79.9)
+1.4016
+(94.6)
+Transport
+1.2896
+(83.6)
+1.3004
+(81.1)
+1.3137
+(80.3)
+1.2936
+(92.0)
+Open space
+1.5927
+(88.0)
+1.9566
+(68.7)
+1.6656
+(86.0)
+1.5429
+(93.7)
+All land
+uses
+1.5702
+(86.7)
+2.0208
+(79.5)
+1.6191
+(86.2)
+1.5713
+(90.9)
+a The structured walk, hybrid walk, and cell count methods are based on 100 aggregations
+for each land use (that is, m = 100). The equipaced polygon method has m = 72, 68, 17,
+53, 65, and 75 for the five land uses and all land-use applications. These m values also
+pertain to the modified model results in table 4.
+b The entries in the table are the fractal dimension, D = l-g(D), with the 100 x R2 statistic
+given in parentheses.
+Table 4. Fractal dimensions based on the modified model.
+Methodab Residential Commercial- Educational Transport Open space All land
+industrial uses
+Structured
+walk
+Equipaced
+polygon
+Hybrid
+walk
+Cell count
+1.2721
+-0.0036
+(98.1)
+1.1873
+-0.0107
+(99.7)
+1.2499
+-0.0062
+(99.4)
+1.3327
+-0.0023
+(97.2)
+1.0757
+-0.2121
+(99.5)
+0.5588
+-0.0608
+(94.1)
+0.9563
+-0.0365
+(97.7)
+1.2039
+-0.0145
+(99.3)
+1.0576
+-0.0408
+(99.1)
+1.0058
+-0.0359
+(98.8)
+0.9254
+-0.0818
+(97.8)
+1.2235
+-0.0215
+(99.1)
+1.0957
+-0.0058
+(99.2)
+1.0453
+-0.0075
+(99.9)
+1.0401
+-0.0108
+(97.4)
+1.1903
+-0.0031
+(96.8)
+1.2917
+-0.0122
+(98.0)
+0.7161
+-0.0637
+(95.6)
+1.1575
+-0.0272
+(99.6)
+1.3747
+-0.0068
+(97.6)
+1.2907
+-0.0056
+(98.1)
+1.1758
+-0.0199
+(97.4)
+1.2253
+-0.0098
+(99.6)
+1.3744
+-0.0040
+(96.7)
+a See footnote a, table 3.
+b The entries in the table are the fractal dimension, D = 1 - a and the dispersion coefficient,
+b, with the 100 x R2 statistic given in parentheses.
+480 M Batty, P A Longley
+However, the really important point at issue here is the presence of unwanted
+and arbitrary scale effects in the data. It is quite clear from figures 5-8 that we
+must remove the highest aggregations from all these plots. In doing so, we also
+immediately remove some of the nonlinearity from the data, thus hopefully
+improving the conventional model estimates as well as resolving some of the
+anomalous dimensions evident in tables 3 and 4.
+Reestimation of the perimeter-scale relations
+The range of aggregations with respect to the structured walk, cell count, and
+hybrid walk methods as given in equations (23) and (24) begins with the first and
+last chord lengths set as low as 70% of the average distance, d, and Feret
+diameter, F, for residential land use, to as high as 99% of d and F for the
+educational land use. Shelby et al (1982) recommend that the starting points
+should be no lower than \d and Kaye (1978) recommends the end point be no
+higher than \F. The lower limits (jud) we have used do not pose any problem, but
+the upper limits {juF) yield approximations to the total perimeter with as few as
+two chords and only as many as five chords. An approximation to the boundary
+of any irregular object can never be made in less than six chords and in the case
+where we have up to thirty land parcels forming an aggregated perimeter, it could
+be argued that we should never go below 180 chords. Below this level we
+unwittingly include scale effects which pick up the arbitrariness of the 'constructed'
+perimeters; these are also sensitive to order and orientation of the land-parcel
+strings. In terms of this argument, it would appear that we should take an upper
+limit no greater than 20% of Feret's diameter, that is ju = 0.2.
+From an examination of figures 5-8, it is quite straightforward to determine
+cutoff limits at the upper tails of each plot which would remove those observations
+clearly sensitive to these unwarranted scale effects. We have defined these cutoff
+limits in these figures, showing the number of observations each set has been
+reduced to. This varies for the structured walk methods from 9% to 22% of the
+original set to as little as between 5% and 10% in the case of the equipaced
+polygon methods. From figures 5-8, it is clear that we could impose even harsher
+constraints on the observations used, but, although this would probably improve
+the results still further, relevant scale effects would probably be removed too.
+Tables 5 and 6 show the reestimations of the two models using the four methods
+applied to each land use and the total of all land uses. There are marginal
+increases in the performance of the conventional model as comparisons between
+Table 5. Reestimation of the fractal dimensions for the conventional model.
+Methoda'b
+Structured
+walk
+Equipaced
+polygon
+Hybrid
+walk
+Cell count
+Residential
+1.4031
+(89.2)
+1.6629
+(85.0)
+1.4578
+(91.1)
+1.4225
+(92.5)
+Commercial -
+industrial
+1.3888
+(78.6)
+1.7472
+(62.4)
+1.4769
+(79.3)
+1.4516
+(87.0)
+Educational
+1.2291
+(91.0)
+1.2437
+(86.0)
+1.2907
+(85.3)
+1.3289
+(98.0)
+Transport
+1.2099
+(89.7)
+1.2732
+(82.3)
+1.2393
+(89.5)
+1.2627
+(89.2)
+Open space
+1.4992
+(86.9)
+1.9163
+(68.9)
+1.5735
+(87.7)
+1.5158
+(92.4)
+All land
+uses
+1.4861
+(86.4)
+1.9933
+(78.7)
+1.5596
+(86.9)
+1.5408
+(89.1)
+a The numbers of observations used for each regression are indicated in figures 5-8.
+b The entries in the table are the fractal dimension, D = l-g(D), with the 100 xR2 statistic
+given in parentheses.
+The morphology of urban land use 481
+tables 3 and 5 indicate. There is increased consistency between the methods with
+respect to the dimensions estimated, with the exception of the equipaced polygon
+method. This is the most volatile of all the methods, with the structured walk
+being the most consistent in terms of the original estimation and the reestimation.
+With respect to the ranking of land uses by dimension, an even clearer pattern
+emerges. Those with the higher fractal dimensions are open space and all land
+uses, then commercial - industrial and residential, with much lower dimensions for
+educational and transport uses. This bears out the a priori analysis even more
+strongly, but it must be noted that the performance of the conventional model is
+only just adequate.
+The modified model results shown in table 6 are even better than those of
+table 4. The ranking pattern is more variable than that of the conventional model
+with the commercial-industrial, educational, and open space land uses having the
+highest degree of nonlinearity as measured by the dispersion coefficient. The equi-
+paced polygon method somewhat ironically perhaps, has by no means the worst
+performance, but it still generates coefficients out of line with the other methods.
+As with the conventional model, the structured walk provides the most consistent
+results over each land use, and together with the cell count method gives the best
+performance.
+It is now worth summarising all these results with respect to the fractal dimensions
+produced. In figure 9, an attempt is made to capture the variations in dimension
+obtained across all methods and land uses in a single diagram. Each of the
+diagrams shows this variation with respect to the area-perimeter, conventional
+perimeter-scale, and modified perimeter - scale methods, the last two being shown
+with respect to their original estimation and reestimation. It is quite clear from
+these plots that the equipaced polygon method is the most problematic and should
+be excluded. Yet the structure of these results does show that there are greater
+differences between land uses than between methods, and this bears out the
+original hypothesis that such differences can be detected and possibly explained
+with respect to the processes governing the formation and evolution of different
+land-use activities. We will say more about this in our conclusion, but before we
+explore the variations between land parcels, we have averaged the dimensions
+produced in the last three sections, and these are shown, together with those of the
+subsequent section, in table 7.
+Table 6. Reestimation of the fractal dimensions for the modified model.
+Methoda>b
+Structured
+walk
+Equipaced
+polygon
+Hybrid
+walk
+Cell count
+Residential
+1.2128
+-0.0059
+(99.0)
+1.1618
+-0.0115
+(99.9)
+1.2373
+-0.0067
+(99.4)
+1.2609
+-0.0050
+(99.2)
+Commercial -
+industrial
+1.0497
+-0.0233
+(99.6)
+0.7001
+-0.0515
+(92.1)
+1.0167
+-0.0307
+(98.8)
+1.1657
+-0.0175
+(99.7)
+- Educational
+1.0696
+-0.0346
+(98.6)
+1.0302
+-0.0311
+(99.6)
+1.0236
+-0.0574
+(96.1)
+1.2494
+-0.0151
+(99.1)
+a The numbers of observations used for each regression
+b The entries in the table are the fractal dimension, D =
+b, with the 100 xR2 statistic given in parentheses.
+Transport
+1.0938
+-0.0058 -
+(99.3)
+1.0479
+-0.0074 -
+(99.9)
+1.0929
+-0.0072 -
+(99.4)
+1.1105
+-0.0076 -
+(99.6)
+are indicated
+Open space
+1.2028
+-0.0187
+(98.6)
+0.0739
+-0.0622
+(95.2)
+1.1765
+-0.0259
+(99.5)
+1.3035
+-0.0117
+(98.4)
+in figures 5 ·
+1 - a and the dispersion
+All land
+uses
+1.2195
+-0.0082
+(99.1)
+1.1175
+-0.0219
+(98.0)
+1.2158
+-0.0101
+(99.7)
+1.2846
+-0,0072
+(99.1)
+-8.
+coefficient,
+482 M Batty, P A Longley
+Commercial -
+industrial
+Area-perimeter relations
+&
+&M
+,#° 4;;
+Fractal dimension \ /
+1 1 1
+2.5 2.0 1.5
+% m
+\\w
+\ \
+%
+\
+1.0
+1 A
+0.5/ \
+;;^;;;;X%-
+y/:::::::i\*Q>
+rOii!iiii;!ii\%.
+^:::::::::»A %
+>::::::::::::/ #'
+tfiiiiiiiiiiii/b
+fe;;;;;;7>
+ipr ^
+Open space
+Conventional model
+Perimeter-scale relations
+Conventional model: 1st estimates Conventional model: 2nd estimates
+Modified model: 1st estimates 2nd estimates
+Structured walk
+Equipaced polygon
+Hybrid walk
+Cell count
+Figure 9. Variations in fractal dimensions with respect to models, methods, and land uses.
+The morphology of urban land use 483
+It is clear that the area-perimeter method produces quite different results from
+the perimeter - scale methods, but that the patterns produced by the perimeter -
+scale methods are more robust and consistent with our a priori theorising. For the
+conventional model, the fractal dimensions vary from D ~ 1.55 for open space and
+all land uses to D - 1 . 4 5 for residential and commercial - industrial to D ~ 1.30
+for educational and transport. With respect to the modified model D ~ 1.25 (in its
+limit) for open space, all land use, and residential, whereas for the other three land
+uses, 1.00 < D < 1.10. This implies that these last three land uses present greater
+nonlinearity; that is, their fractal dimensions vary more strongly with scale. These
+results mask the wide variation in dimension between land-use parcels within any
+land-use type, and do not in any way address the equality of fractal dimension
+over common boundaries between different land uses. We will address some of
+these questions in the next section.
+Table 7. Fractal dimensions 'averaged' over methods of aggregation.
+Method/model Residential Commercial- Educational Transport Open space All land
+industrial uses
+Area-perimeter method
+Conventional model 1.33 1.47 0.56 1.45 1.24 1.29
+Perimeter- scale method
+Conventional model
+1st estimates
+2nd estimates
+Modified model
+1st estimates
+2nd estimates
+Average land parcels
+Conventional model
+Modified model
+1.46
+1.42
+1.28
+1.23
+1.15
+1.08
+1.52
+1.43
+1.07
+1.07
+1.10
+1.05
+1.41
+1.28
+1.06
+1.10
+1.09
+1.05
+1.29
+1.23
+1.10
+1.10
+1.11
+1.06
+1.59
+1.51
+1.27
+1.22
+1.13
+1.08
+1.58
+1.52
+1.29
+1.23
+1.13
+1.07
+Fractal dimensions of individual land parcels
+Figure 2 shows that there are seventy-two distinct land-use parcels, although in the
+previous analysis the inner boundaries of some residential land parcels, where such
+boundaries existed, were added to the aggregate perimeters. There are eight such
+inner boundaries, all relating to residential land use as shown in figure 2, and in the
+subsequent analysis they are treated as separate land parcels, thus augmenting the
+number of parcels treated to eighty. First, all four aggregation methods--the
+structured and hybrid walks, the equipaced polygon, and the cell count methods-
+were applied to each of the eighty parcels, with the number of aggregations structured
+in geometric form as implied by equations (21)-(25) but with a fixed and m
+varied accordingly.
+In the case of the equipaced polygon method, the aggregation of sixteen perimeters
+out of the eighty possible yielded too few observations for any subsequent regression.
+The other methods produced Richardson plots that were generally more linear than
+those shown in figures 5-8 and therefore it was decided to fit the conventional
+model to all sets of observations generated. The R2-values ranged from 83.3% to
+99.9% in the case of applying the equipaced polygon method, but it was the
+structured walk that produced the most consistent plots in contrast to the hybrid
+and cell count methods which were more volatile across the land parcels. Some
+methods produced dimensions for individual land parcels outside the range
+1 < D < 2. It was therefore decided to pursue more detailed analysis and model
+fitting using a narrower range of observations taken from the structured walk
+484 M Batty, P A Longley
+Commercial -
+industrial
+Residential
+Educational
+Transport
+2 1 0
+I -- I 1 -- I 1 1
+Fractal dimensions
+Open space Land-parcel numbers
+0.90 0.95 1.00
+I I 1 1 1 1
+R2 statistics
+Conventional model
+Fractal dimensions, D
+Conventional model, R2
+Modified model
+Parameter estimates, 1 - a
+Modified model, R2
+Figure 10. Fractal dimensions of individual land parcels.
+The morphology of urban land use
+method only. In fact, the emphasis in this section is on the variation between land
+parcels, not on the variation between methods, hence the choice of the most robust
+method to generate the perimeter - scale observations.
+The application both of the conventional and of modified models is shown in
+figure 10 with respect to their fractal dimensions and associated #2-statistics. The
+results for each land parcel are shown in the arbitrary order of figure 2 according
+to the way the parcels were digitised but ordered within land-use types as given
+previously. All fractal dimensions for the conventional model are in the postulated
+range from 1 < D < 2. For the largest land parcels, the dimensions appear higher
+than for the rest but a regression of the number of digitised points of all parcels
+on their conventional model dimensions yields an i?2-value of only 15.6%. With
+respect to the five sets of land uses, these Revalues were more variable, rising to
+68.6% in the case of commercial - industrial. But in general, there does not appear
+to be a strong bias to higher dimensions for those land-use parcels with the highest
+number of perimeter coordinates. Figure 10 also shows that the parameters of the
+modified nonlinear model are consistent with the range of 1 < D < 2, and the
+level of dispersion reflecting the nonlinearity of each parcel over scale, is fairly
+modest in every case.
+One way of summarising these parameters and statistics is by computing means
+and standard deviations. Table 8 presents these results for both models. The
+parameters and dimensions in this table are in their original form as predicted
+from the application of equations (15) and (17), that is, the coefficient of the
+conventional model is a, a = g(D) = 1 -- D, and the coefficients for the modified
+model are a and b, where a -* (1 -- D) as b --> 0 {b is the dispersion parameter).
+Table 8 presents the variation in size of the land parcels for each land use and
+over the whole set in terms of their mean number of coordinates. The distribution
+of these coordinates with respect to the number of land parcels is skewed, with a
+much greater proportion of parcels below their mean size. In the case of the
+residential parcels, this distribution is highly skewed, largely because of the
+existence of the one large parcel which provides the skeletal structure of the town.
+The variation in parameters and performance of the models, however, is much
+less than the variation in the features of the land parcels themselves. Figure 10
+makes this apparent, and these results are averaged for each land use over all
+parcels in table 8. With respect to the conventional model, the /?2-values only
+range from 93.4% in the case of residential parcels down to 91.9% for transport
+and the range with each land use over the land parcels is also quite narrow. The
+fractal dimensions D also show a pattern over the land uses which is consistent
+with the aggregated perimeter - scale results but is considerably clearer. The ranking
+of land uses from largest to smallest D is ordered from residential {D ~ 1.15),
+open space (1.13), transport (1.11), commercial - industrial (1.10), and educational
+(1.09) with an average over all land uses of 1.13. These values are considerably
+smaller than those shown previously, yet they are more in line with previous work
+(Batty and Longley, 1987a; 1987b). In fact, the largest residential parcel (see
+figure 2) is just one of five parcels which has a dimension greater than 1.20. From
+these results it is quite clear that the much higher dimensions produced by the
+aggregated perimeter - scale relations are caused by the method of aggregating
+individual perimeters into strings of coordinates. It would appear that the aggregation
+picks up arbitrary scale effects which are central to the method itself and not the
+order or orientation of the individual parcels in the process of forming these
+composite perimeters.
+The modified model results also shown in table 8 have a wider range of variation
+around their mean estimates than those of the conventional model. In terms of the
+486 M Batty, P A Longley
+Table 8. 'Average' dimensions and statistics for the individual land parcels.
+Zones Total no. of Mean no. of ac
+a = 1-Dl
+oDi
+100 XjR2
+coordinates coordinates
+Residential
+Commercial -
+industrial
+Educational
+Transport
+Open space
+24
+18
+3
+6
+29
+2989
+1030
+109
+510
+1421
+124.5
+57.2
+36.3
+85.0
+49.0
+317.2
+33.3
+6.65
+65.8
+38.9
+-0.152
+-0.105
+-0.091
+-0.113
+-0.132
+0.063
+0.061
+0.035
+0.040
+0.046
+93.4
+92.0
+92.1
+92.0
+92.8
+All land 80 6059 75.7 177.4 -0.129 0.057 92.7
+parcels
+Note: The standard deviations are defined as: ac
+of the coordinates, aDi
+of the slope
+parameter a in the conventional model, aD2
+of the parameter a in the modified model, oh
+of
+the parameter b in the modified model, and oR
+i of the R2 fits of the appropriate model to the
+land-parcel data.
+ranking of the parameter a, the residential, open space and all land-use parcels
+have a dimension higher than those of transport, commercial-industrial, and
+educational, in that order, although these values are over a narrower range. The
+values of the dispersion factors show this order and the i?2-estimates, although
+slightly better than those of the conventional model, are not as high as those
+produced by the aggregate perimeter - scale relations. Nevertheless, the nonlinear
+model is an improvement over the linear and, in general, these results for the
+individual parcels are better than originally anticipated.
+Conclusions
+The analysis presented here is generally inconclusive. At most, it would appear
+that residential and open space land uses have a greater degree of irregularity than
+commercial-industrial, educational, and transport. There is a logic here which we
+spelt out before we began the analysis in that, for land uses which are larger in
+scale, there is likely to be less effort put into the geometric control of land under
+development. Yet there remains considerable uncertainty over the processes in
+operation. We have, however, shown that, in general, scale effects vary with scale
+itself, and this is likely to be the result of multiple processes changing their relative
+importance through the range of scales. This argument was spelt out by Batty and
+Longley (1987b) and is further confirmed here.
+We have added to table 7 the results of the last section where the whole range
+of models and methods applied throughout this paper are displayed in suitably
+'averaged' form. This shows up the arbitrariness of the analysis, with open space
+varying from D ~ 1.59 to D ~ 1.13 and residential land use from D ~ 1.46 to
+D ~ 1.15 for the linear conventional model. In previous work, the methods them-
+selves have been subject to considerable variation, but here despite some mild
+association of dimension values with land uses, the main variation concerns the
+way area, perimeter, and scale are defined and the type of approach or method
+taken.
+Questions of scale are never very clear in much fractal analysis, despite the fact
+that fractals are defined by scale-invariance. In the area-perimeter method it is
+assumed that objects of varying sizes show the effects of varying scale itself
+(Woronow, 1981). In short, a small residential development will not pick up the
+aggregate scale effects which can be detected by a large-scale development; so
+The morphology of urban land use 487
+Table 8 (continued).
+a = 1-D2
+oDi
+b ob
+100 XR2
+3.3
+3.1
+4.3
+2.2
+3.6
+3.3
+-0.079
+-0.050
+-0.047
+-0.065
+-0.077
+-0.071
+0.063
+0.042
+0.005
+0.028
+0.048
+0.051
+-0.029
+-0.018
+-0.022
+-0.006
+-0.030
+-0.024
+0.022
+0.011
+0.018
+0.001
+0.025
+0.021
+97.2
+97.9
+95.2
+96.0
+96.6
+96.9
+1.8
+1.6
+3.1
+3.9
+2.3
+2.3
+runs the logic. However, this will depend on the base level of resolution in the
+first place and there is seldom much discussion of this in the literature. The
+method of aggregating perimeters used in the composite perimeter-scale analyses
+of land uses, is also suspect because of arbitrary scale effects which can be produced,
+despite careful control over the process of aggregation. Last the individual land-
+parcel analysis using conventional perimeter - scale, not aggregated relations, suffers
+from its very inability to aggregate parcels, other than by arbitrary statistics such as
+simple averages.
+What is clearly required in future work is a close examination of these approaches
+in terms of scale effects. We have paid great attention to problems of denning
+scale limits and ranges here, but on reflection, our analysis should have reduced
+the range of scales much further. New methods are required which are more
+robust than those used here, and we should now accept that in the perimeter - scale
+analysis, the hybrid walk and equipaced polygon methods should be abandoned in
+favour of methods such as the structured walk and cell count methods whose
+properties of aggregation are better understood.
+The final conclusion we will draw relates to more substantive questions. Although
+we have tackled individual and aggregate analysis here, much finer analysis of the
+fractal dimension of parts of perimeter boundaries is required. With k land uses,
+there are \k(k+l) possible pairwise boundaries to examine separately. Better
+classification of the fractal shapes of land parcels will not emerge until the
+common boundary problem is directly broached. This must involve a detailed
+examination of how such boundaries are formed and how they evolve over time.
+By explaining the development process, more satisfactory explanations can be given
+of the way land uses 'stick' to each other to form the whole town. Only by
+extending the analysis along these lines can conclusive results about the ways in
+which urban morphologies are structured and evolve, be demonstrated.
+References
+Aviles C A, Scholz C H, Boatwright J, 1987, "Fractal analysis applied to characteristic
+segments of the San Andreas Fault" Journal of Geophysical Research 92 331-344
+Batty M, Longley P A, 1987a, "Fractal-based description of urban form" Environment and
+Planning B: Planning and Design 14 123-134
+Batty M, Longley P A, 1987b, "Urban shapes as fractals" Area 19 215-221
+488 M Batty, P A Longley
+Bracken I, Holdstock S, Martin D, 1987, "MapManager: intelligent software for the display
+of spatial information", Report 3, Wales and South West Regional Research Laboratory,
+University of Wales at Cardiff, Cardiff
+Clark N N, 1986, "Three techniques for implementing digital fractal analysis of particle
+shape" Powder Technology 46 45-52
+Goodchild M F, 1980, "Fractals and the accuracy of geographical measures" Mathematical
+Geology 12 85-98
+Goodchild M F, Mark D M, 1987, "The fractal nature of geographic phenomena" Annals of
+the Association of American Geographers 77 265-278
+Gould S J, 1966, "Allometry and size in ontogeny and phylogeny" Biological Review 41
+587-640
+Kaproff J, 1986, "The geometry of coastlines: a study in fractals", in Computers and
+Mathematics with Applications 12B 651-671; also reprinted in Symmetry: Unifying Human
+Understanding Ed. K Hargittai (Pergamon Press, Oxford) pp 655-671
+Kaye B H, 1978, "Specification of the ruggedness and/or texture of a fineparticle profile by
+its fractal dimension" Powder Technology 21 1-16
+Kaye B H, 1986, "The description of two-dimensional rugged boundaries in fineparticle
+science by means of fractal dimensions" Powder Technology 46 245-254
+Kaye B H, Clark G G, 1985, "Fractal description of extra-terrestrial fineparticles",
+Department of Physics, Laurentian University, Sudbury, Ontario
+Kaye B H, Leblanc J E, Abbot P, 1985, "Fractal description of the structure of fresh and
+eroded aluminium shot fineparticles" Particle Characterization 2 56-61
+Longley P A, Batty M, 1986, "Measuring and simulating the structure and form of
+cartographic lines", UWIST Papers in Planning Research 102, Department of Town
+Planning, University of Wales at Cardiff, Cardiff
+Lovejoy S, 1982, "Area-perimeter relation for rain and cloud areas" Science 216 185-187
+Mandelbrot B B, 1977, "Stochastic models for the earth's relief, the shape and the fractal
+dimension of the coastlines and the number-area rule for islands" Proceedings of the
+National Academy of Sciences USA 72 3825-3828
+Mandelbrot B B, 1983 The Fractal Geometry of Nature (W H Freeman, San Francisco, CA)
+Mark D M, Aronson P B, 1984, "Scale-dependent fractal dimensions of topographic
+surfaces: an empirical investigation, with applications in geomorphology and computer
+mapping" Mathematical Geology 16 671-683
+Muller J C, 1987, "Fractal and automated line generalization" The Cartographic Journal 24
+27-34
+Orford J D, Whalley W B, 1983, "The use of the fractal dimension to quantify the
+morphology of irregular-shaped particles" Sedimentology 30 655-668
+Richardson L F, 1961, "The problem of contiguity: an appendix to 'Statistics of deadly
+quarrels'" General Systems Yearbook 6139-187
+Rickaby P, 1987, "An approach to the assessment of the energy efficiency of urban built
+form", in Energy and Urban Built Form Eds D Hawkes, J Owers, P Rickaby, P Steadman
+(Butterworth, Sevenoaks, Kent) pp 43-61
+Shelby M C, Moellering H, Lam N, 1982, "Measuring the fractal dimensions of empirical
+cartographic curves" Auto-Carto 5 481-490
+Suzuki M, 1984, "Finite size scaling for transient similarity and fractals" Progress of
+Theoretical Physics 71 1379-1400
+Woronow A, 1981, "Morphometric consistency with the Hausdorff-Besicovitch dimension"
+Mathematical Geology 13 201-216
+P © 1988 a Pion publication printed in Great Britain
+

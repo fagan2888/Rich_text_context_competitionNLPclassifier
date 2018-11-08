@@ -1,0 +1,2761 @@
+Systematic risk of CDOs and CDO arbitrage
+Alfred Hamerle
+(University of Regensburg)
+Thilo Liebig
+(Deutsche Bundesbank)
+Hans-Jochen Schropp
+(University of Regensburg)
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 13/2009
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­570­7 (Printversion)
+ISBN 978-3­86558­571­4 (Internetversion)
+Abstract
+"Arbitrage CDOs" have recorded an explosive growth during the years before the outbreak of
+the financial crisis. In the present paper we discuss potential sources of such arbitrage
+opportunities, in particular arbitrage gains due to mispricing. For this purpose we examine the
+risk profiles of Collateralized Debt Obligations (CDOs) in some detail. The analyses reveal
+significant differences in the risk profile between CDO tranches and corporate bonds, in
+particular concerning the considerably increased sensitivity to systematic risks. This has far-
+reaching consequences for risk management, pricing and regulatory capital requirements. A
+simple analytical valuation model based on the CAPM and the single-factor Merton model is
+used in order to keep the model framework simple. Then, the conditional expected loss curve
+(EL profile) is studied in some detail. In the next step, the asset correlation associated with a
+CDO tranche is estimated treating the structured instrument as a single-name credit
+instrument (i.e., a loan equivalent). While tractable, the loan-equivalent approach requires
+appropriate parameterization to achieve a reasonable approximation of the tranche´s risk
+profile. We consider the tranche as a "virtual" borrower or bond for which a single-factor
+model holds. Then, the correlation parameter is calculated via a non-linear optimization. This
+"bond representation" allows to approximate the risk profile (expressed by the EL profile)
+using a single-factor model and to express the dependence on the systematic risk factor via
+the corresponding asset correlation. It turns out that the resulting asset correlation is many
+times higher than that of straight bonds. Then, the Merton type valuation model for the
+corresponding bond representations is applied for valuation of the CDO tranches. Using a
+sample CDO portfolio, some opportunities for "CDO arbitrage" are described where it is
+assumed that investors are guided solely by the tranches' rating and ignore the increased
+systematic risk for pricing. In the next section we discuss how tranches with high systematic
+risk can be generated and how CDO arrangers can exploit this to their advantage. It comes as
+no surprise that precisely these types of structures featured in many of the CDOs issued prior
+to the outbreak of the financial crisis.
+Keywords: Collateralized debt obligations (CDO), Arbitrage CDOs, credit rating, expected
+loss profile, bond representation, systematic risk of CDO tranches, CDO pricing
+Jel Classifications: C13, G01, G12, G24
+Non-technical summary
+Due to the information asymmetry between the originators of structured finance instruments
+and the investors and the lack of reliable data on the collateral pools even sophisticated
+investors with the necessary knowledge were not able to conduct an extensive valuation and
+risk analysis of the structured instruments. So they treated them like corporate or sovereign
+bonds and relied solely on the agencies' ratings. The use of the same rating scale for CDO
+tranches and corporate bonds by the rating agencies obviously hid that there is a significantly
+different risk profile also at the same credit rating with regard to the systematic risk.
+Structured finance instruments appeared very attractive to investors as they could choose
+between different risk/return profiles. Moreover, CDO tranches tended to offer more yield
+than corporate bonds or loans with similar ratings.
+Among CDOs, "arbitrage CDOs" in particular have recorded enormous growth. Arbitrage
+CDOs attempt to produce a surplus from the collateral pool's acquired assets on the one hand,
+and from the tranches sold to the investors after securitization on the other hand. In the
+present paper we discuss potential CDO arbitrage opportunities due to mispricing. For this
+purpose the risk profiles of CDO tranches are analysed in some detail. The analyses presented
+here reveal significant risk profile differences between CDOs and corporate bonds which have
+far-reaching consequences for risk management, pricing and regulatory capital requirements.
+Particularly due to the increased sensitivity to systematic risks, CDOs become much riskier
+investments than comparable corporate bonds. This results inter alia in rapid and drastic
+rating downgrades once the underlying economic environment comes under stress. Another
+major consequence stems from the price relevance of systematic risks. The considerably
+increased systematic risk of CDO tranches needs to be compensated for by a significantly
+higher spread than is usually paid for corporate bonds. If investors do not appreciate the
+increased systematic risk, this offers arbitrage opportunities for the CDO issuers.
+Coval/Jurek/Stafford (2009a, b) and Brennan/Hein/Poon (2009) analyse similar aspects of a
+possible mispricing of CDO tranches. As in the present paper, the authors argue that investors
+who solely rely on the rating generally pay a too high price for the CDO tranches. According
+to Coval/Jurek/Stafford (2009a), this is especially true for senior tranches which default just
+when the economy is in a very bad state. If a broad equity index is used as a proxy for the
+market factor, option prices can be used. Using special options on the S&P 500 index with
+comparable systematic risks, the authors show empirically that the highly rated tranches of the
+CDX index exhibit market spreads that are significantly too low. By contrast, the results
+obtained by Brennan/Hein/Poon (2009) indicate that the AAA-rated tranches are only
+marginally mispriced, and that the highest profits can be gained with junior tranches.
+In contrast to these papers we attempt to quantify the size of the CDOs' sensitivity to
+systematic risks as precisely as possible, while keeping the model framework relatively
+simple. For this, a single factor model is assumed for the collateral pool assets, and the loss
+distribution is calculated. Then each of the expected tranche losses are analysed conditional
+on the market factor realisations. It turns out that expected loss curve conditional on the
+market factor (EL profile) is much steeper for unfavourable market factor values than for a
+bond with a comparable rating or for the collateral pool. This expresses the greatly increased
+sensitivity of the tranches to systematic risk. In the next step, the asset correlation associated
+with a CDO tranche is estimated treating the structured instrument as a single-name credit
+instrument (i.e., a loan equivalent). While tractable, the loan-equivalent approach requires
+appropriate parameterization to achieve a reasonable approximation of the tranche´s risk
+profile. We consider the tranche as a "virtual" borrower or bond for which a single-factor
+model holds. Then, the correlation parameter is calculated via a non-linear optimization. This
+"bond representation" allows to approximate the risk profile (expressed by the EL profile)
+using a single-factor model and to express the dependence on the systematic risk factor via
+the corresponding asset correlation. It turns out that the resulting asset correlation is many
+times higher than that of ordinary bonds. In the next step a pricing model which depends
+explicitly on the asset correlation as a measure of systematic risk is implemented for the CDO
+tranches. CDO arbitrage opportunities are then described using a sample CDO portfolio. It is
+assumed that investors are guided solely by the tranches' rating and ignore the increased
+systematic risk. We subsequently show how tranches with high systematic risk can be
+generated and describe how CDO arrangers can exploit this to their advantage. It comes as no
+surprise that precisely these types of structures featured in many of the CDOs issued prior to
+the outbreak of the financial crisis.
+Nichttechnische Zusammenfassung
+Die Informationsasymmetrie zwischen den Originatoren von komplexen strukturierten
+Kreditprodukten wie CDOs und den Investoren wurde massiv verstärkt durch die mangelnde
+Verfügbarkeit zeitnaher Daten zu den Collateral Pools. Auch für Investoren mit dem
+notwendigen Knowhow war es nicht möglich, eine umfassende Bewertung und Risikoanalyse
+der strukturierten Produkte vorzunehmen. Viele Investoren haben CDO-Tranchen wie
+Corporate oder Sovereign Bonds betrachtet und sich vollständig auf die Ratings der Produkte
+verlassen. Die Verwendung derselben Ratingskala für CDO-Tranchen und Corporate Bonds
+durch die Ratingagenturen hat offensichtlich verschleiert, dass auch bei gleichem Rating ein
+signifikant unterschiedliches Risikoprofil hinsichtlich des systematischen Risikos vorliegt. Da
+die Investoren entsprechend ihrem Rendite-/Risikoprofil aus verschiedenen Tranchen
+auswählen konnten und darüber hinaus die strukturierten Produkte anfänglich höhere Spreads
+zahlten, erschienen sie sehr attraktiv.
+Bei den CDOs haben insbesondere die ,,Arbitrage-CDOs" ein enormes Wachstum
+verzeichnet. Arbitrage-CDOs versuchen einen Überschuss aus den erworbenen Assets des
+Collateral Pools einerseits und den nach der Strukturierung an die Investoren verkauften
+Tranchen andererseits zu erzielen. Für das Zustandekommen der CDO-Arbitrage gibt es in
+der Literatur unterschiedliche Begründungen. Im vorliegenden Beitrag wird untersucht, wie
+durch Fehlbepreisungen Möglichkeiten zur CDO-Arbitrage entstehen. Hierzu werden die
+Risikoprofile von CDO-Tranchen im Detail untersucht und potentielle Unterschiede zu
+Corporate Bonds mit vergleichbaren Ratings genauer überprüft. Die vorgestellten Analysen
+zeigen signifikante Differenzen im Risikoprofil zwischen CDOs und Corporate Bonds,
+welche weitreichende Konsequenzen in Bezug auf Risikomanagement, Bepreisung und
+regulatorische Eigenkapitalanforderungen haben. Dies betrifft vor allem die deutlich erhöhte
+Sensitivität gegenüber systematischen Risiken. Dadurch werden CDOs zu wesentlich
+riskanteren Investments als vergleichbare Corporate Bonds. Eine Konsequenz sind rapide und
+drastische Ratingänderungen (Downgrades), wenn die ökonomischen Rahmenbedingungen
+unter Stress geraten. Eine weitere wichtige Konsequenz, die für eine inadäquate Bepreisung
+ausschlaggebend ist, ergibt sich aus der Preisrelevanz des systematischen Risikos. Das
+deutlich erhöhte systematische Risiko der CDO-Tranchen muss durch einen signifikant
+höheren Spread, als für Corporate Bonds gezahlt wird, kompensiert werden.
+Ähnliche Aspekte einer möglichen Fehlbepreisung von CDO-Tranchen untersuchen Coval et
+al. (2009a,b) und Brennan et al. (2009). Wie im vorliegenden Paper argumentieren die
+Autoren, dass Investoren, die sich lediglich am Rating orientieren, in der Regel einen zu
+hohen Preis für die CDO-Tranchen bezahlen. Gemäß Coval et al. (2009a) gilt dies im
+besonderen Maße für die Senior-Tranchen, die gerade dann ausfallen, wenn sich die
+Ökonomie in einem sehr schlechten Zustand befindet. Diese Zustände haben jedoch einen
+hohen marginalen Nutzen und die zugehörigen Zustandspreise sollten gemäß der
+Arrow/Debreu-Theorie hoch sein. Anhand spezieller Optionen auf einen Marktindex mit
+vergleichbaren systematischen Risiken zeigen sie, dass die hoch gerateten Tranchen des CDX
+Index signifikant zu niedrige Marktspreads aufweisen. Im Gegensatz dazu finden Brennan et
+al. (2009) heraus, dass die AAA-Tranchen nur geringfügig fehlbepreist sind und dass die
+höchsten Gewinne bei der Tranchierung mit den riskanteren Junior-Tranchen erzielt werden
+können.
+Im Unterschied zu den beiden Arbeiten wird im vorliegenden Beitrag versucht, die
+Größenordnung der Sensitivität von CDOs gegenüber systematischen Risiken möglichst exakt
+zu quantifizieren. Dabei soll der Modellrahmen möglichst einfach gehalten werden. Hierzu
+wird für die Assets des Collateral Pools ein Ein-Faktor-Modell unterstellt und die
+Verlustverteilung ermittelt. Dann werden die erwarteten Verluste der Tranchen jeweils
+bedingt auf die Realisierungen des Marktfaktors analysiert. Die bedingte Expected-Loss-
+Kurve (EL-Profil) wird mit Hilfe einer Simulation ermittelt. Im nächsten Schritt wird die
+Assetkorrelation einer CDO-Tranche geschätzt. Dabei wird die Tranche als ,,fiktiver"
+Schuldner bzw. Bond aufgefasst, für den approximativ ebenfalls ein Ein-Faktor-Modell gilt.
+Die Approximation wird so vorgenommen, dass das simulierte EL-Profil möglichst gut
+nachgestellt wird, und der Korrelationsparameter wird mit Hilfe einer nichtlinearen
+Optimierung ermittelt. Durch die ,,Bond-Repräsentation" gelingt es, das Risikoprofil von
+CDO-Tranchen mit Hilfe eines Ein-Faktor-Modells zu approximieren und die Abhängigkeit
+vom systematischen Risikofaktor durch den entsprechenden Korrelationsparameter
+auszudrücken. Die resultierende Assetkorrelation ist um ein Vielfaches höher als für
+gewöhnliche Bonds. Dann wird für die CDO-Tranchen ein Preismodell implementiert. Hierzu
+wird die risikoneutrale Ausfallwahrscheinlichkeit mit Hilfe des strukturellen
+Firmenwertmodells ermittelt und in Abhängigkeit von der realen Ausfallwahrscheinlichkeit
+und dem systematischen Risiko spezifiziert, wobei die Gültigkeit des (zeitstetigen) CAPM
+unterstellt wird. Danach werden anhand eines Beispiel-CDOs Möglichkeiten zur ,,CDO-
+Arbitrage" beschrieben, wenn sich die Investoren nur am Rating der Tranchen orientieren und
+das erhöhte systematische Risiko außer Acht lassen. Schließlich wird im letzten Kapitel die
+Konstruktion von Tranchen mit hohem systematischen Risiko dargestellt und beschrieben,
+wie dies von den CDO-Arrangeuren zu ihren Gunsten ausgenützt werden kann. Es ist nicht
+überraschend, dass gerade derartige Strukturen in vielen der in der Zeit vor Ausbruch der
+Krise emittierten CDOs zu finden sind.
+Contents
+1 Introduction 1
+2 A framework for credit modelling and valuation 5
+3 Tranching and reallocating risks 11
+3.1 Tranching and rating-based risk measures ..................................... 11
+3.2 The systematic risk of CDO tranches............................................ 12
+4 Valuation of tranches and CDO arbitrage 20
+5 Generating tranches with high systematic risk 23
+5.1 Increasing the number of assets in the collateral pool......................... 23
+5.2 Inclusion of assets with a high systematic risk in the collateral pool........ 25
+5.3 Creating as many tranchelets as possible ....................................... 26
+6 Discussion and conclusion 28
+References 30
+1
+Systematic Risk of CDOs and CDO Arbitrage*
+1 Introduction
+The technique of securitisation allows to transfer a portfolio of illiquid assets or the default
+risks associated with the assets to the structured credit markets using various credit transfer
+instruments and to distribute much of the underlying credit risk to end-investors. This led to a
+dramatic rise in the market for credit transfer instruments, especially Credit Default Swaps
+(CDS) und Collateralized Debt Obligations (CDOs). For example, the volume of outstanding
+CDS has increased more than tenfold over the past few years.
+Among CDOs, "arbitrage CDOs" in particular have recorded enormous growth. Arbitrage
+CDOs attempt to produce a surplus from the collateral pool's acquired assets on the one hand,
+and from the tranches sold to the investors after securitization on the other hand. The Figure
+below shows the issuance volumes between Q1 2004 and Q4 2008. The issuance volumes of
+"Balance Sheet CDOs" are given for comparison.
+_______________________________
+Alfred Hamerle, Hans-Jochen Schropp, Department of Statistics, Faculty of Business Management,
+Economics and Management Information Systems, University of Regensburg, 93040 Regensburg, Germany,
+Phone: +49-941-943-2588, Fax: +49-941-943-4936
+Email: Alfred.Hamerle@wiwi.uni-regensburg.de, Hans-Jochen.Schropp@wiwi.uni-regensburg.de
+Thilo Liebig, Head of Banking Supervision Research, Deputy Head of Research Centre, Deutsche
+Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main, Germany
+Email: Thilo.Liebig@bundesbank.de.
+*We are grateful to Martin Donhauser, Andreas Igl, Rainer Jobst, Kilian Plank, Daniel Roesch, Karl-Heinz
+Tödter and seminar participants at the University of Regensburg for helpful comments. The views expressed
+here are those of the authors and do not necessarily reflect those of the Deutsche Bundesbank.
+2
+0
+20
+40
+60
+80
+100
+120
+140
+160
+2004-Q
+1
+2004-Q
+2
+2004-Q
+3
+2004-Q
+4
+2005-Q
+1
+2005-Q
+2
+2005-Q
+3
+2005-Q
+4
+2006Q
+1
+2006Q
+2
+2006Q
+3
+2006Q
+4
+2007-Q
+1
+2007-Q
+2
+2007-Q
+3
+2007-Q
+4
+2008-Q
+1
+2008-Q
+2
+2008-Q
+3
+2008-Q
+4
+Arbitrage
+Balance Sheet
+Figure 1: Issuance volumes of arbitrage CDOs and balance sheet CDOs between 2004 and 2008
+(source: SIFMA)
+In the case of arbitrage CDOs, there is a sharp increase until the beginning of the financial
+crisis from around US$23 billion in Q1 2004 to over US$155 billion in Q2 2007. A
+correspondingly large volume of loans had to be granted in order to generate this high volume
+of CDOs, with loans with higher yields (and greater risks) being preferred. This created a
+huge leap in the demand for subprime loans. CDO trusts were constantly looking for BBB-
+rated MBS (mortgage backed securities) bonds, which offered relatively high yields. The
+CDO trust could finance their purchase by issuing highly rated CDO bonds (tranches) paying
+lower yields. The business was so lucrative that there were insufficient MBS bonds in
+circulation to form CDO collateral pools in 2006 and 2007. A solution was found with the
+introduction of credit default swaps on asset-backed securities (ABS CDS). The result was a
+large number of CDO collateral pools "topped up" with synthetic MBS bonds (MBS CDS).
+This environment encouraged questionable practices by some lenders, and lead to a dramatic
+fall in credit lending standards that was often described in the media.1
+1 For a description of the chronology and causes of the financial crisis, see, for example, Crouhy et al (2008),
+Hull (2009), van Deventer (2008), Ashcraft and Schürmann (2009), Krinsman (2007), Zimmerman (2007), Borio
+(2008), Rudoph (2008) or the German Council of Economic Experts (2007), Chapter 3.
+3
+The valuation by rating agencies is crucial for complex structured finance instruments such as
+CDOs. Due to their complexity, however, it is difficult to rate CDOs. The waterfall structures
+and loss distributions are always different and have to be analysed and simulated on an
+individual basis. Also, many collateral pools contain synthetic ABS CDS, which increases the
+difficulty in rating these assets.
+A further problem is the information asymmetry between the originators of the structured
+finance instruments and the investors. Generally, data on the collateral pools are not available
+on an individual basis, except for synthetic CDOs with corporate CDSs in the collateral pool.
+As the database had not been disclosed, investors had no reliable basis upon which to quantify
+the risks of these securities, and even investors with the necessary knowledge were not able to
+conduct an extensive valuation and risk analysis of the structured instruments. They had to
+almost completely rely on the agencies' ratings. Even though the regulatory authorities have
+pointed out that the use of ratings does not excuse investors from conducting their own risk
+analyses, many of them relied in practice purely on external ratings for valuing structured
+credit products (see Bank of England, 2007). Many investors regarded CDO tranches like
+corporate or sovereign bonds with the same rating and, in particular, also equated their risks
+with those of bonds.
+Structured finance instruments appeared very attractive to investors as they could choose
+between different risk/return profiles. Moreover, CDO tranches tended to offer more yield
+than corporate bonds or loans with similar ratings. This price advantage did not last, however.
+Between 2005 and the beginning of the subprime crisis, rising investor confidence in the new
+asset class led to a rising demand. Thus the spread differences narrowed and CDOs and
+corporate bonds with comparable ratings were quoted at almost equal prices (see
+Brennan/Hein/Poon, 2009, Figure 1).
+In this paper, the risk profiles of CDO tranches are analysed in some detail and potential
+differences to corporate bonds that have comparable ratings are examined more closely. The
+analyses presented here reveal significant risk profile differences between CDOs and
+corporate bonds which have far-reaching consequences for risk management, pricing and
+regulatory capital requirements. Particularly due to the increased sensitivity to systematic
+risks CDOs become much riskier investments than comparable corporate bonds. This results
+inter alia in rapid and drastic rating downgrades once the underlying economic environment
+comes under stress. Another major consequence stems from the price relevance of systematic
+risks. The considerably increased systematic risk of CDO tranches needs to be compensated
+for by a significantly higher spread than is usually paid for corporate bonds. If investors do
+not appreciate the increased systematic risk, this offers arbitrage opportunities for the CDO
+issuers.
+4
+Coval/Jurek/Stafford (2009a,b) and Brennan/Hein/Poon (2009) analyse similar aspects of a
+possible mispricing of CDO tranches. As in the present paper, the authors argue that investors
+who solely rely on the rating generally pay a too high price for the CDO tranches. According
+to Coval/Jurek/Stafford (2009a), this is especially true for senior tranches which default just
+when the economy is in a very bad state. These states have a high marginal utility, however,
+and according to the Arrow-Debreu theory, the associated state prices should be high. If a
+broad equity index is used as a proxy for the market factor, option prices can be used. When
+the index does exhibit such unfavourable conditions, the "volatility skew" becomes important,
+and investors should be entitled to an additional spread for bearing this risk. Using special
+options on the S&P 500 index with comparable systematic risks, the authors show empirically
+that the highly rated tranches of the CDX index exhibit market spreads that are significantly
+too low. By contrast, Brennan/Hein/Poon (2009) find that the AAA-rated tranches are only
+marginally mispriced, and that the highest profits can be gained with junior tranches.
+In line with these two articles we also see limited risk assessment of CDO tranches prior to
+the crisis. Market participants based their investment decisions on a tranche's rating grade and
+otherwise assumed default behaviour like that of straight bonds, in particular concerning the
+exposure to systematic risks. As a consequence non-equity CDO tranches were overvalued. In
+contrast to these articles, our objective is not precisely quantify the degree of mispricing in the
+CDO market. Instead we concentrate on an illustrative presentation of differences in the
+default behaviour of corporate bonds and CDO tranches using a single-factor model
+framework, which can be derived from a simple analytical valuation model based on the
+CAPM and the Merton model. This allows developing a parsimonious pricing approach. As it
+relates directly to the mentioned differences between bonds and CDO tranches and because of
+its less complicated structure it sheds light on the consequences of possible misjudgements
+concerning the risk properties of CDO tranches. By applying our valuation model on a sample
+arbitrage CDO transaction, we conclude that there is no CDO arbitrage possible as long as
+investors take the special default behaviour of CDO tranches into account. However, if
+investors base their investment decisions solely on the ratings of the CDO tranches, this
+creates a market environment that allows CDO arrangers to gain some kind of arbitrage profit.
+In contrast to the above mentioned papers, here we attempt to quantify the size of the CDOs'
+sensitivity to systematic risks. For this purpose we analyse the expected tranche loss of a
+CDO tranche conditional on the market factor realisations (EL profile). In the next step, the
+asset correlation associated with a CDO tranche is estimated treating the structured instrument
+as a single-name credit instrument (i.e., a loan equivalent). While tractable, the loan-
+equivalent approach requires appropriate parameterization to achieve a reasonable
+approximation of the tranche´s risk profile. We consider the tranche as a "virtual" borrower or
+5
+bond for which a single-factor model holds. Then, the correlation parameter is estimated via
+an approximation of the EL profile. This "bond representation" allows to approximate the risk
+profile using a single-factor model and to express the dependence on the systematic risk factor
+via the corresponding asset correlation. It turns out that the resulting asset correlation is many
+times higher than that of ordinary bonds. Then, the CDO tranches are priced by applying the
+valuation model to their corresponding bond representations. In the following section,
+opportunities for "CDO arbitrage" are described using a sample CDO portfolio. It is assumed
+that investors are guided solely by the tranches' rating and ignore the increased systematic
+risk. We show how tranches with high systematic risk can be generated and describe how
+CDO arrangers can exploit this to their advantage. It comes as no surprise that precisely these
+types of structures featured in many of the CDOs issued prior to the outbreak of the financial
+crisis.
+The rest of the paper is organized as follows. Section 2 provides a simple analytic valuation
+model based on the CAPM and the single-factor Merton model of debt pricing. Section 3
+discusses pooling and tranching and reallocating risks. First, rating-based risk measures are
+presented. Then, the "bond representation" treating a CDO tranche as a single-name credit
+instrument is described. Section 4 illustrates tranche valuation and CDO arbitrage. In section
+5 is analysed how tranches with high systematic risk can be generated, and how CDO issuers
+can exploit this to their advantage. A discussion and conclusion is given in section 6.
+2 A framework for credit modelling and valuation
+Collateral pools of structured finance transactions are typically composed of assets like e. g.
+loans, bonds or CDS contracts. The risk properties of portfolio derivatives such as CDOs are
+influenced by the default behaviour of the collateral pool's assets. Thus, modelling credit risk
+of plain vanilla credit instruments forms the basis of modelling credit risk of structured
+finance instruments. In addition, the valuation model for simple credit instruments, introduced
+in this chapter, will be developed further to a model for evaluating structured credit products.
+Asset-value-model
+In this paper the borrowers' default behaviour is described by a parsimonious Vasicek style
+one-factor-model which is derived from a Merton asset-value model. With the assumption of
+a CAPM-conform asset pricing on capital markets, we are able to calculate risk-neutral
+default probabilities within this model framework, which enables us to price credit risky
+assets.
+6
+We assume that the value
+t
+i
+V
+,
+of a firm i follows a geometric Brownian motion with drift
+i
+
+and volatility
+i
+ , ie
+t
+i
+i
+i
+t
+i
+t
+i dW
+dt
+V
+dV
+,
+,
+, 
++
+
+= 
+ (1)
+t
+i
+W
+,
+denotes the Wiener process. It is also assumed that for the firm value at time t=0 0
+0
+,
+>
+i
+V
+holds.
+It follows from the assumption of geometric Brownian motion that:
+(1) At maturity T and for a given value
+0
+,
+i
+V , the firm's value
+T
+i
+V
+,
+equals
+{ }
+T
+i
+i
+i
+i
+i
+T
+i
+W
+T
+V
+V
+,
+2
+0
+,
+,
+)
+2
+/
+(
+exp 
++
+
+-
+
+= 
+
+ (2)
+(2) The log return
+0
+,
+,
+,
+ln
+i
+T
+i
+T
+i V
+V
+S = is normally distributed and can be derived from
+T
+i
+i
+i
+i
+T
+i
+W
+T
+T
+S ,
+,
+
+
++
+
+
+
+
+
+
+
+
+
+-
+= 
+
+
+2
+2
+(3)
+By the introduction of a systematic risk factor
+T
+M in the spirit of the one-period CAPM, that
+influences the asset returns of all firms, equation (3) can be rewritten as
+T
+i
+i
+u
+T
+m
+i
+i
+i
+T
+i
+U
+T
+M
+T
+T
+S ,
+,
+,
+
+
++
+
+
+
++
+
+
+
+
+
+
+
+
+
+-
+= 
+
+
+
+
+2
+2
+(4)
+(i = 1,...,n).
+T
+M denotes the standard normally distributed market factor and
+iT
+U denotes the
+idiosyncratic risk factor of firm i which is also standard normal. We assume that the random
+variables
+nT
+T
+U
+U ,...,
+1
+and
+T
+M are independent.
+i
+ represents the beta factor of firm i.
+m
+ and
+i
+u ,
+ are the volatilities of the market factor and of the idiosyncratic risks, respectively.
+Expectation and variance of
+T
+i
+S
+,
+are
+( ) T
+S
+E i
+i
+T
+i
+
+
+
+
+
+
+
+
+
+-
+=
+2
+2
+,
+
+
+and
+( ) ( ) T
+T
+S
+Var
+i
+u
+m
+i
+i
+T
+i
+
++
+
+=
+
+= 2
+2
+2
+2
+,
+,
+
+
+
+ .
+A statistical default model (one-factor-model)
+An additional assumption is that debt consists of a zero-coupon bond with a nominal value
+i
+K
+and maturity T, as in Merton's firm value model. A default can only occur at maturity, and
+only when the firm's value at maturity T is smaller than the debt value. The liabilities
+7
+therefore represent preferential claims on the firm's value. At maturity, the liabilities match
+the nominal value of the zero-coupon bond.
+Then, the real probability of default (PD) can be calculated:
+( )
+( )
+( )
+( )
+P
+T
+,
+i
+P
+T
+,
+i
+T
+,
+i
+,
+i
+i
+T
+,
+i
+,
+i
+i
+T
+,
+i
+T
+,
+i
+c
+c
+R
+P
+V
+ln
+K
+ln
+S
+P
+V
+K
+V
+P
+p
+
+=
+=
+
+=
+=
+-
+
+=
+=
+
+=
+0
+0
+(5)
+where
+T
+i
+R
+,
+is the standardised rate of return and the standardised default threshold
+T
+T
+)
+/
+(
+ln
+c
+i
+i
+i
+V
+K
+P
+T
+,
+i
+,
+i
+i
+
+
+ 
+-
+-
+=
+2
+2
+0 .
+For the standardised rate of return
+T
+i
+R
+,
+, the following holds:
+=
+
++
+
+
+
++
+
+
+
+=
+
+
+
+
+
+
+
+
+
+
+-
+-
+=
+T
+U
+T
+M
+T
+T
+T
+S
+R
+i
+u
+m
+i
+T
+i
+i
+u
+T
+m
+i
+i
+i
+i
+T
+i
+T
+i
+2
+2
+2
+2
+2
+,
+,
+,
+,
+,
+
+
+
+
+
+
+
+
+
+T
+i
+i
+T
+i
+U
+M ,
+
+-
++
+
+= 
+ 1 . (6)
+where
+2
+2
+2
+2
+2
+i
+u
+m
+i
+m
+i
+i
+,
+
+
+
+
+
+
++
+
+
+=
+With equation (6) we arrive at the well-known single-factor-model. In particular in
+homogeneous portfolios ( 
+ =
+i
+) the sensitivity coefficient  is often referred to as the asset
+correlation.
+The conditional probability of default with given realisation of the market factor results in
+.
+)
+( ,
+, 
+
+
+
+
+
+
+
+-
+
+-
+
+=
+i
+T
+i
+P
+T
+i
+T
+T
+i
+M
+c
+M
+p
+
+
+1
+(7)
+In practice, the probability of default
+T
+i
+p
+,
+may be given externally by the obligor`s rating. In
+this case the (standardised) default threshold can be calculated from )
+(
+,
+, T
+i
+P
+T
+i
+p
+c 1
+-
+
+= .
+In addition, a default time i
+ is defined for every borrower, and }
+{ T
+i
+
+
+1 denotes the default
+indicator, which takes on the value 1 if the expression in brackets holds (i.e. a default occurs
+until maturity) and is otherwise 0.
+If we denote the recovery rate conditional on the default of borrower i by i
+RR (which is
+assumed fixed) and his exposure at default by i
+EAD , the loss contribution of the borrower is
+given by
+8
+( ) ( )
+}
+{ T
+i
+i
+i i
+RR
+EAD
+T
+L 
+
+-
+
+=
+
+1
+1 ,
+and the expected loss is
+T
+i
+i
+i
+i
+p
+RR
+EAD
+T
+EL
+,
+)
+1
+(
+)
+( 
+-
+
+= (8)
+Valuation
+In the following, a flat term structure with a risk-free interest rate r is assumed. For simplicity,
+zero bonds with a nominal value K = 1 and maturity T are considered. The current price of a
+zero bond (with default risk) is denoted by )
+,
+0
+( T
+Bd .
+In general, the price of a derivative financial instrument is the present value of the expected
+cash flows under the risk-neutral measure Q.
+For a zero bond subject to default risk (with K = 1), we obtain the following (for simplicity
+the index i has been omitted):
+( ) ( )
+{ }
+( )
+{ }
+( )
+T
+T
+Q
+d RR
+E
+rT
+T
+B 
+>
+
++
+
+-
+=
+
+
+ 1
+1
+exp
+,
+0
+where  denotes the stochastic default time and RR () the recovery rate.
+Assuming a constant recovery rate RR () = RR, we get
+( ) ( ) ( ) ( )
+( )
+( )
+T
+Q
+RR
+T
+Q
+T
+B
+T
+Bd >
+-
+
++
+>
+
+= 
+ 1
+,
+0
+,
+0 . (9)
+T
+q
+T
+Q -
+=
+> 1
+)
+( denotes the risk-neutral survival probability,
+T
+q denotes the risk-neutral
+default probability, and )
+,
+0
+( T
+B is the price of the risk-free bond.
+Using the bond price, the credit spread s can also be calculated2:
+r
+T
+B
+T
+s d -
+-
+= )
+,
+0
+(
+ln
+1
+Risk-neutral default probabilities
+Just like the real PDs, the risk-neutral default probabilities can be derived from the asset-value
+model. For the log asset return of firm i under the risk-neutral measure follows
+T
+i
+i
+u
+T
+m
+i
+i
+T
+i
+U
+T
+M
+T
+T
+r
+S ,
+,
+,
+
+
++
+
+
+
++
+
+
+
+
+
+
+
+
+
+-
+= 
+
+
+
+2
+2
+(10)
+2 However, often higher spreads are observed on the market than the values calculated using the Merton model,
+see, for example, Jones/Mason/Rosenfeld (1984) and Kim/Ramaswamy/Sundaresan (1993).
+9
+The probability under the measure Q, the risk-neutral default probability is:
+( )
+( )
+( )
+( )
+Q
+T
+i
+Q
+T
+i
+T
+i
+i
+i
+T
+i
+i
+i
+T
+i
+T
+i
+c
+c
+R
+Q
+V
+K
+S
+Q
+V
+K
+V
+Q
+q
+,
+,
+,
+0
+,
+,
+0
+,
+,
+,
+ln
+ln
+
+=
+
+=
+-
+
+=
+
+=
+Because the asset-value model's drift parameter (the expected asset return) is smaller under
+the measure Q, the risk-neutral default probability is higher than the real default probability.
+The same holds for the default threshold, as we again model default event via standardized
+asset returns.
+The default threshold for modelling risk-neutral probabilities is given by
+( ) ( )
+T
+r
+c
+T
+T
+r
+c
+i
+i
+P
+T
+i
+i
+i
+V
+K
+Q
+T
+i
+i
+i
+
+-
++
+=
+
+-
+-
+=
+
+
+
+
+,
+2
+,
+2
+/
+ln
+0
+,
+With the CAPM relationship ( )
+r
+r
+m
+i
+i
+-
+
++
+= 
+
+ , this formula can be rewritten as
+( )
+T
+c
+T
+r
+c
+c
+i
+P
+T
+i
+i
+m
+m
+P
+T
+i
+Q
+T
+i
+
+
++
+=
+
+
+-
++
+= 
+
+
+
+
+,
+,
+,
+where  denotes the Sharpe ratio of the market.
+The connection between real and risk-neutral default probabilities can be expressed by the
+following equation:
+( )
+( )
+T
+p
+q
+i
+T
+i
+T
+i
+
+
++
+
+
+= - 
+
+,
+,
+1 (11)
+The difference between real and risk neutral default probability represents a risk premium for
+systematic risk. The magnitude of the risk premium follows the logic of the CAPM.
+Systematic uncertainties concerning future cash-flows of an investment cannot be eliminated
+through diversification, and thus represent risks, that have to be compensated by higher
+returns of that investment.
+The market factor
+T
+M determines via the asset-value process the conditional default
+probability and therefore the conditional expected cash-flows to investors. The higher
+i
+ , the
+higher the sensitivity of credit instruments to systematic risks and the higher the risk premium
+asked by investors.
+Finally, let us consider the special case of the asset with the maximum systematic risk for a
+given real PD. In this case, .
+1
+=
+i
+ According to (11), we have
+10
+1
+, ,
+1
+,
+1
+,
+( ( ) )
+( (1 ) )
+1 ( (1 ) )
+i T i T
+i T
+i T
+q p T
+p T
+p T
+
+
+
+-
+-
+-
+=   + 
+=  - - + 
+= -   - - 
+Then, the bond price is given by
+1
+,
+(0, ) ( (1 ) )
+d rT
+i T
+B T e p T
+
+- -
+=   - -  .
+This is the price of a digital call option on the market factor
+T
+M , which pays $1 if S
+M
+T
+>
+and otherwise 0. The strike price S is set so that the option is out of the money with a
+probability of
+,
+i T
+p . Coval/Jurek/Stafford (2009a) call this option the cheapest-to-supply asset
+with a given rating (expressed by the PD or hitting probability
+,
+i T
+p ). If the recovery rate is
+greater than zero, the bond price can be derived from (9).
+EL profile and valuation
+A connection between the expected losses and therefore the expected cash-flows and the
+realisation of the market factor
+T
+M can easily be established. Using equations (7) and (8) it
+follows for the expected loss given the value of the market factor expressed as percentage of
+exposure at default:
+( )
+T
+T
+i
+i
+T
+i
+M
+p
+RR
+M
+T
+EL
+,
+)
+1
+(
+)
+|
+( 
+-
+= (12)
+We refer to this relationship in the following as the "EL profile" considering it as a function
+of the realisations
+T
+m . It represents in our framework all systematic uncertainty concerning
+future losses and thus contains all information relevant for pricing considerations.
+Further uncertainty, i. e. uncertainty concerning the actual realisations of losses given a value
+of
+T
+M , is of idiosyncratic nature and can be eliminated through diversification in a
+sufficiently large portfolio and thus is not relevant for pricing.
+Two credit products, showing identical EL-profiles, are exposed to identical systematic risks
+and therefore should realise the same market price in the absence of arbitrage. This conclusion
+will be the basis for the evaluation of structured credit products.
+11
+3 Tranching and reallocating risks
+3.1 Tranching and rating-based risk measures
+CDOs are securities which transform the credit risk of the underlying collateral pool into a set
+of securities with different credit and loss profiles. Here we only consider a simplified
+version, and do not take into account the waterfall describing the priority of payments which
+is often quite complex. Instead we assume a strict subordination principle. If there are defaults
+in the collateral, losses first impact the equity tranche (first-loss piece). If the number of
+defaults is so great that the losses exceed the equity tranche's volume, the mezzanine tranches
+incur losses and the mezzanine holders start to see a reduced coupon and principal. The
+tranche with the highest subordination is the senior tranche. It only has to absorb losses if all
+tranches with lower subordination are wiped out.
+The loss distribution of the underlying collateral pool is crucial for determining each tranche's
+risk profile. The collateral pool's loss on a percentage basis is an aggregation of individual
+losses. Using 
+=
+i
+i
+EAD
+EAD we obtain:
+
+
+=
+
+=
+
+-
+
+=
+=
+n
+i
+T
+i
+i
+n
+i
+i i
+RR
+EAD
+EAD
+T
+L
+EAD
+T
+L
+1
+}
+{
+1
+)
+1
+(
+1
+)
+(
+1
+)
+( 
+1 (13)
+The loss distribution of a tranche relates to the loss distribution of the collateral pool.
+Generally the tranche's status is determined by its upper and lower limits ­ its attachment and
+detachment point.
+Let us consider a tranche with attachment point %)
+100
+;
+0
+[
+
+a and detachment point
+%]
+100
+;
+(a
+b  . The tranche only suffers losses when the losses in the collateral pool until
+maturity T exceed the attachment point a. If the accumulated losses in the reference portfolio
+remain below a, then the tranche does not sustain any losses. On the other hand, if the
+accumulated losses exceed the detachment point b during the period, this results in a total loss
+for the tranche.
+The probability that the accumulated losses in the collateral pool exceed the attachment point
+a by the end of the contract duration T,
+)
+(
+)
+)
+(
+( }
+)
+(
+{ a
+T
+L
+tr
+T E
+a
+T
+L
+P
+p >
+=
+>
+= 1 , (14)
+denotes the "hitting probability" or PD of the tranche. It indicates the probability that the
+tranche will be hit during the period, i.e. whether it will suffer any loss. It depends solely on
+the subordination, i.e. the attachment point a, and not from the tranche "thickness" b ­ a.
+12
+If the tranche is hit, then the size of the loss is of course also relevant. The accumulated
+percentage tranche loss can be derived from
+}
+)
+(
+{
+}
+)
+(
+{
+)
+)
+(
+(
+1
+)
+( b
+T
+L
+b
+T
+L
+a
+tr a
+T
+L
+a
+b
+T
+L >
+
+ +
+
+-
+-
+= 1
+1 . (15)
+An important parameter, which is needed for the pricing in particular, is the expected tranche
+loss. This is given by
+ -
+-
++
+>
+=
+b
+a
+T
+L
+tr x
+dF
+a
+x
+a
+b
+b
+T
+L
+P
+T
+L
+E ).
+(
+)
+(
+1
+)
+)
+(
+(
+))
+(
+( )
+( (16)
+Using partial integration, this can be expressed by (see Jobst, 2007, p 298)
+ -
+-
+=
+b
+a
+T
+L
+tr dx
+x
+F
+a
+b
+T
+L
+E .
+))
+(
+1
+(
+1
+))
+(
+( )
+( (17)
+)
+(
+1
+)
+(
+x
+F
+T
+L
+- represent the "hitting probabilities" as a function of x . In special cases the
+expected tranche loss can be approximated analytically or asymptotically, but generally it has
+to be calculated based on simulation.
+In general, the rating of a tranche is based on the hitting probability or the expected loss. If the
+rating is based on the hitting probability, it represents a "first dollar of loss" rating and the
+likelihood of an investor facing any loss at all until maturity is estimated. The "thickness" or
+width b ­ a of the tranche is taken into consideration for a rating based on expected tranche
+loss.
+Other important risk measures include the variance or volatility of the tranche loss, the
+tranche's unexpected loss, or value at risk and expected shortfall parameters. Generally these
+measures can only be determined by simulation.
+3.2 The systematic risk of CDO tranches
+In this section the sensitivity of CDO tranches to systematic risks is studied in some detail.
+This involves analysing the default behaviour of CDO tranches as a function of the market
+factor M (for simplicity subscript T is omitted) and comparing it with that of the collateral
+pool or a corporate bond with a comparable rating. To illustrate the differences, a sample
+portfolio is considered for the collateral pool, and a sample CDO is generated. The collateral
+pool loss, the tranche losses (see (15)), and the corresponding risk measures are calculated
+using stochastic simulation.
+13
+Sample collateral pool and CDO
+We consider the default behaviour and potential losses of a CDO with a maturity of five years
+(T=5). A homogeneous portfolio of 100 equally weighted corporate bonds with a BBB rating
+is used as the collateral pool. The empirical five-year S&P default rate of %
+25
+.
+3
+=
+T
+p is used
+to estimate the unconditional probabilities of default. In addition, a homogeneous asset
+correlation of 10
+.
+0
+=
+ and a constant recovery rate of 4
+.
+0
+=
+i
+RR is assumed for all collateral
+pool assets. The following tranching scheme with the associated attachment and detachment
+points is used:
+Tranche Attachment Point Detachment Point Hitting Probability
+Senior 11.5% 100% 0.0014
+Mezzanine 6.5% 11.5% 0.0316
+Junior 4% 6.5% 0.1282
+Equity 0 4% 0.8545
+Table 1: Definition of CDO tranches
+The hitting probabilities are calculated via simulation according to (14). If the tranche rating
+is based on the hitting probability, the mezzanine tranche has roughly a BBB rating which
+matches the rating of the bonds in the collateral pool. With a five-year hitting probability of
+14 bp the senior tranche has a AAA rating.
+Expected loss profile
+To analyse the increased sensitivity of CDO tranches to systematic risk, we consider the EL-
+profile, i.e. the expected tranche loss conditional on the realisation m of the market factor M
+)
+|
+)
+(
+( m
+T
+L
+E tr
+as a function of m.
+The slope of the EL profile for poor (i.e. negative) market factor values is a measure of
+sensitivity to systematic risk.
+First, the collateral pool itself is analysed. If the pool is regarded as an index or considered as
+a single tranche, the homogeneous portfolio, based on the assumptions made and the single
+factor model (6), gives us
+14
+)
+(
+)
+1
+(
+)
+|
+)
+(
+( m
+p
+RR
+m
+T
+L
+E
+T
+
+-
+=
+where 
+
+
+
+
+
+
+
+-
+
+-
+
+
+=
+-
+
+
+1
+)
+(
+)
+(
+1 m
+p
+m
+p T
+T
+.
+However, this is exactly the same EL profile as for any bond contained in the collateral pool.
+This means that, in absolute value, the collateral pool and the bond contain exactly the same
+systematic risk. The diversification is expressed in the fact that the idiosyncratic risks are
+reduced and therefore the share of systematic risk increases. In the case at hand of a
+homogeneous portfolio, conditional on the market factor the losses are binomially distributed
+and the variance of the conditional losses is reduced as the number of bonds in the pool
+increases.
+The situation changes dramatically if the loss distribution is split into several tranches and a
+single tranche is analysed. For example, the mezzanine tranche of our sample CDO shows the
+following EL profile (calculated via simulation):
+Figure 2: EL profiles of the BBB mezzanine tranche and BBB bond
+The EL profile for one of the collateral pool's bonds (BBB rated) is also shown for
+comparison. Notice that the hitting probability of the mezzanine tranche approximately
+matches the bonds default probability. This suggests that the tranche's rating based on the
+hitting probability would also be BBB. Figure 2 graphically illustrates that the default
+15
+behaviour of CDO tranches and bonds differs drastically with regard to the influence of
+systematic risk. Given unfavourable values for the systematic risk factor, the curve of the
+tranche rises much more steeply than for a corporate bond with similar rating.
+A consequence of the sharply increased systematic risk is rapid and drastic rating downgrades
+in bad economic times. In a good macroeconomic environment (high values of M), the
+tranche is hardly ever hit, while the corresponding conditional expected losses for the
+collateral pool or for a single corporate bond are always slightly higher. In such a favourable
+scenario, changes to the systematic risk factor have almost no effect on the hitting probability
+or expected loss of the tranche, and CDO ratings appear very stable with regard to
+macroeconomic changes. This impression is deceptive, however. If the systematic risk factor
+comes under stress, CDOs (unlike corporate bonds) prove extremely sensitive to an economic
+downturn. In this critical region, even a small change of the market factor causes a dramatic
+deterioration in the tranche's credit quality. It is precisely this phenomenon that can be
+observed in the US subprime crisis. Falling house prices and rising interest rates triggered a
+downward spiral resulting from rising insolvencies, house sales and plummeting prices, and
+the macroeconomic situation of the US housing market entered a critical phase. This led to
+drastic downgrades of hundreds of CDO tranches which contained these loans in their
+reference portfolios.
+Another important consequence stems from the price relevance of systematic risk, which was
+possibly not adequately appreciated by investors. The considerably increased systematic risk
+of the tranches needs to be compensated for by a significantly higher spread compared with
+corporate bond spreads. If the prices of CDO tranches and bonds are the same or do not differ
+sufficiently, CDO issuers can exploit this to their advantage. This may provide a further
+explanation for the emergence of "CDO arbitrage". The price-relevant aspects are discussed
+in detail in section 4.
+Loan equivalent "bond representation" for quantifying the systematic risk of a CDO tranche
+The sensitivity of a borrower or bond, respectively, to systematic risk is expressed in the
+single factor model by the correlation parameter  (assumed to be homogeneous). In this
+section we estimate the asset correlation associated with a CDO tranche treating the structured
+instrument as a single-name credit instrument. Thus we treat the CDO tranche as a "virtual"
+borrower or bond, and approximate its default behaviour likewise using a single factor model.
+Our aim is to estimate the "virtual" asset correlation tr
+ of the CDO tranche.
+Considering a CDO tranche as a virtual bond, the conditional hitting probability is expressed
+in the single-factor model as a function of M by
+16
+
+
+
+
+
+
+
+
+
+
+-
+
+-
+
+=
+tr
+tr
+tr
+tr
+T
+m
+c
+m
+p
+
+
+1
+)
+( . (18)
+The default threshold tr
+c can be calculated using the unconditional hitting probability given
+in (14). In this approach (see, for example, Yahalom/Levy/Kaplan, 2008) the loss given
+default (LGD) of the tranche has to be specified in a separate model.
+Here we introduce another approach. A key observation is that the LGD of a CDO tranche is
+always a random variable that depends on the market factor. This is because the tranche loss
+depends on the defaults in the collateral pool, and the defaults, in turn, depend on the market
+factor. Note that this is usually not the case with a straight bond where default and LGD may
+be independent. A CDO tranche's sensitivity to systematic risk can be increased further by the
+dependence of tranche loss on the market factor. This additional systematic risk is contained
+in the expected loss profile. Therefore we consider the EL profile as the tranche`s risk profile
+and not the tranche's conditional hitting probability. Moreover, as outlined in the previous
+section, the EL profile contains all the information necessary for pricing. The EL profile is
+obtained via stochastic simulation. For the "bond representation", however, we assume a
+constant LGD* for the tranche (instead of the random loss given default depending on the
+market factor).
+The "implied" hitting probability conditional on the market factor is determined from
+*
+))
+(
+(
+)
+(
+LGD
+m
+L
+E
+m
+p tr
+tr
+T
+= (19)
+The tranche's unconditional hitting probability is given by
+*
+)
+(
+LGD
+L
+E
+p tr
+tr
+T
+= .
+The unconditional expected tranche loss is also calculated in the simulation, and the default
+threshold tr
+c is given by
+)
+(
+1 tr
+T
+tr p
+c -
+
+= .
+In the next step, the tranche LGD* is determined as the maximum loss of the tranche.
+The maximum loss of the collateral pool is given by
+
+=
+-
+=
+n
+i
+i
+i RR
+EAD
+EAD
+L
+1
+max )
+1
+(
+1
+which reduces to LGD
+RR
+L
+max
+=
+-
+=1 for a homogeneous portfolio.
+Based on this, the maximum loss for a tranche with attachment point a and detachment point
+b is
+17
+a
+b
+a
+b
+L
+LGD
+-
+-
+=
+)
+,
+min(
+* max
+if a
+L >
+max
+. In the unrealistic case a
+L <
+max
+, the tranche cannot be hit at all. Its LGD is then
+always zero. In general, 1
+* =
+LGD for all tranches except senior or super-senior tranches.
+Thus 1
+* <
+LGD only for the tranche with the highest seniority (with detachment point 1). For
+the non-senior tranches, the "implied" hitting probability profile of the "virtual"
+approximating bond is set equal to the EL profile, while the EL profile is scaled up for the
+senior tranche with 1
+* <
+LGD .
+Finally, the "virtual" asset correlation tr
+ is calculated by means of optimization
+[ ] [ ]
+
+
+
+
+
+
+
+-
+
+=
+K
+k
+tr
+k
+tr
+T
+k
+tr
+T
+,
+)
+m
+(
+p
+~
+)
+m
+(
+p
+min
+arg
+tr
+1
+2
+1
+0
+
+
+(20)
+where
+
+
+
+
+
+
+
+
+-
+
+-
+
+
+=
+-
+tr
+k
+tr
+tr
+T
+k
+tr
+T
+m
+)
+p
+(
+)
+m
+(
+p
+~
+
+
+1
+1
+(21)
+and )
+m
+(
+p
+k
+tr
+T
+is given in (19) evaluated at
+k
+m . K
+k
+k
+)
+m
+(
+1
+=
+is a sufficiently accurate
+discretization of the support of M.
+In summary, a CDO tranche is approximated by a "virtual" bond in a single-factor model
+according to (6) with unconditional ("implied") hitting probability tr
+T
+p , asset correlation
+tr
+ and LGD* as the loss given default. This "bond representation" is a more appropriate
+approximation of the default behaviour and the loss profile than an approximation based on
+the conditional hitting probability of the tranche.
+The estimation results for all tranches of the sample CDO are summarised in Table 2.
+Tranche tr
+T
+p (%) tr
+ LGD*
+Senior (11.5 - 100%) 0.00615 0.3196 0.548
+Mezzanine (6.5 - 11.5%) 0.93444 0.7572 1
+Junior (4 - 6.5%) 6.45767 0.7518 1
+Equity (0 - 4%) 43.57131 0.4214 1
+Collateral Pool 3.25 0.1 0.6
+Table 2: Risk parameters for the CDO tranches and the collateral pool
+18
+From Table 2 it can be seen that in our approach tr
+T
+p is rather an artificial parameter for
+fitting the EL profile than a hitting probability. tr
+T
+p corresponds to the unconditional expected
+loss for the non-senior tranches of the sample transaction. The parameter tr
+ can be
+interpreted as the tranche's "virtual" asset correlation. It can be seen that the values of tr
+ are
+much higher than those for comparable corporate bonds (e.g. 1
+.
+0
+=
+ for the collateral pool's
+assets) reflecting the drastically increased sensitivity of CDO tranches to systematic risks.
+The following Figure shows the bond representation's fit for the mezzanine tranche. It
+indicates a very good fit of the EL profile obtained from the simulation and function
+)
+m
+(
+p
+~
+k
+tr
+T
+in (21) derived from the optimization procedure with given default threshold and
+estimated "virtual" asset correlation.3
+Figure 3: Comparison of the mezzanine tranche's EL profile with the bond representation's profile
+Impact of subordination
+For the rating process of a structured finance transaction a tranche`s subordination plays a key
+role. The higher the subordination the more losses in the collateral pool are absorbed by
+tranches with lower seniority. Thus, higher seniority lowers the hitting probability and allows
+higher rating grades. The EL profiles for the tranches are shown in Figure 4 below.
+3 In the case of equity tranches and broad senior tranches, the bond approximation reveals somewhat larger
+deviations from the EL profile of each CDO tranche. However, the approximation errors are negligible for the
+issues discussed in the present article.
+19
+Figure 4: EL profiles of all tranches of the sample CDO
+The position of the critical regions, in which the market factor has a strong effect on the
+tranche`s losses (the EL profile has a steep slope), depends on the degree of subordination.
+This area can be shifted towards the left side of the diagram (i.e. a scenario of economic
+depression) by increasing the subordination. It is evident that the macroeconomic
+environment must worsen greatly before a senior tranche is hit. However, if the critical area is
+reached, the credit assessment of even highly rated tranches may suffer drastic downgrades as
+we have seen in the current subprime crisis.
+Investment in CDO tranches versus investment in the collateral pool
+At this point the key difference between an investment in the collateral pool ("vertical"
+tranching) and investment in a tranche ("horizontal" tranching) can be made clear. Let us
+consider the sample collateral pool with an average BBB rating and the mezzanine tranche
+(6.5 - 11.5%), which also has a BBB rating in accordance with its hitting probability. If the
+transaction's total nominal amount is 1 billion Dollar, an investor can, for example, purchase
+the mezzanine tranche for $50 million or he can invest this amount in a portfolio which is
+comparable with or equivalent to the collateral pool. By construction, both investments have
+the same implied PD. However, the two investments have significant differences regarding
+their other risk characteristics. The main difference stems from the fact that, in the latter case,
+the investment is made in the entire loss distribution of the pool, whereas in the case of a
+tranche, the investment is made in a specific part of the loss distribution. The collateral pool's
+20
+risks are completely reallocated by the tranching process. On the one hand, a large senior
+tranche is created which has a much smaller default risk than that of the collateral pool's
+assets. On the other hand, the systematic risk (sensitivity to the market factor) of all tranches
+rises massively. It is true that building a large collateral pool diversifies idiosyncratic risk, so
+that only systematic risk remains. Such an investment in a well diversified pool is seen as an
+advantage of CDO tranches. However, the systematic risk remains unchanged in absolute
+terms in the collateral pool ( 1
+.
+0
+=
+ ; see Table 2), while, by contrast, the tranches' systematic
+risk rises dramatically (e.g. 75
+.
+0
+=
+tr
+ for junior and mezzanine tranches; see Table 2). For
+this reason, a portfolio of BBB tranches from different securitisations (of the same type), for
+example, is much riskier than a portfolio of comparable bonds or investments in different
+collateral pools. In particular, the addition of CDO tranches to bond or loan portfolios raises
+the probability of large portfolio losses, i.e. CDO tranches affect the tail of the loss
+distribution. A consequence is considerably higher risk contributions measured by value at
+risk or expected shortfall contributions, respectively.
+4 Valuation of tranches and CDO arbitrage
+The simple valuation model introduced in section 2 is used to identify potential possibilities
+of mispricing of the securities generated by the tranching. We do not compare expliciltly
+model and market spreads (see, for example, Coval/Jurek/Stafford, 2009a, and
+Brennan/Hein/Poon, 2009). Instead we analyze which opportunities for CDO arbitrage are
+available if investors ignore the tranches' systematic risk and base their pricing solely on the
+rating in the form of hitting probability or expected losses.
+The results presented in the preceding sections allow us to achieve the above mentioned
+objective of an approximate tranche pricing with the following three steps:
+(1) Starting point is the aggregation of all pricing relevant information and results in
+generating the tranche's EL-profile (by simulation, see sections 2 and 3.2).
+(2) The risk parameters of a "virtual" bond are calculated in a way, that the EL-profile of this
+bond replicates the tranche's profile. We call this the "bond representation". (see section 3.2)
+(3) This bond can be priced with equation (9) presented in section 2; sharing the same
+sensitivity towards systematic risks, the tranche and the virtual bond are equally priced. As a
+result, we arrive at the price for the tranche. Again, we assume a zero-coupon structure.
+It can be seen from (9) that the bond price falls as the risk-neutral PD increases. In line with
+(11), the risk-neutral PD increases ­ ceteris paribus ­ as the systematic risk rises. This means
+21
+that bonds with the same real PD
+T
+p should have very different prices depending on their
+exposure to systematic risk.
+Application to the sample CDO
+In the following the present values of the tranches and the collateral pool are calculated using
+the results from Table 2. This involves determining the risk-neutral PD using equation (11),
+incorporating each of the "virtual" asset correlations of the bond representation. For the
+Sharpe ratio of the market we assume 4
+.
+0
+=
+ Then, the values of the tranches are calculated
+from (9), assuming a constant risk-free interest rate 04
+.
+0
+=
+r . The valuations are always based
+on a nominal of 100. The results are shown in Table 3.
+Tranche Price
+Senior (11,5 % - 100,0 %) 81.843
+Mezzanine (6,5 % - 11,5 %) 77.140
+Junior (4,0 % - 6,5 %) 63.100
+Equity (0,0 % - 4,0 %) 27.650
+Collateral Pool 78.960
+Table 3: Tranche prices (based on bond representation)
+The sum of all tranche values weighted by their respective share in the capital structure equals
+the value of the collateral pool (up to rounding errors).
+For comparison, another valuation of the non-equity tranches is conducted, assuming a
+uniform asset correlation of 1
+.
+0
+=
+ for these tranches according to the assets in the collateral
+pool. This is designed to replicate the valuation approach of an investor, who has the rating of
+a tranche (i.e. hitting probability or expected loss) at hand, but ignores the increased
+sensitivity to systematic risks and instead assumes a "bond-typical" behaviour. The value of
+the equity tranche is then calculated such that the sum-total matches the value of the collateral
+pool. Table 4 shows the results:
+22
+Tranche Price
+Senior (11,5 % - 100,0 %) 81.868
+Mezzanine (6,5 % - 11,5 %) 80.293
+Junior (4,0 % - 6,5 %) 72.980
+Equity (0,0 % - 4,0 %) 16.812
+Collateral Pool 78.960
+Table 4: Tranche prices (based on an asset correlation of  = 0.1)
+A comparison of the results in Tables 3 and 4 shows how a CDO arranger who retains the
+equity tranche can exploit the situation to his advantage. If he succeeds in selling the non-
+equity tranches in line with their rating (according to the real PD or expected losses) like
+corporate bonds, investors will pay an excessive price and will receive inadequate spreads for
+the tranches' systematic risk. For the equity tranche, by contrast, the situation is reversed. The
+value in Table 4 shows that the price of the equity tranche as the "residual tranche" is
+significantly too low. If the equity tranche spread is an "excess spread", this creates the
+possibility to generate a positive net capital value from the overall transaction. Put another
+way, the holders of the equity tranche charge a very high premium for the apparently high
+risk.4
+The results indicate that investors should receive much higher spreads for their investments in
+CDOs as a risk premium than that which they are paid on comparable corporate bonds. This
+was obviously not the case in the years prior to the start of the subprime crisis (see Brennan et
+al, 2008). During this period there were virtually no differences between the prices of CDO
+tranches and those of similarly rated corporate bonds. In some cases the spreads of corporate
+bonds were even lower than the spreads of tranches with similar ratings.
+In summary, there is a general way to CDO arbitrage when the non-equity tranches of a CDO
+can be sold at the prices of corporate bonds with comparable ratings. In this case, it is
+4
+This underscores a remark by Tavakoli (2006), which points out that investors in equity tranches should never
+accept an upfront payment and a fixed spread, which is usual with credit indices. Instead, they should always
+demand the excess spread.
+23
+advantageous for the CDO arranger to put together the collateral pool in such a way that the
+tranching creates securities with a very high systematic risk whose true prices should be close
+to those of the respective cheapest-to-supply assets. This provides the maximum potential
+profit for the arranger from the transaction.
+In the next section we describe some possibilities of generating tranches with high systematic
+risk. It comes as no surprise that precisely these types of transactions can be found in many
+CDOs issued prior to the outbreak of the financial crisis.
+5 Generating tranches with high systematic risk
+5.1 Increasing the number of assets in the collateral pool
+It is often claimed that a key advantage of investing in a CDO tranche is that it offers the
+possibility to invest in an already well diversified portfolio. Additionally, if the systematic
+risk of the portfolio is low, the unexpected loss decreases and realised losses are usually close
+to expected loss. While this is basically correct, it is often forgotten that this applies only
+when an investment is made in the entire collateral pool, in other words when just one single
+tranche is formed. When tranches are created, however, a reallocation of risks occurs whereby
+the systematic risk of each tranche increases drastically and is much higher than the
+systematic risk in the collateral pool. This sensitivity to systematic risk is strengthened if the
+number of assets in the collateral pool is increased. To illustrate this, let us consider the case
+in which the number of assets in the homogeneous collateral pool is increased from 100 to
+500, while the individual risk characteristics of the assets remain unchanged. A tranching
+scheme is used which produces approximately the same ratings for the non-equity tranches as
+the structure shown in Table 1 in line with their hitting probability. The results are shown in
+Table 5.
+24
+Tranche AP DP Hitting
+Probability
+Senior 10.25% 100% 0.0017
+Mezzanine 5.75% 10.25% 0.0317
+Junior 3.5% 5.75% 0.1335
+Equity 0 3.5%
+Table 5: Definition of the CDO tranches (n=500)
+The following results are obtained for the bond representation:
+Tranche Implied HP (%) tr
+ LGD*
+Senior (10.25 - 100%) 0.0055 0.5464 0.554
+Mezzanine (5.75 - 10.25%) 0.9947 0.8990 1
+Junior (3.5 - 5.75%) 7.091 0.9038 1
+Equity (0 - 3.5%) 49.809 0.4114 1
+Collateral Pool 3.25 0.1 0.6
+Table 6: Parameter estimations for the CDO tranches (n=500)
+First it can be seen that the collateral pool's risk characteristics ­ as far as they are relevant for
+the CDOs' risk analysis ­ have not changed. Although the relative share of idiosyncratic risk
+has dropped due to further diversification, this is not price-relevant. In absolute terms
+(expressed by the covariation with the market factor), the systematic risk is unchanged. The
+price of the collateral pool thus also remains the same.
+However, for the CDO tranches matters have changed. Apart from the equity tranche, all
+tranches show a further increase in systematic risk. As described above, this strengthens the
+CDO arbitrage. The following Table shows the tranche prices according to bond
+approximation including the actual systematic risk, as well as the prices of comparable
+corporate bonds )
+1
+.
+0
+( =
+ . Additionally, the prices for the respective cheapest-to-supply assets
+are given for the non-equity tranches.
+25
+Tranche Price
+(actual systematic risk)
+Price
+(Corporate Bonds)
+Price
+(Cheapest-to-Supply)
+Senior 81.842 81.865 81.806
+Mezzanine 76.207 80.209 75.683
+Junior 59.923 72.228 58.727
+Equity 23.309 7.339
+Table 7: Tranche prices including the actual systematic risk, valued like comparable corporate bonds,
+and cheapest-to-supply assets
+It can be seen that the valuation of the non-equity tranches on the basis of corporate bonds
+produces roughly the same prices as before because of the comparable ratings of the tranches.
+However, taking the actual systematic risk into account, the prices ought to be distinctly lower
+­ especially for the junior and mezzanine tranches ­ to compensate for the increased risk. On
+the other hand, the equity tranche offers extremely high spreads and thus drastically higher
+potential returns because of its very low price.
+Finally it should be noted that a sufficiently large number of assets in the collateral pool
+always produces tranches with high systematic risk. This also holds if the asset correlation
+between the assets in the reference portfolio is very low, some of them may even be
+uncorrelated. Thus the process of bundling a large number of assets with a low systematic risk
+via securitisation with subsequent tranching generates securities with a very high systematic
+risk. Among others, this applies to US residential mortgage backed securities (RMBS).
+A further example illustrates the point. If an (extremely low) asset correlation of 0.01 is
+assumed for the assets in the collateral pool (other risk parameters remain unchanged) and the
+number of assets is increased to 2000 (which is the case with many ABS and RMBS), the
+tranche from 3.5 to 5.75%, which now has approximately an A rating, has an estimated asset
+correlation of 0.6.
+5.2 Inclusion of assets with a high systematic risk in the collateral pool
+Another way of generating tranches with a very high systematic risk is to include assets which
+already have a high systematic risk in the collateral pool, while leaving the number of assets
+26
+at roughly 100 to 150. Examples are ABS CDOs (SF CDOs), in particular ABS CDOs with
+subprime exposure, whose collateral pools contain RMBS mezzanine tranches, for instance.
+These assets already have a high systematic risk, and second-layer securitisation further
+significantly raises the systematic risk of the resulting tranches. The situation is similar for
+many transactions of the CDO-squared type. The collateral pools of these structured finance
+instruments are frequently composed of tranches which are in turn the product of
+securitisations from the same or similar segments (eg car loans, credit card receivables,
+leasing contracts), or include tranches of synthetic CDOs with overlapping names. In all these
+cases, the tranches of the first-layer securitisations are already highly correlated. The second-
+layer securitisation further increases the sensitivity of the resulting tranches to systematic risk.
+Credit default swaps (CDSs) on ABS or MBS additionally increase sensitivity to systematic
+risk. This was evident, in particular, on the market for MBS CDOs with subprime exposure. If
+an underlying MBS tranche suffers a loss, this directly leads to a credit event for the
+associated synthetic MBS CDS. Correlation is perfect in this case. This leveraging of real
+MBS bonds multiplies the effect of the defaults on subprime loans and may result in an abrupt
+loss of value if economic conditions deteriorate.
+For synthetic CDOs, the credit risks in the collateral pool are transferred via credit default
+swaps (CDSs). For these transactions, it is useful to look for CDSs that offer as high a spread
+as possible for a given rating. This is the case where the underlying enterprises exhibit
+additional risks, in particular systematic risks. For example, according to estimates (see
+Bruyere, 2006, p 126), the collateral pools of the vast majority of synthetic arbitrage CDOs in
+2002 and 2003 included the tobacco company Philip Morris. This was because the potential
+risk of further legal sanctions against the tobacco industry was reflected in a high spread, but
+the rating was unchanged at BBB. As the agency models only took into account the default
+risk (in the form of the BBB rating) in their tranche rating, this offers additional opportunities
+for CDO arbitrage for the issuers.
+5.3 Creating as many tranchelets as possible
+Finally, it is possible to slice the collateral portfolio up into a large number of very thin
+tranches (tranchelets). These tranchelets are extremely sensitive to systematic risk. Thus it is
+always advantageous for CDO issuers to generate as many tranches as possible in a
+securitisation.
+Similarly, virtually only tranches with a width of just a few percentage points were generated
+in the construction of single-tranche CDO swaps. This also applies structured instruments
+where several tranches were created but the capital structure was not completely placed with
+27
+investors. Where the tranches created in this manner are included in another securitisation's
+collateral pool, the new tranches' sensitivity to the market factor is further raised. If investors
+ignore the higher systematic risk in such a tranche and focus only on the rating, the seller can
+exploit this to his advantage, as outlined above.
+A particularly instructive example of splitting a tranche into two new tranches with the
+possibility of CDO arbitrage is where a senior tranche is divided into a super-senior tranche
+and a lower AAA tranche. This approach is customary for CDO structuring and is discussed
+very critically, particularly in Tavakoli (2006).
+By way of illustration, we will look at the capital structure shown in Table 5. The senior
+tranche (10.25%-100%) has a hitting probability of 17 basis points (bp) (for a period of 5
+years), which corresponds to an AAA rating. If it is assumed, for example, that LIBOR +
+30bp is payable for an AAA-rated bond, investors would receive 30bp for almost 90% of the
+total nominal amount for a synthetic (unfunded) CDO.
+Now, a super-senior tranche is set up with an attachment point of 12.25%. This tranche has a
+hitting probability of about 4 bp and is claimed "virtually without default risk" according to
+the CDO arranger. It should therefore be possible (and this was generally the case) to insure
+its risk with a monoliner at low cost of, say, 6 bp or, alternatively, to retain the risk on the
+books. In this way, a saving of 24 bp is achieved for 87.75% of the total nominal amount.
+The hitting probability for the next lower tranche of 10.25%-12.25% remains unchanged. If
+the rating is based on the hitting probability, the tranche retains its AAA rating and therefore
+also its price if investors focus only on the rating. However, the other risk characteristics have
+changed dramatically, in particular in terms of expected loss and sensitivity to systematic risk.
+As a consequence, the price, too, must change, and investors should demand a significantly
+higher spread to compensate them for the higher risks. Table 8 shows the results of bond
+representation and valuation.
+Tranche Implied HP tr
+ LGD* Price
+Senior (10.25 - 100%) 0.000055 0.5465 0.554 81.842
+Senior(10.25 - 12.25%) 0.000978 0.9547 1 80.792
+Table 8: Bond approximation and valuation of the senior tranche of the original structure and the
+senior tranche with the same attachment point, which is below the super senior tranche
+28
+6 Discussion and conclusion
+In line with Brennan/Hein/Poon (2009) and Coval/Jurek/Stafford (2009a), this paper presents
+mispricing of CDO tranches as an explanation for the exceptional growth of arbitrage CDOs
+prior to the onset of the financial crisis. Although CDO tranches initially offered more yield
+than cash assets (bonds or loans) with similar ratings, the spread differences, which declined
+continuously from 2005 onwards, were far too low to compensate for the additional
+systematic risk. Securitization of the collateral pool and tranching means risks are completely
+reallocated. While the probability of default and expected loss of a large portion of the capital
+structure are distinctly lower than for an average collateral pool asset, the systematic risk of
+all tranches rises dramatically. If investors focus exclusively on the tranches' rating, they are
+very likely to pay too high a price for the non-equity tranches. As the prices for the tranches,
+which are weighted according to the capital structure, add up to the value of the collateral
+pool, the fact that prices for the non-equity tranches are too high inevitably results in the price
+for the equity tranche being too low.
+The "bond representation" described in section 3 allows quantifying systematic risk treating a
+CDO tranche as a single-name credit instrument. The tranche is considered as a "virtual"
+borrower or bond for which a single-factor model holds. Then, the exposure to systematic risk
+is measured by the asset correlation. In addition, we derive risk neutral default probabilities
+using a simple valuation based on the CAPM and the single-factor Merton model. The risk
+neutral default probabilities also depend explicitly on the asset correlation. This allows
+pricing of CDO tranches as an explicit function of asset correlation. Thus we obtain different
+prices for bonds and tranches with the same rating depending on their exposure to systematic
+risk. The valuation of tranches and CDO arbitrage opportunities are discussed in section 4.
+The desire to exploit CDO arbitrage opportunities usually entails the construction of tranches
+with a high systematic risk. How this can be achieved was described in section 5. The
+collateral pool's high degree of diversification was always regarded as a particular advantage
+(see, for example, Amato and Remolona, 2003). In the authors' view, less collateral is needed
+to cover unexpected default losses if pool diversification is high, thus raising "arbitrage
+profits". However, in section 5 it is shown that increasing the number of assets in the
+collateral pool leads to higher sensitivity to systematic risk of the tranches. Therefore, it is the
+investors who should be entitled to the "arbitrage profits" to compensate them for the
+tranches' much higher systematic risk. In addition, a large number of assets is not necessary if
+the assets in the collateral pool already exhibit a high systematic risk. Prominent examples are
+29
+ABS CDOs, in particular MBS CDOs. The collateral pools of these CDO-squared instruments
+include a large proportion (roughly 80%, see BCBS, 2008) of BBB-rated RMBS mezzanine
+tranches. The RMBS tranches have a high hitting correlation. This means that the second-
+layer tranches are much more sensitive to systematic risks. If the degree of hitting correlation
+of the tranches in the collateral pool is underestimated, the second-layer capital structure is
+such that the senior tranche with a very good rating is much too large. Another potential
+danger for MBS CDOs with subprime exposure results from the relatively small width of the
+mezzanine tranches in the collateral pool (2.5% to 4%) as well as the relatively low original
+level of subordination (between 3% and 5%). Prepayments during the contract's life can
+temporarily increase subordination, but overall it remains low. Rising default rates for
+subprime loans combined with declining recovery rates may result in the BBB-rated
+mezzanine tranches in the original RMBS suffering losses. The extreme correlation then
+means a high likelihood that all BBB-rated tranches of subprime RMBS will be hit at the
+same time. In addition, their small width means that there is a high likelihood that they will all
+experience a total loss at the same time. This scenario means that the senior tranches of
+subprime MBS CDOs will likewise default. These subprime CDOs therefore exhibit an "all or
+nothing" risk profile5: either the subprime default rates remain below the thresholds and the
+senior tranches of the subprime CDOs do not suffer any loss at all, or the thresholds are
+breached, and the senior tranches could all be wiped out.
+The opportunity to increase the value of the equity tranche by sophisticated tranching also
+undermines the importance investors in senior tranches attach to the fact, that the arranger of a
+transaction keeps the first-loss piece. Usually it is assumed, that this prevents the arranger
+which is mostly also the designer of the collateral pool, from overinvesting and thus ensures
+high collateral quality which also strengthens the position of senior tranche investors.
+However, if the arranger can gain profit solely from tranching, these profits offset losses from
+poor investment decisions, in other words, the credit quality of the collateral pool's assets
+becomes less important as long as there are enough assets to form collateral pools. Thus, our
+findings can to some extent explain the surge in demand for MBS bonds before the financial
+crisis as well as the deteriorating credit quality in collateral pools.
+Another aspect concerns the role of through-the-cycle ratings for structured credit
+instruments. One of the key conclusions of this paper is that both the (conditional) hitting
+probabilities and the expected loss profiles for CDO tranches are highly dependent on
+systematic risks. The transition probabilities are similarly influenced by systematic risks.
+When the economy is doing well, CDO ratings are very stable. They can, however, become
+5 See also BCBS (2008), p. 6 and appendix C
+30
+very volatile in an economic downturn, and there may be significant rating downgrades within
+a short space of time. This specific behaviour under stress makes a through-the-cycle rating
+for CDOs as well as the use of average transition matrices, which take no account of the
+current position in the credit cycle, questionable. In general, through-the-cycle ratings favour
+CDO arbitrage opportunities, in particular during an economic downturn. Consider, for
+instance, a synthetic CDO's collateral pool consisting of CDS. Then, the higher default risks
+mean the CDS spreads are very likely to widen during an economic downturn. On the other
+hand, the through-the-cycle ratings remain largely unchanged. If a new CDO is structured
+with the same collateral pool, the resulting tranching scheme and the tranche prices are the
+same if one focuses exclusively on the rating, while the originator's revenues from the
+collateral pool have risen.
+References
+Adelson, M H, Jacob, D P (2008): The sup-prime problem: Causes and lessons
+(www.adelsonandjacob.com).
+Amato, J D, Remolona, E M(2003): The credit spread puzzle, BIS Quarterly Review,
+December 2003.
+Ashcraft, A B, Schürman, T (2007): Understanding the securitization of subprime mortgage
+credit, Working Paper, Federal Reserve Bank of New York.
+Bank of England (2007): Financial Stability Report, October 2007.
+Basel Committee on Banking Supervision (2008): The Joint Forum: Credit risk transfer ­
+developments from 2005 to 2007, BIS, Basel.
+Brennan, M J, Hein, J, Poon, S-H (2009): Tranching and rating, Working Paper.
+Borio, C (2008): The financial turmoil of 2007: A preliminary assessment and some policy
+considerations, BIS Working Paper, Basel.
+Bruyère, R (2006): Credit derivatives and structured credit, John Wiley, New York.
+Coval, J D, Jurek, J W, Stafford, E (2009a): Economic catastrophe bonds, American
+Economic Review, Vol 99, No 3, 628-666.
+Coval, J D, Jurek, J W Stafford, E. (2009b): The economics of structured finance, Journal of
+Economic Perspectives, Vol 23, No 1, 3-25.
+31
+Crouhy, M G, Jarrow, R A, Turnbull, S M (2008): The subprime credit crisis of 07, Working
+Paper.
+DeMarzo, P (2005): The pooling and tranching of securities: A model of informed
+intermediation, Review of Financial Studies, 1-35.
+Fender, J Tarashev, N, Zhou, H (2008): Credit fundamentals, ratings and Value-at-Risk:
+CDOs versus corporate Exposures, BIS Quarterly Review, March 2008, 87-101.
+FitchRatings (2008): Projected loss analysis criteria for existing structured finance CDOs,
+Structured Credit Criteria Report.
+Gibson, M. (2004): Understanding the risk of synthetic CDOs, Finance and Economics
+Discussion Series.
+Heitfield, E (2008): Parameter uncertainty and the credit risk of collateralized debt
+obligations, Working Paper, Division of Research and Statistics, Federal Reserve Board.
+Hull, J (2009): The Credit Crunch of 2007: What went wrong? Why? What lessons can be
+learned? Working Paper, University of Toronto.
+Hull, J (2008): Options, futures, and other derivatives, 7th. ed., Pearson Prentice Hall, New
+Jersey.
+Jobst, N (2007): An introduction to the risk management of collateralized debt obligations, in:
+DeServigny, A, Jobst, N (Eds.): The Handbook of Structured Finance, McGraw-Hill,
+New York, Kap. 7, pp 295-338.
+Jones, E P, Mason, S P, Rosenfeld, E (1984): Contingent claim analysis of corporate capital
+structures: An empirical investigation, Journal of Finance 39, 611-625.
+Kim, J K, Ramaswamy, K, Sundaresan, S (1993): The valuation of corporate fixed income
+securities, Financial Management, 117-131.
+Krinsman, A N (2007): Subprime mortgage meltdown: How did it happen and how will it
+end, The Journal of Structured Finance, Summer 2007, 13-19.
+Longstaff, F A, Rajan, A (2008): An empirical analysis of the pricing of collateralized debt
+obligations, Journal of Finance 63, 529-563.
+Luo, D, Tang, D Y, Wang, S Q (2008): A little knowledge is a dangerous thing: Data history,
+Model uncertainty and CDO (mis-)pricing, Working Paper, University of Hong Kong.
+32
+Merton, R C (1974): On the pricing of corporate debt: The risk structure of interest rates,
+Journal of Finance, 449-470.
+Renault, O (2007): Cash and synthetic collateralized debt obligations: Motivations and
+investment strategies, in: DeServigny, A, Jobst, N (Eds): The Handbook of Structured
+Finance, McGraw-Hill, New York, Ch 9, pp 373-396.
+Rudolph, B (2008): Lehren aus den Ursachen und dem Verlauf der internationalen
+Finanzkrise. Zeitschrift für betriebswirtschaftliche Forschung 60, 713-741.
+Sachverständigenrat zur Begutachtung der gesamtwirtschaftlichen Entwicklung (2007): Das
+Erreichte nicht verspielen, Jahresgutachten 2007/2008, Wiesbaden.
+Securities Industry and Financial Markets Association (SIFMA) (2009): Global CDO Market
+Issuance Data, http://www.sifma.org/research/global-cdo.html.
+Van Deventer, D R (2008): CDOs and the credit crisis: Complexity and model risk in the
+collateralized debt obligation market are severe, Working Paper, Kamakura Corporation.
+Yahalom, T., Levy, A., Kaplin, A.S. (2008): Modeling correlation of structured instruments in
+a portfolio setting, Moody´s KMV whitepaper.
+Zimmermann, T (2007): The great subprime meltdown. The Journal of Structured Finance,
+Fall 2007, 7-20.
+33
+The following Discussion Papers have been published since 2008:
+Series 1: Economic Studies
+01 2008 Can capacity constraints explain
+asymmetries of the business cycle? Malte Knüppel
+02 2008 Communication, decision-making and the
+optimal degree of transparency of monetary
+policy committees Anke Weber
+03 2008 The impact of thin-capitalization rules on Buettner, Overesch
+multinationals' financing and investment decisions Schreiber, Wamser
+04 2008 Comparing the DSGE model with the factor model:
+an out-of-sample forecasting experiment Mu-Chun Wang
+05 2008 Financial markets and the current account ­ Sabine Herrmann
+emerging Europe versus emerging Asia Adalbert Winkler
+06 2008 The German sub-national government bond Alexander Schulz
+market: evolution, yields and liquidity Guntram B. Wolff
+07 2008 Integration of financial markets and national Mathias Hoffmann
+price levels: the role of exchange rate volatility Peter Tillmann
+08 2008 Business cycle evidence on firm entry Vivien Lewis
+09 2008 Panel estimation of state dependent adjustment
+when the target is unobserved Ulf von Kalckreuth
+10 2008 Nonlinear oil price dynamics ­ Stefan Reitz
+a tale of heterogeneous speculators? Ulf Slopek
+11 2008 Financing constraints, firm level adjustment
+of capital and aggregate implications Ulf von Kalckreuth
+34
+12 2008 Sovereign bond market integration: Alexander Schulz
+the euro, trading platforms and globalization Guntram B. Wolff
+13 2008 Great moderation at the firm level? Claudia M. Buch
+Unconditional versus conditional output Jörg Döpke
+volatility Kerstin Stahn
+14 2008 How informative are macroeconomic
+risk forecasts? An examination of the Malte Knüppel
+Bank of England's inflation forecasts Guido Schultefrankenfeld
+15 2008 Foreign (in)direct investment and
+corporate taxation Georg Wamser
+16 2008 The global dimension of inflation ­ evidence Sandra Eickmeier
+from factor-augmented Phillips curves Katharina Moll
+17 2008 Global business cycles: M. Ayhan Kose
+convergence or decoupling? Christopher Otrok, Ewar Prasad
+18 2008 Restrictive immigration policy Gabriel Felbermayr
+in Germany: pains and gains Wido Geis
+foregone? Wilhelm Kohler
+19 2008 International portfolios, capital Nicolas Coeurdacier
+accumulation and foreign assets Robert Kollmann
+dynamics Philippe Martin
+20 2008 Financial globalization and Michael B. Devereux
+monetary policy Alan Sutherland
+21 2008 Banking globalization, monetary Nicola Cetorelli
+transmission and the lending channel Linda S. Goldberg
+22 2008 Financial exchange rates and international Philip R. Lane
+currency exposures Jay C. Shambaugh
+35
+23 2008 Financial integration, specialization F. Fecht, H. P. Grüner
+and systemic risk P. Hartmann
+24 2008 Sectoral differences in wage freezes and Daniel Radowski
+wage cuts: evidence from a new firm survey Holger Bonin
+25 2008 Liquidity and the dynamic pattern of Ansgar Belke
+price adjustment: a global view Walter Orth, Ralph Setzer
+26 2008 Employment protection and Florian Baumann
+temporary work agencies Mario Mechtel, Nikolai Stähler
+27 2008 International financial markets' influence
+on the welfare performance of alternative
+exchange rate regimes Mathias Hoffmann
+28 2008 Does regional redistribution spur growth? M. Koetter, M. Wedow
+29 2008 International financial competitiveness
+and incentives to foreign direct investment Axel Jochem
+30 2008 The price of liquidity: bank characteristics Falko Fecht
+and market conditions Kjell G. Nyborg, Jörg Rocholl
+01 2009 Spillover effects of minimum wages Christoph Moser
+in a two-sector search model Nikolai Stähler
+02 2009 Who is afraid of political risk? Multinational Iris Kesternich
+firms and their choice of capital structure Monika Schnitzer
+03 2009 Pooling versus model selection for Vladimir Kuzin
+nowcasting with many predictors: Massimiliano Marcellino
+an application to German GDP Christian Schumacher
+36
+04 2009 Fiscal sustainability and Balassone, Cunha, Langenus
+policy implications for the euro area Manzke, Pavot, Prammer
+Tommasino
+05 2009 Testing for structural breaks Jörg Breitung
+in dynamic factor models Sandra Eickmeier
+06 2009 Price convergence in the EMU?
+Evidence from micro data Christoph Fischer
+07 2009 MIDAS versus mixed-frequency VAR: V. Kuzin, M. Marcellino
+nowcasting GDP in the euro area C. Schumacher
+08 2009 Time-dependent pricing and
+New Keynesian Phillips curve Fang Yao
+09 2009 Knowledge sourcing: Tobias Schmidt
+legitimacy deficits for MNC subsidiaries? Wolfgang Sofka
+10 2009 Factor forecasting using international
+targeted predictors: the case of German GDP Christian Schumacher
+11 2009 Forecasting national activity using lots of
+international predictors: an application to Sandra Eickmeier
+New Zealand Tim Ng
+12 2009 Opting out of the great inflation: Andreas Beyer, Vitor Gaspar
+German monetary policy after the Christina Gerberding
+breakdown of Bretton Woods Otmar Issing
+13 2009 Financial intermediation and the role Stefan Reitz
+of price discrimination in a two-tier market MarkusA.Schmidt,MarkP.Taylor
+14 2009 Changes in import pricing behaviour:
+the case of Germany Kerstin Stahn
+37
+15 2009 Firm-specific productivity risk over the Ruediger Bachmann
+business cycle: facts and aggregate implications Christian Bayer
+16 2009 The effects of knowledge management Uwe Cantner
+on innovative success ­ an empirical Kristin Joel
+analysis of German firms Tobias Schmidt
+17 2009 The cross-section of firms over the business Ruediger Bachmann
+cycle: new facts and a DSGE exploration Christian Bayer
+18 2009 Money and monetary policy transmission
+in the euro area: evidence from FAVAR-
+and VAR approaches Barno Blaes
+19 2009 Does lowering dividend tax rates increase
+dividends repatriated? Evidence of intra-firm Christian Bellak
+cross-border dividend repatriation policies Markus Leibrecht
+by German multinational enterprises Michael Wild
+20 2009 Export-supporting FDI Sebastian Krautheim
+21 2009 Transmission of nominal exchange rate
+changes to export prices and trade flows Mathias Hoffmann
+and implications for exchange rate policy Oliver Holtemöller
+22 2009 Do we really know that flexible exchange rates
+facilitate current account adjustment? Some
+new empirical evidence for CEE countries Sabine Herrmann
+23 2009 More or less aggressive? Robust monetary Rafael Gerke
+policy in a New Keynesian model with Felix Hammermann
+financial distress Vivien Lewis
+24 2009 The debt brake: business cycle and welfare con- Eric Mayer
+sequences of Germany's new fiscal policy rule Nikolai Stähler
+38
+25 2009 Price discovery on traded inflation expectations: Alexander Schulz
+Does the financial crisis matter? Jelena Stapf
+26 2009 Supply-side effects of strong energy price Thomas A. Knetsch
+hikes in German industry and transportation Alexander Molzahn
+27 2009 Coin migration within the euro area Franz Seitz, Dietrich Stoyan
+Karl-Heinz Tödter
+28 2009 Efficient estimation of forecast uncertainty
+based on recent forecast errors Malte Knüppel
+29 2009 Financial constraints and the margins of FDI C. M. Buch, I. Kesternich
+A. Lipponer, M. Schnitzer
+39
+Series 2: Banking and Financial Studies
+01 2008 Analyzing the interest rate risk of banks
+using time series of accounting-based data: O. Entrop, C. Memmel
+evidence from Germany M. Wilkens, A. Zeisler
+02 2008 Bank mergers and the dynamics of Ben R. Craig
+deposit interest rates Valeriya Dinger
+03 2008 Monetary policy and bank distress: F. de Graeve
+an integrated micro-macro approach T. Kick, M. Koetter
+04 2008 Estimating asset correlations from stock prices K. Düllmann
+or default rates ­ which method is superior? J. Küll, M. Kunisch
+05 2008 Rollover risk in commercial paper markets
+and firms' debt maturity choice Felix Thierfelder
+06 2008 The success of bank mergers revisited ­ Andreas Behr
+an assessment based on a matching strategy Frank Heid
+07 2008 Which interest rate scenario is the worst one for
+a bank? Evidence from a tracking bank approach
+for German savings and cooperative banks Christoph Memmel
+08 2008 Market conditions, default risk and Dragon Yongjun Tang
+credit spreads Hong Yan
+09 2008 The pricing of correlated default risk: Nikola Tarashev
+evidence from the credit derivatives market Haibin Zhu
+10 2008 Determinants of European banks' Christina E. Bannier
+engagement in loan securitization Dennis N. Hänsel
+11 2008 Interaction of market and credit risk: an analysis Klaus Böcker
+of inter-risk correlation and risk aggregation Martin Hillebrand
+40
+12 2008 A value at risk analysis of credit default swaps B. Raunig, M. Scheicher
+13 2008 Systemic bank risk in Brazil: an assessment of
+correlated market, credit, sovereign and inter-
+bank risk in an environment with stochastic Theodore M. Barnhill, Jr.
+volatilities and correlations Marcos Rietti Souto
+14 2008 Regulatory capital for market and credit risk inter- T. Breuer, M. Jandacka
+action: is current regulation always conservative? K. Rheinberger, M. Summer
+15 2008 The implications of latent technology regimes Michael Koetter
+for competition and efficiency in banking Tigran Poghosyan
+16 2008 The impact of downward rating momentum André Güttler
+on credit portfolio risk Peter Raupach
+17 2008 Stress testing of real credit portfolios F. Mager, C. Schmieder
+18 2008 Real estate markets and bank distress M. Koetter, T. Poghosyan
+19 2008 Stochastic frontier analysis by means of maxi- Andreas Behr
+mum likelihood and the method of moments Sebastian Tente
+20 2008 Sturm und Drang in money market funds: Stehpan Jank
+when money market funds cease to be narrow Michael Wedow
+01 2009 Dominating estimators for the global Gabriel Frahm
+minimum variance portfolio Christoph Memmel
+02 2009 Stress testing German banks in a Klaus Düllmann
+downturn in the automobile industry Martin Erdelmeier
+03 2009 The effects of privatization and consolidation E. Fiorentino
+on bank productivity: comparative evidence A. De Vincenzo, F. Heid
+from Italy and Germany A. Karmann, M. Koetter
+41
+04 2009 Shocks at large banks and banking sector Sven Blank, Claudia M. Buch
+distress: the Banking Granular Residual Katja Neugebauer
+05 2009 Why do savings banks transform sight
+deposits into illiquid assets less intensively Dorothee Holl
+than the regulation allows? Andrea Schertler
+06 2009 Does banks' size distort market prices? Manja Völz
+Evidence for too-big-to-fail in the CDS market Michael Wedow
+07 2009 Time dynamic and hierarchical dependence Sandra Gaisser
+modelling of an aggregated portfolio of Christoph Memmel
+trading books ­ a multivariate nonparametric Rafael Schmidt
+approach Carsten Wehn
+08 2009 Financial markets' appetite for risk ­ and
+the challenge of assessing its evolution by
+risk appetite indicators Birgit Uhlenbrock
+09 2009 Income diversification in the Ramona Busch
+German banking industry Thomas Kick
+10 2009 The dark and the bright side of liquidity risks:
+evidence from open-end real estate funds in Falko Fecht
+Germany Michael Wedow
+11 2009 Determinants for using visible reserves Bornemann, Homölle
+in German banks ­ an empirical study Hubensack, Kick, Pfingsten
+12 2009 Margins of international banking: Claudia M. Buch
+Is there a productivity pecking order Cathérine Tahmee Koch
+in banking, too? Michael Koetter
+13 2009 Systematic risk of CDOs and Alfred Hamerle, Thilo Liebig
+CDO arbitrage Hans-Jochen Schropp
+42
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a PhD and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+

@@ -1,0 +1,288 @@
+Research and Politics
+October-December 2015: 1
+­4
+© The Author(s) 2015
+DOI: 10.1177/2053168015617496
+rap.sagepub.com
+Creative Commons NonCommercial-NoDerivs CC-BY-NC-ND: This article is distributed under the terms of the Creative
+Commons Attribution-NonCommercial-NoDerivs 3.0 License (http://www.creativecommons.org/licenses/by-nc-nd/3.0/) which
+permits non-commercial use, reproduction and distribution of the work as published without adaptation or alteration, without further permission
+provided the original work is attributed as specified on the SAGE and Open Access pages (https://us.sagepub.com/en-us/nam/open-access-at-sage).
+Introduction and motivation
+Gender bias is an important issue and problem throughout
+all sections of society, politics, and culture, and academia is
+not immune. While not the first study within the social sci-
+ences on citation gaps, Maliniak et al. (2013) showed that a
+gender gap was detectable in international relations (IR)
+citation patterns. They find that across 10 different model
+specifications, `all female'IR articles are cited significantly
+less than articles by men. This matters because citations
+often equate to research impact and impact affects tenure
+decisions, promotions, and job opportunities.
+Zigerell's (2015) recent article in this journal shows that
+changing the model specifications through including or
+removing variables, restricting the data to various percen-
+tiles, expanding the time line, and including other types of
+articles, that Maliniak et al.'s findings are not robust. Based
+on these findings, Zigerell (2015) simply cautions readers
+to consider nuances in the citation gap in IR.
+In this comment, I use Poisson inverse Gaussian (PIG)
+regression to replicate both Maliniak et al.'s and Zigerell's
+analysis of the IR citation gap. The PIG model is ideal for
+count distributions where there is a large initial peak and
+then a very long tail of observations (Hilbe, 2014). Citation
+data almost perfectly fit such a distribution: most articles
+receive a handful of citations, while a few pieces receive
+thousands. In the replications, I show that PIG is the pre-
+ferred model for all of Maliniak et al.'s and nearly all of
+Zigerell's specifications, and that both articles make valid
+points on the existence and scope of a gender gap in IR
+citations. However, a gender gap is only observable in
+some of Maliniak et al.'s models, and not all, and a gender
+gap is observable in many of Zigerell's models, and not
+just two.
+Below I briefly discuss the PIG model before moving to
+the replications.
+PIG regression
+Since King (1988), most political and social scientists
+understand that using linear regression is problematic when
+dealing with count distributions. Further, most researchers
+are aware that due to ubiquitous overdispersion negative
+Comment on Zigerell (2015): Using
+Poisson inverse Gaussian regression
+on citation data
+Brian J Fogarty
+Abstract
+Zigerell's recent article in Research & Politics argues that Maliniak et al.'s findings that women are cited less than men
+in international relations are not robust to alternative specifications. Using Poisson inverse Gaussian (PIG) regression,
+in this comment, I demonstrate that both papers' findings are sensitive to empirical specifications. In many model
+specifications, women are cited less than men, but other specifications either show a null effect or that women are
+actually cited more than men in international relations. This illustrates that substantive model selections matter a great
+deal for the conclusions we can make from our data.
+Keywords
+Count models, Poisson inverse Gaussian regression, citation data, International relations
+University of Glasgow, UK
+Corresponding author:
+Brian J Fogarty, School of Social and Political Sciences, University of
+Glasgow,1015 Adam Smith Building, Glasgow G12 8RT, UK.
+Email: brian.fogartyb@glasgow.ac.uk
+617496
+RAP0010.1177/2053168015617496Research & PoliticsBrian
+research-article2015
+Research Note
+2 Research and Politics 
+binomial (NB) regression is almost always preferred to
+Poisson regression. However, other count models have yet
+to be widely adopted throughout the social sciences. PIG is
+one such model.
+The PIG model is actually quite similar to the NB
+model, where both include a dispersion parameter and are
+a mixture of two distributions (NB is a mixture of Poisson
+and gamma distributions, while PIG is a mixture of Poisson
+and inverse Gaussian distributions).1 The specific differ-
+ence between PIG and NB is that PIG includes a cubic
+variance function ( µ µ
++ 3 ), while NB (in the standard
+NB2 parameterization) includes a squared variance function
+( µ µ
++ 2 ) (Cameron and Trivedi, 2013). This simple dif-
+ference, though, allows PIG to better handle long-tailed
+count data (Cameron and Trivedi, 2013). In this paper, the
+PIG model uses a variant of the Sichel distribution since it
+is how the user-written Stata PIG command is parametrized
+(Hardin and Hilbe, 2012); however, see Cameron and
+Trivedi (2013) for a brief discussion of several other
+parameterizations.2
+Replications
+Maliniak et al. (2013)
+In Maliniak et al. (2013), models 1­10 in their original
+Table 2 all show that `all female' international relations
+publications receive significantly (at the 0.05 or 0.10 lev-
+els) fewer citations than publications by men. In Table 1, I
+replicate their models using their original NB model and
+the PIG model. For ease of presentation, I only include the
+`all female' results and the Akaike information criteria
+(AIC) for model comparison.
+Looking first at the AIC values, we see that the PIG
+model is preferred over NB for all 10 models. Not only
+does the PIG model make intuitive sense to use over NB,
+due to the distribution of the data, but the PIG model fits the
+data better than NB. Therefore, we have more confidence in
+the results from the PIG model than the NB model.
+Figure 1 graphically illustrates the distribution of the
+citation data and fitted probabilities for the NB and PIG
+distributions. First, observe the heavily skewed distribution
+where a bulk of the observations occur early on but obser-
+vations still exist out to 1084. Second, note that the PIG
+distribution fits the early counts slightly better than the NB
+distribution. However, as noted above, the PIG distribu-
+tion's main benefit is in fitting the tail end of count distribu-
+tions; which unfortunately is difficult to graphically
+demonstrate with the citation data.
+In examining the results for `all female', we see that pub-
+lications by women are cited significantly less in models 1,
+2, 3, 7, 9, and 10. In the other four models, there is no statis-
+tically significant result for `all female'. However, one could
+argue that since `all female'is significant in Maliniak et al.'s
+`kitchen sink'model (model 10) that a gender gap does exist
+in IR citations. Further, in the PIG results where `all female'
+is significant, the effect size is smaller than in the NB results.
+For example, in model 1 using NB, an all female article
+decreases the expected number of citations by 4.96; while
+using PIG, an all female article decreases the expected num-
+ber of citations by just 0.556.3 There would be less to criti-
+cize if Maliniak et al. only included the `kitchen sink'model
+Table 1. Replications of Maliniak et al. (2013).
+Model 1 Model 2 Model 3 Model 4
+ NB PIG NB PIG NB PIG NB PIG
+All female ­0.216 ** ­0.021** ­0.216** ­0.021** ­0.220** ­0.018** ­0.229** 0.002
+ (0.087) (0.005) (0.087) (0.005) (0.102) (0.006) (0.098) (0.007)
+AIC 20,963.65 20,822.83 20,967.65 20,826.83 20,847.44 20,650.58 20,786.50 20544.46
+ Model 5 Model 6 Model 7 Model 8
+ NB PIG NB PIG NB PIG NB PIG
+All female ­0.228** 0.002 ­0.241** ­0.008 ­0.216** ­0.022** ­0.185* ­0.002
+ (0.098) (0.007) (0.098) (0.007) (0.099) (0.008) (0.095) (0.008)
+AIC 20,787.83 20,544.97 20,770.09 20,543.55 20,682.10 20,465.07 20,624.46 20,432.15
+ Model 9 Model 10 
+ NB PIG NB PIG 
+All female ­0.176* ­0.020** ­0.149* ­0.091** 
+ (0.093) (0.009) (0.089) (0.010) 
+AIC 20,555.87 20,352.48 20,138.81 19,894.75 
+Notes: Cells are coefficients and standard errors for negative binomial (NB) and Poisson inverse Gaussian (PIG) regression, along with Akaike
+information criteria (AIC) for each model. Each model comparison has equal N. * p < 0.10, **p < 0.05.
+Fogarty 3
+in their original paper. But, by trying to show `all female' is
+always significant in a succession of models, a version of
+sensitivity analysis (Angrist and Pischke, 2010), we actually
+find that Maliniak et al.'s findings are sensitive to what
+predictors are included in a model. This is an example where
+substantively justifying why certain predictors are included
+in an analysis may be a better approach than atheoretically
+trying various combinations of predictors.
+Figure 1. Observed frequencies and predicted count probabilities for negative binomial and Poisson inverse Gaussian distributions
+using model 1 of Maliniak et al. (2013). The bins are observed count frequency density and the spikes are the predicted count
+probabilities.
+Table 2. Replications of Zigerell (2015).
+Model 1 Model 2 Model 3 Model 4
+ NB PIG NB PIG NB PIG NB PIG
+All female ­0.216** ­0.021** ­0.104 ­0.068** ­0.115 ­0.057** ­0.115 ­0.053**
+ (0.087) (0.005) (0.085) (0.009) (0.095) (0.010) (0.082) (0.009)
+AIC 20,963.65 20,822.83 21,170.69 20,908.63 20,153.59 19,895.44 20,137.83 19,893.91
+ Model 5 Model 6 Model 7 Model 8
+ NB PIG NB PIG NB PIG NB PIG
+All female ­0.112 ­0.062** ­0.192** ­0.136** ­0.076 ­0.033** ­0.073 ­0.003
+ (0.095) (0.010) (.087) (0.010) (0.083) (0.009) (0.088) (0.008)
+AIC 18,265.83 18,040.64 20,058.63 19,835.37 19,087.27 18,862.85 12,474.13 12,370.92
+ Model 9 Model 10 Model 11 Model 12
+ NB PIG NB PIG NB PIG NB PIG
+All female ­0.030 0.016 ­0.086 ­0.052** ­0.052 ­0.031** ­0.033 ­0.016
+ (0.084) (0.012) (0.084) (0.009) (0.083) (0.009) (0.077) (0.010)
+AIC 14,007.96 13,931.29 19,429.74 19,283.76 19,103.58 18,985.28 17,848.97 17,825.05
+ Model 13 Model 14 Model 15 
+ NB PIG NB PIG NB PIG 
+All Female ­0.012 ­0.001 ­0.026 0.024** ­0.015 0.035** 
+ (0.071) (0.011) (0.075) (0.009) (0.072) (0.008) 
+AIC 16,120.04 16,148.33 18,061.45 17,978.78 11,122.23 11,122.02 
+Notes: Cells are coefficients and standard errors for negative binomial (NB) and Poisson inverse Gaussian (PIG) regression, along with Akaike
+information criteria (AIC) for each model. Each model comparison has equal N. * p < 0.10, **p < 0.05.
+4 Research and Politics 
+Zigerell (2015)
+Zigerell's (2015) main approach is to question the predic-
+tors and data used in Maliniak et al.'s study through a series
+of NB regressions. As nicely illustrated in Figure 1 of
+Zigerell (2015), he systematically removes certain predic-
+tors, adds in other predictors and new data, and trims the
+top percentiles across 15 models of the citation data.
+Zigerell finds that besides from the `kitchen sink' model,
+there is only one other instance where a statistically signifi-
+cant citation gap exists between men and women in IR cita-
+tions: a model that includes the temporal and geographical
+foci of the studies.As above, in Table 2, I replicate Zigerell's
+findings using both NB and PIG models, and only include
+the `all female' results and AIC.4
+First examining the AIC values, we see that the PIG
+model is preferred over NB for 14 of the 15 models; how-
+ever, PIG is only slightly preferred over NB in model 15. In
+model 13, the NB model is likely preferred over the PIG
+model because the top 10% of cited articles are excluded,
+and thus the long tails that PIG is ideal for modeling no
+longer exist. On the whole, as with the Maliniak et al. speci-
+fications, PIG makes better intuitive and statistical sense to
+use than NB regression.
+The PIG model produces considerably different results
+than the NB model for the `all female' predictor. I find
+that `all female' is statistically significant for models 1­7,
+10, 11, 14, and 15. Perhaps most interestingly, the coef-
+ficient for `all female' is actually positive for models 14
+and 15. Model 14 includes 2007 data and temporal and
+geographic focus predictors, excludes years controls, ten-
+ured female, and coed papers predictors, and additionally
+trims the top 2% of non-coed citations. Model 15 is the
+original `kitchen sink' model and trims the top 5% of
+non-coed citations. The positive coefficient indicates that
+women are cited more than men in IR when heavily cited
+non-coed papers are excluded. Like Maliniak et al., the
+replications of Zigerell's models suggest that conclusions
+about the existence of a gender gap in IR citations is sen-
+sitive to the data chosen and the construction of the
+models.5
+Conclusion
+The replication results using Poisson inverse Gaussian
+regression are inconclusive about the existence of a gender
+gap in international relations citation patterns. Women are
+certainly not always cited less than men and in some circum-
+stances might be cited more than men. There is some evi-
+dence that a gender gap may exist, but as mentioned above,
+it appears considerably subject to the substantive choices
+made on the data and predictors included in models.
+While the main point of this comment is to illustrate the
+use of the PIG model for social science count data, the anal-
+ysis does not definitively settle what is the best model or
+technique for analyzing IR citation data. To do so, we may
+prefer an experimental or quasi-experimental design; some-
+thing which the citation data cannot provide. As discussed
+by Leamer (1983), the replications here serve as a form of
+sensitivity analysis using a statistical technique that appears
+to better fit the data-generating process.
+Acknowledgement
+I thank Antony Overstall for the R code to produce the figures.
+Funding
+This research received no specific grant from any funding agency
+in the public, commercial, or not-for-profit sectors.
+Notes
+1. Further, both approach a Poisson distribution as the overdis-
+persion parameter becomes small.
+2. The user-written Stata command for PIG is pigreg. All of
+the replications in this paper are performed in Stata 13.1.
+However, Hilbe (2014) also demonstrates the PIG model in
+R with the gamlss package.
+3. Effects estimated using the margins command in Stata 13.1.
+4. Zigerell (2015) includes an exceptionally clear Stata do-file
+for the analysis.
+5. The PIG effect size for all female also appears smaller, but
+only in model 6, where all female is significant in both NB
+and PIG, can one make a confident comparison.
+References
+Angrist JD and Pischke JS (2010) The credibility revolution in
+empirical economics: How better research design is tak-
+ing the con out of econometrics. Journal of Economic
+Perspectives 24: 3­30.
+Cameron AC and Trivedi PK (2013) Regression Analysis of Count
+Data, 2nd edn. New York: Cambridge University Press.
+Hardin JW and Hilbe JM (2012) Generalized Linear Models and
+Extensions, 3rd edn. College Station, TX: Stata Press.
+Hilbe JM (2014) Modeling Count Data. New York: Cambridge
+University Press.
+King G (1988) Statistical models for political science event
+counts: Bias in conventional procedures and evidence for the
+exponential poisson regression model. American Journal of
+Political Science 32: 838­863.
+Leamer EE (1983) Let's take the con out of econometrics.
+American Economic Review 73: 31­43.
+Maliniak D, Powers R and Walter BF (2013) The gender citation
+gap in international relations. International Organization 67:
+889­922.
+Zigerell L (2015) Is the gender citation gap in international rela-
+tions driven by elite papers? Research & Politics. DOI:
+10.1177/2053168015585192.
+

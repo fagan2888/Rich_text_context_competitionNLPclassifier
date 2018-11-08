@@ -1,0 +1,914 @@
+Creative Commons Non Commercial CC-BY-NC: This article is distributed under the terms of the Creative Commons
+Attribution-NonCommercial 3.0 License (http://www.creativecommons.org/licenses/by-nc/3.0/) which permits non-commercial use,
+reproduction and distribution of the work without further permission provided the original work is attributed as specified on the SAGE and Open
+Access pages (https://us.sagepub.com/en-us/nam/open-access-at-sage).
+Methodological Innovations
+Volume 9: 1­11
+© The Author(s) 2016
+Reprints and permissions:
+sagepub.co.uk/journalsPermissions.nav
+DOI: 10.1177/2059799116630659
+mio.sagepub.com
+Introduction
+The analysis of spatial patterns uses one of the three funda-
+mental forms of spatial data: points, lines, or areas. In the
+social sciences, the most common forms of spatial analysis
+are conducted on points and areas, with the latter accounting
+for the majority of such studies: understanding spatial pat-
+terns across census units, neighborhoods, counties, prov-
+inces/states, or countries, for example. However, the analysis
+of spatial point patterns is of interest to a number of disci-
+plines including criminology (Ratcliffe, 2005), ecology
+(Perry et al., 2006), and epidemiology (Elliott et al., 2000).
+One of the most commonly asked questions in the analy-
+sis of spatial point patterns is whether or not the spatial pat-
+tern follows one of the theoretical distributions: uniform,
+random, or clustered. Although this may be of some interest,
+it has been long known that human activities and their condi-
+tions are clustered in space (Gatrell et al., 1996). As such, a
+spatial point pattern test that can identify differences in the
+forms of clustering would be particularly instructive: is a
+phenomenon more clustered than expected, for example?
+Researchers may be interested in knowing how similar two
+crime types are with regard to their spatial pattern or two
+disease types. Identifying differences in crime and disease
+type spatial patterns could help researchers identify unique
+risk factors that may be addressed. Alternatively, if clusters
+of both can be identified, a common intervention may be
+possible.
+When analyzing spatial (point) patterns, there are two
+forms of analysis: global and local. Global spatial analyses
+investigate the spatial pattern and provide an overall statistic
+for the entire study area; local spatial analyses investigate the
+same spatial pattern, but provide statistics for all areal units
+involved such that the output of the analyses can be mapped.
+Moreover, it is now well-understood that global spatial anal-
+yses can mask local spatial patterns (Anselin, 1995; Getis
+An area-based nonparametric spatial point
+pattern test: The test, its applications, and
+the future
+Martin A Andresen
+Abstract
+The analysis of spatial point patterns is a critical component of the geographic information analysis literature. Most of the
+tests for these data are concerned with random, uniform, and clustered patterns. However, knowing whether a spatial point
+pattern is similar to these theoretical data-generating processes is not always instructive: most human activity is clustered,
+so finding that some component of human activity is clustered is not really new information. In this article, a recently
+developed spatial point pattern test is discussed that compares the similarity of two different data sets. This comparison can
+be comparisons of different phenomena (different types of crime or public health issues) or the same phenomenon over time,
+for example. The discussion revolves around the test itself, its varied applications, and the future developments expected for
+this spatial point pattern test.
+Keywords
+Spatial point pattern test, nonparametric, Monte Carlo, pattern similarity
+Institute for Canadian Urban Research Studies, School of Criminology,
+Simon Fraser University, Burnaby, BC, Canada
+Corresponding author:
+Martin A Andresen, Institute for Canadian Urban Research Studies,
+School of Criminology, Simon Fraser University, 8888 University Drive,
+Burnaby, BC V5A 1S6, Canada.
+Email: andresen@sfu.ca
+630659
+MIO0010.1177/2059799116630659Methodological InnovationsAndresen
+research-article2016
+Original Article
+2 Methodological Innovations
+and Ord, 1992, 1996; Ord and Getis, 1995), and conse-
+quently, both forms of analysis should be considered if data
+are available.
+In this article, a relatively recent spatial point pattern test
+is discussed. This spatial point pattern test identifies the simi-
+larity of two spatial point patterns. As such, it is not con-
+cerned with the theoretical distributions of uniform, random,
+and clustered. The test, its applications, and directions for
+future research are all covered. This test is area-based (e.g.
+census tracts and neighborhoods), as opposed to point-based1
+(measured actual and expected distances between points),
+nonparametric, and provides both global and local output.
+Because this spatial point pattern test is nonparametric, it
+does not rely on any underlying data-generating process or
+distribution, or require that particular assumptions be met.
+These assumptions usually involve particular statistical dis-
+tributions for the data, but with nonparametric tests, no such
+assumptions are required. In the case of this spatial point pat-
+tern test, it is a permutation test that generates its own distri-
+bution for the purposes of statistical inference.
+All that is required are two spatial point pattern files and
+an area-based file; the graphical user interface that performs
+the test, discussed below, can generate a grid of any size to
+act as the area-based file for analysis. The global output is an
+index of similarity, S-Index, and the local output is an
+indicator of spatial similarity for each areal unit in the analy-
+sis that can be mapped; this latter output, and its interpreta-
+tion, is shown in an example below.
+Spatial point pattern test
+The spatial point pattern test developed by Andresen (2009)
+addresses the issue of comparing the similarity of two point
+patterns without being concerned about the statistical con-
+cepts of randomness, uniformity, and clustering. This test is
+conceptually simple, but computationally intense. With the
+development of a graphical user interface (see Figure 1), the
+application of this test is straightforward. For the purpose of
+understanding the nature of the test itself, an illustration is
+provided here. There are a number of steps necessary to
+undertake the spatial point pattern test that are outlined below
+and illustrated in Figure 2--the steps are not discussed spe-
+cifically in terms of Figure 2, rather this figure is included to
+aid in the understanding of the testing process through a vis-
+ualization of the discussion.
+The first step for the test is to identify the necessary data for
+analysis. Although a somewhat manifest statement, there are
+some data conditions necessary to conduct the test. At this
+time, although future developments are discussed further
+below, two geo-referenced point-based data sets for
+Figure 1. Screenshot of the graphical user interface.
+Andresen 3
+comparison are necessary. The geo-referencing is necessary
+because each point must be assigned to an individual areal unit
+of analysis. The areal unit data may take any number of differ-
+ent forms: a set of grids placed over the study area, neighbor-
+hood boundaries, census tracts, or some other form of census
+boundary areas (census block groups, dissemination areas,
+output areas, etc.). Although all of the examples just listed
+would have complete coverage over the study area, this is not
+necessary for the test. Rather, all of the geo-referenced point
+data need to be assigned to an area; this becomes particularly
+important for some research questions, described in detail
+below. Briefly, street segments have been used in applications
+of this spatial point pattern test; street segments are polyline
+files that do not have complete coverage over a study area, by
+definition of the data. During the geocoding process, points
+are often placed on the appropriate side of the street based on
+the address locator such that the points are not directly on
+the polyline. This can be overcome through the use of small-
+area buffers around each street segment to place each geo-
+referenced point within, but there will still be empty spaces
+between the buffers.
+Once all of the necessary data are collected, the first deci-
+sion that needs to be made is which geo-referenced point
+data set shall be deemed the base data set and the test data
+set; the base data are considered the baseline. From the per-
+spective of undertaking the test, this choice may be of little
+consequence, but there may be "natural" choices. For exam-
+ple, if the spatial point patterns of a phenomenon are being
+compared over time, 2014 and 2015, a natural choice is to
+have the 2014 data as the base data set and the 2015 data as
+the test data set. In this situation, the implicit question is
+whether the 2015 data have a similar spatial pattern to the
+2014 data: has something changed over the year?
+The base data set is manipulated the least during the test.
+Each geo-referenced point is assigned to an areal unit, the
+number of points within each areal unit is aggregated, and
+the percentage of the points within each areal unit is calcu-
+lated. This allows for the comparison of data sets with differ-
+ent numbers of points. This set of percentages will then be
+used to compare to the test data set that undergoes a Monte
+Carlo simulation process.
+Similar to the base data set, the geo-referenced points
+within the test data set are assigned to an areal unit. At this
+stage, however, the process for the two data sets changes.
+Rather than calculating a single percentage for each areal
+unit, a Monte Carlo simulation is performed to create a con-
+fidence interval for each areal unit. A random sample (with
+replacement) of the test data set is undertaken, selecting 85%
+of the entire test data set--this value is based on Ratcliffe
+(2004), but can be modified in the graphical user interface.
+The percentages of points falling within each areal unit of
+this randomly sampled data set are then calculated and
+stored. This process is repeated a number of times in order to
+calculate a confidence interval for subsequent statistical test-
+ing (200 is used for convenient cut-offs to generate a 95%
+confidence interval).2 All of these percentages within each
+areal unit can then be ranked, removing the top and bottom
+2.5% of percentages to create a 95% nonparametric confi-
+dence interval. The percentage for the base and the upper­
+lower estimates for the test data are then compared. If the
+percentage of points for an areal unit in the base data set is
+within the corresponding confidence interval for the test data
+set, this areal unit is considered similar. This is repeated for
+each of the individual areal units of analysis.
+Figure 2. Steps for the spatial point pattern test.
+4 Methodological Innovations
+This information can then be applied to calculate a global
+Index of Similarity, S, that ranges from 0 (no similarity) to 1
+(perfect similarity). This Index is calculated as follows
+S
+s
+n
+i
+i
+n
+= =
+
+1
+(1)
+where n is the number of areas, s
+i
+is equal to 1 if the spatial
+pattern of two data sets is considered similar for areal unit i,
+and 0 otherwise. This Index of Similarity, then, represents
+the proportion of areal units that exhibit similar spatial pat-
+terns. Finally, the output from the spatial point pattern test
+can also be mapped such that the researcher can visualize
+where the two geo-referenced point-based data sets are (dis)
+similar. The graphical user interface, developed by Nick
+Malleson at the University of Leeds, is freely available (writ-
+ten in Java to be platform independent): https://github.com/
+nickmalleson/spatialtest.
+The last decision to be made is whether the two spatial
+point patterns are to be considered similar, or not. This is
+done using the global S-Index value. Although there is no
+statistical method of identifying a threshold for similarity, a
+rule of thumb has been used in the application of this test.
+There are rules of thumb for the interpretation of many statis-
+tics: at what point does R2 indicate an acceptable level for
+goodness-of-fit? The rule of thumb used in the current con-
+text relates to the literature that considers multicollinearity in
+a multiple regression context and bivariate correlations. With
+regard to the multiple regression context, the variance infla-
+tion factor is often used to measure the degree of multicol-
+linearity. O'Brien (2007) states that variance inflation factors
+ranging from 5 to 10 (and greater, of course) may be cause
+for concern. In a bivariate correlation context (most similar
+to the application of this spatial point pattern test), this cor-
+responds to correlation coefficients ranging from 0.80 to
+0.90--Cohen (1988) considers lower levels of correlation to
+be considered "strong," but these higher values are consid-
+ered to be more conservative. Consequently, the research
+implementing this test most often uses 0.80 as a threshold for
+similarity. However, it should be noted that this threshold is
+not, and should not be, considered in a binary context such as
+statistical significance. As the S-Index value approaches
+0.80, the two spatial point patterns should be considered
+approaching similarity.
+The general underlying principle for this spatial point
+pattern test is that the spatial pattern of the base data set is
+given (the percentages for the individual areal units are
+just calculated), but the spatial pattern for the test data set
+is one possible realization of the actual spatial point pat-
+tern. The randomization process maintains the underlying
+spatial pattern (data-generating process) of the test data set
+while creating sampling variation allowing for nonpara-
+metric statistical inference through the calculation of con-
+fidence intervals.
+Applications of the spatial point pattern
+test
+Previous applications of the spatial point pattern
+test
+The first application of the spatial point pattern test is in the
+paper that initially develops the test (Andresen, 2009). In this
+first application, Andresen (2009) shows that the spatial
+point patterns of theft of vehicle, burglary (commercial and
+residential), and an aggregate of violent crime all appear to
+have similar spatial patterns. However, the analysis shows,
+using both census tracts and dissemination areas (the
+Canadian equivalent to the census block group in the United
+States), that their similarities are actually quite low: S-Index
+values ranging from 0.08 to 0.20. Based on the criteria for
+similarity identified using the spatial point pattern test dis-
+cussed above, S0.80, none of these crime spatial patterns
+can be considered similar. Consequently, any analysis of this
+aggregated spatial pattern may be of little use because it does
+not represent any particular crime that could be targeted for
+prevention or reduction. In fact, it is possible that one could
+aggregate a number of clustered crime types into a spatial
+pattern that appears to be random. Because of this, Andresen
+(2009) argues that the aggregation of different crime types is
+problematic if one is implicitly or explicitly concerned with
+understanding spatial patterns of crime.
+In an investigation of crime concentrations and the impor-
+tance of considering spatial scale when trying to understand
+spatial crime patterns, Andresen and Malleson (2011) con-
+sider the stability of spatial crime patterns through an applica-
+tion of the spatial point pattern test over time: same crime
+type, but investigating changes in its spatial patterns over
+years. Andresen and Malleson (2011) analyzed the crime
+types of assault, burglary, robbery, sexual assault, theft, theft
+of vehicle, and theft from vehicle considering census tracts,
+dissemination areas, and street segments. Overall, they found
+that when considering census tracts and dissemination areas,
+the spatial crime patterns were only relatively stable over
+time for the rare events of robbery and sexual assault. Only
+when the authors analyzed the stability of spatial crime pat-
+terns at the street segment level did stability/similarity over
+time emerge. However, this result was driven by the large per-
+centage of street segments that did not have any crime; the
+S-Index values were all below 0.52 after this was controlled
+for in a sensitivity analysis. The results and sensitivity analy-
+sis undertaken by Andresen and Malleson (2011) show a par-
+ticularmanifestationofthemodifiablearealunitproblem--see
+Fotheringham and Wong (1991) and Openshaw (1984b). The
+modifiable areal unit problem refers to statistical results
+changing when the areal units change. There are two forms of
+the modifiable areal unit problem: scale and zoning. The scale
+problem is described above, indicating a change in the results
+when the scale of the analysis is changed. The zoning prob-
+lem occurs when smaller units are organized in a different
+Andresen 5
+way, but at the same spatial scale--shifting an existing set of
+neighborhoods, for example. This is a problem because (very)
+different statistical results can emerge when changing areal
+units. In fact, Fotheringham and Wong (1991) were able to
+generate any result through the modification of areal units.
+This proves to be an important factor with this spatial point
+pattern test and is discussed further, below.
+In an extension of the original work done by Andresen
+(2009), Andresen and Linning (2012) used the spatial point
+pattern test to investigate the similarity of spatial patterns of
+different crime types. The primary research question was
+whether it was appropriate to aggregate different crime types
+to their aggregate forms when the research is concerned with
+spatial patterns of crime: property crime and violent crime,
+for example. Andresen and Linning (2012) also considered
+three different spatial units of analysis (census tracts, dis-
+semination areas, and street segments), but included crime
+data from Ottawa (commercial burglary, residential burglary,
+commercial robbery, individual robbery, other robbery, theft
+of vehicle, and a number of different aggregations) and
+Vancouver (the same crime types as Andresen and Malleson,
+2011). Overall, they found that spatial crime patterns were
+not similar across all crime types for census tracts and dis-
+semination areas--different forms of robbery in Ottawa were
+the exception. Only when street segments were used as the
+areal unit of analysis did the S-Index value reach the thresh-
+old of 0.80; however, this only occurred in Ottawa (all crime
+types) and Vancouver (robbery and sexual assault). Their
+conclusion was clear: only in a situation when crime is
+incredibly concentrated (Ottawa's central business district) is
+it appropriate to aggregate different crime types together.
+Andresen and Malleson (2013b) explicitly investigate the
+impact of the modifiable areal unit problem using the spatial
+point pattern test using data from Vancouver, Canada, and
+Leeds, England. Specifically, Andresen and Malleson
+(2013b) consider the change in the spatial patterns of crime
+over time using two different areal units of analysis in each
+city. They then compare the results for the different spatial
+scales to investigate the percentage of the smaller areal units
+within the larger areal units that exhibit the same change.
+Generally speaking, these authors find that approximately
+one-half of the smaller areal units exhibit the same spatial
+change as the larger areal units that the smaller areal units
+fall within. Clearly, any results found for larger areal units
+are being driven by one-half of the smaller areal units. This
+shows the relationship between the modifiable areal unit
+problem and the ecological fallacy in this context--the eco-
+logical fallacy is committed when the researcher makes
+inference at a finer scale of resolution than is being analyzed,
+making inferences regarding individuals when neighbor-
+hoods are the unit of analysis, for example. Moreover,
+because of the nature of statistical testing, Andresen and
+Malleson (2013b) found that in some cases, none of the
+smaller areal units of analysis exhibited the same spatial
+change as the larger areal units. This was investigated in
+detail, and it was found that only when the data were aggre-
+gated to the larger areal units was (marginal) statistical sig-
+nificance obtained in the results. As such, care must be taken
+when making statistical inferences with spatial data.
+In another consideration of (in)appropriate aggregation of
+crime data, Andresen and Malleson (2013a) investigated the
+similarity of spatial crime patterns across the different sea-
+sons of the year. Their research question was concerned with
+the value of yearly counts of crime, and corresponding rates,
+when considering any explanation of the respective patterns.
+If the spatial patterns of crime changed from season to sea-
+son, are the spatial patterns of a yearly aggregate meaning-
+ful? Considering both census tracts and dissemination areas,
+Andresen and Malleson (2013a) found that the spatial pat-
+terns of crime were rather dissimilar for seven of the eight
+crime types investigated. Only robbery and sexual assault
+had S-Index values that exceeded the threshold of 0.80, and
+only for dissemination areas. However, it should be noted
+that these two crime types have low counts and there are
+many dissemination areas, so the zero-value issue emerges
+here as well--Andresen and Malleson (2013a) did not under-
+take sensitivity analyses in this instance. Regardless, this
+shows that spatial patterns of crime change throughout the
+year and must be considered, as stated by the authors, when
+considering crime prevention initiatives.
+The next analysis of spatial point pattern similarity was
+undertaken by Andresen and Malleson (2014) in an analysis
+of crime displacement from a police foot patrol initiative.
+Most investigations of crime displacement (the movement of
+criminal activity because of a crime prevention initiative,
+such as a police foot patrol) have a treatment area and a
+catchment area that immediately surrounds the treatment
+area; this is done because it is assumed that crime may be
+displaced and move around the corner (Weisburd et al.,
+2006).Although there are still many questions to be answered
+regarding this process, research in this sub-field of crime
+prevention finds evidence for a diffusion of benefits: crimi-
+nal activity decreases in both the treatment area and the
+catchment area (Guerette and Bowers, 2009; Johnson et al.,
+2014; Telep et al., 2014; Weisburd et al., 2006).
+Andresen and Malleson (2014) ask the following ques-
+tion: in the presence of a diffusion of crime prevention ben-
+efits, does the spatial pattern of criminal activity change, or
+does criminal activity go down in the same way in all places?
+For example, suppose the levels of crime were the same in
+the treatment area with a crime prevention initiative and the
+catchment area without that crime prevention initiative:
+crime goes down everywhere to the same degree. However,
+crime could go down everywhere but at different rates in dif-
+ferent places. Such a situation could be illustrated with a bal-
+loon: crime goes down everywhere such that the balloon now
+has less air in it, but it goes down more in the treatment area
+with the crime prevention initiative. This can be visualized
+by pushing down in the center of a deflated balloon. Crime
+has gone down everywhere, but the spatial pattern has
+6 Methodological Innovations
+changed such that there is now relatively more crime in the
+surrounding area. This situation may occur when offenders
+do move around the corner from the crime prevention initia-
+tive, but are less active there than before.
+In their analyses, Andresen and Malleson (2014) found
+moderate support for a change in the spatial pattern of crime
+(in the presence of criminal activity decreasing in both the
+treatment area and the surrounding catchment area), indicat-
+ing that the distribution of criminal activity shifts toward the
+surrounding area although that criminal activity decreases
+everywhere. This has important implications for further crime
+prevention initiatives because it shows a rational response
+from offenders: offenders decrease criminal activity, but shift
+their remaining criminal activity away from where the police
+are known to be.
+Although they consider multiple methodologies to address
+their research question, Tompson et al. (2015) investigate the
+similarity of open-source crime data in the United Kingdom
+to actual police-recorded crime data. The issue is that in order
+to make criminal event data available to the public while
+simultaneously considering privacy and confidentiality, the
+developers of the open-source data undertake a process of
+geomasking that adds "noise" to the data such that actual
+locations of criminal events cannot be known. Tompson et al.
+(2015) were concerned whether this geomasking changed the
+underlying (and true) spatial crime patterns. Overall, these
+authors found that the similarity of these two data sources was
+not particularly high when considering small areas of analysis
+such as postal codes and output areas. However, when consid-
+ering larger geographic areas, Tompson et al. (2015) found a
+high degree of similarity between the two different data
+sources for most crime types (lower layer super output areas
+and middle layer super output areas).
+In another consideration of temporal aggregation,
+Andresen and Malleson (2015) investigated the similarity of
+spatial crime patterns for different days of the week for
+assault, burglary, robbery, sexual assault, theft, theft of vehi-
+cle, and theft from vehicle considering census tracts and dis-
+semination areas. Similar to the seasonality research of
+Andresen and Malleson (2013a), this research found that the
+spatial patterns of crime changed significantly for different
+days of the week; the only exceptions were robbery and sex-
+ual assault with disseminations areas.
+Extending the work of Andresen and Linning (2012), Melo
+et al. (2015) investigated the appropriateness of aggregating
+crime types in Campinas, Brazil. In their analysis, Melo et al.
+(2015) not only considered a number of spatial scales (pon-
+deration areas, census tracts, and street segments) but consid-
+ered the impact of zero-values beyond what has been discussed
+above. Melo et al. (2015) undertook a sensitivity analysis that
+only considered non-zero street segments to test the similarity
+of spatial point patterns in two ways; first, they considered a
+street segment non-zero if it had any criminal event, similar to
+the sensitivity analyses discussed above, and, second, they
+considered a street segment non-zero if it had any crime that
+related to the two crime types being tested. Melo et al. (2015)
+found that the former definition of a non-zero street segment
+still resulted in a high degree of similarity in the spatial point
+patterns of most crime type comparisons. However, with the
+latter, and arguably more appropriate, definition of a non-zero
+street segment, very few of the comparisons achieved or
+approached the threshold S-Index value of 0.80. This result is
+particularly important because of the great detail in the crime
+types analyzed, indicating that it is almost never appropriate to
+aggregate crime types if one is concerned with spatial crime
+patterns.
+In an extension of Andresen and Malleson (2013a),
+Linning (2015) investigated the spatial patterns of seasonal-
+ity in Vancouver and Ottawa considering the micro-spatial
+unit of analysis, the street segment. Despite the presence of
+temporal seasonal patterns, Linning (2015) found no evi-
+dence for changing spatial patterns of crime in either city.
+This result shows the importance of the areal unit of analysis
+and the modifiable areal unit problem.
+And most recently in the context of crime, Pereira et al. (in
+press) investigated the spatial patterns of homicide in Recife,
+Brazil. There has been a significant drop in homicides in
+Recife in recent years, and Pereira et al. (in press) found that
+these homicides were highly concentrated. Moreover, Pereira
+et al. (in press) found a high degree of spatial similarity from
+year to year while the homicide rate dropped almost 50%
+because so much of the city does not have any homicides.
+Even when considering non-zero areal units of analysis (cen-
+sus tracts and street segments), there was a moderately high
+degree of spatial similarity. Specifically, the use of the spatial
+point pattern test in conjunction with other analyses indicates
+that homicides simply stopped occurring in particular places
+in Recife.
+At this time, Andresen (2010) is the only application of
+this spatial point pattern test that is outside of a criminological
+context--this potential is discussed further below. In this arti-
+cle, Andresen (2010) investigates the changing spatial pat-
+terns of interprovincial and international trade after the North
+American Free Trade Agreement entered into force in 1994.
+International trade theory predicts that when barriers to trade,
+such as tariffs, are removed, spatial patterns of interprovincial
+and international trade may change. Andresen's (2010) data,
+however, are not points but values assigned to Canadian prov-
+inces and US states. In an effort to apply the spatial point
+pattern test to these data, Andresen (2010) uses the concept of
+a quasi-point: if British Columbia exports CAD5
+million of
+goods to Texas, place 5 points within Texas for an analysis
+of changing trading patterns for British Columbia. With
+provinces and states being the units of analysis, as long as
+no inference is made at larger cartographic scales (smaller
+areas), issues regarding the ecological fallacy will not emerge
+(Openshaw, 1984a). In any event, the quasi-point proved to
+be instructive for the use of the spatial point pattern test. As
+expected, Andresen (2010) found that the spatial patterns of
+interprovincial and international trade changed substantially
+Andresen 7
+after the North American Free Trade Agreement entered into
+force. Moreover, the mapped output from the spatial point
+pattern test was able to show that the spatial pattern of trade
+shifted toward the United States, away from Canadian prov-
+inces, after the removal of trade barriers.
+An example of the test and its output
+Although instructive and containing interesting information
+for the spatial analysis of crime, the above discussions are
+limited without a complete presentation of the results.
+However, a full detailed account of all of these analyses is far
+beyond the scope of this article. As such, a detailed account
+of the seasonality study undertaken by Andresen and
+Malleson (2013a) is discussed here, with a map of the output
+from the spatial point pattern test.
+As stated above,Andresen and Malleson (2013a) found that
+spatial crime patterns were not similar from season to season,
+an indication that aggregating criminal events to a yearly
+aggregate may be problematic. As shown by Linning (2015),
+this may not be the case at the micro-spatial unit of analysis, but
+this result may have important implications for understanding
+spatial crime patterns at more spatially aggregated levels.
+Considering all crime types, Andresen and Malleson
+(2013a) found S-Index values that ranged from 0.14 to 0.50
+for census tracts and dissemination areas. This is clearly not
+even close to the threshold value of 0.80, indicating a lack of
+spatial similarity. Perhaps more interesting, however, is the
+local spatial output from the spatial point pattern test. Figure
+3a shows Vancouver with some points of interest, and Figure
+3b shows the output from the test comparing the yearly
+aggregate to summer. In summer, the spatial pattern of crime
+shifts more toward the places where people spend their rec-
+reational time: Kitsilano Beach out toward the University of
+British Columbia (UBC), Stanley Park, downtown, Queen
+Elizabeth Park, and the Pacific National Exhibition (PNE).
+These locations attract residents and tourists alike during the
+summer months, shifting the concentrations of targets for a
+number of different crime types. This is exactly what would
+be expected according to theories of environmental criminol-
+ogy (Andresen, 2014), showing the utility of visualizing the
+output of the spatial point pattern test.
+Potential applications of the spatial point pattern
+test
+The discussions above have shown the utility of this spatial
+point pattern test in the context of understanding the spatial
+patterns of crime, and one application within the interna-
+tional trade literature. However, the potential applications of
+this spatial point pattern test are in any context when the
+similarity between two spatial point patterns is of interest. In
+particular, this test is useful when the researcher is not par-
+ticularly concerned whether the spatial pattern of their data is
+considered uniform, random, or clustered.
+This is similar to the issue of how to calculate a crime rate
+and choose the appropriate denominator (Andresen, 2011). If
+one is interested in the spatial patterning of traffic collisions,
+the base consideration is not the theoretical distribution of a
+clustered phenomenon, but the underlying distribution of
+traffic overall: is the clustering of traffic collisions different
+than the overall clustering of traffic? If so, where? This has a
+number of applications within the social science, but also the
+health sciences, environmental studies, and urban planning.
+Directions and considerations for the
+future
+Thus far, the research on this spatial point pattern test has
+generated one methodological issue that must always be con-
+sidered, a number of extensions to the spatial point pattern
+test and its software, and some theoretical implications for
+testing. Each is discussed in turn.
+The methodological issue relates to the modifiable areal
+unit problem (Fotheringham and Wong, 1991; Openshaw,
+1984b) and non-zero street segments. In the context of street
+segments, many social phenomena will have some degree of
+clustering. In Vancouver, there are just over 10,000 street seg-
+ments that an analysis must consider. If the phenomenon
+under study is a relatively rare event, concentrations will nec-
+essarily appear in global statistics: a crime type that has 1000
+events in a particular year will have a minimum level of con-
+centration at 10% (1000 events divided by 10,000 street seg-
+ments). In this situation, even if all of these criminal events
+move to a completely different set of locations within the city,
+the S-Index value will be 0.80, indicating spatial similarity.
+Although technically true, because 80% of the city has the
+same levels of criminal events (zero), this is problematic for
+understanding the spatial crime patterns in a city, especially if
+one wishes to prevent those criminal events.
+As such, when considering the similarity of two spatial
+point patterns, one must be aware of this potential when ana-
+lyzing data using a large number of small areal units of anal-
+ysis. This is a particular form of the modifiable areal unit
+problem when the change in the S-Index with a change in the
+areal units of analysis will most often be known: the greater
+the number of areal units in the study area and the fewer the
+number of events under analysis, the more similar two spa-
+tial point patterns will appear to be. Consequently, this is not
+a property of the spatial point pattern test, but a consequence
+of assigning a relatively small number of events to a large
+number of places.
+The first extension to the spatial point pattern test relates
+to the concept of the quasi-point introduced by Andresen
+(2010) in the context of international and interprovincial
+trade pattern changes. It is a relatively simple task to have the
+program that runs the spatial point pattern test to create
+quasi-points if the data are organized appropriately. For
+instance, if the data were organized such that areal unit of
+analysis i had a count of n events (e.g. events is a general
+8 Methodological Innovations
+term here that could refer to millions of dollars of interna-
+tional trade), the program could generate an analysis data set
+that would then include n observations for areal unit i.
+Consequently, rather than having i observations each having
+a count of events, the analysis data set would have i×n
+observations each representing a single event. These could
+be quasi-points, as defined by the researcher in some
+meaningful way for the analysis. Alternatively, such data
+could represent actual points in a manner that the researcher
+does not have access to the original data: a count of events
+within a neighborhood, for example. It is not uncommon for
+criminal event data to be available as counts within some
+areal unit (neighborhoods, police beats, census tracts, etc.) as
+a means of maintaining confidentiality for the victims.
+Figure 3. Spatial point pattern test local output, all crimes, yearly aggregate versus summer: (a) Vancouver and points of interest and
+(b) spatial point pattern test local output.
+Source: Andresen and Malleson (2013a).
+Andresen 9
+Second, the graphical user interface could be further
+developed to describe the differences and similarities
+between the two point patterns analyzed. For example, some
+brief descriptive statistics could be provided. The graphical
+user interface calculates the S-Index, so the user could manu-
+ally calculate the non-similarity index: 1
+-
+S. However, it
+may be of particular interest to the researcher to know the
+percentages when base
+>
+test and test
+>
+base. Moreover, if
+layers of census data could be added, the different outputs
+(insignificant change, base
+>
+test, test
+>
+base) could be auto-
+matically compared to those census data. Of course, these are
+all subsequent analyses that could be undertaken within other
+GIS software, but this availability will make the current
+graphical user interface more functional for the user.
+Third, in case the standard distributions of uniform or ran-
+dom are of interest to the researcher, the graphical user inter-
+face could generate a random or uniform set of points within
+the study area (with an option for how many points). These
+points could then be used as the base data set to investigate
+how similar the spatial pattern of interest is to a random or
+uniform spatial pattern.
+Fourth, further investigations into the threshold values of
+the S-Index need to be undertaken. Specifically, the S-Index
+could be calculated with comparisons to a random distribu-
+tion, for example, to generate a distribution of the S-Index
+values that could be used for identifying the threshold for
+similarity. Such a method would be preferable to the ad hoc,
+though instructive, method discussed above.
+And fifth, a natural extension of the spatial point pattern
+test is to move beyond "bivariate" comparisons. At this time,
+the program for the spatial point pattern test is set up to com-
+pare two spatial point patterns. However, there is no reason
+why this test cannot be expanded into a multivariate context.
+In such a testing situation, one could find the degree of simi-
+larity across three or more spatial point patterns. Figure 4
+shows four different possibilities for such a multivariate spa-
+tial point pattern test. The dashed horizontal line represents
+the base percentage of points for the test, and the vertical
+lines represent the confidence intervals for the various test
+data sets: comparing the spatial pattern of crime in 2000
+(base) versus a number of subsequent years (test data sets).
+In these scenarios, the base percentage is always within the
+confidence intervals (a), initially within the confidence inter-
+vals but then the confidence intervals fall to zero represent-
+ing the crime drop (b), sporadically similar for the base and
+subsequent test data sets (c), and never similar over time (d).
+Such a comparison would be particularly instructive for
+the crime and place literature that has been concerned with
+the stability of crime concentrations over time (Weisburd
+et al., 2012). Although pairs of years over time can be com-
+pared to investigate the stability (Andresen and Malleson,
+2011), knowing whether places are consistently stable over
+time would be particularly instructive for the crime and place
+literature. As such, in a multivariate spatial context, this spa-
+tial point pattern test could investigate the stability of spatial
+crime patterns of 12­16
+years, as investigated in the crime
+Figure 4. Multivariate spatial point pattern test.
+10 Methodological Innovations
+and place literature. Such an extension to the spatial point
+pattern test could prove to be important. It is possible, for
+example, that a spatial pattern may appear to be stable over
+time when undertaking pair-wise comparisons but be quite
+different when considering the entire study period. Such a
+situation could emerge when year-to-year patterns are simi-
+lar but similar in different places in each pair-wise compari-
+son. Only when considering the entire study period within a
+single test could spatial stability be truly confirmed or denied.
+Finally, the development of different testing methodolo-
+gies has implications for testing theories. For example, tests
+of theories within environmental criminology (place-based
+theories) often consider random and uniform distributions as
+the baseline. Are criminal events clustered, relative to a ran-
+dom distribution? However, we know that human activities,
+both criminal and non-criminal, are clustered in space. As
+such, testing to see whether a specific human activity is clus-
+tered is essentially tautological.Amore sensible baseline dis-
+tribution for the clustering of crime would be a representation
+of the road network. Road networks tend to have greater den-
+sity in the central business district than the suburbs, so ran-
+domly placed points on a road network will appear clustered.
+A point-based representation of the street segments in a road
+network could be used as the base data set with crime data as
+the test data set to investigate any greater concentrations of
+crime in particular areas. This information could then be
+used when conducting theoretical testing, rather than solely
+relying upon census data.
+Conclusion
+This article has reviewed the development, applications, and
+future for a relatively recent spatial statistical test used in the
+social sciences. This is a spatial point pattern test that is non-
+parametric and finds the degree of similarity between two
+spatial point data sets. The output from this test is a global
+statistic of similarity, the S-Index, and local output that can
+be mapped. The current applications for this test are domi-
+nantly criminological, but the potential for its use outside of
+spatial criminology should be quite apparent from the dis-
+cussions above.
+Although this spatial point pattern test is still in its infancy,
+its utility beyond identifying uniform, random, and clustered
+spatial point patterns has been shown here. Most human,
+social, and environmental processes are not random or uni-
+form across space. Consequently, a test that allows for com-
+parisons of spatial point patterns without a concern for these
+theoretical distributions is instructive for the social and envi-
+ronmental sciences.
+There is still a lot of work to be done to make this spatial
+point pattern test more practical for uses on other contexts,
+but these are programming tasks with no need for further
+development of the test itself. As with the current graphical
+user interface (https://github.com/nickmalleson/spatialtest),
+future developments of the test will continue to remain freely
+available and open source. In addition to the flexibility
+enhancements discussed above, it is hoped that this new spa-
+tial point pattern test will soon be available as a library within
+the R Project for Statistical Computing (http://www.r-pro-
+ject.org/).
+Declaration of conflicting interests
+The author(s) declared no potential conflicts of interest with respect
+to the research, authorship, and/or publication of this article.
+Funding
+The author(s) received no financial support for the research, author-
+ship, and/or publication of this article.
+Notes
+1. For a discussion of the differences between area-based and
+point-based spatial point pattern test, see Bailey and Gatrell
+(1995) and/or Diggle (2003).
+2. Both the geographical information analysis literature (Davis
+and Keller, 1997) and the statistical literature considering
+Monte Carlo experiments (Hope, 1968) have found that good
+results are achieved with as few as 50 and 20 repeated samples,
+respectively.
+References
+Andresen MA (2009) Testing for similarity in area-based spatial
+patterns: A nonparametric Monte Carlo approach. Applied
+Geography 29(3): 333­345.
+Andresen MA (2010) Canada­United States interregional trade:
+Quasi-points and spatial change. Canadian Geographer 54(2):
+139­157.
+Andresen MA (2011) The ambient population and crime analysis.
+Professional Geographer 63(2): 193­212.
+Andresen MA (2014) Environmental Criminology: Evolution,
+Theory, and Practice. New York: Routledge.
+Andresen MA and Linning SJ (2012) The (in)appropriateness of
+aggregating across crime types. Applied Geography 35(1­2):
+275­282.
+Andresen MA and Malleson N (2011) Testing the stability of
+crime patterns: Implications for theory and policy. Journal of
+Research in Crime and Delinquency 48(1): 58­82.
+Andresen MA and Malleson N (2013a) Crime seasonality
+and its variations across space. Applied Geography 43:
+25­35.
+Andresen MA and Malleson N (2013b) Spatial heterogene-
+ity in crime analysis. In: Leitner M (ed.) Crime Modeling
+and Mapping Using Geospatial Technologies. New York:
+Springer, pp. 3­23.
+Andresen MA and Malleson N (2014) Police foot patrol and crime
+displacement: A local analysis. Journal of Contemporary
+Criminal Justice 30(2): 186­199.
+Andresen MA and Malleson N (2015) Intra-week spatial-temporal
+patterns of crime. Crime Science 4(1): 12.
+Anselin L (1995) Local indicators of spatial association--LISA.
+Geographical Analysis 27(2): 93­115.
+Bailey TC and Gatrell AC (1995) Interactive Spatial Data Analysis.
+Harlow: Prentice Hall.
+Andresen 11
+Cohen J (1988) Statistical Power Analysis for the Behavioral
+Sciences (2nd edn). Hillsdale, NJ: Erlbaum.
+Davis TJ and Keller CP (1997) Modelling uncertainty in natural
+resource analysis using fuzzy sets and Monte Carlo simula-
+tion: Slope stability prediction. International Journal of
+Geographical Information Science 11(5): 409­434.
+Diggle PJ (2003) Statistical Analysis of Spatial Point Patterns (2nd
+edn). London: Arnold Publishers.
+Elliott P, Wakefield JC, Best NG, et al. (2000) Spatial Epidemiology
+Methods and Applications. Oxford: Oxford University Press.
+Fotheringham AS and Wong DWS (1991) The modifiable areal
+unit problem in multivariate statistical analysis. Environment
+and Planning A 23(7): 1025­1044.
+Gatrell AC, Bailey TC, Diggle PJ, et al. (1996) Spatial point pat-
+tern analysis and its application in geographical epidemiology.
+Transactions of the Institute of British Geographers 21(1):
+256­274.
+Getis A and Ord JK (1992) The analysis of spatial association
+by use of distance statistics. Geographical Analysis 24(3):
+189­206.
+Getis A and Ord JK (1996) Spatial analysis: Modelling in a
+GIS environment. In: Longley P and Batty M (eds) Local
+Spatial Statistics: An Overview. London: Geoinformation
+International, pp. 261­277.
+Guerette RT and Bowers KJ (2009) Assessing the extent of crime
+displacement and diffusion of benefits: A review of situational
+crime prevention evaluations. Criminology 47(4): 1331­1368.
+Hope ACA (1968) A simplified Monte Carlo significance test
+procedure. Journal of the Royal Statistical Society: Series B
+30(3): 582­598.
+Johnson SD, Guerette RT and Bowers K (2014) Crime displace-
+ment: What we know, what we don't know, and what it means
+for crime reduction. Journal of Experimental Criminology
+10(4): 549­571.
+Linning SJ (2015) Crime seasonality and the micro-spatial patterns
+of property crime in Vancouver, BC and Ottawa, ON. Journal
+of Criminal Justice 43(6): 544­555.
+Melo SN, Matias LF and Andresen MA (2015) Crime concentra-
+tions and similarities in spatial crime patterns in a Brazilian
+context. Applied Geography 62: 314­324.
+O'Brien RM (2007) A caution regarding rules of thumb for vari-
+ance inflation factors. Quality & Quantity 41(5): 673­690.
+Openshaw S (1984a) Ecological fallacies and the analysis of areal
+census data. Environment and Planning A 16(1): 17­31.
+Openshaw S (1984b) The Modifiable Areal Unit Problem (Concepts
+and Techniques in Modern Geography (CATMOG), No. 38).
+Norwich: Geo Books.
+Ord JK and Getis A (1995) Local spatial autocorrelation statis-
+tics: Distributional issues and an application. Geographical
+Analysis 27(4): 286­306.
+Pereira DVS, Mota CMM and Andresen MA (in press) The homi-
+cide drop in Recife, Brazil: A study of crime concentrations
+and spatial patterns. Homicide Studies.
+Perry GLW, Miller BP and Enright NJ (2006) A comparison of
+methods for the statistical analysis of spatial point patterns in
+plant ecology. Plant Ecology 187(1): 59­82.
+Ratcliffe JH (2004) Geocoding crime and a first estimate of a mini-
+mum acceptable hit rate. International Journal of Geographical
+Information Science 18(1): 61­72.
+Ratcliffe JH (2005) Detecting spatial movement of intra-region
+crime patterns over time. Journal of Quantitative Criminology
+21(1): 103­123.
+Telep CW, Weisburd D, Gill CE, et al. (2014) Displacement of
+crime and diffusion of crime control benefits in large-scale geo-
+graphic areas: A systematic review. Journal of Experimental
+Criminology 10(4): 515­548.
+Tompson L, Johnson S, Ashby M, et al. (2015) UK open
+source crime data: Accuracy and possibilities for research.
+Cartography and Geographic Information Science 42(2):
+97­111.
+Weisburd D, Groff ER and Yang S-M (2012) The Criminology of
+Place: Street Segments and Our Understanding of the Crime
+Problem. New York: Oxford University Press.
+Weisburd D, Wyckoff LA, Ready J, et al. (2006) Does crime just
+move around the corner? A controlled study of spatial displace-
+ment and diffusion of crime control benefits. Criminology
+44(3): 549­591.
+Author biography
+Martin A Andresen is a Professor in the School of Criminology
+and Institute for Canadian Urban Research Studies, Simon Fraser
+University. His research areas are in spatial crime analysis, crime
+and place, geography of crime, environmental criminology, and
+applied spatial statistics and geographical information analysis.
+Within these research areas he has published 3 edited volumes, 2
+books, and more than 100 refereed journal articles and contribu-
+tions to edited volumes.
+

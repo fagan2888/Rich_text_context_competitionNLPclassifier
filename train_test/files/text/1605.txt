@@ -1,0 +1,1306 @@
+doi: 10.1111/j.1469-1809.2009.00528.x
+Testing Hardy-Weinberg Equilibrium using Family Data
+from Complex Surveys
+Dewei She1,2, Hong Zhang3,4 and Zhaohai Li1,4
+1Department of Statistics, The George Washington University, Washington, DC 20052
+2The EMMES Corp., 401 N. Washington St., Rockville, MD 20850
+3Department of Statistics and Finance, University of Science and Technology of China, Hefei, Anhui 230026, P.R. China
+4Biostatistics Branch, Division of Cancer Epidemiology and Genetics, National Cancer Institute, Rockville, MD 20852
+Summary
+Genetic data collected during the second phase of the Third National Health and Nutrition Examination Survey
+(NHANES III) enable us to investigate the association of a wide variety of health factors with regard to genetic variation.
+The classic question when looking into the genetic variations in a population is whether the population is in the state
+of Hardy-Weinberg Equilibrium (HWE). Our objective was to develop test procedures using family data from complex
+surveys such as NHANES III. We developed six Pearson 2 based tests for a diallelic locus of autosomal genes. The finite
+sample properties of the proposed test procedures were evaluated via Monte Carlo simulation studies and the Rao-Scott
+first order corrected test was recommended. Test procedures were applied to three loci from NHANES III genetic
+databases, i.e., ADRB2, TGFB1, and VDR. HWE was shown to hold at 0.05 level for all three loci when only families
+with genotypic information available for two parents and for one or more children were used in the analysis.
+Keywords: Complex sampling, Hardy-Weinberg Equilibrium, inbreeding coefficient, Pearson 2 based test, Rao-
+Scott first order correction
+Introduction
+The National Health and Nutrition Examination Survey
+(NHANES), conducted periodically since 1960 by the
+National Center for Health Statistics (NCHS) of the Cen-
+ters for Disease Control and Prevention (CDC), has pro-
+vided national estimates of the health and nutritional status
+of the U.S. civilian, non-institutionalized population. The
+Third National Health and Nutrition Examination Survey
+(NHANES III) began in the fall of 1988 and ended in the
+fall of 1994. During the second phase of NHANES III (from
+October, 1991 to October, 1994), blood lymphocytes were
+collected from 7159 participants aged 12 years and older in
+anticipation of advances in genetic research. Linkage of the
+NHANES III phenotype data with this genetic information
+provides the opportunity to investigate the association of a
+wide variety of health factors with regard to genetic varia-
+tions (NCHS, 2007).
+
+Corresponding author: Zhaohai Li, Ph.D., Professor of Statis-
+tics and Biostatistics, Director of Statistics Program, The George
+Washington University Department of Statistics, 2140 Pennsylvania
+Avenue, N.W., Washington, DC 20052, USA. Tel: 202-994-7844;
+Fax: 202-994-6917. E-mail: zli@gwu.edu
+National surveys like NHANES III employ a complex,
+multistage, probability sampling design to select participants
+representative of the civilian, non-institutionalized US popu-
+lation. At the first stage of the sampling, the target population
+is partitioned into primary sampling units (PSU), e.g., coun-
+ties. The PSUs are then grouped into strata. Within each
+stratum, PSUs are sampled often with probability propor-
+tional to the population size. At the next stage,the sampled
+PSUs are subdivided into smaller geographic units, such as
+city blocks, and a random sample of these units are selected.
+Additional stages of sampling may be used where smaller units
+are sampled from the sampled units at the second stage. At
+the last stage of sampling, individuals are sampled from the
+sampled units. For each individual, the inverse of the product
+of the selection probabilities across all of the stages of sampling
+is their sample weight.
+A complex sampling plan adds at least two complexities to
+the data analyses. First, cluster sampling may induce correla-
+tion between individual observations within sampled clusters.
+The standard errors can be underestimated if this correlation is
+ignored. Second, varying selection probabilities used to sam-
+ple individuals produce different sample weights for surveyed
+subjects. If these sample weights are correlated with the ob-
+servations then an analysis that does not take this into account
+C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Annals of Human Genetics (2009) 73,449­455 449
+D. She et al.
+can be biased (Korn & Graubard, 1999). Test procedures de-
+veloped for simple random samples are generally unsuitable
+for the analysis of data from these complex sample designs.
+The classic question when looking into the genetic varia-
+tions in a population is whether the population is in the state
+of Hardy-Weinberg Equilibrium (HWE), which has been a
+powerful research tool ever since its discovery in the early
+1900s (e.g., Haseman & Elston, 1972; Crow, 1988; Neilsen
+et al., 1999; Xu et al., 2002; Lee, 2003). Various tests for
+departure from HWE have been proposed under different
+settings (e.g., Li, 1955; Hern´
+andez & Weir, 1989; Olson &
+Foley, 1996; Chen & Thomson, 1999; Neilsen et al., 1999;
+Lee, 2003; Weinberg & Morris, 2003; Bourgain et al., 2004;
+Schaid et al., 2006; Li & Li, 2008).
+The analysis of family data for HWE has been proposed
+by Bourgain et al. (2004) in the setting of random samples.
+Li & Graubard proposed using Wald-like tests for HWE in
+a complex survey setting assuming that all individuals were
+independent (Li & Graubard, 2008). Our objective was to
+develop procedures for testing departure from HWE using
+family data in a complex survey setting. Our methods differ
+from that of Bourgain et al. (2004) in that our methods were
+developed for complex survey samples while Bourgain et al.
+developed their method for random samples, though both of
+the methods deal with family data. The family structure was
+ignored by Li and Graubard (2008), which was taken into
+consideration when we developed our test procedures.
+Methods
+Surveys with a complex sampling plan, such as NHANES III,
+often have a multi-stage design. At the first stage of the sam-
+pling, the target population is partitioned into primary sampling
+units (PSU). The PSUs are then grouped into strata. Within each
+stratum, some numbers of PSUs are sampled. Later, individuals
+or households with different weights are sampled from PSUs. Li
+pointed out that the effect of pooling random mating subgroups
+with different allele frequencies is equivalent to that of inbreed-
+ing in the total population (Li, 1969). Therefore, for stratified
+sampling data, the first step of testing HWE is to test the homo-
+geneity across all stratified subgroups. Our work is restricted to
+the situation that all stratified subgroups are homogeneous, i.e.,
+no population substructure exists.
+In a simple random sampling setting, assuming a diallelic locus
+(i.e., A and a) of autosomal genes, there are 27 possible genotype
+combinations among father, mother, and child. When the mating
+orders of father and mother do not need to be distinguished,
+these 27 combinations reduce to ten possibilities. Let p be the
+frequency of allele A and q = 1-p be the frequency of allele a.
+Assuming HWE, the joint genotype distribution of parents-child
+triads are given in Table 1.
+We consider K families with two parents and one child and
+assume families are independent of each other. Let n = (n1, n2, n3,
+n4, n5, n6, n7, n8, n9, n10)T be the vector denoting the number of
+Table 1 Joint distributions of three genotypes from parents-child
+triads
+Genotype
+Familial Type Parents Child Joint Probability Count
+1 AA-AA AA p4 n1
+2 AA-Aa AA 2p3q n2
+3 AA-Aa Aa 2p3q n3
+4 AA-aa Aa 2p2q2 n4
+5 Aa-Aa AA p2q2 n5
+6 Aa-Aa Aa 2p2q2 n6
+7 Aa-Aa aa p2q2 n7
+8 Aa-aa Aa 2pq3 n8
+9 Aa-aa aa 2pq3 n9
+10 aa-aa aa q4 n10
+families in each category, and K = 10
+i=1
+ni is the total number
+of families. The null hypothesis of interest, denoted by H0, is
+that HWE holds in the population. If H0 holds, then n has a
+multinomial distribution with parameter vector (K; (p)), where
+(p) = (p4, 2p3q, 2p3q, 2p2q2, p2q2, 2p2q2, p2q2, 2pq3, 2pq3, q4).
+Departure from HWE can be tested using Pearson chi-square
+test statistics given by:
+2
+A
+= (n, ^
+p)T M(n, ^
+p)(n, ^
+p),
+where ^
+p = (4n1
++ 3(n2
++ n3) + 2(n4
++ n5
++ n6
++ n7) + n8
++
+n9)/(4K), which is the maximum likelihood estimator of p,
+(n, ^
+p) = (n - ( ^
+p))T, which is the observed number of fam-
+ilies minus the estimated expected number of families in each
+category, and
+M(n, ^
+p) =
+
+
+
+
+
+
+K ^
+p4 0 ... 0
+0 2K ^
+p3 ^
+q ... 0
+.
+: .
+: ...
+.
+:
+0 0 ... K ^
+q 4
+
+
+
+
+
+
+-1
+.
+Assume that K families with two parents and one child have
+been sampled in a complex survey and the rth family has a sample
+weight wr . Define weighted analogies of K and ni in a complex
+sampling setting as Kw
+= K
+r =1
+wr and niw
+= K
+r =1
+wr
+i
+r
+, where
+i
+r
+= 1 if the rth family belongs to familial type i and 0 otherwise.
+The weighted estimate of allele A frequency is
+^
+pw
+= (4n1w
++ 3(n2w
++ n3w) + 2(n4w
++ n5w
++ n6w
++ n7w)
++ n8w
++ n9w)/(4Kw).
+Following the approach of Li and Graubard (2008), the
+weighted version of the chi-square test statistic 2
+A
+would
+be 2
+A,w
+= (nw
+, ^
+pw)T M(nw
+, ^
+pw)(nw
+, ^
+pw), which can be ob-
+tained by substituting ni with niw and ^
+p with ^
+pw. The test statistic
+2
+A,w
+does not have an asymptotic chi-square distribution because
+of correlation induced by cluster sampling and by the sampling
+weight. Rao and Scott (1984) demonstrated that the first order
+correction of 2
+A,w
+, i.e., 2
+A,w
+(1) = 2
+A,w
+/¯
+^
+, was asymptotically
+450 Annals of Human Genetics (2009) 73,449­455 C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Testing HWE Using Survey Data
+distributed as 2
+8
+under H0, where
+¯
+^
+ = 1/8 8
+i=1
+^
+i and ^
+i 's are
+non-zero eigenvalues of the matrix ^ M(nw
+, ^
+pw) ( ^ is described
+in the following two paragraphs). A more accurate second or-
+der correction of 2
+A,w
+suggested by Satterthwaite (1946), i.e.,
+2
+A,w
+(2) = 2
+A,w
+/{¯
+^
+(1 + ^
+a2)}, has an asymptotic 2
+8/(1+^
+a2)
+dis-
+tribution under H0, where ^
+a2 = 1/8 8
+i=1
+(^
+i
+- ¯
+^
+)2/^
+
+2
+(Rao
+& Scott, 1984; Li & Graubard, 2008). A Satterthwaite F-
+version of 2
+A,w
+(2) is F2
+A,w
+(2) = 2
+A,w
+(2)/{8/(1 + ^
+a2)}, which
+is asymptotically distributed as F8/(1+^
+a2), f under H0, where
+f = H
+h=1
+mh
+- H, with H being the total number of strata
+and mh the number of PSU's within the hth stratum (Thomas &
+Rao, 1987).
+Using the argument of Graubard and Korn (1993), it can be
+shown that
+
+K(nw
+, ^
+pw) converges in distribution to a multi-
+variate normal distribution with expectation 0. Following Shah
+(2004), (nw
+, ^
+pw) can be estimated by K
+r =1
+wr zr
+. The expres-
+sion of zr is given in Appendix A. Denote by the limit-
+ing variance-covariance matrix of
+
+K(nw
+, ^
+pw); the variance-
+covariance matrix can then be estimated by
+^ = H
+h=1
+mh
+mh
+- 1
+mh
+i=1
+(z(hi) - ¯
+z(h))(z(hi) - ¯
+z(h))T,
+where z(hi) = K
+r =1
+wr zr
+(hi)
+r
+= (z(hi)
+1
+, z(hi)
+2
+, z(hi)
+3
+, z(hi)
+4
+,
+z(hi)
+5
+, z(hi)
+6
+, z(hi)
+7
+, z(hi)
+8
+, z(hi)
+9
+, z(hi)
+10
+)T, ¯
+z(h) = mh
+i=1
+z(hi)
+mh
+, and
+(hi)
+r
+= 1 if the rth parents-child triad belongs to ith sampled
+PSU of hth stratum and 0 otherwise (Korn & Graubard, 1999).
+Appendix B gives detailed expression of z(hi).
+A Wald test statistic is defined by 2
+A,Wald
+=
+(nw
+, ^
+pw)T ^ -1(nw
+, ^
+pw), which is asymptotically dis-
+tributed as 2
+8
+under H0. When f = H
+h=1
+mh
+- H is not
+large, an F-version of the Wald statistic, F A,Wald
+= ( f - 8 +
+1)/(8 f )2
+A,Wald
+, which has an asymptotic F8, f -8+1 distribution
+under H0, is often used instead (Korn & Graubard, 1990; Li &
+Graubard, 2008).
+Simulation Studies
+The type I error rate and power of all proposed test procedures
+under complex multistage sampling frames were evaluated via
+Monte Carlo simulations with a nominal level of 0.05. The fol-
+lowing parameters were controlled in the same manner used by
+Li and Graubard (2008): 1) H, the number of strata; 2) L, the
+number of sampled PSUs per stratum; 3) m, the number of sam-
+pled parents-child triads per PSU per stratum; and 4) w, the
+weight assigned to each parent-child triad. In addition to these
+parameters, we also controlled 1) F, the inbreeding coefficient
+for population substructure or cryptic relatedness; and 2) p, the
+frequency of allele A.
+We set H to 23 and L to 2, which reflect the design of the
+second phase of NHANES III, for all simulation studies. The
+type I error rate and power were evaluated at three different m
+levels (60, 120, and 180) with allele A frequency of 0.1, 0.3,
+or 0.5. Two different sets of sample weights are considered, i.e.,
+no weighting, where wr 's are equal to one or wr 's are randomly
+assigned the values {1,3,5}, in our simulations. The weight of
+each family was the average weight of each parents-child triad.
+The inbreeding coefficient was set to 0, 0.01, 0.02, or 0.05.
+Hardy-Weinberg disequilibrium was induced by the
+parental allele correlation among each stratum per PSU
+(Devlin & Roeder, 1999; Zheng et al., 2005). Genotype data for
+each parents-child triad can be generated using a two-step proce-
+dure. In step 1, the allele A frequency pA was generated from the
+Beta distribution Beta((1-F)p/F, (1-F)(1-p)/F) when F = 0.
+When F = 0, pA takes p. In step 2, for each parent, two alleles
+were drawn at random from the binomial distribution Bin(2, pA).
+Given parental genotypes, the genotype of a child was randomly
+generated according to Mendelian law.
+Results
+Simulation Studies
+The type I error rates and power of all proposed test proce-
+dures were estimated from the simulations by the proportion
+of rejections of the null hypothesis at the nominal level of
+0.05 in 1000 independent replications.
+The type I error rates at three different m levels, i.e., 60,
+120, and 180, were similar, so only the results for m = 60
+were presented in Table 2. The first order corrected test (with
+test statistic 2
+A,W
+(1)) has type I error rates closest to the
+nominal one, which vary from 0.048 to 0.066. The other
+two corrections (with test statistics 2
+A,W
+(2) and F2
+A,W
+(2))
+are conservative, and they have type I error rates uniformly
+lower than the first order corrected test. Applying the methods
+proposed by Li and Graubard (2008) to the simulated data, we
+find that the F-version of the Wald test has type I error rates
+closest to the nominal level but is slightly anti-conservative
+for p = 0.1 and sample weights from {1,3,5} with p-value
+Table 2 Sizes given by different tests: m = 60
+p = 0.1 p = 0.3 p = 0.5
+w 1 {1,3,5} 1 {1,3,5} 1 {1,3,5}
+2
+A,W
+0.056 0.780 0.064 0.801 0.049 0.786
+2
+A,Wald
+0.848 0.840 0.302 0.301 0.292 0.282
+F A,Wald
+0.787 0.786 0.061 0.053 0.048 0.039
+2
+A,W
+(1) 0.048 0.060 0.066 0.064 0.052 0.049
+2
+A,W
+(2) 0.022 0.031 0.047 0.047 0.031 0.028
+F2
+A,W
+(2) 0.013 0.013 0.015 0.011 0.006 0.003
+X2
+A,W
+
+0.034 0.331 0.065 0.341 0.048 0.329
+X2
+W
+
+0.051 0.090 0.075 0.067 0.057 0.055
+F
+W
+0.037 0.084 0.061 0.052 0.041 0.046
+X2
+A,W
+(1)
+0.051 0.061 0.075 0.055 0.057 0.060
+m is the number of sampled parents-child triads per PSU per
+stratum.
+
+Tests proposed by Li and Graubard (2008).
+C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Annals of Human Genetics (2009) 73,449­455 451
+D. She et al.
+0.084. In terms of type I error rate, the first order corrected
+test performed best in the simulation situations.
+We evaluated the power properties of the proposed methods
+at three different m levels (60, 120, and 180) for each F. The
+larger m was, the greater power was achieved. However, only
+the power for m = 60 is given in Table 3. The 2
+A,W
+(1) test
+achieved very little power for F = 0.01. When F increased
+from 0.01 to 0.02, the power achieved by the 2
+A,W
+(1) test
+was more than doubled. When F was set to 0.05, the power
+achieved by the 2
+A,W
+(1) test was more than 90%. The F-
+version of the Wald test proposed by Li and Graubard (2008)
+achieves powers similar to those of the 2
+A,W
+(1) test.
+Real Data Analysis
+To illustrate our methods, we have analyzed three candidate
+loci from the NHANES III genetic data base. The three
+loci are ADRB2 (rs1042713), TGFB1 (rs1982073), and VDR
+(rs2239185). Variances are estimated using pseudo-strata and
+pseudo-PSUs supplied by the National Center for Health
+Statistics of the Centers for Disease Control and Prevention.
+NHANES III does not provide sample weight for each family.
+Instead, it supplies sample weight for each participant. Sample
+weight of each family is computed as the average sample
+weight of individuals from the family. For example, for a
+family of three members, the sample weight for that family
+would be the sum of sample weights of the three family
+members divided by three.
+A total of 7159 individuals aged 12 years and older partic-
+ipated in the second phase of NHANES III in anticipation
+of advances in genetic research. Out of the 7159 partici-
+pants, 6930 individuals have genotype information available
+for ADRB2, 6920 for TGFB1, and 6794 for VDR. The num-
+bers of families with parental genotypic information available
+for ADRB2, TGFB1, and VDR are 900, 901, and 861 respec-
+tively. Of these, only 138 families have genotypic information
+available for at least one child for ADRB2, 145 families for
+TGFB1, and 128 families for VDR.
+The first analysis was restricted to families with genotypic
+information available for two parents and for at least one child.
+For families with more than one child, we randomly selected
+one child for the analysis. In addition, we did a sensitivity anal-
+ysis by using all families with genotypic information available
+for two parents. For those families without genotypic infor-
+mation for any children, we randomly generated one child
+per family based on the parental genotypes using Mendelian
+law. The above analyses were replicated 1000 times to get the
+mean p-values for each proposed method.
+Table 4 gives the p-values of all proposed tests for HWE
+for each of the three loci. HWE holds for all three loci if we
+restricted the analysis to families with genotypic information
+available for two parents and at least one child. When all
+families with genotypic information available for two parents
+Table 3 Power given by different tests: m = 60
+F = 0.01 F = 0.02 F = 0.05
+p = 0.1 p = 0.3 p = 0.5 p = 0.1 p = 0.3 p = 0.5 p = 0.1 p = 0.3 p = 0.5
+w 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 {1,3,5} 1 (1,3,5)
+2
+A,W
+0.186 0.871 0.106 0.854 0.111 0.879 0.467 0.963 0.395 0.958 0.399 0.971 0.998 1.000 0.998 1.000 0.999 1.000
+2
+A,Wald
+0.763 0.765 0.362 0.366 0.398 0.414 0.785 0.756 0.635 0.620 0.658 0.667 0.994 0.983 0.998 0.997 1.000 0.999
+F A,Wald
+0.680 0.660 0.077 0.068 0.087 0.093 0.582 0.572 0.213 0.209 0.215 0.231 0.847 0.831 0.939 0.908 0.938 0.934
+2
+A,W
+(1) 0.109 0.106 0.111 0.118 0.112 0.118 0.259 0.240 0.383 0.356 0.396 0.386 0.969 0.944 0.999 0.995 0.999 0.993
+2
+A,W
+(2) 0.053 0.052 0.073 0.084 0.083 0.081 0.152 0.141 0.295 0.291 0.324 0.324 0.879 0.828 0.995 0.991 0.995 0.991
+F2
+A,W
+(2) 0.018 0.015 0.031 0.035 0.035 0.033 0.076 0.067 0.160 0.144 0.205 0.185 0.778 0.660 0.987 0.979 0.984 0.971
+X2
+A,W
+
+0.163 0.503 0.127 0.486 0.151 0.505 0.431 0.744 0.426 0.762 0.448 0.768 0.986 0.995 0.994 1.000 0.992 0.997
+X2
+W
+
+0.139 0.155 0.131 0.161 0.163 0.156 0.374 0.359 0.421 0.370 0.435 0.388 0.968 0.903 0.987 0.957 0.985 0.969
+F
+W
+0.112 0.127 0.116 0.137 0.141 0.136 0.333 0.314 0.385 0.327 0.386 0.349 0.958 0.890 0.980 0.948 0.982 0.962
+X2
+A,W
+(1)
+0.139 0.121 0.131 0.146 0.163 0.164 0.374 0.331 0.421 0.372 0.435 0.401 0.968 0.919 0.987 0.970 0.985 0.971
+m is the number of sampled parents-child triads per PSU per stratum.
+
+F is the inbreeding coefficient for population substructure or cryptic relatedness
+
+Tests proposed by Li and Graubard (2008).
+452 Annals of Human Genetics (2009) 73,449­455 C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Testing HWE Using Survey Data
+Table 4 P-value of HWE test for genes ADRB2, TGFB1, and VDR
+Families with two parents and at least one child Families with at least two parents
+ADRB2 TGFB1 VDR ADRB2 TGFB1 VDR
+(N = 138) (N = 145) (N = 128) (N = 900) (N = 901) (N = 861)
+2
+A,W
+<0.001 <0.001 <0.001 <0.001 <0.001 <0.001
+2
+A,Wald
+0.153 0.053 0.148 0.192 0.024 0.025
+F A,Wald
+0.425 0.280 0.414 0.398 0.168 0.168
+2
+A,W
+(1) 0.446 0.426 0.391 0.488 0.090 0.010
+2
+A,W
+(2) 0.420 0.409 0.383 0.451 0.128 0.027
+F2
+A,W
+(2) 0.441 0.433 0.410 0.470 0.166 0.056
+N: number of families with genotype information for two parents and at least one child;
+N: number of families with genotype information for at least two parents.
+were included in the analysis, HWE holds for ADRB2 and
+TGFB1 while it does not hold for VDR.
+Discussion and Conclusion
+We developed six test procedures based on the Pearson 2
+statistic for complex sampling settings. The six Pearson 2
+statistic based test statistics are 1) the weighted version of
+chi-square test statistic 2
+A,W
+; 2) the Rao-Scott first order
+adjusted test statistic 2
+A,W
+(1); 3) the Satterthwaite second
+order adjusted test statistic 2
+A,W
+(2); 4) the F-version statistic
+F2
+A,W
+(2) of 2
+A,W
+(2); 5) the Wald test statistic 2
+A,Wald
+; and
+6) the F-version statistic F A,Wald of 2
+A,Wald
+.
+Properties of proposed test procedures were evaluated via
+Monte Carlo simulations. The first order corrected test main-
+tained type I error rates closest to the nominal level for all three
+chosen allele A frequencies. It achieved little power when F,
+the inbreeding coefficient, was 0.01. The power achieved
+by the first order corrected test exceeded 90% when F was
+set 0.05. Among all the tests developed by Li and Graubard
+(2008), which assumed that all individuals were independent
+of each other, the F-version of the Wald test had type I er-
+ror rates closest to the nominal level but could be slightly
+anti-conservative.
+Under the null hypothesis, father and mother are indepen-
+dent so the methods developed by Li and Graubard (2008) are
+valid for parental data. Our simulation results (not presented
+in this paper) show that the F-version of the Wald test had
+well-controlled type I error rates while other tests had inflated
+type I error rates for some occasions. In this analysis, the F-
+version of the Wald test achieved uniformly less power than
+our proposed 2
+A,W
+(1) test applied to parents-child triads.
+The proposed method is based on the data of parents-child
+triads. It can be extended to the situation when data for more
+than one offspring per family are available. The key is to find
+the joint genotype distribution of parents and children, which
+is much more complicated and deserves further investigation,
+and to apply the same principle as described in this paper.
+The proposed test procedures were applied to NHANES
+III data and the results presented here are applicable to the U.S.
+civilian, non-institutionalized population of age 12 and older,
+from which the data were collected. The analysis showed that
+HWE held at the 0.05 level for all three loci if the analyses
+were restricted to those families with genotypic information
+available for both two parents and at least one child. When all
+families with genotypic information available for two parents
+were used for the analyses, we randomly generated a child
+genotype using Mendelian law for those families who did not
+have a child genotype but did have parental genotypes. In this
+situation, HWE only holds for ADRB2 and TGFB1 (nominal
+level is 0.05).
+Results relating to VDR from the two analyses do not agree
+with each other for two possible reasons. First, in the studied
+data, the number of families with genotypes for both parents
+and at least one child is relatively small compared with the
+total family number. For example, there are 861 families with
+genotypic information about VDR available for two parents,
+of which only 128 families have genotypic information about
+VDR for at least one child. Secondly, the distributions of
+parental genotypes of families with children are quite different
+from those of families without children. For example, for
+VDR, 3.9% of families with children have parental genotype
+of `CC-CC' while 9.4% of families without children have
+this parental genotype; this would result in different joint
+distributions of three genotypes from parents-child triads and
+contribute at least partially to the different results from the
+analyses.
+In summary, we recommend the use of the Rao-Scott first
+order corrected test in surveys like NHANES III.
+Acknowledgements
+The authors thank Mr. Christopher Sanders and Dr. Geraldine
+McQuillan from the National Center for Health Statistics of
+the Centers for Disease Control and Prevention for preparing
+the NHANES III genetic data for us. This work was supported
+C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Annals of Human Genetics (2009) 73,449­455 453
+D. She et al.
+in part by the National Natural Science Foundation of China,
+the Knowledge Innovation Program of the Chinese Academy of
+Science, and the Outstanding Overseas Chinese Scholars Fund
+of Chinese Academy of Sciences.
+References
+Bourgain, C., Abney, M., Schneider, D., Ober, C. & McPeek, M. S.
+(2004) Testing for Hardy-Weinberg equilibrium in samples with
+related individuals. Genet 168, 2349­2361.
+Chen, J. J. & Thomson, G. (1999) The variance for the disequilib-
+rium coefficient in the individual Hardy-Weinberg test. Biometrics
+55, 1269­1272.
+Crow, J. E. (1988) Eighty years ago: the beginnings of population
+genetics. Genet 119, 473­476.
+Devlin, B. & Roeder, K. (1999) Genomic control for association.
+Biometrics 55, 997­104.
+Graubard, B. I. & Korn, E. L. (1993) Hypothesis testing with com-
+plex survey data: the use of classical quadratic test statistics with
+particular reference to regression problems. J Am Statist Assoc 88,
+629­641.
+Haseman, J. K. & Elston, R. C. (1972) The investigation of linkage
+between a quantitative trait and a marker locus. Behav Genet 2,
+3­19.
+Hern´
+andez, J. L. & Weir, B. S. (1989) A disequilibrium coefficient
+approach to Hardy-Weinberg testing. Biometrics 45, 53­70.
+Korn, E. L. & Graubard, B. I. (1990) Simultaneous testing of re-
+gression coefficients with complex survey data: use of Bonferroni
+t statistic. Am Statist 44, 270­276.
+Korn, E. L. & Graubard, B. I. (1999) Analysis of Health Surveys. New
+York: John Wiley & Sons, Inc.
+Lee, W. C. (2003) Searching for disease-susceptibility loci by testing
+for Hardy-Weinberg disequilibrium in a gene bank of affected
+individuals. Am J Epidemiol 158, 397­400.
+Li, C. C. (1955) Population Genetics. Chicago: University of Chicago
+Press.
+Li, C. C. (1969) Population subdivision with respect to multiple
+alleles. Am J Hum Genet 33, 23­29.
+Li, M. & Li, C. (2008) Assessing departure from Hardy-Weinberg
+Equilibrium in the presence of disease association. Genet Epidemiol
+32, 589­599.
+Li, Y. & Graubard, B. I. (2008) Testing Hardy-Weinberg equilib-
+rium and homogeneity of Hardy-Weinberg disequilibrium using
+complex survey data. Biometrics (accepted).
+NCHS. (2007) http://www.cdc.gov/nchs/about/major/nhanes/
+nh3data genetic.htm.
+Neilsen, D., Ehm, M. G. & Weir, B. (1999) Detecting marker-
+disease association by testing for Hardy-Weinberg disequi-
+librium at a marker locus. Am J Hum Genet 63, 1531­
+1540.
+Olson, J. M. & Foley, M. (1996) Testing for Homogeneity of Hardy-
+Weinberg disequilibrium using data sampled from several popula-
+tions. Biometrics 52, 971­979.
+Rao, J. N. K. & Scott, A. J. (1984) On Chi-Square tests for multiway
+contingency tables with cell proportions estimated from survey
+data. Ann Statist 12, 46­60.
+Satterthwaite, F. E. (1946) An approximate distribution of estimates
+of variance components. Biometrics 2, 110­114.
+Schaid, D. J., Batzler, A. J., Jenkins, G. D. & Hildebrandt, M. A.
+T. (2006) Exact tests of Hardy-Weinberg Equilibrium and ho-
+mogeneity of disequilibrium across strata. Am J Hum Genet 79,
+1071­1080.
+Shah, B. V. (2004) Comment on `Linearization variance estimators
+for survey data' by A. Demnati and J. N. K. Rao. Surv Methodol
+30, 16.
+Thomas, D. R. & Rao, J. N. K. (1987) Small-sample comparisons of
+level and power for simple goodness-of-fit statistics under cluster
+sampling. J Am Statist Assoc 82, 630­636.
+Weinberg, C. R. & Morris, R. W. (2003) Invited commentary:
+testing for Hardy-Weinberg disequilibrium using a genome single-
+nucleotide polymorphism scan based on cases only. Am J Epidemiol
+158, 401­403.
+Xu, J., Turner, A., Little, J., Bleecker, E. R. & Meyer, D. A. (2002)
+Positive results in association studies are associated with departure
+from Hardy-Weinberg equilibrium: hint for genotyping error?
+Hum Genet 111, 573­574.
+Zheng, G., Freidlin, B., Li, Z. & Gastwirth, J. L. (2005) Genomic
+control for association studies under various genetic models. Bio-
+metrics 61, 187­193.
+Appendix A
+Expression of zr .
+zr
+=
+(nw
+, ^
+pw)
+wr
+T
+=
+1w
+wr
+,
+2w
+wr
+,
+3w
+wr
+,
+4w
+wr
+,
+5w
+wr
+,
+6w
+wr
+,
+7w
+wr
+,
+8w
+wr
+,
+9w
+wr
+,
+10w
+wr
+T
+,
+Where
+1w
+wr
+= 1
+r
+- ^
+p4
+w
+- 4Kw ^
+p3
+w
+ ^
+pw
+wr
+,
+2w
+wr
+= 2
+r
+- 2 ^
+p3
+w
+^
+qw
+- 2Kw 3 ^
+p2
+w
+^
+qw
+- ^
+p3
+w
+ ^
+pw
+wr
+,
+3w
+wr
+= 3
+r
+- 2 ^
+p3
+w
+^
+qw
+- 2Kw 3 ^
+p2
+w
+^
+qw
+- ^
+p3
+w
+ ^
+pw
+wr
+,
+4w
+wr
+= 4
+r
+- 2 ^
+p2
+w
+^
+q 2
+w
+- 4Kw ^
+pw ^
+q 2
+w
+- ^
+p2
+w
+^
+qw
+ ^
+pw
+wr
+,
+5w
+wr
+= 5
+r
+- ^
+p2
+w
+^
+q 2
+w
+- 2Kw ^
+pw ^
+q 2
+w
+- ^
+p2
+w
+^
+qw
+ ^
+pw
+wr
+,
+6w
+wr
+= 6
+r
+- 2 ^
+p2
+w
+^
+q 2
+w
+- 4Kw ^
+pw ^
+q 2
+w
+- ^
+p2
+w
+^
+qw
+ ^
+pw
+wr
+,
+7w
+wr
+= 7
+r
+- ^
+p2
+w
+^
+q 2
+w
+- 2Kw ^
+pw ^
+q 2
+w
+- ^
+p2
+w
+^
+qw
+ ^
+pw
+wr
+,
+8w
+wr
+= 8
+r
+- 2 ^
+pw ^
+q 3
+w
+- 2Kw ^
+q 3
+w
+- 3 ^
+pw ^
+q 2
+w
+ ^
+pw
+wr
+,
+454 Annals of Human Genetics (2009) 73,449­455 C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Testing HWE Using Survey Data
+9w
+wr
+= 9
+r
+- 2 ^
+pw ^
+q 3
+w
+- 2Kw ^
+q 3
+w
+- 3 ^
+pw ^
+q 2
+w
+ ^
+pw
+wr
+,
+10w
+wr
+= 10
+r
+- ^
+q 4
+w
++ 4Kw ^
+q 3
+w
+ ^
+pw
+wr
+,
+ ^
+pw
+wr
+=
+41
+r
++ 3 2
+r
++ 3
+r
++ 2(4
+r
++ 5
+r
++ 6
+r
++ 7
+r
+) + 8
+r
++ 9
+r
+4Kw
+-
+^
+pw
+Kw
+.
+Appendix B
+Expression of z(hi).
+Let ~
+n(hi) = 4n(hi)
+1w
++ 3 n(hi)
+2w
++ 4n(hi)
+3w
++ 2 n(hi)
+4w
++ n(hi)
+5w
++ n(hi)
+6w
++ n(hi)
+7w
++ n(hi)
+8w
++ n(hi)
+9w
+,
+then z(hi)
+1
+= n(hi)
+1w
++ 3n(hi)
+w ^
+p4
+w
+- ^
+p3
+w
+~
+n(hi),
+z(hi)
+2
+= n(hi)
+2w
++ 4n(hi)
+w ^
+p3
+w
+- 6n(hi)
+w ^
+p4
+w
+- 3 ^
+p2
+w
+~
+n(hi)/2
++ 2 ^
+p3
+w
+~
+n(hi),
+z(hi)
+3
+= n(hi)
+3w
++ 4n(hi)
+w ^
+p3
+w
+- 6n(hi)
+w ^
+p4
+w
+- 3 ^
+p2
+w
+~
+n(hi)/2
++2 ^
+p3
+w
+~
+n(hi),
+z(hi)
+4
+= n(hi)
+4w
++ 2n(hi)
+w ^
+p2
+w
+^
+q 2
+w
+- 4n(hi)
+w ^
+p3
+w
+^
+qw
+- ^
+pw ^
+qw(^
+qw
+- ^
+pw)~
+n(hi),
+z(hi)
+5
+= n(hi)
+5w
++ n(hi)
+w ^
+p2
+w
+^
+q 2
+w
+- 2n(hi)
+w ^
+p3
+w
+^
+qw
+- ^
+pw ^
+qw(^
+qw
+- ^
+pw)~
+n(hi)/2,
+z(hi)
+6
+= n(hi)
+6w
++ 2n(hi)
+w ^
+p2
+w
+^
+q 2
+w
+- 4n(hi)
+w ^
+p3
+w
+^
+qw
+- ^
+pw ^
+qw(^
+qw
+- ^
+pw)~
+n(hi),
+z(hi)
+7
+= n(hi)
+7w
++ n(hi)
+w ^
+p2
+w
+^
+q 2
+w
+- 2n(hi)
+w ^
+p3
+w
+^
+qw
+- ^
+pw ^
+qw(^
+qw
+- ^
+pw)~
+n(hi)/2,
+z(hi)
+8
+= n(hi)
+8w
+- 6n(hi)
+w
+^
+p2
+w
+^
+q 2
+w
+- ^
+q 3
+w
+~
+n(hi)/2 + 3 ^
+pw ^
+q 2
+w
+~
+n(hi)/2,
+z(hi)
+9
+= n(hi)
+9w
+- 6n(hi)
+w
+^
+p2
+w
+^
+q 2
+w
+- ^
+q 3
+w
+~
+n(hi)/2 + 3 ^
+pw ^
+q 2
+w
+~
+n(hi)/2,
+z(hi)
+10
+= n(hi)
+10w
+- n(hi)
+w
+^
+q 3
+w
+(1 + 3 ^
+pw) + ^
+q 3
+w
+~
+n(hi).
+Received: 16 December 2008
+Accepted: 31 March 2009
+C 2009 The Authors
+Journal compilation C 2009 Blackwell Publishing Ltd/University College London
+Annals of Human Genetics (2009) 73,449­455 455
+

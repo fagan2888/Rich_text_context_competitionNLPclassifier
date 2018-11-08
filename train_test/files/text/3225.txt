@@ -1,0 +1,4258 @@
+Recursive robust estimation and
+control without commitment
+Lars Peter Hansen
+(University of Chicago)
+Thomas J. Sargent
+(New York University and Hoover Institution)
+Discussion Paper
+Series 1: Economic Studies
+No 28/2005
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431, fax +49 69 5601071
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Reproduction permitted only if source is stated.
+ISBN 3­86558­082­3
+Abstract
+In a Markov decision problem with hidden state variables, a posterior distribution
+serves as a state variable and Bayes' law under an approximating model gives its law of
+motion. A decision maker expresses fear that his model is misspecified by surrounding
+it with a set of alternatives that are nearby when measured by their expected log
+likelihood ratios (entropies). Martingales represent alternative models. A decision
+maker constructs a sequence of robust decision rules by pretending that a sequence
+of minimizing players choose increments to a martingale and distortions to the prior
+over the hidden state. A risk sensitivity operator induces robustness to perturbations
+of the approximating model conditioned on the hidden state. Another risk sensitivity
+operator induces robustness to the prior distribution over the hidden state. We use
+these operators to extend the approach of Hansen and Sargent (1995) to problems that
+contain hidden states. The worst case martingale is overdetermined, expressing an
+intertemporal inconsistency of worst case beliefs about the hidden state, but not about
+observables.
+Non-technical summary
+This paper deals with a fundamental question of applied economics: how should decision-
+makers, especially economic policy decision-makers, behave if they wish to take account of
+the fact that their knowledge of the economy is no more than incomplete. This is of key
+importance for central banks, which continually have to take monetary policy decisions that
+are necessarily based on models, ie on systematic simplifications of reality, the precise details
+of which can never be understood with complete certainty.
+This problem can be specifically related to the debate that has been conducted on the risk of
+deflation in the USA and Europe. In 2003, short-term nominal interest rates were at an all-
+time low, as was inflation. In this context, it should be remembered that nominal interest rates
+cannot be negative and that the real interest rates which are relevant to economic planning are
+nominal interest rates less inflation. Statistical models which have been used up to now, and
+which have been used by central banks very successfully for forecasts under conditions of
+strictly positive inflation, may turn out to be unsuitable for new, more extreme conditions. For
+example, given deflation (in other words, negative inflation), if nominal interest rates are
+almost equal or equal to zero, real interest rates are, of necessity, positive. These, in turn, slow
+down the economy and may therefore further accelerate deflation. A traditional model might
+give disastrous recommendations even though it has functioned well in "normal" times.
+This is one of the reasons why central banks do not rely blindly on statistical models, but
+rather draw on their experience and intuition under rarer but riskier conditions. It may rightly
+be claimed that deflation in the USA has been prevented inter alia by the Fed acting in a
+forward-looking manner and attaching particular importance to worst case scenarios, even
+though traditional models make no provision for these.
+What position does this paper take up in this context? It develops principles on which
+economic policymakers can draw if the "true" model of the world is unknown to them. It
+thereby departs from the existing analytical methodology which studies the economic policy
+issues on the assumption that all the economic agents know the "correct" model and that
+everyone knows the same, correct model. Although conducting analyses on this assumption
+has enormous practical advantages, there is no perception of how risky the unconscious use of
+a possibly incorrect model is under extreme conditions, even if such conditions are very
+unlikely.
+Nicht technische Zusammenfassung
+Diese Arbeit beschäftigt sich mit einer fundamentalen Frage der angewandten Volkswirt-
+schaftslehre: Wie sollen sich Entscheidungsträger, insbesondere in der Wirtschaftspolitik,
+verhalten, wenn sie berücksichtigen wollen, dass sie die Wirtschaft nur unvollständig kennen.
+Dies ist von zentraler Bedeutung für Zentralbanken, die kontinuierlich geldpolitische Ent-
+scheidungen treffen müssen, die notwendigerweise auf Modellen beruhen, also auf systemati-
+schen Vereinfachungen der Wirklichkeit, deren Zusammenhänge man notwendigerweise nie
+mit völliger Sicherheit wird verstehen können.
+Konkret lässt sich dieses Problem auf die Diskussion anwenden, die in Bezug auf die Gefahr
+einer Deflation in den USA und Europa geführt wurde. Kurzfristige Nominalzinsen waren
+2003 auf historisch niedrigem Niveau, ebenso die Inflation. Man bedenke dabei, dass Nomi-
+nalzinsen nicht negativ sein können, und dass die für wirtschaftliche Planungen relevanten
+Realzinsen gleich Nominalzins minus Inflation sind. Bisher benutzte statistische Modelle, die
+von Zentralbanken unter Bedingungen strikt positiver Inflation sehr gut für Vorhersagen ver-
+wendet werden konnten, sind möglicherweise für neue, extremere, Bedingungen nicht geeig-
+net. Wenn zum Beispiel bei einer Deflation (also negativer Inflation) die nominellen Zinsen
+fast oder gleich Null sind, liegen notwendigerweise positive Realzinsen vor. Diese wiederum
+bremsen die Konjunktur und können somit eine Deflation noch beschleunigen. Ein herkömm-
+liches Modell könnte unter Umständen katastrophale Empfehlungen geben, obwohl es in
+,,normalen" Zeiten gut funktioniert hat.
+Dies ist einer der Gründe, warum Zentralbanken nicht blind auf statistische Modelle vertrau-
+en, sondern unter seltenen, aber risikoreichen Bedingungen auf ihre Erfahrung und Intuition
+zurückgreifen. Es kann mit Recht behauptet werden, dass eine Deflation in den USA auch da-
+durch vermieden wurde, dass die Fed vorausschauend agiert hat, und ,,worst case" Szenarien
+besonderes Gewicht verliehen hat, obwohl herkömmliche Modelle diese nicht vorsehen.
+Wie ordnet sich diese Arbeit in diese Diskussion ein? Sie erarbeitet Prinzipien, auf die wirt-
+schaftliche Entscheidungsträger zurückgreifen können, wenn ihnen das ,,wahre" Modell der
+Welt nicht bekannt ist. Damit weicht sie von der bisherigen Analysemethodik ab, die wirt-
+schaftspolitische Fragestellungen unter der Annahme untersucht, dass allen Wirtschaftssub-
+jekten das ,,richtige" Modell bekannt ist, und dass alle das gleiche, richtige Modell kennen.
+Während es enorme praktische Vorteile hat, Analysen unter dieser Annahme vorzunehmen,
+hat man kein Gefühl dafür, wie riskant der unbewusste Gebrauch eines vielleicht falschen
+Modells unter extremen Bedingungen ist, selbst wenn diese sehr unwahrscheinlich sind.
+Recursive Robust Estimation and Control Without
+Commitment
+1 Introduction
+In problems with incomplete information, optimal decision rules depend on a decision maker's
+posterior distribution over hidden state variables, called qt(z) here, an object that summarizes
+the history of observed signals. A decision maker expresses faith in his model when he uses
+Bayes' rule to deduce the transition law for qt(z).1
+But how should a decision maker proceed if he doubts his model and wants a decision
+rule that is robust to a set of statistically difficult to detect misspecifications of it? We begin
+by assuming that, through some unspecified process, a decision maker has arrived at an
+*Lars Peter Hansen, University of Chicago. Email: l-hansen@uchicago.edu;
+Thomas J. Sargent, New York University and Hoover Institution. Email: ts43@nyu.edu.
+We thank Ricardo Mayer and especially Tomasz Piskorski for helpful comments on earlier drafts of this
+We thank In-Koo Cho for encouragement.
+1For example, see Jovanovic (1979), Jovanovic and Nyarko (1995), Jovanovic and Nyarko (1996), and
+Bergemann and Valimaki (1996).
+1
+paper.
+approximating model that fits historical data well. Because he fears that his approximating
+model is misspecified, he surrounds it with a set of all alternative models whose expected
+log likelihood ratios (i.e., whose relative entropies) are restricted or penalized. The decision
+maker believes that the data will be generated by an unknown member of this set. When
+relative entropies are constrained to be small, the decision maker believes that his model
+is a good approximation. The decision maker wants robustness against these alternatives
+because, as Anderson, Hansen, and Sargent (2003) emphasize, perturbations with small
+relative entropies are statistically difficult to distinguish from the approximating model.
+This paper assumes that the appropriate summary of signals continues to be the decision
+maker's posterior under the approximating model, despite the fact that he distrusts that
+model. Hansen and Sargent (2005) explore the meaning of this assumption by studying a
+closely related decision problem under commitment to a worst case model.
+Section 2 formulates a Markov control problem in which a decision maker with a trusted
+model receives signals about hidden state variables. By allowing the hidden state vector to
+index submodels, this setting includes situations in which the decision maker has multiple
+models or is uncertain about coefficients in those models. Subsequent sections view the
+model of section 2 as an approximation, use relative entropy to define a cloud of models that
+are difficult to distinguish from it statistically, and construct a sequence of decision rules that
+can work well for all of those models. Section 3 uses results of Hansen and Sargent (2005)
+to represent distortions of an approximating model in terms of martingales defined on the
+same probability space as the approximating model. Section 4 then defines two operators, T1
+and T2
+, respectively, that are indexed by penalty parameters (1
+, 2
+). In section 5, we use
+T1 to adjust continuation values for concerns about model misspecification, conditioned on
+knowledge of the hidden state. We use T2 to adjust continuation values for concern about
+misspecification of the distribution of the hidden state. We interpret 1
+and 2
+as penalties
+on pertinent entropy terms
+Section 6 discusses the special case that prevails when 1
+= 2
+and relates it to a decision
+problem under commitment that we analyzed in Hansen and Sargent (2005). We discuss
+the dynamic consistency of worst case beliefs about the hidden state in subsections 6.4
+and 6.6. Section 7 describes the worst case distribution over signals and relates it to the
+theory of asset pricing. Section 8 interprets our formulation and suggests modifications of
+it in terms of the multiple priors models of Epstein and Schneider (2003a) and Epstein
+and Schneider (2003b). Section 9 briefly relates our formulation to papers about reducing
+compound lotteries. Section 10 specializes our section 5 recursions to compute robust decision
+rules for the linear quadratic case, and appendix A reports useful computational tricks for
+this case. Section 11 concludes. Hansen and Sargent (2005) contains an extensive account of
+related literatures. An application to a decision problem with experimentation and learning
+about multiple submodels appears in Cogley, Colacito, Hansen, and Sargent (2005).
+2 A control problem without model uncertainty
+For t  0, we partition a state vector as xt
+=
+yt
+zt
+, where yt
+is observed and zt
+is not. A
+vector of st
+of observable signals is correlated with the hidden state zt
+and is used by the
+2
+decision maker to form beliefs about the hidden state. Let Z denote a space of admissible
+unobserved states, Z a corresponding sigma algebra of subsets of states, and  a measure
+on the measurable space of hidden states (Z, Z). Let S denote the space of signals, S a
+corresponding sigma algebra, and  a measure on the measurable space (S, S) of signals.
+Signals and states are determined by the transition functions
+yt+1
+= y
+(st+1
+, yt
+, at
+) (1)
+zt+1
+= z
+(xt
+, at
+, wt+1
+) (2)
+st+1
+= s
+(xt
+, at
+, wt+1
+) (3)
+where {wt+1
+: t  0} is an i.i.d. sequence of random variables. Knowledge of y0
+and y
+allows
+us to construct yt
+recursively from signals and actions. Substituting (3) into (1) gives the
+recursive evolution for the observable state in terms of next period's shock wt+1
+:
+yt+1
+= y
+[s
+(xt
+, at
+, wt+1
+), yt
+, at
+]
+.
+= ¯
+y
+(xt
+, at
+, wt+1
+) (4)
+Equations (2) and (3) determine a conditional density (zt+1
+, st+1
+|xt
+, at
+) relative to the prod-
+uct measure  × .
+Let {St
+: t  0} denote a filtration, where St
+is generated by y0
+, s1
+, ..., st
+. We can
+apply Bayes' rule to  to deduce a density qt
+, relative to the measure , for zt
+conditioned
+on information St
+. Let {Xt
+: t  0} be a larger filtration where Xt
+is generated by x0
+, w1
+,
+w2
+, ..., wt
+. The smallest sigma algebra generated by all states for t  0 is X
+.
+=
+t0
+Xt
+; the
+smallest sigma algebra generated by all signals for t  0 is S
+.
+=
+t0
+St
+. Let A denote a
+feasible set of actions, which we take to be a Borel set of some finite dimensional Euclidean
+space, and let At
+be the set of A-valued random vectors that are St
+measurable. Given the
+recursive construction of xt
+in equation (1) - (2) and the informational constraint on action
+processes, xt
+is Xt
+measurable and yt
+is St
+measurable.
+As a benchmark, consider the following decision problem under incomplete information
+about the state but complete confidence in the model (1), (2), (3):
+Problem 2.1.
+max
+atAt:t0
+E
+T
+t=0
+tU(xt
+, at
+)|S0
+,   (0, 1)
+subject to (1), (2), and (3).
+To make problem 2.1 recursive, use  to construct two densities for the signal:
+(s|yt
+, zt
+, at
+)
+.
+= (z, s|yt
+, zt
+, at
+)d(z)
+(s|yt
+, qt
+, at
+)
+.
+= (s|yt
+, z, at
+)qt
+(z)d(z). (5)
+By Bayes' rule, qt+1
+(z) =
+R
+(z,st+1|yt,z,at)qt(z)d(z)
+(st+1|yt,qt,at)
+ q
+(st+1
+, yt
+, qt
+, at
+). In particular applica-
+tions, q
+can be computed with methods that specialize Bayes' rule (e.g., the Kalman filter
+or a discrete time version of the Wonham (1964) filter).
+3
+Take (yt
+, qt
+) as the state for a recursive formulation of problem 2.1. The transition law
+is (1) and
+qt+1
+= q
+(st+1
+, yt
+, qt
+, at
+). (6)
+Let  =
+y
+q
+. Then we can rewrite problem 2.1 in the alternative form:
+Problem 2.2. Choose a sequence of decision rules for at
+as functions of (yt
+, qt
+) for each
+t  0 that maximizes
+E
+T
+t=0
+tU(xt
+, at
+)|S0
+subject to (1), (6), a given density q0
+(z), and the density (st+1
+|yt
+, zt
+, at
+). The Bellman
+equation for this problem is
+W(y, q) = max
+aA
+U(x, a) +  W [(s, y, q, a)] (s|y, z, a)d(s) q(z)d(z). (7)
+In an infinite horizon version of problem 2.2, W = W.
+2.1 Examples
+Examples of problem 2.2 in economics include Jovanovic (1979), Jovanovic (1982), Jovanovic
+and Nyarko (1995), Jovanovic and Nyarko (1996), and Bergemann and Valimaki (1996).
+Examples from outside economics appear in Elliott, Aggoun, and Moore (1995). Problems
+that we are especially interested in are illustrated in the following four examples.
+Example 2.3. Model Uncertainty I: two submodels. Let the hidden state z  {0, 1} index a
+submodel. Let
+yt+1
+= st+1
+zt+1
+= zt
+st+1
+= s
+(yt
+, z, at
+, wt+1
+). (8)
+The hidden state is time invariant. The decision maker has a prior probability Prob(z =
+0) = q. The third equation in (8) depicts two laws of motion. Cogley, Colacito, and Sargent
+(2005) and Cogley, Colacito, Hansen, and Sargent (2005) study the value of monetary policy
+experimentation in a model in which a is an inflation target and s
+(y, z, a, w) = ¯
+y
+(y, z, a, w)
+for z  {0, 1} represent two submodels of inflation-unemployment dynamics.
+Example 2.4. Model Uncertainty II: a continuum of submodels. The observable state y takes
+the two possible values {yL
+, yH
+}. Transition dynamics are still described by (8), but now there
+is a continuum of models indexed by the hidden state z  [0, 1]×[0, 1] that stands for unknown
+values of two transition probabilities for an observed state variable y. Given z, we can use
+the third equation of (8) to represent a two state Markov chain on the observable state y
+(see Elliott, Aggoun, and Moore (1995)), P =
+p11
+1 - p11
+1 - p22
+p22
+, where (p11
+, p22
+) = z. The
+decision maker has a prior f0
+(p11
+)g0
+(p22
+) on z; f0
+and g0
+are beta distributions.
+4
+Example 2.5. Model Uncertainty III: A components model of income dynamics with an
+unknown fixed effect in labor income. The utility function U(at
+) is a concave function of
+consumption at
+; y2t
+is the level of financial assets, and y1t
+= st
+is observed labor income.
+The evolution equations are
+y1,t+1
+= st+1
+y2,t+1
+= R[y2,t
++ y1,t
+- at
+]
+z1,t+1
+= z1,t
+z2,t+1
+= z2,t
++ 1
+w1,t+1
+st+1
+= z1,t
++ z2,t
++ 2
+w2,t+1
+where wt+1
+ N(0, I) is an i.i.d. bivariate Gaussian process, R  -1 is a gross return on
+financial assets y2,t
+, || < 1, z1,t
+is an unobserved constant component of labor income, and
+z2,t
+is an unobserved serially correlated component of labor income. A decision maker has a
+prior q0
+over (z1,0
+, z2,0
+).
+Example 2.6. Estimation of drifting coefficients regression model. The utility function
+U(xt
+, at
+) = -L(zt
+- at
+), where L is a loss function and at
+is a time-t estimator of the
+coefficient vector zt
+. The evolution equation is
+yt+1
+= st+1
+zt+1
+= zt
++ 1
+w1,t+1
+st+1
+= yt
+· zt
++ 2
+w2,t+1
+where wt+1
+ N(0, I) and there is a prior q0
+(z) on an initial set of coefficients.
+2.2 Modified problems that distrust (s|y, z, a) and q(z)
+This paper studies modifications of problem 2.2 in which the decision maker wants a decision
+rule that is robust to possible misspecifications of equations (1)-(2). Bellman equation (7)
+indicates that the decision maker's concerns about misspecification of the stochastic struc-
+ture can be focused on two aspects: the conditional distribution of next period's signals
+(s|y, z, a) and the distribution over this period's value of the hidden state q(z). We pro-
+pose recursive formulations of a robust control problem that allow a decision maker to focus
+on either or both of these two aspects of his stochastic specification.
+3 Using martingales to represent model misspecifica-
+tions
+Equations (1)-(2) induce a probability measure over Xt
+for t  0. Hansen and Sargent
+(2005) use a nonnegative Xt
+-measurable function Mt
+with EMt
+= 1 to create a distorted
+probability measure that is absolutely continuous with respect to the probability measure
+over Xt
+generated by the model (1) - (2). The random variable Mt
+is a martingale under this
+5
+baseline probability measure. Using Mt
+as a Radon-Nikodym derivative generates a distorted
+measure under which the expectation of a bounded Xt
+-measurable random variable Wt
+is
+~
+EWt
+.
+= EMt
+Wt
+. The entropy of the distortion at time t conditioned on date zero information
+is E (Mt
+log Mt
+|X0
+) or E(Mt
+log Mt
+|S0
+).
+3.1 Recursive representations of distortions
+It is convenient to factor a density Ft
+for an Xt
+-measurable random variable Ft
+as Ft+1
+=
+Ft
+ft+1
+where ft+1
+is a one-step ahead density conditioned on Xt
+. It is useful to factor Mt
+in a similar way. Thus, to represent distortions recursively, take a nonnegative martingale
+{Mt
+: t  0} and form
+mt+1
+=
+Mt+1
+Mt
+if Mt
+> 0
+1 if Mt
+= 0.
+Then Mt+1
+= mt+1
+Mt
+and
+Mt
+= M0
+t
+j=1
+mj
+. (9)
+The random variable M0
+has unconditional expectation equal to unity. By construction, mt+1
+has date t conditional expectation equal to unity. For a bounded random variable Wt+1
+that is Xt+1
+-measurable, the distorted conditional expectation implied by the martingale
+{Mt
+: t  0} is
+E(Mt+1
+Wt+1
+|Xt
+)
+E(Mt+1
+|Xt
+)
+=
+E(Mt+1
+Wt+1
+|Xt
+)
+Mt
+= E (mt+1
+Wt+1
+|Xt
+)
+provided that Mt
+> 0. We use mt+1
+to model distortions of the conditional probability
+distribution for Xt+1
+given Xt
+. For each t  0, construct the space Mt+1
+of all nonnegative,
+Xt+1
+-measurable random variables mt+1
+for which E(mt+1
+|Xt
+) = 1.
+The conditional (on Xt
+) relative entropy of a nonnegative random variable mt+1
+in Mt+1
+is 1
+t
+(mt+1
+)
+.
+= E (mt+1
+log mt+1
+|Xt
+) .
+3.2 Distorting likelihoods with hidden information
+The random variable Mt
+is adapted to Xt
+and is a likelihood ratio for two probability distrib-
+utions over Xt
+. The St
+-measurable random variable Gt
+= E (Mt
+|St
+) implies a likelihood ratio
+for the reduced information set St
+; Gt
+assigns distorted expectations to St
+-measurable ran-
+dom variables that agree with Mt
+, and {Gt
+: t  0} is a martingale adapted to {St
+: t  0}.
+Define the Xt
+-measurable random variable ht
+by
+ht
+.
+=
+Mt
+E(Mt|St)
+if E (Mt
+|St
+) > 0
+1 if E (Mt
+|St
+) = 0
+and decompose Mt
+as
+Mt
+= ht
+Gt
+. (10)
+Decompose entropy as
+E(Mt
+log Mt
+|S0
+) = E [E (ht
+log ht
+|St
+) + Gt
+log Gt
+|S0
+] .
+6
+Define 2
+t
+(ht
+)
+.
+= E (ht
+log ht
+|St
+) as the conditional (on St
+) relative entropy.
+We now have the tools to represent and measure misspecifications of the two components
+(s|y, z, a) and q(z) in (7). In (10), Mt
+distorts the probability distribution of Xt
+, ht
+distorts the probability of Xt
+conditioned on St
+, Gt
+distorts the probability of St
+, and mt+1
+distorts the probability of Xt+1
+given Xt
+. We use multiplication by mt+1
+to distort  and
+multiplication by ht
+to distort q; and we use 1
+t
+(mt+1
+) to measure mt+1
+and 2
+t
+(ht
+) to measure
+ht
+.
+Section 4 uses these distortions to define two pairs of operators, then section 5 applies
+them to form counterparts to Bellman equation (7) that can be used to get decisions that
+are robust to these misspecifications.
+4 Two pairs of operators
+This section introduces two pairs of operators, (R1
+t
+, T1) and (R2
+t
+, T2). In section 5, we use
+the T1 and T2 operators to define recursions that induce robust decision rules.
+4.1 R1
+t
+and T1
+For  > 0, let Wt+1
+be an Xt+1
+-measurable random variable for which E exp -Wt+1
+
+|Xt
+<
+. Then define
+R1
+t
+(Wt+1
+|) = min
+mt+1Mt+1
+E (mt+1
+Wt+1
+|Xt
+) + 1
+t
+(mt+1
+)
+= - log E exp -
+Wt+1
+
+|Xt
+. (11)
+The minimizing choice of mt+1
+is
+m
+t+1
+=
+exp -Wt+1
+
+E exp -Wt+1
+
+|Xt
+. (12)
+In the limiting case that sets the entropy penalty parameter  = , R1
+t
+(Wt+1
+|) =
+E(Wt+1
+|Xt
+). Notice that this expectation can depend on the hidden state. When  < , R1
+t
+adjusts E(Wt+1
+|Xt
+) by using a worst-case belief about the probability distribution of Xt+1
+conditioned on Xt
+that is implied by the twisting factor (12). When the conditional moment
+restriction E exp -Wt+1
+
+|Xt
+<  is not satisfied, we define R1
+t
+to be - on the relevant
+conditioning events.
+When the Xt+1
+-measurable random variable Wt+1
+takes the special form V (yt+1
+, qt+1
+, zt+1
+),
+the R1
+t
+(·|) operator defined in (11) implies another operator:
+(T1V |)(y, q, z, a) = - log exp -
+V [(s, y, q, a), z]
+
+(z, s|y, z, a)d(z)d(s).
+The transformation T1 maps a value function that depends on next period's state (y, q, z)
+into a risk-adjusted value function that depends on (y, q, z, a). Associated with this risk
+7
+adjustment is a worst-case distortion in the transition dynamics for the state and signal
+process. Let  denote a nonnegative density function defined over (z, s) satisfying
+(z, s)(z, s|y, z, a)d(z)d(s) = 1. (13)
+The corresponding entropy measure is:
+log[(z, s)](z, s)(z, s|y, z, a)d(z)d(s) = 1.
+In our recursive formulation, we think of  as a possibly infinite dimensional control vector
+(a density function) and consider the minimization problem:
+min
+0
+(V [(s, y, q, a), z] + 1
+log[(z, s)]) (z, s)(z, s|y, z, a)d(z)d(s)
+subject to (13). The associated worst-case density conditioned on Xt
+is t
+(z, s)(z, s|xt
+, at
+)
+where
+t
+(z, s) =
+exp -V [(s,yt,qt,at),z]
+
+E exp -V [(st+1,yt,qt,at),zt+1]
+
+|Xt
+. (14)
+4.2 R2
+t
+and T2
+For  > 0, let ^
+Wt
+be an Xt
+-measurable function for which E exp - ^
+Wt
+
+|St
+< . Then
+define
+R2
+t
+^
+Wt
+| = min
+htHt
+E ht
+^
+Wt
+|St
++ 2
+t
+(ht
+)
+= - log E exp -
+^
+Wt
+
+|St
+. (15)
+The minimizing choice of ht
+is
+h
+t
+=
+exp - ^
+Wt
+
+E exp - ^
+Wt
+
+|St
+.
+When an Xt
+-measurable function has the special form ^
+Wt
+= ^
+V (yt
+, qt
+, zt
+, at
+), R2
+t
+given by
+(15) implies an operator
+(T2 ^
+V |)(y, q, a) = - log exp -
+^
+V (y, q, z, a)
+
+q(z)d(z).
+The associated minimization problem is:
+min
+0
+^
+V (y, q, z, a) +  log (z) (z)q(z)d(z)
+8
+subject to (16), where (z) is a relative density that satisfies:
+(z)q(z)d(z) = 1 (16)
+and the entropy measure is
+[log (z)](z)q(z)d(z).
+The optimized density conditioned on St
+is t
+(z)qt
+(z), where
+t
+(z) =
+exp - ^
+V (yt,qt,z,at)
+
+E exp - ^
+V (yt,qt,z,at)
+
+|St
+. (17)
+5 Control problems with model uncertainty
+We propose robust control problems that take qt
+(z) as the decision maker's state variable for
+summarizing the history of signals. The decision maker's model includes the law of motion
+(6) for q (Bayes' law) under the approximating model (1), (2), (3). Two recursions that
+generalize Bellman equation (7) express alternative views about the decision maker's fear of
+misspecification. A first recursion works with value functions that include the hidden state
+z as a state variable. Let
+
+W(y, q, z) = U(x, a) + E  
+W[(s, y, q, a), z] x, q , (18)
+where the action a solves:
+W(y, q) = max
+a
+E U(x, a) + E  
+W[(s, y, q, a), z] x, q, a y, q, a . (19)
+The value function 
+W depends on the hidden state z, whereas the value function W in (7)
+does not. A second recursion modifies the ordinary Bellman equation (7), which we can
+express as:
+W(y, q) = max
+a
+E U(x, a) + E W[(s, y, q, a)] x, q, a y, q, a . (20)
+Although they use different value functions, without concerns about model misspecifica-
+tion, formulations (18)-(19) and (20) imply identical control laws. Furthermore, W(y, q)
+obeys (19), by virtue of the law of iterated expectations. Because Bellman equation (20)
+is computationally more convenient, the pair (18)-(19) is not used in the standard problem
+without a concern for robustness. However, with a concern about robustness, a counter-
+part to (18)-(19) becomes useful when the decision maker wants to explore distortions of
+the joint conditional distribution (s, z|y, z, a).2 Distinct formulations emerge when we
+2Another way to express his concerns is that in this case the decision maker fears that (2) and (3) are
+both misspecified.
+9
+replace the conditional expectation E(·|y, q, a) with T2(·|2
+) and the conditional expectation
+E(·|x, q, a) with T1(·|1
+) in the above sets of recursions. When 1
+= 2
+= +, (18)-(19) or
+(20) lead to value functions and decision rules equivalent to those from either (18)-(19) or
+(20). When 1
+< + and 2
+< +, they differ because they take different views about
+which conditional distributions the malevolent player wants to distort.
+5.0.1 Which conditional distributions to distort?
+The approximating model (1), (2), (3) makes both tomorrow's signal s and tomorrow's
+state z functions of x. When tomorrow's value function depends on s but not on z, the
+minimizing player chooses to distort only (s|y, z, a), which amounts to being concerned
+about misspecified models only for the evolution equation (3) for the signal and not (2)
+for the hidden state. Such a continuation value function imparts no additional incentive to
+distort the evolution equation (2) of z conditioned on s and x.3 A continuation value that
+depends on s but not on z thus imparts concerns about a limited array of distortions that
+ignore possible misspecification of the z evolution (2). Therefore, when we want to direct
+the maximizing agent's concerns about misspecification onto the conditional distribution
+(s|y, z, a), we should form a current period value that depends only on the history of the
+signal and of the observed state. We do this in recursion (23) below.
+In some situations, we want to extend the maximizing player's concerns about misspec-
+ification to the joint distribution (z, s|y, z, a) of z and s. We can do this by making
+tomorrow's value function for the minimizing player also depend on z. This will prompt
+the minimizing agent to distort the joint distribution (z, s|y, z, a) of (z, s). In recursions
+(21)-(22) below, we form a continuation value function that depends on z and that extends
+recursions (18), (19) to incorporate concerns about misspecification of (2).
+Thus, (21)-(22) below will induce the minimizing player to distort the distribution of z
+conditional on (s, x, a), while the formulation in (23) will not.
+5.1 Value function depends on (x, q)
+By defining a value function that depends on the hidden state, we focus the decision maker's
+attention on misspecification of the joint conditional distribution (z, s|y, z, a) of (s, z).
+We modify recursions (18)-(19) by updating a value function according to
+
+W(y, q, z) = U(x, a) + T1  
+W(y, q, z)|1
+(x, q, a) (21)
+after choosing an action according to
+max
+a
+T2 U(x, a) + T1  
+W(y, q, z)|1
+x, q, a 2
+(y, q, a), (22)
+for 1
+ 
+1
+, 2
+ 
+2
+(1
+) for 
+1
+, 
+2
+that make the problems well posed.4 Updating the value
+function by recursion (21) makes it depend on (x, q), while using (22) to guide decisions makes
+3Dependence between (s, z) conditioned on x under the approximating model means that in the process
+of distorting s conditioned on (x, a), the minimizing player may indirectly distort the distribution of z
+conditioned on (x, a). But he does not distort the distribution of z conditioned on (s, x, a)
+4Limits on 1
+and 2
+are typically needed to make the outcomes of the T1 and T2 operators be finite.
+10
+actions depend only on the observable state (y, q). Thus, continuation value 
+W depends on
+unobserved states, but actions do not. To retain the dependence of the continuation value
+on z, (21) refrains from using the T2 transformation when up-dating continuation values.
+The fixed point of (21)-(22) is the value function for an infinite horizon problem. For the
+finite horizon counterpart, we begin with a terminal value function and view the right side
+of (21) as mapping next period's value function into the current period value function.
+5.2 Value function depends on (y, q)
+To focus attention on misspecifications of the conditional distribution (s|y, z, a), we want
+the minimizing player's value function to depend only on the reduced information encoded
+in (y, q). For this purpose, we use the following counterpart to recursion (20):
+W(y, q) = max
+a
+T2 U(x, a) + T1 [W(y, q)|1
+] (x, q, a) 2
+(y, q, a) (23)
+for 1
+ 
+1
+and 2
+ 
+2
+(1
+). Although z is excluded from the value function W, z
+may help predict the observable state y or it may enter directly into the current period
+reward function, so application of the operator T1 creates a value function that depends on
+(x, q, a), including the hidden state z. Since the malevolent agent observes z, he can distort
+the dynamics for the observable state conditioned on z via the T1 operator. Subsequent
+application of T2 gives a value function that depends on (y, q, a), but not z; T2 distorts the
+hidden state distribution. The decision rule sets action a as a function of (y, q). The fixed
+point of Bellman equation (23) gives the value function for an infinite horizon problem. For
+finite horizon problems, we iterate on the mapping defined by the right side of (23), beginning
+with a known terminal value function. Recursion (23) extends the recursive formulation of
+risk-sensitivity with discounting advocated by Hansen and Sargent (1995) to situations with
+a hidden state.
+5.3 Advantages of our specification
+We take the distribution qt
+(z) as a state variable and explore misspecifications of it. An
+alternative way to describe a decision maker's fears of misspecification would be to perturb
+the evolution equation for the hidden state (1) directly. Doing that would complicate the
+problem substantially by requiring us to solve a filtering problem for each perturbation of
+(1). Our formulation avoids multiple filtering problems by solving one and only one filtering
+problem under the approximating model. The transition law q
+for q(z) in (6) becomes a
+component of the approximating model.
+When 1
+= + but 2
+< +, the decision maker trusts the signal dynamics (s|y, z, a)
+but distrusts q(z). When 2
+= + but 1
+< +, the situation is reversed. The two-
+formulation thus allows the decision maker to distinguish his suspicions of these two aspects
+of the model. Before saying more about the two- formulation, the next section explores
+some ramifications of the special case in which 1
+= 2
+and how it compares to the single 
+specification that prevails in versions of our decision problem under commitment.
+11
+6 The 1
+= 2
+case
+For the purpose of studying intertemporal consistency and other features of the associated
+worst case models, it is interesting to compare the outcomes of recursions (21)-(22) or (23)
+with the decision rule and worst case model described by Hansen and Sargent (2005) in
+which at time 0 the maximizing and minimizing players in a zero-sum game commit to
+a sequence of decision rules and a single worst case model, respectively. Because there is
+a single robustness parameter  in this "commitment model", it is natural to make this
+comparison for the special case in which 1
+= 2
+.
+6.1 A composite operator T2  T1 when 1
+= 2
+When a common value of  appears in the two operators, the sequential application T2T1
+can be replaced by a single operator:
+T2  T1 U(x, a) + W(y, q) (y, q, a)
+= - log exp -
+U(x, a) + W [(s, y, q, a)]
+
+(s|y, z, a)q(z)d(s)d(z).
+This operator is the outcome of a portmanteau minimization problem where the minimization
+is over a single relative density (s, z)  0 that satisfies5
+(s, z)(s|y, z, a)q(z)d(s)d(z) = 1,
+where  is related to  and  defined in (13) and (16) by
+(s, z) = (z, s|z)(z)q(z)d(z),
+where this notation emphasizes that the choice of  can depend on z. The entropy measure
+for  is
+[log (s, z)](s, z)(s|y, z, a)q(z)d(s)d(z),
+and the minimizing composite distortion  to the joint density of (s, z) given St
+is
+t
+(s, z) =
+exp -U(yt,z,at)+W[(s,yt,qt,at)]
+
+E exp -U(yt,z,at)+W[(st+1,yt,qt,at)]
+
+|St
+. (24)
+6.2 Special case U(x, a) = ^
+U(y, a)
+When U(x, a) = ^
+U(y, a), the current period utility drops out of formula (24) for the worst-
+case distortion to the distribution, and it suffices to integrate with respect to the distribution
+5For comparison, recall that applying T1 and T2 separately amounts to minimizing over separate relative
+densities  and .
+12
+ that we constructed in (5) by averaging  over the distribution of the hidden state. Proba-
+bilities of future signals compounded by the hidden state are simply averaged out using the
+state density under the benchmark model, a reduction of a compound lottery that would
+not be possible if different values of  were to occur in the two operators.
+To understand these claims, we deduce a useful representation of t
+(mt+1
+, ht
+):
+min
+mt+1Mt,htHt
+E ht
+1
+t
+(mt+1
+)|St
++ 2
+t
+(ht
+)
+subject to E (mt+1
+ht
+|St+1
+) = gt+1
+, where E (gt+1
+|St
+) = 1, a constraint that we impose
+because our aim is to distort expectations of St+1
+-measurable random variables given current
+information St
+. The minimizer is
+m
+t+1
+=
+gt+1
+E(gt+1|Xt)
+if E (gt+1
+|Xt
+) > 0
+0 if E (gt+1
+|Xt
+) = 0
+and h
+t
+= E (gt+1
+|Xt
+) . Therefore, m
+t+1
+h
+t
+= gt+1
+and the minimized value of the objective is
+t
+(m
+t+1
+, h
+t
+) = E [gt+1
+log(gt+1
+)|St
+]  ~t
+(gt+1
+). (25)
+Thus, in distorting continuation values that are St
+-measurable, it suffices to use entropy
+measure ~t
+defined in (25) and to explore distortions to the conditional probability of St+1
+-
+measurable events given St
+. This is precisely what the gt+1
+random variable accomplishes.
+The gt+1
+associated with T2T1 in the special case in which U(x, a) = ^
+U(y, a) implies a
+distortion t
+in equation (14) that depends on s alone. The iterated operator T2T1 can be
+regarded as a single risk-sensitivity operator analogous to T1:
+T2T1 ^
+U(y, a) + W(y, q) (y, q, a) (26)
+= ^
+U(y, a) -  log exp -
+W((s, y, q, a))
+
+(s|y, q, a)d(s).
+In section A.4 of appendix A, we describe how to compute this operator for linear quadratic
+problems.
+6.3 Comparison with outcomes under commitment
+Among the outcomes of iterations on the recursions (21)-(22) or (23) of section 5 are time-
+invariant functions that map (yt
+, qt
+) into a pair of nonnegative random variables (mt+1
+, ht
+).
+For the moment, ignore the distortion ht
+and focus exclusively on mt+1
+. Through (9), the
+time-invariant rule for mt+1
+can be used to a construct a martingale {Mt
+: t  0}. This
+martingale implies a limiting probability measure on X
+= t0
+Xt
+via the Kolmogorov
+extension theorem. The implied probability measure on X
+will typically not be absolutely
+continuous over the entire collection of limiting events in X
+. Although the martingale
+converges almost surely by virtue of Doob's martingale convergence theorem, in the absence
+of this absolute continuity, the limiting random variable will not have unit expectation. This
+means that concerns about robustness persist in a way that they don't in a class of robust
+13
+control problems under commitment that are studied, for example, by Whittle (1990) and
+Hansen and Sargent (2005).6
+6.3.1 A problem under commitment and absolute continuity
+Let M
+be a nonnegative random variable that is measurable with respect to X
+, with
+E(M
+|S0
+) = 1. For a given action process {at
+: t  0} adapted to {Xt
+: t  0}, let W
+.
+=
+
+t=0
+tU(xt
+, at
+) subject to (1)-(2). Suppose that  > 0 is such that E exp -1
+
+W
+|S0
+<
+. Then
+R1
+
+(W
+)
+.
+= min
+M0,E(M|S0)=1
+E(M
+W
+|S0
+) + E(M
+log M
+|S0
+) (28)
+= - log E exp -
+1
+
+W
+|S0
+. (29)
+This static problem has minimizer M
+
+= exp(- 1
+
+W
+)
+E[exp(- 1
+
+W
+)|S0
+]
+that implies a martingale M
+t
+=
+E (M
+
+|Xt
+) .7 Control theory interprets (29) as a risk-sensitive adjustment of the criterion
+W
+(e.g., see Whittle (1990)) and gets decisions that are robust to misspecifications by
+solving
+max
+atAt,t0
+- log E exp -
+1
+
+W
+S0
+.
+In a closely related setting, Whittle (1990) obtained time-varying decision rules for at
+that
+converge to ones that ignore concerns about robustness (i.e., those computed with  = +).
+The dissipation of concerns about robustness in this commitment problem is attributable
+to setting   (0, 1) while using the undiscounted form of entropy in the criterion function
+(28). Those features lead to the existence of a well defined limiting random variable M
+with expectation unity (conditioned on S0
+), which means that tail events that are assigned
+probability zero under the approximating model are also assigned probability zero under the
+distorted model.8
+6The product decomposition (9) of Mt
+implies an additive decomposition of entropy:
+E (Mt
+log Mt
+|S0
+) - E (M0
+log M0
+|S0
+) =
+t-1
+j=0
+E [Mj
+E (mj+1
+log mj+1
+|Xj
+) |S0
+] . (27)
+Setting E(M0
+|S0
+) = 1 means that we distort probabilities conditioned on S0
+.
+7See Dupuis and Ellis (1997). While robust control problems are often formulated as deterministic
+problems, here we follow Petersen, James, and Dupuis (2000) by studying a stochastic version with a relative
+entropy penalty.
+8Because all terms on the right side of (27) are nonnegative, the sequence
+t-1
+j=0
+Mj-1
+E (mj
+log mj
+|Xj-1
+)
+is increasing. Therefore, it has a limit that might be + with positive probability. Thus,
+limt
+E(Mt
+log Mt
+|S0
+) converges. Hansen and Sargent (2005) show that when this limit is finite almost
+surely, the martingale sequence {Mt
+: t  0} converges in the sense that limt
+E ( |Mt
+- M
+| |S0
+) = 0,
+where M
+is measurable with respect to X
+.
+= 
+t=0
+Xt
+. The limiting random variable M
+can be used to
+14
+6.3.2 Persistence of robustness concerns without commitment
+In our recursive formulations (21)-(22) and (23) of section 5, the failure of the worst-case
+nonnegative martingale {Mt
+: t  0} to converge to a limit with expectation one (conditioned
+on S0
+) implies that the distorted probability distribution on X
+is not absolutely continu-
+ous with respect to the probability distribution associated with the approximating model.
+This feature sustains enduring concerns about robustness and permits time-invariant robust
+decision rules, in contrast to the outcomes with discounting in Whittle (1990) and Hansen
+and Sargent (2005), for example. For settings with a fully observed state vector, Hansen
+and Sargent (1995) and Hansen, Sargent, Turmuhambetova, and Williams (2004) formulated
+recursive problems that yielded time-invariant decision rules and enduring concerns about
+robustness by appropriately discounting entropy. The present paper extends these recursive
+formulations to problems with unobserved states.
+6.4 Dynamic inconsistency of worst-case probabilities about hid-
+den states
+This section links robust control theory to recursive models of uncertainty aversion by ex-
+ploring aspects of the worst case probability models that emerge from the recursions defined
+in section 5. Except in a special case that we describe in subsection 6.6, those recursions
+achieve dynamic consistency of decisions by sacrificing dynamic consistency of beliefs about
+hidden state variables. We briefly explore how this happens. Until we get to the special case
+analyzed in subsection 6.6, the arguments of this subsection will also apply to the general
+case in which 1
+= 2
+.
+Problems (11) and (15) that define R1
+t
+and R2
+t
+, respectively, imply worst-case probability
+distributions that we express as a pair of Radon-Nikodym derivatives (m
+t+1
+, h
+t
+). The positive
+random variable m
+t+1
+distorts the distribution of Xt+1
+conditioned on Xt
+and the positive
+random variable h
+t
+distorts the distribution of events in Xt
+conditioned on St
+. Are these
+probability distortions consistent with next period's distortion h
+t+1
+? Not necessarily, because
+we have not imposed the pertinent consistency condition on these beliefs.
+6.5 A belief consistency condition
+To deduce a sufficient condition for consistency, recall that the implied {M
+t+1
+: t  0} should
+be a martingale. Decompose M
+t+1
+in two ways:
+M
+t+1
+= m
+t+1
+h
+t
+G
+t
+= h
+t+1
+G
+t+1
+.
+These equations involve G
+t+1
+and G
+t
+, both of which we have ignored in the recursive for-
+mulation of section 5. Taking expectations of m
+t+1
+h
+t
+G
+t
+= ht+1
+G
+t+1
+conditioned on St+1
+yields
+G
+t
+E m
+t+1
+h
+t
+|St+1
+= G
+t+1
+.
+Thus,
+g
+t+1
+= E m
+t+1
+h
+t
+|St+1
+construct a probability measure on X
+that is absolutely continuous with respect to the probability measure
+associated with the approximating model. Moreover, Mt
+= E(M
+|Xt
+).
+15
+is the implied multiplicative increment for the candidate martingale {G
+t
+: t  0} adapted
+to the signal filtration. Moreover,
+Claim 6.1. A sufficient condition for the distorted beliefs to be consistent is that the process
+{h
+t
+: t  0} should satisfy:
+h
+t+1
+=
+m
+t+1
+h
+t
+E(m
+t+1
+h
+t
+|St+1
+)
+if E m
+t+1
+h
+t
+|St+1
+> 0
+1 if E m
+t+1
+h
+t
+|St+1
+= 0.
+(30)
+This condition is necessary if G
+t+1
+> 0.9
+The robust control problem under commitment analyzed by Hansen and Sargent (2005)
+satisfies condition (30) by construction: at time 0 a single minimizing player chooses a pair
+(m
+t+1
+, h
+t
+) that implies next period's h
+t+1
+. However, in the recursive games defined in the
+recursions (21)-(22) and (23) in section 5, the date t minimizing agent does not have to
+respect this constraint. A specification of h
+t+1
+gives one distortion of the distribution of the
+hidden state (conditioned on St+1
+) and the pair (m
+t+1
+, h
+t
+) gives another. We do not require
+that these agree, and, in particular, do not require that the probabilities of events in Xt
+be
+distorted in the same ways by the date t determined worst-case distribution (conditioned on
+St+1
+) and the date t + 1 worst-case distribution (conditioned on St+1
+).
+A conflict can arise between these worst-case distributions because choosing an action is
+naturally forward-looking, while estimation of z is backward looking. Dynamic inconsistency Reason
+for
+inconsis-
+tency
+of any kind is a symptom of conflicts among the interests of different decision makers, and
+that is the case here. The two-player games that define the evaluation of future prospects
+(T1) and estimation of the current position of the system (T2) embody different orientations
+­ T1 looking to the future, T2 focusing on an historical record of signals.
+The inconsistency of the worst-case beliefs pertains only to the decision maker's opinions
+about the hidden state. If we ignore hidden states and focus on signals, we can assem-
+ble a consistent distorted signal distribution by constructing g
+t+1
+= E m
+t+1
+h
+t
+|St+1
+and
+noting that E g
+t+1
+|St
+= 1, so that g
+t+1
+is the implied one-period distortion in the signal
+distribution. We can construct a distorted probability distribution over events in St+1
+by
+using
+G
+t+1
+=
+t+1
+j=1
+g
+j
+. (31)
+Under this interpretation, the pair (m
+t+1
+, h
+t
+) is only a device to construct g
+t+1
+. When the
+objective function U does not depend directly on the hidden state vector z, as is true in many
+economic problems, the consistent set of distorted probabilities defined by (31) describes the
+events that directly influence decisions.
+9This consistency condition arguably could be relaxed for the two player game underlying (23). Although
+we allow mt+1
+to depend on the signal st+1
+and the hidden state zt+1
+, the minimizing solution associated
+with recursions (23) depends only on the signal st+1
+. Thus we could instead constrain the minimizing agent
+in his or her choice of mt+1
+and introduce a random variable ~
+mt+1
+that distorts the probability distribution
+of zt+1
+conditioned on st+1
+and Xt
+. A weaker modified consistency requirement is that
+h
+t+1
+=
+~
+mt+1
+m
+t+1
+h
+t
+E ~
+mt+1
+m
+t+1
+h
+t
+|St+1
+for some ~
+mt+1
+with expectation equal to one conditioned on st+1
+and Xt
+.
+16
+6.6 Discounting and preferences influenced by hidden states are
+the source of intertemporal inconsistency
+If  = 1 and if U(x, a) does not depend on the hidden state, we can show that the dis-
+tortions (mt+1
+, ht
+) implied by our recursions satisfy the restriction of Claim 6.1 and so are
+temporally consistent. Therefore, in this special case, the recursive games imply the same
+decisions and worst case distortions as the game under commitment analyzed by Hansen
+and Sargent (2005). For simplicity, suppose that we fix an action process {at
+: t  0} and
+focus exclusively on the assignment of distorted probabilities. Let {Wt
+: t  0} denote the
+process of continuation values determined recursively and supported by choices of worst-case
+models.
+Consider two operators R1
+t
+and R2
+t
+with a common . The operator R1
+t
+implies a worst-case
+distribution for Xt+1
+conditioned on Xt
+with density proportional to:
+m
+t+1
+=
+exp -Wt+1
+
+E exp -Wt+1
+
+|Xt
+.
+The operator R2
+t
+implies a worst-case model for the probability of Xt
+conditioned on St
+with
+density:
+h
+t
+=
+E exp -Wt+1
+
+|Xt
+E exp -Wt+1
+
+|St
+.
+Combining the distortions gives
+m
+t+1
+h
+t
+=
+exp -Wt+1
+
+E exp -Wt+1
+
+|St
+.
+To establish temporal consistency, from Claim 6.1 we must show that
+h
+t+1
+=
+exp -Wt+1
+
+E exp -Wt+1
+
+|St+1
+where
+h
+t+1
+.
+=
+E exp -Wt+2
+
+|Xt
+E exp -Wt+2
+
+|St
+.
+This relation is true when  = 1 and U does not depend on the hidden state z. To accom-
+modate  = 1, we shift from an infinite horizon problem to a finite horizon problem with a
+terminal value function. From value recursion (21) and the representation of R1
+t+1
+in (11),
+exp -
+Wt+1
+
+ E exp -
+Wt+2
+
+|Xt+1
+,
+17
+where the proportionality factor is St+1
+measurable. The consistency requirement for h
+t+1
+is therefore satisfied.
+The preceding argument isolates the role that discounting plays in delivering the time
+inconsistency of worst case beliefs over the hidden state. Heuristically, the games defined
+by the recursions (21)-(22) or (23) give intertemporal inconsistency when  < 1 because
+the decision maker discounts both current period returns and current period increments
+to entropy; while in the commitment problem analyzed in Hansen and Sargent (2005), the
+decision maker discounts current period returns but not current period increments to entropy.
+7 Implied worst case model of signal distortion
+The martingale (relative to St
+) increment gt+1
+= E (mt+1
+ht
+|St
+) distorts the distribution of
+the date t + 1 signal given information St
+generated by current and past signals. For the
+following three reasons, it is interesting to construct an implied g
+t+1
+from the m
+t+1
+associated
+with R1
+t
+or T1 and the h
+t
+associated with R2
+t
+or T2.
+First, actions depend only on signal histories. Hidden states are used either to depict
+the underlying uncertainty or to help represent preferences. However, agents cannot take
+actions contingent on these hidden states, only on the signal histories.
+Second, in decentralized economies, asset prices can be characterized by stochastic dis-
+count factors that equal the intertemporal marginal rates of substitution of unconstrained
+investors and that depend on the distorted probabilities that investors use to value contin-
+gent claims. Since contingent claims to consumption can depend only on signal histories
+(and not on hidden states), the distortion to the signal distribution is the twist to asset
+pricing that is contributed by investors' concerns about model misspecification. In partic-
+ular, under the approximating model, gt+1
+E[gt+1|St]
+becomes a multiplicative adjustment to the
+ordinary stochastic discount factor for a representative agent (e.g., see Hansen, Sargent, and
+Tallarini (1999)). It follows that the temporal inconsistency of worst case beliefs discussed
+in section 6.4 does not impede appealing to standard results on the recursive structure of
+asset pricing in settings with complete markets.10
+Third, Anderson, Hansen, and Sargent (2003) found it useful to characterize detection
+probabilities using relative entropy and an alternative measure of entropy due to Chernoff
+(1952). Chernoff (1952) showed how detection error probabilities for competing models give
+a way to measure model discrepancy. Models are close when they are hard to distinguish
+with historical data. Because signal histories contain all data that are available to a decision
+maker, the measured entropy from distorting the signal distribution is pertinent for statistical
+discrimination. These lead us to measure either E g
+t+1
+log g
+t+1
+|St
+or a Chernoff counterpart
+to it, as in Anderson, Hansen, and Sargent (2003).11
+Our characterizations of worst case models have conditioned implicitly on the current
+10See Johnsen and Donaldson (1985).
+11Anderson, Hansen, and Sargent (2003) show a close connection between the market price of risk and
+a bound on the error probability for a statistical test for discriminating the approximating model from the
+worst case model.
+18
+period action. The implied distortion in the signal density is:
+t
+(z, s)(z, s|yt
+, z, , at
+)t
+(z)qt
+(z)d(z)d(z)
+where t
+is given by formula (14) and t
+is given by (17). When a Bellman-Isaacs condition
+is satisfied,12 we can substitute for the control law and construct a conditional worst case
+conditional probability density for st+1
+as a function of the Markov state (yt
+, qt
+). The process
+{(yt+1
+, qt+1
+) : t  0} is Markov under the worst case distribution for the signal evolution.
+The density qt
+remains a component of the state vector, even though it is not the worst case
+density for zt
+.
+8 A recursive multiple priors model
+To attain a notion of dynamic consistency when the decision maker has multiple models,
+Epstein and Schneider (2003a) and Epstein and Schneider (2003b) advocate a formulation
+that, when translated into our setting, implies time varying values for 1
+and 2
+. Epstein
+and Schneider advocate sequential constraints on sets of transition probabilities for signal
+distributions. To implement their proposal in our context, we can replace our fixed penalty
+parameters 1
+, 2
+with two sequences of constraints on relative entropy.
+In particular, suppose that
+1
+t
+(mt+1
+)  1
+t
+(32)
+where 1
+t
+is a positive random variable in Xt
+, and
+2
+t
+(ht
+)  2
+t
+(33)
+where 2
+t
+is a positive random variable in St
+. If these constraints bind, the worst-case
+probability distributions are again exponentially tilted. We can take 1
+t
+to be the Xt
+-
+measurable Lagrange Multiplier on constraint (32), where m
+t+1
+ exp -Wt+1
+1
+t
+and 1
+t
+solves 1
+t
+(m
+t+1
+) = 1
+t
+. The counterpart to R1
+t
+(Wt+1
+) is
+C1
+t
+(Wt+1
+)
+.
+=
+E Wt+1
+exp -Wt+1
+1
+t
+|Xt
+E exp -Wt+1
+1
+t
+|Xt
+.
+Similarly, let 2
+t
+be the St
+-measurable Lagrange multiplier on constraint (33), where h
+t
+
+exp - ^
+Wt
+2
+t
+, and 2
+t
+solves 2
+t
+(h
+t
+) = 2
+t
+. The counterpart to R2
+t
+( ^
+Wt
+) is
+C2
+t
+( ^
+Wt
+)
+.
+=
+E ^
+Wt
+exp - ^
+Wt
+2
+t
+|St
+E exp - ^
+Wt
+2
+t
+|St
+.
+These constraint problems lead to natural counterparts to the operators T1 and T2.
+12For example, see Hansen, Sargent, Turmuhambetova, and Williams (2004) or Hansen and Sargent (2004).
+19
+Constraint formulations provide a justification for making 1
+and 2
+state- or time-
+dependent. Values of 1
+and 2
+would coincide if the two constraints were replaced by a
+single entropy constraint E [ht
+1
+t
+(mt+1
+)|St
+] + 2
+t
+(ht
+)  t
+, where t
+is St
+-measurable. Lin,
+Pan, and Wang (2004) and Maenhout (2004) give other reasons for making the robustness
+penalty parameters state dependent.13 With such state dependence, it can still be useful to
+disentangle misspecifications of the state dynamics and the distribution of the hidden state
+given current information. Using separate values for 1
+and 2
+achieves that.
+9 Risk sensitivity and compound lotteries
+Jacobson (1973) pointed out a link between a concern about robustness, as represented in
+the first line of (11), and risk sensitivity, as conveyed in the second line of (11). That link has
+been exploited in the control theory literature, for example, by Whittle (1990). Our desire
+to separate the concern for misspecifying state dynamics from that for misspecifying the
+distribution of the state inspires two risk-sensitivity operators. Although our primary interest
+is in representing ways that the decision maker can respond to model misspecification, our
+two operators can also be interpreted in terms of enhanced risk aversion.14
+9.1 Risk-sensitive interpretation of R1
+t
+The R1
+t
+operator has an alternative interpretation as a risk-sensitive adjustment to contin-
+uation values that expresses how a decision maker who has no concern about robustness
+prefers to adjust continuation values for their risk. The literature on risk-sensitive control
+uses adjustments of the same log E exp form that emerge from an entropy penalty and a
+concern for robustness, as asserted in (11). There are risk adjustments that are more general
+than those of the log E exp form associated with risk-sensitivity. In particular, we could
+follow Kreps and Porteus (1978) and Epstein and Zin (1989) in relaxing the assumption that
+a temporal compound lottery can be reduced to a simple lottery without regard to how the
+uncertainty is resolved, which would lead us to adjust continuation values by
+~
+R1
+t
+(Wt+1
+) = -1 (E [(Wt+1
+)|Xt
+])
+for some concave increasing function . The risk-sensitive case is the special one in which
+ is an exponential function. We focus on the special risk-sensitivity log E exp adjustment
+because it allows us to use entropy to interpret the resulting adjustment as a way of inducing
+robust decision rules.
+9.2 R2
+t
+and the reduction of compound lotteries
+While (17) shows that the operator R2
+t
+assigns a worst-case probability distribution, another
+interpretation along the lines of Segal (1990), Klibanoff, Marinacci, and Mukerji (2003), and
+13These authors consider problems without hidden states, but their motivation for state dependence would
+carry over to decision problems with hidden states.
+14Using detection probabilities, Anderson, Hansen, and Sargent (2003) describe senses in which the risk-
+sensitivity and robustness interpretations are and are not observationally equivalent.
+20
+Ergin and Gul (2004) is available. This operator adjusts for state risk differently than does
+the usual Bayesian approach of model averaging. Specifically, we can regard the transforma-
+tion R2
+t
+as a version of what Klibanoff, Marinacci, and Mukerji (2003) call constant ambiguity
+aversion. More generally, we could use
+~
+R2
+t
+( ^
+Wt
+) = -1E ( ^
+Wt
+)|St
+for some concave increasing function . Again, we use the particular `log E exp' adjustment
+because of its explicit link to entropy-based robustness.
+10 Linear quadratic problems
+For a class of problems in which U is quadratic and the transition laws (1), (3), (2) are
+linear, this section describes how to use deterministic linear quadratic control problems to
+compute T1, T2, and T2  T1. We consign details to appendix A. We begin with a remark
+that allows us to simplify the calculations by exploiting a type of certainty equivalence.
+10.1 A useful form of certainty equivalence
+We display the key idea in the following pair of problems that allow us easily to compute
+the T1 operator. Problem 10.1 is a deterministic one-period control problem that recovers
+the objects needed to compute the T1 operator defined in problem 10.2.
+Problem 10.1. Consider a quadratic value function V (x) = -1
+2
+x x - , where  is a
+positive definite matrix. Consider the control problem
+min
+v
+V (x) +
+
+2
+|v|2
+subject to a linear transition function x = Ax + Cv. If  is large enough that I - -1C C
+is positive definite, the problem is well posed and has solution
+v = Kx (34)
+K = [I - C C]-1C A. (35)
+The following problem uses (34) and (35) to compute the T1 operator:
+Problem 10.2. Consider the same value function V (x) = -1
+2
+x x -  as in problem 10.1,
+but now let the transition law be
+x = Ax + Cw
+where w  N(0, I). Consider the problem associated with the T1 operator:
+min
+m
+E[mV (x) + m log m].
+21
+The minimizer is
+m  exp
+-V (x)
+
+= exp -
+1
+2
+(w - v) -1(w - v) +
+1
+2
+w · w -
+1
+2
+log det 
+where v is given by (34)-(35) from problem 10.1,  = (I - -1C C)-1, and the entropy of
+m is
+Em log m =
+1
+2
+|v|2 + trace( - I) - log det  .
+Thus, we can compute T1 by solving the deterministic problem 10.1. We can also com-
+pute the T2 and T2  T1 operators by solving appropriate deterministic control problems.
+In appendix A, we exploit certainty equivalence to compute these operators for the linear
+quadratic problem that we describe next.
+10.2 The linear quadratic problem
+This section specializes the general setup of section 2 by specifying a quadratic return func-
+tion and a linear transition law. The return function or one period utility function is
+U(xt
+, at
+) = -
+1
+2
+at
+xt
+Q P
+P R
+at
+xt
+.
+The transition laws are the following specializations of (1), (2), and (3):
+yt+1
+= s
+st+1
++ y
+yt
++ a
+at
+zt+1
+= A21
+yt
++ A22
+zt
++ B2
+at
++ C2
+wt+1
+st+1
+= D1
+yt
++ D2
+zt
++ Hat
++ Gwt+1
+(36)
+where wt+1
+ N(0, I) is an i.i.d. Gaussian vector process. Substituting from the evolution
+equation for the signal (36), we obtain:
+yt+1
+= (s
+D1
++ y
+)yt
++ s
+D2
+zt
++ (s
+H + a
+)at
++ s
+Gwt+1
+,
+which gives the y-rows in the following state-space system:
+xt+1
+= Axt
++ Bat
++ Cwt+1
+st+1
+= Dxt
++ Hat
++ Gwt+1
+, (37)
+where A11
+.
+= s
+D1
++ y
+, A12
+.
+= s
+D2
+, B1
+.
+= s
+H + a
+and C1
+.
+= s
+G.
+Applying the Kalman filter to model (37) gives the following counterpart to (2), (4),
+(s|y, z, a), and (6):
+x = Ax + Ba + Cw (38)
+
+z = A21
+y + A22
+
+z + B2
+a + K2
+()(s - 
+s) (39)
+ = A22
+A22
+- K2
+() (A22
+D2
++ C2
+G ) + C2
+C2
+(40)
+22
+where w is a standard normal random vector, K2
+() is the Kalman gain
+K2
+() = (A22
+D2
++ C2
+G )(D2
+D2
++ GG )-1,
+the innovation s - 
+s = D2
+(z - 
+z) + Gw, and 
+s is the expectation of s conditioned
+on y0
+and the history of the signal. Equation (38) is the counterpart of (2), (4), while
+equations (39)-(40) form the counterpart to the law of motion for (sufficient statistics for)
+the posterior, q = q
+(s, y, q, a). Under the approximating model, the hidden state z is
+a normally distributed random vector with mean 
+z and covariance matrix . Equations
+(39) and describe the evolutions of the mean and covariance matrix of the hidden state,
+respectively.
+10.3 Differences from situation under commitment
+By not imposing distortions to 
+z and  on the right side of (39), the decision maker disregards
+prior distortions to the distribution of z. By way of contrast, in the commitment problem
+analyzed in Hansen and Sargent (2005), distortions to 
+z and  are present that reflect
+how past states and actions altered the worst case probability distribution for z.15 Unlike
+the setting with commitment, in the present setup without commitment, (
+z, ) from the
+ordinary Kalman filter are state variables, just as in the standard linear quadratic control
+problem without a concern for robustness.
+10.4 Perturbed models
+The decision maker explores perturbations to the conditional distributions of w and z.
+Letting the altered distribution of w depend on the hidden state z allows for misspecification
+of the hidden state dynamics. Directly perturbing the conditional distribution of z is a
+convenient way to explore robustness to the filtered estimate of the hidden state associated
+with the approximating model. We perturb the distribution of w by applying the T1
+operator and the distribution of z by applying the T2 operator. Section A.2 of appendix A
+exploits the certainty equivalence ideas conveyed in problem 10.1 to compute the T2 T1 and
+T1 operators for the recursions (21)-(22). Section A.3 describes how to compute the T2  T1
+operator of section 4 for formulating the game defined by the recursions (23) of section 5.
+The games in sections A.2 and A.3 allow 1
+= 2
+. Section A.4 describes how to compute the
+composite operator (26) of section 6.2. The associated game requires that 1
+= 2
+.
+11 Concluding remarks
+For a finite 1
+, the operator T1 captures the decision maker's fear that the state and signal
+dynamics conditioned on both observed and hidden components of the state are misspecified.
+For a finite 2
+, the operator T2 captures the decision maker's fear that the distribution of the
+hidden state conditioned on the history of signals is misspecified. Using different values of 1
+and 2
+in the operators T1 and T2 gives us the freedom to focus distrust on different aspects
+15Hansen and Sargent (2005) also analyze a linear quadratic problem under commitment.
+23
+of the decision maker's model. That will be especially useful extensions of our framework to
+continuous time settings.
+Specifications with 1
+= 2
+emerge when we follow Hansen and Sargent (2005) by adopting
+a timing protocol that requires the malevolent agent to commit to a worst case model {Mt+1
+}
+once and for all at time 0. Hansen and Sargent (2005) give a recursive representation for the
+solution of the commitment problem in terms of R1
+t
+and R2
+t
+operators with a common but
+time-varying multiplier equal to 
+t
+. The presence of t causes the decision maker's concerns
+about misspecification to vanish for tail events. Only for the undiscounted case does the
+zero-sum two player game with commitment in Hansen and Sargent (2005) give identical
+outcomes to the recursive games in this paper. As noted in section 6.6, when  < 1, the gap
+between the outcomes with and without commitment is the source of time-inconsistency of
+the worst case beliefs about the hidden state.
+Much of the control theory literature (e.g., Whittle (1990) and Basar and Bernhard
+(1995)) uses the commitment timing protocol. Hansen and Sargent (2005) show how to
+represent parts of that literature in terms of our formulation of model perturbations as
+martingales.
+24
+A Computations for LQ problems
+A.1 Three games
+We use the certainty equivalence insight from subsection 10.1 to solve three games. The key
+step in each is to formulate an appropriate linear quadratic discounted dynamic programming
+problem. Game I enables us to compute the T2  T1 and the T1 operators required by
+recursions (21)-(22). Game II formulates a linear regulator that we use to compute the
+recursions in formulation (23). Game III formulates a recursion for the operator (26) that
+is pertinent when 1
+= 2
+.
+A.2 Game I
+This subsection shows how to apply the certainty equivalent insight from section 10.1 to com-
+pute the recursions (21)-(22) (i.e., "maximize after applying T2 T1, but update by applying
+T1") for the linear quadratic case. In game I, a decision maker chooses a after first applying
+T2  T1 to the sum of the current return function and a discounted continuation value. This
+makes a depend on y and the estimate of the hidden state 
+z, but not on z. However, by
+updating the value function using T1 only, we make the continuation value function depend
+on the hidden state z. We adopt the convention that we discount the continuation value
+function and then add to it the current return function and the undiscounted penalties on
+the two entropies.
+Rewrite evolution equation (38) - (39) as
+
+
+y
+z
+
+z
+
+ =
+
+
+A11
+A12
+0
+A21
+A22
+0
+A21
+K2
+()D2
+A22
+- K2
+()D2
+
+
+
+
+y
+z
+
+z
+
+ +
+
+
+B1
+B2
+B2
+
+ a +
+
+
+C1
+C2
+K2
+()G
+
+ w
+=
+
+
+A11
+A12
+A21
+A22
+A21
+A22
+
+ y
+
+z
++
+
+
+B1
+A12
+B2
+A22
+B2
+K2
+()D2
+
+ a
+z - 
+z
++
+
+
+C1
+C2
+K2
+()G
+
+ w. (41)
+Under the approximating model, w is a multivariate standard normal random vector and
+z - 
+z is distributed as a normal random vector with mean zero and covariance matrix .
+A.2.1 Computing T1  T2
+The logic expressed in (11) and (15) that define R1
+t
+and R2
+t
+shows that application of T2 T1 to
+a function amounts to minimizing another function with respect to the distributions of z and
+w. We shall exploit this logic and calculate T2  T1 by solving the corresponding minimiza-
+tion problem. In the present linear-quadratic-Gaussian case, we can exploit the certainty
+equivalence property from section 10.1 and minimize first over the conditional means of
+these two distributions, then construct the minimizing conditional covariances later, thereby
+exploiting the idea in problem 10.2. Because a Bellman-Isaacs condition is satisfied, the
+linear-quadratic-Gaussian structure allows us simultaneously to perform the maximization
+over a and the minimization over the distorted means of z and w associated with the T2 T1
+operator. We do this by forming a zero-sum two-player game that simultaneously chooses
+25
+the decision a, a distortion u to the mean of z - 
+z, and a distortion ~
+v to a conditional mean
+of w, all as functions of y, 
+z. Here ~
+v can be interpreted as the mean of v conditioned on y, 
+z.
+(In section A.2.2, we shall compute a vector v that is the distorted mean of w conditioned
+on y, 
+z, z.)16
+Thus, we consider the transition equation:
+
+
+y
+z
+
+z
+
+ =
+
+
+A11
+A12
+A21
+A22
+A21
+A22
+
+ y
+
+z
++
+
+
+B1
+A12
+B2
+A22
+B2
+K2
+()D2
+
+ a
+u
++
+
+
+C1
+C2
+K2
+()G
+
+ ~
+v
+Write the single period objective as:
+-
+1
+2
+a y z
+
+
+Q P1
+P2
+P1
+R11
+R12
+P2
+R21
+R22
+
+
+
+
+a
+y
+z
+
+ +
+1
+2
+|~
+v|2 +
+2
+2
+u -1u = -
+1
+2
+a u ~
+v y 
+z ()
+
+
+
+
+
+
+a
+u
+~
+v
+y
+
+z
+
+
+
+
+
+
+where
+() =
+
+
+
+
+
+
+Q P2
+0 P1
+P2
+P2
+R22
+- 2
+-1 0 R21
+R22
+0 0 -1
+I 0 0
+P1
+R12
+0 R11
+R12
+P2
+R22
+0 R21
+R22
+
+
+
+
+
+
+. (42)
+Construct a composite action vector:
+~
+a =
+
+
+a
+u
+~
+v
+
+ (43)
+and composite state vector
+~
+x =
+y
+
+z
+. (44)
+Express (41) as 
+
+y
+z
+
+z
+
+ = ~
+A~
+x + ~
+B()~
+a,
+and the single period objective as
+-
+1
+2
+~
+a ~
+x
+11
+() 12
+21
+22
+~
+a
+~
+x
+,
+and write the discounted next period value function as
+V (y, z, 
+z, ) = -
+
+2
+y z 
+z ()
+
+
+y
+z
+
+z
+
+ - ().
+16Note that T1 makes v depend on y, z, 
+z, and that application of T2 then conditions down to y, 
+z, in effect
+recovering the mean of v conditional on (y, 
+z).
+26
+Then pose the problem17
+max
+a
+min
+u,~
+v
+-
+1
+2
+~
+a ~
+x
+11
+() 12
+21
+22
+~
+a
+~
+x
++ V (y, z, 
+z, ) . (45)
+The composite decision rule is
+~
+a = - 11
+() +  ~
+B() () ~
+B()
+-1
+12
++  ~
+B() () ~
+A ~
+x.
+Using the law of motion from the Kalman filter
+ = A22
+A22
+- K() (A22
+D2
++ C2
+G ) + C2
+C2
+to express  in terms of , the composite decision rule can be expressed as
+
+
+a
+u
+~
+v
+
+ .
+= - ~
+F()
+
+
+y
+z
+
+z
+
+ = -
+
+
+~
+F11
+() 0 ~
+F13
+()
+~
+F21
+() 0 ~
+F23
+()
+~
+F31
+() 0 ~
+F33
+()
+
+
+
+
+y
+z
+
+z
+
+ , (46)
+which looks like the decision rule for an optimal linear regulator problem. The robust
+control law for the action is given by the first block in (46). In the second line, we have
+added z, which at this stage is a superfluous component of the state vector, so that the
+corresponding columns of ~
+F() are identically zero; ~
+a is by construction a function of (y, 
+z).
+This superfluous state variable will be useful in section A.2.2 when we compute a continuation
+value function that depends on (y, z, 
+z).
+To make the extremization in (45) well posed, we require that 1
+, 2
+be large enough to
+satisfy the `no-breakdown' condition that
+2
+-1 - R22
+0
+0 1
+I
+- 
+A12
+A22
+D2
+K2
+()
+C1
+C2
+G K2
+()
+()
+
+
+A12
+C1
+A22
+C2
+K2
+()D2
+K2
+()G
+
+
+is positive definite. Otherwise, the parameter pair (1
+, 2
+) is not admissible. This is a
+bivariate counterpart to a check for a no-breakdown condition that occurs in robust control
+theory. When the no-breakdown condition is violated, the minimizing agent can make the
+objective equal to -.
+A.2.2 T1 and the worst case E[w|y, z, 
+z]
+It remains for us to compute the distortion to the mean of w conditional on y, z, 
+z that
+emerges from applying the T1 operator to a continuation value. The T1 operator allows a
+minimizing agent to exploit his information advantage over the maximizing agent by let-
+ting the mean distortion in w depend on z, the part of the state that is hidden from the
+maximizing agent.
+17Note here how we discount the continuation value function, then add the current return and the penalized
+entropies.
+27
+Taking the control law for a computed in (46) as given, we can compute the mean v of
+the worst case w conditional on y, z, 
+z by using the evolution equation (41):
+
+
+y
+z
+
+z
+
+ =
+
+
+A11
+A12
+0
+A21
+A22
+0
+A21
+K2
+()D2
+A22
+- K2
+()D2
+
+
+
+
+y
+z
+
+z
+
+ -
+
+
+B1
+B2
+B2
+
+ ~
+F1
+()
+
+
+y
+z
+
+z
+
+ +
+
+
+C1
+C2
+K2
+()G
+
+ v
+= ¯
+A()
+
+
+y
+z
+
+z
+
+ + ¯
+C()v.
+After substituting the decision rule for a from (46), we can write the objective as
+-
+1
+2
+a y z
+
+
+Q P1
+P2
+P1
+R11
+R12
+P2
+R21
+R22
+
+
+
+
+a
+y
+z
+
+ +
+1
+2
+|v|2 = -
+1
+2
+y z 
+z ¯
+()
+
+
+y
+z
+
+z
+
+ +
+1
+2
+|v|2
+where
+¯
+()
+.
+=
+
+
+
+
+- ~
+F1
+()
+I 0 0
+0 I 0
+0 0 I
+
+
+
+
+
+
+
+
+Q P1
+P2
+0
+P1
+R11
+R12
+0
+P2
+R21
+R22
+0
+0 0 0 0
+
+
+
+
+
+
+
+
+- ~
+F1
+()
+I 0 0
+0 I 0
+0 0 I
+
+
+
+ .
+Provided that
+1
+I -  ¯
+C() () ¯
+C() (47)
+is positive definite, the control law for v is18
+v =  1
+I -  ¯
+C() () ¯
+C() -1 ¯
+C() () ¯
+A
+
+
+y
+z
+
+z
+
+ , (48)
+which, by using (40) to express  as a function of , we can express as
+v = ¯
+F()
+
+
+y
+z
+
+z
+
+ .
+The updated value function is
+() = ¯
+() +  ¯
+A () ¯
+A
++2 ¯
+A () ¯
+C() 1
+I -  ¯
+C() () ¯
+C() -1 ¯
+C() () ¯
+A. (49)
+At first sight, these recursions seem difficult because they call for updating the matrix
+valued functions  for all hypothetical values of the definite matrix . Fortunately, it
+suffices to perform these calculations only for a sequence of 's calculated over the horizon
+of interest, which is easy. Given a sequence of 's starting from an initial condition, the
+'s for the value functions can be computed starting from a terminal value using backward
+induction. In particular, we can first compute a sequence of matrices  using forward
+induction on (40), then compute a corresponding () sequence using backward induction
+on (49). Both forward and backward recursions are Riccati equations.
+18If the matrix defined in (47) is not positive definite, then 1
+is below the break-down point.
+28
+A.2.3 Worst case shock distribution
+The worst case distribution for w conditioned on (y, z, 
+z) is normal with mean v given by
+(48) and covariance
+()
+.
+= I -
+
+1
+¯
+C () ¯
+C
+-1
+.
+A.2.4 Worst case hidden state distribution
+The worst case mean of z conditional on (y, 
+z) is
+u = - ~
+F2
+()
+
+
+y
+z
+
+z
+
+ ,
+(recall that ~
+F2
+contains zeros in the columns that multiply z), and its covariance matrix is:
+()
+.
+=
+
+-1 -
+1
+2
+R22
+-
+1
+2
+0 I 0 ()
+
+
+0
+I
+0
+
+
+
+
+-1
+,
+provided that this matrix is positive definite. Otherwise, 2
+is below its breakdown point.
+A.2.5 Consistency check
+The third row of (46) computes the mean ~
+v of w, conditional on the information set available
+to the maximizing agent, namely, (y, 
+z), but not z. In formula (48), we computed the mean
+v of w conditional on the information set of the minimizing agent, namely, (y, z, 
+z). A
+certainty equivalence result asserts that ~
+v is the expectation of v conditioned on (y, 
+z). This
+gives us the following consistency check.
+One formula for ~
+v is computed by using the control law of v and substituting for the
+distorted expectation for z:
+~
+v = ¯
+F()
+
+
+y
+
+z - ~
+F21
+()y - ~
+F23
+()
+z
+
+z
+
+ = ¯
+F()
+
+
+I 0
+- ~
+F21
+() I - ~
+F23
+()
+0 I
+
+ y
+
+z
+.
+Using certainty equivalence, we computed ~
+v = - ~
+F3
+y
+^
+z
+. Taken together, we have the re-
+striction
+- ~
+F31
+() ~
+F33
+() = ¯
+F()
+
+
+I 0
+- ~
+F21
+() I - ~
+F23
+()
+0 I
+
+ .
+29
+A.2.6 Worst case signal distribution
+In this section, we recursively construct the distribution of signals under the distorted prob-
+ability distribution. Recall the signal evolution:
+s = Dx + Ha + Gw.
+Under the approximating model, the signal next period is normal with mean
+
+s = D1
+y + D2
+
+z + Ha
+and covariance matrix
+
+ = D2
+D2
++ GG .
+The distorted mean of the signal conditioned on the signal history is:
+¯
+s = D1
+y + D2
+
+z + (D2
+u + G~
+v) + Ha
+which by virtue of the second and third blocks of rows of (46) can be written
+¯
+s = ¯
+D1
+()y + ¯
+D2
+()
+z + Ha (50)
+where
+¯
+D1
+()
+.
+= D1
+- D2
+~
+F21
+() - G ~
+F31
+()
+¯
+D2
+()
+.
+= D2
+- D2
+~
+F23
+() - G ~
+F33
+().
+The distorted covariance matrix is:
+¯
+ = D2
+()D2
++ G()G .
+The relative entropy of this distortion conditioned on the reduced information set of the
+signal history is
+1
+2
+(¯
+s - 
+s) 
+-1(¯
+s - 
+s) + trace(
+-1 ¯
+ - I) - logdet¯
+ + logdet
+ . (51)
+To construct the distorted dynamics for y, start from the formula for y from the first
+block in (36), namely, y = s
+s + y
+y + a
+a. Substituting for the robust decision rule for
+a from the first block of row of (46) and replacing s with with ¯
+s + (s - ¯
+s) from (50) gives
+y = [y
+y+s
+¯
+D1
+()-(s
+H +a
+) ~
+F11
+()]y+[s
+¯
+D2
+()-(s
+H +a
+) ~
+F13
+()]
+z+s
+(s -¯
+s).
+(52)
+To complete a recursive representation for y under the worst case distribution, we need
+a formula for updating 
+z under the worst case distribution. Recall the formula for 
+z under
+the approximating model from the Kalman filter (39) or (41):
+
+z = [A21
+- B2
+~
+F11
+()]y + [A22
+- B2
+~
+F13
+()]
+z + K2
+()(s - D1
+y - D2
+
+z - Ha)
+or
+
+z = [A21
+- B2
+~
+F11
+()]y + [A22
+- B2
+~
+F13
+()]
+z + K2
+()(s - 
+s).
+30
+Using the identity
+s - 
+s = (s - ¯
+s) + (¯
+s - 
+s)
+= (s - ¯
+s) + [ ¯
+D1
+() - D1
+]y + [ ¯
+D2
+() - D2
+]
+z
+in the above equation gives:
+
+z = A21
+- B2
+~
+F11
+() + K2
+()[ ¯
+D1
+() - D1
+] y
++ A22
+- B2
+~
+F13
+() + K2
+()[ ¯
+D2
+() - D2
+] 
+z + K2
+()(s - ¯
+s). (53)
+Taken together, (52) and (53) show how to construct 
+z from the signal history under the
+distorted law of motion. The innovation s - ¯
+s under the distorted model is normal with
+mean zero and covariance matrix ¯
+.
+A.3 Game II
+We now turn to the linear quadratic version of a game associated with the recursion (23)
+described in section 5.2, in which we update the value function using T2  T1. We exploit
+our certainty equivalence insights from section 10.1. Like Game I, this game allows 1
+= 2
+.
+Here we do not need to keep track of the evolution of z. Instead it suffices to focus only on
+the two equation system:
+y
+
+z
+=
+A11
+A12
+A21
+A22
+y
+
+z
++
+A12
+K2
+()D2
+(z - 
+z) +
+B1
+B2
+a +
+C1
+K2
+()G
+w (54)
+As in Game I, we need to choose the mean distortion u for z - 
+z, and the mean distortion
+v for w, where both means distortions are conditioned on (y, 
+z).
+A.3.1 Computing a, u, and ~
+v
+We apply the same argument as for Game I, but to a smaller state vector. Thus, we work
+with the evolution equation
+y
+
+z
+=
+A11
+A12
+A21
+A22
+y
+
+z
++
+A12
+K2
+()D2
+u +
+B1
+B2
+a +
+C1
+K2
+()G2
+~
+v
+or
+~
+x = ~
+Ax + ~
+B()~
+a,
+where ~
+x and ~
+a are defined in (43) and (44) and ~
+x is the next period's value of ~
+x. The
+matrices A and ~
+B differ from those in Game I because z is not included in ~
+x.
+Partition blocks of the matrix () defined in (42) as
+11
+12
+21
+22
+conformably with ~
+a, ~
+x,
+so that the (1, 1) block pertains to ~
+a, the (2, 2) block to ~
+x, and so on. Write the discounted
+next period value function as
+V (~
+x) = -
+
+2
+(~
+x) ()~
+x - ().
+31
+Then the composite robust control is:
+~
+a = - 11
+() +  ~
+B() () ~
+B()
+-1
+12
++  ~
+B() () ~
+A ~
+x
+.
+= -
+
+
+~
+F1
+()
+~
+F2
+()
+~
+F3
+()
+
+ ~
+x (55)
+where - ~
+F1
+()~
+x is the control law for a, - ~
+F2
+()~
+x is the control law for the mean u of the
+distorted distribution for z - 
+z, and - ~
+F3
+()~
+x is the control law for ~
+v, the mean of the
+distorted distribution for w conditional on (y, 
+z).
+For the extremization problem to be well posed, we require that (1
+, 2
+) be large enough
+that
+2
+-1 - R22
+0
+0 1
+I
+- 
+A12
+D2
+K2
+()
+C1
+G K2
+()
+()
+A12
+C1
+K2
+()D2
+K2
+()G
+(56)
+is positive definite.
+The value function recursion is the Riccati equation:
+() = 22
++  ~
+A() () ~
+A() - 12
++  ~
+B() () ~
+A
+11
+() +  ~
+B() () ~
+B()
+-1
+12
++  ~
+B() () ~
+A .
+This recursion computes a matrix in the quadratic form that emerges from applying the
+composite T2  T1 operator.
+A.3.2 Worst case distribution for w conditional on (y, 
+z, z)
+We now compute the mean v of the distorted distribution for w that emerges from applying
+the T1 operator alone to the continuation value. The mean distortion v depends on the
+hidden state z, as well as on (y, 
+z). To prepare the minimization problem that we use to
+compute T1, first impose the control law for a in evolution equation (54):
+y
+
+z
+= ~
+A
+y
+
+z
+-
+B1
+B2
+~
+F1
+()
+y
+
+z
++
+A12
+K2
+()D2
+(z - 
+z) +
+C1
+K2
+()G
+w
+= ¯
+A()
+y
+
+z
++ ¯
+H()(z - 
+z) + ¯
+C()w. (57)
+The following certainty-equivalent problem recovers the feedback law for v associated
+with T1:
+min
+v
+-
+
+2
+y 
+z ()
+y
+
+z
++
+1
+2
+v v
+where the minimization is subject to (57) with v replacing w. The minimizing v, which is
+the worst case mean of w conditional on (y, 
+z, z), is
+v =  1
+I -  ¯
+C() () ¯
+C() -1 ¯
+C() () ¯
+A
+y
+
+z
++ ¯
+H()(z - 
+z)
+32
+= - ¯
+F1
+()(z - 
+z) - ¯
+F2
+()
+y
+
+z
+= - ¯
+F()
+
+
+z - 
+z
+y
+
+z
+
+ .
+Conditional on (y, 
+z, z), the covariance matrix of the worst case w is
+() = I -
+
+1
+¯
+C() () ¯
+C()
+-1
+, (58)
+which is positive definite whenever the breakdown condition (56) is met.
+Next, we want to compute the matrix ¯
+() in the quadratic form in (z - 
+z) y 
+z
+that emerges from applying the T1 operator. First, adjust the objective for the choice of v by
+constructing a matrix ¯
+(), with row and column dimension both equal to the dimension
+of (z - 
+z) y 
+z , that we now redefine as:19
+¯
+() =
+
+
+
+
+0 - ~
+F1
+()
+I 0 0
+0 I 0
+0 0 I
+
+
+
+
+
+
+
+
+Q P2
+P1
+P2
+P2
+R22
+- 2
+-1 R21
+R22
+P1
+R21
+R11
+R12
+P2
+R22
+R21
+R22
+
+
+
+
+
+
+
+
+0 - ~
+F1
+()
+I 0 0
+0 I 0
+0 0 I
+
+
+
+ .
+The matrix in the quadratic form in (z - 
+z) y 
+z for the minimized objective function
+that emerges from applying the T1 operator is:
+¯
+() = ¯
+() + 
+¯
+H()
+¯
+A()
+() ¯
+H() ¯
+A() +
+2
+¯
+H()
+¯
+A()
+() ¯
+C() 1
+I -  ¯
+C() () ¯
+C() -1 ¯
+C() () ¯
+H() ¯
+A() .
+A.3.3 Worst case distribution for z - 
+z: N(u, ())
+Knowing ¯
+() allows us to deduce the worst case distribution for z - 
+z conditional on (y, 
+z)
+in another way, thereby establishing a useful cross check on formula (55). Use the partition:
+¯
+() =
+¯
+11
+() ¯
+12
+()
+¯
+21
+() ¯
+22
+()
+where ¯
+11
+() has the same dimension as z - 
+z and ¯
+22
+() has the same dimension as
+y
+
+z
+.
+The covariance matrix of z - 
+z is
+() = -
+1
+2
+¯
+11
+()
+-1
+, (59)
+19Note that we are recycling and changing notation from section A.2.
+33
+which is positive definite when (1
+, 2
+) satisfies the no-breakdown restriction (56). The mean
+of the distorted distribution of z - 
+z is
+u = - ¯
+11
+() -1 ¯
+12
+()
+y
+
+z
+.
+Computing u at this stage serves as a consistency check because it was already computed;
+it must be true that
+~
+F2
+() = ¯
+11
+() -1 ¯
+12
+().
+Given this choice of u, a second consistency check compares the formula for ~
+v to the formulas
+for v and u; ~
+v is a distorted expectation of v conditioned on y and 
+z. Thus,
+~
+F3
+() = ¯
+F()
+- ~
+F2
+()
+I
+.
+A.3.4 Worst case signal distribution
+The mean of the distorted signal distribution given the signal history for Game II is
+¯
+s = D - D2
+~
+F2
+() - G ~
+F3
+() ~
+x,
+and the distorted covariance matrix is:
+¯
+ = D2
+()D2
++ G()G
+with the Game II versions of () and () given by (58) and (59), respectively. The
+reduced information measure of entropy is given again by formula (51). The worst case
+evolution for y and 
+z expressed in terms of s - ¯
+s is constructed as in Game I in formulas
+(52) and (53), but using the Game II control law ~
+F1
+for a.
+A.4 Game III
+Game III applies our certainty equivalence insight from section 10.1 to compute iterations
+on (26). This game assumes that 1
+= 2
+, presumes that the period objective function does
+not depend on the hidden state, and works entirely with the reduced information set y, 
+z.
+The evolution of the baseline model is:
+y
+
+z
+=
+A11
+A12
+A21
+A22
+y
+
+z
++
+B1
+B2
+a +
+C1
+K2
+()G
+w +
+A12
+K2
+()D2
+(z - 
+z).
+Under the benchmark model, the composite shock
+C1
+K2
+()G
+w +
+A12
+K2
+()D2
+(z - 
+z) (60)
+is a normally distributed random vector with mean zero and covariance matrix
+()
+.
+=
+C1
+A12
+K2
+()G K2
+()D2
+I 0
+0 
+C1
+G K2
+()
+A12
+D2
+K2
+()
+34
+which can be factored as
+() = ~
+C() ~
+C()
+where ~
+C() has the same number of columns as the rank of (). This factorization can
+be accomplished by first computing a spectral decomposition:
+() = U()V ()U()
+where U() is an orthonormal matrix and V () is a diagonal matrix with nonnegative
+entries on the diagonal. Partition V () by filling out its upper diagonal block with zeros:
+V () =
+0 0
+0 V2
+()
+.
+The diagonal entries of V2
+() are presumed to be strictly positive, implying that V2
+() has
+the same dimension as the rank of (). Partition U() conformably:
+U() = U1
+() U2
+() .
+The matrix ~
+C() is then
+~
+C() = U2
+() [V2
+()]1/2 .
+Finally, let
+~
+C() =
+~
+C1
+()
+~
+C2
+()
+where ~
+C1
+() has as many rows as there are entries in y and ~
+C2
+() has as many entries as 
+z.
+We solve this game by simultaneously distorting the distribution of the composite shock
+defined in (60) instead of separately distorting the distributions of the components w and
+(z - 
+z) of the composite shock. With this modification, we can solve the robust control
+problem as if there were no hidden Markov states. Let ~
+C()~
+u denote the mean of the
+aggregate shock defined in (60). Write the single period objective as:
+-
+1
+2
+a y
+Q P
+P R
+a
+y
++
+
+2
+~
+u ~
+u = -
+1
+2
+a ~
+u y 
+z ()
+
+
+
+
+a
+~
+u
+y
+
+z
+
+
+
+
+where
+() =
+
+
+
+
+Q 0 P 0
+0 -I 0 0
+P 0 R 0
+0 0 0 0
+
+
+
+ .
+Form an augmented control:
+~
+a =
+a
+~
+u
+and an augmented state:
+~
+x =
+y
+
+z
+.
+35
+Write the state evolution as:
+~
+x = ~
+A~
+x + ~
+B()~
+a
+where
+~
+B()
+.
+=
+B1
+~
+C1
+()
+B2
+~
+C2
+()
+.
+Write the discounted next period value function as
+V (~
+x) = -
+
+2
+(~
+x) ()~
+x - ().
+Then the composite robust control is:
+~
+a = - 11
+() +  ~
+B() () ~
+B()
+-1
+12
++  ~
+B() () ~
+A ~
+x
+.
+= -
+~
+F1
+()
+~
+F2
+()
+~
+x
+where - ~
+F1
+()~
+x is the control law for a and - ~
+F2
+()~
+x is the control law for u.
+For the minimization part of the problem to be well posed, we require that  be large
+enough that
+I -  ~
+C() () ~
+C()
+is positive definite. The value function recursion is the Riccati equation:
+() = ~
+22
++  ~
+A() () ~
+A()
+- 12
++  ~
+B() () ~
+A 11
+() +  ~
+B() () ~
+B()
+-1
+12
++  ~
+B() () ~
+A .
+The worst case covariance matrix for the composite shock is
+~
+C() I -
+
+
+~
+C() () ~
+C()
+-1
+~
+C() ,
+which is typically singular but larger than ().
+36
+References
+Anderson, E., L. Hansen, and T. Sargent (2003). A quartet of semigroups for model
+specification, robustness, prices of risk, and model detection. Journal of the European
+Economic Association 1(1), 68­123.
+Basar, T. and P. Bernhard (1995). H-Optimal Control and Related Minimax Design
+Problems (second ed.). Birkhauser.
+Bergemann, D. and J. Valimaki (1996). Learning and strategic pricing. Econometrica 64,
+1125­1149.
+Chernoff, H. (1952). A measure of asymptotic efficiency for tests of a hypothesis based on
+the sum of observations. Annals of Statistics 23, 493­507.
+Cogley, T., R. Colacito, L. Hansen, and T. Sargent (2005). Robustness and u.s. monetary
+policy experimentation. unpublished.
+Cogley, T., R. Colacito, and T. Sargent (2005). Benefits from u.s. monetary policy exper-
+imentation in the days of samuelson and solow and lucas. unpublished.
+Dupuis, P. and R. S. Ellis (1997). A Weak Convergence Approach to the Theory of Large
+Deviations. Wiley Series in Probability and Statistics. New York: John Wiley and
+Sons.
+Elliott, R. J., L. Aggoun, and J. B. Moore (1995). Hidden Markov Models: Estimation
+and Control. New York: Springer-Verlag.
+Epstein, L. and M. Schneider (2003a, November). Independently and indistinguishably
+distributed. Journal of Economic-Theory 113(1), 32­50.
+Epstein, L. and M. Schneider (2003b, November). Recursive multiple priors. Journal of
+Economic Theory 113(1), 1­31.
+Epstein, L. and S. Zin (1989). Substitution, risk aversion and the temporal behavior of
+consumption and asset returns: A theoretical framework. Econometrica 57, 937­969.
+Ergin, H. and F. Gul (2004). A subjective theory of compound lotteries. unpublished.
+Hansen, L. P. and T. Sargent (1995, May). Discounted linear exponential quadratic
+gaussian control. IEEE Transactions on Automatic Control 40(5), 968­971.
+Hansen, L. P., T. Sargent, and T. Tallarini (1999). Robust permanent income and pricing.
+Review of Economic Studies 66, 873­907.
+Hansen, L. P. and T. J. Sargent (2004). Misspecification in recursive macroecononmic
+theory. Princeton University Press, forthcoming.
+Hansen, L. P. and T. J. Sargent (2005). Robust estimation and control under commitment.
+unpublished.
+Hansen, L. P., T. J. Sargent, G. A. Turmuhambetova, and N. Williams (2004). Robust
+control, min-max expected utility, and model misspecification. manuscript, University
+of Chicago and New York University.
+37
+Jacobson, D. H. (1973). Optimal stochastic linear systems with exponential performance
+criteria and their relation to deterministic differential games. IEEE Transactions for
+Automatic Control AC-18, 1124­131.
+Johnsen, T. H. and J. B. Donaldson (1985). The structure of intertemporal preferences
+under uncertainty and time consistent plans. Econometrica 53, 1451­1458.
+Jovanovic, B. (1979). Job matching and the theory of turnover. Journal of Political Econ-
+omy 87(5), 972­990.
+Jovanovic, B. (1982, May). Selection and the evolution of industry. Econometrica 50(3),
+649­670.
+Jovanovic, B. and Y. Nyarko (1995). The transfer of human capital. Journal of Economic
+Dynamics and Control 19, 1033­1064.
+Jovanovic, B. and Y. Nyarko (1996, November). Learning by doing and the choice of
+technology. Econometrica 64(6), 1299­1310.
+Klibanoff, P., M. Marinacci, and S. Mukerji (2003). A smooth model of decision making
+under ambiguity. Northwestern University.
+Kreps, D. M. and E. L. Porteus (1978). Temporal resolution of uncertainty and dynamic
+choice. Econometrica 46, 185­200.
+Lin, J., J. Pan, and T. Wang (2004). An equilibrium model for rare-event premia and its
+implication for option pricing. Review of Financial Studies forthcoming.
+Maenhout, P. J. (2004). Robust portfolio rules and asset pricing. Review of Financial
+Studies forthcoming.
+Petersen, I. R., M. R. James, and P. Dupuis (2000). Minimax optimal control of stochastic
+uncertain systems with relative entropy constraints. IEEE Transactions on Automatic
+Control 45, 398­412.
+Segal, U. (1990). Two-stage lotteries without the reduction axiom. Econometrica 58, 349­
+377.
+Whittle, P. (1990). Risk-Sensitive Optimal Control. New York: John Wiley & Sons.
+Wonham, W. J. (1964). Some applications of stochastic differential equations to optimal
+nonlinear filtering. Siam Journal of Control 2(3), 347­368.
+38
+39
+The following Discussion Papers have been published since 2004:
+Series 1: Economic Studies
+1 2004 Foreign Bank Entry into Emerging Economies:
+An Empirical Assessment of the Determinants
+and Risks Predicated on German FDI Data Torsten Wezel
+2 2004 Does Co-Financing by Multilateral Development
+Banks Increase "Risky" Direct Investment in
+Emerging Markets? ­
+Evidence for German Banking FDI Torsten Wezel
+3 2004 Policy Instrument Choice and Non-Coordinated Giovanni Lombardo
+Monetary Policy in Interdependent Economies Alan Sutherland
+4 2004 Inflation Targeting Rules and Welfare
+in an Asymmetric Currency Area Giovanni Lombardo
+5 2004 FDI versus cross-border financial services: Claudia M. Buch
+The globalisation of German banks Alexander Lipponer
+6 2004 Clustering or competition? The foreign Claudia M. Buch
+investment behaviour of German banks Alexander Lipponer
+7 2004 PPP: a Disaggregated View Christoph Fischer
+8 2004 A rental-equivalence index for owner-occupied Claudia Kurz
+housing in West Germany 1985 to 1998 Johannes Hoffmann
+9 2004 The Inventory Cycle of the German Economy Thomas A. Knetsch
+10 2004 Evaluating the German Inventory Cycle
+Using Data from the Ifo Business Survey Thomas A. Knetsch
+11 2004 Real-time data and business cycle analysis
+in Germany Jörg Döpke
+40
+12 2004 Business Cycle Transmission from the US
+to Germany ­ a Structural Factor Approach Sandra Eickmeier
+13 2004 Consumption Smoothing Across States and Time: George M.
+International Insurance vs. Foreign Loans von Furstenberg
+14 2004 Real-Time Estimation of the Output Gap
+in Japan and its Usefulness for
+Inflation Forecasting and Policymaking Koichiro Kamada
+15 2004 Welfare Implications of the Design of a
+Currency Union in Case of Member Countries
+of Different Sizes and Output Persistence Rainer Frey
+16 2004 On the decision to go public: Ekkehart Boehmer
+Evidence from privately-held firms Alexander Ljungqvist
+17 2004 Who do you trust while bubbles grow and blow?
+A comparative analysis of the explanatory power
+of accounting and patent information for the Fred Ramb
+market values of German firms Markus Reitzig
+18 2004 The Economic Impact of Venture Capital Astrid Romain, Bruno
+van Pottelsberghe
+19 2004 The Determinants of Venture Capital: Astrid Romain, Bruno
+Additional Evidence van Pottelsberghe
+20 2004 Financial constraints for investors and the
+speed of adaption: Are innovators special? Ulf von Kalckreuth
+21 2004 How effective are automatic stabilisers?
+Theory and results for Germany and other Michael Scharnagl
+OECD countries Karl-Heinz Tödter
+41
+22 2004 Asset Prices in Taylor Rules: Specification, Pierre L. Siklos
+Estimation, and Policy Implications for the Thomas Werner
+ECB Martin T. Bohl
+23 2004 Financial Liberalization and Business
+Cycles: The Experience of Countries in Lúcio Vinhas
+the Baltics and Central Eastern Europe de Souza
+24 2004 Towards a Joint Characterization of
+Monetary Policy and the Dynamics of
+the Term Structure of Interest Rates Ralf Fendel
+25 2004 How the Bundesbank really conducted Christina Gerberding
+monetary policy: An analysis based on Andreas Worms
+real-time data Franz Seitz
+26 2004 Real-time Data for Norway: T. Bernhardsen, Ø. Eitrheim,
+Challenges for Monetary Policy A.S. Jore, Ø. Røisland
+27 2004 Do Consumer Confidence Indexes Help
+Forecast Consumer Spending in Real Time? Dean Croushore
+28 2004 The use of real time information in Maritta Paloviita
+Phillips curve relationships for the euro area David Mayes
+29 2004 The reliability of Canadian output Jean-Philippe Cayen
+gap estimates Simon van Norden
+30 2004 Forecast quality and simple instrument rules - Heinz Glück
+a real-time data approach Stefan P. Schleicher
+31 2004 Measurement errors in GDP and Peter Kugler
+forward-looking monetary policy: Thomas J. Jordan
+The Swiss case Carlos Lenz
+Marcel R. Savioz
+42
+32 2004 Estimating Equilibrium Real Interest Rates Todd E. Clark
+in Real Time Sharon Kozicki
+33 2004 Interest rate reaction functions for the euro area
+Evidence from panel data analysis Karsten Ruth
+34 2004 The Contribution of Rapid Financial
+Development to Asymmetric Growth of
+Manufacturing Industries: George M.
+Common Claims vs. Evidence for Poland von Furstenberg
+35 2004 Fiscal rules and monetary policy in a dynamic
+stochastic general equilibrium model Jana Kremer
+36 2004 Inflation and core money growth in the Manfred J.M. Neumann
+euro area Claus Greiber
+37 2004 Taylor rules for the euro area: the issue Dieter Gerdesmeier
+of real-time data Barbara Roffia
+38 2004 What do deficits tell us about debt?
+Empirical evidence on creative accounting Jürgen von Hagen
+with fiscal rules in the EU Guntram B. Wolff
+39 2004 Optimal lender of last resort policy Falko Fecht
+in different financial systems Marcel Tyrell
+40 2004 Expected budget deficits and interest rate swap Kirsten Heppke-Falk
+spreads - Evidence for France, Germany and Italy Felix Hüfner
+41 2004 Testing for business cycle asymmetries
+based on autoregressions with a
+Markov-switching intercept Malte Knüppel
+1 2005 Financial constraints and capacity adjustment
+in the United Kingdom ­ Evidence from a Ulf von Kalckreuth
+large panel of survey data Emma Murphy
+43
+2 2005 Common stationary and non-stationary
+factors in the euro area analyzed in a
+large-scale factor model Sandra Eickmeier
+3 2005 Financial intermediaries, markets, F. Fecht, K. Huang,
+and growth A. Martin
+4 2005 The New Keynesian Phillips Curve
+in Europe: does it fit or does it fail? Peter Tillmann
+5 2005 Taxes and the financial structure Fred Ramb
+of German inward FDI A. J. Weichenrieder
+6 2005 International diversification at home Fang Cai
+and abroad Francis E. Warnock
+7 2005 Multinational enterprises, international trade,
+and productivity growth: Firm-level evidence Wolfgang Keller
+from the United States Steven R. Yeaple
+8 2005 Location choice and employment S. O. Becker,
+decisions: a comparison of German K. Ekholm, R. Jäckle,
+and Swedish multinationals M.-A. Muendler
+9 2005 Business cycles and FDI: Claudia M. Buch
+evidence from German sectoral data Alexander Lipponer
+10 2005 Multinational firms, exclusivity, Ping Lin
+and the degree of backward linkages Kamal Saggi
+11 2005 Firm-level evidence on international Robin Brooks
+stock market comovement Marco Del Negro
+12 2005 The determinants of intra-firm trade: in search Peter Egger
+for export-import magnification effects Michael Pfaffermayr
+44
+13 2005 Foreign direct investment, spillovers and
+absorptive capacity: evidence from quantile Sourafel Girma
+regressions Holger Görg
+14 2005 Learning on the quick and cheap: gains James R. Markusen
+from trade through imported expertise Thomas F. Rutherford
+15 2005 Discriminatory auctions with seller discretion:
+evidence from German treasury auctions Jörg Rocholl
+16 2005 Consumption, wealth and business cycles: B. Hamburg,
+why is Germany different? M. Hoffmann, J. Keller
+17 2005 Tax incentives and the location of FDI: Thiess Buettner
+evidence from a panel of German multinationals Martin Ruf
+18 2005 Monetary Disequilibria and the Dieter Nautz
+Euro/Dollar Exchange Rate Karsten Ruth
+19 2005 Berechnung trendbereinigter Indikatoren für
+Deutschland mit Hilfe von Filterverfahren Stefan Stamfort
+20 2005 How synchronized are central and east
+European economies with the euro area? Sandra Eickmeier
+Evidence from a structural factor model Jörg Breitung
+21 2005 Asymptotic distribution of linear unbiased J.-R. Kurz-Kim
+estimators in the presence of heavy-tailed S.T. Rachev
+stochastic regressors and residuals G. Samorodnitsky
+22 2005 The Role of Contracting Schemes for the
+Welfare Costs of Nominal Rigidities over
+the Business Cycle Matthias Pastian
+23 2005 The cross-sectional dynamics of German J. Döpke, M. Funke
+business cycles: a bird's eye view S. Holly, S. Weber
+45
+24 2005 Forecasting German GDP using alternative Christian Schumacher
+factor models based on large datasets
+25 2005 Time-dependent or state-dependent price
+setting? ­ micro-evidence from German
+metal-working industries ­ Harald Stahl
+26 2005 Money demand and macroeconomic Claus Greiber
+uncertainty Wolfgang Lemke
+27 2005 In search of distress risk J. Y. Campbell,
+J. Hilscher, J. Szilagyi
+28 2005 Recursive robust estimation and control Lars Peter Hansen
+without commitment Thomas J. Sargent
+46
+Series 2: Banking and Financial Studies
+1 2004 Forecasting Credit Portfolio Risk A. Hamerle,
+T. Liebig, H. Scheule
+2 2004 Systematic Risk in Recovery Rates ­
+An Empirical Analysis of US Corporate Klaus Düllmann
+Credit Exposures Monika Trapp
+3 2004 Does capital regulation matter for bank Frank Heid
+behaviour? Evidence for German savings Daniel Porath
+banks Stéphanie Stolz
+4 2004 German bank lending during F. Heid, T. Nestmann,
+emerging market crises: B. Weder di Mauro,
+A bank level analysis N. von Westernhagen
+5 2004 How will Basel II affect bank lending to T. Liebig, D. Porath,
+emerging markets? An analysis based on B. Weder di Mauro,
+German bank level data M. Wedow
+6 2004 Estimating probabilities of default for
+German savings banks and credit cooperatives Daniel Porath
+1 2005 Measurement matters ­ Input price proxies
+and bank efficiency in Germany Michael Koetter
+2 2005 The supervisor's portfolio: the market price
+risk of German banks from 2001 to 2003 ­ Christoph Memmel
+Analysis and models for risk aggregation Carsten Wehn
+3 2005 Do banks diversify loan portfolios? Andreas Kamp
+A tentative answer based on individual Andreas Pfingsten
+bank loan portfolios Daniel Porath
+4 2005 Banks, markets, and efficiency F. Fecht, A. Martin
+47
+5 2005 The forecast ability of risk-neutral densities Ben Craig
+of foreign exchange Joachim Keller
+6 2005 Cyclical implications of minimum capital
+requirements Frank Heid
+7 2005 Banks' regulatory capital buffer and the
+business cycle: evidence for German Stéphanie Stolz
+savings and cooperative banks Michael Wedow
+8 2005 German bank lending to industrial and non-
+industrial countries: driven by fundamentals
+or different treatment? Thorsten Nestmann
+9 2005 Accounting for distress in bank mergers M. Koetter, J. Bos, F. Heid
+C. Kool, J. Kolari, D. Porath
+10 2005 The eurosystem money market auctions: Nikolaus Bartzsch
+a banking perspective Ben Craig, Falko Fecht
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Visitors should
+prepare a research project during their stay at the Bundesbank. Candidates must hold a
+Ph D and be engaged in the field of either macroeconomics and monetary economics,
+financial markets or international economics. Proposed research projects should be from
+these fields. The visiting term will be from 3 to 6 months. Salary is commensurate with
+experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+49
+

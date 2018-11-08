@@ -1,0 +1,1487 @@
+Estimating asset correlations from
+stock prices or default rates ­
+which method is superior?
+Klaus Düllmann
+(Deutsche Bundesbank)
+Jonathan Küll
+(Universität Karlsruhe (TH))
+Michael Kunisch
+(Universität Karlsruhe (TH))
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 04/2008
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­396­3 (Printversion)
+ISBN 978-3­86558­397­0 (Internetversion)
+Abstract
+This paper sets out to help explain why estimates of asset correlations based on equity
+prices tend to be considerably higher than estimates based on default rates. Resolving this
+empirical puzzle is highly important because, firstly, asset correlations are a key driver of
+credit risk and, secondly, both data sources are widely used to calibrate risk models of
+financial institutions. By means of a simulation study, we explore the hypothesis that dif-
+ferences in the correlation estimates are due to a substantial downward bias characteristic
+of estimates based on default rates. Our results suggest that correlation estimates from
+equity returns are more efficient than those from default rates. This finding still holds
+if the model is misspecified such that asset correlations follow a Vasicek process which
+affects foremost the estimates from equity returns. The results lend support for the hy-
+pothesis that the downward bias of default-rate based estimates is an important although
+not the only factor to explain the differences in correlation estimates. Furthermore, our
+results help to quantify the estimation error of asset correlations dependent on the risk
+characteristics of the underlying data base.
+Keywords: Asset correlation, single risk factor model, small sample properties, structural
+model, Basel II
+JEL Classification: G 21, G 33, C 13
+Non­Technical Summary
+Default dependencies between borrowers are a key driver of credit risk in loan portfo-
+lios. Such dependencies are commonly measured by asset correlations between firms'
+asset-value returns. Since asset returns are not observable, these correlations are often
+estimated from time series of stock returns or historical default rates. Both approaches
+have yielded quite different results in the literature. Since empirical studies use different
+samples it has not been possible to reconcile these differences. In this paper we explore
+the hypothesis that the observed differences are explainable by the properties of the sta-
+tistical methods of parameter estimation which differ between an estimation from stock
+returns and an estimation from default rates. A confirmation of this hypothesis can give
+risk managers guidance with selecting the appropriate data source for the estimation of
+asset correlations. In order to verify the hypothesis we apply a comprehensive simulation
+study with a multitude of risk parameters and credit portfolios of different size. We find
+that statistical methods play an important role in explaining the differences between asset
+correlation estimates from stock prices and from default rates. It is generally recommend-
+able to use stock prices for the estimation as the statistical errors are substantially smaller
+in this case. This observation still holds if the model is misspecified such that the asset
+correlations are not constant over time as assumed by the model but follow a stochastic
+process.
+Nichttechnische Zusammenfassung
+Abh¨
+angigkeiten zwischen den Ausfallereignissen von Kreditnehmern sind ein wesentlicher
+Treiber des Kreditrisikos in Kreditportfolien. Solche Abh¨
+angigkeiten werden gew¨
+ohn-
+lich durch Asset-Korrelationen zwischen Firmenwert¨
+anderungen gemessen. Da Firmen-
+wert¨
+anderungen nicht beobachtbar sind, werden diese Korrelationen oft aus Zeitreihen
+von Aktienrenditen oder aus historischen Ausfallraten gesch¨
+atzt. Beide Ans¨
+atze haben
+in der Forschung zu erheblich unterschiedlichen Ergebnissen gef¨
+uhrt. Da empirische Un-
+tersuchungen unterschiedliche Stichproben verwenden, ist es bisher nicht m¨
+oglich gewe-
+sen, diese Unterschiede zu erkl¨
+aren. In diesem Arbeitspapier untersuchen wir die Hy-
+pothese, dass die beobachteten Unterschiede sich aus unterschiedlichen statistischen Eigen-
+schaften der Sch¨
+atzmethoden erkl¨
+aren, die jeweils bei der Sch¨
+atzung aus Aktienrenditen
+und aus Ausfallraten verwendet werden. Eine Best¨
+atigung der Hypothese kann Kre-
+ditrisikomanagern eine Hilfestellung geben bei der Auswahl der geeigneten Datenquelle
+f¨
+ur die Sch¨
+atzung von Asset-Korrelationen. Um diese Hypothese zu best¨
+atigen, verwen-
+den wir eine umfassende Simulationsstudie mit einer Vielzahl von Risikoparametern und
+unterschiedlich großen Kreditportfolien. Wir beobachten, dass die statistischen Methoden
+eine wichtige Rolle bei der Erkl¨
+arung der Unterschiede zwischen den Sch¨
+atzwerten von
+Asset-Korrelationen basierend auf Aktienrenditen oder Ausfallraten spielen. Es ist grund-
+s¨
+atzlich empfehlenswert, Aktienrenditen f¨
+ur die Sch¨
+atzung zu verwenden, da die statis-
+tischen Fehler in diesem Fall geringer sind. Diese Beobachtung gilt auch, falls das Modell
+insofern fehlspezifiziert ist, als die Asset-Korrelationen nicht wie im Model unterstellt ¨
+uber
+die Zeit konstant sind, sondern einem stochastischen Prozess folgen.
+Contents
+1 Introduction 1
+2 Simulation Model and DGP 4
+2.1 Asset Value Model and Data Generating Process . . . . . . . . . . . . . . . 4
+2.2 Simulation of Default Events . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.3 Stochastic Asset Correlation . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3 Methods for Estimating Asset Correlations 8
+3.1 Estimation From Stock Prices . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3.2 Estimation of Asset Correlation From Default Rates . . . . . . . . . . . . . 10
+4 Comparative Static Analysis 11
+4.1 Simulation Setup and Performance Measures . . . . . . . . . . . . . . . . . 11
+4.2 Performance Results of Estimators Based on Default Rates . . . . . . . . . 13
+4.3 Performance Results of Estimators Based on Stock Prices . . . . . . . . . . 19
+4.4 Estimation Performance Under Stochastic Correlations . . . . . . . . . . . . 23
+5 Summary and Conclusions 29
+Estimating Asset Correlations From Stock Prices or Default
+Rates ­ Which Method is Superior?1
+1. Introduction
+This paper sets out to help explain the empirical puzzle, why estimates of asset corre-
+lations based on equity prices tend to be considerably higher than correlation estimates
+from default rates. Since correlation estimates arguably constitute the most important
+factor driving the credit risk of a loan portfolio, sorting out the empirical puzzle is highly
+important for credit risk modelling.
+We explore the hypothesis that the empirical puzzle is created by different statistical
+properties of the estimation methodologies which are applied dependent on the type of
+historical data. More specificly, we ask if the downward bias of correlation estimates that
+has already been detected in previous work by Gordy and Heitfield (2000) offers a sufficient
+explanation for the observed differences in estimates. Furthermore, our results allow to
+quantify this downward bias dependent on the risk characteristics of credit portfolios.
+In order to measure a potential downward bias in the estimates of asset correlations, we
+carry out a clinical simulation study. This setup avoids typical limitations of comparing
+asset correlation estimates from historical default rates and equity returns. More precisely,
+the sample of firms for which stock prices are available is typically too small for a meaning-
+ful comparison with the corresponding default rates because default events are rare. Even
+if default rates are available for a sufficiently large sample of firms, this sample typically
+includes non-listed firms which precludes estimating their asset correlation from equity
+returns. The key advantage of a simulation study instead is the possibility to estimate
+correlations from stock prices and default rates consistently since both time series are
+generated by the same data generating process (DGP), based on the same Merton-type
+model.
+It is not obvious from the outset if the estimation from stock prices or from default rates
+is more efficient. On the one hand defaults are rare events which require a longer time
+interval between two observation dates compared to equity data which are available on
+a daily basis. As a consequence, time series of default rates are based on yearly counted
+1We have benefited from comments by Thilo Liebig, Christoph Memmel, Peter Raupach, Marliese Uhrig-
+Homburg and participants of the Annual International Conference of the German Operations Research
+Society (GOR) in Karlsruhe 2006 and the seminar on "Banking Supervision and Financial Stability" at the
+Deutsche Bundesbank.
+1
+defaults and often contain not more than ten to twenty observations. As they cover a
+relatively long time period, they are vulnerable to regime shifts, for example structural
+breaks in the evolution of the economy or the introduction of a new bankruptcy code. On
+the other hand trading activities can generate additional noise in the stock prices. In this
+case, correlation estimates based on market prices may be perturbed by factors unrelated
+to credit risk, for example a sudden drop in the demand or the supply of assets.
+For the estimation of asset correlations from stock prices we employ the usual estimation
+methodologies from the literature. In the case of correlation estimation from default rates,
+various methodologies have been applied in the literature. The most general approach
+would be to use model-free estimation techniques, employed first by Lucas (1995) and
+later refined by De Servigny and Renault (2002). However, it has been noted, for example
+by Gordy and Heitfield (2000), that a model-based estimation may provide more efficient
+estimates, given the model describes the true DGP well enough. Therefore, we employ
+the asymptotic single risk factor (ASRF) model2 which is consistent with a Merton-type
+model and which has gained great popularity as theoretic foundation of the internal ratings
+based approach in the Basel II framework.3
+In order to avoid an inadvertently preferential treatment of stock returns, perturbations of
+stock prices from factors unrelated to credit risk are accounted for in a robustness check.
+For this purpose we assume that the asset correlations follow a stochastic process. More
+precisely, we introduce mean-reverting asset correlations as model error in the stock re-
+turns while still employing an estimation methodology based on a Merton-type model that
+assumes constant correlations. Although this model error affects also the estimation from
+default rates, we expect that its impact is smaller than for equity prices. Therefore, this
+procedure should provide a more realistic comparison between the correlation estimation
+from default rates and from stock prices.
+Grundke (2007) includes a comprehensive overview of the existing empirical work on the
+estimation of asset correlations. Numerous empirical studies have so far produced quite
+diverse results. De Servigny and Renault (2002) compare sample default correlations and
+default correlations inferred from a factor model, which uses empirical equity correlations
+as proxies for the asset correlation. They find that the link between both default correlation
+estimates, although positive as expected, is rather weak, which adds to the puzzle that
+2See Gordy (2001).
+3See Basel Committee on Banking Supervision (2005). The ASRF model provides under certain as-
+sumptions an asymptotic justification that capital charges for single exposures are portfolio invariant as
+they add up to the capital charge of the total portfolio. For the purpose of estimating asset correlations
+we do not need this asymptotic argument but we still refer to the model as the ASRF model because it
+has become widely known under this name.
+2
+we intend to explain. The result is robust against replacing the Gaussian copula by a
+t­copula. Furthermore, the volatility of the riskless interest rates appears not to have
+a direct impact on asset correlations. The authors neither give an explanation for the
+weak link between default rate based and stock price based correlation estimates nor do
+they test the assumption that equity correlations are good proxies for asset correlations.
+Roesch (2003) reports to our knowledge the lowest estimates of asset correlations which
+are estimated from default frequencies of German corporates in a factor model and vary
+between 0.5% and 3.5%, dependent on the business sector.4 Duellmann and Scheule (2003)
+employ a similar sample of German firms but differentiated between buckets characterized
+by size and default probability. The correlation estimates for the buckets considerably
+vary between one and fourteen percent. Dietsch and Petey (2004) use samples of French
+and German firms and obtain results which are between those of Roesch and those of
+Duellmann and Scheule.
+Lopez (2002) instead estimates asset correlations from stock prices. For this purpose he
+employs a version of the ASRF model which is calibrated to the multi-factor model of
+the KMV Portfolio Manager software. His correlation estimates for a sample of medium
+and large US corporates lie between 10 and 26 percent. These asset correlation levels are
+confirmed by Zeng and Zhang (2001) and D¨
+ullmann et al. (2007), both also estimating
+from KMV data. In the Basel II framework the asset correlation parameter depends on
+the probability of default (PD) and for medium-size corporate borrowers also on firm
+size. Depending on the PD and neglecting the regulatory firm size adjustment, the asset
+correlation varies between twelve and twenty four percent. Although the asset correlation
+is a supervisory set parameter, it was originally calibrated to the economic capital of credit
+portfolios of large international banks which motivates their inclusion in the list of previous
+empirical results.
+In summary the above mentioned empirical studies show that correlation estimates vary
+considerably. They are usually higher if they are based on stock prices than if they are
+based on default rates. In this paper we will explore possible explanations for this result.
+Our results may give guidance in which circumstances equity returns and in which default
+rates are more appropriate for the estimation of asset correlations. Finding that differences
+in estimation methodologies cannot explain the variation in the correlation estimates would
+suggest that the previously observed differences are instead caused by other reasons, for
+example, by sample mismatches.
+The paper is organized as follows. In Section 2 we present the Merton-type credit risk
+model together with the DGP both for the stock prices as well as for the time series of
+4Modelling the (unconditional) default probabilities as time-varying and driven by macroeconomic fac-
+tors may have contributed to the relatively low correlation estimates.
+3
+default rates. The model and the DGP form the basis of our simulation study. Section 3
+comprises the estimation from stock prices and default rates. The simulation results
+including a comparison of the estimation methodologies and an analysis of a model error
+in the form of stochastic asset correlations are presented in Section 4. Section 5 summarizes
+and concludes.
+2. Simulation Model and DGP
+Selecting the Merton Model as the underlying model of the DGP is motivated by the fact
+that it provides a structural link between default events and stock price returns. More
+specificly we use a multi-firm extension of the Merton (1974) model with N identical
+firms. Furthermore, this extension is consistent with the ASRF model.5 Later, the model
+is perturbed by a model error due to stochastic correlations in the DGP.
+2.1. Asset Value Model and Data Generating Process
+In the following we consider a portfolio of N homogenous firms. In the Merton (1974)
+model the asset value of every firm i is assumed to follow under the physical measure P a
+geometric Brownian motion of the form
+dVi,t = µVi,t dt + Vi,t dWi,t, (1)
+where Vi,t denotes the asset value at time t of firm i, µ the drift and  the volatility
+parameter of the stochastic process. Since we assume all firms to be homogenous, µ,  and
+the initial firm value Vi,0 = V0 are identical for every firm. In order to capture dependencies
+between firms, the Brownian motion Wi,t is decomposed into two independent Brownian
+motions, a common systematic risk factor Xt and and a firm-specific risk factor Bi,t:
+dWi,t =
+
+ dXt + 1 -  dBi,t. (2)
+Equation (2) gives the standard representation of a single factor model and explains why
+the parameter  is commonly referred to as the asset correlation. Note that the model
+assumes that the asset correlation  is the same for all pairs of firms. This assumption
+is typical for empirical studies as it allows this parameter to be estimated from a cross
+section of firms.
+Simulating the time-continuous asset value process requires an appropriate discretisation.
+The common Euler scheme only gives good numerical results if the drift of the diffusion
+5See Pitts (2004).
+4
+coefficients is constant. Since we allow later on for stochastic correlations, the use of a
+higher order scheme is recommended.6 Starting with constant correlation, the asset value
+of firm i at time t + t is defined as follows:
+Vi,t+t = Vi,t + Vi,t(r + )t + Vi,t 
+
+t Wi,t + Vi,t
+1
+2
+2t(W2
+i,t
+- 1), (3)
+with Wi,t =
+
+Xt + 1 - Bi,t.
+In Merton-type models, the equity value Ei(Vi,t, h) of firm i at time t represents a call
+option on the firm's asset value Vi,t with the time to maturity h. It's value is given by the
+well-known Black and Scholes (1973) formula:
+Ei(Vi,t, h) = Vi,t (d1) - e-r hD (d2) (4)
+with d1 =
+log Vi,t
+D
++ (r + 1
+2
+2) h
+
+
+h
+and d2 = d1 - 
+
+h.
+While the asset values are simulated from the DGP given by equation (3), the corre-
+sponding equity values, which are the basis of the correlation estimation, are inferred from
+equation (4).
+Equation (4) requires that the riskless short-term interest rate r is deterministic. This
+implicit assumption can be motivated inter alia by the findings of De Servigny and Re-
+nault (2002) that interest rate volatility does not significantly affect asset correlations, the
+estimation of which is the purpose of our study. The risk horizon h is set to one year in
+the simulation study following common risk management practice. A constant debt value
+D is justified as this variable is used as a calibration parameter to achieve a given PD of
+the firm. Since all firms are homogeneous in terms of PD, D is also constant.
+2.2. Simulation of Default Events
+The default rates need to be simulated in line with the DGP from the previous subsection.
+For this purpose, they are based on a portfolio of N borrowers whose asset values follow
+the DGP given by equation (3). Borrower-dependent PDs can negatively affect correlation
+estimates as standard models assume some kind of PD homogeneity across borrowers. In
+order to study the best case in terms of estimation accuracy, all firms in the portfolio are
+assigned the same PD.
+6In Kloeden and Platen (1992), chapter 10, the Milshtein scheme is recommended for short time intervals
+as it increases the order of strong convergence from 0.5 in the Euler scheme to 1. The increase in convergence
+is loosely spoken caused by accounting for the second order term of the It^
+o-Taylor Expansion.
+5
+Since borrowers can only either default or survive, holding the set of borrowers fixed
+introduces a survivorship bias. More precisely, the credit quality of the borrowers in the
+sample slowly increases over time as the borrowers with a negative evolution of their asset
+values drop out which also causes the sample size to decline.7 In order to control for these
+effects, we do not use a fixed set of borrowers but assume a homogeneous portfolio in
+which borrowers are reassigned every year to rating classes defined by fixed PDs. This
+procedure is implemented in the simulations by setting asset values and portfolio size back
+to the original values V0 and N from the beginning of the first year.
+The number of defaulted firms is given in every year by the number of firms of which the
+asset values fall below the outstanding debt value D at the end of the year. The default
+probability PD at time t of a default at time t + h given the information about the firm
+value for each firm in the homogeneous portfolio is consistent with the Merton (1974)
+model and given by
+PD = P(Vi,t+h < D) = P Vi,t exp (µ -
+2
+2
+) · h + (Wi,t+h - Wi,t) < D ,
+which leads to
+PD = P
+
+
+Wi,t+h - Wi,t
+
+h
+<
+log D
+Vi,t
+- (µ - 2
+2
+)h
+
+
+h
+
+ = 
+c
+
+h
+(5)
+with
+c =
+log D
+Vi,0
+- (µ - 2
+2
+)h
+
+. (6)
+Following standard procedure, the risk horizon h is in our simulation constant and set to
+one year. As the one­year default probability of each firm equals the probability that the
+asset return Wi,t+h -Wi,t of the period with length h falls below the distance-to-default c,
+counting these events in every simulation run provides the numerator of the default rate
+of the portfolio. Note that with the static risk horizon h, cases in which the asset value
+falls below the default threshold before the end of the period but the borrower is "cured"
+before the year end, are not counted as defaults.
+2.3. Stochastic Asset Correlation
+Comparing estimates of asset correlations from equity prices and default rates may be
+considered as giving an undue preference to the first method. The reason is it uses much
+more observations because stock prices are available with a higher frequency than default
+7See Duan et al. (2003).
+6
+rates. In order to balance this effect we introduce a misspecification that is likely to appear
+also in real equity prices but which affects the estimation from default rates less.
+For this purpose we allow for stochastic asset correlations. The results can also contribute
+to answer the question how fluctuations in asset correlations over time affect the estimation
+accuracy given that their stochastic nature is not accounted for in the estimation method.
+Stochastic asset correlations are not the only way to produce estimation noise and ­ if
+systematic ­ to influence default correlations. Stochastic volatility of asset values offers an
+alternative approach which can also be motivated by empirical findings in stock markets.8
+In this case, equation (4) which relates asset values to equity values no longer holds which
+implies a considerable technical burden for the simulation analysis to generate equity
+values. Therefore, we prefer stochastic asset correlations which do not affect (4).
+The case of stochastic asset correlations is implemented as follows. The deterministic asset
+correlation  in equation (2) is replaced by a stochastic variable t such that the stochastic
+innovations dZi,t are given by
+dWi,t =
+
+t dXt + 1 - t dBi,t. (7)
+Consistency with the case of a deterministic correlation  suggests that the long-run mean
+of the stochastic correlation equals . For this purpose, we impose an Ornstein-Uhlenbeck
+process for the stochastic asset correlation with long term mean . Given that asset
+correlations ­ contrary to interest rates and default correlations9 ­ are not necessarily
+positive, we assume the following Vasicek process under the physical measure P:
+dt = ( - t)dt + dZt. (8)
+The parameter  denotes the mean reversion parameter and  the volatility of the mean
+reversion process. The stochastic innovations dXt, dBi,t and dZt are at any time t pair-
+wise independent increments of Brownian motions. The stochastic process of the asset
+correlation in discrete form is given by
+t+t = t + ( - t)t + 
+
+t Zt. (9)
+8See Bakshi et al. (1997).
+9See Lucas (1995).
+7
+3. Methods for Estimating Asset Correlations
+3.1. Estimation From Stock Prices
+The estimation of asset correlations from stock prices is based on the structural model
+described in Section 2. We differentiate between a direct estimation method which es-
+timates asset correlations directly from equity returns and an indirect and conceptually
+better founded method, which requires in the first step to estimate the asset returns from
+which in the second step asset correlations are estimated.
+Following Duan et al. (2003), asset correlations are approximated in the first, direct method
+by pairwise equity correlations, which are estimated from stock returns. Estimating asset
+correlations directly from equity prices is quite common in empirical studies and can be
+motivated by the equivalence of using equity and asset values in the limiting case when
+the length of the time horizon approaches zero. Using equity returns to estimate asset
+correlations has nevertheless been often criticized because it ignores the leverage in the
+capital structure. This is, however, considered a minor concern for high-grade borrowers.10
+Since correlation estimation from market prices competes with an estimation from default
+rates particularly for less risky borrowers for which default events are even more scarce, we
+focus exactly on this segment for which the leverage argument should be a minor concern.
+The first estimation method is based on stock returns without converting them first into
+asset returns. Therefore, it is referred to in the following as "direct" estimation method.
+Asset correlations are estimated by the mean of the pair-wise correlations of all firms:
+^
+PW =
+2
+N(N - 1)
+N-1
+i=1
+N
+j=i+1
+corr[log[Ei], log[Ej]], (10)
+where Ei denotes the vector that collects the equity returns of firm i over time.
+The second, "indirect" estimation method consists of two steps. In the first step, the asset
+values are estimated from stock prices and liabilities and transformed into log-returns. In
+the second step, the asset correlations are estimated from the asset returns of the first
+step. This procedure was also employed by Lopez (2002), Pitts (2004) and D¨
+ullmann
+et al. (2007) who obtained the asset values of non­financial companies from the MKMV
+model. We employ the MKMV method of estimating asset values from equity prices and
+balance sheet information. As given in Bohn and Crosbie (2003), MKMV uses a two step
+algorithm with m iteration steps to estimate the asset value and its standard deviation 
+from a time series of equity values.
+10See Mashal et al. (2003).
+8
+(1.) Set m = 0 and use ^
+(0) = 0.3 as a starting value, with r, T, D given exogenously.
+(2.) Compute ^
+V (m+1)
+i,t
+= BS-1(Ei,t, ^
+(m)) from the Black/Scholes formula BS(.), given
+by equation (4), for all t.
+(3.) Compute the standard deviation ^
+(m+1) of the logarithmic asset value returns.
+(4.) Stop if |^
+(m+1) - ^
+(m)|  , else increase m by one and return to (2.).
+The algorithm produces Maximum Likelihood (ML) estimates of the volatility and the
+asset value11 and is superior to the method employed before by Jones et al. (1984).12
+After having estimated the asset values in the first step and following Pitts (2004), a
+random effects model13 is employed in the second step to estimate the asset correlations.
+Besides the time-dependent random effect ~
+Xt and the idiosyncratic disturbance term ~
+Bi,t,
+the only explanatory variable in the parsimonious model is a firm-dependent intercept i
+for every firm:
+ log[Vi,t] = i + X
+~
+Xt + B
+~
+Bi,t, where ~
+Xt, ~
+Bi,t  iid. N(0, 1). (11)
+Since we assume a homogenous portfolio, i is constant across firms. Pitts (2004) uses the
+ML estimates from the random effects model to estimate the asset correlation by taking
+into account that ^
+2
+X
+corresponds to 2t and ^
+2
+B
+to 2t(1 - ) in equation (3). The
+asset correlation estimator ^
+ is then given by
+^
+ =
+^
+2
+X
+^
+2
+X
++ ^
+2
+B
+. (12)
+Following the common procedure that asset correlations are directly estimated from equity
+returns, we apply the random effects estimator as well directly to stock price returns.
+Summarizing, we employ two approaches for the estimation of asset correlations, both for
+those estimated from equity returns and for those estimated from asset returns (the latter
+being inferred before from equity returns). The first approach is based on the sample
+correlation of a time series of equity or asset returns and the second approach is based on
+the random effects model.
+Finally, we replace the constant asset correlation by a stochastic variable which follows an
+Ornstein-Uhlenbeck process. Since we investigate this case as an example of model risk
+and a robustness check, we do not account for this feature in the parameter estimation
+and apply the same estimation methods as described in this subsection.
+11See Duan et al. (2004).
+12See Duan et al. (2003) for a discussion of the ML estimation in this context.
+13See Hsiao (2003) for further details on random effects models.
+9
+3.2. Estimation of Asset Correlation From Default Rates
+This subsection describes the ML and the Method-of-Moments (MM) methodologies which
+we employ to estimate asset correlations from default rates, generated from the DGP
+described in Section 2. In principle, default correlations can be estimated directly from
+observed default events as in Lucas (1995) and then reverted back into asset correlations.
+However, to improve estimation efficiency we make use of the model structure in the
+estimation procedure. From equation (3) follows for the probability of default:
+PD = P
+Wi,t+h - Wi,t
+
+h
+<
+c
+
+h
+= P
+
+
+
+
+
+
+
+(
+=Xt
+Xt+h - Xt)
+
+h
++ 1 - 
+(
+=Bi,t
+Bi,t+h - Bi,t)
+
+h
+<
+c
+
+h
+
+
+
+
+
+. (13)
+The law of large numbers implies that the default rate of the time period from t to t + h
+converges for large portfolios and long time series to the conditional default probability
+P
+Wi,t+h - Wi,t
+
+h
+<
+c
+
+h
+Xt = x = P
+Bi,t
+
+h
+<
+c -
+
+x
+
+h
+
+1 - 
+= g(x; , c), (14)
+which is obviously a function depending on the realization x of the common risk factor X
+given  and c.
+Since Bi,t is an increment of a Brownian motion, Bi,t
+
+h
+is standard normal distributed.
+Therefore, we get for the conditional default probability
+g(x; , c) = 
+c -
+
+x
+
+h
+
+1 - 
+.
+The corresponding density of the default frequency DFt is given in the limit by
+f(DFt; , PD) =
+
+1 - 
+
+exp -
+(1 - 2)2
+t
+- 2
+
+1 - t + 2
+2
+, (15)
+where t = -1(DFt) and  = -1(PD). (16)
+Note that the time intervals for which the series of default frequencies (DFt)t=1,...,T is
+computed do not overlap.
+Maximizing the log-likelihood function
+LL(PD, , DF1, . . . , DFT ) =
+T
+t=1
+log [f(DFt; , PD)] (17)
+10
+leads to the following ML estimator:14
+^
+ =
+m2
+T
+- m2
+1
+T2
+1 + m2
+T
+- m2
+1
+T2
+PD = (T-1 1 - ^
+ m1)
+m1 =
+T
+t=1
+t, m2 =
+T
+t=1
+(t)2. (18)
+The estimator is called the Asymptotic Maximum Likelihood (AML) estimator as it re-
+quires a large bucket of firms and a long time series.
+Besides the ML methodology, Gordy (2000) also employs an MM estimator for the expected
+default rate ¯
+p and the asset correlation . It is based on matching the first and second
+moment of g(X) with the empirical first and second moment of the default rates:15
+E[g(X)] = ¯
+p (19)
+E[g(X)2] = 2(-1(¯
+p), -1(¯
+p), ), (20)
+where 2(.) denotes the cumulative bivariate Gaussian distribution function. The left
+hand side of (20) is computed by the sample variance of the default frequencies and 
+is backed out numerically. We refer to this estimation as the Method-of-Moments (MM)
+estimator.16
+4. Comparative Static Analysis
+4.1. Simulation Setup and Performance Measures
+The estimation methodologies for asset correlations presented in the previous Section 3 are
+analyzed in a comparative static analysis. Its setup is designed to be fair to both estimation
+methodologies while minimizing the computational workload to the extent possible. The
+asset correlation estimators are applied to the same homogeneous portfolio of firms in
+each simulation run. Stock prices and default rates are generated consistently. In order to
+achieve generality of the results, the model parameters of the simulated portfolio, namely
+the asset correlation , the probability of default PD, the number of borrowers or portfolio
+14The standard errors of the estimator are given in the Appendix of D¨
+ullmann and Trapp (2004).
+15See Gordy (2000).
+16We have also considered a modified MM estimator with a "finite sample adjustment". The results are
+sufficiently close to the original estimator that we omit them to conserve space. For further reference on
+both estimators see Appendix C of Gordy (2000).
+11
+size N and the length of the time series Y are varied in the comparative static analysis.
+The parameter values of the DGP are shown in Table 1.
+The range of asset correlations is mainly motivated by the parameter values in the risk
+weight functions for wholesale credit exposures in Basel II and previous empirical results.17
+The default probabilities are set to correspond with rating grades, i.e. 0.5% with BBB,
+1.2% with BB and 2% with B+. As the accuracy of an estimation from default rates is
+expected to decline with lower PDs due to the scarcity of default events, borrowers with
+higher ratings than BBB should only be considered if this estimation method still performs
+well in this credit category.
+The minimum of 5 years for the length of the time series of default rates is inspired by the
+regulatory minimum requirements in Basel II for the estimation of PDs. The maximum
+of 40 years is close to the maximum length that is currently available in the industry, e. g.
+in rating agency databases.
+Table 1
+Parameter Values of the Data Generating Process
+This table shows the 24 parameter sets of asset correlation, length of time series
+and default probability which were used for the data generating processes.
+Values Number of values
+Asset correlation  10% and 25% 2
+Length of time series Y 5, 10, 20 and 40 years 4
+Probability of default PD 0.5%, 1.2% and 2.03% 3
+24 combinations
+For each of the twenty-four different parameter combinations, 10,000 simulations are run.
+The parameters of the asset value process which are the same for all simulation runs are
+V0 = 1, 000,  = 0.3, µ = 0.12 and r = 0.03, which is constant for all maturities. The
+arguably most critical of these parameters is the asset volatility . It's value is in line
+with empirical findings by Eom et al. (2003). The debt value D is a free parameter and
+calibrated to the desired PD by means of equation (5). The three PDs correspond with
+the empirical estimates for the three rating classes BBB-, ... and B+. The portfolio size
+N is set to 5,000 borrowers, which is enough for a meaningful estimation of default rates
+while still being realistic for portfolios of real banks.
+Asset returns are simulated for weekly time intervals. Since defaults are rare events, the
+17See Basel Committee on Banking Supervision (2005), para 272 and for previous empirical results
+Section 1.
+12
+generated default rates are calculated on a yearly basis. In order to ensure consistency
+between default rates and stock prices, the yearly default rates are generated from the
+same asset returns. For this purpose, the weekly random asset returns Wi,t+t - Wi,t
+are summed up in every year and divided by
+
+52 to obtain the standardized yearly asset
+returns. The default rates are computed by counting how often negative yearly asset
+returns reach or exceed the distance-to-default, given by equation (6).
+It turns out that the performance of an estimation from stock prices does not further
+improve if weekly stock prices are simulated for more than fifty firms and over more than
+two years. Therefore, we employ for the correlation estimation from market prices only a
+subset of fifty firms and two years of market prices, notwithstanding that we use the full
+sample of 5,000 firms and 40 years for the generation of default rates.
+The following two indicators are used to measure the estimation performance of the two
+asset correlation estimators based on stock prices and also for the three estimators based
+on default rates in each of the 24 parameter settings:
+Bias = 1
+S
+S
+s=1
+^
+s - ,
+Root mean squared error: RMSE = 1
+S
+S
+s=1
+(^
+s - )2.
+The root mean squared error (RMSE) is a hybrid measure which brings together the bias
+and the standard deviation of the estimator.
+The performance analysis of the asset correlation estimators is structured as follows: The
+estimators based on default rates are analysed in subsection (4.2), followed by the esti-
+mators which require stock prices in subsection (4.3). In subsection (4.4) the robustness
+of our results is explored in the presence of a model error introduced by stochastic asset
+correlations.
+4.2. Performance Results of Estimators Based on Default Rates
+The performance measures bias and RMSE of estimations from default rates are listed in
+Table 2, given an asset correlation of 10%. The PD varies between 0.5% and 2.03% and
+the sample length for yearly default rates varies between 5 and 40 years. For every PD
+and sample length, bias and RMSE are given for the AML and the MM estimator.
+Considering first a sample length of 40 years, the bias is less than a percentage point with a
+varying sign, dependent on the PD and the estimation method. For shorter sample lengths
+the bias becomes increasingly negative, indicating that the estimator is biased downwards
+13
+in small samples. For the shortest time series of only 5 years, the bias increases up to
+three percentage points (for the MM estimator) which is quite substantial given the true
+asset correlation is only 10%. The results indicate that the correlation estimators based
+on default rates are substantially downward biased in small samples. The relation between
+bias and PD is ambiguous. For a relatively long default rate history of at least 20 years
+and PDs up to 1.2% the generally negative bias becomes positive if the AML estimation
+method is applied.
+The RMSE also increases if the sample length is gradually reduced from its maximum
+value of 40 years. An RMSE that is roughly 50% of the true asset correlation value for
+the highest PD of 2.03% and sample lengths up to 10 years reveals the limitations if asset
+correlations need to be estimated from default rates.
+Comparing the two estimation methods, the MM estimates are more strongly biased down-
+wards than the AML estimates. The lower downward bias of the AML method becomes
+more visible for shorter sample lengths and for lower PDs. For the RMSE as performance
+measure, the differences are ambiguous. Although for sample lengths of 10­40 years the
+AML estimator has the lower RMSE, the difference is smaller in relative terms than in the
+case of the bias. Furthermore, in the 5-years case, the MM method performs slightly better
+in terms of RMSE than the AML estimator but the difference is arguably immaterial in
+practice.
+Figure 1 shows the distribution function of the estimation errors for the AML and the
+MM estimator, given an asset correlation of 10%. It reveals that the downward bias is
+stronger with the MM estimator. Furthermore, the distribution of this estimator is much
+less symmetric and positively skewed. The last finding indicates that erroneously high
+correlation estimates occur more often with the MM rather than the AML method. The
+superior performance of the AML estimator, in particular its lower downward bias, is
+plausible as it makes better use of the model structure.
+In order to measure the impact of the level of the true correlation parameter, Figure 2
+shows the sample density distribution of the estimation error of the AML estimator, given
+asset correlations of 10% and 25%. Both density distributions clearly show that the bias
+strongly depends on the value of the correlation parameter. For the higher correlation of
+25%, the mean bias is stronger and estimates are much more scattered than for a correlation
+of 10%. These results signal a strong dependence of the estimation performance on the
+true asset correlation.
+Table 3 describes the performance of both estimators, given an asset correlation of 25%.
+Compared with the results in Table 2 for a correlation of 10%, the downward bias strongly
+14
+Table 2
+Bias and RMSE of the AML and MM Estimator With a True Asset
+Correlation of 10%
+This table shows the bias and RMSE of asset correlation estimates for the
+Asymptotic Maximum Likelihood (AML) method and the Method of Moments
+(MM), separately for three default probabilities (PD) and four sample lengths
+Y of yearly default rates.
+PD = 0.5% PD = 1.2% PD = 2.03%
+AML MM AML MM AML MM
+Bias
+Y = 5 -.0137 -.0290 -.0167 -.0246 -.0191 -.0214
+Y = 10 -.0005 -.0179 -.0047 -.0144 -.0077 -.0126
+Y = 20 .0048 -.0103 .0003 -.0081 -.0016 -.0064
+Y = 40 .0072 -.0055 .0034 -.0037 -.0011 -.0029
+RMSE
+Y = 5 .0554 .0512 .0566 .0533 .0554 .0548
+Y = 10 .0414 .0439 .0417 .0450 .0407 .0452
+Y = 20 .03 .0374 .0301 .037 .0295 .0364
+Y = 40 .0224 .0309 .0221 .0291 .0215 .0281
+15
+Figure 1. Distribution of the Estimation Errors of the AML and the MM
+Method
+This figure shows the interpolated distribution function of errors in asset
+correlation estimates, both for the Asymptotic Maximum Likelihood (AML)
+method and the Method of Moments (MM). The DGP is characterized by an
+asset correlation of 0.1, a time series of 10 yearly default rates, 5,000 homoge-
+nous borrowers and a PD of 1.2%.
+0
+2000
+4000
+6000
+8000
+10000
+12000
+-0.1 -0.05 0 0.05 0.1 0.15
+Estimation Error
+Observed Estimates
+AML-Estimator AMM-Estimator
+16
+Figure 2. Histogram of Estimation Errors if the AML Method is Applied to
+Default Rates, Given Asset Correlations of 0.1 and 0.25
+This figure shows histograms of errors in asset correlation estimates for the
+Asymptotic Maximum Likelihood (AML) method, given asset correlations in
+the DGP of 0.1 in the first panel and 0.25 in the second panel. The DGP is
+characterized by a time series of 10 yearly default rates, 5,000 homogenous
+borrowers and a PD of 1.2%.
+=0.1
+0
+200
+400
+600
+800
+1000
+1200
+-0.25 -0.2 -0.15 -0.1 -0.05 0 0.05 0.1 0.15 0.2 0.25
+Estimation Error
+Observed Estimates
+=0.25
+0
+200
+400
+600
+800
+1000
+1200
+-0.25 -0.2 -0.15 -0.1 -0.05 0 0.05 0.1 0.15 0.2 0.25
+Estimation Error
+Observed Estimates
+17
+Table 3
+Bias and RMSE of the AML- and MM-Estimator With a True Asset
+Correlation of 25%
+This table shows the bias and RMSE of asset correlation estimates for the
+Asymptotic Maximum Likelihood (AML) method and the Method of Moments
+(MM), separately for three default probabilities (PD) and four sample lengths
+Y of yearly default rates.
+PD = 0.5% PD = 1.2% PD = 2.03%
+AML MM AML MM AML MM
+Bias
+Y = 5 -.0891 -.1287 -.0623 -.1089 -.0528 -.0937
+Y = 10 -.0683 -.0964 -.0345 -.0751 -.0276 -.0645
+Y = 20 -.0564 -.0682 -.0228 -.0498 -.0142 -.0402
+Y = 40 -.0504 -.0435 -.0168 -.0316 -.0067 -.0225
+RMSE
+Y = 5 .1236 .1464 .1147 .1373 .1150 .1333
+Y = 10 .0929 .1220 .0790 .1139 .0807 .1119
+Y = 20 .0729 .1013 .0552 .0951 .0564 .0932
+Y = 40 .0605 .0856 .0399 .0796 .0394 .0748
+increases. Even for the longest sample length of 40 years the bias rises to 5 percentage
+points, also depending on the estimation method. Contrary to the findings for an asset
+correlation of 10% in Table 2, the bias is always negative. For the shortest time series of
+5 years it can increase to 13 percentage points or around 50% of the true asset correlation.
+Again, the bias also depends on the estimation method, with the AML method coming
+out as superior in all parameter constellations.
+The results for the bias also hold qualitatively if the RMSE is considered as performance
+indicator. The higher correlation increases the number of defaults, which could raise the
+expectation that the performance improves over Table 2. However, this is not the case as,
+for example for 5 years, the RMSE is still roughly 50% of the true correlation value.
+Summarizing, we find that estimates from default rates are typically downward biased.
+This negative bias increases with shorter sample lengths, high correlations, lower PDs,
+and is higher for the MM-estimator than if the AML-estimator is applied. The level of
+the true correlation parameter also has a strong impact on the estimation performance.
+Increasing the asset correlation from 10% to 25% reveals not only a stronger downward
+18
+Table 4
+Bias and RMSE of Asset Correlation Estimates as Pairwise Stock Price
+Correlations and Based on the Random Effects Model
+This table shows the bias and RMSE of asset correlation estimates from stock
+returns. They are estimated by pairwise sample correlations (PW) and a
+random effects model (RE) based on six DGPs with three default probabilities
+(PD) and two asset correlation values . The generated samples consist of two
+years of weakly stock returns of 50 firms.
+N = 50 PD = 0.005 PD = 0.012 PD = 0.0203
+T = 2y PW RE PW RE PW RE
+ = 0.1 Bias -.0024 -.0094 -.0028 -.0106 -.0031 -.0113
+RMSE .0150 .0171 .0149 .0175 .0150 .0180
+ = 0.25 Bias -.0059 -.0201 -.0059 -.0218 -.0065 -.0236
+RMSE .0283 .0338 .0285 .0349 .0282 .0356
+bias, but also that the estimates are more dispersed. This finding confirms the need to
+consider not only the bias but also the RMSE when evaluating the small sample properties
+of the estimators.
+4.3. Performance Results of Estimators Based on Stock Prices
+As described in Section 3, we employ a direct and an indirect estimation method to infer
+asset correlations from market prices. The direct method uses equity returns whereas
+the indirect method requires first inferred asset returns from which asset correlations are
+estimated in a second step.
+The two performance measures for the direct method, bias and RMSE, are shown in
+Table 4. We consider again three PDs and two asset correlation values. Furthermore,
+asset correlations are estimated based on a sample of equity returns both by the mean of
+pairwise sample correlations and in the framework of a random effects model. Comparing
+these two methods first, we find that the sample correlations are less biased and have a
+lower RMSE for all three PDs and for both asset correlation values. This observation is
+confirmed by Figure 3 which presents the cumulative distribution of estimation errors.
+Although the mean sample correlation of equity returns is still downward biased, bias
+and RMSE are by far smaller than in the case of using default rates for the estimation
+19
+Figure 3. Distribution of Estimation Errors Based on Stock Prices
+This figure shows the interpolated distribution function of errors in asset cor-
+relation estimates, both for pairwise sample correlations and a random effects
+model. The DGP is characterized by an asset correlation of 0.1, a time series
+of 2 years of weekly stock returns of 50 firms and a PD of 1.2%.
+0
+2000
+4000
+6000
+8000
+10000
+12000
+-0.1 -0.05 0 0.05 0.1
+Estimation Error
+Observed Estimates
+Mean Pair Wise Correlation Random Effects Estimator
+20
+Table 5
+Bias and RMSE of the Asset Correlation Estimates Based on Asset Returns
+This table shows the bias and RMSE of asset correlation estimates from asset
+returns. They are estimated by pairwise sample correlations (PW) and a
+random effects model (RE) based on six DGPs with three default probabilities
+(PD) and two asset correlation values . The generated samples consist of 2
+years of weakly stock returns of 50 firms.
+N = 50 PD = 0.005 PD = 0.012 PD = 0.0203
+T = 2y PW RE PW RE PW RE
+ = 0.1 Bias -.0013 -.0005 -.0015 -.0006 -.0016 -.0007
+RMSE .0148 .0149 .0148 .0148 .0149 .0149
+ = 0.25 Bias -.0030 -.0011 -.0037 -.0017 -.0031 -.0010
+RMSE .0277 .0278 .0278 .0279 .0278 .0279
+of asset correlations. Consider, for example, the case of an asset correlation of 25% and
+a PD of 0.5%. According to Table 3, even with the longest sample length of 40 yearly
+default rates, the RMSE of the AML estimator is still 0.06% or double the RMSE of the
+correlation estimates based on equity returns in Table 4. The superior performance of the
+estimation from market prices also depends on the parameters of the DGP. It becomes
+ceteris paribus more pronounced with higher PDs and higher asset correlations.
+Whereas Table 4 presents the estimators' performance for the direct method, Table 5
+gives the corresponding performance indicators for the indirect estimation method, based
+on inferred asset returns. Comparing first the results of the sample correlation estimates
+with those of the random effects model, we find that the latter method is superior in terms
+of bias but that both methods are nearly indistinguishable in terms of RMSE. Given the
+small absolute values of the downward bias for both methods, the difference in the bias is
+immaterial.
+The similar performance of both indirect estimation methods based on asset returns con-
+trasts with the results for the asset correlation estimation from equity returns, given in
+Table 5, where the sample correlations emerged as the superior estimation method.
+Considering that the indirect method of using inferred asset returns instead of equity
+returns is the theoretically better founded method, its superior performance is plausible.
+The random effects model applied to the asset returns exploits the model structure of the
+DGP better than the other methods. Therefore, it should be expected to be at least as
+21
+Figure 4. Distribution of Estimation Errors Based on Default Rates and From
+Asset Returns
+This figure shows the interpolated distribution function of errors in asset corre-
+lation estimates, for the pairwise sample correlations and the AML estimator.
+The DGP is characterized by an asset correlation of 0.1, a time series of 10
+years of default rates (2 years of weekly stock returns) for 5,000 firms (50 firms)
+and a PD of 1.2%.
+0
+2000
+4000
+6000
+8000
+10000
+12000
+-0.1 -0.05 0 0.05 0.1
+Estimation Error
+Observed Estimates
+AML-Estimator Mean Pair Wise Correlation
+22
+good as the other methods. If equity returns are used instead of asset returns the input
+data to the estimation are already misspecified. As a consequence, estimators are more
+robust against model errors if they pose less assumptions about the underlying model as,
+for example, in this case the mean sample correlation.
+Finally, Figure 4 compares the distribution of estimation errors of the AML method based
+on default rates with the estimation based on the sample correlation of asset returns. It
+shows the substantially higher downward bias and also the fatter tails of the estimation
+errors, produced by the AML method.
+Summarizing, we find that both, the direct estimation from equity returns and the indirect
+estimation from asset returns are superior to an estimation of asset correlations from
+default rates, both in terms of the bias and the RMSE. This holds even if a relatively short
+sample of two years of weekly equity returns is compared with a sample comprising 40 years
+of yearly default rate observations. Comparing the direct and the indirect estimation
+method we find that the indirect estimation is superior. The out-performance depends
+also on the estimation method and the true parameters of the DGP. With increasing
+PDs and higher asset correlations, the out-performance of the direct estimation method
+becomes more visible. Nevertheless, the differences in estimation accuracy between the
+sample correlation estimates based on equity returns and the estimates of the RE model
+based on asset returns may still be negligible in practice. In other words, the more simpler
+method of a direct estimation from equity returns can produce quite reasonable estimates.
+These results hold in the absence of a model error, i. e. if the estimation is based on data
+generated from the model of the DGP. In the following section we explore, how robust
+they are against a model error, more specifically if asset correlations are no longer constant
+over time but follow an Ornstein-Uhlenbeck process.
+4.4. Estimation Performance Under Stochastic Correlations
+There is substantial evidence in the literature that asset correlations fluctuate over time.18
+If correlations follow a mean-reverting process with a sufficiently short half-life, the ran-
+domness may have a stronger effect on correlation estimates from stock prices as they rely
+on a much higher data frequency compared with correlation estimates from default rates.
+If this hypothesis proves to be true, the result from the previous section that correlation
+estimation from default rates is strictly preferable may no longer hold.
+It can be argued that accounting only for the model error of a mean-reverting process
+18See, for example, Bollerslev et al. (1988), Longin and Solnik (1995) or Ang and Chen (2002).
+23
+of the asset correlations unduly benefits the estimation from default rates relative to the
+estimation from market prices. Since the required time series of default rates are typically
+long, estimation from default rates is arguably much more susceptible to structural brakes,
+introduced for example by changes in the legal framework, which are not considered. Given
+that the estimation from market prices has emerged as clearly superior in the case of a
+correctly specified model, it seems, however, justified to focus on a model error that affects
+mainly the already superior estimation method. In this case the results can be considered
+also as a robustness check for the superiority of the estimation from market prices.
+The "robustness check" of stochastic asset correlations requires specifying the mean rever-
+sion parameter  and the volatility  in equation (8) in Subsection 2.3. The parameters
+of the stochastic asset correlation process are set to   {0.1, 0.25},  = 1 and  = 0.085.
+The values of the mean  are given by the constant asset correlations used before. The
+parameters  and  are set such that the asymptotic 90% confidence interval of the
+stochastic correlation is given by  ± 10%.19 The value of one for  corresponds with a
+half-life time of 0.7 years.20
+Table 6 presents the correlation estimates, based on default rates, employing the AML
+and the MM method. Since the asset correlation is stochastic, we assume an average
+correlation of 10% for the DGP to facilitate a comparison with results in the previous
+section for a constant asset correlation. For five and 10 years the results are ambiguous
+but for 20 and 40 years the bias is higher in the case of stochastic correlations. The
+RMSE is always higher in this case but the difference is below one percentage point. The
+sensitivity of the estimation performance to PD and to the number of years is similar to
+the previous results in Table 2. The better performance if asset correlations are estimated
+from equity returns instead of from default rates is confirmed by Figure 5 for the case of
+stochastic correlations.
+Table 7 corresponds with Table 6 but with an average asset correlation of 25% instead
+of 10% in the DGP. Although both bias and RMSE increase, the sensitivity to PD, the
+length of the time series and the estimation method (MM or AML) is similar.
+Summarizing, introducing mean-reverting asset correlations increases the RMSE if the
+estimation is based on default rates but not substantially. This result supports the hy-
+pothesis that a mean-reverting asset correlation has only a minor impact on the estimation
+performance.
+19The confidence level is obtained from the asymptotic distribution of t
+for t   which is given by
+N , 2
+
+2
+.
+20The half-life time is given by the formula -ln(0.5)
+
+.
+24
+Table 6
+Bias and RMSE of the AML and MM Estimator With a Mean Asset
+Correlation of 10% and a Stochastic Asset Correlation Process
+This table shows the bias and RMSE of asset correlation estimates for the
+Asymptotic Maximum Likelihood (AML) method and the Method of Moments
+(MM), separately for three default probabilities (PD) and four sample lengths
+Y of yearly default rate observations. The asset correlations of the DGP follow
+an Ornstein-Uhlenbeck process with mean 0.1.
+PD = 0.5% PD = 1.2% PD = 2.03%
+AML MM AML MM AML MM
+Bias
+Y = 5 -.0128 -.0312 -.0145 -.0269 -.0161 -.0226
+Y = 10 -.0005 -.0205 -.0005 -.0156 -.0036 -.0129
+Y = 20 .0057 -.0123 .0016 -.0080 .0041 -.0053
+Y = 40 .0095 -.0052 -.0021 -.0020 .0075 -.0009
+RMSE
+Y = 5 .0600 .0551 .0644 .0579 .0649 .0615
+Y = 10 .0454 .0497 .0504 .0524 .0502 .0547
+Y = 20 .0340 .0445 .0379 .0462 .0382 .0470
+Y = 40 .0260 .0388 .0288 .0400 .0287 .0380
+25
+Figure 5. Distribution of Estimation Errors for Stochastic Asset Correlations
+Estimated From Default Rates and by Equity Return Correlations
+This figure shows the interpolated distribution function of errors in asset cor-
+relations which were estimated from default rates with the Asymptotic Max-
+imum Likelihood (AML) method and from stock returns by pairwise sample
+correlations. The DGP is characterized by an asset correlation of 0.1, a time
+series of 10 years of default rates (2 years of weekly stock returns) for 5,000
+firms (50 firms) and a PD of 1.2%.
+0
+2000
+4000
+6000
+8000
+10000
+12000
+-0.1 -0.05 0 0.05 0.1
+Estimation Error
+Observed Estimates
+AML-Estimator Mean Pair Wise Correlation
+26
+Table 7
+Bias and RMSE of the AML and MM Estimator With a Mean Asset
+Correlation of 25% Given a Stochastic Asset Correlation Process
+This table shows the bias and RMSE of asset correlation estimates for the
+Asymptotic Maximum Likelihood (AML) method and the Method of Moments
+(MM), separately for three default probabilities (PD) and four sample lengths
+Y of yearly default rate observations. The asset correlations of the DGP follow
+an Ornstein-Uhlenbeck process with mean 0.25.
+PD = 0.005 PD = 0.012 PD = 0.0203
+AML MM AML MM AML MM
+Bias
+Y = 5 -.0895 -.1293 -.0612 -.1093 -.0545 -.0970
+Y = 10 -.0674 -.0962 -.0353 -.0767 -.0265 -.0603
+Y = 20 -.0560 -.0672 -.0219 -.0495 -.0120 -.0403
+Y = 40 -.0514 -.0454 -.0157 -.0305 -.0052 -0.0225
+RMSE
+Y = 5 .1248 .1477 .1155 .1388 .1177 .1351
+Y = 10 .0931 .1235 .0804 .1178 .0831 .1151
+Y = 20 .0728 .1042 .0562 .0998 .0579 .0963
+Y = 40 .0612 .0888 .0402 .0839 .0411 .0808
+27
+Table 8
+Bias and RMSE of Estimates From Pairwise Stock Prices Given a Stochastic
+Asset Correlation Process
+This table shows the bias and RMSE of asset correlation estimates from stock
+returns. They are estimated by pairwise sample correlations (PW) based on
+six DGPs with three default probabilities (PD) and two asset correlation values
+ which follow Ornstein-Uhlenbeck processes with mean 0.1 and 0.25.
+N = 50 PD = 0.005 PD = 0.012 PD = 0.0203
+T = 2y PW PW PW
+ = 0.1 Bias -.0016 -.0014 -.0020
+RMSE .0371 .0370 .0370
+ = 0.25 Bias -.0046 -.0060 -.0066
+RMSE .0465 .0455 .0463
+Table 8 shows bias and RMSE if pairwise asset correlations are estimated from stock
+returns. Although the indirect estimation based on asset returns instead of stock returns is
+better founded in theory, the results from the previous section indicate that the differences
+between both cases are minor. Given the substantially lower computational burden, we
+apply only the direct method that uses stock prices as input. We do not present the
+results for the random effects model with stock price data as this model already proved to
+be inferior when applied to stock returns in the case of a constant correlation.
+The numbers in Table 8 show a clear deterioration in the estimation performance, measured
+by RMSE, compared with Table 4. For an asset correlation of 0.25, a sample length of
+20 years and a PD of 1.2%, the RMSE increases, for example, from 0.0285 to 0.0455. The
+bias instead stays nearly unaffected.
+Figure 6 compares the estimation errors if the asset correlation is estimated by pairwise
+equity return correlations both without and with stochastic correlation. It confirms the
+finding of a higher dispersion of errors if the asset correlation follows a stochastic process.
+Summarizing, the observed stronger increase in the RMSE for the estimation from market
+prices compared with the estimation from default rates confirms our expectation. Our
+results indicate that choosing between the use of market prices or default rates as data
+basis of the correlation estimation requires taking into account a trade-off: The closer
+the Merton model describes real world processes, the better estimates based on market
+prices perform. If the model is instead misspecified, for example as it is agnostic to the
+28
+Figure 6. Distribution of Estimation Errors Both Without and With Stochastic
+Correlations.
+This figure shows the interpolated distribution function of errors in asset cor-
+relations which were estimated from stock returns by pairwise sample correla-
+tions. The DGP is characterized by an asset correlation of 0.25, a time series
+of 10 years for 5,000 firms and a PD of 1.2%.
+0
+2000
+4000
+6000
+8000
+10000
+12000
+-0.25 -0.2 -0.15 -0.1 -0.05 0 0.05 0.1 0.15 0.2 0.25
+Estimation Error
+Observed Estimates
+Mean Pair Wise Correlation Mean Pair Wise Correlation stoch corr
+stochastic character of asset correlations, the superiority over an estimation from default
+rates diminishes but it does not disappear in the studied case. The reason for the smaller
+difference in estimation accuracy between both estimation methods is that the estimation
+from default rates requires less assumptions on model structure which renders it more
+robust against model misspecifications.
+5. Summary and Conclusions
+Linear factor models, based on the classic Merton (1974) model, have become a corner-
+stone of credit risk modelling in the literature as well as in industry practice. In this model
+framework, default dependencies are typically captured by asset correlations. These key
+parameters of a model are usually estimated either from time series of stock prices or
+default rates. In this paper we explore to which extent differences in small sample prop-
+erties of the respective estimators are responsible for the substantial diversity in empirical
+estimates of asset correlations. For this purpose, we carry out a comprehensive simulation
+study in which the time series of default rates and stock prices of realistic length are gen-
+29
+erated from the same model, i. e. the same DGP. Furthermore, we introduce a model error
+in the form of stochastic, mean-reverting asset correlations. We compare the performance
+of the estimators from default rates with those from stock prices, using the bias and the
+RMSE as benchmarks. Our main findings are:
+· Estimates from default rates are typically downward biased. This negative bias
+increases with shorter sample lengths, high correlations, lower PDs, and if the MM
+estimator is used instead of the AML-estimator.
+· The level of the true correlation parameter has a strong impact on the estimation
+performance. Increasing the asset correlation from 10% to 25% increases not only
+the downward bias, but also produces more scattered estimates, particularly in the
+tails.
+· Both, the direct estimation of asset correlations from equity returns and the indirect
+estimation from asset returns are superior to an estimation from default rates, both
+in terms of bias and RMSE. This holds even if a relatively short sample of two years
+of weekly equity returns is compared with a sample comprising 40 years of yearly
+default rate observations.
+· Comparing the direct and the indirect estimation method we find that the indirect
+estimation based on inferred asset returns is superior. The better performance de-
+pends also on the true parameters of the DGP. With increasing PDs and higher
+asset correlations, the out­performance of the direct estimation method becomes
+more visible.
+· If the constant asset correlation is replaced in the DGP by an Ornstein-Uhlenbeck
+process, the superiority of an estimation from equity prices instead of default rates
+diminishes but it does not disappear in the studied case.
+These findings have implications for the interpretation of empirical studies of asset corre-
+lations and for future risk modelling:
+1. Our results indicate that different small sample properties may have contributed to
+a large extent to the differences in correlation estimates which emerged in previous
+empirical studies but they cannot fully explain them.
+2. If time series of market prices of equity and default rates are available, it is generally
+recommendable to estimate asset correlations from market prices. The differences
+in accuracy between the two market-price based estimation methods, i.e. the sample
+correlation based on equity returns and the RE model based on asset returns, may
+still be negligible in practice. In other words, the more simpler of the two methods of
+a direct estimation from equity returns already produces quite reasonable estimates.
+30
+3. We have observed relatively high RMSEs even in a clinical study in which the model
+is correctly specified which is unlikely in practical applications. This finding strongly
+advocates that care must be taken if correlation estimates are applied in credit risk
+modelling. The simulation setup used in this paper presents a way to quantify the
+estimation error.
+Introducing a model error through stochastic, mean-reverting correlations is certainly only
+one of many plausible alternatives. Other causes of model errors which are also plausible
+given results from other empirical work, are, for example, a t-distribution of asset returns
+following Mashal et al. (2003) or a cross-sectional diversity of asset correlations, inspired
+by D¨
+ullmann et al. (2007). A more comprehensive analysis of the effect of various model
+errors is left for further work.
+31
+References
+Ang, A. and Chen, J. (2002), `Asymmetric correlations of equity returns', Journal of
+Financial Economics 63, 443­494.
+Bakshi, G., Cao, C. and Chen, Z. (1997), `Empirical performance of alternative option
+pricing models', Journal of Finance 52(5), 2003­49.
+Basel Committee on Banking Supervision (2005), International Convergence of Capital
+Measurement and Capital Standards, A Revised Framework. http://www.bis.org/
+publ/bcbsca.htm.
+Black, F. and Scholes, M. (1973), `The pricing of options and corporate liabilities', Journal
+of Political Economy 81, 637­654.
+Bohn, J. and Crosbie, P. (2003), Modeling default risk. KMV Corporation.
+Bollerslev, T., Engle, R. and J.M., W. (1988), `A capital asset pricing model with time
+varying covariances.', Journal of Political Economy 96, 116­131.
+De Servigny, A. and Renault, O. (2002), Default correlation: Empirical evidence. Working
+Paper, Standard&Poor's.
+Dietsch, M. and Petey, J. (2004), `Should SME exposures be treated as retail or corporate
+exposures? A comparative analysis of probabilities of default and asset correlations in
+French and German SMEs', Journal of Banking and Finance 28, 773­788.
+Duan, J.-C., Gauthier, G. and Simonato, J.-G. (2004), On the equivalence of the KMV and
+Maximum Likelihood methods for structural credit risk models. http://www.rotman.
+utoronto.ca/~jcduan/mainfram.html.
+Duan, J.-C., Gauthier, G., Simonato, J.-G. and Zaanoun, S. (2003), Estimating Merton's
+model by Maximum Likelihood with survivorship consideration. http://www.rotman.
+utoronto.ca/~jcduan/mainfram.html.
+Duellmann, K. and Scheule, H. (2003), Determinants of the asset correlations of German
+corporations and implications for regulatory capital. Unpublished Working Paper.
+D¨
+ullmann, K., Scheicher, M. and Schmieder, C. (2007), Asset correlations and credit
+portfolio risk ­ an empirical analysis. Deutsche Bundesbank Discussion Paper, Series 2,
+No. 13.
+D¨
+ullmann, K. and Trapp, M. (2004), Systematic risk in recovery rates­an empirical analy-
+sis of US corporate credit exposures. Deutsche Bundesbank Discussion Paper, Series 2,
+No. 2.
+32
+Eom, Y., Helwege, J. and Huang, J. Z. (2003), `Structural models of corporate bond
+pricing: An empirical analysis', Review of Financial Studies 17(2), 499­544.
+Gordy, M. (2000), `A comparative anatomy of credit risk models', Journal of Banking and
+Finance 24, 119­149.
+Gordy, M. (2001), A risk-factor model foundation for ratings-based bank capital rules.
+Working Paper, Board of Governors of the Federal Reserve System.
+Gordy, M. and Heitfield, E. (2000), Estimating factor loadings when ratings performance
+data are scarce. Memorandum, Board of Governors of the Federal Reserve System.
+Grundke, P. (2007), Regulatory treatment of the double default effect under the New Basel
+Accord: How conservative is it? Unpublished Working Paper.
+Hsiao, C. (2003), Analysis of Panal Data, Cambridge, Cambridge.
+Jones, E. P., Mason, S. and Rosenfeld, E. (1984), `Contingent claims analysis of corporate
+capital structures: An empirical investigation', Journal of Finance 50, 53­86.
+Kloeden, P. E. and Platen, E. (1992), Numerical Solution of Stochastic Differential Equa-
+tions, Stochastic Modelling and Applied Probability, Springer-Verlag, New York.
+Longin, F. and Solnik, B. (1995), `Is the correlation in international equity returns con-
+stant: 1960-1990?', Journal of International Money and Finance 14, 3­26.
+Lopez, J. A. (2002), The empirical relationship between average asset correlation, firm
+probability of default and asset size. Working Paper, BIS Workshop: "Basel II: An
+Economic Assessment".
+Lucas, D. J. (1995), `Default correlation and credit analysis', Journal of Fixed Income
+4(4), 76­87.
+Mashal, R., Naldi, M. and Zeevi, A. (2003), `On the dependence of equity and asset
+returns', Risk Magazine 16(10), 83­87.
+Merton, R. (1974), `On the pricing of corporate debt: The risk structure of interest rates',
+Journal of Finance 34, 449­470.
+Pitts, A. (2004), `Correlated defaults: let's go back to the data', Risk Magazine 17(6), 75­
+79.
+Roesch, D. (2003), `Correlations and business cycles of credit risk: Evidence from
+bankruptcies in Germany', Financial Markets and Portfolio Management 17, 309­331.
+Zeng, B. and Zhang, J. (2001), An empirical assessment of asset correlation models. KMV
+Corporation.
+33
+34
+The following Discussion Papers have been published since 2007:
+Series 1: Economic Studies
+01 2007 The effect of FDI on job separation Sascha O. Becker
+Marc-Andreas Mündler
+02 2007 Threshold dynamics of short-term interest rates:
+empirical evidence and implications for the Theofanis Archontakis
+term structure Wolfgang Lemke
+03 2007 Price setting in the euro area: Dias, Dossche, Gautier
+some stylised facts from individual Hernando, Sabbatini
+producer price data Stahl, Vermeulen
+04 2007 Unemployment and employment protection
+in a unionized economy with search frictions Nikolai Stähler
+05 2007 End-user order flow and exchange rate dynamics S. Reitz, M. A. Schmidt
+M. P. Taylor
+06 2007 Money-based interest rate rules: C. Gerberding
+lessons from German data F. Seitz, A. Worms
+07 2007 Moral hazard and bail-out in fiscal federations: Kirsten H. Heppke-Falk
+evidence for the German Länder Guntram B. Wolff
+08 2007 An assessment of the trends in international
+price competitiveness among EMU countries Christoph Fischer
+09 2007 Reconsidering the role of monetary indicators
+for euro area inflation from a Bayesian Michael Scharnagl
+perspective using group inclusion probabilities Christian Schumacher
+10 2007 A note on the coefficient of determination in Jeong-Ryeol Kurz-Kim
+regression models with infinite-variance variables Mico Loretan
+35
+11 2007 Exchange rate dynamics in a target zone - Christian Bauer
+a heterogeneous expectations approach Paul De Grauwe, Stefan Reitz
+12 2007 Money and housing - Claus Greiber
+evidence for the euro area and the US Ralph Setzer
+13 2007 An affine macro-finance term structure model
+for the euro area Wolfgang Lemke
+14 2007 Does anticipation of government spending matter? Jörn Tenhofen
+Evidence from an expectation augmented VAR Guntram B. Wolff
+15 2007 On-the-job search and the cyclical dynamics Michael Krause
+of the labor market Thomas Lubik
+16 2007 Heterogeneous expectations, learning and
+European inflation dynamics Anke Weber
+17 2007 Does intra-firm bargaining matter for Michael Krause
+business cycle dynamics? Thomas Lubik
+18 2007 Uncertainty about perceived inflation target Kosuke Aoki
+and monetary policy Takeshi Kimura
+19 2007 The rationality and reliability of expectations
+reported by British households: micro evidence James Mitchell
+from the British household panel survey Martin Weale
+20 2007 Money in monetary policy design under
+uncertainty: the Two-Pillar Phillips Curve Günter W. Beck
+versus ECB-style cross-checking Volker Wieland
+21 2007 Corporate marginal tax rate, tax loss carryforwards
+and investment functions ­ empirical analysis
+using a large German panel data set Fred Ramb
+36
+22 2007 Volatile multinationals? Evidence from the Claudia M. Buch
+labor demand of German firms Alexander Lipponer
+23 2007 International investment positions and Michael Binder
+exchange rate dynamics: a dynamic panel analysis Christian J. Offermanns
+24 2007 Testing for contemporary fiscal policy discretion Ulf von Kalckreuth
+with real time data Guntram B. Wolff
+25 2007 Quantifying risk and uncertainty Malte Knüppel
+in macroeconomic forecasts Karl-Heinz Tödter
+26 2007 Taxing deficits to restrain government
+spending and foster capital accumulation Nikolai Stähler
+27 2007 Spill-over effects of monetary policy ­ a progress
+report on interest rate convergence in Europe Michael Flad
+28 2007 The timing and magnitude of exchange rate Hoffmann
+overshooting Sondergaard, Westelius
+29 2007 The timeless perspective vs. discretion: theory and
+monetary policy implications for an open economy Alfred V. Guender
+30 2007 International cooperation on innovation: empirical Pedro Faria
+evidence for German and Portuguese firms Tobias Schmidt
+31 2007 Simple interest rate rules with a role for money M. Scharnagl
+C. Gerberding, F. Seitz
+32 2007 Does Benford's law hold in economic Stefan Günnel
+research and forecasting? Karl-Heinz Tödter
+33 2007 The welfare effects of inflation: Karl-Heinz Tödter
+a cost-benefit perspective Bernhard Manzke
+37
+34 2007 Factor-MIDAS for now- and forecasting with
+ragged-edge data: a model comparison for Massimiliano Marcellino
+German GDP Christian Schumacher
+35 2007 Monetary policy and core inflation Michele Lenza
+01 2008 Can capacity constraints explain
+asymmetries of the business cycle? Malte Knüppel
+02 2008 Communication, decision-making and the
+optimal degree of transparency of monetary
+policy committees Anke Weber
+03 2008 The impact of thin-capitalization rules on Buettner, Overesch
+multinationals' financing and investment decisions Schreiber, Wamser
+04 2008 Comparing the DSGE model with the factor model:
+an out-of-sample forecasting experiment Mu-Chun Wang
+05 2008 Financial markets and the current account ­ Sabine Herrmann
+emerging Europe versus emerging Asia Adalbert Winkler
+06 2008 The German sub-national government bond Alexander Schulz
+market: evolution, yields and liquidity Guntram B. Wolff
+07 2008 Integration of financial markets and national Mathias Hoffmann
+price levels: the role of exchange rate volatility Peter Tillmann
+08 2008 Business cycle evidence on firm entry Vivien Lewis
+38
+Series 2: Banking and Financial Studies
+01 2007 Granularity adjustment for Basel II Michael B. Gordy
+Eva Lütkebohmert
+02 2007 Efficient, profitable and safe banking:
+an oxymoron? Evidence from a panel Michael Koetter
+VAR approach Daniel Porath
+03 2007 Slippery slopes of stress: ordered failure Thomas Kick
+events in German banking Michael Koetter
+04 2007 Open-end real estate funds in Germany ­ C. E. Bannier
+genesis and crisis F. Fecht, M. Tyrell
+05 2007 Diversification and the banks'
+risk-return-characteristics ­ evidence from A. Behr, A. Kamp
+loan portfolios of German banks C. Memmel, A. Pfingsten
+06 2007 How do banks adjust their capital ratios? Christoph Memmel
+Evidence from Germany Peter Raupach
+07 2007 Modelling dynamic portfolio risk using Rafael Schmidt
+risk drivers of elliptical processes Christian Schmieder
+08 2007 Time-varying contributions by the corporate bond
+and CDS markets to credit risk price discovery Niko Dötz
+09 2007 Banking consolidation and small business K. Marsch, C. Schmieder
+finance ­ empirical evidence for Germany K. Forster-van Aerssen
+10 2007 The quality of banking and regional growth Hasan, Koetter, Wedow
+11 2007 Welfare effects of financial integration Fecht, Grüner, Hartmann
+12 2007 The marketability of bank assets and managerial Falko Fecht
+rents: implications for financial stability Wolf Wagner
+39
+13 2007 Asset correlations and credit portfolio risk ­ K. Düllmann, M. Scheicher
+an empirical analysis C. Schmieder
+14 2007 Relationship lending ­ empirical evidence C. Memmel
+for Germany C. Schmieder, I. Stein
+15 2007 Creditor concentration: an empirical investigation S. Ongena, G.Tümer-Alkan
+N. von Westernhagen
+16 2007 Endogenous credit derivatives and bank behaviour Thilo Pausch
+17 2007 Profitability of Western European banking
+systems: panel evidence on structural and
+cyclical determinants Rainer Beckmann
+18 2007 Estimating probabilities of default with W. K. Härdle
+support vector machines R. A. Moro, D. Schäfer
+01 2008 Analyzing the interest rate risk of banks
+using time series of accounting-based data: O. Entrop, C. Memmel
+evidence from Germany M. Wilkens, A. Zeisler
+02 2008 Bank mergers and the dynamics of Ben R. Craig
+deposit interest rates Valeriya Dinger
+03 2008 Monetary policy and bank distress: F. de Graeve
+an integrated micro-macro approach T. Kick, M. Koetter
+04 2008 Estimating asset correlations from stock prices K. Düllmann
+or default rates ­ which method is superior? J. Küll, M. Kunisch
+40
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a Ph D and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+

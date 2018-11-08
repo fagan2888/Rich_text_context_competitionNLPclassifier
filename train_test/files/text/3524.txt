@@ -1,0 +1,1113 @@
+https://doi.org/10.1177/1759313117693639
+The International Journal of
+Ocean and Climate Systems
+2017, Vol. 8(1) 37
+­49
+© The Author(s) 2017
+Reprints and permissions:
+sagepub.co.uk/journalsPermissions.nav
+DOI: 10.1177/1759313117693639
+journals.sagepub.com/home/ocs
+Creative Commons Non Commercial CC-BY-NC: This article is distributed under the terms of the Creative Commons
+Attribution-NonCommercial 3.0 License (http://www.creativecommons.org/licenses/by-nc/3.0/) which permits non-commercial
+use, reproduction and distribution of the work without further permission provided the original work is attributed as specified on the SAGE and
+Open Access pages (https://us.sagepub.com/en-us/nam/open-access-at-sage).
+Introduction
+The ocean waves are a vast source of energy; harnessing
+this energy in a judicious way can become the main source
+of electrical energy supply for countries with long shore-
+lines. Yoshio Masuda (1925­2009), a pioneer in wave
+energy technology development, studied the wave energy
+devices since 1940. Masuda developed navigation buoys
+installed with air turbine, which is later known as oscillat-
+ing water column (OWC) (Masuda, 1986). Later, a large
+(80 m × 12 m) barge, named Kaimei (Miyazaki and
+Masuda, 1975), was used to test the OWCs. During the
+same time, Salter (1974) tested a simple mechanism of
+vertical vane pivoted about a horizontal axis which can
+generate power using the oscillatory motion of ocean
+waves. Since then, researchers have developed several dif-
+ferent types of wave energy converters and tested in the
+laboratory or real sea condition. Wave energy converters
+are categorized mainly based on location, size, and work-
+ing principles (Drew et al., 2009; Falcão, 2010; Falnes,
+2007; López et al., 2013; Sabzehgar and Moallem, 2009).
+One of the main issues of OWC is that it is not suitable for
+all coastal regions and requires very specific location char-
+acteristics. In spite of this, the OWCs have been studied
+most extensively and maximum numbers of prototypes are
+deployed into the sea.
+The OWC, a pneumatic type wave energy device, can be
+used as a fixed or a floating type. The plants at Sakata port
+in Japan (Takahashi et al., 1992) and Vizhinjam, India
+(Ravindran et al., 1997) are examples of such plants. The
+Optimal design of air turbines for
+oscillating water column wave
+energy systems: A review
+Tapas Kumar Das1, Paresh Halder1 and Abdus Samad2
+Abstract
+Oscillating water column wave energy harvesting system uses pneumatic power to run a turbine and generate power.
+Both reaction (mainly Wells turbine) and impulse type turbines are tested in oscillating water column system and the
+performances are investigated. Reaction turbines are easy to install, and the operating range is narrow and possesses
+higher peak efficiency. On the contrary, impulse turbines have the wider operating range and lower peak efficiency.
+Some of the key parameters for Wells turbine are solidity, tip clearance, and the hub-to-tip ratio. Significant performance
+improvement is possible by redesigning the turbines using optimization techniques. Till date, surrogate modeling and an
+automated optimization library OPAL are commonly used in optimization of oscillating water column air turbines. In
+this article, various types of oscillating water column turbines are reviewed, and optimization techniques applied to such
+turbines are discussed. The Wells turbine with guide vane has the maximum efficiency, whereas the axial-impulse turbine
+with pitch-controlled guide vane has the widest operating range. Turbines with optimized geometry have better overall
+performance than other turbines.
+Keywords
+Oscillating water column, Wells turbine, impulse turbine, wave energy, optimization
+Date received: 15 July 2016; accepted: 15 January 2017
+1Wave Energy and Fluids Engineering Laboratory, Department of
+Ocean Engineering, Indian Institute of Technology Madras, Chennai,
+India
+2Department of Ocean Engineering, Indian Institute of Technology
+Madras, Chennai, India
+Corresponding author:
+Abdus Samad, Department of Ocean Engineering, Indian Institute of
+Technology Madras, Chennai 600036, Tamil Nadu, India.
+Email: samad@iitm.ac.in
+693639
+OCS0010.1177/1759313117693639The International Journal of Ocean and Climate SystemsDas et al.
+review-article2017
+Special Issue Article
+38 The International Journal of Ocean and Climate Systems 8(1)
+energy conversion process in OWC plant (Figure 1) occurs
+in three phases. Initially, the oscillation of sea surface is
+converted to pressure energy in the air chamber and the air
+turbine converts the pressure energy into mechanical shaft
+power (this system is also known as power take off mecha-
+nism). Finally, the generator connected to the turbine con-
+verts the shaft power to usable electrical power.
+Most of the OWC systems for wave energy conversion
+used till date mainly relied on two basic types of air tur-
+bines: the Wells turbine and the impulse turbine. Unlike
+the conventional impulse turbine, the impulse air turbine
+for wave energy conversion is used with two rows of guide
+vanes on both sides of the rotor to make the turbine rotate
+in one direction regardless of incident airflow directions.
+However, the presence of guide vane on the downstream
+side of rotor introduces losses, which affect the turbine
+performance considerably (Thakker and Dhanasekaran,
+2005). Figure 2 shows various turbines used in OWCs,
+which are discussed in the next section.
+Some authors reviewed the articles on OWC and air
+turbines. Setoguchi et al. (2001a) presented the review of
+impulse turbines used for wave energy conversion.
+Setoguchi and Takao (2006) and Takao and Setoguchi
+(2012) compared different turbines including Wells and
+impulse turbines. Falcao and Henriques (2016) extensively
+reviewed air turbines including thermodynamics of air
+chamber and control algorithms applied to OWC turbines.
+However, these reviews did not discuss optimization tech-
+niques applied to OWC turbines.
+Optimization works in the area of air turbines are new,
+and very few authors have applied optimization techniques
+to improve the turbine performance through systematic
+design optimization. This article discusses different tur-
+bine options along with the performance improvement
+achieved through optimization.
+Turbine classification
+Turbines are devices in which the rotor receives energy
+from the flowing fluid and convert this energy into
+mechanical energy. This mechanical energy is converted
+into electrical power using a generator. Based on the type
+of fluid, turbines are classified as steam, hydro, or air tur-
+bines. The power generated by the turbine is derived from
+equation (1). It is noticed that power developed is a func-
+tion of pressure head and volume flow rate across the
+turbine
+P gQH
+= (1)
+Based on the rationale of energy transfer inside the tur-
+bine, two main types of turbines exist: impulse turbines
+and reaction turbines. In the case of impulse turbines, the
+total pressure energy of the fluid is converted to kinetic
+energy before hitting the rotor blades, whereas in the case
+of reaction turbines, the pressure and kinetic energy both
+change as the water flow through the rotor blades.
+The Euler turbo-machinery equation relates the torque
+of the turbine rotor T with the change in moment of
+momentum of the fluid across turbine rotor (Vavra, 1960)
+T rV dm r V dm
+S S
+= -
+ 
+1 1 1 2 2 2
+1 2
+  (2)
+Figure 1. Schematic representation of OWC.
+Figure 2. Classification of air turbines.
+Das et al. 39
+where S refers to the surface of revolution (subscript 1
+refers to the inlet and 2 the outlet). Applying one-dimen-
+sional approximation, the equation becomes (Dixon, 1995)
+T m rV r V
+= -
+
+( )
+1 1 2 2
+(3)
+where r and V are averaged over the inlet and outlet
+surfaces, S1
+and S2
+, respectively. For any axial flow
+machine with mean radius r r r
+1 2
+= = , we can write
+equation (3) as
+E r V V
+= -
+ ( )
+1 2
+(4)
+Equation (4) shows that a positive torque is obtained
+only when the tangential component of flow velocity at the
+inlet is greater than the outlet, that is, V V
+1 2
+> . This is
+achieved by the flow deflection inside the rotor. In conven-
+tional turbines, the flow deflection occurs by a row of
+fixed blades upstream of the rotor. However, in the case of
+air turbines for OWCs, as the turbines need to be unidirec-
+tional for a bidirectional flow, the guide vanes are placed
+on either side of the rotor. Different combinations of guide
+vanes in both reaction and impulse turbine with their per-
+formance variation are discussed in the following section.
+Wells turbine
+Wells turbine is an axial flow reaction turbine specifically
+used for wave energy extraction with the help of oscillat-
+ing airflow. The turbine is made up of symmetric airfoil
+type blades placed around a central hub (Figure 3) and
+rotates in one direction irrespective of the direction of the
+airflow. It has a rotational speed limited by the blade tip
+velocity approaching toward the speed of sound. The tur-
+bine is coupled with the electrical generator and operates
+with or without guide vanes (Raghunathan et al., 1982).
+The Wells turbine works on the general aerodynamics
+theory of airfoil (Gato and Falcao, 1988; Raghunathan
+et al., 1994; Raghunathan and Tan, 1983). Blades are set at
+90° stagger angle. The absolute velocity of air hits the
+blade axially and the tangential velocity of the blade acts
+in a direction parallel to the plane of rotation. The relative
+velocity W acting at an angle  (angle of attack) to the
+blade causes a lift force L perpendicular to the direction of
+W and a drag force D in the direction of W (Figure 4). This
+lift and drag force can be resolved in tangential and axial
+direction
+F L D
+tan
+sin cos
+= -
+  (5a)
+F L D
+x
+= +
+cos sin
+  (5b)
+For any airflow direction, the direction of tangential
+force is always same. Therefore, the direction of the rota-
+tion of turbine always remains the same. For any real fluids,
+the lift and drag force on the airfoil increase up to a certain
+value of the angle of attack () beyond which the flow sep-
+arates around the airfoil. The angle at which flow separates
+from the airfoil is known as the stall angle. Beyond the stall
+angle, the lift force decreases and drag force increases sig-
+nificantly. As a result, tangential force on the rotor
+decreases, leading to the decrease in efficiency. Thus, the
+angle of stall bounds the operating range of Wells turbine
+(Raghunathan, 1995a).
+Another main disadvantage of wells turbine is poor
+starting characteristics and it is difficult to reach its opera-
+tional speed (Inoue et al., 1986). This phenomenon of tur-
+bine failing to reach its operational speed is known as
+Figure 3. Schematic of a Wells turbine.
+Figure 4. Principle of operation of Wells turbine (Cruz,
+2008).
+40 The International Journal of Ocean and Climate Systems 8(1)
+crawling (Raghunathan and Tan, 1982). Changing the hub-
+to-tip ratio and the solidity improves the starting character-
+istics of the turbine.
+Parameters of Wells turbine
+Some of the main geometric parameters that affect the per-
+formance of wells turbine are solidity, hub-to-tip ratio,
+aspect ratio, and tip clearance. Table 1 gives the analytical
+description of the parameters. The parameters are interre-
+lated. Based on the analytical solution, Raghunathan
+(1995a) has given recommended values for these parame-
+ters, which are listed in Table 1. To achieve maximum effi-
+ciency and wide operating range, optimum values of these
+parameters are required. This is discussed in section
+"Optimization of air turbines."
+Solidity is a way to calculate the blockage of airflow
+within the Wells turbine and measures the mutual interac-
+tion between the blades (Cruz, 2008; Raghunathan and
+Tan, 1983). With increasing solidity, blades become too
+close to each other. As a result, blades interact with the
+boundary layer near hub leading to boundary layer separa-
+tion on the surface of the hub as well as on the blade sur-
+face near the hub (Gato et al., 1996; Watterson and
+Raghunathan, 1998). This creates end wall losses in the
+hub region. The effect of the hub-to-tip ratio is well stud-
+ied (Raghunathan, 1995a), and the results indicate that
+efficiency decreases with the increasing hub-to-tip ratio.
+Effects of guide vane angle and tip clearance
+(Dhanasekaran and Govardhan, 2005; Setoguchi et al.,
+2003; Taha et al., 2011) are important parameters for the
+performance of Wells turbine. Halder and Samad (2014)
+carried out numerical analysis to study the effect of guide
+vane angle on the performance of Wells turbine. For a par-
+ticular symmetrical blade profile (NACA 0021) under
+steady-state condition, guide vane angle of 11.8° gives
+maximum efficiency. The efficiency is maximum for a tip
+clearance of 1% (Halder and Samad, 2015a). In addition, a
+circumferential groove (Halder et al., 2015b) with a groove
+depth of 3% chord length produces the highest power and
+widest operating range. Also for a particular operating
+point, 26% improvement in efficiency is achieved using
+this method (Halder et al., 2015b).
+Guide vanes, self-pitch control blades, biplane turbines,
+blade sweep, and duct geometry improve the performance
+and starting characteristics of the turbine (Gato and Falcao,
+1990; Halder et al., 2015a; Kim et al., 2002; Setoguchi
+et al., 1998, 2001b; Shaaban and Abdel Hafiz, 2012; Takao
+et al., 2000). Two stages of blades (Figure 5), both with
+symmetric and asymmetric blade profile, were studied
+(Gato and Curran, 1996). In a contra-rotating turbine, both
+the rows of blade rotate in different directions (Figure 6).
+LIMPET used two contra-rotating turbines each connected
+to a 250 kW induction generator producing 500 kW maxi-
+mum power output (Boake et al., 2002). One of the recent
+developments in Wells turbine is to use three-dimensional
+(3D) blade where the blade thickness varies in the radial
+direction (Figure 7). Takao et al. (2015) used NACA0015
+and NACA0025 at hub and tip, respectively, to create a
+new 3D blade geometry. Halder and Samad (2015b) stud-
+ied a blade profile created by combining NACA0015 and
+NACA0024 at the hub and tip section, respectively. Results
+indicated that the 3D blade has better performance in terms
+of peak efficiency. All the modifications discussed here are
+summarized in Table 2 for better understanding.
+Impulse turbine
+The main difference between a reaction turbine and an
+impulse turbine is the way energy transfer occurs in the
+rotor. Impulse turbines are classified based on the direction
+of airflow through it: axial and radial. An impulse turbine
+can be made bidirectional flow turbine using guide vanes
+on both sides of the rotor. Airflow deflected by the guide
+Table 1. Parameters of Wells turbine.
+Parameter Analytical
+description
+Remarks
+Solidity () zc / Rt
+Efficiency reduces for
+ > 0.5
+Hub-to-tip ratio (h) R R
+h t
+/ Recommended value
+for h ~0.6
+Aspect ratio (AR) b c
+/ AR = 0.5 is
+recommended for
+turbine design
+Tip clearance (c
+) % of c c
+< 2% of c is
+recommended for
+significant advantage
+Figure 5. Two-stage (biplane) Wells turbine (Mohamed,
+2011).
+Figure 6. Contra-rotating Wells turbine (Mohamed, 2011).
+Das et al. 41
+vanes hits the rotor blade and gives "impulse" to the tur-
+bine. Because of the symmetrical nature of the guide vanes
+and rotor blade, the turbine always rotates in the same
+direction irrespective of the direction of airflow (Figure 8).
+This type of turbine is also known as a self-rectifying tur-
+bine. Furthermore, guide vanes can be classified as fixed,
+self-pitch-controlled, and link mechanism type.
+Although Wells turbine was the first choice to be used
+in OWCs because of its self-rectifying characteristics, it
+has many inherent disadvantages (Setoguchi et al., 2001a).
+Axial turbines are very popular for its simplicity and ease
+of operation in both unidirectional and bidirectional flows.
+However, the axial turbines produce high axial thrust
+which causes fatigue failure of bearings. Radial turbines
+produce less axial thrust compared to the axial turbine. In
+addition, the torque obtained by the radial turbine is high
+due to the radial configuration. In spite of high damping
+produced by the radial turbine, it is favorable because of its
+toughness and low maintenance cost (Setoguchi et al.,
+2000, 2002).
+Axial impulse turbines
+Turbine with self-pitch-controlled guide vane. The most pop-
+ular alternative of the Wells turbine is the axial flow
+impulse turbine. The geometry of the rotor blades of axial
+flow impulse air turbine is just a modified version of con-
+ventional steam turbine of impulse type. In the case of
+self-pitching guide vane, two sets of guide vane on either
+side of the rotor are pivoted and change direction accord-
+ing to the direction of flow with the help of aerodynamic
+moment. Guide vanes are also capable of changing orien-
+tation in the right direction for efficient operation (Figure
+9). The upstream guide vanes act as a nozzle and down-
+stream guide vanes act as a diffuser (Setoguchi et al.,
+2001a). Inoue et al. (1996, 2000) compared the analytical
+and experimental result of an impulse turbine with self-
+pitch-controlled guide vane. This is done for both steady
+flow and oscillating flow conditions. As part of the Indian
+wave energy program, an impulse turbine with self-pitch-
+controlled guide vane is tested in the OWC-based wave
+energy plant at Vizhinjam (Santhakumar et al., 1998).
+Later, Setoguchi et al. (2004) carried out numerical anal-
+ysis of this type of turbine to understand the performance
+with respect to various parameters such as Reynolds
+number and hub-to-tip ratio. From the idea of self-pitch-
+controlled guide vanes, Liu et al. (2016) developed and
+studied an impulse turbine with pitch-controlled blade.
+For the particular turbine studied, results show that the
+rotor blade pitch angle of 5° gives the best efficiency in a
+wave cycle. The turbine shows better performance than
+Figure 7. Three-dimensional blade (Takao et al., 2015).
+Figure 8. Schematic diagram of flow through impulse turbine.
+Figure 9. Axial turbine with self-pitch-controlled guide vane
+(Setoguchi et al., 1993).
+Table 2. Comparison of Wells turbines.
+Design Gain
+Contra-rotating (Curran and
+Gato, 1997)
+Improve efficiency by ~5%
+Pitch-setting (Setoguchi
+et al., 2003)
+Improve efficiency by ~7%
+Guide vanes (Gato and Falcão,
+1990)
+Improve efficiency by ~5%
+Multi-stage (symmetric airfoils;
+Raghunathan, 1995b)
+Improve efficiency by ~5%
+Multi-stage (non-symmetric
+airfoils; Mohamed et al., 2008)
+Improve efficiency by ~2%
+42 The International Journal of Ocean and Climate Systems 8(1)
+zero pitch angle blades. Similar to the self-pitch-con-
+trolled guide vanes in impulse turbine, Wells turbine can
+be used with self-pitch-controlled blades, where the sym-
+metrical airfoil blades change the stagger angles by them-
+selves to obtain higher torque (Figure 10; Setoguchi
+et al., 1997).
+Turbine with fixed guide vane.Although the turbine with
+self-pitch-controlled guide vane operates with higher effi-
+ciency over a wide range of flow rates, it has certain inher-
+ent disadvantages because of the variable geometry design.
+It requires a powerful configuration to withstand the self-
+pitching mechanism for a substantial number of oscillation
+cycles per day. In addition, the turbine consists of a large
+number of moving parts, which leads to higher operating
+and maintenance cost. Fixed guide vane can mitigate all
+these problems with the cost of overall performance of the
+turbine. Kim et al. (2000) carried out two-dimensional
+numerical analysis based on full Reynolds-averaged
+Navier­Stokes equation to investigate the internal flow
+behavior of an impulse turbine with fixed guide vanes.
+Results from other numerical analyses indicate that maxi-
+mum efficiency occurs for a guide vane angle of 30°
+(Maeda et al., 1999, 2001). The two-dimensional analysis
+shows that significant total pressure drop occurs in the
+downstream guide vanes, which leads to the lower perfor-
+mance of the turbine. Thakker and Dhanasekaran (2005)
+carried out a computational fluid dynamics (CFD) analysis
+on 3D guide vanes using the well-known vortex theory.
+Experimental results indicate that the efficiency can be
+improved by an average of 4.5% points by incorporating
+3D guide vanes (Thakker et al., 2005). Numerical analysis
+of flow through impulse turbine (Badhurshah et al., 2014)
+shows that the flow separation occurs in the tip region near
+trailing edge of the blade. However, with the increase in
+rotational speed, the separation points shifts toward the
+hub. A study on rotor solidity ratio recommends solidity of
+0.63 to be used for best performance (Cui and Liu, 2014).
+The comparison of the starting characteristics with Wells
+turbine shows that both the types of impulse turbines
+accelerate faster than the Wells turbine (Figure 11).
+Radial impulse turbines
+Self-rectifying radial-flow impulse turbines are studied to
+investigate the suitability to use as air turbine for wave
+Figure 10. Air-turbine with self-pitch-controlled blade
+(Setoguchi et al., 1997).
+Figure 11. Comparison of starting characteristics (Setoguchi et al., 2001a): (a) impulse turbine with self-pitching guide vane and
+Wells turbine and (b) impulse turbine with fixed guide vane and Wells turbine.
+Das et al. 43
+energy plants. Radial turbine with active pitch-controlled
+guide vanes (Figure 12) has been studied thoroughly by
+model test under steady sinusoidal flow. The steady sinu-
+soidal flow is expressed as
+U U U f
+= + ( )
+0
+2
+max
+sin   (6)
+where U is the inlet air velocity, f is the frequency of air-
+flow, and  is the time step.
+The characteristic of internal flow behavior is clarified
+with the help of such tests. In addition, results show that
+the performance of this turbine is much superior compared
+to the conventional fixed guide vanes radial turbine (Takao
+et al., 2005). Experimental tests were carried out on a bi-
+radial impulse turbine under unidirectional steady flow
+condition (Gato et al., 2012). As wave energy turbines are
+installed inside a cylindrical configuration, the flow behav-
+ior near the tip of the blade and guide vanes is different
+from conventional turbines. Results show that the turbine
+maximum efficiency reduces by up to 8% if the tip clear-
+ance changes from 0% to 4% of the blade span (Pereiras
+et al., 2011).
+A new concept of twin impulse turbine was proposed
+and model tested by Jayashankar et al. (2009) and Mala
+et al. (2011). The experiment results show considerable
+improvement in operating range. In addition, the wave to
+wire efficiency crosses 50% with this specification.
+Thakker et al. (2009) provided a chart for selection of
+impulse turbine for wave energy extraction. The chart is
+based on experimental data. For example, it can be seen
+that for a rated power of 400 kW, the recommended rotor
+diameter from the chart would be 1.6 m.
+Wells turbine versus impulse turbine
+One of the main disadvantages of impulse turbine is the
+aerodynamic loss. This happens due to the large inci-
+dence angle of airflow near the downstream row of guide
+vanes (Karthikeyan et al., 2013); this is inevitable as it is
+required for the symmetry of the guide vanes. A compari-
+son of both the turbines indicates that the impulse turbine
+has a wider operating range than the Wells turbine.
+However, it comes at a cost of peak efficiency; the peak
+efficiency of impulse turbine hardly exceeds 50% (Figure
+13). For Wells turbine, the peak efficiency drops sharply
+when the stall occurs at a higher flow rate. To reduce the
+losses, variable geometry of guide vanes is proposed,
+which is discussed in the previous section. A comparison
+of efficiency with different non-dimensional flow coef-
+ficient for the two types of turbines is shown in Figure
+13. The two-dimensional flow analysis by Falcão and
+Gato (2012) indicates that the change in Reynolds num-
+ber has more impact on Wells turbine efficiency com-
+pared to the impulse turbine efficiency.
+Presently, there are a number of wave energy plants
+operating on the OWC technology. A list of the types of
+turbines being used and respective countries is mentioned
+in Table 3. The list is not exhaustive, as there are few other
+Figure 12. Radial turbine with pitch control guide vane (Takao et al., 2005).
+44 The International Journal of Ocean and Climate Systems 8(1)
+wave energy plants, which are in developing stage. It can
+be seen that most of the prototypes and actual plants have
+used Wells turbine for operation.
+Optimization of air turbines
+Optimization is a mathematical procedure aimed at find-
+ing the best solution among the whole set by efficient
+quantitative and qualitative methods. This section pre-
+sents literature that tries to understand the performance
+and behavior of various types of turbines with optimized
+configurations. Optimization of the full system using
+modern computational methods can bring significant
+improvement in performance.
+Optimization techniques are commonly used in turboma-
+chines and aerospace systems to improve performance.
+Application of optimization is seen in wind turbines for per-
+formance improvement. However, literature related to opti-
+mization of wave energy system is limited. Unlike trial and
+error method, optimization here refers to numerical optimi-
+zation using different algorithms. In the last decade, few
+authors have come up with the optimized geometry of OWC
+air turbines that shows better performance compared to con-
+ventional turbines. This section gives a detailed review of
+optimization methods used in OWC air turbines.
+Optimization approaches are classified into traditional
+(direct or gradient based) and heuristic methods. Heuristic
+methods are favored in engineering optimization problems
+due to its capability of finding the global optima in less
+computational time. Authors worked on optimization of
+air turbines using two main types of optimization tech-
+niques: surrogate modeling and an automated optimization
+algorithm, OPtimization ALgorithm (OPAL). Surrogate
+model is an approximate model developed from hi-fidelity
+computational models such as CFD. On the other hand,
+OPAL is an optimization library that couples the computer-
+aided design (CAD) model with the CFD code. Parameters
+of wave energy turbines are interrelated. A multi-variable
+multi-objective optimization (MOO) is required to arrive
+at an optimized geometry for best performance.
+Badhurshah and Samad (2015) carried out multiple
+surrogate­assisted genetic algorithm­based MOO on an
+impulse turbine to enhance the performance. The design
+variables were number of rotor blade and guide vanes and
+the objectives were the minimization of pressure drop and
+the maximization of shaft power of the turbine. Response
+surface approximation, neural network, kriging, and a
+weighted-average surrogate (WAS) were used to generate
+Figure 13. Comparison of efficiency between Wells
+turbine and impulse turbine for different flow coefficients, 
+
+represents peak efficiency conditions (Setoguchi et al., 1992).
+Table 3. OWC plants with turbines.
+Wave energy plant Type of turbine used Rated power (kW) Remarks
+Sea of Japan, 1983 (Masuda and McCormick,
+1986)
+Wells turbine 40 Used as wave power buoy
+Toftestallen, Bergen, 1985 (Falcão and
+Henriques, 2016)
+Vertical axis Wells turbine 500 Destroyed in storm
+Port of Sakata, Japan, 1990 (Suzuki et al., 2004) Wells turbine 60 Converter integrated with
+breakwater
+Trivandrum, India, 1990 (Ravindran and Koola,
+1991)
+Wells turbine 125 Later impulse turbine
+installed and tested
+Pico Island, Portugal, 1999 (Falcão, 2000) Wells monoplane turbine
+with guide vanes
+500 Fixed structure OWC
+LIMPET, Scotland, 2000 (Boake et al., 2002) Wells turbine--in line
+contra-rotating
+500 Fixed structure OWC
+China, 2001 (Zhang et al., 2009) Wells turbine 100 Shoreline OWC
+Mighty Whale, Japan (Clément et al., 2002) Wells turbine--tandem
+configuration
+110 Floating OWC
+Energetech, Australia (Clément et al., 2002) Variable pitch Wells turbine 500 Fixed structure OWC
+Mutriku, Spain (Torre et al., 2009) Wells turbine (16 turbines
+× 18.5 kW)
+296 Breakwater integrated
+OWC
+OWC: oscillating water column.
+Das et al. 45
+population for the MOO procedure and pareto optimal
+fronts (PoF) of the objectives were produced. The effi-
+ciency, which is a function of the both the objectives, is
+increased by ~11% through this investigation (Figure 14).
+Another study by the same author (Badhurshah and Samad,
+2014) on the optimization of an impulse turbine shows that
+relative efficiency can be improved by approximately 13%
+over the full range of the flow coefficient (Figure 15).
+Mohamed (2011) developed an automated optimization
+algorithm, where a system can be optimized using a genetic
+algorithm and performance evaluation by CFD technique.
+The optimization of the airfoil shape (Figure 16) leads to a
+relative gain of 11.3% in power output and 1% increase in
+overall efficiency throughout the full operating range
+(Mohamed et al., 2011). The same algorithm applied to
+non-symmetric airfoil blades and self-pitch control blades
+(Mohamed and Shaaban, 2014) shows significant improve-
+ment in performance of the turbine.
+Gomes et al. (2012) developed a two-step optimiza-
+tion method for two-dimensional blade section of an
+axial flow impulse turbine. A 3D geometry is obtained by
+stacking two-dimensional optimized sections in spanwise
+direction. A CFD analysis of initial design and the opti-
+mized design shows almost 5% improvement in effi-
+ciency. Halder and Samad (2016) determined optimal
+turbine speed for Wells turbine using surrogate-based
+optimization technique. A multiple surrogate­based
+approach is used to determine optimal turbine speed for
+different flow velocities. The analysis shows that a tur-
+bine with 3% groove depth gives better performance than
+a turbine with 1% tip clearance. Another study by Halder
+et al. (2017) used the surrogate modeling technique to
+optimize the blade sweep angle. The optimized turbine
+blade has backward sweep at mid-section and forward
+sweep at tip section. For the optimized geometry, torque
+coefficient increased by 28.28% and the operating range
+increases by 18.18%. It is clearly visible that optimization
+techniques have been used successfully to improve the
+performance of air turbines. A complete 3D optimization
+may be complicated and numerically expensive; however,
+it can give more accurate result than the previous ones.
+All the design modifications done using optimization are
+summarized in Table 4.
+Conclusion
+A comprehensive review of OWC air turbines (Wells and
+impulse turbines) is reported in this article. Previous
+review articles on OWC air turbines discuss different
+design modifications and comparison with various tur-
+bines. Unlike previous review papers, this article concen-
+trates on the optimization of air turbines used in OWCs
+along with a discussion on parameters of the air turbine.
+It is expected that this article will help researchers in
+OWC optimization to acquaint with the present state of
+the art. Some of the main findings of this article are sum-
+marized here:
+·
+· Among the various parameters affecting the perfor-
+mance of Wells turbine, blade solidity and tip clear-
+ance are the most important. Small tip clearance
+increases efficiency by reducing leakage loss,
+whereas a large tip clearance postpones stall and
+provides wider operating range. The performance
+of Wells turbine is limited by stall, and in varying
+sea condition, a wide operating range is preferable
+over the efficiency of turbine.
+·
+· Impulse turbines required guide vanes to operate on
+bidirectional airflow. Variable pitch guide vanes have
+better performance than fixed guide vanes in terms of
+wider operating range and higher efficiency.
+·
+· Radial turbines are complex in operation and main-
+tenance, whereas the axial turbines are simple in
+Figure 14. Comparison of efficiency between reference and
+different optimized cases (Badhurshah and Samad, 2015).
+Figure 15. Comparison of efficiency between reference and
+surrogate predicted model (Badhurshah and Samad, 2014).
+Figure 16. Comparison of NACA0021 profile and optimized
+blade profile (Mohamed et al., 2011).
+46 The International Journal of Ocean and Climate Systems 8(1)
+operation and possess higher peak efficiency than
+the radial turbines.
+·
+· A comparison between Wells and impulse turbine
+shows that Wells turbine with guide vane provides
+maximum peak efficiency, whereas axial-impulse
+turbine with variable pitch guide vanes results in
+maximum operating range.
+·
+· Optimization of OWC turbines is a relatively new
+area of research. Heuristic methods are preferred in
+numerical methods for air turbine optimization.
+·
+· Optimized blade shape for both Wells and impulse
+turbines gives better performance than reference
+turbine.
+·
+· For impulse turbine, optimization is carried out for
+number of blades and guide vanes; for Wells tur-
+bine, optimization is done for blade pitch angle,
+blade sweep angle, and turbine speed. Optimized
+geometry shows overall performance improvement
+in all the cases.
+·
+· Most of the works on air turbine considered the tur-
+bine geometry separately. However, the perfor-
+mance of air turbine is influenced greatly by the
+hydrodynamics of the OWC. As a future research, it
+is suggested to analyze the performance of OWC
+along with the air turbines.
+Declaration of conflicting interests
+The author(s) declared no potential conflicts of interest with
+respect to the research, authorship, and/or publication of this
+article.
+Funding
+The author(s) received no financial support for the research,
+authorship, and/or publication of this article.
+References
+Badhurshah R and Samad A (2014) Surrogate assisted design
+optimization of an air turbine. International Journal of
+Rotating Machinery 2014: 563483 (8 pp.).
+Badhurshah R and Samad A (2015) Multi-objective optimiza-
+tion of a bidirectional impulse turbine. Proceedings of the
+Institution of Mechanical Engineers, Part A: Journal of
+Power and Energy 229: 584­596.
+Badhurshah R, Samad A and Sangwai J (2014) Analysis of flow
+through ocean energy harvesting bidirectional impulse tur-
+bine. International Journal of Ocean and Climate Systems
+5(2): 51­63.
+Boake CB, Whittaker TJT, Folley M, et al. (2002) Overview and
+initial operational experience of the LIMPET wave energy
+plant. In: Proceedings of the twelfth international offshore
+polar engineering conference, Kitakyushu, Japan, 26­31
+May, pp. 586­594. The International Society of Offshore
+and Polar Engineers.
+Clément A, McCullen P, Falcão AFDO, et al. (2002) Wave energy
+in Europe: Current status and perspectives. Renewable and
+Sustainable Energy Reviews 6(5): 405­431.
+Cruz J (2008) Ocean Wave Energy: Current Status and Future
+Perspectives. Berlin, Heidelberg: Springer.
+Cui Y and Liu Z (2014) Effects of solidity ratio on perfor-
+mance of OWC impulse turbine. Advances in Mechanical
+Engineering 7: 121373 (10 pp.).
+Curran R and Gato LMC (1997) The energy conversion
+performance of several types of Wells turbine designs.
+Proceedings of the Institution of Mechanical Engineers,
+Part A: Journal of Power and Energy 211(2): 133­145.
+Dhanasekaran TS and Govardhan M (2005) Computational
+analysis of performance and flow investigation on wells
+turbine for wave energy conversion. Renewable Energy
+30(14): 2129­2147.
+Dixon SL and Hall CA (2014) Fluid Mechanics and Thermody-
+namics of Turboma-chinery (7th edn). Amsterdam: Elsevier.
+Drew B, Plummer AR and Sahinkaya MN (2009) A review of
+wave energy converter technology. Proceedings of the
+Institution of Mechanical Engineers, Part A: Journal of
+Power and Energy 223: 887­902.
+Falcão AFDO (2000) The shoreline OWC wave power plant
+at the Azores. In: Proceedings of the fourth European
+wave energy conference, Denmark, pp. 42­47. Danish
+Technological Institute.
+Falcão AFDO (2010) Wave energy utilization: A review of the
+technologies. Renewable and Sustainable Energy Reviews
+14(3): 899­918.
+Table 4. Optimization techniques used in air turbines.
+Turbine type Design variables Objective function Optimization technique
+Impulse turbine
+(Badhurshah and Samad,
+2014, 2015)
+Number of rotor blades
+and guide vanes
+Minimization of pressure drop
+and maximization of shaft power
+Surrogate modeling technique
+Impulse turbine (Gomes
+et al., 2012)
+Blade shape and blade
+thickness
+Maximization of efficiency Differential evolution algorithm
+Wells turbine (Mohamed
+et al., 2011)
+Blade shape Maximization of torque
+coefficient and efficiency
+OPAL optimization algorithm
+Wells turbine (Mohamed
+and Shaaban, 2014)
+Blade pitch angle Maximization of torque
+coefficient and efficiency
+OPAL optimization algorithm
+Wells turbine (Halder
+and Samad, 2016)
+Turbine speed Maximization of efficiency Surrogate modeling technique
+Wells turbine (Halder
+et al., 2017)
+Blade sweep angle Maximization of torque
+coefficient and efficiency
+Surrogate modeling technique
+Das et al. 47
+Falcão AFDO and Gato LMC (2012) Air turbines. In: Sayigh AA
+(ed.) Comprehensive Renewable Energy. Ocean Energy,
+vol. 8. Oxford: Elsevier, pp. 111­149.
+Falcão AFDO and Henriques JCC (2016) Oscillating-water-
+column wave energy converters and air turbines: A review.
+Renewable Energy 85: 1391­1424.
+Falnes J (2007) A review of wave-energy extraction. Marine
+Structures 20(4): 185­201.
+Gato LM and Falcão AFDO (1990) Performance of the Wells tur-
+bine with a double row of guide vanes. JSME International
+Journal Ser II, Fluids Engineering, Heat Transfer, Power,
+Combustion, Thermophysical Properties 33: 265­271.
+Gato LMC and Curran R (1996) Performance of the biplane
+Wells turbine. Journal of Offshore Mechanics and Arctic
+Engineering 118(3): 210­215.
+Gato LMC and Falcão AFDO (1988) Aerodynamics of the Wells
+turbine. International Journal of Mechanical Sciences
+30(6): 383­395.
+Gato LMC, Falcão AFDO, Nunes EPAS, et al. (2012) Model test-
+ing of a novel radial self-rectifying air turbine for use in OWC
+wave energy converters. In: Proceedings of the fourth inter-
+national conference on ocean energy, Dublin, 17 October.
+Gato LMC, Warfield V and Thakker A (1996) Performance
+of a high-solidity wells turbine for an OWC wave power
+plant. Journal of Energy Resources Technology 118(4):
+263­268.
+Gomes RPF, Henriques JCC, Gato LMC, et al. (2012) Multi-
+point aerodynamic optimization of the rotor blade sections
+of an axial-flow impulse air turbine for wave energy conver-
+sion. Energy 4: 570­580.
+Halder P and Samad A (2014) Effect of guide vane angle on
+Wells turbine performance. In: Proceedings of the ASME
+2014 gas turbine India conference, New Delhi, India, 15­17
+December, pp. 1­7. New York: ASME.
+Halder P and Samad A (2015a) Tip leakage effect on Wells tur-
+bine. In: Proceedings of the first international conference
+on renewable energies offshore, 24­26 November 2014,
+Lisbon.
+Halder P and Samad A (2015b) Wave energy harvesting turbine:
+Performance enhancement. Procedia Engineering 116:
+97­102.
+Halder P and Samad A (2016) Optimal Wells turbine speeds at
+different wave conditions. International Journal of Marine
+Energy 16: 133­149.
+Halder P, Rhee SH and Samad A (2017) Numerical optimization
+of Wells turbine for wave energy conversion. International
+Journal of Naval Architecture and Ocean Engineering 9:
+11­24.
+Halder P, Sabareesh E and Samad A (2015a) Wells turbine stall.
+In: Proceedings of the forty-second national conference
+on fluid mechanics and fluid power, Kanpur, India, 12­14
+December.
+Halder P, Samad A, Kim JH, et al. (2015b) High performance
+ocean energy harvesting turbine design--A new casing
+treatment scheme. Energy 86: 219­231.
+Inoue M, Kaneko K and Setoguchi T (1996) A simple theory
+of impulse turbine with self-pitch controlled guide vanes
+for wave power conversion. In: Proceedings of the sixth
+international offshore and polar engineering conference,
+Los Angeles, CA, 26­31 May, pp. 66­69. The International
+Society of Offshore and Polar Engineers.
+Inoue M, Kaneko K and Setoguchi T (2000) One-dimensional
+analysis of impulse turbine with self-pitch-controlled guide
+vanes for wave power conversion. International Journal of
+Rotating Machinery 6(5): 151­157.
+Inoue M, Kaneko K, Setoguchi T, et al. (1986) Simulation of
+starting characteristics of the Wells turbine. In: Proceedings
+of the fourth joint fluid mechanics, plasma dynamics and
+lasers conference, Atlanta, GA, 12­14 May.
+Jayashankar V, Anand S, Geetha T, et al. (2009) A twin uni-
+directional impulse turbine topology for OWC based wave
+energy plants. Renewable Energy 34: 692­698.
+Karthikeyan T, Samad A and Badhurshah R (2013) Review of
+air turbines for wave energy conversion. In: Proceedings of
+the 2013 international conference on renewable energy and
+sustainable energy (ICRESE'13), Coimbatore, India, 5­6
+December.
+Kim TH, Lee H, Ill-kyoo P, et al. (2000) Numerical analy-
+sis of impulse turbine for wave energy conversion. In:
+Proceedings of the tenth international offshore and polar
+engineering conference, Seattle, WA, 27 May­2 June,
+pp. 413­419. The International Society of Offshore and
+Polar Engineers.
+Kim TH, Setoguchi T, Kaneko K, et al. (2002) Numerical inves-
+tigation on the effect of blade sweep on the performance of
+Wells turbine. Renewable Energy 25(2): 235­248.
+Liu Z, Cui Y, Kim KW, et al. (2016) Numerical study on a modi-
+fied impulse turbine foe OWC wave energy conversion.
+Ocean Engineering 111: 533­542.
+López I, Andreu J, Ceballos S, et al. (2013) Review of wave
+energy technologies and the necessary power-equipment.
+Renewable and Sustainable Energy Reviews 27: 413­434.
+Maeda H, Santhakumar S, Setoguchi T, et al. (1999) Performance
+of an impulse turbine with fixed guide vanes for wave power
+conversion. Renewable Energy 17(4): 533­547.
+Maeda H, Setoguchi T, Takao M, et al. (2001) Impulse turbine
+with air flow rectification system for wave power conver-
+sion. In: Proceedings of the eleventh international offshore
+and polar engineering conference, Stavanger, 17­22 June,
+pp. 646­652. The International Society of Offshore and
+Polar Engineers.
+Mala K, Jayaraj J, Jayashankar V, et al. (2011) A twin unidirec-
+tional impulse turbine topology based wave energy plants--
+Experimental validation and scaling. Renewable Energy 36:
+307­314.
+Masuda Y (1986) An experience of wave power generator
+through tests and improvement. In: Evans DV and Falcão
+AFDO (eds) Hydrodynamics of Ocean Wave-Energy
+Utilization. Berlin, Heidelberg: Springer, pp. 445­452.
+Masuda Y and McCormick ME (1986) Experiences in pneu-
+matic wave energy conversion in Japan. In: McCormick ME
+and Kim YC (eds) Utilization of Ocean Waves--Wave to
+Energy Conversion. New York: American Society of Civil
+Engineers, pp. 1­33.
+Miyazaki T and Masuda Y (1975) Tests on the wave power gen-
+erator "Kaimei." In: Proceedings of the offshore technology
+conference, Houston, TX, 5­8 May.
+Mohamed MH (2011) Design Optimization of Savonius and
+Wells Turbines. Otto-von-Guericke-Universität Magdeburg.
+Available at: http://d-nb.info/1011710889/34
+Mohamed MH and Shaaban S (2014) Numerical optimization
+of axial turbine with self-pitch-controlled blades used for
+48 The International Journal of Ocean and Climate Systems 8(1)
+wave energy conversion. International Journal of Energy
+Research 38(5): 592­601.
+Mohamed MH, Janiga G and Thévenin D (2008) Performance
+optimization of a modified Wells turbine using non-sym-
+metric airfoil blades. In: Proceedings of the ASME Turbo
+Expo 2008: Power for land, sea, and air, Berlin, 9­13 June.
+Mohamed MH, Janiga G, Pap E, et al. (2011) Multi-objective
+optimization of the airfoil shape of Wells turbine used for
+wave energy conversion. Energy 36(1): 438­446.
+Pereiras B, Castro F, el Marjani A, et al. (2011) Tip clearance
+effect on the flow pattern of a radial impulse turbine for
+wave energy conversion. Journal of Turbomachinery
+133(4): 041019-1­041019-10.
+Raghunathan S (1995a) The Wells air turbine for wave energy
+conversion. Progress in Aerospace Sciences 31(4): 335­386.
+Raghunathan S (1995b) A methodology for Wells turbine design
+for wave energy conversion. Proceedings of the Institution
+of Mechanical Engineers, Part A: Journal of Power and
+Energy 209(3): 221­232.
+Raghunathan S and Tan CP (1982) Performance of the Wells tur-
+bine at starting. Journal of Energy 6(6): 430­431.
+Raghunathan S and Tan CP (1983) Aerodynamic performance of
+a Wells air turbine. Journal of Energy 7(3): 226­230.
+Raghunathan S, Setoguchi T and Kaneko K (1994) Aerodynamics
+of monoplane wells turbine--A review. International
+Journal of Offshore and Polar Engineering 4(1): 68­75.
+Raghunathan S, Tan CP and Wells NAJ (1982) Theory and
+performance of a Wells turbine. Journal of Energy 6(2):
+156­160.
+Ravindran M and Koola PM (1991) Energy from sea waves: The
+Indian wave energy program. Current Science 60: 676­680.
+Ravindran M, Jayashankar V, Jalihal P, et al. (1997) The Indian
+wave energy programme--An overview. TERI Information
+Digest on Energy and Environment 7: 173­188.
+Sabzehgar R and Moallem M (2009) A review of ocean wave
+energy conversion systems. In: Proceedings of the IEEE
+electrical power and energy conference, Montreal, QC,
+Canada, 22­23 October, pp. 1­6. New York: IEEE.
+Salter SH (1974) Wave power. Nature 249: 720­724.
+Santhakumar S, Jayashankar V, Atmanand MA, et al. (1998)
+Performance of an impulse turbine based wave energy plant.
+In: Proceedings of the eighth international offshore and
+polar engineering conference, Montreal, QC, Canada, 24­
+29 May, pp. 75­80. The International Society of Offshore
+and Polar Engineers.
+Setoguchi T and Takao M (2006) Current status of self rectifying
+air turbines for wave energy conversion. Energy Conversion
+and Management 47: 2382­2396.
+Setoguchi T, Kaneko K, Kim TH, et al. (1993) Impulse turbine
+with self-pitch-controlled guide vanes for wave power con-
+version: Performance of mono-vane type. International
+Journal Offshore and Polar Engineering 3(1): 73­78.
+Setoguchi T, Kaneko K, Maeda H, et al. (1992) Performance
+of impulse turbine with self-pitch controlled guide vanes
+for wave power conversion. In: Proceedings of the second
+international offshore and polar engineering conference,
+San Francisco, CA, 14­19 June.
+Setoguchi T, Raghunathan S, Takao M, et al. (1997) Air turbine
+with self pitch controlled blades for wave energy conversion
+(estimation of performances in periodically oscillating
+flow). International Journal of Rotating Machinery 3(4):
+233­238.
+Setoguchi T, Santhakumar S, Maeda H, et al. (2001a) A review
+of impulse turbines for wave energy conversion. Renewable
+Energy 23(2): 261­292.
+Setoguchi T, Santhakumar S, Takao M, et al. (2001b) The effect
+of guide vane shape on the performance of a Wells turbine.
+Renewable Energy 23(1): 1­15.
+Setoguchi T, Santhakumar S, Takao M, et al. (2002) A perfor-
+mance study of a radial turbine for wave energy conversion.
+Proceedings of the Institution of Mechanical Engineers,
+Part A: Journal of Power and Energy 216: 15­22.
+Setoguchi T, Santhakumar S, Takao M, et al. (2003) A modi-
+fied Wells turbine for wave energy conversion. Renewable
+Energy 28(1): 79­91.
+Setoguchi T, Takao M and Kaneko K (1998) Effect of guide
+vanes on the performance of Wells turbine for wave energy
+conversion. International Journal of Offshore and Polar
+Engineering 8(2): 155­160.
+Setoguchi T, Takao M, Kinoue Y, et al. (2000) Study on an
+impulse turbine for wave energy conversion. International
+Journal of Offshore and Polar Engineering 10(2): 180­187.
+Setoguchi T, Takao M, Santhakumar S, et al. (2004) Study of
+an impulse turbine for wave power conversion: Effects
+of Reynolds number and hub-to-tip ratio on performance.
+Journal of Offshore Mechanics and Arctic Engineering
+126(2): 137­140.
+Shaaban S and Abdel Hafiz A (2012) Effect of duct geometry
+on Wells turbine performance. Energy Conversion and
+Management 61: 51­58.
+Suzuki M, Arakawa C and Takahashi S (2004) Performance of
+a wave power generating system installed in breakwater
+at Sakata port in Japan. In: Proceedings of the fourteenth
+international offshore and polar engineering conference,
+Toulon, 23­28 May.
+Taha Z, Sugiyono, Tuan Ya TMYS, et al. (2011) Numerical
+investigation on the performance of Wells turbine with non-
+uniform tip clearance for wave energy conversion. Applied
+Ocean Research 33(4): 321­331.
+Takahashi S, Adachi T, Nakada H, et al. (1992) Field experi-
+ments of a wave power extracting caisson breakwater data
+analysis of wave forces and wave power conversion. Report
+of Port and Harbour Research Institute 31: 22­54.
+Takao M and Setoguchi T (2012) Air turbines for wave energy
+conversion. International Journal of Rotating Machinery
+2012: 717398 (10 pp.).
+Takao M, Fujioka Y, Tae-Whan K, et al. (2005) Performance of
+radial turbine with pitch-controlled guide vanes for wave
+energy conversion. In: Proceedings of the fifteenth interna-
+tional offshore and polar engineering conference, Seoul,
+Korea, 19­24 June, pp. 518­522. The International Society
+of Offshore and Polar Engineers.
+Takao M, Setoguchi T, Kim TH, et al. (2000) The performance
+of a Wells turbine with 3D guide vanes. In: Proceedings
+of the tenth international offshore and polar engineering
+conference, Seattle, WA, 28 May­2 June, pp. 72­76. The
+International Society of Offshore and Polar Engineers.
+Takao M, Takasaki K, Tsunematsu T, et al. (2015) Wells
+turbines with 3-dimensional blades--The performance
+under unsteady flow conditions. In: Proceedings of the
+Das et al. 49
+ASME/JSME/KSME 2015 joint fluids engineering confer-
+ence (AJKFluids2015), Seoul, Korea, 26­31 July, pp. 1­4.
+New York: ASME.
+Thakker A and Dhanasekaran TS (2005) Computed effect of
+guide vane shape on performance of impulse turbine for
+wave energy conversion. International Journal of Energy
+Research 29(13): 1245­1260.
+Thakker A, Dhanasekaran TS and Ryan J (2005) Experimental
+studies on effect of guide vane shape on performance of
+impulse turbine for wave energy conversion. Renewable
+Energy 30(15): 2203­2219.
+Thakker A, Jarvis J and Sahed A (2009) Design charts for
+impulse turbine wave energy extraction using experimental
+data. Renewable Energy 34: 2264­2270.
+Torre-Enciso Y, Ortubia I, López de Aguileta LI, et al. (2009)
+Mutriku wave power plant: From the thinking out to the
+reality. In: Proceedings of the eighth European wave
+and tidal energy conference, Uppsala, 7­10 September,
+pp. 319­329. Uppsala University.
+Vavra MH (1960) Aero-Thermodynamics and Flow in
+Turbomachines. New York: Wiley.
+Watterson J and Raghunathan S (1998) Computed effects of
+solidity on Wells turbine performance. JSME International
+Journal Series B Fluids and Thermal Engineering 41(1):
+177­183.
+Zhang D, Li W and Lin Y (2009) Wave energy in China: Current
+status and perspectives. Renewable Energy 34(10): 2089­
+2092.
+Author biographies
+Tapas Kumar Das is a research scholar (PhD) at the Department
+of Ocean Engineering, Indian Institute of Technology Madras
+(IIT Madras). He is presently working on the optimization of the
+wave energy system.
+Paresh Halder received his doctoral degree from Indian
+Institute of Technology Madras and worked in the Sultan
+Qaboos University (Sultanate of Oman) as a post-doctoral
+fellow. His research interests include heat transfer, bio-fluid,
+CFD, optimization, turbomachinery, gas turbine film cooling
+and marine renewable energy.
+Abdus Samad is an Associate Professor at the Department
+of Ocean Engineering, Indian Institute of Technology Madras
+(IIT Madras). His research interests include marine renewable
+energy, fluid machinery and optimization of engineering
+systems.
+Appendix 1
+Notation
+b blade span
+c chord length
+D drag force
+E specific energy of the fluid
+f frequency of air flow in Hz
+F total force
+g acceleration due to gravity
+h hub-to-tip ratio
+H pressure head
+L lift force
+
+m mass flow rate
+P power
+Q volume flow rate
+r radial coordinate
+R radius
+S surface of revolution
+T torque
+U inlet air velocity
+V tangential component of the absolute flow velocity
+W relative velocity
+z number of blades
+ angle of attack
+ efficiency
+ time step
+ density of air
+ solidity
+c
+tip clearance
+ flow coefficient
+ rotational speed
+Subscript
+0 initial
+1 inlet
+2 outlet
+h hub
+max maximum
+t tip
+tan tangential direction
+x axial direction
+

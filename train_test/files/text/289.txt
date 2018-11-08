@@ -1,0 +1,1402 @@
+ORIGINAL ARTICLE
+Logistic Regression With Incomplete Covariate Data in
+Complex Survey Sampling
+Application of Reweighted Estimating Equations
+Charity G. Moore,a Stuart R. Lipsitz,b Cheryl L. Addy,c James R. Hussey,c Garrett Fitzmaurice,b
+and Sundar Natarajand
+Abstract: Weighted survey data with missing data for some covariates
+presents a substantial challenge for analysis. We addressed this problem
+by using a reweighting technique in a logistic regression model to
+estimate parameters. Each survey weight was adjusted by the inverse of
+the probability that the possibly missing covariate was observed. The
+reweighted estimating equations procedure was compared with a com-
+plete case analysis (after discarding any subjects with missing data) in
+a simulation study to assess bias reduction. The method was also
+applied to data obtained from a national health survey (National Health
+and Nutritional Examination Survey or NHANES). Adjusting the sam-
+pling weights by the inverse probability of being completely observed
+appears to be effective in accounting for missing data and reducing the bias
+of the complete case estimate of the regression coefficients.
+(Epidemiology 2009;20: 382­390)
+Complex survey sampling is widely used for estimation of
+population characteristics. Because of their complex sam-
+pling frame, analyses should be design based and incorporate
+weighting, stratification, and clustering variables. Here, we con-
+sider missing data on a covariate in complex surveys, and describe
+a reweighting technique for estimating logistic regression parame-
+ters. We illustrate the technique on weight loss data from a complex
+survey, and assess potential bias reduction via a simulation study.
+Motivating Example
+The motivating example is from the third National Health
+and Nutrition Examination Survey (NHANES III), conducted by
+the National Center for Health Statistics1,2 to provide national
+estimates of the health and nutritional status of the US popula-
+tion. NHANES III used stratified, multistage sampling, in which
+study participants have different probabilities of being sampled.
+Specifically, the United States was stratified into 47 geographic
+regions (mainly states) and within each strata, 2 counties were
+sampled with probability proportional to the size of the county.
+Within each county, households were randomly selected and an
+average of 1.6 household members was chosen. Young children,
+older persons (65 years and older), Blacks, and Hispanics (Mex-
+ican origin) were all oversampled. For generalizability to the
+population, both the design and the probability of being selected
+into the sample must be incorporated into the analysis.
+When analyzing data from NHANES III, each partici-
+pant is given a weight proportional to the inverse of the
+probability of being selected into the sample (the "weight"
+equals the inverse probability of being selected multiplied by
+a constant so that the sum of the weights equals the size of the
+population). For example, the sample survey weights of the
+16,686 participants in NHANES who were at least 21 years
+old are up-weighted to represent the 173,673,142 persons in
+the US population at the time.
+Missing data occur often in sample surveys and arise in 2
+forms: unit nonresponse, in which the whole survey is left
+unanswered, and item nonresponse, in which an individual does
+not answer a specific item on a questionnaire. In NHANES III,
+14% of the households did not respond to the survey interview.
+An adjustment to the weights for this household unit nonresponse
+was provided in the NHANES III database. As described by
+Mohadjer et al,3 households that respond are reweighted so that
+their weights sum to the total weights of the respondents and
+nonrespondents in that county.4 We focused on item nonresponse,
+where the possibly missing "item" was a covariate of interest.
+METHODS
+To illustrate the bias resulting from item nonresponse
+and evaluate a technique to reduce such bias, we analyzed
+Submitted 21 October 2007; accepted 3 September 2008; posted 11 March
+2009.
+From the aDepartment of Medicine, University of Pittsburgh, Pittsburgh, PA;
+bDivision of General Internal Medicine, Brigham and Women's Hospital,
+Boston, MA; cDepartment of Epidemiology and Biostatistics, Norman J.
+Arnold School of Public Health, University of South Carolina, Columbia,
+SC; and dDivision of General Internal Medicine, New York University
+School of Medicine, New York, NY.
+Supported by the following grants from the US National Institutes of Health:
+AI 60373, CA 74015, CA 069222, and GM 29745, and RCD 000211
+from the US Department of Veterans Affairs.
+Editors' Note: A commentary on this article appears on page 391.
+Correspondence: Sundar Natarajan, New York University School of Medicine, 423
+E 23rd Street, New York, NY 10010. E-mail: Sundar.Natarajan@med.nyu.edu.
+Copyright © 2009 by Lippincott Williams & Wilkins
+ISSN: 1044-3983/09/2003-0382
+DOI: 10.1097/EDE.0b013e318196cd65
+Epidemiology · Volume 20, Number 3, May 2009
+382 | www.epidem.com
+predictors of weight loss, using NHANES III data. The binary
+outcome of interest is the study participant's response to:
+Have you tried to lose weight in past 12 months? The
+covariates of interest are age, sex, ethnicity, education, body
+mass index, poverty income ratio, healthcare visit within the
+last 2 years (yes or no), family history of heart disease, health-
+care visit in the last 2 years (yes or no), and self-reported
+cholesterol (high or normal). All 16,686 participants had the
+outcome and all covariate information fully recorded, except
+"self-reported cholesterol." The 8002 subjects (48%) with miss-
+ing self-reported cholesterol data represent 42% of the total
+population. With such a large fraction of missing data, a com-
+plete case logistic regression analysis (using only the subjects
+with no missing data) could give highly biased estimates.
+We consider 2 possible missing data processes. The
+first, referred to as missing completely at random (MCAR),
+means that the probability the covariate (self-reported cho-
+lesterol) is missing does not depend on any data values,
+including the possibly missing value of the covariate, the
+outcome value, or the values of the other covariates. The
+second process, referred to as missing at random (MAR),
+means that the probability that the covariate is missing can
+depend on the observed value of the outcome or the values of
+other covariates, but cannot depend on the possibly missing
+value of the covariate itself. Under MAR, subjects who report
+that they have not tried to lose weight during the last 12
+months may be less health conscious, and thus less likely to
+know their cholesterol level. Furthermore, under MAR, we
+might expect subjects above the poverty threshold, with more
+education, with a healthcare visit within the last 2 years, and
+with a family history of heart disease, to be more likely to
+have cholesterol recorded. Although not considered here, the
+missing data process is sometimes "nonignorable," implying
+that the probability that the covariate is missing depends on
+the possibly missing value of the covariate, even after adjust-
+ing for the observed values of the outcome and other covari-
+ates. In general, a complete case regression analysis can give
+biased estimates unless the missing data are MCAR.
+In simple random sampling from an infinite population,
+weighted estimating equations5 have been proposed to ana-
+lyze data with missing covariate values. With weighted esti-
+mating equations, the contribution to the estimating equation
+from a complete case is weighted by the inverse probability
+of being observed. In simple random sampling, weighted
+estimating equations are applicable to regression analyses
+when missing covariates are either MAR or MCAR.6 To use
+weighted estimating equations, one must estimate a binary
+(eg, logistic) regression model for the probability of a covari-
+ate value being observed as a function of the outcome and
+other covariates, and then weight each subject by the inverse
+of this estimated probability. Note that when estimating
+regression coefficients with sample survey data without any
+missingness, one also uses weighted estimating equations,7
+weighted by the sample survey weight. To reduce the poten-
+tial bias of the complete case logistic regression estimator, we
+apply the weighted estimating equations approach to complex
+sample survey data.
+We propose a reweighted estimating equation in which
+the contribution to the estimating equation from the complete
+cases is weighted by the inverse of the joint probability of
+being selected into the sample survey and having no covariate
+data missing. These weights are the product of the original
+fixed sampling weights and the inverse of the predicted
+probability of having the covariate value observed. Because
+the NHANES III "weights" have already been reweighted for
+unit (household) nonresponse, applying the Robins et al5
+approach to handle item nonresponse is, in some sense, an
+extension of methods already widely used in the sample
+survey literature. Below, we apply the weighted estimating
+equations approach to the 2 sampling scenarios.
+Sample Surveys With No Missing Data
+Suppose the finite population consists of i  1, . . ., N
+subjects. We choose n subjects from this population with the
+sampling design being multistage, and each subject having a
+different probability (or weight) of being selected into the
+sample.
+We are interested in estimating the population regression
+of the outcome variable Yi
+versus the covariate vector xi
+ (xi1
+,
+xi2
+, . . . ., xiK
+) and another covariate zi
+(the possibly missing
+covariate). We consider Yi
+as a random observation from the
+population, and let 
+i
+ EYi
+xi
+, zi
+ denote the mean of Yi
+given
+(Xi
+, Zi
+). We want to estimate the regression coefficients  
+(
+0
+, 
+x
+, 
+z
+) from the regression model 
+i
+
+0
+ 
+x
+xi
+ 
+z
+zi
+
+ g
+0
+ 
+x
+xi
+ 
+z
+zi
+, where 
+0
+and 
+z
+are scalars, 
+x
+is a (Kx1)
+vector, and g(.) is a known function. For logistic regression,
+
+i
+
+0
+ 
+x
+xi
+ 
+z
+zi
+ 
+exp
+0
+ 
+x
+xi
+ 
+z
+zi
+
+1  exp
+0
+ 
+x
+xi
+ 
+z
+zi
+.
+To indicate which n subjects are sampled from the pop-
+ulation of N subjects, we define the indicator random variable
+
+i
+
+{1 if selected into the sample
+0 if not selected into the sample
+for i  1, . . ., N, where 
+il
+N
+
+i
+n. Depending on the sampling
+design, some of the 
+i
+s could be correlated (eg, for 2 subjects
+within the same cluster). Further, we define pi
+ pr(
+i
+ 1yi
+,
+xi
+, zi
+, si
+) as the probability of being selected, where si
+are
+additional variables (in addition to the outcome and covari-
+ates of interest) used in the sampling scheme. In general, the
+selection probability (pi
+) may depend on the outcome (yi
+), the
+predictor variables (xi
+), or additional variables si
+(eg, screen-
+ing variables) that would not ordinarily be included in the
+regression model. In NHANES III, subjects were selected
+based on age and race, both covariates of interest (contained
+in xi
+); however, subjects were also over- or undersampled
+Epidemiology · Volume 20, Number 3, May 2009 Logistic Regression With Incomplete Covariate Data
+© 2009 Lippincott Williams & Wilkins www.epidem.com | 383
+based on characteristics of the county of residence (subjects
+in counties in which census data showed a higher proportion
+of Blacks, Hispanics, or older residents were oversampled).
+These county characteristics are the variables in si
+. However,
+for many NCHS complex sample surveys (including the
+National Health Interview Survey, Medical Expenditure
+Panel Survey, Health Examination Survey), si
+is not con-
+tained in the downloadable dataset.
+When estimating regression parameters with sample
+survey data, one must consider the sampling design. In
+particular, Shah7 proposed weighting each subject by the
+inverse probability of being selected. With no missing data,
+one can use the following weighted logistic regression equa-
+tions8 to estimate   
+0
+, 
+x
+ , 
+z
+:
+
+il
+N 
+i
+pi
+1
+xi
+zi
+yi
+ 
+i
+
+0
+ 
+x
+ xi
+ 
+z
+zi
+ (1)
+where 
+i
+ 
+i
+
+0
+ 
+x
+ xi
+ 
+z
+zi
+ is the probability that
+yi
+ 1. Note that each subject is weighted by wi
+
+
+i
+pi
+(the
+inverse probability of being selected  the sampling indica-
+tor). Subjects who are oversampled (eg, larger pi
+) are down-
+weighted in (1), so that the resulting estimator of  is
+reflective of the population from which the sample was
+drawn. Using this line of reasoning, Binder9 showed that the
+estimate of  from (1) has an approximate normal distribution
+with mean  and covariance matrix.
+
+il
+N 
+i
+pi
+1
+xi
+zi
+1
+xi
+zi
+
+
+i
+1  
+i
+
+
+1
+
+i  1
+N
+E
+
+i
+pi
+2
+1
+xi
+zi
+1
+xi
+zi
+
+yi
+ 
+i
+2
+
+1
+
+i  1
+N
+
+i
+pi
+1
+xi
+zi
+1
+xi
+zi
+
+
+i
+1  
+i
+
+
+1
+(2)
+where the expectation depends on the sampling scheme. One
+can estimate (2) by replacing 
+i
+with 
+^ i
+to obtain the
+so-called sandwich variance estimate for sample survey data,
+such as that given in SUDAAN7 or SAS Proc SurveyLogistic.
+If subjects are over- or undersampled based solely on
+the values of the covariates xi
+in the model, then the un-
+weighted logistic regression equations (giving all individuals
+the same weight wi
+ 1) produces unbiased estimates,10,11
+although (2) is needed to estimate the variance if the design
+is multistage. Further, if the sampling depended on additional
+variables si
+, these additional variables can be added to the
+logistic regression model, say
+
+i
+
+0
+*  
+x
+*xi
+ 
+z
+*zi
+ 
+s
+si
+
+
+exp(
+0
+*  
+x
+*xi
+ 
+z
+*zi
+  
+s
+si
+)
+1  exp(
+0
+*  
+x
+*xi
+ 
+z
+*zi
+  
+s
+si
+)
+.
+Unfortunately, the estimate of * from this model will
+be biased for the  of interest if si
+is a confounder for the
+association between Yi
+and covariates (xi
+, zi
+). Further, the
+additional variables si
+are often not available, as with
+the NHANES III dataset.
+Sample Surveys With Missing Covariate Data
+Next, we apply the weighted estimating equations ap-
+proach to complex sample surveys with missing covariate
+data. Recall that zi
+is the covariate that can be missing. An
+integral part of the Robins et al5 approach is formulating a
+logistic regression model for the probability that zi
+is ob-
+served as a function of Yi
+, the observed covariates xi
+and the
+possibly missing covariate zi
+. In particular, we define a binary
+random variable Ri
+, where Ri
+ 1, if zi
+is observed, and Ri
+
+0, if zi
+is not observed, i  1, . . ., N. Then, we formulate a
+logistic regression model for 
+i
+ Pr(Ri
+ 1yi
+, xi
+, zi
+). This
+probability 
+i
+is often called the missing data mechanism. In
+terms of logistic regression models, with parameters , we
+can write the 2 missing data mechanisms as shown below
+(assuming all effects are additive):
+MCAR: logitpr(Ri
+ 1yi
+, xi
+, zi
+)  
+0
+MAR: logitpr(Ri
+ 1yi
+, xi
+, zi
+)  
+0
+ 
+y
+yi
+ 
+x
+xi
+We focus on MAR mechanisms for missing data, and
+note that a more general MAR model can include interactions
+among the elements of (yi
+, xi
+), as well as powers of the
+elements of (yi
+, xi
+).
+For the discussion in this paragraph, suppose the pa-
+rameters (
+0
+, 
+y
+, 
+x
+) in
+logitpr(Ri
+ 1yi
+, xi
+, zi
+)  logit(
+i
+)  
+0
+ 
+y
+yi
+ 
+x
+xi
+are known. In our proposed reweighted estimating equation,
+we replace
+
+i
+pi
+in (1) with
+Ri
+
+i
+
+i
+pi
+. In particular, subjects who are
+selected in the original sample (
+i
+ 1) and selected thro-
+ugh the missing data mechanism to have zi
+observed
+(Ri
+ 1) are weighted by the inverse probability (pi
+) of being
+selected in the original sample  the inverse probability (
+i
+)
+of having zi
+observed:
+
+i  1
+N Ri
+
+i
+
+i
+pi
+1
+xi
+zi
+yi
+ 
+i
+
+0
+ 
+x
+ xi
+ 
+z
+zi
+. (3)
+Moore et al Epidemiology · Volume 20, Number 3, May 2009
+384 | www.epidem.com © 2009 Lippincott Williams & Wilkins
+Here, subjects who are oversampled (eg, larger pi
+) and
+who are more likely to have zi
+observed (eg, larger 
+i
+) are
+down-weighted, so that the resulting estimator of  is reflec-
+tive of both the population from which the sample was drawn
+and the missing data mechanism. The results of Binder9 can
+again be used to show that the estimate of  from setting (3)
+to 0 has an approximate normal distribution with mean  and
+covariance matrix similar to (2), except that
+
+i
+pi
+is replaced
+with
+Ri
+
+i
+
+i
+pi
+. Note that the denominator of Ri
+
+i
+in (3) is the joint
+probability that Ri
+ 1 and 
+i
+ 1, given the values of (xi
+, yi
+,
+zi
+, si
+) under the assumption
+pr
+i
+ 1, Ri
+ 1xi
+, yi
+, zi
+, si
+
+ pr
+i
+ 1xi
+, yi
+, zi
+, si
+Ri
+ 1prRi
+ 1yi
+, xi
+, zi
+, si
+
+ pr
+i
+ 1xi
+, yi
+, zi
+, si
+prRi
+ 1yi
+, xi
+  pi
+
+i
+.
+The latter line results from the fact that the probability
+of being selected in the original sample (
+i
+ 1) is only a
+function of (xi
+, yi
+, zi
+, si
+) and not the missingness indicator Ri
+.
+Further, we assume that the missing data mechanism pr(Ri
+
+1yi
+, xi
+, zi
+, si
+) does not depend on the possibly missing zi
+(the
+MAR assumption), nor si
+(the additional variables used in the
+sampling scheme). If the si
+were available, one could also
+include them as covariates in the model for 
+i
+.
+The default estimate in any complex sample survey
+package, the complete case analysis, is obtained by discard-
+ing all information of any subjects with missing zi
+. The
+complete case estimate is obtained by using weighted esti-
+mating equations similar to (3), except that 
+i
+is removed
+from the denominator of the weights,
+
+i  1
+N Ri
+
+i
+pi
+1
+xi
+zi
+yi
+ 
+i
+
+0
+ 
+x
+ xi
+ 
+z
+zi
+.
+Under MAR, the weights are no longer correct because
+we are not down-weighting subjects who are more likely to
+have zi
+observed (eg, larger 
+i
+); the resulting estimator of 
+could be biased.
+In practice, the parameters  in the model for 
+i
+are
+rarely known. However, if we replace  with a consistent
+estimate, the resulting estimator of  will still be consistent
+(Zhao and Lipsitz6). Suppose, we pose the following MAR
+missing data model
+logitpr(Ri
+ 1yi
+, xi
+, zi
+)  logit(
+i
+)  
+0
+ 
+y
+yi
+ 
+x
+xi
+.
+We note here that 
+i
+is the population probability that
+zi
+is observed, given (xi
+, yi
+). We estimate the population
+probability 
+i
+by using weighted logistic regression, estimat-
+ing equations with outcome Ri
+and covariates (xi
+, yi
+) and
+weights
+
+i
+pi
+. In particular, even though Ri
+and the covariates
+(xi
+, yi
+) contain no missing components, they were obtained
+from the complex survey design, which must be accounted
+for when estimating the population probability 
+i
+. The
+weighted estimating equations for  are similar to (1), with
+the estimate 
+^ obtained by setting the below equation to 0.
+
+i  1
+N 
+i
+pi
+1
+xi
+zi
+ri
+ 
+i
+, (4)
+Once 
+^ is obtained from (4), 
+^ i
+is calculated and placed
+in the weights
+Ri
+
+i
+
+^ i
+pi
+in (3); (3) is then solved for 
+^. To
+estimate the variance of 
+^, one uses (2) after replacing
+
+i
+pi
+with
+Ri
+
+i
+
+^ i
+pi
+. Note that, even though 
+^ i
+is an estimate, and not the true
+value, Robins et al12 show that it is valid to use the estimate
+in both the estimating equations for , as well as the sand-
+wich estimate of its variance. However, 
+^ i
+must be obtained
+from a correctly specified model for 
+i
+. In particular, a
+correctly specified regression model for 
+i
+is crucial for the
+resulting estimator of  from (3) to have minimal bias. As
+TABLE 1. Weighted Logistic Regression Estimates From
+NHANES III Dataa
+Parameter Estimate SE Z P
+Intercept 3.348 0.201 16.620 0.001
+Lose weight (yi
+) 0.362 0.060 6.004 0.001
+Age (years)
+21­34 0.000 -- -- --
+35­49 0.814 0.075 10.855 0.001
+50­64 1.791 0.088 20.446 0.001
+65 1.924 0.072 26.614 0.001
+Sex (female) 0.087 0.065 1.336 0.182
+Race
+Black 0.267 0.070 3.796 0.001
+Hispanic 0.595 0.086 6.951 0.001
+White 0.000 -- -- --
+Education (years)
+12 0.000 -- -- --
+12 0.493 0.074 6.694 0.001
+12 1.103 0.083 13.247 0.001
+Routine healthcare visit 2 years 1.567 0.125 12.529 0.001
+BMI 29 0.253 0.055 4.589 0.001
+Poverty income ratio 1 0.546 0.087 6.246 0.001
+History of premature heart disease 0.184 0.089 2.070 0.0385
+aFor the model predicting 
+i
+ Pr(Ri
+ 1yi
+, xi
+).
+SE indicates standard error.
+Epidemiology · Volume 20, Number 3, May 2009 Logistic Regression With Incomplete Covariate Data
+© 2009 Lippincott Williams & Wilkins www.epidem.com | 385
+such, Troxel et al13 suggest being liberal when including
+predictors of the probability of observing zi
+.
+RESULTS
+Empirical Example
+To illustrate the proposed approach, consider the logis-
+tic regression model for the probability of trying to lose
+weight in the last 12 months
+logitPr(Yi
+xi
+, zi
+)  
+0
+ 
+1
+I1i
+High cholesterol)
+
+2
+I2i
+Age 35­49)  
+3
+I3i
+Age 50­64)
+ 
+4
+I4i
+Age 65)
+ 
+5
+I5i
+Female)
+ 
+6
+I6i
+Black) 
+7
+I7i
+Mexican)
+ 
+8
+I8i
+12 y educ) 
+9
+I9i
+12 yrs educ)
+ 
+10
+I10i
+Healthcare visit 2 yrs)
+ 
+11
+I11i
+BMI 29)
+ 
+12
+I12i
+Poverty ratio 1)
+ 
+13
+I13i
+Family hx heart disease).
+where the indicator function, I(.), is 1 if the characteristic is
+true for subject i and 0 if not.
+To use the reweighted estimating equations, we must
+also specify a logistic regression model for 
+i
+ Pr(Ri
+ 1yi
+,
+xi
+). In finding the best fitting model for 
+i
+, we do not worry
+TABLE 2. Logistic Regression Parameter Estimates From NHANES III Data for Predicting the
+Outcome "Trying to Lose Weight in the Last 12 Months"
+Parameter Method Estimate SE Z P
+Intercept CC 2.446 0.238 10.280 0.001
+RWEE 2.756 0.282 9.773 0.001
+High cholesterol CC 0.341 0.075 4.533 0.001
+RWEE 0.355 0.082 4.329 0.001
+Age (years)
+21­34 -- 0.000 -- -- --
+35­49 CC 0.024 0.131 0.180 0.857
+RWEE 0.027 0.133 0.203 0.833
+50­64 CC 0.252 0.113 2.226 0.026
+RWEE 0.204 0.134 1.522 0.129
+65 CC 0.849 0.123 6.883 0.001
+RWEE 0.795 0.134 5.933 0.001
+Sex (female) CC 0.939 0.072 12.993 0.001
+RWEE 0.991 0.074 13.392 0.001
+Race
+Black CC 0.225 0.075 2.994 0.003
+RWEE 0.245 0.106 2.316 0.021
+Hispanic CC 0.042 0.086 0.487 0.626
+RWEE 0.293 0.114 2.578 0.010
+White -- 0.000 -- -- --
+Education (years)
+12 -- 0.000 -- -- --
+12 CC 0.113 0.085 1.327 0.184
+RWEE 0.134 0.096 1.396 0.161
+12 CC 0.307 0.111 2.771 0.006
+RWEE 0.356 0.121 2.942 0.003
+Routine healthcare visit 2 years CC 0.668 0.132 5.080 0.001
+RWEE 0.703 0.139 5.058 0.001
+BMI 29 CC 1.441 0.092 15.648 0.001
+RWEE 1.502 0.107 14.037 0.001
+Poverty income ratio 1 CC 0.208 0.124 1.673 0.094
+RWEE 0.255 0.149 1.711 0.088
+History of premature heart disease (yes) CC 0.009 0.099 0.090 0.928
+RWEE 0.002 0.115 0.017 0.986
+CC indicates complete case; RWEE, reweighted estimating equation.
+Moore et al Epidemiology · Volume 20, Number 3, May 2009
+386 | www.epidem.com © 2009 Lippincott Williams & Wilkins
+about a high Type I error rate; we would rather overspecify
+than underspecify, because underspecification could bias the
+reweighted estimating equations estimate of . Thus, we
+suggest keeping any parameter in the model for 
+i
+that is
+significant at P  0.20. We regarded the main effects model
+in xi
+and yi
+as the baseline model for 
+i
+, and considered
+pairwise interactions in a step-up approach; no interactions
+were significant at the 0.20 level. The best fitting model for 
+i
+contained yi
+, age, sex, race, education, healthcare visit, body
+mass index, poverty income ratio, and history of heart dis-
+ease. The results are shown in Table 1.
+Table 2 gives estimates and standard errors for the
+regression coefficients based on reweighted estimating equa-
+tions and complete case estimation (Table 3 gives the SAS
+programming commands to obtain the estimates in Table 2).
+From Table 2 we see striking differences between complete
+case and reweighted estimating equations for 2 covariates.
+For the effect in the age group of 50­64 years, complete case
+is significant at   0.05 level, whereas reweighted estimat-
+ing equations is not. Hispanic race effect is not significant
+using complete case, but is significant at   0.05 level,
+using reweighted estimating equations. To explore the differ-
+ences between the 2 methods, in the following section, we
+conducted a simulation study comparing the 2 approaches.
+Simulation Study
+We conducted a simulation study to investigate the
+performance of RWEE procedures compared with complete
+case analysis in the presence of complex survey sampling and
+missing covariate data. Data were generated using stratified
+random sampling as the type of complex survey sampling.
+For each scenario, a finite population consisting of 3 strata is
+generated. The population strata sizes were 600, 2400, and
+500. One thousand data sets were sampled from the finite
+population. Each sampled data set contained observations
+drawn independently from the finite population strata with
+sample sizes of 200, 300, and 200, respectively. We let the
+outcome Yi
+, the fully observed covariate Xi
+, and the possibly
+missing covariate Zi
+, all be binary. We formulated the true
+model by specifying each probability on the right side of
+prri
+, yi
+, xi
+,zi
+)  pr(ri
+yi
+, xi
+, zi
+)pr(zi
+xi
+)pr(xi
+).
+First, we specified pr(xi
+) by letting the prevalence of Xi
+,
+pr(Xi
+ 1), vary by strata, 70%, 50%, and 30%, respectively.
+Because Yi
+, Zi
+, and Ri
+are all binary, 3 logistic models were
+used to generate the simulated data:
+1) logitpr(Yi
+ 1xi
+, zi
+)  
+0
+ 
+x
+xi
+ 
+z
+zi
+;
+2) logitpr(zi
+ 1xi
+)  
+0
+ 
+x
+xi
+;
+3) logitpr(Ri
+ 1yi
+, xi
+, zi
+)  
+0
+ 
+y
+yi
+ 
+x
+xi
+ 
+xy
+xi
+yi
+.
+Data were originally generated from 27 configurations,
+corresponding to different values of s, s, and s. We report
+results from 2 sets (further simulation results can be obtained
+from the first author), which correspond to configurations that
+resulted in the most bias for the complete case estimate; these
+illustrate how well the reweighted estimating equations
+method corrects the bias. The first configuration,   ­1.5,
+1.0, 0.5 and   ­0.1, 0.5, indicates moderate associations
+between Y and Z and between X and Z. The second,  
+­1.7, 1.0, 1.0 and   ­0.5, 1.0, indicates a strong
+association between Y and Z and between X and Z. For each,
+2 missingness models were explored; the first with 
+i
+, de-
+pending on X and Y and the second with 
+i
+depending
+additionally on X and Y and their interaction. The correspond-
+ing parameters for these 2 models are   0.1, 1.0, 1.0, 0.0
+and   0.0, 1.0, 1.0, 1.0, respectively. The prevalence of
+missing covariate information is about 30% in both scenarios.
+These 2 missingness mechanisms allowed us to explore
+overspecification, underspecification, and correct specifica-
+TABLE 3. SAS Program to Obtain Estimates in Table 2
+data NHANES_III;
+set NHANES_III;
+/* create Missing data indicator R */
+if self_chol. then R0;
+if self_chol. then R1;
+run;
+/* weighted logistic regression to obtain pi_i's */
+proc logistic dataNHANES_III;
+class age(ref`21­34') race(ref`Caucas') educ(ref`12')/paramref;
+model R(event'1')  Lose_weight age Female race educ Routine BMI
+Poverty
+Hist_hrt_dis;
+weight wt; /* wtdelta/p */
+outputoutNHANES_III_2 predpi_hat;
+run;
+/* create new weight in sas data step */
+data NHANES_III_2;
+set NHANES_III_2;
+wt2  wt*(R/pi_hat);
+run;
+/* weighted logistic regression of interest for y given (x, z) */
+/* use surveylogistic to obtain correct SEs for this model */
+proc logistic dataNHANES_III_2;
+stratum strat;
+cluster psu;
+class age(ref`21­34') race(ref`Caucas') educ(ref`12')/paramref;
+model Lose_weight(event'1')  self_chol age Female race educ
+Routine BMI Poverty Hist_hrt_dis;
+weight wt2;
+run;
+/* Note: could also use surveylogistic to obtain correct SEs */
+/* for model for pi_i above, but the `output' statement is not */
+/* currently on option in proc surveylogistic */
+Epidemiology · Volume 20, Number 3, May 2009 Logistic Regression With Incomplete Covariate Data
+© 2009 Lippincott Williams & Wilkins www.epidem.com | 387
+tion of the missing data mechanism by fitting different logis-
+tic regression missing data models. For the true model for 
+i
+containing only X and Y, we fit the models containing (1) X
+and Y, (2) X, Y, and the interaction, (3) X only, and (4) Y only.
+For the situations in which the true missing data mechanism
+contains X and Y and their interaction, we fit 2 models (1) X
+and Y, (2) X, Y, and X  Y. For comparison, we also fit the
+model that would have been obtained if no data had been
+missing (ie, before we deleted the missing observations),
+which we denote by "ALL DATA."
+We applied the reweighted estimating equations and
+complete case approaches to each of the simulated data sets,
+and compared the results in Tables 4 and 5 in terms of (1)
+average point estimates of  over 1000 replications to assess
+bias, and (2) coverage probabilities to assess reliability of
+inference. Each coverage probability represents the propor-
+tion of each set of 1000 replications in which the 95%
+confidence interval contains the true finite population param-
+eter value. With 1000 replications, these estimated coverage
+probabilities should be contained in the interval (0.937­
+0.964) 95% of the time if the true coverage probability
+is 95%.
+Tables 4 and 5 present the true and fitted models for R
+given its predictors are denoted by (Rpredictors). In Tables 4
+and 5, when correctly specifying or overspecifying the miss-
+ingness mechanism, the reweighted estimating equations
+method is unbiased and shows good coverage probabilities
+for 
+0
+,
+x
+, and 
+z
+. For all missing data models, there was very
+little bias in the complete case estimate of 
+z
+, but the
+complete case estimates of 
+0
+and 
+x
+was generally biased.
+When the true missing data model is RX, Y (with no inter-
+action), the complete case estimates of 
+x
+are underestimating
+the true parameter. When the true missing data model is RX,
+Y, but we underspecify by fitting RX or RY, the results using
+reweighted estimating equations are similar to complete case
+for 
+0
+and 
+x
+. Using reweighted estimating equations, under-
+specification of the missing data model when the true model
+is RX, Y, X  Y can also lead to bias for estimation of 
+0
+and
+
+x
+, but not 
+z
+. In general, with respect to bias, it appears that
+the reweighted estimating equations perform similar to com-
+plete case when the missingness model is underspecified, but
+outperforms complete case when the missingness model is
+correctly specified or overspecified.
+DISCUSSION
+We compared a complete case analysis to an analysis
+that used reweighted estimating equations with complex sur-
+vey data. Our empirical example and simulation study both
+used logistic regression. In the NHANES example, with 9
+covariates, 1 of which is missing for 48% of the subjects, we
+found striking differences between complete case and re-
+weighted estimating equations for 2 covariates. In the simu-
+lations, adjusting the sampling weights with the inverse
+probability of zi
+being observed appears to be effective for
+obtaining unbiased estimates of the regression coefficients
+when we correctly specified the missing-data model.
+TABLE 4. Simulation Results for Moderate Association for ZX
+True Missingness Model Fit Missingness Model 
+0
+ 1.5 
+x
+ 1.0 
+z
+ 0.5
+Average of estimates
+RX, Y All 1.501 1.009 0.485
+RX, Y RWEE (RX, Y) 1.504 1.010 0.489
+RX, Y RWEE (RX, Y, XY) 1.503 1.009 0.489
+RX, Y RWEE (RX) 1.150 0.826 0.489
+RX, Y RWEE (RY) 1.459 0.826 0.489
+RX, Y CC 1.151 0.826 0.489
+RX, Y, XY All 1.500 1.004 0.492
+RX, Y, XY RWEE (RX, Y) 1.615 1.180 0.495
+RX, Y, XY RWEE (RX, Y, XY) 1.501 1.004 0.495
+RX, Y, XY CC 1.130 0.898 0.494
+Coverage probability
+RX, Y All 94.5 95.2 95.0
+RX, Y RWEE (RX, Y) 95.0 95.8 95.5
+RX, Y RWEE (RX, Y, XY) 94.4 96.0 95.4
+RX, Y RWEE (RX) 58.5 87.3 95.4
+RX, Y RWEE (RY) 93.8 87.4 96.0
+RX, Y CC 54.9 86.7 95.5
+RX, Y, XY All 95.5 94.6 94.4
+RX, Y, XY RWEE (RX, Y) 92.1 87.7 94.4
+RX, Y, XY RWEE (RX, Y, XY) 94.7 95.4 94.3
+RX, Y, XY CC 51.2 91.4 93.9
+Moore et al Epidemiology · Volume 20, Number 3, May 2009
+388 | www.epidem.com © 2009 Lippincott Williams & Wilkins
+The simulation study also showed the importance of
+correctly specifying the missing-data model when using re-
+weighted estimating equations. In particular, a correctly spec-
+ified logistic regression model for 
+i
+is crucial for the re-
+weighted estimating equations of  to have minimal bias. As
+such, we suggest being liberal when including variables to
+predict the probability of observing zi
+.
+We note that Robins et al5 have proposed ways to modify
+their weighted estimating equations to gain more efficiency.
+However, the type of sample surveys we discuss here are
+typically so large that efficiency is not of that great concern as it
+might be in other settings. The main issue here is to obtain
+estimates with missing data that have minimal bias. Robins and
+Ritov14 have also proposed weighted estimating equations that
+are more robust to misspecification of the missing data model,
+the so-called doubly robust estimating equations, which could be
+modified for use with sample survey data. We note that doubly
+robust estimates require much additional programming, whereas
+the method we have proposed can easily be implemented in any
+sample survey package such as SAS Proc SurveyLogistic, as
+shown in Table 3.
+With a single covariate subject to missingness, the idea
+of reweighted estimating equations is a simple one and
+modifying the sampling weights does not complicate the
+method considerably. However, even in simple random sam-
+pling, the weights and standard errors can become complex if
+more than 1 covariate is missing.15 The extension of the
+weighted estimating equations to arbitrary missing covariate
+data patterns entails creating missing data indicators for each
+covariate, and becomes much more cumbersome. However,
+in this case, one can combine our approach with that of
+Rotnitzky et al16 for arbitrary missing covariate data patterns
+in simple random sample. In particular, we would replace 
+i
+with 
+i
+multiplied by each missing data indicator and pi
+with
+pi
+multiplied by each missing data probability.
+REFERENCES
+1. National Center for Health Statistics. The Plan and Operation of Third
+National Health and Nutrition Examination Survey, 1988­1994. Hyatts-
+ville, MD: US Department of Health and Human Services; 1996.
+2. National Center for Health Statistics. Third National Health and Nutri-
+tion Examination Survey (NHANES III) reference manuals and reports
+(CD-ROM). Hyattsville, MD: US Department of Health and Human
+Services (DHHS); 1996.
+3. Mohadjer L, Montaquila J, Wakesberg J, et al. Weighting and Estimation
+Methodology. Executive Summary. NHANES III Reference Manuals and Re-
+ports. Hyattsville, MD: Centers for Disease Control and Prevention; 1996.
+4. Brick JM, Kalton G. Handling missing data in survey research. Stat
+Methods Med Res. 1996;5:215­238.
+5. Robins JM, Rotnitzky A, Zhao LP. Estimation of regression coefficients
+when some regressors are not always observed. J Am Stat Assoc.
+1994;89:846­866.
+6. Zhao LP, Lipsitz SR, Lew D. Regression analysis with missing covariate
+data using estimating equations. Biometrics. 1996;52:1165­1182.
+7. Shah BV, Barnwell BG, Bieler GS. SUDAAN User's Manual, Release
+7.5. Research Triangle Park, NC: Research Triangle Institute; 1997.
+8. McCullagh P, Nelder JA. Generalized Linear Models. 2nd ed. London:
+Chapman & Hall; 1989.
+9. Binder D. On the variance of asymptotically normal estimators from
+complex surveys. Int Stat Rev. 1983;51:279­292.
+10. Korn EL, Graubard BI. Analysis of large health surveys: accounting for
+the sampling designs. J R Stat Soc A. 1995;158:263­295.
+TABLE 5. Simulation Results for Strong Association ZX
+True Missingness Model Fit Missingness Model 
+0
+ 1.7 
+x
+ 1.0 
+z
+ 1.0
+Average of estimates
+RX, Y All 1.710 1.004 1.010
+RX, Y RWEE (RX, Y) 1.708 1.002 1.010
+RX, Y RWEE (RX, Y, XY) 1.709 1.003 1.010
+RX, Y RWEE (RX) 1.349 0.816 1.009
+RX, Y RWEE (RY) 1.670 0.816 1.011
+RX, Y CC 1.349 0.816 1.011
+RX, Y, XY All 1.699 0.988 1.007
+RX, Y, XY RWEE (RX, Y) 1.816 1.167 1.009
+RX, Y, XY RWEE (RX, Y, XY) 1.701 0.989 1.009
+RX, Y, XY CC 1.328 0.883 1.010
+Coverage probability
+RX, Y All 94.9 94.0 94.6
+RX, Y RWEE (RX, Y) 95.4 95.0 96.2
+RX, Y RWEE (RX, Y, XY) 95.0 94.9 96.0
+RX, Y RWEE (RX) 56.6 87.1 95.7
+RX, Y RWEE (RY) 95.0 87.0 95.7
+RX, Y CC 54.8 86.3 95.5
+RX, Y, XY All 94.8 95.1 95.2
+RX, Y, XY RWEE (RX, Y) 91.6 89.0 95.3
+RX, Y, XY RWEE (RX, Y, XY) 95.2 96.0 95.6
+RX, Y, XY CC 50.2 91.7 94.6
+Epidemiology · Volume 20, Number 3, May 2009 Logistic Regression With Incomplete Covariate Data
+© 2009 Lippincott Williams & Wilkins www.epidem.com | 389
+11. Korn EL, Graubard BI. Analysis of Health Surveys. New York: John
+Wiley & Sons; 1999.
+12. Robins JM, Rotnitzky A, Zhao LP. Analysis of semiparametric regres-
+sion models for repeated outcomes in the presence of missing data. J Am
+Stat Assoc. 1995;90:106­121.
+13. Troxel AB, Lipsitz SR, Brennan TA. Weighted estimating equations
+with nonignorably missing response data. Biometrics. 1997;53:857­869.
+14. Robins JM, Ritov Y. Toward a curse of dimensionality appropriate
+(CODA) asymptotic theory for semi-parametric models. Stat Med.
+1997;16:285­319.
+15. Greenland S, Finkle WD. A critical look at methods for handling
+missing covariates in epidemiologic regression analyses. Am J Epide-
+miol. 1995;142:1255­1264.
+16. Rotnitzky A, Robins JM, Scharfstein DO. Semiparametric regression for
+repeated outcomes with nonignorable nonresponse. J Am Stat Assoc.
+1998;93:1321­1339.
+Moore et al Epidemiology · Volume 20, Number 3, May 2009
+390 | www.epidem.com © 2009 Lippincott Williams & Wilkins
+

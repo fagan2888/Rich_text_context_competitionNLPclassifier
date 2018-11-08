@@ -1,0 +1,2477 @@
+Completeness, interconnectedness
+and distribution of interbank exposures ­
+a parameterized analysis of the stability
+of financial networks
+Angelika Sachs
+(University of Munich)
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 08/2010
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Klaus Düllmann
+Frank Heid
+Heinz Herrmann
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­646­9 (Printversion)
+ISBN 978-3­86558­647­6 (Internetversion)
+Abstract
+This paper assesses the impact of a certain structure of interbank exposures on the sta-
+bility of a stylized financial system. Given a certain balance sheet structure of financial
+institutions, a large number of valid matrices of interbank exposures is created by a random
+generator. Assuming a certain loss given default, domino effects are simulated. The main
+results are, first, that financial stability depends not only on the completeness and inter-
+connectedness of the network but also on the distribution of interbank exposures within the
+system (measured by entropy). Second, looking at random graphs, the sign of the corre-
+lation between the degree of equality of the distribution of claims and financial stability
+depends on the connectivity of the financial system as well as on additional parameters that
+affect the vulnerability of the system to interbank contagion. Third, the more concentrated
+assets are within a money center model, the less stable it is. Fourth, a money center model
+with asset concentration among core banks is less stable than a random graph with banks
+of homogeneous size. Results obtained in this paper extend existing theoretical literature
+that exclusively focuses on completeness and interconnectedness of the network as well as
+empirical literature that exclusively focuses on one particular financial network.
+Keywords: domino effects, interbank lending, financial stability, contagion
+JEL Classification: C63, G21, G28
+Non-technical summary
+Within this paper, the impact of domino effects on the stability of a stylized interbank network
+is analyzed by simulation. Whereas empirical literature on this topic exclusively investigates
+one particular (real-world) financial network, theoretical (analytical as well as simulation-based)
+literature has its focus on the impact of completeness and interconnectedness of a network on its
+stability. This paper extends existing theoretical network simulations by an additional parame-
+ter: the degree of equality of the distribution of interbank exposures.
+The analysis is implemented for different structures of interbank connections: first, the complete
+network, where each bank is directly linked to all other banks in both directions; second, a
+network where banks form their linkages randomly; and third, a money center model, where a
+distinction is made between completely interconnected core banks with large balance sheet totals
+and small banks in the periphery that are only connected to one core bank.
+The results of this paper can be compared to previous theoretical results, that show a non-
+monotonic relationship between the completeness of networks and their stability. Simulation
+results that are only made dependent on the completeness and interconnectedness of the finan-
+cial system confirm these findings. If, however, results are additionally made dependent on the
+degree of equality of the distribution of interbank exposures, some deviant cases can be shown.
+Thus, the first result of the paper is that not only the completeness and interconnectedness of
+the network determines its stability but also how equally interbank exposures are distributed.
+The second result is that the sign of the correlation between the degree of equality of the distri-
+bution of interbank exposures and the average number of bank failures depends on the number
+of interbank links within the financial system as well as on banks' equity ratio and the loss given
+default.
+Third, within a money center model, an increasing concentration of assets on core banks de-
+creases the stability of the system. Fourth, assuming reasonable parameter values concerning
+the amount of bilateral interbank exposures, money center systems with asset concentration
+among core banks are more unstable than networks with banks of homogeneous size that form
+their links randomly.
+Nichttechnische Zusammenfassung
+Das vorliegende Papier analysiert mit Hilfe von Simulationen, welchen Einfluss Dominoeffekte auf
+die Stabilit¨
+at eines stilisierten Interbanken-Netzwerks haben. W¨
+ahrend die empirische Literatur
+zu diesem Thema ausschließlich ein bestimmtes (reales) Finanz-Netzwerk untersucht, konzen-
+triert sich die theoretische (sowohl die analytische als auch die simulationsbasierte) Literatur auf
+den Einfluss der Vollst¨
+andigkeit und der Verkn¨
+upftheit eines Netzwerks. Das vorliegende Papier
+erweitert die bestehenden theoretischen Netzwerksimulationen um einen zus¨
+atzlichen Parameter:
+Die Gleichm¨
+aßigkeit der Verteilung von Interbanken-Verbindlichkeiten.
+Diese Untersuchungen werden unter der Annahme unterschiedlicher Netzwerkstrukturen durchge-
+f¨
+uhrt: 1., ein vollst¨
+andiges Netzwerk, wobei jede Bank mit jeder anderen Bank in beide Richtun-
+gen direkt verkn¨
+upft ist; 2., ein Netzwerk, in dem Banken ihre Verbindungen zu anderen Banken
+zuf¨
+allig bilden; und 3., ein "Money Center System", wobei zwischen vollst¨
+andig verkn¨
+upften
+großen Kernbanken und kleineren Peripheriebanken, die ausschließlich mit einer Kernbank ver-
+bunden sind, unterschieden wird.
+Die Ergebnisse dieses Papiers k¨
+onnen mit den bisherigen theoretischen Ergebnissen verglichen
+werden, die einen nicht-monotonen Zusammenhang zwischen Vollst¨
+andigkeit und Stabilit¨
+at eines
+Interbanken-Netzwerks aufzeigen. Simulationsergebnisse, die nur von der Vollst¨
+andigkeit und
+Verkn¨
+upftheit des Finanzsystems abh¨
+angen, best¨
+atigen die bisherigen Ergebnisse. Wenn die Si-
+mulationsergebnisse zus¨
+atzlich von der Gleichm¨
+aßigkeit der Verteilung der Interbanken-Verbind-
+lichkeiten abh¨
+angig gemacht werden, k¨
+onnen allerdings einige abweichende F¨
+alle gezeigt werden.
+Somit ist das erste Ergebnis dieses Papiers, dass nicht nur die Vollst¨
+andigkeit und Verkn¨
+upftheit
+des Interbanken-Netzwerks Einfluss auf seine Stabilit¨
+at hat, sondern auch wie gleichm¨
+aßig die
+Interbanken-Verbindlichkeiten verteilt sind.
+Das zweite Ergebnis ist, dass das Vorzeichen der Korrelation zwischen dem Maß f¨
+ur die Gleich-
+m¨
+aßigkeit der Verteilung der Interbanken-Verbindlichkeiten und der durchschnittlichen Anzahl
+an Bankausf¨
+allen sowohl von der Verkn¨
+upftheit, als auch von der Eigenkapitalquote der Banken
+und der Verlustquote abh¨
+angt.
+Drittens verringert in einem "Money Center System" eine verst¨
+arkte Konzentration von Ak-
+tiva auf die Kernbanken die Stabilit¨
+at des Systems. Viertens sind, unter der Annahme von
+angemessenen Parameterwerten bez¨
+uglich des Umfangs der Verbindlichkeiten zwischen den einzel-
+nen Banken, "Money Center Systeme" mit einer Konzentration von Aktiva auf Kernbanken
+instabiler als Netzwerke mit gleich großen Banken, die ihre Verbindungen zu anderen Banken
+zuf¨
+allig bilden.
+Contents
+1 Introduction 1
+2 Structure of the financial system 4
+3 Creation and characterization of liability matrices 6
+4 Simulation of domino effects 9
+4.1 Complete networks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+4.2 Random graphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+4.2.1 Varying connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.2.2 Varying loss given default and connectivity . . . . . . . . . . . . . . . . . 18
+4.2.3 Varying equity ratio and connectivity . . . . . . . . . . . . . . . . . . . . 19
+4.2.4 Varying ratio of interbank to total assets and connectivity . . . . . . . . . 21
+4.3 Money center models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+4.3.1 Varying the number of core banks and concentration ratio . . . . . . . . . 26
+4.3.2 Comparison to random graphs . . . . . . . . . . . . . . . . . . . . . . . . 27
+5 Conclusion 32
+6 References 35
+7 Appendix 38
+7.1 Appendix 1: Generation of the maximum entropy solution of an interbank liability
+matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+7.2 Appendix 2: Specification of the linear relationship between entropy and relative
+entropy to the maximum entropy solution . . . . . . . . . . . . . . . . . . . . . . 41
+Completeness, interconnectedness and distribution of interbank
+exposures - a parameterized analysis of the stability of financial
+networks1
+1 Introduction
+Research on financial stability is an important topic in order to assess certain risks and dangers
+within financial systems that potentially lead to huge losses for the overall economy. Especially
+the investigation of various channels of interbank contagion has been in the focus of recent re-
+search. In the context of this paper, interbank contagion means that the failure of one financial
+institution leads to the failure of other financial institutions.
+Various fields of studies have been developed to capture the numerous facets of this comprehen-
+sive topic (for a literature survey, see Allen and Babus (2009)). From the theoretical point of
+view, Allen and Gale (2000) show that interbank connections can be useful in order to provide an
+insurance against liquidity shocks. Because of these interbank linkages, however, the bankruptcy
+of one bank can lead to the bankruptcy of other banks. In this context, Allen and Gale show that
+a financial system with a complete network structure is less prone to contagion than a financial
+system with an incomplete network structure. In addition, they state that a disconnected system
+is useful to limit contagion. Freixas et al. (2000) implement, among other things, a theoretical
+analysis of contagion within a "money center system", where banks in the "periphery" are linked
+to one "core bank" but not to each other. They show that there are parameter constellations
+under which the failure of a periphery bank does not lead to contagion, whereas the failure of
+the "core bank" does.
+Another part of the literature that investigates financial stability are empirical studies that use
+supervisory data to analyze the danger of domino effects within a banking system (e.g. van
+Lelyveld and Liedorp (2006), Upper and Worms (2004), Wells (2004), Furfine (1999), Sheldon
+and Maurer (1998)). As a lot of detailed data on interbank exposures are necessary but often
+not available, assumptions such as maximum entropy are made concerning the structure of these
+exposures. This means that banks are assumed to spread their interbank claims as equally as
+1Angelika Sachs, Department of Economics, University of Munich, angelika.sachs@lrz.uni-muenchen.de. The
+opinions expressed in this paper are those of the author and do not necessarily reflect the opinions of the Deutsche
+Bundesbank. I would like to thank Frank Heid, Christoph Memmel, Thilo Pausch and the participants of the
+research seminar of the Deutsche Bundesbank for helpful comments and suggestions.
+1
+possible among their counterparties. However, it is likely that, under the maximum entropy
+assumption, results are biased. In his summary of the analysis of interbank contagion, Upper
+(2007) states that maximum entropy assumptions tend to underestimate the incidence but over-
+estimate the severity of contagion. Mistrulli (2007) investigates interbank contagion using actual
+Italian interbank data and compares his findings with an analysis using the maximum entropy
+assumption. He finds that, for most parameter constellations, the maximum entropy assump-
+tion tends to underestimate the extent of contagion. There are, however, also some parameter
+constellations (in particular a high loss given default) where the maximum entropy assumption
+overestimates the scope of contagion.
+Cifuentes et al. (2005) extend a contagion model of domino effects by simulations that include
+contagion due to liquidity problems. Within their simulations they use a clearing algorithm
+developed by Eisenberg and Noe (2001).2 The analysis of pure domino effects is also extended
+by Chan-Lau (2010) and Espinosa and Sol´
+e (2010) by additionally considering contagion due to
+banks' refinancing problems and due to risk transfers. Also, the impact of market and funding
+liquidity risk on the stability of a financial network is investigated by Aikman et al. (2009).
+In recent years there has been a growing literature which uses theory of complex networks to
+describe real-world financial systems and simulate the effects of potentially dangerous events.
+For example, Boss et al. (2004) analyze the network topology of the Austrian interbank market.
+Iori et al. (2008) apply network theory to describe the Italian overnight money market. Haldane
+(2009) provides a characterization of the world's financial network. Additionally, Gai and Kapa-
+dia (2010), as well as Nier et al. (2008), use random graphs to analyze the danger of contagion
+dependent on certain characteristics of the financial system by simulation. Gai and Kapadia
+(2010) find that for a high connectivity of the network, the probability that contagion occurs
+is low but the impact if contagion occurs is high. Nier et al. (2008) find out by parameterized
+simulation some non-linearities between certain parameter values and financial stability. Con-
+trary to most of the empirical literature, where one special financial system is considered to test
+the danger of contagion, simulation-based work instead tries to find out the main characteristics
+that make a financial system especially vulnerable to contagion.
+As, up to now, only few studies exist about the detailed structure of real-world financial net-
+works, this paper considers several stylized structures and investigates their impact on financial
+2Eisenberg and Noe showed that under mild regularity conditions (strong connectivity and at least one node
+has positive equity value or all nodes have positive operating cash flows) there exists a unique fixed point that
+describes the clearing payment vector of the financial system.
+2
+stability by simulation. This paper builds on the empirical literature that uses entropy methods
+to construct and characterize interbank linkages as well as on literature that tries to simulate the
+danger of contagion according to certain characteristics of the financial system, in particular the
+matrix of interbank exposures. For example, it extends the work of Mistrulli (2007) in such a
+way that not only one matrix is compared to the maximum entropy solution but a great variety
+of randomly generated matrices with different network structures. For the first time, a large set
+of valid interbank matrices is constructed by a random generator and then characterized accord-
+ing to certain properties, such as entropy, relative entropy to the maximum entropy solution or
+connectivity.
+Additionally, this paper differs from Nier et al. (2008) in the sense that, first, balance sheets
+are constructed and, as a second step, the liability matrix is generated, which is, besides row
+and column sums of the matrix, independent from banks' balance sheets. Thus, stability results
+obtained in this paper can be attributed purely to changes in the liability matrix.
+Furthermore, results can be interpreted as an extension to the theoretical literature about the
+impact of certain network patterns on contagion. Up to now the focus has been exclusively on
+the completeness and interconnectedness of interbank networks (see Allen and Gale (2000)). In
+this context, banks are modelled as completely homogeneous, especially with all interbank expo-
+sures being the same size. This work, however, investigates a large number of possible matrices
+with various possible specifications of interbank exposures and can thus have an additional focus
+on the distribution of claims within the network for given completeness and interconnectedness.
+Results of this paper show that the distribution of interbank claims within the network is an
+important parameter affecting the stability of the network.
+Within this paper, pure domino effects between banks are examined. To be more precise, it is
+investigated what happens if one bank fails and therefore a part of other banks' claims to that
+bank also fail. It is then possible that creditor banks lose all their capital and therefore fail as
+well. In the worst case, there are subsequent rounds of failures until the whole system defaults.
+Of course, this is just one channel through which interbank contagion can occur. Further chan-
+nels can be contagion due to liquidity problems because of correlated asset portfolios among
+banks, or contagion due to refinancing problems affecting banks. As a starting point, however,
+to be able to exclusively focus on the effect of the structure of the liability matrix on the stability
+of the financial network, only domino effects are considered.
+The paper is organized as follows. In Section 2 the basic structure of the financial system is
+defined. Section 3 explains in more detail how interbank liability matrices are created and char-
+3
+acterized. Simulations of domino effects are run and results are presented in Section 4 which is
+divided into the investigation of complete networks (Section 4.1), random graphs (Section 4.2)
+and money center models (Section 4.3). Section 5 summarizes the main findings.
+2 Structure of the financial system
+The financial system is modelled as a network of N nodes where nodes 1 to N - 1 are financial
+institutions (referred to as banks in the following) and node N constitutes the external (non-
+banking) sector (such as households or non-financial companies). These nodes are linked by
+directed edges that depict direct claims/obligations between the financial institutions and the
+external sector. For some of the subsequent financial networks modelled, it is assumed that there
+are two different types of banks, core banks and periphery banks, that are equal within their
+groups but differ across groups with regard to their connectivity and size, respectively. The
+distribution of assets among the two types of banks is given by a concentration ratio CR, that
+denotes the share of total bank assets that core banks hold.
+Bank i's balance sheet has the following structure:
+AIB
+i
++ AE
+i
+= LIB
+i
++ LE
+i
++ Ei
+(1)
+ i {1, ..., N - 1}.
+Interbank assets AIB
+i
+(liabilities LIB
+i
+) are claims (obligations) between banks. External assets
+AE
+i
+are interpreted as credit to the external sector. External liabilities LE
+i
+denote obligations
+of banks to the external sector such as customer deposits. The balance sheet is completed by
+equity Ei
+that is given by the difference of bank i's total assets Ai
+(= AIB
+i
++ AE
+i
+) and liabilities
+Li
+(= LIB
+i
++ LE
+i
+).
+The (risk-unweighted) equity ratio, which is presumed to be equal across banks, is given by:3
+r =
+Ei
+AIB
+i
++ AE
+i
+(2)
+ i {1, ..., N - 1}.
+The financial system is characterized by the total amount of banks' assets Abanks, as well as
+the total amount of banks' interbank assets AIB. The ratio of interbank to total assets in the
+3More general models including banks with heterogeneous equity ratios can be implemented in a straightforward
+way.
+4
+financial system is defined as:
+ =
+AIB
+Abanks
+(3)
+Banks' total assets, total liabilities and equity of this stylized financial system can be perfectly
+described by the total amount of banks' assets Abanks, the total number of banks N - 1, the
+number of core banks ncore
+, the concentration ratio CR and banks' equity ratio r.
+The direct connections between the nodes can be illustrated by a liability matrix:
+L =
+
+
+
+
+
+
+
+
+
+
+
+A1 A2 . . . AN-1 AN
+L1 0 L1,2 . . . L1,N-1 L1,N
+L2 L2,1 0 . . . L2,N-1 L2,N
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+LN-1 LN-1,1 LN-1,2 . . . 0 LN-1,N
+LN
+LN,1 LN,2 . . . LN,N-1 0
+
+
+
+
+
+
+
+
+
+
+
+with Li,j
+being the obligation of bank i to bank j (i, j {1, ..., N - 1}). Because banks and
+the external sector do not lend to themselves, Li,i
+= 0  i {1, .., N}. Additionally, as banks
+are linked on both sides of their balance sheets, it is easy to interpret row sums (= total lia-
+bilities) and column sums (= total assets) of the matrix. The elements of the last row, LN,i
+( i {1, .., N - 1}), are equal to banks' external assets AE
+i
+. Thus, the sum of the elements
+in the last row of the matrix is equivalent to banks' total external assets, which are given by
+(1 - ) · Abanks. The elements of the last column, Li,N
+( i {1, .., N - 1}), are equal to banks'
+external liabilities LE
+i
+. Hence, the sum of the elements in the last column of the matrix (AN
+) is
+equivalent to the total amount of external liabilities of banks. Furthermore, it is assumed that
+the system is closed, i.e. there is no lending / borrowing to somewhere outside the network.
+Technically, this means that the sum of row sums of the liability matrix has to be equal to the
+sum of column sums. Thus, total external liabilities of banks (or total assets of the external sec-
+tor AN
+) can be calculated by the difference between total liabilities in the system (the external
+sector included) and total assets of banks.4
+4In the aggregate AN , it is not considered that the external sector might be the owner of the banks. Thus,
+AN only comprises the amount of banks' liabilities that is provided by the external sector.
+5
+3 Creation and characterization of liability matrices
+Regulators often face the problem of limited data. Sometimes only the row sums and column
+sums of the liability matrix are observable. At least it is quite common for some elements of the
+liability matrix to be missing. As already mentioned, this problem is often surrounded by using
+the assumption that banks spread their exposures as evenly as possible, which is equivalent to
+maximizing the entropy of the (normalized) liability matrix.5 However, using matrices under the
+maximum entropy assumption tends to bias the results.
+The approach of this paper is to abstract from generating only one matrix using the maximum
+entropy assumption but to create, for given row and column sums, a large number of valid liability
+matrices by a random generator. This is done in two steps: first, a random number Lrand
+ij
+, that
+does not exceed the number of total liabilities in the system Ltotal (or total assets in the system
+Atotal, respectively), is assigned to each off-diagonal element. This random number is drawn
+from a uniform distribution with Lrand
+ij
+0, Ltotal ,  i = j, where RSgoal(i) is the aspired
+row sum and CSgoal(j) is the aspired column sum associated to this element. The interval the
+random number is drawn from seems at first more restrictive than it is. A reduction/expansion
+of the interval of the uniform distribution to some smaller/higher upper bound does not change
+the simulation results. To make the matrix fit exactly, the RAS algorithm is applied:6 In a first
+step, each element of the matrix is multiplied by the ratio of the aspired row sum (RSgoal(i))
+and the actual row sum (rs(i)).
+Lij
+= Lij
+·
+RSgoal(i)
+rs(i)
+(4)
+In a second step, each element of the matrix is multiplied by the ratio of the aspired column sum
+(CSgoal(j)) and the actual column sum (cs(j)).
+Lij
+= Lij
+·
+CSgoal(j)
+cs(j)
+(5)
+By repeating these two steps sufficiently often, a matrix with elements that fit to the aspired
+row and column sums will be generated.
+The RAS algorithm shows some interesting features. First, restrictions to connectivity can be
+imposed by setting certain elements equal to zero. These elements will remain zero after run-
+ning the algorithm. Second, given certain random starting values within the matrix, the RAS
+5For the calculation of the maximum entropy solution of a matrix with given row and column sums, see
+Appendix 1.
+6For a detailed description of the RAS algorithm, see Blien and Graef (1991).
+6
+algorithm yields a unique solution, independent of the "position" of a certain bank within the
+matrix. The algorithm is also robust to a transposition of the matrix. Third, the randomly
+generated starting values determine a certain correlation structure within the matrix. The RAS
+algorithm determines a unique solution that matches the given correlation structure as well as
+possible and that fulfills row and column sum restrictions. However, there are cases where the
+RAS algorithm does not provide a valid solution. This happens especially when too many zero
+restrictions are imposed. Within the simulations, randomly generated matrices that do not fit
+are dropped.
+After liability matrices are generated, they have to be characterized. As the aim of this pa-
+per is to investigate the stability of the financial system dependent on the matrix of interbank
+exposures, the focus is, for the following characterizations, on the (N - 1 × N - 1) matrix that
+covers the interbank market. It is created by deleting the last row and the last column of the
+(N × N) liability matrix L. As a next step, there has to be some normalization of matrices
+because entropy measures have to be applied on probability fields. This is done by dividing
+all elements by the total amount of interbank liabilities. As a result, elements of normalized
+matrices add up to 1 and thus can be treated as probabilities. In the following, all normalized
+elements are marked with a superscript p and written in lower case letters.
+After normalization, the next step is to characterize matrices according to the following measures:
+· Entropy: In information theory, entropy is a measure for information and can, for example,
+be explained in the context of search problems. To be more precise, entropy is a lower bound
+of the average path length from the root to the leaves of a binary search tree. Thus, entropy
+is a lower bound to the average number of yes/no questions that is needed to obtain full
+information. The more equal the probability distribution of the elements in the search
+space, the more questions are on average needed to obtain the desired element and, hence,
+the higher entropy is. The more unequal the probability distribution, the lower entropy is.
+The lowest entropy (equal to zero) can be obtained when one element in the search space
+occurs with probability 1 and the other elements with probability 0, i.e. the most unequal
+distribution of elements occurs.
+This entropy measure can be reinterpreted to quantify the inequality of the distribution
+of claims of a liability matrix. Using the normalization mentioned above, the elements
+of the matrix can be seen as realizations of a probability distribution of elements within
+a search space that need not be defined more specifically. Entropy measures the amount
+7
+of information inherent in these realizations and is maximal if banks spread their claims
+/ obligations as equally as possible. The higher the entropy, the more equally interbank
+claims are distributed for given row and column sums. The entropy is calculated by:7
+ENT = -
+N-1
+i=1
+N-1
+j=1
+lp
+ij
+· ln lp
+ij
+(6)
+with 0 · ln(0) := 0.
+· Relative entropy (Kullback-Leibler divergence) to maximum entropy solution: The
+relative entropy is a measure for the difference between two probability distributions. Given
+two normalized liability matrices Xp (in this case the maximum entropy solution X, see
+Appendix 1, with last row and last column deleted and normalized by the total amount of
+interbank liabilities) and Lp (in this case a valid normalized liability matrix generated by
+random generator), the relative entropy is given by:
+RE =
+N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln
+lp
+ij
+xp
+ij
+(7)
+with 0 · ln(0) := 0 and 0 · ln(0
+0
+) := 0.
+A higher value of RE denotes a greater difference between the two distributions. In the
+financial system modelled here, a higher relative entropy means a greater distance to the
+probability distribution of the maximum entropy solution and thus a more unequal distri-
+bution of claims among banks. As long as the relative entropy to the maximum entropy
+solution is considered and banks are assumed to be of equal size, there is a negative linear
+relationship between the entropy of a matrix and its relative entropy to the maximum
+entropy solution.8
+· Connectivity: The connectivity of the financial system can be described by the probability
+that a directed link between two banks exists. While constructing the liability matrix of
+a random graph, each off-diagonal interbank element is (independently) given a certain
+positive real number with probability p and 0 with probability 1 - p. This probability p is
+called Erd¨
+os-R´
+enyi probability. However, during implementation one has to be careful that,
+7When applying the entropy measure in the context of binary search trees, log2 is used. However, in economics
+literature it is more common to use the natural logarithm. This is equivalent to multiplying a constant factor.
+8The general derivation of this linear relationship is provided in Appendix 2. Simulation results confirm this
+theoretical finding.
+8
+for given starting values (including zeros with a certain probability), the RAS algorithm
+is able to find a valid solution of matrix entries. This problem increases with decreasing
+connectivity. The algorithm used in this paper simply drops matrices that are not valid.
+4 Simulation of domino effects
+Within this paper, pure domino effects are modelled dependent on characteristics of the inter-
+bank liability structure.9 As a trigger event, one bank fails.10 Assuming a certain loss given
+default (LGD), creditor banks lose a share of their claims to the defaulting bank.11 If this lost
+share is larger than the creditor bank's equity, the creditor bank also fails. If one or more banks
+fail due to the first failure, the next round starts with banks losing additional shares of their
+claims to failing banks. Thus, a bank fails if:
+Interbank exposures to failed banks  LGD > Equity
+For a large number of randomly generated matrices, it is investigated how many banks fail
+on average, after the failure of one bank, dependent on the characteristics of the liability matrix
+mentioned in Section 3. To be more precise, it is calculated which percentage of total assets of
+the banking system belongs to failing banks, i.e. which percentage of total bank assets is affected
+by bank failure.12 Note, however, that this does not mean that all assets affected by bank failure
+actually default. This depends on the value of the loss given default.
+To depict the results graphically, value intervals of characteristics have to be defined. One pos-
+sibility to do this is to adjust interval size according to the number of observations. After the
+random generation of matrices, they are sorted according to their characterization values, and
+then intervals are defined with each interval having the same number of observations.
+The network simulations are run several times and for different banks failing initially to check
+9For advantages and disadvantages of modelling domino effects, see Upper (2007).
+10This is a rather simple way to model a shock on the financial system. A more sophisticated approach is, for
+example, used by Elsinger et al. (2006), who apply aggregate macroeconomic shocks to test for the resilience of
+the Austrian interbank market.
+11In this paper, a constant, exogenously given LGD is assumed. An obvious extension is to endogenize the
+LGD as, for example, in Degryse and Nguyen (2007).
+12An alternative target value to measure the harm of interbank contagion is the loss of the external sector,
+which can be computed easily within this model.
+9
+how robust these results are with respect to sample changes and to changes in the trigger event.
+4.1 Complete networks
+To begin with, simulations are run for complete networks, i.e. it is assumed that there exists
+a directed link from each node to all other nodes. The parameter values used for subsequent
+simulations are Abanks = 1.000, N = 11, ncore
+= 10, CR = 1 (i.e. all banks are the same size),
+ = 0.3, r = 0.06 and LGD = 0.5. The following figures show, for 50, 000 randomly generated
+matrices of interbank exposures, the average percentage of total assets of the banking system af-
+fected by bank failures in a network with 11 nodes (10 banks and the external sector) dependent
+on entropy (Figure 1) and relative entropy to the maximum entropy solution (Figure 2), each
+color representing a randomly generated sample.
+From Figure 1 it can be seen that an increase in entropy leads to a lower average percentage
+3.85 3.9 3.95 4 4.05 4.1 4.15 4.2 4.25
+0.15
+0.16
+0.17
+0.18
+0.19
+0.2
+0.21
+0.22
+0.23
+Entropy
+% of total assets of banking system affected on average
+Figure 1: % of total assets of banking system affected on average dependent on entropy
+of banks' assets affected. Under the assumption that all banks are of equal size, the average
+number of bank defaults dependent on entropy can be derived easily by multiplying the average
+percentage of banks' assets affected by failure by the total number of banks (in this case, 10).
+Hence, the more equally banks spread their claims, the fewer institutions default on average.
+These results suggest that, within a complete network and for the parameter values given above,
+shocks are absorbed best if banks diversify their (credit) risk exposures well. The results, as well
+as all subsequent simulation results, are robust to changes in the sample and to changes in the
+bank that fails first.
+10
+Figure 2, which shows the relation between relative entropy to the maximum entropy solution
+0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7
+0.15
+0.16
+0.17
+0.18
+0.19
+0.2
+0.21
+0.22
+0.23
+Relative entropy
+% of total assets of banking system affected on average
+Figure 2: % of total assets of banking system affected on average dependent on relative entropy
+and average percentage of banks' assets affected, yields an inverse result compared to Figure 1:
+The higher the relative entropy, the higher the percentage of banks' assets affected and therefore
+the higher the average number of bank failures. Thus, because of the negative linear relationship
+between entropy and relative entropy shown in Appendix 2, Figure 2 also confirms that a more
+equal distribution of claims leads to a more stable system.
+Up to now, the impact of the distribution of claims on financial stability can be summed up
+as follows:
+Result 1: In a complete network, for the parameter values given above,13 a liability matrix
+with an equal distribution of interbank exposures (a high entropy or a low relative entropy to
+the maximum entropy solution, respectively) leads to a more stable system than a liability matrix
+with an unequal distribution of interbank exposures.
+4.2 Random graphs
+A connectivity of 100% is rather unrealistic. Thus, some network has to be designed that omits
+some directed links within the financial system. One option in this context is to model random
+graphs.
+13In the sections below, it is specified in more detail for which parameter values these results hold.
+11
+Concerning completeness and interconnectedness of the network only and assuming that banks
+are completely homogeneous, especially with a completely homogeneous asset / liability struc-
+ture, subsequent results should be expected according to the theoretical findings of Allen and
+Gale (2000). They examine three types of networks that are displayed in Figure 3. The complete
+and perfectly interconnected network (Figure 1 in Allen and Gale) is equivalent to a random
+graph with an Erd¨
+os-R´
+enyi probability of 100%. In this case, the possibility that contagion
+occurs is rather low because the more complete a financial system, the greater is the potential
+for risk diversification. With decreasing connectivity, the network structure moves towards sys-
+tems that are still highly interconnected but also incomplete (equivalent to Figure 2 in Allen
+and Gale). Allen and Gale show that these systems are more vulnerable to contagion. With
+connectivity decreasing further, the network structure becomes equivalent to the disconnected
+system in Figure 3 in Allen and Gale. This disconnection can limit the extent of contagion.
+Hence there is a non-monotonic relationship between completeness of the network and financial
+stability.
+In the following simulations, the degree of disconnection is measured by the average number of
+strongly connected components across all matrices in a sample. Within a strongly connected
+component, every bank can be reached by every other bank. This does not mean that there
+are direct links between all banks as in a complete network. It is sufficient that there exists a
+directed path between all nodes. If the graph contains only one strongly connected component,
+the failure of one bank can (potentially after several rounds of contagion) cause the failure of
+all other banks. If there is more than one strongly connected component, however, it is possible
+that the failure of one bank cannot cause the failure of all other banks because not all banks
+can be reached by the failing bank. Hence, the higher the average number of strongly connected
+components for a given Erd¨
+os-R´
+enyi probability, the more disconnected is the system.
+As mentioned above, the analysis of Allen and Gale is based on a banking system with completely
+homogeneous banks with a completely equal asset / liability structure. Within this simulation, in
+addition to completeness and interconnectedness, a third aspect is introduced into the analysis:
+the distribution of claims within the system.
+12
+1
+4
+2
+3
+1
+4
+2
+3
+1
+4
+2
+3
+FIG 1: Complete market structure FIG 2: Incomplete market structure FIG 3: Disconnected incomplete
+market structure
+Figure 3: Types of networks investigated by Allen and Gale (2000)
+4.2.1 Varying connectivity
+In the following, the default algorithm is run for different values of the Erd¨
+os-R´
+enyi probabil-
+ity, all other parameter values kept equal to those of Section 4.1. Each off-diagonal element of
+the liability matrix that denotes an interbank claim / obligation is set equal to zero with this
+probability.14 As for certain zero constellations, the RAS algorithm is not able to find a valid
+solution; matrices that do not fit are dropped. Furthermore, matrices where the actual share
+of existing links to total possible links deviates more than 0.02 from the desired connectivity
+are also dropped. Thus, only matrices that fit exactly to desired row and column sums and to
+desired connectivity are used for the analysis.
+To capture the degree of disconnection of the randomly generated network, the number of strongly
+connected components is computed for each graph using an algorithm developed by Tarjan
+(1972). After generating a large number of matrices, the average number of strongly connected
+components for a given Erd¨
+os-R´
+enyi probability is calculated. It turns out that the system starts
+to become disconnected for p = 0.5 with an average number of strongly connected components
+of around 1.03. For p = 0.3, more randomly generated graphs are not perfectly interconnected
+any more, which yields an average number of strongly connected components of about 1.80. The
+degree of disconnection jumps up for p = 0.1, where the average number of strongly connected
+components is around 9.07.
+All the following simulations are implemented by generating 40, 000 to 50, 000 matrices for
+14Alternatively, the whole graph (including the node that denotes the external sector) can be modelled as a
+random graph. The aim of this paper is, however, to investigate the impact of the network topology of the
+interbank market on financial stability. Furthermore, it is certainly more realistic to assume that all banks have
+connections to the external sector.
+13
+characteristic p ENT RE
+p 1 0.94 -0.94
+ENT 1 -1
+RE 1
+Table 1: Correlation coefficients between characteristics in a random graph (generation of 25, 000
+matrices for each 10%-step from p = 10% to p = 100%); p = Erd¨
+os-R´
+enyi probability, RE =
+relative entropy, ENT = entropy
+p = 100%, 90%, 70%, 50%, 30% and 10%, respectively. Table 1 shows overall correlations
+for an Erd¨
+os-R´
+enyi probability of 10% to 100% (with 10%-steps) using the same parameter val-
+ues as in the previous section.
+As a first step, to capture the effect of completeness and interconnectedness on financial sta-
+bility, the average percentage of bank assets affected by failures dependent on the connectivity
+of the financial system is calculated. Figure 4 shows the average percentage of banks' assets
+affected by failures dependent on the median entropy for a given Erd¨
+os-R´
+enyi probability. It
+can be seen that a complete network (i.e. with p = 100%) leads on average to matrices that are
+characterized by high entropy. With decreasing connectivity, entropy also decreases, meaning
+that claims are distributed more unequally (according to Table 1, there is a high correlation of
+0.94 between entropy and the Erd¨
+os-R´
+enyi probability). Furthermore, Figure 4 shows that with
+decreasing completeness (i.e. a decreasing Erd¨
+os-R´
+enyi probability) the average percentage of
+assets affected by bank failure rises. This is in line with the finding of Allen and Gale that an
+incomplete but perfectly interconnected network leads to a less stable financial system than a
+complete network. The effect appearing in Allen and Gale's disconnected network can be ob-
+served for p = 10%. For p = 10%, the average percentage of assets affected (and therefore the
+average number of bank failures) is much lower than for p = 30% which can be explained by the
+large rise in the average number of strongly connected components from around 1.80 to around
+9.07.
+These results shown in Figure 4 can be obtained on average if networks are exclusively charac-
+terized by their completeness and interconnectedness. However, the effect of the structure of the
+financial system on financial stability can be analyzed in more detail by additionally considering
+the effect of the distribution of claims for a given connectivity. Intervals of characteristics are, as
+in Section 4.1, defined in a way that the number of observations is the same within all intervals.
+14
+1.5 2 2.5 3 3.5 4 4.5
+0.16
+0.18
+0.2
+0.22
+0.24
+0.26
+0.28
+0.3
+0.32
+0.34
+0.36
+Entropy
+% of total assets of banking system affected on average
+30 %
+50 %
+70 %
+90 %
+p = 100 %
+10 %
+Figure 4: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+Simulations show that results are still not dependent on which bank failed first and the sample
+generated.
+In Figure 5 it can be seen that for p = 100% the same result is obtained as in Figure 1. A
+1.5 2 2.5 3 3.5 4 4.5
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+Entropy
+% of total assets of banking system affected on average
+50 %
+70 %
+90 %
+p = 100 %
+30 %
+10 %
+Figure 5: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+liability matrix with a higher entropy leads to a lower average percentage of assets affected by
+bank failure and therefore a lower average number of bank failures. However, with the 100%
+connectivity assumption, only rather high values for entropy can be generated. Inserting zero
+15
+off-diagonal "interbank" elements into the matrix with 10% probability, which is equivalent to
+p = 90%, generates matrices with a lower entropy. The negative correlation between bank failures
+and entropy still holds for p = 90%. With decreasing connectivity, matrices with an even lower
+entropy can be created. The negative correlation between entropy and average bank failures,
+however, becomes weaker and turns into a positive correlation. This means that for a given low
+Erd¨
+os-R´
+enyi probability (e.g. p = 50%, p = 30% or p = 10%), a comparatively high entropy
+leads on average to more banks defaulting than a comparatively low entropy.
+An interpretation for this observation is that, for a high connectivity, an equal distribution of
+interbank claims is the best shock absorber due to credit risk diversification, whereas an unequal
+distribution of claims increases the probability that there is a second-round effect after the failure
+of one bank. On the contrary, when connectivity is low, the failure of one bank is very likely
+to cause second-round effects because the average amount of interbank exposures to the few
+connected banks is very high. Hence, the more equal the distribution to the few other banks, the
+higher the probability that all these banks fail because there are not enough counterparties to
+diversify the losses induced by the shock. On the other hand, the more unequal the distribution
+to the few other banks, the higher the probability that not all of these banks fail and therefore
+the average number of failures is smaller in this case.
+Thus, a change in the average percentage of assets in the banking sector affected by failure (i.e.
+a change in the average number of bank failures) is not just due to a change in connectivity
+but can also be due to a change in the distribution of interbank claims. For example, though
+the overall average number of banks failing is higher for a connectivity of 30% compared to a
+connectivity of 50% (see Figure 4), a system with a very unequal distribution of interbank claims
+(low entropy) and 30% connectivity is more stable than a system with a rather equal distribution
+of interbank claims (high entropy) and 50% connectivity (see Figure 5). Also, a system with a
+very equal distribution of interbank claims (high entropy) and 90% connectivity is more stable
+than a network with 100% connectivity and a very unequal distribution of interbank claims (low
+entropy).
+Thus, by additionally considering the distribution of claims within the system, it can be seen
+that a complete network can be more unstable than an incomplete but perfectly interconnected
+network. This finding extends the work of Allen and Gale in a way that results could change if
+interbank claims are allowed to be heterogeneous.
+Figure 6 and 7 show the average number of bank failures dependent on the relative entropy to the
+maximum entropy solution. As entropy and relative entropy are exactly negatively correlated
+16
+(see Appendix 2 and Table 1), these two figures can be regarded as the mirror image of Figures
+4 and 5.
+0 0.5 1 1.5 2 2.5 3
+0.18
+0.2
+0.22
+0.24
+0.26
+0.28
+0.3
+0.32
+0.34
+Relative entropy
+% of total assets of banking system affected on average
+90 %
+p = 100 %
+70 %
+50 %
+30 %
+10 %
+Figure 6: % of total assets of banking system affected on average dependent on relative entropy
+and connectivity
+0 0.5 1 1.5 2 2.5 3
+0.2
+0.25
+0.3
+0.35
+0.4
+Relative entropy
+% of total assets of banking system affected on average
+p = 100 %
+90 %
+50 %
+30 %
+70 % 10 %
+Figure 7: % of total assets of banking system affected on average dependent on relative entropy
+and connectivity
+17
+The results of this paragraph can be summarized as follows:
+Result 2: Financial stability does not only depend on the completeness and interconnected-
+ness of the network but also on the distribution of claims within the system.
+Result 3: For the parameter values given above,15 the sign of the correlation between the
+equality of the distribution of claims (measured by entropy and relative entropy) and financial
+stability changes with decreasing completeness of the network. For high completeness (and high
+interconnectedness) an equal distribution of claims leads to the most stable system. For lower
+completeness (but still high interconnectedness) the positive correlation between entropy and
+number of banks failing weakens. For very low completeness (and low interconnectedness) a
+more unequal distribution of interbank claims leads to a more stable system.
+As long as banks are assumed to be of equal size, the characterization of matrices by entropy and
+relative entropy yields exactly the same results. Thus, all the following investigations are only
+made dependent on entropy. As a next step, some sensitivity analysis is done by varying one
+parameter (LGD, equity ratio or ratio of interbank assets to total assets in the banking system),
+as well as connectivity, and fixing all other parameters at their benchmark value set in Section
+4.1.
+4.2.2 Varying loss given default and connectivity
+Figure 8 shows the not very surprising result that, for a given connectivity, the average percentage
+of assets affected by bank failure (and thus also the average number of bank failures) increases
+with an increasing loss given default. An interesting observation is that for a high LGD (= 100%)
+the effect of a disconnected system (equivalent to Figure 3 in Allen and Gale) is already visible
+between p = 50% and p = 30%. Starting from p = 50% the average number of bank defaults
+decreases with decreasing connectivity. Hence, the impact of the disconnection of the financial
+system becomes more important for high rates of LGD where the average number of bank defaults
+tends to be very high.
+Figure 9 shows that a LGD of 100% leads to a positive correlation between assets affected by
+bank failure and entropy, even for a high connectivity of the network. A LGD of 30% leads
+15In the sections below, it is specified in more detail for which parameter values these results hold.
+18
+2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+Entropy
+% of total assets of banking system affected on average
+LGD = 0.3
+30 %
+LGD = 1
+10 %
+50 %
+70 %
+90 %
+p = 100 %
+LGD = 0.5
+Figure 8: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+to a negative correlation between assets affected by bank failure and entropy, even for a low
+connectivity (up to p = 30%) of the network. An explanation for this observation is that a high
+LGD makes a system vulnerable to interbank contagion as a high share of claims to the failing
+banks defaults. Thus, it can be assumed that contagion occurs with certainty. In this case, it
+is better to have a relatively unequal distribution of interbank exposures so that only few banks
+are hit by a second-round effect of contagion. For a low LGD, the system is rather resilient to
+interbank contagion. In this case, second-round effects only occur if interbank exposures are
+distributed very unequally, i.e. interbank claims are not well diversified among counterparties.
+4.2.3 Varying equity ratio and connectivity
+Figure 10 shows, not surprisingly, that a lower equity ratio leads, for a given Erd¨
+os-R´
+enyi prob-
+ability, to a higher average number of bank assets affected by failure. Again, the impact of
+the disconnection of the financial system becomes more important for parameter constellations
+where the average number of bank defaults tends to be very high, i.e. for low equity ratios.
+Looking at the effect of the distribution of claims for given connectivity in Figure 11, it can be
+seen that for an equity ratio of 9% the correlation of entropy and percentage of assets affected
+by bank failure is negative for all values of p (except p = 10%). For an equity ratio of 3% the
+correlation is always positive. Similar to the variation of LGD, systems with high equity ratios
+are more stable with an equal distribution of claims because second-round effects only occur
+19
+1.5 2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Entropy
+% of total assets of banking system affected on average
+LGD = 1
+LGD = 0.3
+30 %
+p = 100 %
+90 %
+70 %
+50 %
+10 %
+LGD = 0.5
+Figure 9: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+1.5 2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+Entropy
+% of total assets of banking system affected on average
+r = 0.03
+30 %
+50 %
+70 %
+90 %
+p = 100 %
+10 %
+r = 0.09
+r = 0.06
+Figure 10: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+20
+when interbank claims are not well diversified. Systems with low equity ratios are, for a given
+Erd¨
+os-R´
+enyi probability, more stable with an unequal distribution of claims so that second-round
+effects (that occur almost with certainty) only hit few counterparties in the financial system.
+1.5 2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Entropy
+% of total assets of banking system affected on average
+p = 100 %
+70 %
+50 %
+30 %
+r = 0.09
+r = 0.03
+10 %
+90 %
+r = 0.06
+Figure 11: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+4.2.4 Varying ratio of interbank to total assets and connectivity
+Additionally, the ratio of interbank assets to total assets  can be varied. Figure 12 shows that
+a higher ratio of interbank assets to total assets leads, for a given Erd¨
+os-R´
+enyi probability, to a
+higher average percentage of assets affected by bank failure. This is not surprising because, for
+a given equity ratio and LGD, banks become more vulnerable to the default of a neighboring
+bank. The reason is that, on average, the bilateral exposure per counterparty increases with an
+increasing ratio of interbank to total assets. Furthermore, for high numbers of bank failures (i.e.
+high numbers of ) the effect of a disconnected system is again already visible for an Erd¨
+os-R´
+enyi
+probability below 50%.
+Figure 13 shows that the correlation between entropy and average percentage of assets affected
+by failure changes from positive to negative at an Erd¨
+os-R´
+enyi probability of around 70%, inde-
+pendent of the value of . Thus, contrary to the variation of LGD and r, there is no influence
+of  on the correlation between entropy and average number of banks defaults.16 However, one
+16In additional simulations the loss given default and the equity ratio were varied for different values of . The
+result is that high values of LGD or low values of r lead to a positive correlation between entropy and the average
+21
+1.5 2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Entropy
+% of total assets of banking system affected on average
+ = 0.5
+ = 0.2
+30 %
+50 %
+70 %
+90 %
+p = 100 %
+10 %
+ = 0.3
+Figure 12: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+has to be careful when comparing samples of matrices with different . Looking at the range
+of entropy values created for a given Erd¨
+os-R´
+enyi probability in Figure 13 it can be seen that,
+for higher values of , the random generator on average creates matrices with a higher entropy.
+Thus, not the same entropy intervals can be compared when investigating the average percentage
+of bank assets affected by failure for different values of .
+Paragraphs 4.2.2 to 4.2.4 can be summarized by the following result:
+Result 4: For a given total amount of interbank assets, the sign of the correlation between
+the equality of the distribution of claims (entropy) and average percentage of bank assets af-
+fected by failure (or average number of banks defaulting, respectively) tends to be positive for
+parameters that make a system vulnerable to interbank contagion (i.e. a high LGD and low
+equity ratios). On the other hand, the sign of the correlation tends to be negative for parameters
+that make the system resilient to interbank contagion (i.e. a low LGD and high equity ratios).
+For intermediate parameter values, the sign of the correlation between equality of the distribu-
+tion of claims and average number of banks defaulting changes from negative to positive with
+percentage of assets affected, and low values of LGD or high values of r lead to a negative correlation, independent
+of . Thus, a variation of LGD and r changes the correlation between entropy and average percentage of assets
+affected by failure; a variation of , however, does not.
+22
+1.5 2 2.5 3 3.5 4 4.5
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Entropy
+% of total assets of banking system affected on average
+ = 0.2
+90 %
+70 %
+50 %
+30 %
+10 %
+p = 100 %
+ = 0.5
+ = 0.3
+Figure 13: % of total assets of banking system affected on average dependent on entropy and
+connectivity
+decreasing connectivity (see results in Section 4.1 and 4.2.1).
+In further simulations, additional parameters are varied. At first, the total number of assets
+was changed. This, however, does not alter the results as relative numbers (e.g. equity ratio
+or ratio of interbank assets to total assets) do not change. Increasing the number of banks in
+the system makes it (all other variables kept equal) less vulnerable to the failure of one bank as
+the average amount of bilateral exposures per counterparty decreases with an increasing number
+of counterparties. Furthermore, these simulations were run for "extreme" parameter values, i.e.
+parameters that all make a financial system very unstable (high LGD, low equity ratio and high
+share of interbank assets to total assets) or stable, respectively. The results confirmed the main
+findings summarized in result 4.
+23
+4.3 Money center models
+The analysis of the impact of the distribution of claims on financial stability in random graphs
+leads to some interesting results. It is, however, questionable, whether a random graph is a good
+description of real world financial networks. In the literature, it is sometimes stated that a more
+adequate model of a financial system is a scale-free network (see, for example, Boss et al. (2004)
+and Soram¨
+aki et al. (2006)). Furthermore, some recent studies prefer to model financial systems
+as (multiple) money center systems (see e.g. Craig and von Peter (2010)), where few large core
+banks are strongly interconnected (i.e. they form a complete network) and a larger number of
+small banks in the periphery are only connected to one core bank but not to other banks in the
+periphery. Figure 14 shows an example of a money center model (without the external sector).
+1
+3 2
+5
+6
+13
+11
+10
+9
+15
+14
+12
+4
+7
+8
+Figure 14: Example of a money center model with 15 banks (3 core banks and 12 banks in the
+periphery)
+The financial network of Figure 14, including the external sector, can be described by an adja-
+24
+cency matrix:
+L =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A1,core
+A2,core
+A3,core
+A4,per
+A5,per
+. . . A15,per
+AN
+L1,core
+0 1 1 | 1 1 . . . 0 1
+L2,core
+1 0 1 | 0 0 . . . 0 1
+L3,core
+1 1 0 | 0 0 . . . 1 1
+- - - - - - - -
+L4,per
+1 0 0 | 0 0 . . . 0 1
+L5,per
+1 0 0 | 0 0 . . . 0 1
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+. |
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+L15,per
+0 0 1 | 0 0 . . . 0 1
+LN
+1 1 1 1 1 . . . 1 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The interbank part of this adjacency matrix, i.e. the (N - 1) × (N - 1) matrix that is ob-
+tained when deleting the last row and the last column of L, can be written in block matrix
+form:17
+LIB =
+
+
+
+
+
+1
+| 2
+- - -
+3
+| 4
+
+
+
+
+
+By assumption, the money center model has to follow certain patterns. First, all core banks
+are strongly connected to each other. Thus, all off-diagonal elements of the top left corner of the
+adjacency matrix LIB (1) have to be equal to one. Second, each bank in the periphery is linked
+to exactly one money center bank in both directions. Thus, the top right corner (2) has exactly
+one non-zero element per column and the bottom left corner of the adjacency matrix (3) is the
+exactly transposed version of the top right corner. Third, banks in the periphery are not linked
+to each other. Hence, the bottom right corner (4) contains only zeros. By construction, the
+strongly connected component always includes all nodes in the system.
+17The way this money center system is constructed is very similar to the "block-model approach" of Craig and
+von Peter (2010). The conditions a money center system has to fulfill are, however, stronger in this paper.
+25
+After constructing the adjacency matrix, the edges of the graph obtain weights that are, similar
+to the case of the random graph, created by a random generator. For given row and column
+sums, elements are again adjusted by using the RAS algorithm.
+4.3.1 Varying the number of core banks and concentration ratio
+At first, the stability of a money center model is investigated by varying two main parameters
+that characterize its pattern: the number of core banks ncore
+and the concentration ratio CR.
+To create a more reasonable ratio of core banks to periphery banks, the number of banks in
+the financial system is increased to 15, i.e. N = 16. Remaining parameters are set at their
+benchmark values, i.e. LGD = 0.5, r = 0.06 and  = 0.3. Total assets in the banking system
+are again set at Abanks = 1, 000 and each simulation is run for a sample of 50, 000 randomly
+generated matrices. While for the random graph it does not matter which bank fails first, for
+the money center model it is assumed that a core bank fails.18 Figures 15 to 18 show the average
+percentage of total assets that are affected by bank failure for ncore
+= 5 to ncore
+= 2. For
+each number of core banks the concentration ratio is varied from CR = 0.99 (core banks hold
+almost all assets in the banking system) to CR = 0.4 (core banks hold 40% of total assets in the
+banking system). The lower bound of the concentration ratio is set in such a way that, for all
+values of ncore
+investigated, it cannot happen that core banks have smaller balance sheet totals
+than periphery banks.
+Not surprisingly, entropy decreases with an increasing concentration ratio as a higher concen-
+tration of assets among few core banks implies a more unequal distribution of claims within the
+financial system. Furthermore, for a given number of core banks, the average percentage of as-
+sets affected by bank failure increases with the concentration ratio. One reason is that the total
+amount of assets of the bank that fails first, and therefore the initial percentage of assets affected
+by bank failure, is higher. But this is not the only effect. With increasing size of core banks
+compared to banks in the periphery (i.e. a higher CR), and all other variables kept equal, the
+average weights of the links between core banks increase in the liability matrices generated. Thus
+the amount of interbank assets between core banks becomes larger on average, which makes core
+banks more vulnerable to interbank contagion. And the more core banks fail, the more banks in
+the periphery are on average affected by domino effects.
+Comparing the stability of the financial system by varying the number of core banks ncore
+it can
+18Additionally, simulations with a periphery bank failing were run. Not surprisingly, in this case, the financial
+system is more stable than in the case of a core bank failing.
+26
+be seen that, all other parameters kept equal, the stability of the financial system increases with
+an increasing number of core banks. This effect is again due to the size of the core banks. For a
+given concentration ratio, the size of the core banks decreases with an increasing number of core
+banks. Thus, the average amount of interbank assets between core banks also becomes smaller
+and the probability that domino effects between core banks occur, is reduced.
+Hence, the main result of this paragraph is:
+2.6 2.7 2.8 2.9 3 3.1 3.2 3.3 3.4 3.5
+0.35
+0.4
+0.45
+0.5
+0.55
+Entropy
+% of total assets of banking system affected on average
+CR = 0.4
+CR = 0.6
+CR = 0.8
+CR = 0.99 money center system (n
+core
+= 5)
+Figure 15: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio
+Result 5: Increasing asset concentration (a higher concentration ratio for a given number of
+core banks or a lower number of core banks for a given concentration ratio) within a money
+center system makes it more unstable on average.
+4.3.2 Comparison to random graphs
+Additionally, the stability of a money center system is compared to the stability of a random
+graph. As a benchmark, the investigation of the stability of random graphs with the same system
+size (in terms of total assets) and the same number of banks as in the money center system is
+included in each subsequent figure. When modelling the random graph, it is assumed that all
+27
+2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3 3.1 3.2
+0.35
+0.4
+0.45
+0.5
+0.55
+0.6
+0.65
+0.7
+Entropy
+% of total assets of banking system affected on average
+CR = 0.4
+CR = 0.6
+CR = 0.8
+CR = 0.99 money center system (n
+core
+= 4)
+Figure 16: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio
+1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2
+0.4
+0.45
+0.5
+0.55
+0.6
+0.65
+0.7
+0.75
+0.8
+Entropy
+% of total assets of banking system affected on average
+money center system (n
+core
+= 3)
+CR = 0.4
+CR = 0.6
+CR = 0.99
+CR = 0.8
+Figure 17: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio
+28
+0.5 1 1.5 2 2.5 3
+0.5
+0.55
+0.6
+0.65
+0.7
+0.75
+0.8
+0.85
+0.9
+0.95
+Entropy
+% of total assets of banking system affected on average
+CR = 0.4
+CR = 0.6
+CR = 0.8
+CR = 0.99
+money center system (n
+core
+= 2)
+Figure 18: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio
+banks have homogeneous balance sheet totals and are linked randomly with a certain probability.
+The money center system is interlinked according to the description in Section 4.3.
+However, one has to be careful when setting the parameter values for the money center system.
+Within a random graph, the average amount of bilateral interbank exposures (over the whole
+sample of generated matrices) is the same between all banks. In a money center model, though,
+if the concentration ratio is chosen too low (or the number of core banks is chosen too high),
+i.e. core banks do not have a balance sheet total that is large enough compared to periphery
+banks, the assumed network topology of the money center model leads to interbank connections
+where core banks have less exposures to each other than to banks in the periphery. The reason
+is that periphery banks have all their interbank exposures to one core bank by assumption. To
+obtain a valid liability matrix for given balance sheet totals, the result is a very low weight on
+interbank exposures among core banks. This does not fit to realistic banking systems. Thus,
+in the following simulations, it is assumed that the average amount of bilateral interbank assets
+each core bank holds against another core bank is at least as high as the average amount of bilat-
+eral interbank assets a core bank holds against a periphery bank. This amounts to a minimum
+concentration ratio of CR = 0.25 for ncore
+= 2, CR = 0.35 for ncore
+= 3, CR = 0.4 for ncore
+= 4
+and CR = 0.45 for ncore
+= 5.19
+19These results are obtained by calculating the average amount of bilateral interbank assets between two core
+banks and between a core and a periphery bank by simulation for different values of CR (in steps of 0.05). The
+29
+Figures 19 to 22 show that (for the same values of N, Abanks, , LGD and r) the random graph
+is always more stable on average than the money center system with the minimum concentration
+ratio derived above.20
+Several reasons for this result can be mentioned. First, in the money center model, the initial
+percentage of assets affected by bank failure is larger than in the random graph. The reason
+is that, for the given minimum concentration ratio, core banks in the money center model are
+always larger than banks in a random graph. Second, a large balance sheet total of the failing
+core bank implies on average a high amount of interbank claims defaulting in the first round.
+Thus, the initial shock is larger compared to a random graph. Third, among core banks there are
+only limited possibilities of risk diversification, as they are only linked to the other core banks
+and to few periphery banks. Additionally, there is no sufficient risk diversification possible for
+periphery banks that hold all their claims against one core bank. Fourth, money center models
+are always strongly connected by assumption, i.e. they have only one strongly connected com-
+ponent. Hence, domino effects can never be curtailed by disconnection of the financial system.
+0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Entropy
+% of total assets of banking system affected on average
+random graph
+p = 100%
+CR = 0.99
+CR = 0.8
+CR = 0.6
+CR = 0.4
+10%
+30%
+50%
+70%
+90%
+money center system (n
+core
+= 2)
+CR = 0.25
+Figure 19: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio (money center system) or connectivity (random graph)
+value of CR, where the discrepancy between the average amount of interbank assets each core bank holds against
+another core bank and the average amount of interbank assets a core bank holds against a periphery bank is
+minimal, is then chosen as the minimum concentration ratio for further simulations.
+20In additional simulations the same result was obtained for extreme values of LGD and r.
+30
+1.5 2 2.5 3 3.5 4 4.5 5
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+Entropy
+% of total assets of banking system affected on average
+random graph
+CR = 0.6
+70%
+50%
+30%
+10%
+90%
+p = 100%
+CR = 0.99
+CR = 0.8
+money center system (n
+core
+= 3)
+CR = 0.4
+CR = 0.35
+Figure 20: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio (money center system) or connectivity (random graph)
+2 2.5 3 3.5 4 4.5 5
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+Entropy
+% of total assets of banking system affected on average
+random graph
+CR = 0.99
+CR = 0.8
+CR = 0.6
+money center model (n
+core
+= 4)
+p = 100%
+50%
+70%
+30%
+10%
+90%
+CR = 0.4
+Figure 21: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio (money center system) or connectivity (random graph)
+31
+2.5 3 3.5 4 4.5 5
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+0.45
+0.5
+0.55
+Entropy
+% of total assets of banking system affected on average
+random graph
+CR = 0.99
+p = 100%
+90%
+70%
+50%
+30%
+10%
+money center system (n
+core
+= 5)
+CR = 0.8
+CR = 0.6
+CR = 0.45
+Figure 22: % of total assets of banking system affected on average dependent on entropy and
+concentration ratio (money center system) or connectivity (random graph)
+Thus, to summarize the main findings of this paragraph, it can be said that:
+Result 6: Under the assumption that the average amount of bilateral interbank assets be-
+tween two core banks is at least as high as between a core and a periphery bank, a money center
+system with asset concentration among core banks is, in all previously conducted simulations,
+less stable on average than a system of banks with homogeneous size that follows a random
+graph.
+5 Conclusion
+In this paper, the impact of the structure of the interbank liabilities matrix on financial stability
+is analyzed. After characterizing the financial system according to the number of banks, total
+assets in the banking system, equity ratio, the ratio of interbank to total assets and loss given
+default, a large number of valid interbank liability matrices is created by random generator for
+given row and column sums. Thus, for the first time, interbank contagion is investigated for
+a large sample of interbank matrices. These matrices are then characterized by entropy and
+relative entropy to the maximum entropy solution, which constitute measures of the equality of
+the distribution of interbank exposures. This procedure makes it possible to investigate financial
+stability dependent on how equally interbank exposures are distributed. As a next step, domino
+effects resulting from the default of one bank are modelled. As long as banks are assumed to
+32
+be of equal size (to be able to only focus on the effects of the structure of the liability matrix),
+it does not matter which bank fails first. Additionally, as a large number of valid matrices is
+generated, results do not depend on the sample of matrices.
+The first simulations are conducted for complete networks and "intermediate" parameter values.
+The main result is that a more equal distribution of interbank claims leads to a more stable
+financial system.
+These results, however, change if an incomplete network is considered. Starting with a random
+graph and, again, "intermediate" parameter values, it can be seen that the sign of the correlation
+between equality of distribution of claims and percentage of assets affected by bank failures
+changes with decreasing connectivity. Furthermore, a crucial result of these simulations is that
+not only completeness and interconnectedness of a financial network, as investigated theoretically
+in Allen and Gale (2000), matters, but also the distribution of claims within the financial network.
+In this paper, cases can be shown where, contrary to the findings of Allen and Gale, a complete
+network (with an unequal distribution of claims) is less stable than an incomplete but perfectly
+interconnected network (with an equal distribution of claims).
+As a next step, further sensitivity analysis is implemented by varying loss given default, banks'
+equity ratio and the ratio of interbank assets to total assets. The main result in this context is
+that the sign of the correlation between entropy and the average percentage of assets affected
+by bank failure depends on connectivity, loss given default and equity ratio. For high values of
+LGD and low values of r (i.e. parameters that make a financial system vulnerable to interbank
+contagion) the sign of the correlation between entropy and the average percentage of assets
+affected tends to be positive, while for low values of LGD and high values of r (i.e. parameters
+that make a financial system resilient to interbank contagion) the sign of the correlation tends
+to be negative. For "intermediate" parameter values the sign of the correlation changes from
+negative to positive with decreasing connectivity.
+A second, probably more realistic, approach to modelling incomplete networks is to consider
+money center systems. The main idea of money center models is to distinguish between large
+core banks that are strongly connected to each other and small banks in the periphery that are
+only linked to one core bank. Not surprisingly, the more concentrated assets are within a money
+center system, the less stable it is. Additionally, using reasonable parameters for the number of
+core banks and the concentration of assets among core banks, it turns out that, for all simulations
+run, the money center system is less stable than a random graph with homogeneous bank size.
+As a conclusion, this paper extends the existing literature on interbank contagion within a
+33
+financial network by explicitly considering the distribution of claims within the financial system,
+and therefore gives a variety of insights into the determinants of financial stability. This approach
+can be widened to aspects of interbank contagion extending domino effects (e.g. contagion due to
+liquidity problems or refinancing problems). Therefore, this approach leaves a lot of new topics
+for future research.
+34
+6 References
+Aikman, A.; Alessandri, P.; Eklund, B.; Gai, P.; Kapadia, S.; Martin, E.; Mora, N.;
+Sterne, G.; Willison, M. (2009): Funding liquidity risk in a quantitative model of systemic
+stability; Bank of England Working Paper No. 372.
+Allen, F.; Babus, A. (2009): Networks in Finance; in: Kleindorfer, P.; Wind, Y; Gun-
+ther, R. (2009): The Network Challenge; Wharton School Publishing, Chapter 21.
+Allen, F.; Gale, D. (2000): Financial Contagion; Journal of Political Economy, Vol. 108,
+No. 1 (Feb. 2000), pp. 1 - 33.
+Blien, U.; Graef, F. (1991): Entropieoptimierungsverfahren in der empirischen Wirtschafts-
+forschung; Jahrb¨
+ucher f¨
+ur National¨
+okonomie und Statistik, Vol. 208, No. 4, pp. 399 - 413.
+Boss, M.; Elsinger, H.; Summer, M.; Thurner, S. (2004): Network topology of the
+interbank market; Quantitative Finance, Vol. 4, No. 6, pp. 677 - 684.
+Chan-Lau, J. (2010): Balance Sheet Network Analysis of Too-Connected-to-Fail Risk in Global
+and Domestic Banking Systems; IMF Working Paper No. 10/107.
+Cifuentes, R.; Ferrucci, G.; Shin, H. (2005): Liquidity Risk and Contagion; Journal
+of the European Economic Association, Vol. 3, No. 2/3, pp. 556 - 566.
+Craig, B.; von Peter, G. (2010): Interbank Tiering and Money Center Banks; Mimeo.
+Degryse, H.; Nguyen, G. (2007): Interbank Exposures: An Empirical Examination of Con-
+tagion Risk in the Belgian Banking System; International Journal of Central Banking, June 2007,
+pp. 123 - 171.
+Eisenberg, L.; Noe, T. (2001): Systemic Risk in Financial Systems; Management Science,
+Vol. 47, No. 2, pp. 236 - 249.
+35
+Elsinger, H.; Lehar, A.; Summer, M. (2006): Risk Assessment for Banking Systems;
+Management Science, Vol. 52, No. 9, pp. 1301 - 1314.
+Espinosa-Vega, M.; Sol´
+e, J. (2010): Cross-Border Financial Surveillance: A Network Per-
+spective; IMF Working Paper No. 10/105.
+Freixas, X.; Parigi, B.; Rochet, J.C. (2000): Systemic risk, Interbank relations and liquid-
+ity provision by the Central Bank; Journal of Money, Credit, and Banking, Vol. 32, No. 3, Part
+2, pp. 611 - 638.
+Furfine, C. H. (1999): Interbank exposures: Quantifying the risk of contagion; BIS Working
+Paper No. 70.
+Gai, P; Kapadia, S. (2010): Contagion in Financial Networks; Bank of England Working
+Paper No. 383.
+Haldane, A. (2009): Rethinking the Financial Network; Speech delivered at the Financial
+Student Association, Amsterdam.
+Iori, G; de Masi, G.; Precup, O. V.; Gabbi, G.; Caldarelli, G. (2008): A Network
+Analysis of the Italian Overnight Money Market; Journal of Economic Dynamics and Control,
+Vol. 32, No. 1, pp. 259 - 278.
+Mistrulli, P. (2007): Assessing financial contagion in the interbank market: Maximum en-
+tropy versus observed interbank lending patterns; Banca D'Italia Working Paper No. 641.
+Nier, E.; Yang, J.; Yorulmazer, T. and Alentorn, A. (2008): Network models and
+financial stability; Bank of England Working Paper No. 346.
+Sheldon. G; Maurer, M. (1998): Interbank Lending and Systemic Risk: An Empirical
+Analysis for Switzerland; Swiss Journal of Economics and Statistics, Vol.134 (4.2), pp. 685 -
+704.
+36
+Soram¨
+aki, K.; Bech, M.L.; Arnold, J.; Glass, R.J.; Beyeler, W.E. (2006): The Topol-
+ogy of Interbank Payment Flows; Federal Reserve Bank of New York Staff Report No. 243.
+Tarjan, R. (1972): Depth-first search and linear graph algorithms; SIAM Journal on Comput-
+ing, Vol. 1, No. 2, pp. 146 - 160.
+Upper, C. (2007): Using counterfactual simulations to assess the danger of contagion in
+interbank markets; BIS Working Paper No. 234.
+Upper, C.; Worms, A. (2004): Estimating bilateral exposures in the German interbank
+market: Is there a danger of contagion?; European Economic Review, Vol. 48, No. 4, pp. 827 -
+849.
+Van Lelyveld, I., Liedorp, F. (2006): Interbank Contagion in the Dutch Banking Sec-
+tor: A Sensitivity Analysis; International Journal of Central Banking, Vol. 2, No. 2, pp. 99 -
+133.
+Wells, S. (2004): Financial interlinkages in the United Kingdoms interbank market and the
+risk of contagion; Bank of England working paper, No. 230.
+37
+7 Appendix
+7.1 Appendix 1: Generation of the maximum entropy solution of an
+interbank liability matrix
+The starting point is a matrix X with given row sums Li
+, i  {1, ..., N} and column sums Aj
+,
+j  {1, ..., N}.21
+X =
+
+
+
+
+
+
+
+
+A1 A2
+· · · AN
+L1
+· · · · · · · · · · · ·
+L2
+· · · · · · · · · · · ·
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+LN
+· · · · · · · · · · · ·
+
+
+
+
+
+
+
+
+with N
+i=1
+Li
+= L, N
+j=1
+Aj
+= A and A = L.
+As entropy methods must be applied on probability fields, some normalization of row and column
+sums is necessary:
+Xp =
+
+
+
+
+
+
+
+
+ap
+1
+ap
+2
+· · · ap
+N
+lp
+1
+· · · · · · · · · · · ·
+lp
+2
+· · · · · · · · · · · ·
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+lp
+N
+· · · · · · · · · · · ·
+
+
+
+
+
+
+
+
+with lp
+i
+= Li
+L
+and ap
+j
+= Aj
+A
+.
+Furthermore N
+i=1
+lp
+i
+= N
+j=1
+ap
+j
+= 1.
+The ap's and lp's are interpreted as realizations of the marginal distributions f(a) and f(l), the
+elements of the liability matrix Xp = xp
+ij
+as realizations of their joint distribution f(a, l). If f(a)
+and f(l) are independent, the elements xp
+ij
+of the normalized matrix are given by xp
+ij
+:= lp
+i
+ap
+j
+.
+21See Upper and Worms (2004)
+38
+This results in maximizing the entropy of Xp.
+Xp =
+
+
+
+
+
+
+
+
+ap
+1
+ap
+2
+· · · ap
+N
+lp
+1
+xp
+11
+xp
+12
+· · · xp
+1N
+lp
+2
+xp
+21
+xp
+22
+· · · xp
+2N
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+lp
+N
+xp
+N1
+xp
+N2
+· · · xp
+NN
+
+
+
+
+
+
+
+
+with N
+j=1
+xp
+ij
+= lp
+i
+and N
+i=1
+xp
+ij
+= ap
+j
+.
+The problem is that the matrix Xp has non-zero elements on the main diagonal which means
+that banks lend to themselves. To avoid this phenomenon, a new matrix Xp
+0
+with zero elements
+on the diagonal has to be created, i.e. xp
+ij
+is set equal to zero for i = j.
+Xp
+0
+=
+
+
+
+
+
+
+
+
+ap
+1
+ap
+2
+· · · ap
+N
+lp
+1
+0 xp
+12
+· · · xp
+1N
+lp
+2
+xp
+21
+0 · · · xp
+2N
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+lp
+N
+xp
+N1
+xp
+N2
+· · · 0
+
+
+
+
+
+
+
+
+The new matrix should deviate from the maximum entropy solution as little as possible. Thus,
+out of all possible normalized matrices Xp, a matrix X has to be created that minimizes the
+relative entropy with respect to the matrix Xp
+0
+.
+x = argmin xp · ln
+xp
+xp
+0
+(8)
+s.t. x  0 and Ax = ap , lp ,
+where x and xp
+0
+are (N2 - N) × 1 vectors containing the off-diagonal elements of X and Xp
+0
+,
+ap and lp are the row and column sums of Xp ( ap , lp has the size 2N × 1), and A is a
+2N × N2 - N matrix containing zeros and ones so that the restrictions concerning row and
+column sums are fulfilled.
+This minimization problem can be either solved using the RAS algorithm (see Blien and Graef
+(1991)) or using the "fmincon-command" of MATLAB's optimization toolbox. Both approaches
+lead to the same results.
+39
+After solving the minimization problem, a matrix X is obtained that deviates from the assump-
+tion of independence as little as possible.
+X =
+
+
+
+
+
+
+
+
+ap
+1
+ap
+2
+· · · ap
+N
+lp
+1
+0 x
+12
+· · · x
+1N
+lp
+2
+x
+21
+0 · · · x
+2N
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+lp
+N
+x
+N1
+x
+N2
+· · · 0
+
+
+
+
+
+
+
+
+As a last step, X can be transformed back into a "real" liability matrix X by multiplying
+each element x
+ij
+as well as the row and column sums lp
+i
+and ap
+j
+with L or A.
+40
+7.2 Appendix 2: Specification of the linear relationship between en-
+tropy and relative entropy to the maximum entropy solution
+Consider a network of N nodes (N - 1 banks and one external sector) and, in particular, the
+(N - 1) × (N - 1) interbank liability matrix that is normalized by the total amount of interbank
+assets / liabilities. Normalization implies that the sum of row as well as the sum of column
+sums has to be equal to 1. The characteristic of the maximum entropy solution of the interbank
+matrix is that claims are distributed as equally as possible for given row and column sums. Thus,
+under the assumption that all banks are of equal size, the general result of the maximum entropy
+solution is a matrix with row and column sums of 1
+N-1
+and off-diagonal elements of 1
+(N-1)(N-2)
+,
+respectively:
+X =
+
+
+
+
+
+
+
+
+1
+N-1
+1
+N-1
+· · · 1
+N-1
+1
+N-1
+0 1
+(N-1)(N-2)
+· · · 1
+(N-1)(N-2)
+1
+N-1
+1
+(N-1)(N-2)
+0 · · · 1
+(N-1)(N-2)
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+1
+N-1
+1
+(N-1)(N-2)
+1
+(N-1)(N-2)
+· · · 0
+
+
+
+
+
+
+
+
+The relative entropy is given by:
+RE = N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln lp
+ij
+xp
+ij
+with 0 · ln(0) := 0 and 0 · ln(0
+0
+) := 0.
+This equation can be rearranged:
+RE = N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln lp
+ij
+- N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln xp
+ij
+Assuming that xp
+ij
+constitutes an element of the matrix of the maximum entropy solution, yields
+the following equation:
+RE = N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln lp
+ij
+- N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln 1
+(N-1)(N-2)
+= N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln lp
+ij
+- ln 1
+(N-1)(N-2)
+N-1
+i=1
+N-1
+j=1
+lp
+ij
+= N-1
+i=1
+N-1
+j=1
+lp
+ij
+ln lp
+ij
+- ln 1
+(N-1)(N-2)
+· 1
+Entropy is given by:
+ENT = - N-1
+i=1
+N-1
+j=1
+lp
+ij
+· ln lp
+ij
+41
+with 0 · ln(0) := 0.
+Inserting the equation for entropy yields the following result:
+RE = -ENT - ln 1
+(N-1)(N-2)
+or
+RE = ln ((N - 1)(N - 2)) - ENT
+As an example, consider 11 nodes in the system (10 banks and one external sector). The rela-
+tionship between entropy and relative entropy to the maximum entropy solution is thus given
+by:
+RE = 4.4998 - ENT
+This equation can be confirmed by simulation (see Figure 23).
+0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+Entropy
+Relative entropy
+simulation results
+linear equation
+Figure 23: Negative linear relationship between entropy and relative entropy to the maximum
+entropy solution for N = 11
+42
+43
+The following Discussion Papers have been published since 2009:
+Series 1: Economic Studies
+01 2009 Spillover effects of minimum wages Christoph Moser
+in a two-sector search model Nikolai Stähler
+02 2009 Who is afraid of political risk? Multinational Iris Kesternich
+firms and their choice of capital structure Monika Schnitzer
+03 2009 Pooling versus model selection for Vladimir Kuzin
+nowcasting with many predictors: Massimiliano Marcellino
+an application to German GDP Christian Schumacher
+04 2009 Fiscal sustainability and Balassone, Cunha, Langenus
+policy implications for the euro area Manzke, Pavot, Prammer
+Tommasino
+05 2009 Testing for structural breaks Jörg Breitung
+in dynamic factor models Sandra Eickmeier
+06 2009 Price convergence in the EMU?
+Evidence from micro data Christoph Fischer
+07 2009 MIDAS versus mixed-frequency VAR: V. Kuzin, M. Marcellino
+nowcasting GDP in the euro area C. Schumacher
+08 2009 Time-dependent pricing and
+New Keynesian Phillips curve Fang Yao
+09 2009 Knowledge sourcing: Tobias Schmidt
+legitimacy deficits for MNC subsidiaries? Wolfgang Sofka
+10 2009 Factor forecasting using international
+targeted predictors: the case of German GDP Christian Schumacher
+44
+11 2009 Forecasting national activity using lots of
+international predictors: an application to Sandra Eickmeier
+New Zealand Tim Ng
+12 2009 Opting out of the great inflation: Andreas Beyer, Vitor Gaspar
+German monetary policy after the Christina Gerberding
+breakdown of Bretton Woods Otmar Issing
+13 2009 Financial intermediation and the role Stefan Reitz
+of price discrimination in a two-tier market MarkusA.Schmidt,MarkP.Taylor
+14 2009 Changes in import pricing behaviour:
+the case of Germany Kerstin Stahn
+15 2009 Firm-specific productivity risk over the Ruediger Bachmann
+business cycle: facts and aggregate implications Christian Bayer
+16 2009 The effects of knowledge management Uwe Cantner
+on innovative success ­ an empirical Kristin Joel
+analysis of German firms Tobias Schmidt
+17 2009 The cross-section of firms over the business Ruediger Bachmann
+cycle: new facts and a DSGE exploration Christian Bayer
+18 2009 Money and monetary policy transmission
+in the euro area: evidence from FAVAR-
+and VAR approaches Barno Blaes
+19 2009 Does lowering dividend tax rates increase
+dividends repatriated? Evidence of intra-firm Christian Bellak
+cross-border dividend repatriation policies Markus Leibrecht
+by German multinational enterprises Michael Wild
+20 2009 Export-supporting FDI Sebastian Krautheim
+45
+21 2009 Transmission of nominal exchange rate
+changes to export prices and trade flows Mathias Hoffmann
+and implications for exchange rate policy Oliver Holtemöller
+22 2009 Do we really know that flexible exchange rates
+facilitate current account adjustment? Some
+new empirical evidence for CEE countries Sabine Herrmann
+23 2009 More or less aggressive? Robust monetary Rafael Gerke
+policy in a New Keynesian model with Felix Hammermann
+financial distress Vivien Lewis
+24 2009 The debt brake: business cycle and welfare con- Eric Mayer
+sequences of Germany's new fiscal policy rule Nikolai Stähler
+25 2009 Price discovery on traded inflation expectations: Alexander Schulz
+Does the financial crisis matter? Jelena Stapf
+26 2009 Supply-side effects of strong energy price Thomas A. Knetsch
+hikes in German industry and transportation Alexander Molzahn
+27 2009 Coin migration within the euro area Franz Seitz, Dietrich Stoyan
+Karl-Heinz Tödter
+28 2009 Efficient estimation of forecast uncertainty
+based on recent forecast errors Malte Knüppel
+29 2009 Financial constraints and the margins of FDI C. M. Buch, I. Kesternich
+A. Lipponer, M. Schnitzer
+30 2009 Unemployment insurance and the business cycle: Stéphane Moyen
+Prolong benefit entitlements in bad times? Nikolai Stähler
+31 2009 A solution to the problem of too many
+instruments in dynamic panel data GMM Jens Mehrhoff
+46
+32 2009 Are oil price forecasters finally right? Stefan Reitz
+Regressive expectations toward more Jan C. Rülke
+fundamental values of the oil price Georg Stadtmann
+33 2009 Bank capital regulation, the lending
+channel and business cycles Longmei Zhang
+34 2009 Deciding to peg the exchange rate in
+developing countries: the role of Philipp Harms
+private-sector debt Mathias Hoffmann
+35 2009 Analyse der Übertragung US-amerikanischer
+Schocks auf Deutschland auf Basis eines
+FAVAR Sandra Eickmeier
+36 2009 Choosing and using payment instruments: Ulf von Kalckreuth
+evidence from German microdata Tobias Schmidt, Helmut Stix
+01 2010 Optimal monetary policy in a small open
+economy with financial frictions Rossana Merola
+02 2010 Price, wage and employment response Bertola, Dabusinskas
+to shocks: evidence from the WDN survey Hoeberichts, Izquierdo, Kwapil
+Montornès, Radowski
+03 2010 Exports versus FDI revisited: C. M. Buch, I. Kesternich
+Does finance matter? A. Lipponer, M. Schnitzer
+04 2010 Heterogeneity in money holdings Ralph Setzer
+across euro area countries: Paul van den Noord
+the role of housing Guntram Wolff
+05 2010 Loan supply in Germany U. Busch
+during the financial crises M. Scharnagl, J. Scheithauer
+47
+06 2010 Empirical simultaneous confidence Òscar Jordà, Malte Knüppel
+regions for path-forecasts Massimiliano Marcellino
+07 2010 Monetary policy, housing booms Sandra Eickmeier
+and financial (im)balances Boris Hofmann
+08 2010 On the nonlinear influence of Stefan Reitz
+Reserve Bank of Australia Jan C. Ruelke
+interventions on exchange rates Mark P. Taylor
+09 2010 Banking and sovereign risk S. Gerlach
+in the euro area A. Schulz, G. B. Wolff
+10 2010 Trend and cycle features in German
+residential investment before and after
+reunification Thomas A. Knetsch
+11 2010 What can EMU countries' sovereign
+bond spreads tell us about market
+perceptions of default probabilities Niko Dötz
+during the recent financial crisis? Christoph Fischer
+12 2010 User costs of housing when households face Tobias Dümmler
+a credit constraint ­ evidence for Germany Stephan Kienle
+13 2010 Extraordinary measures in extraordinary times ­
+public measures in support of the financial Stéphanie Marie Stolz
+sector in the EU and the United States Michael Wedow
+14 2010 The discontinuous integration of Western
+Europe's heterogeneous market for
+corporate control from 1995 to 2007 Rainer Frey
+15 2010 Bubbles and incentives: Ulf von Kalckreuth
+a post-mortem of the Neuer Markt in Germany Leonid Silbermann
+48
+16 2010 Rapid demographic change and the allocation
+of public education resources: evidence from
+East Germany Gerhard Kempkes
+17 2010 The determinants of cross-border bank flows
+to emerging markets ­ new empirical evidence Sabine Herrmann
+on the spread of financial crisis Dubravko Mihaljek
+18 2010 Government expenditures and unemployment: Eric Mayer, Stéphane Moyen
+a DSGE perspective Nikolai Stähler
+19 2010 NAIRU estimates for Germany: new evidence
+on the inflation-unemployment trade-off Florian Kajuth
+49
+Series 2: Banking and Financial Studies
+01 2009 Dominating estimators for the global Gabriel Frahm
+minimum variance portfolio Christoph Memmel
+02 2009 Stress testing German banks in a Klaus Düllmann
+downturn in the automobile industry Martin Erdelmeier
+03 2009 The effects of privatization and consolidation E. Fiorentino
+on bank productivity: comparative evidence A. De Vincenzo, F. Heid
+from Italy and Germany A. Karmann, M. Koetter
+04 2009 Shocks at large banks and banking sector Sven Blank, Claudia M. Buch
+distress: the Banking Granular Residual Katja Neugebauer
+05 2009 Why do savings banks transform sight
+deposits into illiquid assets less intensively Dorothee Holl
+than the regulation allows? Andrea Schertler
+06 2009 Does banks' size distort market prices? Manja Völz
+Evidence for too-big-to-fail in the CDS market Michael Wedow
+07 2009 Time dynamic and hierarchical dependence Sandra Gaisser
+modelling of an aggregated portfolio of Christoph Memmel
+trading books ­ a multivariate nonparametric Rafael Schmidt
+approach Carsten Wehn
+08 2009 Financial markets' appetite for risk ­ and
+the challenge of assessing its evolution by
+risk appetite indicators Birgit Uhlenbrock
+09 2009 Income diversification in the Ramona Busch
+German banking industry Thomas Kick
+10 2009 The dark and the bright side of liquidity risks:
+evidence from open-end real estate funds in Falko Fecht
+Germany Michael Wedow
+50
+11 2009 Determinants for using visible reserves Bornemann, Homölle
+in German banks ­ an empirical study Hubensack, Kick, Pfingsten
+12 2009 Margins of international banking: Claudia M. Buch
+Is there a productivity pecking order Cathérine Tahmee Koch
+in banking, too? Michael Koetter
+13 2009 Systematic risk of CDOs and Alfred Hamerle, Thilo Liebig
+CDO arbitrage Hans-Jochen Schropp
+14 2009 The dependency of the banks' assets and Christoph Memmel
+liabilities: evidence from Germany Andrea Schertler
+15 2009 What macroeconomic shocks affect the
+German banking system? Analysis in an Sven Blank
+integrated micro-macro model Jonas Dovern
+01 2010 Deriving the term structure of banking Stefan Eichler
+crisis risk with a compound option Alexander Karmann
+approach: the case of Kazakhstan Dominik Maltritz
+02 2010 Recovery determinants of distressed banks: Thomas Kick
+Regulators, market discipline, Michael Koetter
+or the environment? Tigran Poghosyan
+03 2010 Purchase and redemption decisions of mutual Stephan Jank
+fund investors and the role of fund families Michael Wedow
+04 2010 What drives portfolio investments of
+German banks in emerging capital markets? Christian Wildmann
+05 2010 Bank liquidity creation and Berger, Bouwman
+risk taking during distress Kick, Schaeck
+51
+06 2010 Performance and regulatory effects of
+non-compliant loans in German synthetic
+mortgage-backed securities transactions Gaby Trinkaus
+07 2010 Banks' exposure to interest rate risk, their
+earnings from term transformation, and
+the dynamics of the term structure Christoph Memmel
+08 2010 Completeness, interconnectedness and
+distribution of interbank exposures ­
+a parameterized analysis of the stability
+of financial networks Angelika Sachs
+52
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a PhD and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+

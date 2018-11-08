@@ -1,0 +1,1599 @@
+1
+A large, open source dataset of stroke anatomical brain images and manual
+1
+lesion segmentations
+2
+3
+Authors
+4
+Sook-Lei Liew1*, Julia M. Anglin1*, Nick W. Banks1, Matt Sondag1, Kaori L. Ito1,
+5
+Hosung Kim1, Jennifer Chan1, Joyce Ito1, Connie Jung1, Nima Khoshab2, Stephanie
+6
+Lefebvre1, William Nakamura1, David Saldana1, Allie Schmiesing1, Cathy Tran1,
+7
+Danny Vo1, Tyler Ard1, Panthea Heydari1, Bokkyu Kim1, Lisa Aziz-Zadeh1, Steven C.
+8
+Cramer2, Jingchun Liu3, Surjo Soekadar4, Jan-Egil Nordvik5, Lars T. Westlye6,7,
+9
+Junping Wang3, Carolee Winstein1, Chunshui Yu3, Lei Ai8, Bonhwang Koo 8, R.
+10
+Cameron Craddock8,9, Michael Milham8,9, Matthew Lakich10, Amy Pienta11, Alison
+11
+Stroud11
+12
+13
+Affiliations
+14
+1. University of Southern California, Los Angeles, California, USA
+15
+2. University of California, Irvine, Irvine, California, USA
+16
+3. Tianjin Medical University General Hospital, Tianjin, China
+17
+4. University of Tübingen, Tübingen, Germany
+18
+5. Sunnaas Rehabilitation Hospital HT, Nesodden, Norway
+19
+6. NORMENT and KG Jebsen Centre for Psychosis Research, Division of Mental
+20
+Health and Addiction, Oslo University Hospital, Oslo, Norway
+21
+7. Department of Psychology, University of Oslo, Oslo, Norway
+22
+8. Child Mind Institute, New York, New York, USA
+23
+9. Nathan S. Kline Institute for Psychiatric Research, Orangeburg, New York, USA
+24
+10. University of Texas Medical Branch, Galveston, Texas, USA
+25
+11. University of Michigan, Ann Arbor, Michigan
+26
+27
+ Corresponding author: Sook-Lei Liew (sliew@usc.edu)
+28
+* Denotes equal contributions
+29
+30
+31
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+2
+Abstract
+1
+2
+Stroke is the leading cause of adult disability worldwide, with up to two-thirds
+3
+of individuals experiencing long-term disabilities. Large-scale neuroimaging
+4
+studies have shown promise in identifying robust biomarkers (e.g., measures
+5
+of brain structure) of long-term stroke recovery following rehabilitation.
+6
+However, analyzing large rehabilitation-related datasets is problematic due to
+7
+barriers in accurate stroke lesion segmentation. Manually-traced lesions are
+8
+currently the gold standard for lesion segmentation on T1-weighted MRIs, but
+9
+are labor intensive and require anatomical expertise. While algorithms have
+10
+been developed to automate this process, the results often lack accuracy.
+11
+Newer algorithms that employ machine-learning techniques are promising, yet
+12
+these require large training datasets to optimize performance. Here we
+13
+present ATLAS (Anatomical Tracings of Lesions After Stroke), an open-source
+14
+dataset of 304 T1-weighted MRIs with manually segmented lesions and
+15
+metadata. This large, diverse dataset can be used to train and test lesion
+16
+segmentation algorithms and provides a standardized dataset for comparing
+17
+the performance of different segmentation methods. We hope ATLAS release
+18
+1.1 will be a useful resource to assess and improve the accuracy of current
+19
+lesion segmentation methods.
+20
+21
+22
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+3
+Background & Summary
+1
+2
+Approximately 795,000 people in the United States suffer from a stroke
+3
+every year, resulting in nearly 133,000 deaths1. In addition, up to 2/3 of stroke
+4
+survivors experience long-term disabilities that impair their participation in
+5
+daily activities2,3. Careful clinical decision making is thus critical both at the
+6
+acute stage, where interventions can spare neural tissue or be used to
+7
+promote early functional recovery4, and at the subacute/chronic stages, where
+8
+effective rehabilitation can promote long-term functional recovery. Enormous
+9
+efforts have been made to predict outcomes and response to treatments at
+10
+both acute and subacute/chronic stages using brain imaging.
+11
+At the acute stage, within the first 24 hours or so after stroke onset,
+12
+clinicians face important, time-sensitive decisions such as whether to
+13
+intervene to save damaged tissue (e.g., administer thrombolytic drugs,
+14
+perform surgery). Clinical brain images such as magnetic resonance imaging
+15
+(MRI) and computerized tomography (CT) scans are routinely acquired to help
+16
+diagnose and make these urgent clinical decisions. Images obtained often
+17
+include lower-resolution CT scans or structural MRIs (e.g., T2-weighted,
+18
+FLAIR, diffusion weighted, or perfusion weighted MRIs), and impressive
+19
+efforts have been made to use these images to automatically detect the lesion
+20
+volume, predict responses to acute interventions, and predict general
+21
+prognosis. As clinical scans are typically a mandatory part of acute stroke
+22
+care, there has been excellent progress in using large-scale datasets of the
+23
+acquired images to relate to outcomes and build automated lesion detection
+24
+algorithms and predictive models over the past few decades5. In addition,
+25
+using imaging to assess the extent of neural injury within the first few days
+26
+after stroke can be helpful for informing entry criteria and stratification
+27
+variables for enrollment in clinical trials of early recovery therapies, which
+28
+have specific time windows shortly after stroke onset4.
+29
+On the other hand, there have been fewer advances in large-scale
+30
+neuroimaging-based stroke predictions at the subacute and chronic stages.
+31
+Here, clinicians must triage patients and assign scarce rehabilitation
+32
+resources to those who are most likely to benefit and recover. Brain imaging,
+33
+such as MRI, is primarily acquired as part of research studies to understand
+34
+brain-related changes in response to different therapeutic interventions or to
+35
+provide valuable additional information, beyond what can be gleaned from
+36
+bedside exams, that can be used to predict rehabilitation outcomes6. As stroke
+37
+is a leading cause of adult disability worldwide, there is a large emphasis
+38
+placed on predicting and understanding how to best promote long-term
+39
+rehabilitation in these individuals. Although there are fewer MRIs acquired
+40
+during this time, the most common research scan is a high-resolution T1-
+41
+weighted structural MRI, which is often acquired along with functional MRI and
+42
+high-resolution diffusion MRI scans and can show infarcts at the post-acute
+43
+stage. Research using these types of images at this stage of stroke have
+44
+shown promising biomarkers that could potentially provide additional
+45
+information, beyond behavioral assessments, to predict an individual's
+46
+likelihood of recovery for specific functions (e.g., motor, speech) and response
+47
+to treatments7-9. Thus far, measures that include the size, location, and
+48
+overlap of the lesion with existing brain regions or structures, such as the
+49
+corticospinal tract, have been successfully used as predictors of long-term
+50
+stroke recovery and rehabilitation9-15. However, to date, this has only been
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+4
+done in smaller-scale studies, and results may conflict across studies or be
+1
+limited to each sample. Examining lesion properties with larger datasets at the
+2
+subacute and chronic stages could lead to the identification of more robust
+3
+biomarkers for rehabilitation that are widely applicable across diverse
+4
+populations. Recently, efforts for creating large-scale stroke neuroimaging
+5
+datasets across all time points since stroke onset have emerged and offer a
+6
+promising approach to achieve a better understanding of the long-term stroke
+7
+recovery process (e.g., ENIGMA Stroke Recovery;
+8
+http://enigma.ini.usc.edu/ongoing/enigma-stroke-recovery/).
+9
+However, a key barrier to properly analyzing these large-scale stroke
+10
+neuroimaging datasets to predict rehabilitation outcomes is accurate lesion
+11
+segmentation. While many acute neuroimaging stroke studies bypass manual
+12
+lesion segmentation by using a visual scoring of lesion characteristics with
+13
+validated scoring tools applied by expert raters, research studies that wish to
+14
+examine the overlap of the lesion with specific brain structures (e.g., in voxel-
+15
+based lesion symptom mapping, or lesion load methods) require an accurate
+16
+and detailed lesion map. In T1-weighted MRIs, which are often used in
+17
+research, the gold standard for delineating these lesions is manual
+18
+segmentation, a process that requires skilled tracers and can be prohibitively
+19
+time consuming and subjective16. A single large or complex lesion can take up
+20
+to several hours for even a skilled tracer. As a result of this demand on time
+21
+and effort, this method, which has been used in previous smaller
+22
+neuroimaging studies, is not suitable for larger sample sizes. Based on the
+23
+literature, most studies with manually segmented brain lesions on T1-weighted
+24
+MRIs use smaller sample sizes between 10 to just over 100 brains16-20.
+25
+Accurately segmenting hundreds or thousands of stroke lesions from T1-
+26
+weighted MRIs may thus present a barrier for larger-scale stroke
+27
+neuroimaging studies.
+28
+Many stroke neuroimaging studies have utilized semi- or fully-
+29
+automated lesion segmentation tools for their analyses. Semi-automated
+30
+segmentation tools employ a combination of automated algorithms, which
+31
+detect abnormalities in the MR image, and manual corrections or inputs by an
+32
+expert. Fully-automated algorithms rely completely on the algorithm for the
+33
+lesion segmentation. While these require little human input or expertise, they
+34
+still may require significant computational resources and processing time.
+35
+Many of these fully-automated algorithms employ machine learning
+36
+techniques that require training and testing on large datasets21, and the
+37
+performance of the algorithm is highly dependent on the size and diversity of
+38
+the training dataset. While there have been several exciting initiatives
+39
+regarding lesion segmentation in acute clinical imaging, discussed below,
+40
+there are few publically available large training/test datasets of manually
+41
+segmented stroke lesion masks on research-grade T1-weighted images that
+42
+could be used for improving such algorithms. Thus, while both semi- and fully-
+43
+automated lesion segmentation tools have the potential to greatly reduce the
+44
+time and expertise needed to analyze stroke MRI data22, it is unclear whether
+45
+they provide the accuracy needed for rigorous stroke lesion-based analyses.
+46
+In addition, it is difficult to compare the performance of automated
+47
+lesion segmentation tools as they are often not evaluated for performance on
+48
+the same dataset. Recently, some exciting initiatives have emerged to
+49
+develop better segmentation algorithms using standardized datasets and
+50
+metrics. In particular, the Ischemic Stroke Lesion Segmentation (ISLES)
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+5
+challenge is an annual satellite challenge of the Medical Image Computing
+1
+and Computer Assisted Intervention (MICCAI) meeting that provides a
+2
+standardized multimodal clinical MRI dataset of approximately 50-100 brains
+3
+with manually segmented lesions23. The ISLES competition encourages
+4
+research groups to use the dataset to evaluate their lesion segmentation
+5
+algorithms and predict acute outcomes to inform clinical decision making. This
+6
+approach is promising for developing better lesion segmentation algorithms
+7
+and predictive models for acute imaging. However, past ISLES challenge
+8
+datasets have traditionally focused more on using multimodal clinical MRIs to
+9
+predict more acute results, and these algorithms are not easily translatable to
+10
+the high-quality T1-weighted MRIs typically found in subacute/chronic stroke
+11
+rehabilitation research. Thus, here, we aimed to develop a complementary
+12
+large dataset using only anatomical T1-weighted MRIs, which are typically
+13
+acquired in research studies after the acute stage to assess rehabilitation
+14
+outcomes. We anticipate this dataset could be useful for enhancing lesion
+15
+segmentation methods for T1-weighted images often used in medical
+16
+rehabilitation research.
+17
+Here, we present ATLAS (Anatomical Tracings of Lesions After Stroke)
+18
+Release 1.1, an open-source dataset consisting of 304 T1-weighted MRIs with
+19
+manually segmented diverse lesions and metadata. The goal of ATLAS is to
+20
+provide the research community with a standardized training and testing
+21
+dataset for lesion segmentation algorithms on T1-weighted MRIs. We note
+22
+that this dataset is not representative of the full range of stroke, as this data
+23
+was acquired through research studies in which individuals with stroke
+24
+voluntarily participated, and all participants had to be eligible for a research
+25
+MRI session. However, this dataset may be useful for testing and comparing
+26
+the performance of different lesion segmentation techniques and identifying
+27
+key barriers hindering the performance of automated lesion segmentation
+28
+algorithms. We believe that this diverse set of manually segmented lesions will
+29
+serve as a valuable resource for researchers to use in assessing and
+30
+improving the accuracy of lesion segmentation tools.
+31
+32
+Methods
+33
+34
+Data Overview
+35
+304 MRI images from 11 cohorts worldwide were collected from research
+36
+groups in the ENIGMA Stroke Recovery Working Group consortium. Images
+37
+consisted of T1-weighted anatomical MRIs of individuals after stroke. These
+38
+images were collected primarily for research purposes and are not
+39
+representative of the overall general stroke population (e.g., only including
+40
+individuals who opt in to participate in a research study, and excluding
+41
+individuals with stroke who cannot undergo MRI safely).
+42
+For each MRI, brain lesions were identified and masks were manually
+43
+drawn on each individual brain in native space using MRIcron24, an open-
+44
+source tool for brain imaging visualization and defining volumes of interest
+45
+(http://people.cas.sc.edu/rorden/mricron/index.html). At least one lesion mask
+46
+was identified for each individual MRI. If additional, separate (non-contiguous)
+47
+lesions were identified, they were traced as separate masks. An expert
+48
+neuroradiologist reviewed all lesions to provide additional qualitative
+49
+descriptions of the type of stroke, primary lesion location, vascular territory,
+50
+and intensity of white matter disease. Finally, a separate tracer performed
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+6
+quality control on each lesion mask. This included assessing the accuracy of
+1
+the lesion segmentations, revising the lesion mask if needed, and categorizing
+2
+the lesions to generate additional data such as the number of lesions in left
+3
+and right hemispheres, and in cortical and subcortical regions. This dataset is
+4
+provided in native subject space and archived (n=304). A subset of this
+5
+dataset was also defaced, intensity normalized, and provided in standard
+6
+space (normalized to the MNI-152 template, n=229; for an overview of the
+7
+dataset and archives, see Figure 1).
+8
+9
+All ATLAS contributions were based on studies approved by local ethics
+10
+committees and were conducted in accordance with the 1964 Declaration of
+11
+Helsinki. Informed consent was obtained from all subjects. The receiving site's
+12
+ethics committee at the University of Southern California approved the receipt
+13
+and sharing of the de-identified data. Data were fully de-identified by removing
+14
+all 18 HIPAA (Health Insurance Portability and Accountability)-protected
+15
+health information identifiers, lesions were manually segmented on each MRI,
+16
+and all data were visually inspected before release. In addition, the terms of
+17
+the data sharing agreements were approved by the University of Southern
+18
+California's technology transfer office.
+19
+20
+Data Characteristics
+21
+All T1-weighted MRI data were collected on 3T MRI scanners at a resolution
+22
+of 1 mm3 (isotropic), with the exception of data from cohorts 1 and 2 which
+23
+were collected on a 1.5T scanner with a resolution of 0.9 mm x 0.9 mm x 3.0
+24
+mm (excluded from the normalized dataset). Scanner information (scanner
+25
+strength, brand) and image resolution are included in the ATLAS meta-data,
+26
+and sample image header information for a subject from each of the cohorts
+27
+can be found in Supplementary Information.
+28
+29
+Characteristics of the ATLAS dataset include an average lesion volume
+30
+across all cohorts of 2.128±3.898 x 104 mm3, with a minimum lesion size of 10
+31
+mm3 and a maximum lesion size of 2.838 x 105 mm3. Information regarding
+32
+the distribution of lesions in the ATLAS dataset (e.g., single versus multiple
+33
+lesions per individual, percent of lesions that are left versus right hemisphere,
+34
+or subcortical versus cortical) can be found in Tables 1 and 2. Overall, slightly
+35
+more than half of the subjects had only one lesion (58%) while the rest had
+36
+multiple lesions (42.1%). Lesions were roughly equally distributed between left
+37
+and right hemispheres (48.4% left hemisphere, 43.8% right hemisphere, 7.7%
+38
+other location such as brainstem or cerebellum). In this dataset, there were
+39
+more subcortical lesions than cortical lesions (70.7% subcortical, 21.5%
+40
+cortical, 7.7% other).
+41
+42
+Table 1. A total of 304 subjects within 11 cohorts were included in the full
+43
+ATLAS Release 1.1 native dataset. The number of brains in which only one
+44
+lesion was found (left/right hemispheres and other locations found within the
+45
+brainstem and cerebellum, etc.), and the number of brains in which multiple
+46
+lesions were found, are shown.
+47
+48
+Cohort
+Number of
+Subjects
+Brains with One Lesion Brains
+with
+Left Right Other
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+7
+Multiple
+Lesions
+c0001 6 3 2 0 1
+c0002 25 6 12 1 6
+c0003 55 14 19 0 22
+c0004 34 7 3 1 23
+c0005 30 9 3 6 12
+c0006 12 4 1 2 5
+c0007 36 9 9 0 18
+c0008 32 8 11 0 13
+c0009 12 8 0 0 4
+c0010 47 9 10 7 21
+c0011 15 1 11 0 3
+Total 304 78 81 17 128
+% Total Subjects 25.7% 26.7% 5.6% 42.1%
+1
+2
+Table 2. The number of lesions found in each location (i.e. cortical vs.
+3
+subcortical; left vs. right hemispheres), and other locations (i.e., brainstem,
+4
+cerebellum, etc.) are shown. Here we have included primary lesions as well as
+5
+additional lesions, resulting in 521 total lesion masks across n=304.
+6
+7
+Cohort
+Cortical Lesions
+Subcortical Only
+Lesions
+Other
+Lesion
+Locations
+Left Right Left Right
+c0001 2 2 2 1 0
+c0002 1 7 14 11 4
+c0003 3 0 38 44 0
+c0004 7 6 31 32 7
+c0005 9 1 20 14 7
+c0006 3 2 8 3 3
+c0007 8 10 28 18 4
+c0008 6 13 20 13 1
+c0009 5 3 12 2 0
+c0010 11 8 21 24 13
+c0011 0 5 3 10 1
+Total 55 57 197 172 40
+%Total
+Lesions
+10.6% 10.9% 37.8% 32.9% 7.7%
+8
+Training Individuals Performing Lesion Tracing
+9
+Eleven individuals were carefully trained in identifying and segmenting lesions.
+10
+Individuals had a range of backgrounds, including undergraduate students,
+11
+graduate students, and postdoctoral fellows. All tracers were given detailed
+12
+information regarding neuroanatomy, and underwent standardized training,
+13
+which utilized a detailed protocol as well as an instructional video. All tracers
+14
+were guided through the training process with extensive feedback on lesion
+15
+tracing performance by an expert tracer and in consultation with an expert
+16
+neuroradiologist. The detailed protocol, with pictures of example tracings, is
+17
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+8
+freely available and can be found on the ATLAS GitHub website
+1
+(https://github.com/npnl/ATLAS/). All individuals were trained on an initial set
+2
+of 5 brains with varying lesion sizes and locations (size range: min: 1,871
+3
+mm3, max: 162,015 mm3; location: cortical [Left: 0, Right: 1], subcortical [Left:
+4
+4, Right: 0]). After tracing the first set of 5 lesions, tracings were reviewed by
+5
+an experienced tracer and differences in the lesion masks were discussed
+6
+with the tracer. One week later, individuals retraced the lesions on the same
+7
+set of 5 brains, but were blinded to their first segmentation attempt to examine
+8
+intra-tracer reliability. After this, each lesion segmentation was reviewed by a
+9
+separate tracer. In addition, the primary lesion location was identified by an
+10
+expert neuroradiologist, who also created the meta-data (see Metadata
+11
+below). Any questions regarding lesion masks were referred to the
+12
+neuroradiologist. Inter- and intra-rater reliability measures and additional
+13
+technical validation of the lesion tracings can be found in Technical Validation
+14
+below. Finally, we note that lesion tracing is a subjective process, even across
+15
+trained individuals. As mentioned in Usage Notes below, any problems,
+16
+questions, or issues with specific lesion masks can be publically reported on
+17
+our ATLAS GitHub under the Issues page
+18
+(https://github.com/npnl/ATLAS/issues ) so that the community of users can
+19
+make comments and be aware of any identified issues. We will work to
+20
+resolve any issues in a timely manner.
+21
+22
+Identifying and Tracing Lesions
+23
+To identify lesions, each T1-weighted MRI image was displayed using the
+24
+multiple view option in MRIcron20, which displays the brain in the coronal,
+25
+sagittal, and axial view (see Figure 2). To identify lesions, tracers looked for
+26
+darker intensities within typically healthy tissue. For lesions that were more
+27
+difficult to detect with the grayscale setting, colored look-up table settings
+28
+(e.g., "cardiac", "NIH", or "spectrum" settings in MRIcron) were used to provide
+29
+additional insight. Once the lesion or lesions were identified, the lesion mask
+30
+was traced using either the coronal or axial view, using either a mouse, track
+31
+pad, or tablet (i.e. Wacom Intuos Draw). A combination of MRIcron tools was
+32
+used to draw the lesion masks, which included the 3D fill tool, the pen tool and
+33
+the closed pen tool. Typically, and especially for larger sized lesions, tracers
+34
+used the 3D fill tool to begin the segmentation. Crosshairs were placed in the
+35
+center of the identified lesion and the tool would fill in voxels similar to the one
+36
+at the point of origin with the selected radius and at the sensitivity specified by
+37
+the difference from origin and difference at edge tools. The pen and closed
+38
+pen tool, typically was used to fill in (or remove) the areas that the 3D tool had
+39
+missed or was used to trace smaller lesions slice by slice. Once completed,
+40
+lesion masks were saved in the volume of interest (VOI) file format with the
+41
+identifier name "cXXXXsXXXXtXX_LesionRaw" (see Data Records and Table
+42
+3 below for full naming conventions). Lesions masks were then checked for
+43
+correctness by a separate tracer, who made additional corrections to the
+44
+lesion mask, if needed. After lesions were identified as being correct, masks
+45
+were smoothed using MRIcron's smooth VOI tool where the full width half
+46
+maximum parameter was set to 2 mm and the threshold was set to 0.5. These
+47
+masks were saved in both VOI and NIfTI file formats with the identifier name
+48
+"cXXXXsXXXXtXX_LesionSmooth".
+49
+Any additional lesions that were not contiguous with the primary lesion
+50
+mask were drawn as separate lesion masks and labeled. As described in Data
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+9
+Records, any secondary lesions followed the same procedures as the primary
+1
+lesion mask, but were labeled as Lesion_1, Lesion_2, Lesion_3 and so on,
+2
+with the naming convention moving from the largest to smallest mask (e.g.,
+3
+Lesion_1 is the largest secondary lesion mask). In general, the primary lesion
+4
+mask was the largest lesion, with any secondary lesion masks subsequently
+5
+named and ordered by size (largest to smallest). The only exception to this
+6
+was, in the case of multiple lesions, if the neuroradiologist identified a primary
+7
+stroke location as a different lesion from the largest lesion mask. In these
+8
+cases, we used the lesion identified by the neuroradiologist as the primary
+9
+mask. This occurred in less than 5% of the subjects.
+10
+11
+Metadata
+12
+For each lesion, we also provided metadata on the lesion properties to give
+13
+the user additional qualitative information, beyond the binary lesion mask. This
+14
+information can be used to quickly sort the dataset based on specific lesion
+15
+characteristics (e.g., only left hemisphere lesions, or only subcortical lesions).
+16
+It can also provide additional insight into the types of lesions that succeed or
+17
+fail for a given lesion segmentation algorithm. The lesion properties were
+18
+manually reported for each individual lesion mask. These include the number
+19
+of lesions identified and traced, and the location of each lesion (i.e. right/left,
+20
+subcortical, cortical, or other). In order to count each lesion only once, we
+21
+defined subcortical lesions as lesions that are contained completely in the
+22
+white matter and subcortical structures. Any lesion that extends beyond this
+23
+area and into the cortex is considered a cortical lesion. In this way, cortical
+24
+lesions may extend into the subcortical space, but subcortical lesions do not
+25
+extend into the cortical space. "Other" includes the brainstem and cerebellum.
+26
+An experienced neuroradiologist also identified the following information for
+27
+each individual brain: the type of stroke (e.g., embolic, hemorrhagic), primary
+28
+stroke location, vascular territory, and intensity of white matter disease
+29
+(periventricular hyperintensities, or PVH, and deep white matter
+30
+hyperintensities, or DWMH). White matter hyperintensities were graded using
+31
+the Fazekas scale25. For periventricular hyperintensities, the following grades
+32
+were applied: 0 = absence, 1 = "caps" or pencil-thin lining, 2 = smooth "halo",
+33
+3 = irregular PVH extending into the deep white matter. For deep white matter
+34
+hyperintensities, the following grades were applied: a = absence, 1 = punctate
+35
+foci, 2 = beginning confluence of foci, 3 = large confluent areas. The white
+36
+matter hyperintensity ratings are included because areas of white matter
+37
+hyperintensity often pose challenges for lesion segmentation algorithms.
+38
+Finally, scanner strength, brand/model, and image resolution are included in
+39
+the metadata as well.
+40
+41
+Normalization to a Standard Template, Intensity Normalization, and Defacing
+42
+To expand access to the dataset, we have also provided a subset of the data
+43
+that is defaced, intensity-normalized, and normalized to standard (MNI-152)
+44
+space. Lesion segmentation algorithms vary in whether the input should be in
+45
+native (subject) space or a standardized space. Therefore, to provide this
+46
+option for users, we also generated a version of the ATLAS dataset in
+47
+standard space. To convert the images to standard space, MRI images first
+48
+underwent automated correction for intensity non-uniformity and intensity
+49
+standardization using custom scripts derived from the MINC-toolkit26
+50
+(https://github.com/BIC-MNI/minc-toolkit). These corrected images were
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+10
+linearly registered to the MNI-152 template using a version that was
+1
+nonlinearly constructed and symmetric (version 2009;
+2
+http://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) to normalize
+3
+their intracranial volume in a standardized stereotaxic space27. Using the
+4
+resulting transformation matrix, the labels drawn on the MRI images were also
+5
+registered to the MNI template. The MRI images were resampled using the
+6
+linear interpolation whereas their labels used a nearest neighborhood
+7
+interpolation to keep their binary nature. Finally . Freesurfer's mri_deface tools
+8
+were used to perform the defacing (e.g., to remove any facial structures)
+9
+(https://surfer.nmr.mgh.harvard.edu/fswiki/mri_deface) on all T1-weighted
+10
+images.
+11
+Due to technical difficulties and differences in scanner image quality, a
+12
+subset of brains is not included in the standard space conversion, resulting in
+13
+a total of n=229 ATLAS brains converted into standard MNI space. Scans
+14
+from the two cohorts with 0.9 x 0.9 x 3.0 mm resolution images, collected on
+15
+1.5T scanners, were excluded from this standardized dataset due to their
+16
+lower resolution. In addition, any images that failed registration were excluded.
+17
+Primary reasons for failed registration include large lesion volumes or poor
+18
+image quality (e.g., image artifacts, motion artifacts). We are currently working
+19
+on manually editing the registrations for these images, which will be released
+20
+in the future. This dataset can be widely accessed from the FCP-INDI archive
+21
+(see Figure 1 and Table 3 for archive details). All images were named in
+22
+accordance with the INDI data policy, following the Brain Imaging Data
+23
+Structure (BIDS), and a meta-data sheet using the INDI naming convention is
+24
+included with this dataset.
+25
+26
+Probabilistic Spatial Mapping of ATLAS Lesion Labels
+27
+We also created a probabilistic spatial mapping of the lesion labels solely to
+28
+visualize the distribution of lesion masks across the normalized ATLAS
+29
+dataset. We note that this does not provide a representation of a true stroke
+30
+distribution, but rather shows the distribution of lesions included in this
+31
+dataset. To do this, we performed a population-based averaging of all the
+32
+individual primary lesion labels in MNI space, producing a voxel-wise map
+33
+where values can range from 0 at each voxel (always background for all
+34
+subjects) to 1 (100% presence of the lesion label across subjects). A
+35
+probabilistic spatial map of the primary lesions can be found in Figure 3 and a
+36
+3D visualization of the lesion map can be found in the following video link:
+37
+https://www.youtube.com/watch?v=Ag5CUsRNY9Q. In addition, this map has
+38
+also been provided in NIfTI format (.nii.gz) and uploaded to NeuroVault.org,
+39
+an open-source database for neuroimaging data where it can be freely
+40
+accessed (https://neurovault.org/collections/3073/).
+41
+42
+Data Records
+43
+The full raw dataset (native dataset, n=304) is archived with the Archive
+44
+of Disability Data to Enable Policy research at the Inter-university Consortium
+45
+for Political and Social Research (ICPSR). ICPSR is the world's largest social
+46
+science data archive that supports several substantive-area archive
+47
+collections including disability and rehabilitation. ICPSR provides access to
+48
+the data and provides technical assistance to individuals accessing the data.
+49
+In addition, a standardized, defaced subset of the dataset (standardized
+50
+dataset, n=229) is archived with the International Data Sharing Initiative, which
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+11
+hosts many widely available neuroimaging datasets such as the Functional
+1
+Connectome Project (FCP-INDI). See Usage Notes for more details regarding
+2
+access.
+3
+For the full dataset archived with ICPSR, the naming convention and
+4
+description of the files in ATLAS R1.1 can be found in Table 3. Within the
+5
+ATLAS R1.1 main folder, there is an excel file with the metadata for the entire
+6
+dataset. The data in this archive is in native space (i.e., original subject space;
+7
+n=304). Throughout the dataset, MRIs are named and sorted based on each
+8
+cohort (c); each cohort is in the format of cXXXX where XXXX is the number
+9
+that the cohort was assigned (e.g., c0001). There are 11 total cohorts. Within
+10
+each cohort folder are the individual subject(s) folders. Subject folders are
+11
+named based on the cohort that they are in (cXXXX), the subject number that
+12
+they were assigned (sXXXX) and the time point at which they were taken
+13
+(tXX) (e.g. c0001s0004t01). For instance, participants with data taken two
+14
+weeks apart would have two time points, where t01 is the first time point and
+15
+t02 is the second. Every image starts with the subject identifier of
+16
+cXXXXsXXXXtXX.
+17
+Each subject folder has several components: at minimum, each will
+18
+have the original T1-weighted MRI image (*.nii.gz) and three masks for the
+19
+main lesion: the unsmoothed lesion mask (*LesionRaw.voi), and two
+20
+smoothed lesion masks in .voi and .nii.gz formats (*LesionSmooth.voi;
+21
+*LesionSmooth.nii.gz). The LesionRaw volume is the original hand-traced
+22
+lesion volume, while the LesionSmooth volume used a Gaussian smoothing
+23
+kernel (full width half maximum parameter set to 2 mm, threshold set to 0.5, to
+24
+overcome small errors between slices in tracing; see Methods above). We
+25
+anticipated that most researchers would use the LesionSmooth volume as it is
+26
+slightly more robust to small slice-by-slice human errors, and therefore
+27
+created the .nii.giz version from this. Notably, the .voi files are in an MRIcron
+28
+format so the masks can be further edited in MRICron if desired. The .nii.gz
+29
+files use the standard NIfTI format28 (http://nifti.nimh.nih.gov/nifti-1/), which
+30
+can be opened, edited, and viewed by most standard neuroimaging software.
+31
+If a particular subject had multiple lesions, for each additional lesion,
+32
+there would be three additional lesion masks (e.g. *LesionRaw_1.voi,
+33
+*LesionSmooth_1.voi, *LesionSmooth_1.nii.gz). In general, lesions were
+34
+ranked based on size where the largest lesion was considered the main
+35
+lesion. As mentioned previously, if the largest lesion differed from the primary
+36
+lesion identified by the neuroradiologist, we deemed the primary lesion to be
+37
+the one identified by the neuroradiologist. This occurred in less than 5% of
+38
+cases.
+39
+Finally, in the FCP-INDI archive (standardized dataset, n=229), there is
+40
+a separate naming convention, following the Brain Imaging Data Structure
+41
+(http://bids.neuroimaging.io/), adopted by FCP-INDI. Images in this dataset
+42
+have been normalized to a standard MNI-152 template, intensity normalized,
+43
+and defaced. Table 3 provides a list of all naming conventions and filenames,
+44
+along with descriptions.
+45
+46
+Table 3. Filenames and file descriptions for ATLAS R1.1 dataset. * represents
+47
+a wildcard.
+48
+49
+ICPSR ARCHIVE
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+12
+http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36684
+native folder (n=304)
+Filename or Identifier Description
+cXXXXsXXXXtXX.nii.gz Raw T1-weighted MRI for each subject, where c = cohort
+number, s = subject number, and t = time point
+*LesionRaw.voi Raw primary lesion mask, drawn as a volume of interest in
+MRICron
+*LesionSmooth.voi Smoothed primary lesion mask, drawn as a volume of interest
+in MRICron
+*LesionSmooth.nii.gz Smoothed primary lesion mask, saved as a nifti file
+*LesionRaw/Smooth_1(or 2,
+3, ...).voi/.nii.gz
+Raw and smoothed secondary lesion masks (same as the
+three above, but for additional lesions)
+INDI ARCHIVE
+http://fcon_1000.projects.nitrc.org/indi/retro/atlas.html
+standard folder (n=229)
+Filename or Identifier Description
+Site, Subject ID, Session Naming convention follows Brain Imaging Data Structure
+(BIDS) recommendations
+1
+2
+Technical Validation
+3
+Each trained tracer created lesion masks for the same five brains twice,
+4
+one week apart, to assess both inter- and intra-tracer reliability. Training
+5
+lesions ranged in size and difficulty (see Methods). Each tracer's lesion masks
+6
+were compared, providing both inter- and intra-rater reproducibility measures.
+7
+We first calculated inter- and intra-rater reliability measures using the lesion
+8
+volumes. Based on lesion volumes, the inter-rater reliability was 0.76±0.14,
+9
+while the intra-rater reliability was 0.84±0.09.
+10
+In addition, we also calculated inter-and intra-rater reliability using the
+11
+Dice similarity coefficient (DC), which is a segmentation accuracy metric, and
+12
+Hausdorff's distance (HD), which is a metric of the maximum distance
+13
+between two volumes surface points. DC allows us to examine not only if the
+14
+volumes are similar, but also if the same voxels are being selected as part of
+15
+the lesion mask or not. This is particularly useful for comparing neuroimaging
+16
+volumes, such as lesion masks. DC is calculated by the formula:
+17
+ =
+2   
+ + ||
+18
+19
+where X and Y represent the voxels from each lesion segmentation, and DC
+20
+ranges from 0 to 1 (where 0 means there were no overlapping voxels and 1
+21
+means that the segmentations were completely the same). HD allows us to
+22
+examine the distance between the surfaces of two images and thus can be
+23
+used to identify outliers, providing another useful metric for comparing
+24
+neuroimaging volumes. HD is calculated by the formula:
+25
+26
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+13
+1
+where x and y represent the surface points from the volumes X and Y
+2
+respectively. HD is measured in millimeters, and a lower value denotes that
+3
+the maximum distance between the two images is smaller.
+4
+Inter-rater scores (DC, HD) were calculated for each manual
+5
+segmentation by comparing each individual tracer's lesion mask to the rest of
+6
+the tracers' lesion masks. Inter-rater DC and inter-rater HD scores were then
+7
+averaged to obtain one final DC score and one final HD score for the initial
+8
+segmentations (average inter-rater DC for first segmentation: 0.73±0.20;
+9
+average inter-rater HD for first segmentation: 22.57±21.36mm) and for the
+10
+second segmentations (average inter-rater DC for second segmentation:
+11
+average inter-rater HD for second segmentations: 25.29±23.53mm).
+12
+Furthermore, intra-rater DC and HD scores were calculated for each brain
+13
+traced by comparing the initial segmentation to the secondary segmentation
+14
+for each tracer; these scores were then averaged to obtain a final intra-rater
+15
+DC score (0.83±0.13) and a final intra-rater HD value (21.02±22.66mm).
+16
+Trained tracers segmented all lesion masks. In addition, each lesion
+17
+mask was checked by a separate tracer, and changes were made to the
+18
+lesion mask as needed. Any difficulty identifying the lesion was discussed with
+19
+the expert neuroradiologist. Lastly, after the completion of the dataset, lesion
+20
+masks were checked a second time to ensure correct segmentation and data
+21
+descriptors. It is important to note that while tracers did participate in a
+22
+thorough training process and segmentations were checked multiple times,
+23
+this is still a subjective process. Comments regarding the lesion masks can be
+24
+submitted as issues on the ATLAS GitHub site
+25
+(https://github.com/npnl/ATLAS/issues), and we plan to publish updated and
+26
+expanded versions of this dataset based on feedback and comments from
+27
+users (see Usage Notes).
+28
+29
+Usage Notes
+30
+The full native-space archived dataset (n=304) can be found at ICPSR:
+31
+http://www.icpsr.umich.edu/icpsrweb/ICPSR/studies/36684. For more information
+32
+on the data archive, visit the ICPSR website
+33
+(https://www.icpsr.umich.edu/icpsrweb).
+34
+35
+In addition, a standardized, intensity-normalized, defaced subset of the data
+36
+(n=229) can be found at FCP-INDI:
+37
+http://fcon_1000.projects.nitrc.org/indi/retro/atlas.html.
+38
+39
+Data is accessible under a standard Data Use Agreement, under which users
+40
+must agree to only use the data for purposes as described in the agreement.
+41
+Users of the ATLAS dataset should acknowledge the contributions of the
+42
+original authors and research labs by properly citing this article and the data
+43
+repository link from which they accessed the data.
+44
+As described above, lesions were segmented using the NITRC open
+45
+source software MRIcron which can be downloaded from the NITRC website
+46
+(https://www.nitrc.org/projects/mricron). Users can also quickly and easily view
+47
+the brains on BrainBox (http://brainbox.pasteur.fr/), an open-source Web
+48
+application to collaboratively annotate and segment neuroimaging data
+49
+available online29. For additional quick quantification, our group has also
+50
+created a small package of scripts called SRQL (Semi-automated Robust
+51
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+14
+Quantification of Lesions), which provide three features: it uses a semi-
+1
+automated white matter intensity correction to further correct for human errors
+2
+in lesion tracing, outputs a report of descriptive statistics on lesions
+3
+(hemisphere and volume of lesion), and gives users the option to perform
+4
+analyses in native or standard space (https://github.com/npnl/SRQL)30. In
+5
+addition, as we plan to grow this dataset in the future, additional releases of
+6
+data or software will be announced on our ATLAS GitHub page
+7
+(https://github.com/npnl/ATLAS/). Any issues or feedback can also be
+8
+submitted on the ATLAS GitHub page under "issues," and a team of
+9
+researchers will address these in a timely manner. Finally, as a general note
+10
+regarding the usage of this dataset, we strongly encourage users to be
+11
+cautious of overfitting training algorithms to this particular dataset. We note
+12
+that this data is relatively diverse, given the data collection across 11 research
+13
+sites worldwide. However, we caution users against overfitting to only a
+14
+particular cohort or subset of this data. Future work will aim to provide
+15
+additional test datasets for users to properly test their algorithms on untrained
+16
+data.
+17
+18
+19
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+15
+Acknowledgments
+1
+We thank Dr. Mauricio Reyes for insightful conversations and would
+2
+like to acknowledge the following people for their assistance on this effort:
+3
+Anthony Benitez, Xiaoyu Chen, Cristi Magracia, Ryan Mori, Dhanashree
+4
+Potdar, Sandyha Prathap. The archiving of this dataset was specifically
+5
+supported by the NIH-funded Center for Large Data Research and Data
+6
+Sharing in Rehabilitation (CLDR; https://www.utmb.edu/cldr) under a Category
+7
+2 Pilot Grant (P2CHD06570) and this work was also funded by an NIH K01
+8
+award (K01HD091283).
+9
+10
+11
+Author contributions
+12
+13
+S.-L.L. conceptualized the study, reviewed lesions, analyzed data, established
+14
+archives, and contributed to the writing and editing of the manuscript. J.M.A.
+15
+segmented and reviewed lesions, oversaw the organization to the
+16
+segmentation process and contributed to the writing and editing of the
+17
+manuscript. N.W.B. organized, segmented and reviewed lesions. M.S.
+18
+provided the neuroradiology expertise and information. K.L.I. and H.K.
+19
+performed data analysis. H.K. also performed data processing and generated
+20
+the standardized dataset and probabilistic lesion maps. T.A. provided data
+21
+visualization expertise and generated the figures/videos. J.C., D.S., A.S. J.I.,
+22
+C.J., W.N., D.V. and S.L. segmented and/or reviewed lesions. P.H., B.K.,
+23
+N.K., L.A.-Z., S.C.C., J.L., S.S., L.T.W., J.W., C.W., C.Y. collected and
+24
+provided the MRI data. M.L., A.P., and A.S. handled the archiving of the data.
+25
+26
+Competing interests
+27
+28
+The authors have no conflict of interest.
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+16
+Figure Legends
+1
+2
+Figure 1. A schematic diagram showing the steps performed on the data for
+3
+each archive release.
+4
+5
+Figure 2. An example of lesion segmentation in MRICron.
+6
+7
+Figure 3. A probabilistic lesion overlap map for the primary lesions from the
+8
+ATLAS R1.1 dataset. A 3D visualization of the lesion overlap map can be
+9
+found at https://www.youtube.com/watch?v=Ag5CUsRNY9Q.
+10
+11
+12
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+17
+References
+1
+2
+1. Benjamin, E.J., et al. Heart Disease and Stroke Statistics-2017
+3
+Update: A Report From the American Heart Association.
+4
+Circulation 135, e146-e603 (2017).
+5
+2. Feigin, V.L., et al. Global and regional burden of stroke during
+6
+1990-2010: findings from the Global Burden of Disease Study
+7
+2010. Lancet (London, England) 383, 245-254 (2014).
+8
+3. Kwakkel, G., Kollen, B.J., Van der Grond, J.V. & Prevo, A.J.H.
+9
+Probability of regaining dexterity in the flaccid upper limb: Impact
+10
+of severity of paresis and time since onset in acute stroke. Stroke
+11
+34, 2181-2186 (2003).
+12
+4. Ren, J., Kaplan, P.L., Charette, M.F., Speller, H. & Finklestein,
+13
+S.P. Time window of intracisternal osteogenic protein-1 in
+14
+enhancing functional recovery after stroke. Neuropharmacology
+15
+39, 860-865 (2000).
+16
+5. Group, I.-C. Association between brain imaging signs, early and
+17
+late outcomes, and response to intravenous alteplase after acute
+18
+ischaemic stroke in the third International Stroke Trial (IST-3):
+19
+secondary analysis of a randomised controlled trial. The Lancet
+20
+Neurology 14, 485-496 (2015).
+21
+6. Burke Quinlan, E., et al. Neural function, injury, and stroke
+22
+subtype predict treatment gains after stroke. Ann Neurol 77, 132-
+23
+145 (2015).
+24
+7. Marie-Héléne, M. & Cramer, S.C. Biomarkers of recovery after
+25
+stroke. Current opinion in neurology 21, 654-659 (2008).
+26
+8. Nijland, R.H.M., van Wegen, E.E.H., Harmeling-van der Wel, B.C.
+27
+& Kwakkel, G. Presence of finger extension and shoulder
+28
+abduction within 72 Hours after stroke predicts functional
+29
+recovery. Stroke 41, 745-750 (2010).
+30
+9. Riley, J.D., et al. Anatomy of stroke injury predicts gains from
+31
+therapy. Stroke 42, 421-426 (2011).
+32
+10. Cramer, S.C., et al. Predicting functional gains in a stroke trial.
+33
+Stroke 38, 2108-2114 (2007).
+34
+11. Jongbloed, L.Y.N. Prediction of function after stroke: a critical
+35
+review. Stroke 17, 765-776 (1986).
+36
+12. Nouri, S. & Cramer, S.C. Anatomy and physiology predict
+37
+response to motor cortex stimulation after stroke. Neurology 77,
+38
+1076-1083 (2011).
+39
+13. Prabhakaran, S., et al. Inter-individual variability in the capacity
+40
+for motor recovery after ischemic stroke. Neurorehabilitation and
+41
+Neural Repair 22, 64-71 (2007).
+42
+14. Stinear, C. Prediction of recovery of motor function after stroke.
+43
+The Lancet Neurology 9, 1228-1232 (2010).
+44
+15. Zhu, L.L., Lindenberg, R., Alexander, M.P. & Schlaug, G. Lesion
+45
+load of the corticospinal tract predicts motor impairment in chronic
+46
+stroke. Stroke 41, 910-915 (2010).
+47
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+18
+16. Fiez, J.A., Damasio, H. & Grabowski, T.J. Lesion segmentation
+1
+and manual warping to a reference brain: Intra- and interobserver
+2
+reliability. Human Brain Mapping 9, 192-211 (2000).
+3
+17. Montaner, J., et al. Plasmatic level of neuroinflammatory markers
+4
+predict the extent of diffusion-weighted image lesions in
+5
+hyperacute stroke. Journal of Cerebral Blood Flow & Metabolism
+6
+23, 1403-1407 (2003).
+7
+18. Sakamoto, Y., et al. Early ischaemic diffusion lesion reduction in
+8
+patients treated with intravenous tissue plasminogen activator:
+9
+infrequent, but significantly associated with recanalization.
+10
+International Journal of Stroke 8, 321-326 (2013).
+11
+19. Thomas, R.G.R., et al. Apparent diffusion coefficient thresholds
+12
+and diffusion lesion volume in acute stroke. Journal of Stroke and
+13
+Cerebrovascular Diseases 22, 906-909 (2013).
+14
+20. Wittsack, H.-J., et al. MR Imaging in Acute Stroke: Diffusion-
+15
+weighted and Perfusion Imaging Parameters for Predicting Infarct
+16
+Size. Radiology 222, 397-403 (2002).
+17
+21. Pustina, D., et al. Automated segmentation of chronic stroke
+18
+lesions using LINDA: Lesion identification with neighborhood data
+19
+analysis. Human Brain Mapping 37, 1405-1421 (2016).
+20
+22. de Haan, B., Clas, P., Juenger, H., Wilke, M. & Karnath, H.-O.
+21
+Fast semi-automated lesion demarcation in stroke. NeuroImage.
+22
+Clinical 9, 69-74 (2015).
+23
+23. Maier, O., et al. ISLES 2015 - A public evaluation benchmark for
+24
+ischemic stroke lesion segmentation from multispectral MRI.
+25
+Medical Image Analysis 35, 250-269 (2017).
+26
+24. Rorden, C. & Brett, M. Stereotaxic display of brain lesions. Behav
+27
+Neurol 12, 191-200 (2000).
+28
+25. Fazekas, F., Chawluk, J., Alavi, A., Hurtig, H. & Zimmerman, R.
+29
+MR signal abnormalities at 1.5 T in Alzheimer's dementia and
+30
+normal aging. American Journal of Roentgenology 149, 351-356
+31
+(1987).
+32
+26. Sled, J.G., Zijdenbos, A.P. & Evans, A.C. A nonparametric
+33
+method for automatic correction of intensity nonuniformity in MRI
+34
+data. IEEE Transactions on Medical Imaging 17, 87-97 (1998).
+35
+27. Collins, L., D., Neelin, P., Peters, T., M. & Evans, A., C. Automatic
+36
+3D intersubject registration of MR volumetric data in standardized
+37
+Talairach space. Journal of Computer Assisted Tomography 18,
+38
+192-205 (1994).
+39
+28. Cox, R.W., et al. A (sort of) new image data format standard: Nifti-
+40
+1. Neuroimage 22, e1440 (2004).
+41
+29. Heuer, K., Ghosh, S., Robinson Sterling, A. & Toro, R. Open
+42
+Neuroimaging Laboratory. Research Ideas and Outcomes 2,
+43
+e9113 (2016).
+44
+30. Ito, K., Anglin, J. & Liew, S.-L. Semi-automated Robust
+45
+Quantification of Lesions (SRQL) Toolbox. Research Ideas and
+46
+Outcomes 3, e12259 (2017).
+47
+.
+CC-BY-NC-ND 4.0 International license
+not peer-reviewed) is the author/funder. It is made available under a
+The copyright holder for this preprint (which was
+.
+http://dx.doi.org/10.1101/179614
+doi:
+bioRxiv preprint first posted online Aug. 26, 2017;
+

@@ -1,0 +1,1493 @@
+SAGE Open
+April-June 2013: 1
+­16
+© The Author(s) 2013
+DOI: 10.1177/2158244013486491
+sgo.sagepub.com
+Introduction
+Models of agricultural land use are often used to predict how
+future landscapes will reflect farmers' responses to social,
+economic, technological, or environmental change, and so
+inform policy decisions. Examples include efforts to under-
+stand the implications of potential incentives for greenhouse
+gas mitigation on agriculture (Perez & Muller-Holm, 2001)
+and in predicting the effects of agricultural policy on biodi-
+versity (Pacini,Wossink, Geisen, & Huirne, 2004;Watkinson,
+Freckleton, Robinson, & Sutherland, 2000).
+Central to most land-use models are assumptions about
+the behavior of farmers and, in particular, about the decision-
+making process adopted when choosing crops. In the vast
+majority of models (including the one described here), farm-
+ers are assumed to act so as to optimize a utility function.
+When constructing this utility function, modelers must make
+decisions about which aspects of farmer behavior to include,
+and which to exclude, as well as how parameters will be esti-
+mated and how the utility function itself will be solved.
+Models that attempt to predict the effects of policy changes
+are often constructed using the technique of mathematical
+486491
+SGOXXX10.1177/2158244013486491SAGE OpenCooke et al.
+research-article2013
+1University of Cambridge, UK
+2La-Trobe University, Bundoora, Australia
+3University of Reading, UK
+4Cranfield University, Bedfordshire, UK
+5University of Sheffield, UK
+6British Trust for Ornithology, The Nunnery, Thetford, Norfolk, UK
+7University of East Anglia, Norwich, UK
+Corresponding Author:
+Ira R. Cooke, Department of Biochemistry, La Trobe University, Kingsbury
+Drive, Bundoora, Melbourne, Victoria 3085, Australia.
+Email: iracooke@gmail.com
+Empirical Test of an Agricultural
+Landscape Model: The Importance of
+Farmer Preference for Risk Aversion and
+Crop Complexity
+Ira R. Cooke1,2, Elizabeth H. A. Mattison3, Eric Audsley4,
+Alison P. Bailey3, Robert P. Freckleton5, Anil R. Graves4, Joe
+Morris4, Simon A. Queenborough5, Daniel L. Sandars4, Gavin
+M. Siriwardena6, Paul Trawick4, Andrew R. Watkinson7 and
+William J. Sutherland1
+Abstract
+Developing models to predict the effects of social and economic change on agricultural landscapes is an important challenge.
+Model development often involves making decisions about which aspects of the system require detailed description and
+which are reasonably insensitive to the assumptions. However, important components of the system are often left out
+because parameter estimates are unavailable. In particular, measurements of the relative influence of different objectives,
+such as risk, environmental management, on farmer decision making, have proven difficult to quantify. We describe a model
+that can make predictions of land use on the basis of profit alone or with the inclusion of explicit additional objectives.
+Importantly, our model is specifically designed to use parameter estimates for additional objectives obtained via farmer
+interviews. By statistically comparing the outputs of this model with a large farm-level land-use data set, we show that
+cropping patterns in the United Kingdom contain a significant contribution from farmer's preference for objectives other
+than profit. In particular, we found that risk aversion had an effect on the accuracy of model predictions, whereas preference
+for a particular number of crops grown was less important. While nonprofit objectives have frequently been identified as
+factors in farmers' decision making, our results take this analysis further by demonstrating the relationship between these
+preferences and actual cropping patterns.
+Keywords
+agriculture, multiattribute utility theory, socioeconomic model, stated preferences
+2 SAGE Open
+programming because this accommodates legislated require-
+ments and subsidies relatively easily.
+Two major variants of agricultural mathematical pro-
+gramming models have emerged. The oldest involves explic-
+itly specifying as many aspects of the farming profit function
+as possible, such as rotational constraints, timing of field
+operations, diseases, and environmental runoff (see, for
+example,Annetts &Audsley, 2002;Arfini, 2005; Rounsevell,
+Annetts, Audsley, Mayr, & Reginster, 2003). One advantage
+of this explicit modeling approach is that, because underly-
+ing processes are modeled explicitly, these models should be
+more robust to predicting land use in novel policy scenarios.
+The disadvantage of this approach is that it is often extremely
+difficult to quantify all of the required parameters in such an
+explicit model, and there are inevitably aspects of the system
+that are omitted. As a consequence, early explicit models
+were found to have limited predictive accuracy, which led to
+the development of "Positive Mathematical Programming"
+(PMP; Howitt, 1995), in which a relatively simple utility
+function is constructed, and a quadratic correction function is
+found that exactly calibrates the model to reference data. In a
+PMP model, aspects of the system that are difficult to quan-
+tify get subsumed into the correction term. Although this
+means that even relatively simple PMP models can appear to
+have good predictive qualities, it also means that the ability
+of the model to make predictions outside the circumstances
+of the reference data set is limited. PMP and explicit models
+therefore serve complementary functions in predictive mod-
+eling, and it is important that both are pursued. In this article,
+we focus on explicit models because our goal is to evaluate
+the importance of particular aspects of farmer's behavior in
+determining land use.
+As farming is a business activity, it is not surprising that
+many explicit models of farmer behavior have focused purely
+on the contribution of profit to utility (Janssen & van Ittersum,
+2007). There is, however, considerable qualitative evidence
+that farmers also make land-use decisions in response to a
+variety of nonprofit objectives such as maintaining indepen-
+dence (Gasson, 1973), controlling workload (Fairweather &
+Keating, 1994; Solano, Léon, Pérez, & Herrero, 2001), reduc-
+ing risk (Harper & Eastman, 1980; McGregor et al., 1996;
+Solano et al., 2001), and caring for the environment (Brodt,
+Klonsky, & Tourte, 2006; Fairweather & Keating, 1994;
+Solano et al., 2001). While these studies collectively suggest
+that farmers value outcomes other than pure profit, there is
+currently very little quantitative evidence to assess whether
+this translates to observed behavior. To address this problem,
+detailed quantitative studies are required across different
+farming contexts examining the question of whether farmer's
+stated preferences correlate with observed behavior.
+Our goal here is to examine the importance of preferences
+other than profit in determining crop composition for low-
+land arable farmland in England and Wales. Specifically, we
+aim to determine whether the addition of key nonprofit pref-
+erences to the utility function of farmers can improve the
+agreement between model outputs and empirical data. To
+achieve this, we develop a method for including multiple
+preferences in the utility function of farmers that is closely
+tied to an interview process eliciting parameters for the
+model. We then make use of a detailed and extensive data
+set, the Farm Business Survey (Department for Environment,
+Food and Rural Affairs & National Assembly for Wales,
+2002, 2003, 2004, 2005; Ministry of Agriculture, Fisheries
+and Food & National Assembly for Wales, 2001), which pro-
+vides information on crop yields and areas grown at the indi-
+vidual farm holding level. Model performance can be
+assessed based on agreement between model predictions and
+the survey data. We compare the performance of a range of
+models, including a purely empirical benchmark (a regres-
+sion of crop gross margin against area), a pure-profit model,
+and a model incorporating multiple preferences.
+We begin by describing the model itself in three parts: (a)
+the framework for constructing a single weighted objective
+(utility) from a number of subobjectives, (b) how key prefer-
+ences were identified and quantified, and (c) how these are
+implemented within our model. We then describe the meth-
+ods used to compare model output with empirical data.
+Trading-Off Multiple Objectives:
+Mathematical Framework
+The core of the model is a description of individual farmer
+decision making that assumes the selected decision opti-
+mizes a weighted combination of all relevant objectives. We
+used mixed-integer programming for this because it is suited
+to the inclusion of multiple objectives and is widely used in
+land-use simulation models (Arfini, 2005).Alinear or mixed-
+integer programming model comprises an overall objective
+function to be maximized or minimized subject to a series of
+constraints (Press, Teukolsky, Vetterling, & Flannery, 1992).
+The overall objective function is a simple sum of the follow-
+ing form:
+U c x
+i i
+i
+=  .
+(1)
+In our model, U is overall utility and x
+i
+denotes the quan-
+tity of various units, such as areas of crops, number of work-
+ers, or number of machines. The constants, c
+i
+, are the amount
+of utility gained or lost for a change in x
+i
+and include crop
+gross margins, labor costs, and machinery costs. For any
+given farm, there are constraints on the potential values of x
+i
+,
+such as the amount of labor or equipment time available.
+Nonlinear relationships can be incorporated through a sys-
+tem of constraints and integer variables called "special
+ordered sets" (Beale & Forrest, 1976). As special ordered
+sets can substantially increase computation time, we mini-
+mized their use by describing curved objective functions (see
+below) with a small (<4) number of line segments.
+Cooke et al. 3
+The utility model comprises multiple objectives, such as
+profit, risk, and crop complexity, each of which is a sum of
+contributions from each of the quantities x
+i
+. This leads to a
+hierarchy of sums:
+U u w O
+k k k
+k
+=  ,
+(2)
+O c x
+k i
+k
+i
+i
+=  ,
+(3)
+where each of the k objectives, O
+k
+, is associated with two
+constant factors, u
+k
+and w
+k
+. The factor, u
+k
+, converts the units
+of objective k (e.g., profit, risk, or crop complexity) into a
+common scale based on utility (see below for a description of
+how each individual objective is calculated). The weighting
+w
+k
+determines the importance of objective k relative to the
+other objectives. Values are renormalized so that 
+k k
+w =1.
+Each of the individual k objectives has an associated set of
+coefficients, c
+i
+k determining the contribution from each x
+i
+to
+that objective. The solution consists of a vector
+X ={ , , }
+x x x
+n
+1 2 
+describing the optimal land-use configura-
+tion. For nonlinear relationships between U and O
+k
+, a special
+ordered set constraint is applied, which ensures that an
+appropriate value of u
+k
+is used according to the value of O
+k
+in
+different segments of the curve.
+The model is implemented as a package, "farmR" for the
+open source statistical environment, R (R Development Core
+Team, 2008). It uses the open source COIN-LP (http://www.
+coin-or.org/) numerical library to solve the underlying
+mixed-integer programming problem. The package, includ-
+ing source code, is available from the Comprehensive R
+Archive Network (http://cran.r-project.org/src/contrib/
+Archive/farmR).
+Estimation of Preferences
+Although the parameters w
+k
+and u
+k
+for each objective are
+indistinguishable in mathematical terms (see Equation 2), we
+distinguish between them in our framework because they are
+conceptually different and must therefore be elicited
+separately.
+Prior to the interviews, we identified 15 farm manage-
+ment objectives based on a literature review, pilot farmer
+interviews, and a focus group (a complete list of objectives is
+provided in Appendix A). Subsequently, detailed interviews
+were conducted using a multicriteria decision analysis frame-
+work (Belton & Stewart, 2002) with 47 farmers from the
+eastern counties of England (Bedfordshire, Lincolnshire, and
+Norfolk) to elicit model parameters. The interactive soft-
+ware, Logical Decisions® Version 5.129 (http://www
+.logicaldecisions.com), was used to record data and allow
+farmers to view their results and revise them if required.
+Logical Decisions is a decision support software based on
+multicriteria decision making used to implement the Analytic
+Hierarchy Process (see, for example, Moffett, Dyer, & Sarkar,
+2006). It was used with our farmers to interactively work
+through the objective hierarchy and record data, and allowed
+the farmers to instantaneously view results, provide feedback,
+and modify their responses iteratively until satisfied. For each
+objective, the farmers were asked to state the two objective
+values at which they would experience 0% and 100% satis-
+faction (utility). The farmers were then asked to identify their
+satisfaction level at between 1 and 6 intermediate points,
+resulting in a satisfaction curve. This process provided values
+for u
+k
+: the slope of the relationship between utility and the kth
+objective at the various positions along the curve.
+Following capture of satisfaction curves, a SMART/
+SWING weighting procedure was carried out (Mustajoki,
+Hämäläinen, & Salo, 2005; von Winterfeldt & Edwards,
+1986). The farmers were asked to state the objective that they
+most wished to move from its worst (0% satisfaction) to its
+best (100% satisfaction) level. This objective, which was
+almost always profit, was given a score of 100 and the impor-
+tance of moving every other objective, from the worst to the
+best level, was scored relative to it. After completing this
+process once, the results were normalized so that the sum of
+all preference weights was equal to 1. Upon viewing the nor-
+malized results, the farmers were given the opportunity to
+revise their estimates until satisfied that the weights reflected
+their preferences. This section of the interview provided a set
+of weights w
+k
+for each objective.
+Choice of Objectives and Calculation of Weights
+Of the 15 objectives assessed, the most important were profit
+(defined as the sum of revenues and subsidies, less variable
+costs), risk minimization, free time (defined as time not
+farming), and crop management complexity (defined as the
+total number of crop types grown). Together, these accounted
+for more than 50% of preference weights. Although free time
+was listed as second most important on average, simple mod-
+els of free time (based on number of free days per year) were
+saturated (achieved 100% satisfaction with respect to the
+objective) without any adjustments to crop choice; the objec-
+tive was therefore excluded from further consideration. Our
+model almost certainly does not represent free time well
+because it does not include time spent on administration,
+account for time saved through the use of contractors, or
+include preferences for the timing with which free time is
+taken. We were unable to include such a detailed free time
+model in the present study because we did not have access to
+detailed data on administration time or farmers' preferences
+for timing of free time. By leaving this component out of our
+objective function, we make the assumption that it is rela-
+tively orthogonal to the other major objectives under consid-
+eration. The model therefore included the three important
+objectives: profit, risk minimization, and crop management
+4 SAGE Open
+complexity. The remaining objectives were given low
+weightings; including them would have added considerable
+complexity to the model.
+The average relative preference weights were profit, 24%;
+perceived risk, 9%; and crop management complexity, 8.5%.
+When rescaled such that profit was equal to 100%, the
+weights were 37% for risk and 35% for crop complexity.
+Throughout the remainder of the article, we refer to objective
+weightings assuming that this rescaling has been applied.
+Satisfaction Curves
+The satisfaction curve for each objective is the relationship
+between utility (U) and the objective value. Each of the
+farmers in our stated preference survey gave an individual
+satisfaction curve for each objective, and we used averages
+of these curves when calculating model outputs for the Farm
+Business Survey farmers. This average curve was deter-
+mined by fitting a spline function to the curve of each
+farmer, choosing a standard set of x values, and then averag-
+ing the y values at each x. To incorporate these curves into
+our model, we converted each curve into between 1 and 4
+linear segments (depending on the objective), giving a set of
+slopes (u
+k
+).
+The average stated profit curve (standardized to a 250-ha
+farm) was a straight line between £0 (0% satisfaction) and
+£120,000 (100% satisfaction). These values were elicited
+from farmers using the methods described above and repre-
+sent the average points at which a farmer's satisfaction would
+be saturated (maximum) and fall to 0 (minimum). However,
+for inclusion in the model, the values of the parameter deter-
+mined from the intercept had to be adjusted to take account
+of the fact that the model objective function predicts net
+gross margin (defined as the sum of crop gross margins
+minus labor and machinery costs) and not profit. This differ-
+ence is because various fixed costs, such as rent, insurance,
+building repairs, and administrative costs, are excluded. The
+model gave a minimum net gross margin of £60,000 (across
+the Farm Business Survey input values); among farmers, in
+our stated preference survey, the minimum expected profit
+was £0. We therefore applied an offset to the profit-utility
+curve of £60,000 corresponding to the difference between a
+farmer's stated minimum profit and the minimum profit
+objective (net gross margin) that was output by the model.
+This resulted in a recalibrated profit-utility curve so that 0%
+satisfaction was achieved at a profit of £60,000 and 100%
+satisfaction was achieved at £180,000.
+Stated satisfaction curves for risk among farmers were
+almost always linear, with decreasing relationships differing
+in intercepts. To summarize this pattern, we first chose the x
+intercept by finding the average risk value at which the farm-
+er's satisfaction was 0% (£116,000). We then found the risk
+value at which satisfaction first dropped below 100%
+(£37,000). Our final curve was then a line with two
+segments--one from risk = 0, satisfaction = 100% to risk =
+£37,000, satisfaction = 100% and one from risk = £37,000,
+satisfaction = 100% to risk = £116,000, satisfaction = 100%.
+During pilot interviews, farmers identified the number of
+different crops grown as an important and measurable indi-
+cator of management complexity. Hence, we used the num-
+ber of different crop types grown as a measure of crop
+management complexity. The relationship between this
+quantity and overall utility was more complex than for profit
+or risk minimization because different farmers had three
+qualitatively different curve shapes. One group preferred to
+minimize the number of crops grown (monotonic decreasing
+curve), another group preferred an intermediate number
+(humped curve), and the remaining farmers preferred to
+maximize the number of crops grown within the range avail-
+able (monotonic increasing curve). The proportion of farm-
+ers in each group was 31%, 50%, and 19%, respectively. To
+translate this into a form suitable for the model, we calcu-
+lated an average curve (utility against crop number) for each
+group. The actual curves used are shown in Figure 1, and all
+cropping predictions made from our model were calculated
+as weighted sums of solutions for each of the three farmer
+preference types.
+Model Components for Specific
+Objectives
+Profit Objective
+We use a profit model (see Annetts & Audsley, 2002;
+Rounsevell et al., 2003, for a full description) to calculate
+Figure 1. Average stated preference curves for crop
+management complexity showing three different groups of
+farmers.
+Note: Open circles = those who prefer complex cropping arrangements,
+closed triangles = those who prefer intermediate cropping arrangements,
+and closed circles = those who prefer the simplest cropping arrangements
+possible. These curves were used to specify the shape of the utility versus
+crop complexity function in the socioeconomic model.
+Cooke et al. 5
+income generation from an arable farm. The profit objective
+(defined as annual net gross margin) of this model is the sum,
+O G a C x C n
+i i
+i
+ijk ijk
+ijk
+m m
+m
+profit
+= + +
+   ,
+(4)
+which is composed of three parts: the gross margin, G
+i
+, for
+each crop; the costs, C
+ijk
+, of each field operation, including
+any timeliness penalty (the jth operation on crop i in period
+k); and the costs, C
+m
+, of the machines and labor required to
+perform the field operations. The model variables are a
+i
+, the
+area of crop i; x
+ijk
+, the area of operation, j, on crop i in period
+k; and the number of machines n
+m
+of type m. Each variable is
+accompanied by its corresponding coefficient.
+A series of constraints is applied to ensure that only
+realistic solution vectors are obtained when maximizing
+the profit objective (Equation 4). These constraints have
+previously been described in detail by Rounsevell et al.
+(2003) and Annetts and Audsley (2002). In summary,
+they ensure that the following conditions are met: (a)
+total land area is constant, (b) all necessary field opera-
+tions are performed for each crop in the required sequence,
+(c) the labor and machinery required to perform field
+operations do not exceed that available, and (d) that crops
+are rotated such as to prevent the buildup of diseases and
+pests. These constraints and their associated parameters
+form the model's description of the farming system.
+Parameters include commodity prices, machinery work
+rates, rotational constraints on crops, and the timing of
+agricultural operations required to bring a crop to har-
+vest. The parameters come from a wide variety of sources,
+the details of which are provided in Appendix B (Table
+B1). The exact parameter values used are available as
+online supplementary material.
+The model is based on a description of farming at the
+level of a single operation and assumes that the soil type
+and rainfall are constant across the entire farm. As large
+farms may include land with a variety of soil types, we
+used a weighted average solution over the soil types pres-
+ent in the county where the farm was located. Yearly rain-
+fall was taken to be the average for that county. Soil type
+and rainfall affect the work rates for various operations,
+and the amount of time available for fieldwork in each
+fortnight of the year. In cases where crop yield values
+were not available from the Farm Business Survey for a
+particular farmer, a calculation based on soil type and
+rainfall was used to obtain a predicted yield. This calcula-
+tion was performed by extrapolating between worst and
+best expected yields for a crop (Agro Business
+Consultants, 2004; Nix, 2007) assuming that light soils
+have the lowest yields and heavy soils the highest. Soil
+types were calculated based on the methodology described
+in Rounsevell et al. (2003).
+Risk Minimization Objective
+We included a risk objective in our model following the basic
+principle of minimization of total absolute deviation in prof-
+its (Hazell, 1971). This is an approximation to the true risk in
+whole-farm profit because it does not explicitly account for
+the "risk spreading" that occurs when farmers grow a range
+of crops with uncorrelated deviations. In our model, the risk
+objective was calculated according to the formula:
+O x
+i i
+i
+risk
+= 
+  ,
+(5)
+where the sum is over all crops, x
+i
+is the area of the ith
+crop, 
+i
+is the standard deviation in output (price times yield)
+per hectare for the ith crop, and  is a constant factor
+(explained below). In interviews, farmers were asked to
+specify their stated preference for risk. It is unrealistic to
+expect interview participants to conceptualize risk directly in
+mathematical terms, so they were instead asked to envisage a
+series of scenarios in which the range of their farm income
+(difference between minimum and maximum over a period
+of 3-4 years) varied from £0 (minimum) up to the maximum
+range they would expect. While this definition is different
+from that used in our model, we assume that the two are
+related by the constant factor, . To estimate , we make the
+following approximate argument.
+First, the expected deviation in whole-farm profit will be
+less than the sum of absolute deviations in profitability of the
+different crops grown. As farmers grow five crops on aver-
+age (as indicated by the Farm Business Survey) and assum-
+ing that crop outputs vary independently, the whole-farm risk
+should equal the deviation in the average income from five
+independently varying values. Thus, the sample standard
+deviation of effective total profit should roughly equal / 5
+, where  is the area-weighted average of standard deviations
+of individual crops. We assumed that farmers considered the
+maximum and minimum possible values of their income
+based on 10 years experience (many farmers had much more
+experience farming, but as farm technology and policies
+change rapidly, we assumed that this was a reasonable rele-
+vant range). We related this to the standard deviation in crop
+profitability by considering a sample of 10 independent years
+from a distribution with standard deviation 
+i
+and calculating
+the range of the sample numerically. The result of this calcu-
+lation was 3.1
+I
+. Combining this with the fact that risks are
+spread among crops, we obtain an approximate value of 
+equal to 1.4. This value is clearly approximate, so we exam-
+ined values of  from 0.5 to 2.0 in increments of 0.5. The
+value that resulted in the best fit to data (after also minimiz-
+ing the sum of squared differences over risk and crop com-
+plexity preferences) was  = 1.0; we used this value in all
+subsequent analyses.
+6 SAGE Open
+Statistical Methodology for Comparing
+Land-Use Data With Model Outputs
+Empirical Data Used
+We compared the outputs of the socioeconomic model with a
+largenationaldataset,theFarmBusinessSurvey(Department
+for Environment, Food and Rural Affairs & National
+Assembly for Wales, 2002, 2003, 2004, 2005; Ministry of
+Agriculture, Fisheries and Food & National Assembly for
+Wales, 2001). The Farm Business Survey is an annual survey
+of farm businesses across the United Kingdom, including
+around 3,000 farms in England and Wales. We used the data
+from England and Wales in this study. Information is pro-
+vided on an individual farm basis and includes the area,
+yield, and sale price of each crop grown but not the precise
+location of the farm. For this analysis, we selected lowland
+arable farms. Specifically, we included farmers whose hold-
+ings were largely below 300 m altitude and for whom arable
+crops and set-aside accounted for more than 85% of their
+farmed area. From this sample, we excluded farms <100 ha,
+because off-farm income probably constitutes a significant
+portion of the farm business in such cases.
+As the farming model makes predictions about long-term
+cropping, we used average crop areas in the time period 2000
+to 2004, calculated individually for each farm. We chose this
+period to avoid modeling farmer responses to the introduc-
+tion of the single farm payment (introduced in 2005), because
+the long-term effects of this policy are unlikely to be appar-
+ent during its introductory phase, and it would therefore pro-
+vide inappropriate data for comparison with our equilibrium
+model. Farms were excluded if more than 2 years' data were
+missing in the 2000 to 2004 time period. The final data set
+included individual average crop areas between 2000 and
+2004 for 149 farms.
+We configured the model to predict land use for eight
+crops (including bare fallow/set-aside) with a combined area
+that accounts for approximately 85% of arable land in
+England (Department for Environment, Food and Rural
+Affairs, 2008). Crops were winter wheat, winter oilseed rape,
+winter barley, spring barley, legumes (arable pea and bean
+crops), sugar beet, and potatoes. We also included temporar-
+ily unused "set-aside" land. All our comparisons between
+simulated and actual land use were made relative to the area
+of these land-use types.
+Model Runs
+To generate cropping predictions for each farm, we used the
+time-averaged crop yield values for each farm in our sample
+from the Farm Business Survey, as inputs for our socioeco-
+nomic model. Other than soil type and rainfall (which varied
+by county), all other variables were kept fixed across farms.
+In cases where a farmer did not grow a particular crop, we
+allowed the model to generate yield values for that crop
+based on soil type and rainfall (see "Profit Objective" sec-
+tion). As the location of farms in the Farm Business Survey
+was only known to county level, we used a weighted average
+of model results for each of the soil types and rainfalls pres-
+ent in that county. An additional issue associated with the use
+of such spatially coarse data is that the distance to sugar beet
+factories is unknown, so the cost of sugar beet haulage can-
+not be calculated. As haulage has a very strong effect on the
+profitability of sugar beet (Nix, 2007), we did not attempt to
+predict its area but simply fixed its value to the area reported
+in the Farm Business Survey. Our comparisons of model fit
+are therefore based on relative crop areas excluding sugar
+beet.
+Measuring Model Fit
+We evaluated the fit of our socioeconomic model to empiri-
+cal data in three ways by (a) calculating a general metric of
+disagreement between model outputs and data across all
+crops, (b) testing for correlations between crop areas in the
+model and data at the aggregate level (i.e., averages across
+all farmers), and (c) assessing the fit of a multivariate crop-
+choice regression of model outputs against data at the indi-
+vidual farm level.
+The metric comparing predicted and observed data is sim-
+ply the sum of squared differences:
+SS = -
+( )
+
+ x o
+ci ci
+c
+i
+2
+,
+(6)
+where x
+ci
+is the model prediction for the area of crop c on
+the ith individual farm, and o
+ci
+is the respective observed
+value. We used this as a measure of absolute disagreement
+between model outputs and data. To test whether there were
+significant absolute differences between x
+c
+and o
+c
+, we used a
+sign test (a nonparametric test for significant difference
+between paired samples) for each crop type.
+To test for correlations between crop areas at the aggre-
+gate level, we first calculated the average relative crop areas
+across all farmers in the model and in the data set. We then
+tested for correlations between model and data by calculating
+a Spearman rank correlation, treating the average area for
+each crop as an independent datum.
+To compare modeled and observed data at the individual
+farm level, we fitted a crop-choice regression. Our statistical
+model is similar to other crop-choice models (e.g., Seo &
+Mendelsohn, 2008), but allows for multiple choices, as U.K.
+arable farmers always grow a variety of crops. We label the
+vector of actual crop choices for the ith observation, c
+i
+, and
+we label the corresponding model outputs x
+i
+. The crop-
+choice vectors from the socioeconomic model, x
+i
+, are viewed
+as the independent variable and the actual crop-choice
+vectors are viewed as the dependent variable. In their raw
+form, the relative crop areas in each vector c
+i
+are continuous
+Cooke et al. 7
+variables, but actually farmers make cropping choices in dis-
+crete chunks depending on a range of factors, including the
+size of fields and the available resources. Thus, the dominant
+underlying process giving rise to c
+i
+is not continuous but dis-
+crete. For this reason, we modeled c
+i
+as a vector of counts
+where each element represents the number of area subunits
+allotted to a crop. This choice was also motivated by the fact
+that histograms of the elements of c were strongly nonnor-
+mal, showing a mode at or close to zero and another mode at
+some larger value. To convert from continuous crop areas to
+discrete counts, we set the number of subunits per farm equal
+to 20. We then rounded values of the elements of c
+i
+to the
+nearest multiple of the subunit size. As the use of smaller
+numbers of subunits leads to an increase in rounding error,
+we tested several potential values for the number of subunits
+per farm and chose 20, because it was the largest value such
+that each of the elements of c
+i
+approximated a binomial dis-
+tribution. It is important to note that although the total num-
+ber of subunits is 20, this equates to an effective number of
+subunits per crop of between 2 and 5, depending on the crop
+area, and is therefore much more strongly discrete than it
+might at first seem.
+We assumed that our crop responses, c, came from a mul-
+tinomial distribution with probabilities j
+corresponding to
+the relative probabilities that a subunit of land would be allo-
+cated to the jth crop type. Each observation has associated
+with it a vector of such probabilities, 
+ 
+ 
+
+i i ij im
+= [ , , , , ]
+
+1   ,
+and we assume that the log odds 
+ij
+/
+i1
+of choosing crop j
+compared with Crop 1 (the reference crop which we chose to
+be winter wheat) are related to the outputs of the mechanistic
+model. This statistical model is summarized in Equation 7:
+c N
+x x
+i i i
+ij
+i
+j j ij i
+
+multinomial 
+
+
+  
+( )
+
+
+
+
+
+ = + -
+log
+1
+1 1
+,
+(7)
+where  and  are intercept and slope coefficients, respec-
+tively.Anonzero value for 
+j
+indicates a relationship between
+predicted and observed data for crop j, whereas a value of 0
+indicates that the crop area prediction is unrelated to the
+actual crop area.
+In all our statistical analyses, we used Bayesian inference
+with uninformative priors to estimate parameter values.
+Specifically, we used normal distributions with  = 1,000 as
+priors for the  and  parameters. Posterior densities were
+calculated using Markov chain Monte Carlo simulation with
+the Metropolis algorithm via the function "metrop" in the R
+package MCMC. We used the posterior modes as starting
+values, and obtained these via a call to the "optim" function
+in R. We also used the "optim" function to calculate the vari-
+ance­covariance matrix, which was in turn used to scale the
+jump size in "metrop." We used 10 million samples and dis-
+carded the first half as burn-in. Convergence was checked
+using the Geweke (1992) diagnostic (see also Cowles &
+Carlin, 1996) via the R package "coda" (Plummer, Best,
+Cowles, & Vines, 2006).
+Model comparisons were performed using the deviance
+information criterion (DIC) (Spiegelhalter, Best, Carlin, &
+van der Linde, 2002). The DIC is a Bayesian model selection
+criterion that penalizes complex models with more parame-
+ters in a similar manner to the Akaike information criterion
+(AIC), commonly used in frequentist analyses. DIC is calcu-
+lated directly from posterior densities according to the for-
+mula (Gelman, Carlin, Stern, & Rubin, 2002):
+DIC
+avg
+= ( )- ( )
+2  ,
+
+D y D y
+ (8)
+where 2  ( )
+D y
+avg
+is the average of the deviance over the
+posterior samples and D y
+
+( )
+
+is a point estimate of the
+deviance at the posterior mean value of the parameters. The
+deviance is defined as twice the negative of the log likeli-
+hood. We use DIC throughout, though our overall conclu-
+sions would be unaffected by alternative choices of criteria
+for model fit.
+We modeled the relationship between predicted and actual
+cropping using three different analyses based on the statisti-
+cal model shown in Equation 7. In each analysis, the predic-
+tor variable is altered to reflect a different conceptual model
+of the system. The first predictor variable represented a
+benchmark unrelated to the mechanistic model, and was sim-
+ply the gross margin value for each crop type. This bench-
+mark regression quantifies the relationship between variable
+inputs to the mechanistic model (gross margins) and actual
+crop area. The remaining predictor variables were (a) outputs
+from the socioeconomic model based on pure-profit maximi-
+zation; (b) outputs from the socioeconomic model, including
+values for risk and crop complexity preferences obtained
+from the stated preferences survey; and (c) outputs from the
+socioeconomic model, including values for risk and crop
+complexity that were a best fit to the sum of squared differ-
+ences (Equation 5).
+Results
+Best-Fit Estimates for Risk and Crop Complexity
+Preferences
+The relationship between model fit (measured as sum of
+squared differences) and a range of risk and crop complexity
+preferences is shown in Figure 2. The plot shown represents
+ = 1, and has a clear minimum point when the risk parame-
+ter equals 22% of the profit preference (all preference
+weights are relative to profit at 100%). The relative influence
+of the risk preference on model fit is clearly much larger than
+for the crop complexity objective, but a less obvious mini-
+mum also exists for this parameter at 8%. These risk and
+crop complexity values represent average revealed
+8 SAGE Open
+preferences for the farmers in the Farm Business Survey.
+They compare with averages of the stated preference weights
+of 37% and 35% for risk and crop complexity, respectively,
+derived from our survey of 47 farmers.
+Aggregate-Level Comparisons
+For all crops, sign tests showed significant differences
+between model outputs and the Farm Business Survey results
+(the hypothesis x = c was rejected with p < 10-5 in all cases).
+This clearly demonstrates that for each of the crops, there is
+a bias in model predictions away from the observed values.
+The magnitude of these biases can be seen in Figure 3, which
+compares average crop areas (across all 149 farms) in the
+Farm Business Survey data and the model predictions.
+Results are shown for the pure-profit model (Figure 3a), a
+model using the best-fit (minimum sum of squared differ-
+ences) values for risk and crop complexity (Figure 3b), and a
+model with stated preference values for the risk and crop
+complexity parameters (Figure 3c). In each plot, a straight
+line indicates perfect agreement between modeled and
+observed data. Winter wheat is clearly the dominant crop but
+is always underpredicted by the model. In the pure-profit
+case (Figure 3a), the model severely overpredicts the area of
+potatoes and, to a lesser extent, overpredicts oilseed rape and
+bean crop areas. This fit is improved when farmer's revealed
+and stated preferences for risk minimization are taken into
+account (Figures 3b and 3c). The main changes occur when
+risk preferences are applied. In particular, potatoes (which
+have high risk), and set-aside (which is low risk, with guar-
+anteed subsidy income and near zero input cost), change rap-
+idly as the risk preference is increased.
+A Spearman rank test for correlation was not significant
+for the pure-profit model (Figure 3a;  = .53, p = .23) but was
+significant for the model including stated preferences (Figure
+3c;  = .96, p = .003). The correlation for the model using
+revealed preferences (best-fit preferences from Figure 2)
+gave an intermediate correlation coefficient (Figure 3b;  =
+.75, p = .06). At first sight, this last result would seem to
+contradict the fact that the revealed preferences represent the
+minimum of sum of squared differences. However, as the
+Spearman rank test is based purely on rank order rather than
+minimizing squared differences, there is no inconsistency to
+be resolved.
+Figure 2. Variation in model fit as a function of risk minimization
+preference and crop management complexity preference weights.
+Note: The vertical axis is the sum of squared differences between model
+and data (×10-5). The best fit occurs at risk minimization = 22% and crop
+management = 8%. The grid size is 2 × 2 percentage points.
+Figure 3. Comparison between the relative areas of the observed and simulated crops, showing a comparison (a) based on a pure-
+profit maximization model, (b) using outputs from a model using best-fit values of risk and crop complexity preferences, and (c) based on
+model outputs, including stated preference values for risk minimization and crop complexity.
+Note: Solid lines in all figures represent perfect agreement between model and simulation. Areas for sugar beet are not shown because these were fixed
+for each farm (see "Statistical Methodology for Comparing Land-Use Data With Model Outputs" section).
+Cooke et al. 9
+Individual-Level Comparisons
+Predicted (using stated preferences) and observed crop areas
+for seven types of land use on the 149 Farm Business Survey
+farms are compared in Figure 4. Visual inspection of this fig-
+ure reveals that there is clearly a large amount of residual
+variation. The best predictions are obtained for winter wheat
+(the dominant crop) and for set-aside. Our statistical analysis
+(using the model described by Equation 7) revealed positive
+relationships between predicted and observed areas for most
+crops in Figure 4. The results of this regression are presented
+in Table 1 for four different models: (a) a purely empirical
+model that simply regressed crop gross margins against
+observed crop areas, (b) a pure-profit run of the model, (c) a
+run of the model using revealed preferences for risk and crop
+complexity (the best fits to the sum of squared deviations),
+and (d) a run of the model using stated preference values for
+risk and crop complexity. The overall ability of each model
+variant to explain variation in the observed cropping is sum-
+marized by the DIC values (small values are better). Note
+that in the case of the stated preference model, the DIC was
+modified by 1 to account for the externally fitted parameter 
+and was modified by 3 for the revealed preference model to
+account for fitted risk and crop complexity as well as . The
+stated preference model is clearly the best on this criterion,
+followed by the revealed preference model, and then the
+pure-profit model. The purely empirical benchmark model
+shows the worst fit.
+Figure 4. A direct comparison between relative crop areas simulated using the model with stated preferences and actual cropping for
+the 149 lowland arable farms selected from the 2000 to 2004 Farm Business Survey.
+Note: Intensity of shading indicates smoothed densities of points. Individual points are shown with small dots. Areas for sugar beet are not shown because
+these were fixed for each farm (see "Statistical Methodology for Comparing Land-Use Data With Model Outputs" section).
+Table 1. Fitted Values of the Slope Parameter  (for Each Crop) for Three Alternative Models of Crop Choice.
+Gross margin only  × 10-2 Pure-profit  × 10-2 Stated preferences  × 10-2 Revealed preferences  × 10-2
+DIC 34.1 12.9 11.1 0
+Winter wheat 8.5 (1.6) 3.8 (0.8) 5.4 (1.7) 2.0 (0.8)
+Winter oilseed rape 5.3 (2.3) 6.9 (2.0) 3.7 (2.3) 6.2 (2.1)
+Potatoes 8.5 (3.2) 16 (6.4) 14.6 (16) 18 (8)
+Legumes 3.0 (3.7) 13 (4) 10.6 (5.3) 13 (4)
+Set-aside 9.9 (3.5) 7.8 (3) 6.7 (2.3) 9.7 (2)
+Winter barley 5.2 (2.4) 8.5 (4) 24.2 (5.2) 17 (4)
+Spring barley -2.7 (3.7) 7.9 (6.3) 59.4 (21.7) 13 (8)
+Note: DIC = deviance information criterion. Standard deviations are shown in parentheses. DIC values are shown relative to the best model.
+10 SAGE Open
+Discussion
+In this article, we conducted a detailed statistical comparison
+between the outputs of a farm-level land-use model and
+observed cropping decisions over a 5-year period (2000-
+2004). Two main findings are presented. The first is that
+model results are essentially uncorrelated with actual farmer
+behavior, unless the model is modified to include farmer
+preferences other than pure profit (in our case, risk aversion
+and crop management complexity). Our second finding is
+that stated preference results can be used to parameterize
+models of farmer behavior, quantifying preference for risk
+aversion and potentially other preferences that might influ-
+ence crop management decisions.
+The question of whether multiple farm preferences (espe-
+cially risk aversion) are a required component of predictive
+land-use models has been studied for many years. For exam-
+ple, Lin, Dean, and Moore (1974) reached the conclusion
+that profit-only models were inadequate based on a small
+sample of 6 farms, and more recently Rounsevell et al. (2003)
+found that farmers were approximately profit maximizers.
+Nevertheless, despite the long history of work examining
+this question, it remains unresolved (Just & Pope, 2003),
+partly because the sample sizes of some previous studies
+have been too small to analyze statistically (see, for example,
+Arriaza & Gómez-Limón, 2003; Lin et al., 1974), and
+because risk aversion is not likely to be important in all farm-
+ing contexts (Edwards-Jones, Dreary, & Willcock, 1998). It
+is therefore unlikely that any single study will completely
+resolve the issue. Rather, a series of studies such as ours,
+which statistically compare model outputs with observed
+farmer behavior, and which use a large sample size (149
+farms) are needed to examine the validity of modeling
+approaches in specific contexts.
+There is a considerable body of work describing models
+for predicting the behavior of arable farmers in the United
+Kingdom and for closely related farming systems in conti-
+nental Europe. A particularly relevant example is the work of
+Rounsevell et al. (2003), who used a similar profit model to
+ours, and conducted a quasi validation using a large number
+of sample points across East Anglia. Based on a comparison
+of crop areas for wheat, grass, and cereals, Rounsevell et al.
+found support for a profit-only model, but suggested that fac-
+tors such as risk might also be important (though this was not
+tested). As our conclusions are somewhat at odds with the
+results of this article, it is worth explaining the difference. In
+our case, we conducted statistics on the basis of crop choice
+across a wide range of crops (8), and effectively tested the
+model's ability to predict choices based on known yields and
+prices (inputs in our case). In contrast, Rounsevell et al.
+attempted to predict yields (using a formula based on soil
+type) but concentrated on the model's ability to predict major
+crops. The difference between our results and those of
+Rounsevell et al. is interesting because they suggest that
+farmers'choices may be more consistent with profit maximi-
+zation when choosing among major crops, but that risk and
+other factors may influence those choices when minor crops
+and break crops are considered. Although small in total area,
+minor land uses such as set-aside or spring crops can be very
+important when modeling environmental issues.
+We used a mixed-integer programming model to repre-
+sent the profit, risk, and crop complexity functions of farm-
+ers in our study. Models of this type have a long history in
+agricultural modeling and many such models remain in use
+as policy tools (Arfini, 2005). The important alternative of
+PMP (de Frahan, 2005; Howitt, 1995) involves construction
+of a simplified profit function to which a correction is found
+such that the model can exactly reproduce a training data set.
+The advantage of this approach is that any aspect of the sys-
+tem that is relatively static does not need explicit description
+but instead can be subsumed into the correction function.
+Although this approach has proven to be very useful for pol-
+icy prediction, it typically subsumes many aspects of farmer
+behavior, including risk aversion and crop complexity pref-
+erence into the correction function. This is a problem if the
+goal of the study is to predict behavior under circumstances
+substantially different from the training data. It is therefore
+important that research into more explicit models continues
+alongside development of PMP. In particular, our study
+chose an explicit modeling approach rather than PMP
+because our goal was to explicitly test the importance of
+including behavioral functions in the model and to provide a
+means for their parameterization via interviews.
+One of the principal practical difficulties with multiobjec-
+tive behavioral models is that the relative weights of differ-
+ent objectives are difficult to quantify. In our study, we
+obtained these objective weights independently using
+detailed interviews with a sample of 49 farmers. Although
+interviews and stated preference surveys of farmers have
+often found support for land-use objectives other than profit
+(Gasson, 1973; McGregor et al., 1996; Perkin & Rehman,
+1994), our study is unique in its ability to transfer these stated
+preferences directly into a land-use model. The main advan-
+tage of using stated preferences to parameterize a model is
+that they can be obtained relatively easily and independently
+of the land-use data used to test the model. The disadvantage
+is that it is difficult to elicit numerically accurate statements
+from interview participants without introducing well-known
+biases (Pöyhönen, Vrolijk, & Hämäläinen, 2001; Weber &
+Borcherding, 1993). For two key land-use objectives, risk
+preference and crop complexity preference, we obtained val-
+ues corresponding to a best fit between our model and farmer
+behavior (in the form of land-use data). We found that the
+agreement between these best-fit values and stated values
+was much better for risk aversion than for crop complexity
+preference. As we used average satisfaction curves for both
+Cooke et al. 11
+these objectives in our model, this disparity may be due to
+differences in the variance of satisfaction curves for each
+objective. It is difficult to reduce variance satisfaction curves
+to a simple numeric measure, but at a semiquantitative level,
+it is clear that risk (45/47 farmers with monotonic decreasing
+curves) was much less variable than crop complexity (31%
+decreasing, 50% humped, and 19% increasing). The fact that
+we condensed this variability into an average set of objective
+curves to be used across all farmers is not ideal, especially
+for the crop complexity parameter. In future work, we would
+like to collect land-use data for the 49 farmers interviewed
+rather than rely on existing land-use databases that provide
+data for different farmers.
+Tight integration in this study between model building
+and the design of preference elicitation interviews was essen-
+tial for developing a well-parameterized socioeconomic
+model. In addition to providing parameters, the stated prefer-
+ence survey was used to screen objectives for inclusion in the
+model based on the relative importance to farmers and rela-
+tive influence on crop-choice variability. As model complex-
+ity rapidly increases with the inclusion of additional
+objectives, this latter step is crucial to successful model
+development. However, it is possible that further improve-
+ments to the accuracy of arable landscape models could be
+achieved through the inclusion of additional objectives such
+as landscape structure, wildlife, and nonproduction land use.
+The key to the success of such work, however, will be the
+joint collection of detailed financial, physical, and prefer-
+ence information at the individual farm level. Such informa-
+tion will be essential to reduce noise due to parameter error
+and allow the relative performance of different models to be
+assessed.
+Appendix A
+Farmer Objectives forAgricultural Land-Use Models In elic-
+iting measurable farmer objectives, a stepwise procedure
+encompassing literature review, pilot interviews, and focus
+group discussions was used to identify and classify objec-
+tives. This led to the identification of 15 criteria (objectives)
+that could be measured, grouped under 7 fundamental objec-
+tives. The appearance of the farm was the most complex
+objective with 7 criteria identified, the remaining objectives
+having either one or two criteria measures.
+Farming income (£/year): This is defined as annual
+income generated through land management only, con-
+sisting of crop enterprise output, single farm payment,
+agri-environment payments, other land-based grants
+and subsidies, and land-based diversification income
+after fixed and variable costs were accounted for.
+Risk (absolute deviation in arable farming income): Some
+farmers are prepared to cope with a widely varying
+income on the chance that some years will be very
+good. Others would rather have an income that is more
+constant across years but potentially lower. Farmers
+were asked to provide the best possible and worst pos-
+sible amount their farming income could vary by over
+a 5-year period. The shape of utility was then assessed
+across this range.
+Management complexity: Less formally, this is the amount
+of difficulty associated with running a number of dif-
+ferent enterprises and operations simultaneously
+within the farming year. For this objective, farmers
+were asked to consider two different land management
+criteria--the number of different crops grown and the
+number of different entry-level environmental stew-
+ardship options managed.
+Appearance of the farm: Concerns about the environment
+tended to be split into those that had an effect on the
+appearance and atmosphere of the farm, and those that
+influenced natural resources (water, soil, and air). The
+criteria identified for this objective encompassed land-
+scape structure (length of hedgerow, area of wood-
+land), biodiversity (bird species diversity, bird species
+population size), and the appearance of cropped areas
+(number of tall weeds that appear above the crop can-
+opy, number of low weeds, number of skylark squares).
+Lifestyle and recreation: The personal circumstances of
+farmers vary widely. Two ways in which lifestyle and
+recreation directly influence land management were
+identified--the amount of time spent farming and the
+amount of time spent shooting game. First, the time
+available for farming can vary for a number of rea-
+sons, from semiretirement to having a full-time job
+elsewhere and farming during weekends and annual
+leave. In terms of land management, the reasons for
+needing more or less free time are not as important as
+the number of days available to the individual for
+farming. Second, if an important component of farm-
+ers' recreational activity is a game shoot, it is likely
+that this will also influence their land management
+decisions.
+Autonomy (number of regulatory constraint sets): With
+the exception of Nitrate Vulnerable Zones, participa-
+tion in English agricultural land-based schemes is not
+mandatory. These nonmandatory schemes come with
+an administrative burden and a set of rules and regula-
+tions to abide by. Farmers were asked to consider
+whether they would not sign up to schemes because of
+the additional regulatory constraints.
+Land-based diversification (commercial shooting): There
+are two aspects that potentially distinguish land man-
+agement for commercial shooting, that is, on-farm
+game shooting activity catering for paying individuals,
+from recreational shooting identified under lifestyle
+12 SAGE Open
+and recreation. First, the measurement scales on which
+utility is measured were found to be different.
+Satisfaction with recreational shooting was expressed
+in terms of the time that could be spent on the activity
+(days per season). The utility of a commercial shoot
+was expressed as the number of paid for birds shot per
+season. Second, the management required to generate
+income from shooting may run counter to the manage-
+ment required for optimal arable output, resulting in a
+trade-off between income sources. For these reasons,
+commercial shooting was assessed separately (see
+Figure B1).
+Figure A1. Farmer objective measures.
+Cooke et al. 13
+Table B1. Parameter Sources for the Farming Model.
+Parameter Units/type Source
+Crop disease classes Qualitative Toosey (1988)
+Crop rotation constraints due to disease Number of years Toosey (1988)
+Annual wage for labor £/annum Agro Business Consultants (2004)
+Machinery prices Purchase price in £ Agro Business Consultants (2004)
+Machinery maintenance £/annum (function of purchase cost) American Society of Agricultural Engineers
+(1986)
+Machinery depreciation rates % American Society of Agricultural Engineers
+(1986)
+Machinery replacement rates Years American Society of Agricultural Engineers
+(1986)
+Crop prices £/t Department for Environment, Food and Rural
+Affairs (2008)
+Crop risks SD Department for Environment, Food and
+Rural Affairs and National Assembly for
+Wales (2002, 2003, 2004, 2005); Ministry of
+Agriculture, Fisheries and Food and National
+Assembly for Wales (2001)
+Reduction in yield due to cropping in successive
+years
+% Nix (2007); Toosey (1988)
+Fertilizer costs £/kg Agro Business Consultants (2004)
+Required amounts of fertilizer kg/ha Ministry of Agriculture, Fisheries and Food
+(2000)
+Seed costs £/kg Agro Business Consultants (2004)
+Required amounts of seed kg/ha Toosey (1988)
+Work rates for each operation on each crop
+as a function of size of machinery, amount of
+work, and soil type
+hr/ha Chamen and Audsley (1997); Davies, Eagle, and
+Finney (1993); Donaldson, Hutcheon, Jordan,
+and Osborne (1994)
+Penalties for suboptimal timing of operations % Knowles and Audsley (1983)
+Workable hours as a function of soil type,
+average annual rainfall, time of year, and
+labor availability
+hr Tillett and Audsley (1987)
+References
+Agro Business Consultants. (2004). The agricultural budget-
+ing and costings book (59th ed.). Melton Mowbray, UK:
+Author.
+American Society of Agricultural Engineers. (1986).
+Agricultural engineering yearbook. St Joseph, MI:Author.
+Chamen, W. C. T., & Audsley, E. (1997). The economics of
+traffic control in combinable crops. Landwards, 52(3),
+24-27.
+Davies, D. B., Eagle, D. J., & Finney, J. B. (1993). Soil man-
+agement (5th ed.). Ipswich, UK: Farming Press.
+Department for Environment, Food and Rural Affairs.
+(2008). Agriculture in the United Kingdom. Retrieved
+from http://webarchive.nationalarchives.gov.uk/201
+30123162956/http://www.defra.gov.uk/statistics/
+files/defra-stats-foodfarm-crosscutting-auk-
+2011-chapter04-prices-120612.xls
+Department for Environment, Food and Rural Affairs &
+National Assembly for Wales. (2002). Farm Business
+Survey. Colchester, Essex: UK Data Archive (SN: 4604).
+Department for Environment, Food and Rural Affairs &
+National Assembly for Wales. (2003). Farm Business
+Survey. Colchester, Essex: UK Data Archive (SN: 4830).
+Department for Environment, Food and Rural Affairs &
+National Assembly for Wales. (2004). Farm Business
+Survey. Colchester, Essex: UK Data Archive (SN: 4831).
+Department for Environment, Food and Rural Affairs &
+National Assembly for Wales. (2005). Farm Business
+Survey. Colchester, Essex: UK Data Archive (SN: 5228).
+Donaldson, J. V. D., Hutcheon, J. A., Jordan, V. W., &
+Osborne, N. J. (1994). Evaluation of energy usage for
+machinery operations in the development of more envi-
+ronmentally benign farming systems. Aspects of Applied
+Biology, 40, 87-91.
+Appendix B
+Farming Model Parameters
+14 SAGE Open
+Knowles, D., & Audsley, E. (1983). The effect of timeliness
+of sowing on crop yields (Divisional Note DN1194).
+Bedford, UK: Silsoe Research Institute.
+Ministry of Agriculture, Fisheries and Food. (2000).
+Fertiliser recommendation for agricultural and horticul-
+tural crops (RB209) (7th ed.). London, England: Author.
+Ministry of Agriculture, Fisheries and Food & National
+Assembly for Wales. (2001). Farm Business Survey.
+Colchester, Essex: UK Data Archive (SN: 4603).
+Nix, J. (2007). Farm management pocketbook (37th ed.).
+Leicestershire, UK: The Andersons Centre.
+Tillett, N. D., & Audsley, E. (1987). The potential economic
+benefits of gantries for leaf vegetable production.
+Journal of Agricultural Engineering Research, 36,
+31-44.
+Toosey, R. D. (1988). Arable crops. In R. J. Halley & R. J.
+Soffe (Eds.), Primrose McConnell's The Agricultural
+Notebook (18th ed., pp. 77-128). London, England:
+Butterworths.
+Authors' Note
+This work was conducted as part of the Research Councils' Rural
+Economy and Land Use (RELU) program.
+Declaration of Conflicting Interests
+The author(s) declared no potential conflicts of interest with respect
+to the research, authorship, and/or publication of this article.
+Funding
+The author(s) disclosed receipt of the following financial support
+for the research and/or authorship of this article: Rural Economy
+and Land Use (RELU) is funded jointly by the Economic and Social
+Research Council, the Biotechnology and Biological Sciences
+Research Council, and the Natural Environment Research Council,
+with additional funding from the Department for Environment,
+Food and Rural Affairs and the Scottish Executive Environment
+and Rural Affairs Department. W.J.S. is funded by Arcadia.
+References
+Agro Business Consultants. (2004). The agricultural budgeting and
+costings book (59th ed.). Melton Mowbray, UK: Author.
+Annetts, J. E., & Audsley, E. (2002). Multiple objective linear pro-
+gramming for environmental farm planning. Journal of the
+Operational Research Society, 53, 933-943.
+Arfini, F. (2005). Modelling agricultural policies: State of the art
+and new challenges. Proceedings of the 89th Seminar of the
+European Association of Agricultural Economists, University
+of Parma, Italy.
+Arriaza, M., & Gómez-Limón, J. A. (2003). Comparative per-
+formance of selected mathematical programming models.
+Agricultural Systems, 77, 155-171.
+Beale, E. M. L., & Forrest, J. J. H. (1976). Global optimization using
+special ordered sets. Mathematical Programming, 10, 52-69.
+Belton, V., & Stewart, T. J. (2002). Multiple criteria decision anal-
+ysis: An integrated approach. Dordrecht, Netherlands: Kluwer
+Academic.
+Brodt, S., Klonsky, K., & Tourte, L. (2006). Farmers' goals and
+management styles: Implications for advancing biologically
+based agriculture. Agricultural Systems, 89, 90-105.
+Cowles, M. K., & Carlin, B. P. (1996). Markov Chain Monte Carlo
+convergence diagnostics: A comparative review. Journal of the
+American Statistical Association, 91, 883-904.
+de Frahan, B. H. (2005, August). PMP Extensions and alterna-
+tive methods: Introductory review of the state of the art. XIth
+European Association of Agricultural Economists Congress,
+Copenhagen, Denmark.
+Department for Environment, Food and Rural Affairs. (2008).
+Agriculture in the United Kingdom. Retrieved from http://
+www.defra.gov.uk/statistics/files/defra-stats-foodfarm-
+farmgate-api-2005-130321.xls
+Department for Environment, Food and Rural Affairs & National
+Assembly for Wales. (2002). Farm Business Survey.
+Colchester, Essex: UK Data Archive (SN: 4604).
+Department for Environment, Food and Rural Affairs & National
+Assembly for Wales. (2003). Farm Business Survey.
+Colchester, Essex: UK Data Archive (SN: 4830).
+Department for Environment, Food and Rural Affairs & National
+Assembly for Wales. (2004). Farm Business Survey.
+Colchester, Essex: UK Data Archive (SN: 4831).
+Department for Environment, Food and Rural Affairs & National
+Assembly for Wales. (2005). Farm Business Survey.
+Colchester, Essex: UK Data Archive (SN: 5228).
+Edwards-Jones, G., Dreary, I., & Willcock, J. (1998). Incorporating
+psychological variables in models of farmer behaviour: Does
+it make for better predictions? Etudes & Recherches sur les
+Systèmes Agraires et le Développement, 31, 153-173.
+Fairweather, J. R., & Keating, N. C. (1994). Goals and manage-
+ment styles of New Zealand farmers. Agricultural Systems, 44,
+181-200.
+Gasson, R. (1973). Goals and values of farmers. Journal of
+Agricultural Economics, 24, 521-542.
+Gelman, A., Carlin, J. B., Stern, H. S., & Rubin, D. B. (2002).
+Bayesian data analysis (2nd ed.). Boca Raton, FL: Chapman
+and Hall/CRC.
+Geweke, J. (1992). Evaluating the accuracy of sampling-based
+approaches to the calculation of posterior moments. In J. M.
+Bernardo, J. Berger, A. P. David, & A. F. M. Smith (Eds.),
+Bayesian statistics 4 (pp. 169-193). Oxford, UK: Oxford
+University Press.
+Harper, W. M., & Eastman, C. (1980). An evaluation of goals
+hierarchies for small farm operators. American Journal of
+Agricultural Economics, 62, 742-747.
+Hazell, P. B. R. (1971). A linear alternative to quadratic and semi-
+variance programming for farm planning under uncertainty.
+American Journal of Agricultural Economics, 53, 53-62.
+Howitt, R. E. (1995). Positive mathematical programming.
+American Journal of Agricultural Economics, 77, 329-342.
+Janssen, A., & van Ittersum, M. K. (2007). Assessing farm innova-
+tions and responses to policies: A review of bio-economic farm
+models. Agricultural Systems, 94, 622-636.
+Just, R. E., & Pope, R. D. (2003). Agricultural risk analysis:
+Adequacy of models, data, and issues. American Journal of
+Agricultural Economics, 85, 1249-1256.
+Lin, W., Dean, W., & Moore, C. V. (1974). Profit maximization
+in agricultural production. American Journal of Agricultural
+Economics, 56, 497-508.
+Cooke et al. 15
+McGregor, M., Willock, J., Dent, B., Deary, I., Sutherland, A.,
+Gibson, G., & . . . Grieve, B. (1996). Links between psycholog-
+ical factors and farmer decision making. Farm Management,
+9, 228-239.
+Ministry of Agriculture, Fisheries and Food & National Assembly
+for Wales. (2001). Farm Business Survey. Colchester, Essex:
+UK Data Archive (SN: 4603).
+Moffett, A., Dyer, J. S., & Sarkar, S. (2006). Integrating biodiversity
+representation with multiple criteria in North-Central Namibia
+using non-dominated alternatives and a modified analytic hier-
+archy process. Biological Conservation, 129, 181-191.
+Mustajoki, J., Hämäläinen, R. P., & Salo, A. (2005). Decision sup-
+port by interval SMART/SWING ­ incorporating imprecision
+in the SMART and SWING methods. Decision Sciences, 36,
+317-339.
+Nix, J. (2007). Farm management pocketbook (37th ed.).
+Leicestershire, UK: The Andersons Centre.
+Pacini, C., Wossink, A., Geisen, G., & Huirne, R. (2004).
+Ecological-economic modeling to support multi-objective
+policy making: A farming systems approach implemented for
+Tuscany. Agriculture, Ecosystems and Environment, 102, 349-
+364.
+Perez, I., & Muller-Holm, K. (2001). Economic incentives and
+technological options to global warming emission abatement
+in European Agriculture. In F. Arfini (Ed.), Modelling agricul-
+tural policies: State of the art and new challenges: Proceedings
+of the 89th Seminar of the European Association of Agricultural
+Economists (pp. 413-425). Parma, Italy: University of Parma.
+Perkin, P., & Rehman, T. (1994). Farmers' objectives and their
+interactions with business and life styles: Evidences from
+Berkshire, England. In J. B. Dent, & M. J. McGregor (Eds.),
+Rural and farming systems analysis: European perspectives
+(pp. 193-212). Wallingford, UK: CAB International.
+Plummer, M., Best, N., Cowles, K., & Vines, K. (2006). CODA:
+Convergence diagnosis and output analysis for MCMC. R
+News, 6, 7-11.
+Pöyhönen, M., Vrolijk, H. C. J., & Hämäläinen, R. P. (2001).
+Behavioral and procedural consequences of structural varia-
+tion in value trees. European Journal of Operational Research,
+134, 218-227.
+Press, W. H., Teukolsky, S. A., Vetterling, W. T., & Flannery, B. P.
+(1992). Numerical Recipes in Fortran 77 (2nd ed.). New York,
+NY: Cambridge University: Press.
+R Development Core Team. (2008). R: A language and environment
+for statistical computing. Vienna, Austria: R Foundation for
+Statistical Computing. Available from http://www.R-project.org
+Rounsevell, M. D. A., Annetts, J. E., Audsley, E., Mayr, T., &
+Reginster, I. (2003). Modelling the spatial distribution of agri-
+cultural land use at the regional scale. Agriculture, Ecosystems
+and Environment, 95, 465-479.
+Seo, S. N., & Mendelsohn, R. (2008). An analysis of crop choice:
+Adapting to climate change in South American farms.
+Ecological Economics, 67, 109-116.
+Solano, C.,Léon,H., Pérez, E., & Herrero, M. (2001). Characterising
+objective profiles of Costa Rican dairy farmers. Agricultural
+Systems, 67, 153-179.
+Spiegelhalter, D. J., Best, N. G., Carlin, B. P., & van der Linde,
+A. (2002). Bayesian measures of model complexity and fit.
+Journal of the Royal Statistical Society: Series B, 64, 583-639.
+von Winterfeldt, D., & Edwards, W. (1986). Decision analysis and
+behavioral research. Cambridge: Cambridge University Press.
+Watkinson, A. R., Freckleton, R. P., Robinson, R. A., & Sutherland,
+W. J. (2000). Predictions of biodiversity response to genetically
+modified herbicide-tolerant crops. Science, 289, 1554-1557.
+Weber, M., & Borcherding, K. (1993). Behavioral influences on
+weight judgments in multi-attribute decision making. European
+Journal of Operational Research, 67, 1-12.
+Author Biographies
+Ira R. Cooke is currently a research scientist with the Life Sciences
+Computation Centre at La Trobe University, Australia. He has
+applied computational and statistical techniques to answering a
+broad range of life science questions ranging from landscape ecol-
+ogy to subcellular processes.
+Elizabeth H. A. Mattison is a postdoctoral research assistant
+whose work explores land managers' beliefs and intentions and
+their effects on associated biodiversity. She has worked in a variety
+of agricultural and wildlife management contexts developing pre-
+dictive models of biodiversity outcomes.
+Eric Audsley is a principal research fellow at Cranfield University.
+Before that, he worked for 34 years at Silsoe Research Institute,
+formerly the U.K. Agricultural Research Council's National
+Institute of Agricultural Engineering, until its closure in 2005. He
+has developed the application of mathematical and operational
+research techniques to the analysis of decisions concerning a very
+wide range of agricultural systems. Currently major areas are linear
+programming modeling of farms to predict future agricultural land
+use and model-based environmental Life Cycle Inventory Analysis
+(LCA) of agricultural production systems.
+Alison P. Bailey is a senior lecturer in agricultural business man-
+agement at the University of Reading. Her research focuses on the
+analysis of agricultural production systems and the relationship
+between agriculture, the environment, and socioeconomic criteria.
+This includes assessment of farmer decision-making processes and
+motivations associated with farming practice.
+Robert P. Freckleton is a professor of population biology at the
+University of Sheffield. He works on the application of ecological
+and evolutionary models to understand the effects of environmental
+change on ecological systems.
+Anil Graves is a Senior Research Fellow in Land Use Systems and
+applies his background in the natural and social sciences to investi-
+gating land use problems. Initially he spent several years in India
+researching the hydrological and social impacts of reforestation,
+coastal saline intrusion, and groundwater abstraction. Since return-
+ing to the UK, he has worked on a range of UK and EU projects,
+researching the biophysical, economic, and social aspects of arable,
+forestry, and agroforestry systems in Europe, and more recently, on
+the application of the ecosystem framework.
+Joe Morris is emeritus professor in resource economics and
+management in the School of Applied Sciences, Cranfield
+University, Bedford, England. His recent work has focused on
+the sustainable management of agriculture and natural resources
+with particular reference to the economics of land, water, and
+ecosystems.
+16 SAGE Open
+Simon A. Queenborough is currently a senior research associate
+at The Ohio State University, USA. He is interested in mecha-
+nisms of species coexistence, and the evolutionary and ecological
+effects of variation in breeding systems and patterns of resource
+allocation.
+Daniel L. Sandars is a research fellow in operational research in
+natural resource management at Cranfield University's School of
+Applied Sciences and formerly at the Silsoe Research Institute's
+Biomathematics, and Mathematics and Decisions Systems groups.
+Gavin M. Siriwardena is head of Land-Use Research at the
+British Trust for Ornithology. He works primarily on bird ecology
+in farmland and other terrestrial habitats, with a particular focus on
+population responses to management and habitat characteristics.
+Paul Trawick is the chair of the Department of Sociocultural
+Anthropology at Idaho State University. His research interests
+focus on the management of water for irrigation, viewing the prob-
+lem as a social rather than a technological one. By comparing suc-
+cessful irrigation systems in different parts of the world, he has
+identified the institutions and operating principles for sharing a
+scarce water resource.
+Andrew R. Watkinson is executive director of the Living With
+Environmental Change partnership and a professorial fellow at the
+University of East Anglia. He was formerly director of the Tyndall
+Centre for Climate Change Research. He is interested in the appli-
+cation of population biology in farming systems and the impacts of
+environmental change on the coastal zone.
+William J. Sutherland holds the Miriam Rothschild Chair in con-
+servation biology at the University of Cambridge. He is interested
+in predictive models of ecological systems, improving the effec-
+tiveness of the use of science in policy and in evidence-based
+conservation.
+

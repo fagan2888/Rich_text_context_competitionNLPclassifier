@@ -1,0 +1,504 @@
+Commentary
+Adapting computational text analysis
+to social science (and vice versa)
+Paul DiMaggio
+Abstract
+Social scientists and computer scientist are divided by small differences in perspective and not by any significant
+disciplinary divide. In the field of text analysis, several such differences are noted: social scientists often use unsupervised
+models to explore corpora, whereas many computer scientists employ supervised models to train data; social scientists
+hold to more conventional causal notions than do most computer scientists, and often favor intense exploitation of
+existing algorithms, whereas computer scientists focus more on developing new models; and computer scientists tend to
+trust human judgment more than social scientists do. These differences have implications that potentially can improve the
+practice of social science.
+Keywords
+Topic models, text analysis, unsupervised models, interpretation, sentiment analysis, supervised models
+Based on my admittedly fortunate experience collabor-
+ating with computer scientists on both research and
+teaching, I can report that the era of the ``two cultures''
+(Snow, 1959) is over.1 Instead of epistemological
+chasms, I have found modest differences in orientation,
+of which I shall mention three, reflecting computer
+scientists' and social scientists' respective intellectual
+traditions. These differences require social scientists to
+do some extra work to adapt the powerful tools that
+computer scientists provide to social-science problems,
+but offer in return insights that can improve the way
+we think about explanation more broadly. Because
+my own ``Big Data'' comprises texts, I shall limit
+my observations to computational text analysis
+(Blei et al., 2003).
+First difference: Supervised vs.
+unsupervised machine learning
+Topic modeling and many other text-analysis tools
+have their roots in machine learning. Typically, in
+machine learning problems, one has a class of cases
+of known type and a class for which the type is
+unknown (Almeydin, 2014). One divides the former
+into a ``training set'' and a ``testing set''; develops a
+model based on the former that is predictively effective
+for the latter; and applies that model to classify the
+cases for which the type is unknown. An excellent
+example of this approach is Jockers and Mimno
+(2013), who used supervised topic models (``supervised''
+refers to models based on cases of known type) to
+identify the gender of anonymous or pseudonymous
+authors of 19th-century novels. Supervised models
+have had a wide range of practical applications
+(think, e.g. the Netflix challenge, where contestants
+used supervised-learning models to improve Netflix's
+ability to recommend to users films that they would
+enjoy).
+Arguably, however, the major strides in computa-
+tional text analysis in recent years--and the ones of
+greatest use to social scientists--have entailed the devel-
+opment of unsupervised approaches to exploring the
+latent structure of textual corpora: Latent Dirichlet
+Department of Sociology, Princeton University, Princeton, NJ, USA
+Corresponding author:
+Paul DiMaggio, Department of Sociology, Princeton University, 130
+Mercer Street, Princeton, NJ 08540, USA.
+Email: dimaggio@princeton.edu
+Big Data & Society
+July­December 2015: 1­5
+! The Author(s) 2015
+Reprints and permissions:
+sagepub.co.uk/journalsPermissions.nav
+DOI: 10.1177/2053951715602908
+bds.sagepub.com
+Creative Commons NonCommercial-NoDerivs CC-BY-NC-ND: This article is distributed under the terms of the Creative Com-
+mons Attribution-NonCommercial-NoDerivs 3.0 License (http://www.creativecommons.org/licenses/by-nc-nd/3.0/) which permits
+non-commercial use, reproduction and distribution of the work as published without adaptation or alteration, without further permission provided the
+original work is attributed as specified on the SAGE and Open Access pages (https://us.sagepub.com/en-us/nam/open-access-at-sage).
+Allocation and related approaches like Correlated
+Topic Models and Dynamic Topic Models (Blei,
+2012). Social scientists have used such models product-
+ively, for example in identifying innovative patents
+(Kaplan and Vaikli, 2014), assessing the political lean-
+ings of economists (and correlating these with
+political behavior and research conclusions) (Jelveh
+et al., 2014), and discerning previously unrecognized
+continuities among historical waves of the US
+women's movement (Nelson, 2014). But unlike super-
+vised models, for which straightforward means of
+validation using held-out samples are available, assess-
+ing the quality of solutions from unsupervised models is
+more challenging, with criteria that are more varied and
+less definitive.
+In other words, the shift from supervised to unsuper-
+vised models, especially in some areas of greatest inter-
+est to social scientists, requires many of us to move
+outside our comfort zone in accepting interpretive
+uncertainty and to develop robust ways to interpret
+and validate the results of our models.2 There have
+been promising developments in this respect
+(e.g. Grimmer and Stewart, 2013) and room for more
+progress. The key may be starting with interpretive
+methods borrowed from the humanities, but then
+disciplining the results through statistical validation.
+For example, a model interpretation, combined with
+information external to the corpus, may lead one to
+hypothesize that the prevalence of some topics should
+be associated with particular classes of authors, or to
+anticipate temporal patterns in topic prevalence
+(DiMaggio et al., 2013).
+Second difference: Machine-learning vs.
+statistical explanation
+Whereas social scientists customarily obsess over caus-
+ality and rely on formal tests of statistical significance,
+computer scientists using supervised models focus on
+results. The first topic-model presentation I attended
+used the method to identify public records particularly
+likely to require redaction, out of a set of records too
+immense for humans to screen by hand. The only meas-
+ure that mattered was whether the models improved
+prediction (which they did).
+Even where held-out samples are not available,
+however, computer scientists seem to devote more
+attention to designing models and less on statistical
+validation (at least in the social-scientific sense) of
+model solutions. I suspect that this (admittedly sty-
+lized) difference is reinforced by variation in disciplin-
+ary skill sets: Computer scientists can write new
+algorithms faster than most social scientists can
+learn them. In the tradition of supervised machine
+learning, this makes sense because if you create a
+better model, you will be rewarded instantly with
+better results. This approach carried over (at least at
+first) into unsupervised models, as computer scien-
+tists wrote new algorithms at an alarming rate.
+From a computer-science standpoint, this made
+sense: algorithms tend to solve big problems, rather
+than nibble at the edges of small ones.
+Social scientists, by contrast, tend to learn a method
+and adapt it to their needs, in large part because their
+learning costs are much higher.3 Social scientists there-
+fore tend to be more interested in model-testing and
+curation than computer scientists (though there are
+exceptions on both sides (e.g. Boyd-Graber et al.,
+2014)), attempting to get the most out of the programs
+they have mastered. From this standpoint, social scien-
+tists have good reason to invest in corpus curation,
+because it may be their most efficient way to boost
+the quality of their results.
+There is another difference, which is likewise consist-
+ent with the supervised-learning roots of text modeling,
+but has more to do with underlying approaches to
+explanation. Many computer scientists (with notable
+exceptions (e.g. Pearl, 2009)) seem less concerned with
+causality and with model confirmation than are many
+social scientists. It is not that they care less about
+getting models right; rather they understand ``getting
+it right'' in a different (and I am beginning to suspect
+more useful) way than do most social scientists, focus-
+ing on model plausibility, utility, and descriptive, as
+opposed to causal, validation. Social scientists accus-
+tomed to obsessing over model specification and statis-
+tical significance may find this emphasis frustrating, at
+least at first. (As a novice topic-model user, I literally
+could not believe that there was no target function
+I could use as a simple goodness-of-fit criterion to
+choose among model solutions.) Ultimately, however,
+the computer-science perspective is liberating, as it
+forces us to recognize real interpretive uncertainty
+and seek out appropriate and substantively relevant
+forms of validation fitted to specific research goals.
+Third difference: Computer scientists
+trust humans more than social
+scientists do
+From Alan Turing (1950) onward, much work in com-
+puter science, especially in Artificial Intelligence, has
+sought to create algorithms that can replicate the
+results of human problem solving. The difficulty of
+this task has generated great respect among many com-
+puter scientists for the human brain (which, as com-
+puters go, is an impressive piece of hardware). This
+tradition has influenced Natural Language Processing
+and, especially, Sentiment Analysis, where human rea-
+soning is routinely described as a ``gold standard''
+2 Big Data & Society
+against which algorithmic output should be judged.
+Tasks like the Netflix Challenge induce computer sci-
+entists to write programs that try to simulate human
+evaluation processes; and much research on sentiment
+analysis employs as training sets human reviews from
+websites like Yelp or Rotten Tomatoes that combine
+text and summary evaluations (for a thoughtful review
+see Liu, 2010).
+By contrast, social scientists, at least those who have
+paid attention to work in cognitive psychology, are
+deeply suspicious of human judgment. I, for one,
+harbored the hope (of which my computer science
+colleagues have disabused me) that computational ana-
+lysis could free us from dependence on pesky humans,
+whose judgments are clouded by hard-wired errors of
+reasoning (Kahneman, 2003); schematic (Nisbett and
+Wilson, 1977) and ideological priors (Graham et al.,
+2009); and vulnerability to emotional environments
+(Shiller, 2015), priming (Gilbert, 1991), stress
+(Hammond, 2000), poverty (Mullainathan and Shafir,
+2013), pride (Tourangeau and Yan, 2007), and preju-
+dice (Hardin and Banaji, 2013).
+As anyone who has ever hand-coded text or super-
+vised others in doing so is aware, measures of
+inter-rater reliability are correlated directly with the
+insignificance of the information one wants to extract
+from the data. Give two coders of, say, a corpus of
+articles describing episodes of civil unrest, a factual
+question (e.g. where did the demonstration take
+place?) and they are very likely to agree. Ask them
+something more interesting (what grievances did par-
+ticipants express?) and convergence will be more diffi-
+cult to achieve. Likewise, human coders are good at
+straightforward linguistic tasks, such as distinguishing
+between homonyms with very different meanings. But
+they are less trustworthy when differences of perspec-
+tive shape the emotional context framing their judg-
+ments. For example, asked to code the affective tone
+of the sentence, ``the Isis fighters celebrated their rout
+of the Iraqi troops,'' an Isis supporter is more likely to
+discern positive sentiment than would a coder sitting
+in Washington or Erbil. Computer scientists who
+treat human judgments as a gold standard and social
+scientists who see in sentiment-analysis programs an
+antidote to human imperfection will often be disap-
+pointed, as algorithms and humans seem to be bad at
+pretty much the same types of tasks. For now at least,
+we can savor the irony that each group is most skeptical
+about the entities (algorithms or people) with which its
+expertise is most closely associated.
+What do social scientists need?
+Three priorities follow from these observations, two for
+topic models and one for sentiment analysis:
+1. We need better ways to choose among potential
+models of a textual corpus. Some outstanding work
+is already being done on model diagnostics by
+both computer scientists (Boyd-Graber et al., 2014;
+Lau et al., 2014; Mimno and Blei, 2011) and social
+scientists (Roberts et al., 2014). The challenge is that
+different criteria point in different directions: statis-
+tical goodness-of-fit measures tap conformity to
+model assumptions that are unrealistic descriptions
+of the world, but are useful as yardsticks for measur-
+ing variation in texts produced by different authors
+or at different times. Measures of model robustness
+can identify solutions at the center of a model space
+(e.g. by measuring distances between solutions and
+using multi-dimensional scaling to project them onto
+a space), but the relationship between centrality and
+model quality has yet to be established (Marshall,
+2013). Even solutions that successfully predict
+types in testing samples may not be the ``best'' by
+criteria of semantic interpretability (Chang et al.,
+2009). Approaches that focus on the fit or robustness
+of topics that are analytically important to the inves-
+tigator seem particularly promising for many pur-
+poses (Mimno et al., 2011).
+2. We need better guidelines for curating textual data
+pre-analysis. Why is it so important to have general-
+izable criteria for solution quality? Because such cri-
+teria could guide us in choices about curating
+corpora before modeling them. Most topic-modeling
+programs require lots of decisions that most social
+scientists are ill-equipped to make. To the extent that
+packages put the method within the grasp of the
+social scientific masses, the default will be king.
+But these choices matter: What is best for one
+corpus may not be best for all, and we need rules
+of thumb for helping analysts to base choices on
+features of their corpora and research questions.
+Moreover, social scientists' relative strength may lie
+in pre-processing data sets (as opposed to fine-tuning
+algorithms). One promising class of methods
+involves using natural language processing tools to
+separate terms that should be treated differently (e.g.
+distinguishing homonyms through part-of-speech
+identification) or uniting terms that should be trea-
+ted as the same (e.g. using named entity recognition
+to identify organizations or actors that may be
+referred to in slightly different ways). A second
+important class comprises strategies to transcend
+the bag-of-words assumption without sacrificing its
+computational advantages--for example, by iden-
+tifying information-rich N-grams, employing tuples
+(pairs of words co-present within sentences, a
+method developed by Nag, 2015), or building net-
+work-analytic approaches into modeling strategies
+(Inouye et al., 2014). What are the costs and benefits
+DiMaggio 3
+of such strategies? How do different curation tech-
+niques affect the quality of solutions, and how might
+that vary by type of text and analytic objective? To
+my knowledge, there has been little systematic
+research on this topic, in part due to the absence
+of agreed-upon criteria for judging quality. In
+other words, progress on this priority depends
+upon progress on the previous one.
+3. We need to figure out what humans are good for and
+when algorithmic solutions may be preferable to
+human judgment. This is particularly the case for
+automated text coding, where systematically flawed
+human judgment can deform the performance of
+learning algorithms, and, a fortiori, especially if algo-
+rithms incorporate, however inadvertently, judg-
+ments based on irrational prejudice (Barocas and
+Selbst, forthcoming; Sweeney, 2013). More gener-
+ally, complex judgments modeled from human
+input may fail whenever human raters are influenced
+by factors unrelated to the ostensible goal (e.g. iden-
+tifying the quality of a restaurant) or if principles by
+which humans generate ratings are heterogeneous
+across raters (or within raters over time)--for exam-
+ple if some people rate films based on their plots and
+others rate them based on a filmic aesthetic. Because
+sentiment analysis is such a powerful complement to
+topic models for the interpretation of texts, as well as
+for the algorithms that power on-line recommenda-
+tion systems, sentiment analysis may be the best
+place to begin to address this third priority. I suspect
+that human judgment is useful in rating sentiment,
+but only when criteria are clearly articulated, specific
+to a single domain, and applied by domain experts in
+labor-intensive ways.4 But I know of no research
+that either supports or disconfirms this intuition.
+Engagement with computational text analysis
+entails more than adapting new methods to social-
+science research questions. It also requires social sci-
+entists to relax some of our own disciplinary biases,
+such as our preoccupation with causality, our assump-
+tion that there is always a best-fitting solution, and our
+tendency to bring habits of thought based on causal
+modeling of population samples to interpretive mod-
+eling of complete populations. If we do, the encounter
+with machine learning may pay off not just by provid-
+ing tools for text analysis, but also by improving the
+way we use more conventional methods. To be sure,
+there are risks in going against the grain. But this is a
+great time for social scientists to get involved in com-
+putational text analysis, because the field is relatively
+young, the challenges are intellectually captivating,
+and there is still time to influence the shape that
+these methods will take as they enter the social
+sciences.
+Declaration of conflicting interest
+The author(s) declared no potential conflicts of interest with
+respect to the research, authorship, and/or publication of this
+article.
+Funding
+The author(s) received no financial support for the research,
+authorship, and/or publication of this article.
+Notes
+1. In some ways, computer scientists who contribute to text
+analysis are as similar to humanists (e.g. in their emphasis
+on interpretation rather than hypothesis testing and their
+understanding of contextual validity) as they are to most
+social scientists. Were it not for the generosity of compu-
+ter-science colleagues in educating me about computa-
+tional text analysis, sharing their insights, correcting
+initial (and sometimes persistent) misperceptions, and put-
+ting up with endless questions, I would never have been
+able to work in this area or write this essay. I am especially
+grateful to three patient and wise tutors, David Blei,
+Christiane Fellbaum, and David Mimno, none of whom
+should be presumed to agree with opinion expressed
+herein.
+2. In thinking about interpretive uncertainty, I would suggest
+an analogy to internal and external validity and distinguish
+between what we might call ``internal uncertainty'' (how
+can we be sure that our interpretation of the meaning of a
+topic is better than an alternative interpretation?) and
+``external uncertainty'' (recognizing that the same text
+will speak in different ways and be interpreted differently
+by different audiences).
+3. Sociology and political science graduate programs are
+beginning to produce a trickle of scholars with the statis-
+tics and programming skills to participate fully in cutting-
+edge methodological work, a development that is all to the
+good. Based on observation of previous methods, how-
+ever, I would predict that the rate at which our graduate
+programs produce such scholars will be exceeded by the
+rate at which new methods are codified in statistical pack-
+ages that will be used (and abused) by social scientists with
+fewer technical skills, making research on such issues as
+pre-processing and model choice even more important.
+4. In comments on an earlier draft, my colleague Christiane
+Fellbaum pointed out that humans who might find it very
+difficult to agree on the meaning or affective tone of a
+particular sentence, have no trouble understanding one
+another in practice. Rather than give up on human
+coding of complex texts, she suggests, we should try to
+understand and model the interpretive variation.
+References
+Almeydin E (2014) Introduction to Machine Learning, 3rd ed.
+Cambridge, MA: MIT Press.
+Barocas S and Selbst A (2016) Big data's disparate impact.
+California Law Review 104. Available at http://ssrn.com/
+abstract=2477899.
+4 Big Data & Society
+Blei DM (2012) Probabilistic topic models. Communications
+of the ACM 55: 77­84.
+Blei DM, Ng AY and Jordan MI (2003) Latent Dirichlet
+allocation. Journal of Machine Learning Research 3:
+993­1022.
+Boyd-Graber J, Mimno D and Newman D (2014) Care and
+feeding of topic models: Problems, diagnostics and
+improvements. In: Airoldi E, Blei D, Erosheva E, et al.
+(eds) Handbook of Mixed Membership Models and their
+Applications. Boca Raton, FL: CRC Press, pp. 3­41.
+Chang J, Boyd-Graber J, Gerrish S, et al. (2009) Reading tea
+leaves: How humans interpret topic models. In: Advances
+in Neural Information Processing Systems 1 (NIPS-09).
+Vancouver, Canada: NIPS, pp. 288­296.
+DiMaggio P, Nag M and Blei DM (2013) Exploiting affinities
+between topic models and the sociological perspective
+on culture: Applications to newspaper coverage of U.S.
+government arts funding. Poetics 41: 570­606.
+Gilbert DT (1991) How mental systems believe. American
+Psychologist 46: 107­119.
+Graham J, Haidt J and Nosek BA (2009) Liberals and con-
+servatives rely on different sets of moral foundations.
+Journal of Personality and Social Psychology 96:
+1029­1046.
+Grimmer J and Stewart B (2013) Text as data: The promise
+and pitfalls of automatic content analysis methods for pol-
+itical texts. Political Analysis 23: 1­31.
+Hammond KR (2000) Judgments Under Stress. New York,
+NY: Oxford University Press.
+Hardin C and Banaji MR (2013) The nature of implicit preju-
+dice. In: Shafir E (ed.) The Behavioral Foundations of
+Public Policy. Princeton, CA: Princeton University Press,
+pp. 13­31.
+Inouye DI, Ravikumar P and Dhillion IS (2014) Admixture
+of Poisson MRFs: A topic model with word dependencies.
+Proceedings of the 31st International Conference on
+Machine Learning, Beijing, China. JMLR: W&CP 32:
+683­691.
+Jelveh Z, Kogut B and Naidu S (2014) Political language in
+economics. Columbia Business School Research Paper
+No. 14-57. Available at: http://papers.ssrn.com/sol3/
+Papers.cfm?abstract_id=2535453 (accessed 18 August
+2015).
+Jockers ML and Mimno D (2013) Significant themes in 19th-
+century literature. Poetics 41: 750­769.
+Kahneman D (2003) A perspective on judgment and choice:
+Mapping bounded rationality. American Psychologist 58:
+697­720.
+Kaplan S and Vaili K (2014) The double-edged sword of
+recombination in breakthrough innovation. Strategic
+Management Journal Epub ahead of print 2 July 2014.
+DOI: 10.1002/smj.2294.
+Lau JH, Newman D and Baldwin T (2014) Machine reading
+tea leaves: Automatically evaluating topic coherence and
+topic model quality. In: Proceedings of the 14th conference
+of the European chapter of the association for computational
+linguistics. Gothenburg, Sweden: Association for
+Computational Linguistics, pp. 530­539.
+Liu B (2010) Sentiment analysis and subjectivity.
+In: Indurkhya N and Damerau FJ (eds) Handbook of
+Natural Language Processing, 2nd ed. Boca Raton, FL:
+Taylor and Francis Group.
+Marshall E (2013) Defining population problems: Using topic
+models for cross-national comparison of disciplinary
+development. Poetics 41: 701­724.
+Mimno D and Blei D (2011) Bayesian checking fo topic
+models. Proceedings of the 2011 Conference on Empirical
+Methods in Natural Language Processing, Association for
+Computational Linguistics.
+Mimno D, Wallach HM, Talley E, et al. (2011) Optimizing
+semantic coherence in topic models. In: Proceedings of the
+conference on empirical methods in natural language pro-
+cessing, Edinburgh, Scotland. Association for
+Computational Linguistics, 27­31 July 2011, pp. 262­272.
+Mullainathan S and Shafir E (2013) Scarcity: Why Having
+Too Little Means So Much. New York, NY: Henry Holt
+and Company.
+Nag M (2015) Meaning is relational: The changing contexts
+of the keyword risk' in the New York Times using a bag-
+of-tuples topic model. Paper presented at Texts II
+Conference, Princeton University, June.
+Nisbett RE and Wilson TE (1977) Telling more han we can
+know: Verbal reports on mental processes. Psychological
+Review 84: 231­259.
+Nelson LK (2014) The Power of Place: Structure, Culture
+and Continuities in U.S. Women's Movements. PhD
+Dissertation, University of California, Berkeley. Proquest
+dissertation number 3685970.
+Pearl J (2009) Causality, 2nd ed. New York, NY: Cambridge
+University Press.
+Roberts M, Stewart BM and Tingley D (2014) Navigating the
+local modes of Big Data: The case of topic models.
+Available at: http://scholar.harvard.edu/files/dtingley/
+files/multimod.pdf (accessed 2 November 2014).
+Shiller RJ (2015) Irrational Exuberance, 2nd ed. Princeton,
+CA: Princeton University Press.
+Snow CP (1959) The Two Cultures. Cambridge, UK:
+Cambridge University Press.
+Sweeney L (2013) Discrimination in online ad delivery.
+ACMQUEUE 11: 3.
+Tourangeau R and Yan T (2007) Sensitive questions in sur-
+veys. Psychological Bulletin 133: 859­883.
+Turing AM (1950) Computing machinery and intelligence.
+Mind 59: 433­460.
+This article is part of a special theme on Colloquium: Assumptions of Sociality. To see a full list of all articles
+in this special theme, please click here: http://bds.sagepub.com/content/colloquium-assumptions-sociality.
+DiMaggio 5
+

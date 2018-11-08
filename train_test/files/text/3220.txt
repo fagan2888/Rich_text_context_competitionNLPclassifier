@@ -1,0 +1,4052 @@
+Panel estimation of state dependent
+adjustment when the target is unobserved
+Ulf von Kalckreuth
+Discussion Paper
+Series 1: Economic Studies
+No 09/2008
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­420­5 (Printversion)
+ISBN 978-3­86558­421­2 (Internetversion)
+Abstract:
+Understanding adjustment processes has become central in economics. Empirical analy-
+sis is fraught with the problem that the target is usually unobserved. This paper devel-
+ops, simulates and applies GMM methods for estimating dynamic adjustment models in
+a panel data context with partially unobserved targets and endogenous, time-varying
+persistence. In this setup, the standard first difference GMM procedure fails. I propose
+three estimation strategies. One is based on quasi-differencing, and it leads to two dif-
+ferent, but related sets of moment conditions. The second is characterised by a state-
+dependent filter, while the third is an adaptation of the GMM level estimator.
+Keywords: Dynamic panel data models, economic adjustment
+JEL-Classification: C23, C15, D21
+Non technical summary
+Estimating economic adjustment on the micro level is inherently difficult, as usually the
+target of adjustment is observed only imperfectly. This paper investigates economic
+adjustment dynamics that are state dependent, as they may arise if adjustment is subject
+to time varying constraints, such as financing conditions. The problem of unobserved
+targets is dealt with using panel information and an error component approach.
+The standard dynamic panel estimators as devised by Anderson and Hsiao (1982),
+Arellano and Bond (1991), Arellano and Bover (1995) and Blundell and Bond (1998)
+cannot be used directly, as in this class of estimators the dynamics are assumed to be
+linear and constant over time. This paper shows how GMM methodology can be
+adapted for the analysis of economic adjustment if the target is (partially) unobserved
+and the non-linearity takes the form of discrete regimes. This is not straightforward, as
+the unknown and time varying adjustment coefficient interacts with the equally un-
+known individual specific measurement error. But the reward is substantial: a well-
+known array of procedures and tests can be brought to bear on the investigation of eco-
+nomic adjustment. The estimation methods described here may help to analyse a large
+variety of economic problems more adequately. Examples are the dynamics of capital
+and labour demand, the price setting of firms, and the financial adjustment of firms and
+banks.
+Section 2 of this paper characterises the stochastic process to be estimated. A continu-
+ous scalar and a discrete regime vector are evolving jointly, and the adjustment of the
+continuous-type variable depends on the regime. It is shown that the standard procedure
+for estimating linear dynamic panel models is not applicable. Section 3 proposes two
+estimators on the basis of quasi-differencing, one of them with the virtue of great sim-
+plicity, the other being more efficient. Both of them are non-linear, which may lead to a
+small sample bias if in one of the regimes the adjustment speed is almost zero. Section 4
+works out two linear GMM estimators that are immune to this problem. One of them
+uses state dependent filtering, the other is a level estimator applied to a modified model
+equation. The latter can also cope with contemporaneously correlated regimes. Section
+5 tests and compares the proposed routines in a Monte Carlo study.
+Nicht-technische Zusammenfassung
+Ökonomische Anpassungsvorgänge auf der Mikroebene sind inhärent schwierig zu
+schätzen, da typischerweise das Ziel der Anpassung nur unvollkommen beobachtet
+werden kann. Das vorliegende Papier untersucht zustandsabhängige ökonomische An-
+passungsprozesse, wie sie sich bei zeitlich variablen Beschränkungen ergeben, wie etwa
+unter finanziellen Restriktionen. Das Problem latenter Zielniveaus wird hier mit Hilfe
+von Panelinformationen und einem Fehlerkomponentenansatz angegangen.
+Die Standardmethoden dynamische Panelmodelle, wie sie von Anderson and Hsiao
+(1982), Arellano and Bond (1991), Arellano and Bover (1995) and Blundell and Bond
+(1998) entwickelt wurden, sind auf diesen Fall nicht anwendbar, da sie eine zeitlich in-
+variante lineare Dynamik voraussetzen. Das Papier zeigt, wie die GMM-Methodik auf
+den Fall ökonomischer Anpassungsvorgänge verallgemeinert werden können, bei denen
+das Ziel teilweise unbeobachtet ist und die Nichtlinearität die Form diskreter Regime
+annimmt. Dies ist nicht trivial, weil der unbekannte und zeitlich variable Anpassungs-
+koeffizient mit dem ebenso unbekannten individuellen Störterm interagiert. Aber der
+Ertrag ist reichhaltig, weil eine Reihe wohlbekannter Prozeduren und Standardtests für
+das Problem der ökonomischen Anpassung nutzbar gemacht werden kann. Die hier be-
+schriebenen Schätzverfahren können dazu beitragen, eine große Zahl ökonomischer
+Fragestellungen adäquater zu behandeln als dies bislang möglich war. Beispiele sind die
+Dynamik der Nachfrage nach Arbeit und Kapital, bei der Preissetzung und bei der An-
+passung der finanziellen Struktur in Firmen und Banken.
+Abschnitt 2 des Papiers beschreibt den zu schätzenden stochastischen Prozess. Ein ste-
+tiger Skalar und eine diskrete Regimevariable sind gemeinsam verteilt, und die Anpas-
+sungsdynamik der stetigen Variable hängt von der Regimevariablen ab. Es wird zu-
+nächst gezeigt, dass die Standardverfahren nicht anwendbar sind. Abschnitt 3 schlägt
+zwei Quasidifferenzen-Schätzer vor, von denen einer den Vorteil großer Einfachheit
+hat, der andere hingegen effizienter ist. Beide Schätzer sind nichtlinear, was zu einer
+Verzerrung in kleinen Stichproben führen kann, wenn in einem der Regimes die Anpas-
+sungsgeschwindigkeit nahe Null ist. Abschnitt 4 arbeitet zwei lineare Schätzer aus, die
+diesen Nachteil nicht aufweisen. Der eine ist durch einen zustandsabhängigen Filter
+gekennzeichnet, der andere ist ein Niveauschätzer für eine modifizierte Modellglei-
+chung. Der letztgenannte Schätzer kann auch dann eingesetzt werden, wenn Regimeva-
+riable und die Störgröße der Anpassung kontemporär korreliert sind. Abschnitt 5 testet
+und vergleicht die vorgeschlagenen Verfahren in einer Monte-Carlo-Studie.
+Contents
+1 Introduction 1
+2 A regime-specific adjustment process 3
+3 Two non-linear moment conditions based on quasi-differencing 7
+4 Two moment conditions based on linear transformations 13
+4.1 Forward differences and generalised differences 13
+4.2 Testing the validity of the length of memory 17
+4.3 Moment restrictions for the equation in levels 18
+5 Implementing and simulating the estimators 22
+5.1 Setting up the simulation 22
+5.2 Simulation results 26
+5.3 Comparing the estimators 33
+References 39
+Appendix A: A state dependent error correction model 41
+Appendix B: Nonlinear GMM estimation using the Gauss-Newton
+Method
+43
+Lists of Tables and Figures
+Table 1 Quasi-differences, QD1 transformation, 1000 runs 35
+Table 2 Quasi-differences, QD2 transformation, 1000 runs 36
+Table 3 Generalised Differences Estimation with true values
+( ) ( )
+1 2
+, 0.3,0.8
+  = 1,000 runs
+37
+Table 4 Level Estimation 1000 runs 38
+Figure 1 Mean bias for estimates on the basis of QD1, with
+1
+0.3
+ = and
+2
+ varying
+27
+Figure 2 Mean bias for estimates on the basis of QD2, with
+1
+0.3
+ = and
+2
+ varying
+28
+Figure 3 Mean bias for estimates on the basis of QD1, with
+1
+0.8
+ = and
+2
+ varying
+28
+Figure 4 Mean bias for estimates on the basis of QD2, with
+1
+0.8
+ = and
+2
+ varying
+28
+Figure 5 Mean bias for Generalised Differences estimates, with
+1
+0.8
+ = and
+2
+ varying. Here: regime process uncorre-
+lated over time, correct lead of 2
+31
+Figure 6 Mean bias for Generalised Differences estimates, with
+1
+0.8
+ = and
+2
+ varying. Here: regime process unlimited
+memory AR(1), lead of 2
+31
+Figure 7 Level estimation with predetermined regimes. Mean bias
+for estimates on the basis of moment condition 4, with
+1
+0.3
+ = and
+2
+ varying
+32
+Figure 8 Level estimation with contemporaneous regimes. Mean
+bias for estimates on the basis of moment condition 4,
+with
+1
+0.3
+ = and
+2
+ varying
+32
+1
+Panel estimation of state dependent adjustment
+when the target is unobserved *
+1 Introduction
+New Keynesian economics, with its emphasis on real and financial frictions, has intro-
+duced a focus on microeconomic adjustment dynamics into the empirical literature.
+Adjustment dynamics are essential for understanding aggregate behaviour and its sensi-
+tivity towards shocks. Important examples range from price adjustment and its signifi-
+cance for the New Keynesian Phillips curve (Woodford 2004), over plant level adjust-
+ment and aggregate investment dynamics (Caballero, Engel and Haltiwanger, 1995,
+Caballero and Engel 1999, Bayer 2006), to aggregate employment dynamics, building
+from microeconomic evidence (Caballero, Engel and Haltiwanger 1997). In these stud-
+ies, as in von Kalckreuth (2006), the adjustment dynamics itself becomes the principal
+object of analysis, instead of being treated as an important, but burdensome obstacle to
+understanding equilibrium phenomena.
+In a rather general form, economic adjustment can be framed by a "gap equation", as
+formalised by Caballero, Engel and Haltiwanger (1995):
+( )
+, , , ,
+,
+i t i t i t i t
+y g g
+ =  
+x , where *
+, , 1 ,
+i t i t i t
+g y y
+-
+= - .
+Here, subscripts refer to individual i at time t, and
+,
+i t
+g is the gap between the state
+, 1
+i t
+y -
+inherited from the last period and the target *
+,
+i t
+y that would be realised if adjustment
+costs were zero for one period of time. The speed of adjustment, written as a function 
+of the gap itself and additional state variables
+,
+i t
+x , determines the fraction of the gap
+that is removed within one period of time. The adjustment function will reflect convex
+* Correspondence: Ulf von Kalckreuth, Deutsche Bundesbank, Research Centre, Wilhelm Epstein-Str.
+14, 60431 Frankfurt, Germany. E-mail: ulf.von-kalckreuth@bundesbank.de, Website: http://www.von-
+kalckreuth.de
+Disclaimer: The views expressed in this paper do not necessarily reflect those of the Deutsche
+Bundesbank. All errors, omissions and conclusions remain the sole responsibility of the author.
+Acknowledgements: I thank Jörg Breitung for many important discussions, encouragement and
+patience. Olympia Bover made a vital comment, reminding me of the quasi-differencing strategy. In a
+conference discussion, John van Reenen set me on a track that ultimately led to this paper. Vassilis
+Hajivassiliou and Greg Udell discussed earlier versions. Along the way, I had helpful discussions with
+George von Fürstenberg and Ben Craig.
+2
+or non-convex adjustment costs, irreversibility and indivisibilities, financing constraints
+or other restrictions, and the uncertainty of expectation formation. With quadratic ad-
+justment costs or Calvo-type probabilistic adjustment,  will be a constant.
+Estimating the function  is inherently difficult. In general, both *
+,
+i t
+y and
+,
+i t
+g will be
+not observable. But some measure of the gap is needed for any estimation, and if 
+explicitly depends on
+,
+i t
+g , this measure will move to the centre stage. In order to ad-
+dress this issue, one may first try to do the utmost to observe the target as exactly as
+possible. The meticulous measurement work of Bayer (2004) and the controversy be-
+tween Caballero and Engel (2004) and Cooper and Willis (2004) on interpreting the
+results of gap equation estimates bear testimony to the problems that may result from
+imperfect measures of the gap.
+There is a second route. In linear dynamic panel estimation, the problem can success-
+fully been addressed by positing an error component structure for the measurement error
+and eliminating the individual fixed effect by a suitable transformation, such as first
+differencing. See Bond et al. (2003) and Bond and Lombardi (2007) for an error correc-
+tion model of capital stock adjustment. The GMM estimator developed by Arellano and
+Bond (1991) accounts for the presence of lagged endogenous variables, the endogeneity
+of other explanatory variables, and unobserved individual specific effects. Individual
+effects (including a possible measurement error in the target) are differenced out. En-
+dogenous explanatory variables can be instrumented using lagged dependent variables if
+the memory of the error process is limited. Time fixed effects can also be accommo-
+dated; the remaining idiosyncratic component of the measurement error needs to be un-
+correlated with the instruments.
+In the unrestricted, non-linear case, this approach is not feasible, as a host of incidental
+parameters will preclude identification. But there may be direct qualitative information
+on the level of ( )
+ , e.g. from survey data, ratings or market information services. If
+one is willing to treat the adjustment process as piecewise linear, distinguishing regimes
+of adjustment, then, as will be shown, this information can be harnessed to eliminate the
+incidental parameters from the problem completely.
+3
+Linear dynamic panel estimation was pioneered by Anderson and Hsiao (1982) and it
+was developed and perfected by Holtz-Eakin, Newey and Rosen (1988), Arellano and
+Bond (1991), Arellano and Bover (1995) and Blundell and Bond (1998). This paper
+shows how these methods can be adapted for the analysis of economic adjustment if the
+target is (partially) unobserved and the non-linearity takes the form of discrete regimes.
+This is not straightforward, as the unknown and time varying adjustment coefficient
+interacts with the equally unknown individual specific measurement error. But the re-
+ward is substantial: the well-known array of procedures and tests can be brought to bear
+on the investigation of economic adjustment.
+Section 2 of this paper characterises the stochastic process to be estimated. A continu-
+ous scalar and a discrete regime vector are evolving jointly, and the adjustment of the
+continuous-type variable depends on the regime. It is shown that the standard procedure
+for estimating linear dynamic panel models is not applicable. Section 3 proposes two
+estimators on the basis of quasi-differencing, one of them with the virtue of great sim-
+plicity, the other being more efficient. Both of them are non-linear, which may lead to a
+small sample bias if in one of the regimes the adjustment speed is almost zero. Section 4
+works out two linear GMM estimators that are immune to this problem. One of them
+uses state dependent filtering, the other is a level estimator applied to a modified model
+equation. The latter can also cope with contemporaneously correlated regimes. Section
+5 tests and compares the proposed routines in a Monte Carlo study.
+2 A regime-specific adjustment process
+I examine a situation where a variable
+,
+i t
+y reverts to some target level *
+,
+i t
+y characteristic
+of individual i. The speed of adjustment depends on the value of
+,
+i t
+r . This is an L-
+dimensional column vector of regime indicator variables, with one element taking a
+value of 1, and all others being zero. The equation is
+( )( )
+*
+, , 1 , 1 , ,
+1
+i t i t i t i t i t
+y y y
+ 
+- -
+ = - - - + , (1)
+with
+, ,
+'
+i t i t
+ =  r .
+4
+The target level *
+,
+i t
+y is unobservable. It follows an equation that contains an individual-
+specific latent term:
+* '
+, ,
+i t i t i
+y 
+= +
+x  .
+The idiosyncratic component
+i
+ in the adjustment equation may reflect a measurement
+error or unobserved explanatory variables. The vector
+,
+i t
+x may encompass random
+explanatory variables, deterministic time trends and also time dummies. In its absence,
+the target level is entirely unobservable, but static. The vector  holds the state depend-
+ent adjustment coefficients. The adjustment coefficient
+,
+i t
+ varies over time and
+individuals, and ( )
+, 1
+1
+i t
+
+-
+- is the adjustment speed at date t. If the process is stable, it
+would eventually settle in the target in the absence of shocks. We will start by assuming
+the error term to be a martingale difference sequence:
+( )
+, , 1
+E 0
+i t i t
+
+-
+ = , with (2)
+{ }
+, 1 , 1 , 2 , 1 , 2 , 1 , 2, 0
+, , , , , , , , ,
+i t i t i t i t i t i t i t i i
+y
+  
+- - - - - - -
+ = r r x x
+K K K .
+Accommodation to the more general assumption ( )
+, ,
+E 0, 1
+i t i t k
+k
+
+-
+ =  , with
+{ }
+, , 1 , 2 , , 1 , , 1, 0
+, , , , , , , , ,
+i t k i t i t i t k i t k i t k i t k i i
+y
+  
+- - - - - - - - -
+ = r r x x
+K K K ,
+is straightforward in every case that will be discussed. Note, however, that this generali-
+sation maintains the assumption of predetermined regime indicators. The case of en-
+dogenous regime indicators will be treated separately in Subsection 4.3.
+The regime variable
+,
+i t
+r is generated by a threshold process:
+( )
+, 1 ,
+( ) Ind
+i t k i t k
+k c s c
+-
+=  
+r . (3)
+The unobserved state variable
+,
+i t
+s may, for example, be an autoregressive process or a
+moving average process of order q. Generally, there will be a non-zero covariance be-
+tween the error term and the regime indicators, ( )
+, ,
+cov , 0
+i t i t
+ 
+r . If, for example,
+,
+i t
+ is
+the error term in a capital accumulation equation and
+,
+i t
+r is the regime indicating the
+5
+degree of financing constraints, there should be a contemporaneous correlation between
+those two.
+As we do not observe the target, we have no direct information on the position of the
+individual relative to the target. But the panel dimension can help us to identify the ad-
+justment process nonetheless, as it allows us to use an error component approach for
+modelling the unobserved target. In the adjustment equation, both the individual effect
+and
+,
+i t
+x are interacted with a time varying and endogenous variable. Solving for
+,
+i t
+y
+yields:
+( ) ( )
+'
+, , 1 , 1 , 1 , , 1 ,
+latent
+1 1
+i t i t i t i t i t i t i i t
+y y
+    
+- - - -
+= + - + - +
+x 
+1442443
+. (4)
+For later purposes it is useful to work out the backward solution to this stochastic differ-
+ence equation. For 1
+t  and a given starting value
+,0
+i
+y it is:
+1
+'
+, ,0 ,1 , , ,
+0
+'
+t
+i t i i i i k i t i i t
+k
+y y A
+   
+-
+=
+ 
+= - - + + +
+ 
+x x  , (5)
+with
+( ) 1
+1
+'
+, , , 1 , ,
+1
+t
+t
+i t i l i l i k i t
+l k l
+A   
+-
+-
++
+= =
+= -  +
+ 
+x  . (6)
+The solution has three components. The first term captures the influence of the initial
+deviation. The second term is the target level at time t, '
+,
+i t i
+
++
+x  . The third term,
+,
+i t
+A ,
+represents the effect of shocks and target variations, past and present. In the long run,
+when the influence of the initial conditions has died out,
+,
+i t
+A is equal to the deviation
+from the target.
+Anderson and Hsiao (1982) have devised the classic strategy for estimating linear dy-
+namic panel equations with fixed effects. Consider a first-order autoregressive equation:
+. , 1 ,
+i t i t i i t
+y y
+  
+-
+= + + .
+Obviously, the latent fixed effect
+i
+ is correlated with the explanatory variable. Trans-
+forming the equation by taking first differences eliminates the fixed effect:
+6
+. , 1 ,
+i t i t i t
+y y
+ 
+-
+ =  +  .
+Now the transformed error term
+,
+i t
+
+ is correlated with the transformed regressor,
+, 1
+i t
+y -
+ . This can be accommodated using an instrument variable procedure. Anderson
+and Hsiao propose using either lagged first differences or lagged levels as instruments.
+Employing second and further lags of the level as instruments for the differenced equa-
+tion makes use of the following moment restrictions:
+( )
+, ,
+E 0, 2,3,
+i t s i t
+y s
+
+-
+ = = K
+If these moment restrictions hold, then the lagged levels will be valid instruments, be-
+cause they are correlated with the regressor variable. The suggestion of Anderson and
+Hsiao was refined by Holtz-Eakin, Newey and Rosen (1988) and Arellano and Bond
+(1991), who propose to use an efficient GMM estimator that uses all available moment
+restrictions optimally, instead of the IV or 2SLS method. Formally, the moment equa-
+tions are written as a system, in order to be able to use a varying number of instruments
+according to availability. The instruments are weighted optimally using the Hansen
+(1982) two-stage procedure.
+In order to investigate the feasibility of the standard approach in the context of the
+model with time-varying coefficients, we look at the first difference of equation (2),
+also focussing on the simple case of a static target:
+( ) ( ) ( )
+, , 1 , 1 , 1 ,
+latent process
+' '
+i t i t i t i t i i t
+y y  
+- - -
+ =  + -  + 
+ r 1  r
+1444
+4
+24444
+3
+. (7)
+Unlike the linear case, the expression containing the unobserved
+i
+ is not differenced
+out, and we have to deal with a time-varying error component that is correlated with the
+explanatory variables. Instruments that are uncorrelated with this latent process, but
+correlated with the explanatory variables in such a way that each of the coefficients is
+identified are hard to come by. The following sections are devoted to finding moment
+conditions that make estimation feasible in practice.
+7
+3 Two non-linear moment conditions based on quasi-differencing
+This section discusses two nonlinear transformations of the adjustment equation that
+eliminate the unobserved heterogeneity. Holtz-Eakin, Newey and Rosen (1988) pro-
+posed quasi-differencing as a strategy in a case where fixed effects are subject to time
+varying shocks that are common across individuals.1 We explore whether this method
+can be generalised to the more complicated case at hand, where coefficients are endoge-
+nous and vary over time and individuals.
+Literally, the quasi-differencing procedure as proposed by these authors involves lag-
+ging equation (1), multiplying both sides by , 1
+, 2
+1
+1
+i t
+i t
+
+
+-
+-
+-
+-
+and subtracting the result from
+equation (1). After reordering coefficients, this gives:
+( )
+, 1 , 1
+'
+, , 2 , 1 , 1 , , , 1
+, 2 , 2
+1 1
+1
+1 1
+i t i t
+i t i t i t i t i t i t i t
+i t i t
+y y
+ 
+   
+ 
+- -
+- - - -
+- -
+- -
+ -  - -  = -
+- -
+x  . (8)
+The unobserved heterogeneity has duly been eliminated, but this equation is difficult to
+deal with, because in general
+, 1
+i t
+
+-
+is correlated with
+, 1
+i t
+
+-
+and
+, 2
+i t
+
+-
+. The underlying
+idea nonetheless leads to useful moment conditions, actually in two different ways.
+First, dividing equation (8) by ( )
+, 1
+1
+i t
+
+-
+- gives
+, 2 '
+, , 1 , ,
+, 1 , 2
+1
+1 1
+i t
+i t i t i t i t
+i t i t
+y y
+
+
+ 
+-
+-
+- -
+ -  -  =
+- -
+x  , (9)
+with
+, , 1
+,
+, 1 , 2
+1 1
+i t i t
+i t
+i t i t
+ 
+
+ 
+-
+- -
+= -
+- -
+. (10)
+This transformation ­ which shall be referred to as "QD1" - corresponds to solving
+equation (1) for the expression '
+, 1 ,
+i t i t i
+y 
+-
+- -
+x  , then solving the lagged version of (1)
+for '
+, 2 , 1
+i t i t i
+y 
+- -
+- -
+x  and ultimately differencing
+i
+ out. Second, we may multiply
+equation (9) by
+, 2
+1
+i t
+
+-
+- , to obtain:
+8
+( )
+, 2 '
+, , 2 , 1 , 2 , ,
+, 1
+1
+1
+1
+i t
+i t i t i t i t i t i t
+i t
+y y
+
+  
+
+-
+- - -
+-
+-
+ -  - -  =
+-
+x  , (11)
+with
+, 2
+, , , 1
+, 1
+1
+1
+i t
+i t i t i t
+i t
+
+  
+
+-
+-
+-
+-
+= -
+-
+. (12)
+This transformation shall be labelled "QD2". It corresponds to multiplying equation (1)
+by ( ) ( )
+, 2 , 1
+1 1
+i t i t
+ 
+- -
+- - and subtracting the lag of the original adjustment equation.
+Proposition 1: Under assumption (2), the levels
+,
+i t p
+y -
+,
+,
+i t p
+-
+x and the regime indicators
+,
+i t p
+-
+r , 2
+p  , are instruments in equations (9) and (11), that is:
+( ) ( )
+, , , ,
+E E 0
+i t p i t i t p i t
+y y
+ 
+- -
+= = ,
+( ) ( )
+, , , ,
+E E 0
+i t p i t i t p i t
+ 
+- -
+= =
+x x ,
+( ) ( )
+, , , ,
+E E
+i t p i t i t p i t
+ 
+- -
+= =
+r r 0 .
+Proof: If ( )
+, , 1
+E 0
+i t i t
+
+-
+ = , with
+, 1
+i t-
+ some information set that varies over individuals
+and time, then any function ( )
+, 1
+i t
+f -
+ will be orthogonal to
+,
+i t
+ , because
+( ) ( ) ( ) ( )
+, 1 , , , , 1 , 1 , , 1
+E E E E 0
+i t i t i t i t i t i t i t i t
+f f f
+  
+- - - -
+ 
+ 
+ 
+ =   =   =
+      . (13)
+Consider first ( )
+, ,
+E
+i t p i t
+y 
+-
+, with 2
+p  . By iterating equation (1),
+,
+i t p
+y -
+is a function of
+( )
+, 1 , 2 , , 1 , , 1 ,0
+, , , , , , , , ,
+i t p i t p i t p i t p i t p i t p i i
+y
+  
+- - - - - - - - - -
+r r x x
+K K K . The expressions
+, 1
+1
+1
+i t
+
+-
+-
+and
+, 2
+1
+1
+i t
+
+-
+-
+are functions of
+, 1
+i t-
+r and
+, 2
+i t-
+r . Applying (13) to the products ,
+,
+, 1
+1
+i t p
+i t
+i t
+y
+
+
+-
+-
+-
+and
+,
+, 1
+, 2
+1
+i t p
+i t
+i t
+y
+
+
+-
+-
+-
+-
+yields ( )
+, ,
+E 0
+i t p i t
+y 
+-
+= . The other orthogonalities follow likewise. 
+1 See also Chamberlain (1983), p. 1263-64. I thank Olympia Bover for reminding me of this 'classical'
+strategy.
+9
+If assumption (2) is replaced by ( )
+, ,
+E 0
+i t i t k
+
+-
+ = , then the set of valid instruments is
+pushed backward in time accordingly.
+To discuss estimation on the basis of the two sets of moment conditions, it is useful to
+rewrite the transformations (9) and (11) somewhat. Equation (9) has the convenient
+feature that '
+,
+i t
+x  enters additively. Collecting terms, we can write:
+,
+i t
+ '
+, 1 , 1 ,
+, 1 , 2
+1 1
+1 1
+i t i t i t i t
+i t i t
+y y y
+ 
+- - -
+- -
+ 
+=  +  -  - 
+ 
+ 
+- -
+ 
+x 
+( ) '
+, 1 , 1 , ,
+'
+i t i t i t i t
+y y
+- -
+=  +   - 
+ r x 
+( ) '
+, 1 , 1 , ,
+'
+i t i t i t i t
+y y
+- -
+=  +   - 
+ r x , (14)
+with
+1
+1 1
+'
+1 1
+L
+ 
+ 
+=  
+- -
+ 
+ K . (15)
+Equation (14) is linear in the coefficient vectors  and  , and can be estimated by lin-
+ear GMM using the moment conditions of Proposition 1. It relates the structural coeffi-
+cients  to the elements of  by a nonlinear one-to-one transformation, see equation
+(15). Inverting this transformation therefore gives a nonlinear GMM estimator of  .
+Standard deviations and covariances can be assessed using the delta method.
+Putting QD2 to use for GMM estimation is trickier. Let ( )
+, 2 , 1
+,
+i t i t
+- -
+d r r be an 2 1
+L ×
+indicator vector, where each element is a dummy variable indicating one of the possible
+switches from
+, 2
+i t-
+r to
+, 1
+i t-
+r . Let  be the vector of coefficients ( ) ( )
+, 2 , 1
+1 1
+i t i t
+ 
+- -
+- -
+corresponding to the elements of ( )
+
+d :
+1 1
+2 3 2 1
+1 1 1 1
+' 1 1
+1 1 1 1
+L L
+L L
+   
+   
+- -
+ 
+- - - -
+=  
+- - - -
+ 
+ K K .
+Let furthermore  be a vector of products of the adjustment coefficients, ( )
+-
+1  and  :
+10
+( )
+( )
+( )
+( )
+1
+2
+1
+1
+1
+L
+
+
+
+-
+ 
+ 
+-
+ 
+= -  =
+ 
+ 
+ 
+-
+ 
+
+
+ 1  
+
+M
+.
+Finally, let
+( )
+,
+ 
+ 
+= - =
+ 
+ 
+-
+ 
+
+  h  
+
+(16)
+be an ( )
+1 1
+L L K
++ + × vector of reduced form coefficients, of which ( )
+L L K
++ are un-
+known. Then we can write:
+,
+i t
+ ( )
+, 2 , 1 , , 2 , 1 , 2 ,
+' , ' '
+i t i t i t i t i t i t i t
+y y
+- - - - -
+=  -  - 
+ d r r  r  r x
+( ) ' '
+, 2 , 1 , , 1 , 1 , 1 ,
+, '
+i t i t i t i t i t i t i t
+y y
+- - - - -
+ 
+=   
+ 
+d r r r r x  .
+As with QD1, this equation is non-linear in the structural parameters  and  , and lin-
+ear in a transformed coefficient vector. However, here there is no convenient one-to-one
+transformation from  to the structural parameter. The nonlinearity of the problem
+therefore has to be treated explicitly. Consider the simplest case, with two states and no
+explanatory variables
+,
+i t
+x . Then  and  have two elements each and we can write:
+( ) 1 2
+1 2
+2 1
+1 1
+' ' 1 1
+1 1
+ 
+ 
+ 
+ 
+- -
+= = - -
+ 
+- -
+ 
+ h  .
+In principle, there are two ways of estimating the structural parameters. First, we may
+estimate the coefficients  together with the covariance matrix, and then go to the
+structural parameters using (16). As the reduced form has more parameters than the
+structural equation, the structural parameters are over-determined. The information can
+be aggregated efficiently using the classical minimum distance (CMD) estimator. Sec-
+ond, we may treat the transformed equation directly as a nonlinear estimation problem
+in the structural parameters. These alternatives shall be discussed in turn.
+Let ( )
+0 0
+' '
+=
+   be the true vector of structural coefficients and ( )
+0 0
+=
+ h  be the
+true vector of reduced form coefficients. We assume that there is a consistent and as-
+11
+ymptotically normal estimator ^
+N
+ of
+0
+ , with ( )
+0 0
+^
+Avar
+N
+N - =
+   . The vector ^
+N
+
+could, for example, be a GMM estimate of the reduced form equation. Any hypothetical
+value  of the structural coefficients implies a vector of reduced form coefficients
+( )
+h  . The CMD estimator determines ^
+ in such a way that the weighted deviations of
+( )
+^
+h  from their counterparts ^
+ resulting from the unconstrained estimation is mini-
+mised. 2 That is, ^
+ is to solve:
+( )
+( ) ( )
+( )
+^
+^ ^
+^ ^
+min '
+- -
+
+ h    h  ,
+with  a possibly data dependent positive definite weighting matrix. Under these as-
+sumptions, the CMD estimator is consistent and asymptotically normal.
+A weighting matrix is efficient if it leads to a CMD estimator with a "smaller" variance
+than what could be obtained from any other weighting matrix, in the sense that the dif-
+ference between their asymptotic covariance matrices is positive semi-definite. It can be
+shown that an efficient weighting matrix is given by 1
+^ -
+=
+  , with ^
+ any matrix such
+that
+0
+^
+plim
+N
+=
+  , provided that
+0
+ has full rank. Therefore, the inverse of any consis-
+tent estimator of ( )
+^
+Avar
+N
+N -
+  is an efficient weighting matrix. Let ( )
+H  be the
+2
+L L
+× matrix of partial derivatives of ( )
+h  :
+( ) ( )
+( ) ( )
+1
+, ,
+L K
+ 
++
+ 
+ 
+=  =  
+ 
+ 
+
+h  h 
+H  h  K .
+The i'th column of ( )
+H  is the derivative of ( )
+h  with respect to
+i
+ . Using an efficient
+weighting matrix leads to:
+( ) ( ) ( )
+( )
+1
+1
+0 0 0 0
+^ N 0, '
+d
+N
+-
+-
+ 
+-  
+ 
+  H  H  .
+The appropriate estimator for the covariance matrix of ^
+ then is:
+( ) ( ) ( ) ( ) ( )
+( ) ( ) 1
+1 1
+1
+^ ^ ^ ^ ^
+^ ^
+Est var ' ' Est var
+N
+-
+- -
+-  
+ 
+=  =
+   
+ H  H  H   H  .
+2 See Wooldridge (2001) and Newey and McFadden (1994) for a discussion of CMD estimation.
+12
+Linear restrictions, such as the equality of coefficients, can be subjected to a standard
+Wald-test. Alternatively, a criterion function test statistic is available.3
+There is a drawback to the CMD procedure in the given context. For asymptotic effi-
+ciency we need the matrix
+0
+^
+plim
+N
+=
+  to be of full rank, such that the inverse matrix
+can be formed. If the reduced form is to be estimated by linear GMM, this requires that
+each of the reduced form parameters is separately identified by the moment conditions.
+This will not always be possible. As we have seen,  represents four reduced form pa-
+rameters in the case of two states and no explanatory variables. With three states, it is
+already nine parameters. Each explanatory variable adds L parameters to the reduced
+form coefficients vector. In practice, the information content of the available instru-
+ments may not be sufficient to identify all of the many reduced form parameters sepa-
+rately. And although CMD estimation can be performed on the basis of any positive
+definite matrix, the weighting matrix 1
+^ -
+=
+  for efficient CMD would then cease to
+exist in the limit.
+Therefore we may prefer to estimate directly in terms of the underlying structural pa-
+rameters:
+( ) ( )
+' '
+, , 2 , 1 , , 1 , 1 , 1 ,
+, '
+i t i t i t i t i t i t i t i t
+y y
+
+- - - - -
+ 
+=    
+ 
+d r r r r x h   . (17)
+Though nonlinear in the parameters, this equation is linear in the transformed variables.
+This makes it easy to use the Gauss-Newton method for solving the optimisation prob-
+lem inherent in GMM estimation, using routines for linear GMM in performing the it-
+eration steps. Appendix B elaborates on the Gauss-Newton method in the context of
+non-linear GMM problems. As initial values for iteration, we can either use CMD esti-
+mates or the results from nonlinear indirect estimation exposed earlier in this section.
+The transformations QD1 and QD2 are nonlinear, and the stochastic properties of the
+transformed residuals depend on the adjustment parameters. Consider the transformed
+residuals , , 1
+,
+, 1 , 2
+1 1
+i t i t
+i t
+i t i t
+ 
+
+ 
+-
+- -
+= -
+- -
+on the one hand and , 2
+, , , 1
+, 1
+1
+1
+i t
+i t i t i t
+i t
+
+  
+
+-
+-
+-
+-
+= -
+-
+on the
+other. The variance of
+,
+i t
+ will become large if one or both alpha-coefficients are in the
+3 For this test, and a criterion function specification test, see Wooldridge (2002).
+13
+neighbourhood of 1, creating problems in small samples. An adjustment coefficient ap-
+proaching 1 will affect
+,
+i t
+ to a lesser degree. First, only one of the two components of
+the difference is affected. Second, the effect is mitigated by the denominator,
+, 2
+1
+i t
+
+-
+- .
+The random factor ( ) ( )
+, 2 , 1
+1 1
+i t i t
+ 
+- -
+- - in
+,
+i t
+ can take three values, of which only one
+is larger than 1. Indeed, if the alpha coefficients are of similar size, the random factor
+will stay in the neighbourhood of 1. Therefore, when the alpha coefficients are high (i.e.
+adjustment speed is low), efficiency gains can be expected from using QD2. I will in-
+vestigate this in a simulation study below.
+4 Two moment conditions based on linear transformations
+4.1 Forward differences and generalised differences
+Being nonlinear, the transformation we just investigated may lead to poor results if in
+one or more of the regimes the adjustment speed is very low. They cannot be used at all
+if one of the regimes is characterised by an adjustment speed of exactly zero. This is a
+case of considerable theoretical interest, as the presence of fixed adjustment costs or
+irreversibility leads to bands around the target where no adjustment takes place ­ the
+solution to the stochastic control problem triggers adjustment when some threshold
+level is surpassed. In a literal sense, this sort of behaviour is to be expected only when
+decisions on single projects are considered, as opposed to entire firms or sectors. But it
+is certainly useful to explicitly consider regimes of no adjustment, as have done parts of
+the literature, eg. Caballero, Engel and Haltiwanger (1995)
+To this end, it may be worth asking whether there is a linear transformation that could
+be brought to bear on the problem at hand, in the spirit of the first differencing proce-
+dure. As we shall see, there is such a transformation if the regime indicator has limited
+memory with respect to
+,
+i t
+ . We start by looking again at the first difference of
+,
+i t
+y :
+( ) ( ) ( ) ( ) ( )
+'
+, , 1 , 1 , 1 , , 1 ,
+' ' '
+i t i t i t i t i t i t i i t
+y y  
+- - - -
+ =  + -  + -  + 
+ r 1  r x  1  r .
+For unchanging adjustment regimes,
+, 1 , 2
+i t i t
+- -
+=
+r r , this simplifies to
+( ) '
+, , 1 , 1 , 1 , ,
+' '
+i t i t i t i t i t i t
+y y 
+- - -
+ =  + -  + 
+ r 1  r x  .
+14
+This expression looks very much like the first difference in the linear case, although
+there is more than one adjustment coefficient to estimate. Taking first differences of
+observations that belong to different regimes leads to a latent term ( )
+, 1
+'
+i t i
+
+-
+- 
+1  r that
+will be correlated with the lagged dependent variable under a variety of circumstances.
+As it is this term that makes the use of the standard technique difficult, the following
+strategy comes to mind: Differences are only formed for observations with
+, 2 , 1
+i t i t
+- -
+=
+r r .
+On the basis of cases where two consecutive observations belong to the first regime, we
+could estimate
+1
+a , and using differences of observations that both belong to the second
+regime, we could infer on
+2
+a , etc. In this straight fashion, however, the idea will not
+work. The transformed residual
+,
+i t
+
+ has an expectation different from zero in the two
+groups of observations. This is because
+, 1
+i t-
+r and
+, 1
+i t
+
+-
+are correlated by assumption. The
+expectation ( )
+( )
+, 1 , 1
+E 1 1
+i t i t
+
+- -
+=
+r is not equal to zero, and neither is ( )
+( )
+, 1 , 1
+E 2 1
+i t i t
+
+- -
+=
+r .
+Selecting residuals according to regimes will lead to biased estimators.
+If
+,
+i t
+ is uncorrelated with past regime indicators,
+, 1 , 2
+, ,
+i t i t
+- -
+r r K, then we are able to use a
+modified differencing approach. Autocorrelation of
+,
+i t
+ is permitted if the usual require-
+ment of limited memory is satisfied. The following two principles will generate moment
+conditions involving the use of lagged endogenous variables as instruments:
+1. Let q be the maximum  for which there is a correlation between
+,
+i t
+r and
+,
+i t 
+
+-
+,
+eg. as a consequence of an MA structure of the state driving the regime indicator
+as exemplified in Assumption 2. Then the observation is to be transformed sub-
+tracting past observations of the same regime with a lag of at least 2
+s q
+= + .
+2. If an observation is not matched by a 2 q
++ -lag in the same regime, it may be
+transformed using any other lag 2
+s q
+> + .
+The second principle avoids the loss of many observations in cases where regimes in t
+and t+q do not match because of regime switches. What I propose here is a dynamic
+filter, which varies according to regimes.
+Similar to (7) we obtain for the s'th difference:
+15
+( ) ( ) ( )( ) ( )
+, , , 1 , 1 , 1 , 1 , 1 , 1 , ,
+' 1 '
+i t i t s i t i t i t s i t s i t i t s i i t i t s
+y y y y   
+- - - - - - - - - - -
+- = - + - - + -
+ r r  r r ,
+which simplifies to
+( ) ( ) ( )
+, , , 1 , 1 , 1 , ,
+'
+i t i t s i t i t i t s i t i t s
+y y y y  
+- - - - - -
+- = - + -
+ r ,
+if the two observations are characterised by the same regime, such that
+, 1 , 1
+i t i t s
+- - -
+=
+r r .
+When does the conditional expectation of the residual term, ( )
+, ,
+i t i t s
+ 
+-
+- , become zero?
+It is sufficient that
+,
+i t
+ and
+,
+i t s
+
+-
+are both uncorrelated with the conditioning variables,
+which are
+, 1
+i t-
+r and
+, 1
+i t s
+- -
+r . Now assume
+,
+i t
+ to be uncorrelated with
+, 1
+i t-
+r and
+, 1
+i t s
+- -
+r .
+Then the same is true with respect to
+,
+i t s
+
+-
+and
+, 1
+i t s
+- -
+r . Therefore, by choosing s, we
+have only to make sure that
+,
+i t s
+
+-
+and
+, 1
+i t-
+r are uncorrelated. This will never happen with
+1
+s = , as we have seen before. However, if
+,
+i t
+r is uncorrelated with all lags of
+,
+i t
+ , then
+2
+s = will ensure that
+( )
+, , , 1 , 1
+E 0
+i t i t s i t i t s
+ 
+- - - -
+- = =
+r r , (18)
+regardless of whatever value
+, 1
+i t-
+r and
+, 1
+i t s
+- -
+r take. More generally, if there is correlation
+between
+,
+i t
+r and
+,
+i t 
+
+-
+up to lag q
+ = , the difference that guarantees the above equation
+to hold will be at least of order 2
+s q
+= + . GMM estimation on the basis of this
+transformation may be called forward difference estimation. But we are not restricted to
+using only differences of the order that is "just right", i.e. 2 q
++ . Any other difference of
+order 2
+s q
+ + will fulfil eq. (18) just as well. Therefore I construct the difference using
+the most proximate observation of the same regime with lag 2
+s q
+ + . With respect to
+admissibility and validity of instruments, the rules of the classic approach apply: the
+instruments need to be uncorrelated with the earlier of the two observations that make
+up the difference. In the following, this procedure will be called the generalised differ-
+ence estimator.
+To state the moment condition, I have to strengthen assumption (2). In addition to the
+variables in the conditioning set
+, 1
+i t-
+ ,
+,
+i t
+ must also be uncorrelated to the future re-
+gimes
+, 1 , 2
+, ,
+i t q i t q
++ + + +
+r r K.
+16
+Proposition 2: Let the conditional expectation of
+,
+i t
+ satisfy
+( )
+, , 1 , 1 , 2,
+E , , 0
+i t i t i t q i t q
+
+- + + + +
+ =
+r r K , (19)
+with
+, 1
+i t-
+ defined as in (2). Then the levels
+,
+i t s p
+y - -
+, 1
+p  are valid instruments for the
+equations transformed by taking the s 'th difference, with 2
+s q
+ + :
+( )
+( )
+, , , , 1 , 1
+E 0
+i t i t s i t s p i t i t s
+y
+ 
+- - - - - -
+- = =
+r r . (20)
+Proof: The proposition follows from the law of iterated expectations:
+( )
+( )
+, , , , 1 , 1
+E ,
+i t s p i t i t s i t i t s
+y  
+- - - - - -
+- r r
+( )
+( )
+( )
+,
+, , , , 1 , 1 ,
+E E , ,
+i t s p
+y i t s p i t i t s i t i t s i t s p
+y y
+ 
+- -
+- - - - - - - -
+= - r r
+( )
+( )
+,
+, , , , 1 , 1 ,
+E E , ,
+i t s p
+y i t s p i t i t s i t i t s i t s p
+y y
+ 
+- -
+- - - - - - - -
+=  - r r 0
+= ,
+because the conditional expectation within the brackets is zero for 2
+s q
+ + . The back-
+ward solution (3) and (4) decomposes
+,
+i t
+y into
+,0
+i
+y ,
+i
+ , and the history of
+,
+i t
+ and
+,
+i t
+r .
+Condition (19) ensures that the expected values of
+,
+i t
+ and
+,
+i t s
+
+-
+do not depend on the
+components of
+,
+i t s p
+y - -
+. The additional conditioning on
+,
+i t s p
+y - -
+can have no influence on
+the expected value. 
+As in the case of the two nonlinear estimators,
+, 1
+i t-
+r must be uncorrelated with the cur-
+rent error term. The generalised difference approach cannot work if the regime indicator
+is contemporaneous with respect to the current error term. Furthermore, it is an identi-
+fying assumption for the process that drives the regime indicator to have finite memory
+with respect to innovations
+,
+i t
+ . This is a limitation of the approach. If
+,
+i t
+r were corre-
+lated with all past values of
+,
+i t
+ , the conditional expectation of the transformed error
+term resulting from a difference of two observations from the same regime would not
+disappear. The resulting bias can be expected to wane if the minimum lag length is cho-
+sen to be large. But doing so would result in losing many observations, exacerbating
+another weakness of the estimation strategy.
+17
+4.2. Testing the validity of the length of memory
+In order to use generalised differencing, we need to decide on the length of the memory
+of the process driving the regime with respect to
+,
+i t
+ . This is difficult to do on an a pri-
+ori basis. There are two simple solutions. The first is to use the Sargan-Hansen test to
+check the appropriateness of the transformation. This is straightforward, as the Sargan-
+Hansen test is a test of the validity of the moment conditions. The drawback is that the
+Sargan-Hansen test is generally used as an omnibus test of the specification, including
+the choice of the instruments. If we employ the Sargan-Hansen test as a means of find-
+ing the correct lag length, then estimation will be conditional on the test statistic being
+insignificant. For further purposes, the test is spent.
+Alternatively, we may base a test on the fact that the expected value of the residual will
+not disappear if the lag length chosen is too short. In that case, as we have seen, the
+choice of observations belonging to one regime or the other will select positive or nega-
+tive outcomes of
+,
+i t
+ , because of the correlation between the regime variable and the
+error component
+,
+i t
+ . If we enter regime dummies into our specification, they will be
+estimated as positive or negative quantities according to the direction of selectivity, al-
+though they should be zero according to the basic specification. Furthermore, we know
+how these estimates for regime constants are distributed under the null of a correct
+specification. Using a GMM estimator, they are asymptotically normal, with mean zero,
+and their standard deviation is given by the standard deviation of the coefficient. There-
+fore, the t-value on these coefficients is a valid test statistic.
+It may be argued that this test ignores the possibility that the regime-specific constants
+truly belong into the equation. Consider a trend in the term in the brackets of equation
+(1) that makes the target level of
+,
+i t
+y change over time:
+( )( )
+, , 1 , 1 ,
+1
+i t i t i t i i t
+y y t
+   
+- -
+ = - - - - + .
+Solving for
+,
+i t
+y , we get:
+( ) ( )
+, , 1 , 1 , 1 , 1 ,
+1 1
+i t i t i t i t i t i i t
+y y t
+     
+- - - -
+= + - + - + .
+After transforming the equation by subtracting an observation belonging into the same
+regime, lagged  periods, we have
+18
+( ) ( ) ( )
+, , , 1 , 1 , 1 , 1 , ,
+1
+i t i t i t i t i t i t i t i t
+y y y y
+  
+    
+- - - - - - -
+- = - + - + - .
+Regime-specific constants may thus be the result of a trending target variable. However,
+in this case they should be proportional to each other, with a factor of proportionality
+given by 1 minus the regime-specific coefficient on the lagged dependent variable. Us-
+ing the delta method to test this restriction is relatively straightforward. More generally,
+they should not be of different sign, as it will be the case if the coefficient on the regime
+dummy collects the residuals selected for their high or low value.
+4.3. Moment restrictions for the equation in levels
+Both estimation methods discussed above ­ the two moment conditions for quasi-differ-
+ences as well as the generalised differences approach ­ require the regime variable to be
+predetermined with respect to the current shock term. This may hold in many cases,
+specifically if there are long planning and gestation lags as in investment decisions. In
+other circumstances, the error term in the adjustment equation and the threshold variable
+governing the adjustment regime may be contemporaneously correlated. I will inves-
+tigate an approach that can be brought to bear in this case. For greater clarity, the ad-
+justment equation shall be rewritten as follows:
+( )( )
+'
+, , , 1 , ,
+1
+i t i t i t i t i i t
+y y
+  
+-
+ = - - - - +
+x  , (21)
+or ( )( )
+'
+, , , 1 , , ,
+1
+i t i t i t i t i t i i t
+y y
+   
+-
+= + - + +
+x  . (22)
+The dating of the adjustment coefficient has been changed, to highlight the possibility
+of a contemporaneous correlation between the speed of adjustment and
+,
+i t
+ .
+It turns out that this structure can be accessed by means of level estimation, relying on a
+type of moment condition that was introduced by Arellano and Bover (1995) and Blun-
+dell and Bond (1998) as a response to a specific problem arising in the standard autore-
+gressive model. If the coefficient of the lagged dependent variable is in the neighbour-
+hood of one, the level behaves like a random walk and will be a weak instrument in the
+differenced equation. Under certain conditions, the following moment equation can be
+used in the estimation of the standard autoregressive model, as stated in Section 2
+above:
+19
+( )
+, ,
+E 0
+i t s i i t
+y  
+-
+ 
+ + =
+  ,
+with 1
+s  . If
+,
+i t
+ is serially uncorrelated, it is sufficient that
+,
+i t
+y is mean stationary and
+displays a constant correlation with
+i
+ for the moment equation to hold. Blundell and
+Bond (1998) have shown that this implies a requirement on the initial conditions: the
+deviation of the starting value from the stationary level needs to be uncorrelated with
+the stationary level itself.
+The latent term of equation (22) is given by ( )
+, ,
+1
+i t i i t
+  
+- + . In the attempt to use first
+differences as instruments for levels, we first look at
+( )
+( )
+( )
+, , ,
+E 1
+i t s i t i i t
+y   
+-
+ - + .
+This expectation will be zero if, first,
+,
+E 0
+i t s
+y -
+ = , and second,
+,
+i t k
+y -
+ is uncorrelated
+with both ( )
+, 1
+1
+i t i
+ 
+-
+- and
+,
+i t
+ . The first condition requires the process to be mean
+stationary, as in the derivation of Blundell/Bond and Arellano/Bover. The second con-
+dition is hard to fulfil. To see why, we adjust the backward solution to the modified
+dating:
+' '
+, ,0 ,1 , , ,
+1
+t
+i t i i i i k i t i i t
+k
+y y A
+  
+=
+ 
+= - - + + +
+ 
+
+x  x  .
+Plugging this back into (21) we obtain:
+( ) 1
+' '
+, , ,0 ,1 , , 1 , ,
+0
+1
+t
+i t i t i i i i k i t i t i t
+k
+y y A
+   
+-
+-
+=
+ 
+ 
+ = - - - - + -  +
+ 
+ 
+ 
+
+x  x  . (23)
+The difference
+,
+i t s
+y -
+ is a function of all
+,
+i k
+ ,
+,
+i k
+x and
+,
+i k
+ and, k s
+ , as well as of
+the initial condition. One of the requirements for the covariance of
+,
+i t s
+y -
+ and
+( )
+,
+1
+i t i
+ 
+- to disappear is therefore a limited memory of
+, ,
+'
+i t i t
+ =  r with respect to its
+own past. This excludes all sorts of fixed effects in
+,
+i t
+r . For the estimation problem at
+hand, a direct adaptation of the Arellano/Bover and Blundell/Bond strategy therefore
+does not look very promising.
+20
+We can weaken the requirements considerably by decomposing the target level,
+i
+ , into
+its expectations over all individuals, e
+ , and the individual-specific deviation *
+i
+ . I de-
+fine:
+*
+e
+i i
+  
+= + , with E
+e
+i i
+ 
+= .
+The parameter e
+ is the expected value over all individuals i, and *
+i
+ is the individual
+deviation from this expectation. By definition, *
+E 0
+i
+ = . Rewriting the adjustment
+equation, we arrive at:
+( ) ( ) ( ) ( )
+' *
+, , , 1 , , , , ,
+latent term
+' - ' - ' - '
+e
+i t i t i t i t i t i t i i t i t
+y y   
+-
+= + + + +
+ r 1  r x  1  r 1  r
+144
+4
+2444
+3
+. (24)
+This equation contains a new, regime-specific shift term ( )
+,
+- '
+e
+i t
+ 1  r . In estimation,
+this term can be taken into account by introducing the regime vector
+, 1
+i t-
+r as a regressor
+into the equation. Investigating under what condition
+,
+i t s
+y -
+ is an instrument for the
+rewritten equation, we arrive at:
+Proposition 3: In order to estimate equation (24), we can make use of the moment re-
+striction
+( )
+( )
+( )
+*
+, , ,
+E 1
+i t s i t i i t
+y   
+-
+ - + , s k
+ , (25)
+under the following two sufficient conditions:
+a) ( )
+'
+, , , 1, , , 1 , , 1, ,0 ,1
+E , , , , , , , 0
+i t i t k i t k i t k i t k i t k i t k i i i
+y
+   
+- - - - - - - - -
+  - - =
+x x r r x 
+K K K ,
+b) { } { } { } ( )
+( )
+* '
+, , , ,0 ,1
+E , , , 0
+i i t i t i t i i i
+y
+  
+ - - =
+r x x  ,
+where a term in curly brackets, {}
+ , denotes an entire time series. In both parts of the
+condition, the invariance with respect to the initial value can be dispensed with if the
+process has been running "long enough" for ( )
+,
+E
+i t
+y to have converged.
+Proof: Moment condition (25) holds if, first,
+( )
+( )
+, , , , ,
+E E E 0
+i t k i t i t k i t i t k
+y y y
+ 
+- - -
+ =    = , (26)
+21
+and second,
+( )
+( )
+*
+, ,
+E 1 0
+i t k i t i
+y  
+-
+ - = . (27)
+Given the backward solution (23), condition a) is sufficient for the expectation in the
+bracket of (26) to be identically zero, as { }
+,
+i t k
+y -
+ is a coarser information set than
+{ }
+, , 1, , 1 , 2, ,0
+, , , ,
+i t k i t k i t k i t k i i
+y
+  
+- - - - - - -
+-
+r r
+K K . Similarly, we can write:
+( )
+( ) ( ) ( )
+( )
+( )
+* *
+, , , , , ,
+E 1 E 1 E 1
+i t k i t i i t k i t i i t k i t
+y y y
+    
+- - -
+ - =  -   - .
+Again, if, as in condition b), the expectation of *
+i
+ is zero conditional on all random
+variables that may enter
+,
+i t k
+y -
+ according to its reduced form, the expectation in (27) is
+zero, too. 
+It goes without saying that, if the conditions for its use are met, the moment condition
+can also be used in the case of a predetermined regime indicator. It is natural that we
+have to impose conditions on
+i
+ , now that we leave it in the equation instead of differ-
+encing it out. The invariance of expected
+i
+ with respect to the time path { }
+,
+i t
+ is quite
+unproblematic. It accords well with the basic structure of the error component model.
+The irrelevance of the regime process is less innocuous. It is well conceivable that a
+real-world data generating process for
+,
+i t
+r may contain a fixed effect that is correlated
+with
+i
+ . This would invalidate the moment equation (25). Similar reservations apply
+with respect to the required irrelevance of { }
+,
+i t
+x . Lastly, the necessity of having an
+expected value of
+i
+ that is independent of the initial deviation, ( )
+,0
+i i
+y 
+- was also
+found by Blundell and Bond (1998) when investigating the use of moment equations for
+levels in a linear context. The condition is not innocuous either: it excludes an initial
+condition such as
+,0
+0
+i
+y = . As already stated in the proposition, we can replace it by the
+requirement that the process has been running for a "very long" time, as the first term
+inside the bracket of equation (23) will disappear asymptotically.
+It is interesting to compare the conditions for Propositions 1, 2 and 3. All of them re-
+quire the expected value of
+,
+i t
+ to be invariant with respect to past values
+22
+, , 1
+, .
+i t s i t s
+ 
+- - -
+K, the levels or first differences of
+, , 1
+, ,
+i t s i t s
+- - -
+x x K as well as to '
+,1
+i i
+ + x 
+and
+,0
+i
+y . Propositions 1 and 2 also need
+,
+i t
+ to be uncorrelated with
+, 1
+i t-
+r , the regime
+indicator figuring in the current date adjustment equation, whereas for Proposition 3,
+invariance of
+,
+i t
+ with respect to lag s and earlier of the regime indicator is sufficient.
+As an additional identifying assumption for the generalised differencing approach, we
+need the memory of
+,
+i t
+r to be finite with respect to
+,
+i t
+ . This excludes, for example, an
+autoregressive equation for the threshold variable driving the regime indicator if the
+current shocks are correlated. The level estimator, for his part, needs the expected value
+of the individual effect
+i
+ to be unrelated to the rest of the process, including the initial
+deviation ( )
+,0
+i i
+y 
+- . Both of these restrictions can be burdensome. But the two linear
+estimators based on Propositions 2 and 3 are able to fulfil special tasks. The generalised
+difference estimator will be unbiased even if some of the alpha coefficients are large ­
+in fact it still works if one of them is exactly equal to 1. The level estimator, on the other
+hand, will discern differential adjustment speeds also if the regime indicator is contem-
+poraneous. In order to better understand the comparative advantages, the next section
+shows simulation results.
+5. Implementing and simulating the estimators
+5.1 Setting up the simulation
+In the simulation study, the three sets of moment conditions are used separately for es-
+timation. For the regime indicator, I specify a threshold process. The k'th element of
+,
+i t
+r
+is given by
+( )
+, 1 ,
+( ) Ind
+i t k i t k
+k c s c
+-
+=  
+r .
+The numbers
+0
+, ,
+L
+c c
+K are thresholds, with the first and the last element being equal to
+- and  , respectively. As an example for a threshold process with infinite memory
+with respect to the error term we use an AR(1):
+, 1 ,
+i t t i t
+s k s 
+-
+= + ,
+23
+where the current shock
+,
+i t
+ is contemporaneously correlated with the error term
+,
+i t
+ .
+Alternatively, as an example of a process with finite memory, it is assumed that the
+threshold process be driven by an MA(q):
+, ,
+0
+q
+i t j i t j
+j
+s a b 
+-
+=
+= +  , with
+0
+1
+b = .
+The elements of the moving average conform to:
+,
+E 0,
+i t
+ =
+, ,
+E 0 0,
+i t i t k
+k
+ 
+-
+=  >
+, ,
+E 0,
+i t i t
+  
+, ,
+E 0 0
+i t i t k
+k
+ 
+-
+=  > .
+Concretely, the two interrelated processes { }
+, ,
+,
+i t i t
+y
+r are simulated as follows:
+Regime-dependent error correction process:
+,
+i t
+ is standard normal,
+i
+ follows an
+( )
+1,1
+N process,
+,
+i t
+ and
+i
+ are independent. As a benchmark I use
+0
+0.3
+ = and
+1
+0.8
+ = . Note that the larger of these coefficients is not far from 1.
+Regime indicator process: If the threshold process is driven by an AR(1), I set
+2
+, , ,
+E 1, E 0.8
+i t i t i t
+  
+= = ,
+,
+i t
+ being calculated as a weighted sum of
+,
+i t
+ and an in-
+dependent Gaussian process. The AR-parameter k is 0.8. Likewise, for the MA(q), the
+stochastic structure is chosen as 2
+, , ,
+E 1, E 0.8
+i t i t i t
+  
+= = , with
+,
+i t
+ being calculated as a
+weighted sum of
+,
+i t
+ and an independent Gaussian process. The threshold level is set
+equal to zero, resulting in an equal number of observations in each regime on average. I
+experiment with a MA(0) (uncorrelated regimes states) and a MA(1) with
+1
+0.8
+b = .
+Note the high contemporaneous correlation between the shocks in the regime equation
+and the error term.
+Panel structure: The panel is unbalanced, with individuals carrying either 8, 9 or 10
+observations, 1,000 of each type, that is 3,000 in total. For each individual, the process
+is simulated for 50 periods, and only the last 8, 9 or 10 observations are used for esti-
+mation.
+All estimators are implemented by first calculating the transformed observations and the
+instruments and then adapting and using the routines supplied with the DPD module for
+24
+Ox written by Doornik, Arellano and Bond to perform GMM estimates and tests.4 De-
+tails on the estimation routines follow.
+a) Quasi-Difference estimations
+I assume an AR(1) as a process driving the threshold variable that constitutes the re-
+gime. The estimation equations are transformed in the way described above. The first
+version of the quasi-differencing approach, QD1, is implemented by estimating the
+transformed equation using a standard linear GMM estimator and then calculating the
+structural parameters by inverting equation (13). The more complicated QD2 estimation
+is performed by treating the moment as a non-linear function of the structural parame-
+ters, as in equation (25). Both CMD estimations on the basis of the linear reduced form
+and direct non-linear GMM estimation of the structural parameters were used. The latter
+was implemented using the iterative Gauss-Newton method. The results are rather
+similar. For the conceptual reasons mentioned in the text, the nonlinear GMM proce-
+dure is preferred, and only these results are shown. It has to be mentioned though that
+the CMD procedure is clearly faster than the iterative nonlinear GMM estimation pro-
+cedure, without being less efficient.
+The procedure used for QD2 estimation is explained in some detail in Appendix 2. The
+Gauss-Newton method iterates on a linearised moment function calculated for prelimi-
+nary estimates, sequentially improving the estimation. Calculating pseudo-observations
+for each step, the estimation problem can be solved using routines for the estimation of
+linear econometric models. As initial values, I use parameter estimates on the basis of
+the QD1 transformation. CMD estimates on the basis of the same moment condition
+could also be used. Indeed, they yield better initial values, but were not chosen here
+because of the conceptual problems with the asymptotics. As instruments, I use levels
+lagged twice. It turns out that the instruments are more informative (the estimates being
+more precise) if they are separated out in regimes. That is: For purposes of instrumenta-
+tion, the lags of
+, 2
+i t
+y -
+are interacted with regime dummies,
+, 2
+i t-
+r .
+4 Ox is an object-oriented matrix programming language. For a complete description of Ox see Doornik
+(2001).
+25
+b) Forward Differences and Generalised Difference estimation
+When implementing the difference estimator, we can use the moment conditions in a
+specific way that greatly facilitates the calculation of moments. Proposition 1 requires
+us to calculate the  'th difference of every observation, with 2
+q
+  + and differences
+being taken using only observations in the same regime. Then we may use levels lagged
+1, 2,...
+ 
++ + as instruments. It seems that this requires us to make the set of instru-
+ments for a specific observation dependent on whether or not there are two observations
+in the same regime within a specific time distance. By taking the earlier of the two ob-
+servations as a point of reference
+,
+i t
+y and assigning to it the nearest lead
+t
+y 
++
+of the
+same regime with 2 q
+  + , the definition of suitable instruments is straightforward.
+We can uniformly use lags
+, 1
+i t
+y -
+,
+, 2
+i t
+y -
+and earlier as instruments.
+I have experimented with two variants of the differencing approach. The "Forward Dif-
+ference Estimator" uses a fixed lead of 2
+s q
+= + . This transformation preserves the
+correlation structure. However, it also leads to a heavy loss of observations, as only ob-
+servations fulfilling
+, 1 , 1
+i t i t 
+- + -
+=
+r r can be transformed. The "Generalised Difference Esti-
+mator" uses the fact that the moment condition for differenced observation presented in
+Proposition 1 holds for all leads 2
+s q
+ + . The transformation thus is carried out using
+the nearest lead 2
+s q
+ + with
+, 1 , 1
+i t i t s
+- + -
+=
+r r . Due to the larger number of valid observa-
+tions, this results in much more precise estimations. Only the results for this estimator
+are shown. As in Quasi-Difference estimation, I interacted the lagged levels
+, 1
+i t
+y -
+with
+regime indicators
+, 1
+i t-
+r . In order to test the validity of the transformation, regime dum-
+mies are included as additional RHS variables. They also enter the instrument set.
+c) Level estimation
+As described above, the level estimator is implemented by specifying an artificial equa-
+tion that contains the vector
+, 1
+i t-
+r as an additional RHS variable. Instruments are the
+levels of
+, , 1
+i t i t
+y -
+r (i.e. two interaction terms) and current regime dummies in those col-
+umns where the regime variable is predetermined, and
+, 1 , 1
+i t i t
+y
+- -
+r plus lagged regime
+dummies where the regime variable is contemporaneous.
+26
+5.2 Simulation results
+Tables 1 and 2 show estimates on the basis of quasi-difference transformations (1,000
+runs). The theoretical discussion has shown that the finite sample properties of the esti-
+mators may depend on the size of the regime specific coefficients, notably on their dif-
+ference from 1. Therefore estimations for a whole range of parameters are shown. The
+true value for
+1
+ is set as 0.3, whereas the value for
+2
+ ranges from 0.3 to 0.9 . Larger
+ranges and finer steps are plotted in Figures 1 and 2.
+For the construction of Table 1 and Figure 1, the simpler QD1 transformation was used.
+Whereas for smaller coefficient values the estimator performs well and yields correct
+estimates with a good precision, it is less reliable if one of the regime specific coeffi-
+cients is large. For
+1 2
+0.3
+ 
+= = , the mean bias is only of the order of -0.0004 for both
+parameters. It will be 0.0177 for
+2
+^
+ when
+2
+ is raised to 0.7 , and for
+2
+0.9
+ = the fi-
+nite sample bias of
+2
+^
+ becomes a non-negligible -0.0415. The estimates
+1
+^
+ also
+deteriorate, although less markedly. The table also gives t-values and Sargan statistics.
+The bias leads the t-tests for the true value of individual coefficients reject too often
+when one of the coefficients is too high: In the extreme case of
+2
+0.9
+ = , the true value
+is rejected 77.9% of the times. The same is true for the Sargan test of instrument valid-
+ity: with large regime specific coefficients, it rejects the instruments too often. We can
+conclude that slow speeds of adjustment (high persistence) create a problem for QD1
+estimation.
+Table 2 and Figure 2 give results for the QD2 transformation, moment condition 2. As
+was expected, the estimator performs better for large values of regime specific coeffi-
+cients than its counterpart based on QD1. In the extreme case of
+1
+0.3
+ = and
+2
+0.9
+ = ,
+the bias is 0.015 and 0.017. In terms of absolute value, this is about half of what resulted
+from QD1. For smaller values of regime specific coefficients, there is hardly any bias at
+all. Sargan statistics and t-values remain reliable but for very high values of
+2
+ .
+27
+Figure 1: Mean bias for estimates on the basis of QD1,
+with
+1
+0.3
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+-0.040
+-0.035
+-0.030
+-0.025
+-0.020
+-0.015
+-0.010
+-0.005
+Quasi-Differences 1: Bias as a function ofalpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+Figure 2: Mean bias for estimates on the basis of QD2,
+with
+1
+0.3
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+-0.020
+-0.015
+-0.010
+-0.005
+0.000
+0.005
+0.010
+0.015
+Quasi-Differences 2: Bias as a function of alpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+28
+Figure 3: Mean bias for estimates on the basis of QD1, with
+1
+0.8
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+-0.05
+-0.04
+-0.03
+-0.02
+-0.01
+0.00
+0.01
+0.02
+Quasi-Differences 1: Bias as a function ofalpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+Figure 4: Mean bias for estimates on the basis of QD2,
+with
+1
+0.8
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+-0.0100
+-0.0075
+-0.0050
+-0.0025
+0.0000
+0.0025
+0.0050
+0.0075
+0.0100
+Quasi-Differences 2: Bias as a function of alpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+29
+The theoretical discussion showed that the precision of the QD2 estimator should de-
+pend on the difference between the regime specific coefficients. If both of them are
+high, but of similar size, the ratio ( ) ( )
+, 2 , 1
+1 1
+i t i t
+ 
+- -
+- - in the definition of the trans-
+formed error term
+,
+i t
+ cancels out, see eq. (12). The error term in QD1, in contrast, de-
+pends on the absolute distance of the regime specific coefficients from 1. To study this
+issue, the simulations of QD1 and QD2 estimation are performed using a value of
+1
+0.8
+ = as a platform and varying over
+2
+ . The result is shown in Figures 3 (QD1 esti-
+mation) and 4 (QD2 estimation) Here, the QD1 estimates are biased throughout the
+range. The bias of
+2
+^
+ switches from positive to negative, whereas the bias of
+2
+^
+ is
+negative throughout. In contrast, with QD1 the bias practically disappears when both
+parameters are large, to be noticeable only when
+1
+ is small.
+Table 3 and Figures 5 and 6 give the results using GMM on observations transformed
+by Generalised Differences. In Columns 1 and 2 the estimator is correctly used. The
+memory of the regime process is restricted ­ Column (1) assumes uncorrelated regimes,
+and Column (2) assumes a threshold process driven by an MA(1). The minimum leads
+used in transformation are 2 and 3, respectively. In both cases, the Generalised differ-
+ence estimator performs well. The estimates are unbiased. The standard deviations are
+similar to what can be obtained from the quasi-difference estimates for the smaller of
+the two coefficients and actually somewhat lower for the higher coefficient. In the case
+of an MA(1) regime process, standard deviations are higher, as less observations can be
+used. Column (1), with a minimum lead of 2, yields an average of 15.058 valid obser-
+vations per estimation. This number decreases to 11.277 in Column (2), when a mini-
+mum lead of 3 is imposed. On the same set of simulated data, the estimates based on
+quasi-differencing can use 21.000 observations each run. Figure 5 shows that the bias of
+the Generalised Difference estimator is very small when the conditions for its use are
+met and does not depend systematically on the size of the adjustment coefficients. Even
+regime specific coefficients equal to or larger than 1 can be accommodated, as long as
+the overall process remains stable. Columns (3) and (4) do "the wrong thing". For Col-
+umn (3), a minimum lead of 2 is used on data generated with a regime process gener-
+ated by an MA(1), where a lead of 3
+  would be warranted. Column (4) assumes an
+AR(1) process driving the threshold variable: this process has infinite memory. Unex-
+30
+pectedly, in both cases the estimator turns out to be biased. However, in spite of a strong
+correlation between the shock in the regime variable and the error term, the bias is mod-
+erate. In Column (3), only the estimates
+2
+^
+ are biased, to a degree that is similar to the
+performance of the QD2 estimator under the same (unfavourable) parameter values.
+When, as assumed in Column (4), the regime process is driven by a process with infinite
+memory, the resulting bias is larger, similar in size to the weak performance of the QD1
+estimator when one of the coefficients is large. Figure 6 shows how in this latter case
+the bias depends on the alpha-parameters.
+The specification tests do not fail to detect the erroneous use of the estimator. In both
+cases, the regime constant test rejects the specification in 100% of the cases. As the es-
+timated coefficients are of opposite sign, they cannot be caused by trending target val-
+ues. The regime dummies have "captured" the regime-specific non-zero expectations of
+the differenced residuals ( )
+, , 2 , 1 , 3
+E
+i t i t i t i t
+ 
+- - -
+- =
+r r for the two values that
+, 1
+i t-
+r can take.
+The Sargan test is sensitive for the misspecification in Column (3) where the wrong lead
+is used, rejecting 91.9% of the estimates. Detecting an infinite memory of the regime
+variable is harder for the Sargan-test: only 23.2% of estimates in Column (4) are re-
+jected.
+Table 4, together with Figures 7 and 8, show simulation results for the level estimator,
+both for the case of a predetermined regime and a contemporaneous regime. In both
+cases, a regime process with infinite memory is assumed. The table and the figures vary
+2
+ for a fixed value of
+1
+0.3
+ = . In the predetermined case, there is little bias for the
+whole range of parameters, with the possible exception of the
+2
+1
+ = , where the value of
+the bias of
+1
+^
+ assumes a moderate 0.01. Standard deviations are similar to what was
+obtained with the other estimators. If
+2
+ assumes a value larger than 1, the estimates
+become extremely exact.
+31
+Figure 5: Mean bias for Generalised Differences estimates, with
+1
+0.8
+ =
+and
+2
+ varying. Here: regime process uncorrelated over time, correct lead of 2
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2
+-0.0030
+-0.0025
+-0.0020
+-0.0015
+-0.0010
+-0.0005
+0.0000
+0.0005
+GD estimation: bias as a function ofalpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+Figure 6: Mean bias for Generalised Differences estimates, with
+1
+0.8
+ = and
+2
+
+varying. Here: regime process unlimited memory AR(1), misspecified lead of 2
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+-0.055
+-0.050
+-0.045
+-0.040
+-0.035
+-0.030
+-0.025
+-0.020
+-0.015
+GD estimation: bias as a function of alpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+32
+Figure 7: Level estimation with predetermined regimes. Mean bias for estimates
+on the basis of moment condition 4, with
+1
+0.3
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2
+-0.0025
+0.0000
+0.0025
+0.0050
+0.0075
+0.0100
+Level estimation: bias as a function ofalpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+Figure 8: Level estimation with contemporaneous regimes. Mean bias for estimates
+on the basis of moment condition 4, with
+1
+0.3
+ = and
+2
+ varying
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2
+-0.012
+-0.010
+-0.008
+-0.006
+-0.004
+-0.002
+0.000
+Level estimation: bias as a function of alpha2
+bias alpha1 × alpha2 bias alpha2 × alpha2
+33
+Columns (3) and (4), as well as Figure 8 show that the level estimator indeed success-
+fully copes with contemporaneous regime variables, a problem that cannot be solved by
+any of the other approaches. There is a moderate bias that peaks 0.012 for
+2
+^
+ when
+2
+0.9
+ = , and the standard deviations are higher than with a predetermined regime for
+2
+1
+ < . Again, for
+2
+1
+ > the level estimates become very exact. In all columns, the
+regime dummy that is artificially introduced into the equation is very near the theoreti-
+cal value of ( )
+, 1
+E 1 e
+i t
+ 
+-
+- , a term that is introduced into equation (24) by splitting up
+the firm fixed effect into its expectation and a deviation uncorrelated with the shocks in
+the other processes.
+5.3 Comparing the estimators
+I have presented four different ways of estimating an adjustment equation with time-
+varying persistence, all within a GMM framework, albeit with a different set of moment
+conditions.
+Two estimation techniques rely on transforming the original equation using quasi-dif-
+ferences. Both quasi-differences estimators are very precise when all coefficients are
+small. When both coefficients are large and of similar size (high persistence throughout
+the regimes), the results of QD1 estimation have been shown to be unusable in simula-
+tion, whereas the QD2 approach continues to deliver correct results. In von Kalckreuth
+(2008), the QD2 estimator is successfully employed for estimating differential adjust-
+ment speeds for the capital stock. The most difficult parameterisation is when coeffi-
+cients are widely different, while one of them is large. While not unaffected by small
+sample problems, the QD2 estimator performs clearly better in this situation. In direct
+comparison, the major virtue of the QD1 estimator lies in its surprising simplicity, while
+still being consistent in a wider range of circumstances.
+The third method involves transformation using Forward Differences or Generalised
+Differences, with a lead that is long enough to overcome the memory in the process
+driving the regime indicator for the
+,
+i t
+ -shocks. This method is applicable only when
+the memory of the regime process is limited. I have shown how to test this requirement.
+Although a limited memory may be a good approximation in a number of circum-
+stances, such as investment under financing constraints, the requirement will not always
+34
+be fulfilled. This method leads to a linear estimator which remains unbiased even if
+some of the coefficients are in the neighbourhood of 1 or even larger. The forth method
+leaves the equation untransformed, and past differences are used as instruments. Regime
+dummies are employed to capture and neutralise the time-varying non-zero expected
+value of the residual process. The memory of the regime process is irrelevant for this
+technique. However, we have to assume the individual-specific deterministic equilib-
+rium to be independent of the shock parameters of the other relevant processes. The
+level estimator is very precise with regard to larger coefficients. This is not really sur-
+prising: the use of level equations has originally been proposed to overcome the prob-
+lem of weak instruments in cases where the autoregressive parameter approaches 1.
+More important is another virtue of the forth method: the level estimator is the sole pro-
+cedure that can be used when the regime indicator is contemporaneous to the error term
+in the adjustment equation.
+To sum up, the two quasi-differencing methods should be regarded as the standard pro-
+cedure, with the QD1 method apt for quick specification search and the QD2 transfor-
+mation leading to efficient results in small samples. QD1 must not be used if one or
+more of the regime specific autoregressive coefficients are large. A preliminary estima-
+tion constraining the coefficients to be equal across regimes may provide a helpful
+warning ­ it can be done using the standard methodology devised by Arellano/Bond,
+Blundell/Bond and Arellano/Bover. The two linear techniques are of great value in
+cases where the quasi-differencing techniques do not work properly: near unit roots in at
+least some regimes and ­ concerning the level estimator ­ contemporaneous regimes.
+35
+Table 1: Quasi-differences, QD1 transformation,1000 runs
+Simulation # (1) (2) (3) (4)
+Specification state variable
+underlying regimes
+AR(1)
+True
+1
+ 0.3 0.3 0.3 0.3
+True
+2
+ 0.3 0.5 0.7 0.9
+1
+ Mean parameter estimate 0.2930 0.2955 0.2939 0.2687
+Mean bias -0.0041 -0.0045 -0.0061 -0.0313
+Mean estimated
+std. deviation
+0.0220 0.0236 0.0276 0.0351
+Std. dev. parameter estimate 0.0218 0.0247 0.0298 0.0533
+RMSE 0.0222 0.0251 0.0304 0.0618
+Freq. rejections of true value
+on 5% conf. level
+4.6% 6.8% 5.9% 25.7%
+2
+ Mean parameter estimate 0.2957 0.4938 0.6868 0.8586
+Mean bias -0.0043 -0.0062 -0.0133 -0.0414
+Mean estimated
+std. deviation
+0.0194 0.0189 0.0177 0.0139
+Std. dev. parameter estimate 0.0197 0.0190 0.0188 0.0203
+RMSE 0.0202 0.0200 0.0230 0.0262
+Freq. rejections of true value
+on 5% conf. level
+6.0% 5.4% 12.3% 77.9%
+Freq. rejection by Sargan-
+Hansen on 5% conf. level
+8.1% 9.4% 16.4% 81.6%
+Valid obs. in estimation 21,000 21,000 21,000 21,000
+Notes: The table shows estimates of
+1
+ and
+2
+ on the basis of moment condition 1. Columns vary by
+parameters
+1
+ and
+2
+ used for generating the panels according to eq. (1). Each column represents 1000
+repetitions of two stage GMM estimates using an unbalanced panel of 3000 individuals with 10, 9 and 8
+observations (1000 individuals each). The number of valid observations is reduced by the need to trans-
+form variables. Instruments are the levels of
+, 2 , 2
+i t i t
+y
+- -
+r (i.e. two interaction terms) and a constant. Esti-
+mated standard deviations are derived from reduced form estimates using the delta method. Estimation is
+executed using DPD package version 1.2 on Ox version 3.30 and additional, user written routines.
+36
+Table 2: Quasi-differences, QD2 transformation, 1000 runs
+Simulation # (1) (2) (3) (4)
+Specification state variable
+underlying regimes
+AR(1)
+True
+1
+ 0.3 0.3 0.3 0.3
+True
+2
+ 0.3 0.5 0.7 0.9
+1
+ Mean parameter estimate 0.2998 0.3006 0.3021 0.3152
+Mean bias -0.0002 0.0006 0.0021 0.0152
+Mean estimated
+std. deviation
+0.0221 0.0229 0.0261 0.0418
+Std. dev. parameter estimate 0.0217 0.0235 0.0270 0.0463
+RMSE 0.0217 0.0235 0.0271 0.0487
+Freq. rejections of true value
+on 5% conf. level
+4.7% 5.8% 5.8% 9.5%
+2
+ Mean parameter estimate 0.2985 0.4982 0.6943 0.8790
+Mean bias -0.0014 -0.0018 -0.0057 -0.0209
+Mean estimated
+std. deviation
+0.0195 0.0194 0.0187 0.0174
+Std. dev. parameter estimate 0.0195 0.0192 0.0188 0.0170
+RMSE 0.0196 0.0193 0.0197 0.0269
+Freq. rejections of true value
+on 5% conf. level
+5.9% 4.5% 5.9% 23.0%
+Freq. rejection by Sargan-
+Hansen on 5% conf. level
+5.2% 6.0% 6.0% 22.9%
+Valid obs. in estimation 21,000 21,000 21,000 21,000
+Notes: The table shows estimates of
+1
+ and
+2
+ on the basis of moment condition 2. Columns vary by
+parameters
+1
+ and
+2
+ used for generating the panels according to eq. (1). Each column represents 1000
+repetitions of a two stage GMM procedure iterating on pseudoregressors, using an unbalanced panel of
+3000 individuals with 10, 9 and 8 observations (1000 individuals each). As an initial value, an estimate on
+the basis of moment condition 1 was used, see the results in Table 2. The number of valid observations is
+reduced by the need to transform variables. Instruments are the levels of
+, 2 , 2
+i t i t
+y
+- -
+r (i.e. two interaction
+terms) and a constant. Estimated standard deviations are calculated as a by-product from the final Gauss-
+Newton iteration step. Estimation is executed using DPD package version 1.2 on Ox version 3.30 and
+additional, user written routines.
+37
+Table 3: Generalised Differences Estimation, ( ) ( )
+1 2
+, 0.3,0.8
+  = 1,000 runs
+... using appropriate leads ... using inappropriate leads
+Specification state variable
+underlying regimes
+(1)
+MA(0)
+(2)
+MA(1)
+(3)
+MA(1)
+(4)
+AR(1)
+lead = 2 lead = 3 lead = 2 lead = 2
+1
+ Mean estimate
+(true value 0.3)
+0.2990 0.2994 0.2950 0.2767
+Mean est. std. dev. 0.0215 0.0286 0.0243 0.0223
+Mean bias -0.0010 -0.0006 -0.0050 -0.0232
+RMSE 0.0118 0.0276 0.0239 0.0322
+Freq. rejections of true value
+on 5% conf. level
+6.4% 3.8% 5.1% 18.0%
+2
+ Mean estimate
+(true value 0.8)
+0.7978 0.7995 0.7736 0.7568
+Mean est. std. dev. 0.0261 0.0304 0.0298 0.0276
+Mean bias -0.0021 -0.0005 -0.0264 -0.0432
+RMSE 0.0113 0.0296 0.0399 0.0518
+Freq. rejections of true value
+on 5% conf. level
+3.7% 4.5% 14.2% 34.6%
+Specification tests
+1
+G Mean estimate -0.0001 0.0000 -0.0765 -0.0977
+Mean est. std. dev. 0.0116 0.0145 0.0114 0.0102
+Freq. rejections of zero value on
+5% conf. level
+5.8% 5.4% 100% 100%
+2
+G Mean estimate -0.0007 -0.0010 0.0822 0.0977
+Mean est. std. dev. 0.0114 0.0141 0.0114 0.0102
+Freq. rejection of zero value on
+5% conf. level
+4.9% 4.7% 100% 100%
+Freq. rejection by Sargan-Hansen
+on 5% conf. level
+5.1% 4.8% 91.9% 23.2%
+Av. no. of valid observations 15.058 11.277 14.107 15.117
+Note: The table shows estimates of
+1
+ and
+2
+ on the basis of moment condition 3 (Generalised Difference
+Estimator). Columns vary by the stochastic specification of the regime indicator and by the lead used for
+transformation. Columns (1), (2), and (3) specify processes where the memory of the regime variable is
+limited over time and the state variable that underlies the regime indicator follows an MA process. In
+column (4), the regime process is supposed to have infinite memory. In all columns,
+1
+0.3
+ = and
+2
+0.8
+ = . Each column represents 1000 repetitions of two stage GMM estimates using an unbalanced panel
+of 3000 individuals with 10, 9 and 8 observations (1000 individuals each). The number of valid observa-
+tions is reduced by the need to transform variables. Instruments are the levels of
+, 1 , 1
+i t i t
+y
+- -
+r (i.e. two interac-
+tion terms) and a constant. Estimation is executed using DPD package version 1.2 on Ox version 3.30 and
+additional, user written routines.
+38
+Table 4: Level Estimation 1000 runs
+Simulation # (1) (2) (3) (4)
+Regime indicator Predetermined Contemporaneous
+State variable underlying regimes AR(1)
+True
+1
+ 0.3 0.3 0.3 0.3
+True
+2
+ 0.8 1.1 0.8 1.1
+1
+ Mean parameter estimate 0.3031 0.3004 0.3006 0.2951
+Mean bias 0.0031 0.0004 0.0006 -0.0049
+Mean estimated std. deviation 0.0197 0.0074 0.0255 0.0073
+Std. dev. parameter estimate 0.0187 0.0078 0.0252 0.0079
+RMSE 0.0190 0.0078 0.0252 0.0094
+Freq. rejections of true value on 5%
+conf. level
+4.3% 4.2% 4.7% 10.5%
+2
+ Mean parameter estimate 0.7987 1.1001 0.7891 1.1004
+Mean bias -0.0013 0.0001 -0.0109 0.0004
+Mean estimated std. deviation 0.0188 0.0013 0.0283 0.0017
+Std. dev. parameter estimate 0.0191 0.0013 0.0285 0.0017
+RMSE 0.0192 0.0013 0.0305 0.0017
+Freq. rejections of true value on 5%
+conf. level
+5.7% 5.2% 7.0% 5.6%
+Auxiliary regime constants
+1
+G Mean estimate 0.6985 0.698 0.6795 0.6922
+Theoretically expected 0.7 0.7 0.7 0.7
+2
+G Mean estimate 0.2030 -0.0984 0.2434 -0.0852
+Theoretically expected 0.2 -0.1 0.2 -0.1
+Freq. rejection by Sargan-Hansen on
+5% conf. level
+4.1% 3.0% 5.2% 4.9%
+Valid obs. in estimation 24,000 24,000 24,000 24,000
+Note: The table shows estimates of
+1
+ and
+2
+ on the basis of moment condition 4 (Level Estimator).
+Columns vary by parameters
+1
+ and
+2
+ used for generating the panels according to eq. (1) and by the
+stochastic specification of the regime indicator. In all cases, the regime process is supposed to have infinite
+memory, following an AR(1) process. Columns (1) and (2) relate to processes where the regime variable is
+predetermined in the adjustment equation, and Columns (3) and (4) results for regime variable that are
+contemporaneously correlated with the error term. In all columns,
+1
+0.3
+ = . Whereas columns (1) and (3)
+specify
+2
+0.8
+ = , columns (2) and (4) show results for
+2
+1.1
+ = . Each column represents 1000 repetitions
+of two stage GMM estimates using an unbalanced panel of 3000 individuals with 10, 9 and 8 observations
+(1000 individuals each). Instruments are the levels of
+, , 1
+i t i t
+y -
+r (i.e. two interaction terms) and current
+regime dummies in those columns where the regime variable is predetermined, and
+, 1 , 1
+i t i t
+y
+- -
+r plus lagged
+regime dummies where the regime variable is contemporaneous. Estimation is executed using DPD pack-
+age version 1.2 on Ox version 3.30 and additional, user written routines.
+39
+References
+Anderson, T.W., and Cheng Hsiao, Formulation and Estimation of Dynamic Models
+Using Panel Data, Journal of Econometrics Vol. 18 (1982), 47-82.
+Arellano, Manuel, and Olympia Bover, Another Look at the Instrumental Variable Esti-
+mation of Error Component Models, Journal of Econometrics Vol. 68 (1995), 29-
+51.
+Arellano, Manuel, and Stephen Bond, Some Tests of Specification for Panel Data:
+Monte Carlo Evidence and an Application to Employment Equations, Review of
+Economic Studies Vol. 58 (1991), 277-297.
+Bayer, Christian, Investment Dynamics with Fixed Adjustment Costs and Capital Mar-
+ket Imperfections, Journal of Monetary Economics Vol. 53 (2006), 1909-1947.
+Bayer, Christian, On the Interaction of Financial Frictions and Fixed Capital Adjust-
+ment Costs. Evidence from a Panel of German Firms. Mimeo, October 2004.
+Bean, Charles R., An Econometric Model of Manufacturing Investment in the UK, The
+Economic Journal Vol. 91 (1981), 106-121.
+Blundell, Richard, and Stephen Bond, Initial Conditions and Moment Restrictions in
+Dynamic Panel Data Models. Journal of Econometrics Vol. 87 (1998), 115-143.
+Bond, Stephen, and Domenico Lombardi, To Buy or Not to Buy? Uncertainty, Irre-
+versibility and Heterogeneous Investment Dynamics in Italian Company Data.
+IMF Staff Papers Vol. 53 (2007), 375-400.
+Bond, Stephen, Julie Ann Elston, Jaques Mairesse and Benoît Mulkay, Financial Fac-
+tors and Investment in Belgium, France, Germany, and the United Kingdom: A
+Comparison Using Company Panel Data. The Review of Economics and Statistics
+Vol. 85 (2003), 153-165.
+Caballero, Ricardo J., and Eduardo M.R.A. Engel, Explaining Investment Dynamics in
+U.S. Manufacturing: A Generalised (S,s) Approach, Econometrica Vol. 67
+(1999), 783-826.
+Caballero, Ricardo J., and Eduardo M.R.A. Engel, Three Strikes and You're Out: Reply
+to Cooper and Willis, NBER Working Paper No. 10368 (2004).
+Caballero, Ricardo J., Eduardo M.R.A. Engel and John C. Haltiwanger, Plant Level
+Adjustment and Aggregate Investment Dynamics, Brookings Papers on Economic
+Activity, 1995:2, 1-39.
+Caballero, Ricardo J., Eduardo M.R.A. Engel and John C. Haltiwanger, Aggregate Em-
+ployment Dynamics: Building from Microeconomic Evidence, The American
+Economic Review Vol. 87 (1997), 115-137.
+Cooper, Russell, and Jonathan L. Willis, A Comment on the Economics of Labor Ad-
+justment: Mind the Gap, American Economic Review Vol. 94 (2004), 1223-1237.
+Davidson, Russell, and James G. MacKinnon, Estimation and Inference in Economet-
+rics, New York, Oxford, Oxford University Press, 1993.
+40
+Doornik, Jurgen A., Ox 3.0. An Object-Oriented Matrix Programming Language. 4th
+ed., Timberlake Consultants, London, 2001.
+Hansen, Lars, Large Sample Properties of Generalized Method of Moments Estimators,
+Econometrica Vol. 50 (1982), 1029-1054.
+Hayashi, Fumio, Econometrics, Princeton University Press, Princeton, 2000.
+Holtz-Eakin, Douglas, Whitney Newey, and Harvey S. Rosen, Estimating Vector Auto-
+regressions with Panel Data, Econometrica Vol. 56 (1988), 1371-1395.
+Judge, George G., William E. Griffith, R. Carter Hill, Helmut Lütkepohl, and Tsoung-
+Chao Lee, The Theory and Practice of Econometrics, 2nd ed., New York, Wiley,
+1985.
+Sargan, John D., The Estimation of Economic Relationships Using Instrumental Vari-
+ables. Econometrica Vol. 26 (1958), 393-415.
+Searle, Shayle R., Matrix Algebra Useful for Statistics. New York, Wiley, 1982.
+von Kalckreuth, Ulf, Financial Constraints and Capacity Adjustment: Evidence from a
+Large Panel of Survey Data. Economica, Vol. 73 (2006), 691-724.
+von Kalckreuth, Ulf, Financing Constraints, Micro Adjustment of Capital Demand and
+Aggregate Implications. Deutsche Bundesbank Discussion Paper Series 1: Eco-
+nomic Studies No 11/2008.
+Woodford, Michael, Interest and Prices. Foundations of a Theory of Monetary Policy,
+Princeton University Press, Princeton and Oxford, 2003.
+41
+Appendix A: A state dependent error correction model
+Formally, the state dependent adjustment equation considered in this paper involves a
+lagged dependent variable and a forcing term
+,
+i t
+x . But also higher order adjustment
+processes can be accommodated, by redefining states appropriately.
+Consider a linear autoregressive process with distributed lags in a forcing term
+,
+i t
+x and
+an individual specific constant
+i
+ :
+( ) ( )
+, , ,
+i t i t i i t
+A L y B L  
+= + +
+x ,
+where ( )
+A L and ( )
+B L are lag polynomials. As is well known, the process can always
+be written in the error correction format. If, for example, ( )
+A L and ( )
+B L are of order
+2, this leads to
+( )
+*
+, , 1 , 1
+1
+, , 1 , 1 ,
+'
+' ' .
+i t i t i t i
+i t i t i t i t
+y y
+y
+ 
+ 
+- -
+- -
+ = - - -
++  +  +  +
+0
+ x
+ x  x
+In the first line, the term in brackets is the deviation from static equilibrium, where 
+may be interpreted as a cumulative long run effect of a shock in
+,
+i t
+x . The transformed
+constant *
+i
+ is equal to ( ) 1
+i
+A L 
+-
+ 
+  . The term  is the speed of adjustment. If the proc-
+ess is stable, then 1
+ < . The second line depicts the transitional dynamics, which is not
+directly related to the deviation from equilibrium. With ( )
+A L or ( )
+B L of higher order
+than 2, the transitional dynamics in the error correction format would involve higher
+order lags of differences
+,
+i t
+x and
+,
+i t
+y
+ .
+A straightforward generalisation of the adjustment process considered hitherto makes
+ , 0
+ , 1
+ , and 1
+ state dependent, while leaving the transformed constant *
+i
+ and the
+long run effect  time invariant. The latter imposes a constraint on the time varying
+coefficients. For simplicity, I consider all adjustment coefficients as predetermined:
+( )
+*
+, , 1 , 1 , 1 , 1 , , 1 , 1 , 1 , 1 ,
+' ' '
+i t i t i t i t i i t i t i t i t i t i t i t
+y y y
+   
+- - - - - - - -
+ = - - - +  +  +  +
+0 1
+ x  x  x .(A1)
+Now let again
+,
+i t
+r be an indicator variable for the state of adjustment. As the adjustment
+process is parameterised over two lags, it is straightforward to model the time varying
+parameters as a function involving the state variables in two periods, 1
+t - and 2
+t - .
+42
+Finally, let
+, 1
+i t-
+d be an indicator vector of dummies for all the possible values
+( )
+, 1 , 2
+,
+i t i t
+- -
+r r can take. Then we can write:
+, 1 , 1
+'
+i t i t
+
+- -
+=  d ,
+, 1 , 1
+'
+i t i t
+
+- -
+=  d ,
+, 1 , 1
+i t i t
+- -
+=
+0 0
+  d , 1
+, 1 , 1
+i t i t
+- -
+= 1
+  d ,
+with  ,  , 0
+ and 1
+ vectors and matrices of state dependent adjustment coefficients
+to be estimated. Written this way, the problem is fully equivalent to the one I have
+treated in this paper, with
+, 1
+i t-
+d taking the place of
+, 1
+i t-
+r with respect to the adjustment
+speed,
+, 1
+i t
+
+-
+, and using appropriate interaction terms for all the other state dependent
+coefficients. With the help of quasi-differencing or generalised differencing, we can
+eliminate the fixed effect from equation (A1). With contemporaneous adjustment coef-
+ficients, we may use the level estimator. It has to be noted though that ­ compared to a
+first order adjustment process ­ the generalised difference estimator will be difficult to
+use, as there are 2
+L states to be considered here, and only pairs of observations belong-
+ing to the same regime with a given minimum time distance can be used. The other two
+estimation principles are not affected by this profusion of states, except for the fact that
+the number of coefficients is higher.
+43
+Appendix B: Nonlinear GMM estimation using the Gauss-Newton
+Method
+The Gauss-Newton method has been developed for Nonlinear Least Squares problems.
+Its use in GMM estimation is much less frequent and shall therefore be exposed. See
+Davidson and McKinnon (1993) on the use of Gauss-Newton in Nonlinear Least
+Squares and Instrumental Variables Estimation, Hayashi (2000) on GMM estimation,
+and Judge et al. (1985) on numerical methods in maximisation.
+A GMM estimator ^
+ maximises an objective function ( )
+n
+Q  , given as
+( ) ( )
+( ) ( )
+( )
+( )
+1 1
+1 ^
+'
+2
+n n n
+K K
+K K
+Q
+×
+× ×
+= -
+ g  W g  .
+The function ( )
+n
+g  represents an empirical moment, calculated for some P-dimen-
+sional parameter vector  . ^
+W is a possibly data-dependent matrix weighting the K mo-
+ments. I will assume the specific case of a generalised nonlinear instrumental variables
+estimation problem5 where the moment function ( )
+n
+g  can be written as a product of
+the vector of instruments and an error term:
+( )
+( )
+( )
+( )
+1
+1
+,
+n
+n i i i
+K i
+y f
+n
+×
+= -
+
+g  z x  .
+Here,
+i
+y is a scalar,
+i
+x is a vector of Q explanatory variables and
+i
+z is a vector of
+instruments. The double indexation is dropped, and i characterises an observation, not
+an individual. The first order condition for maximising the objective function is
+( )
+( )
+( )
+( )
+( )
+( )
+( )
+1
+1
+^ ^ ^
+^
+'
+n n n
+K K
+P K K
+P
+Q
+×
+× ×
+×
+
+= - =
+
+ G  W g  0
+
+,
+where
+( )
+( )
+( )
+( )
+( )
+( )
+1
+1
+1
+^ ^ ^
+,
+' '
+n
+n n i i
+K
+i
+P K P
+f
+n ×
+× ×
+ 
+ 
+ 
+= = - 
+ 
+ 
+ 
+
+G  g  z x 
+ 
+.
+5 This is the most important case and the only one of relevance here. Actually, with the exception of the
+pseudo-data iteration technique, the following does not depend on this specific structure of the moment
+function.
+44
+is the Jacobian matrix of ( )
+n
+g  , the derivative of the vector of moments with respect to
+the parameters. If the equation is nonlinear in variables only, as in the case of the quasi-
+differencing approach, we have:
+( )
+( )
+( )
+( )
+1
+, '
+i i
+Q Q K
+f
+× ×
+=
+x  x h  ,
+with ( )
+
+h a vector-valued function, and thus:
+( )
+( )
+( )
+( )
+1
+1
+'
+n
+n i i i i
+K i
+y
+n
+×
+= -
+
+g  z z x h  ,
+and
+( )
+( )
+( )
+( ) ( )
+( )
+( )
+1 1
+1
+^ ^ ^
+'
+' '
+n
+n n i i
+K Q
+i
+P K Q P
+n × ×
+× ×
+ 
+ 
+ 
+= = - 
+ 
+ 
+ 
+
+G  g  z x h 
+ 
+.
+A Gauss-Newton estimation step minimises the objective function ( )
+n
+Q  with the func-
+tion ( )
+n
+g  replaced by a linearised version. This is the core of the iterative optimisation
+procedure, but the Gauss-Newton estimation is also useful for generating test statistics.
+The first order Taylor-expansion of ( )
+n
+g  around some preliminary estimator ^
+j
+ is
+( ) ( ) ( )
+( )
+( )
+( )
+( ) ( )
+( ) ( )
+( ) 1
+^ ^ ^ ^ ^ ^ ^
+^ .
+n n j n j j n j n j j n j
+K P P
+n j
+× ×
+ + - = - +
+=
+g  g  G    g  G   G  
+g  
+%
+The gradient of this linearised moment function with expansion point ^
+j
+ is a matrix
+constant:
+( ) ( ) ( )
+^ ^ ^
+'
+n j n j n j
+
+= =
+
+G   g   G 
+
+% % .
+Replacing ( )
+n
+g  in the original objective function by
+( )
+^
+n j
+g  
+% renders a quadratic
+function. The first order conditions imply a linear GMM estimator:
+( ) ( ) ( ) ( ) ( )
+( ) ( )
+* * *
+^ ^ ^ ^ ^ ^ ^
+^ ^
+' '
+n n j n j n j n j j n j
+ 
+= - + =
+ 
+ 
+G   Wg   G  W g  G   G   0
+% %
+( ) ( ) ( ) ( ) ( )
+( )
+1
+* ^ ^ ^ ^ ^ ^
+^ ^
+' '
+n n n n j n j j
+-
+ 
+= +
+ 
+ G  WG  G  W g  G   .
+45
+Here, *
+ denotes the solution of the modified problem. All elements on the right hand
+side of this equation are evaluated at the expansion point ^
+j
+ . Gauss-Newton optimisa-
+tion iterates on a sequence of these linearised estimation problems, with the updating
+equation:
+( )
+*
+1
+^ ^ ^
+j j j
+s
++
+= + -
+    .
+The step length s may be chosen less than 1 in order to ensure convergence in cases
+where the objective function is flat in the neighbourhood of the solution.
+To perform the Gauss-Newton iteration, we may define pseudo-observations:
+( )
+*
+,
+^
+'
+i i j
+f
+
+=
+
+x x 
+
+and
+( ) ( ) ( )
+* *
+, , ,
+^ ^ ^ ^ ^
+'
+i i i j i j j i i j i j
+y y f f y f
+
+= - + = - +
+
+x  x   x  x 
+
+,
+to obtain:
+( ) ( )
+* *
+1
+^ n
+n j i i i
+i
+y
+n
+= -
+
+g   z x 
+%
+and
+( ) *
+1
+^ n
+n j i i
+i
+n
+= - 
+G   z x
+% .
+This is the format of linear GMM estimation. The first order conditions lead to
+( ) ( ) ( ) ( )
+1
+* * * * *
+^ ^
+'
+i i i i i i i i
+y
+-
+ 
+=  
+   
+ z x W z x z x W z ,
+which is the standard linear GMM estimator when applied to the pseudo-observations.
+This is identical to the procedure in nonlinear least squares estimation.
+The solution of the non-linear estimation problem, ^
+ , is a fixed point in the Gauss-
+Newton iterations. Evaluated at the expansion point, i.e. with ^
+j
+=
+  , the moment func-
+tion ( )
+n
+g  and its gradient ( )
+n
+G  are equal to their respective linearised counterparts
+( )
+^
+n j
+g  
+% and
+( )
+^
+n j
+G  
+% . Therefore, given that ^
+ satisfies the first order condition for
+the nonlinear problem, it will also fulfil the first order conditions for the corresponding
+linearised problem, if ^
+ is chosen at the expansion point. The residuals of the Gauss-
+46
+Newton estimates are identical to the residuals of the original nonlinear problem at the
+point of convergence. For ^ ^
+j
+=
+  , the Gauss-Newton residuals are
+( ) ( ) ( ) ( )
+* *
+, ,
+^ ^ ^ ^ ^ ^ ^
+, ,
+' '
+i i i i i i i i
+y y f f f y f
+ 
+- = - + - = -
+ 
+x  x  x   x   x 
+ 
+.
+Similarly, the covariance matrix of ^
+ can be computed as the covariance matrix of the
+Gauss-Newton estimation at the point of convergence. This follows directly from com-
+paring the asymptotic covariance of nonlinear GMM estimation with its linearised
+counterparts. In fact, the asymptotic covariance is computed using the very same lin-
+earisation of ( )
+n
+g  that also defines the Gauss-Newton regression above, see Hayashi
+(2000), Section 7.3.
+The Gauss-Newton procedure is a gradient method. We can write:
+( ) ( ) ( ) ( )
+1
+* ^ ^ ^ ^ ^
+^ ^
+' '
+j n n n n j
+-
+   
+= + -
+   
+  G  WG  G  Wg  .
+The second expression in brackets is the gradient of the objective function ( )
+n
+Q  ,
+evaluated at ^
+j
+ . It is multiplied by the inverse of a quadratic form in the gradient of the
+moment function. This latter expression takes the role of the negative inverted Hessian
+in the Newton-Raphson algorithm. This matrix will be positive definite in the
+neighbourhood of
+0
+ , provided that ( )
+( )
+0
+E
+n
+G  has full column rank and the number
+of observations is large. Thus, if s is chosen small enough, the value of the objective
+function will increase each iteration.
+47
+The following Discussion Papers have been published since 2007:
+Series 1: Economic Studies
+01 2007 The effect of FDI on job separation Sascha O. Becker
+Marc-Andreas Mündler
+02 2007 Threshold dynamics of short-term interest rates:
+empirical evidence and implications for the Theofanis Archontakis
+term structure Wolfgang Lemke
+03 2007 Price setting in the euro area: Dias, Dossche, Gautier
+some stylised facts from individual Hernando, Sabbatini
+producer price data Stahl, Vermeulen
+04 2007 Unemployment and employment protection
+in a unionized economy with search frictions Nikolai Stähler
+05 2007 End-user order flow and exchange rate dynamics S. Reitz, M. A. Schmidt
+M. P. Taylor
+06 2007 Money-based interest rate rules: C. Gerberding
+lessons from German data F. Seitz, A. Worms
+07 2007 Moral hazard and bail-out in fiscal federations: Kirsten H. Heppke-Falk
+evidence for the German Länder Guntram B. Wolff
+08 2007 An assessment of the trends in international
+price competitiveness among EMU countries Christoph Fischer
+09 2007 Reconsidering the role of monetary indicators
+for euro area inflation from a Bayesian Michael Scharnagl
+perspective using group inclusion probabilities Christian Schumacher
+10 2007 A note on the coefficient of determination in Jeong-Ryeol Kurz-Kim
+regression models with infinite-variance variables Mico Loretan
+48
+11 2007 Exchange rate dynamics in a target zone - Christian Bauer
+a heterogeneous expectations approach Paul De Grauwe, Stefan Reitz
+12 2007 Money and housing - Claus Greiber
+evidence for the euro area and the US Ralph Setzer
+13 2007 An affine macro-finance term structure model
+for the euro area Wolfgang Lemke
+14 2007 Does anticipation of government spending matter? Jörn Tenhofen
+Evidence from an expectation augmented VAR Guntram B. Wolff
+15 2007 On-the-job search and the cyclical dynamics Michael Krause
+of the labor market Thomas Lubik
+16 2007 Heterogeneous expectations, learning and
+European inflation dynamics Anke Weber
+17 2007 Does intra-firm bargaining matter for Michael Krause
+business cycle dynamics? Thomas Lubik
+18 2007 Uncertainty about perceived inflation target Kosuke Aoki
+and monetary policy Takeshi Kimura
+19 2007 The rationality and reliability of expectations
+reported by British households: micro evidence James Mitchell
+from the British household panel survey Martin Weale
+20 2007 Money in monetary policy design under
+uncertainty: the Two-Pillar Phillips Curve Günter W. Beck
+versus ECB-style cross-checking Volker Wieland
+21 2007 Corporate marginal tax rate, tax loss carryforwards
+and investment functions ­ empirical analysis
+using a large German panel data set Fred Ramb
+49
+22 2007 Volatile multinationals? Evidence from the Claudia M. Buch
+labor demand of German firms Alexander Lipponer
+23 2007 International investment positions and Michael Binder
+exchange rate dynamics: a dynamic panel analysis Christian J. Offermanns
+24 2007 Testing for contemporary fiscal policy discretion Ulf von Kalckreuth
+with real time data Guntram B. Wolff
+25 2007 Quantifying risk and uncertainty Malte Knüppel
+in macroeconomic forecasts Karl-Heinz Tödter
+26 2007 Taxing deficits to restrain government
+spending and foster capital accumulation Nikolai Stähler
+27 2007 Spill-over effects of monetary policy ­ a progress
+report on interest rate convergence in Europe Michael Flad
+28 2007 The timing and magnitude of exchange rate Hoffmann
+overshooting Sondergaard, Westelius
+29 2007 The timeless perspective vs. discretion: theory and
+monetary policy implications for an open economy Alfred V. Guender
+30 2007 International cooperation on innovation: empirical Pedro Faria
+evidence for German and Portuguese firms Tobias Schmidt
+31 2007 Simple interest rate rules with a role for money M. Scharnagl
+C. Gerberding, F. Seitz
+32 2007 Does Benford's law hold in economic Stefan Günnel
+research and forecasting? Karl-Heinz Tödter
+33 2007 The welfare effects of inflation: Karl-Heinz Tödter
+a cost-benefit perspective Bernhard Manzke
+50
+34 2007 Factor-MIDAS for now- and forecasting with
+ragged-edge data: a model comparison for Massimiliano Marcellino
+German GDP Christian Schumacher
+35 2007 Monetary policy and core inflation Michele Lenza
+01 2008 Can capacity constraints explain
+asymmetries of the business cycle? Malte Knüppel
+02 2008 Communication, decision-making and the
+optimal degree of transparency of monetary
+policy committees Anke Weber
+03 2008 The impact of thin-capitalization rules on Buettner, Overesch
+multinationals' financing and investment decisions Schreiber, Wamser
+04 2008 Comparing the DSGE model with the factor model:
+an out-of-sample forecasting experiment Mu-Chun Wang
+05 2008 Financial markets and the current account ­ Sabine Herrmann
+emerging Europe versus emerging Asia Adalbert Winkler
+06 2008 The German sub-national government bond Alexander Schulz
+market: evolution, yields and liquidity Guntram B. Wolff
+07 2008 Integration of financial markets and national Mathias Hoffmann
+price levels: the role of exchange rate volatility Peter Tillmann
+08 2008 Business cycle evidence on firm entry Vivien Lewis
+09 2008 Panel estimation of state dependent adjustment
+when the target is unobserved Ulf von Kalckreuth
+51
+Series 2: Banking and Financial Studies
+01 2007 Granularity adjustment for Basel II Michael B. Gordy
+Eva Lütkebohmert
+02 2007 Efficient, profitable and safe banking:
+an oxymoron? Evidence from a panel Michael Koetter
+VAR approach Daniel Porath
+03 2007 Slippery slopes of stress: ordered failure Thomas Kick
+events in German banking Michael Koetter
+04 2007 Open-end real estate funds in Germany ­ C. E. Bannier
+genesis and crisis F. Fecht, M. Tyrell
+05 2007 Diversification and the banks'
+risk-return-characteristics ­ evidence from A. Behr, A. Kamp
+loan portfolios of German banks C. Memmel, A. Pfingsten
+06 2007 How do banks adjust their capital ratios? Christoph Memmel
+Evidence from Germany Peter Raupach
+07 2007 Modelling dynamic portfolio risk using Rafael Schmidt
+risk drivers of elliptical processes Christian Schmieder
+08 2007 Time-varying contributions by the corporate bond
+and CDS markets to credit risk price discovery Niko Dötz
+09 2007 Banking consolidation and small business K. Marsch, C. Schmieder
+finance ­ empirical evidence for Germany K. Forster-van Aerssen
+10 2007 The quality of banking and regional growth Hasan, Koetter, Wedow
+11 2007 Welfare effects of financial integration Fecht, Grüner, Hartmann
+12 2007 The marketability of bank assets and managerial Falko Fecht
+rents: implications for financial stability Wolf Wagner
+52
+13 2007 Asset correlations and credit portfolio risk ­ K. Düllmann, M. Scheicher
+an empirical analysis C. Schmieder
+14 2007 Relationship lending ­ empirical evidence C. Memmel
+for Germany C. Schmieder, I. Stein
+15 2007 Creditor concentration: an empirical investigation S. Ongena, G.Tümer-Alkan
+N. von Westernhagen
+16 2007 Endogenous credit derivatives and bank behaviour Thilo Pausch
+17 2007 Profitability of Western European banking
+systems: panel evidence on structural and
+cyclical determinants Rainer Beckmann
+18 2007 Estimating probabilities of default with W. K. Härdle
+support vector machines R. A. Moro, D. Schäfer
+01 2008 Analyzing the interest rate risk of banks
+using time series of accounting-based data: O. Entrop, C. Memmel
+evidence from Germany M. Wilkens, A. Zeisler
+02 2008 Bank mergers and the dynamics of Ben R. Craig
+deposit interest rates Valeriya Dinger
+03 2008 Monetary policy and bank distress: F. de Graeve
+an integrated micro-macro approach T. Kick, M. Koetter
+04 2008 Estimating asset correlations from stock prices K. Düllmann
+or default rates ­ which method is superior? J. Küll, M. Kunisch
+05 2008 Rollover risk in commercial paper markets
+and firms' debt maturity choice Felix Thierfelder
+06 2008 The success of bank mergers revisited ­ Andreas Behr
+an assessment based on a matching strategy Frank Heid
+53
+07 2008 Which interest rate scenario is the worst one for
+a bank? Evidence from a tracking bank approach
+for German savings and cooperative banks Christoph Memmel
+08 2008 Market conditions, default risk and Dragon Yongjun Tang
+credit spreads Hong Yan
+09 2008 The pricing of correlated default risk: Nikola Tarashev
+evidence from the credit derivatives market Haibin Zhu
+10 2008 Determinants of European banks' Christina E. Bannier
+engagement in loan securitization Dennis N. Hänsel
+11 2008 Interaction of market and credit risk: an analysis Klaus Böcker
+of inter-risk correlation and risk aggregation Martin Hillebrand
+12 2008 A value at risk analysis of credit default swaps B. Raunig, M. Scheicher
+13 2008 Systemic bank risk in Brazil: an assessment of
+correlated market, credit, sovereign and inter-
+bank risk in an environment with stochastic Theodore M. Barnhill, Jr.
+volatilities and correlations Marcos Rietti Souto
+14 2008 Regulatory capital for market and credit risk inter- T. Breuer, M. Jandacka
+action: is current regulation always conservative? K. Rheinberger, M. Summer
+55
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a Ph D and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+

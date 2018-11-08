@@ -1,0 +1,1918 @@
+The Annals of Applied Statistics
+2007, Vol. 1, No. 2, 502­537
+DOI: 10.1214/07-AOAS126
+© Institute of Mathematical Statistics, 2007
+DESCRIBING DISABILITY THROUGH INDIVIDUAL-LEVEL
+MIXTURE MODELS FOR MULTIVARIATE
+BINARY DATA1
+BY ELENA A. EROSHEVA, STEPHEN E. FIENBERG
+AND CYRILLE JOUTARD
+University of Washington, Carnegie Mellon University
+and Université Toulouse 1
+Data on functional disability are of widespread policy interest in the
+United States, especially with respect to planning for Medicare and Social
+Security for a growing population of elderly adults. We consider an extract of
+functional disability data from the National Long Term Care Survey (NLTCS)
+and attempt to develop disability profiles using variations of the Grade of
+Membership (GoM) model. We first describe GoM as an individual-level
+mixture model that allows individuals to have partial membership in several
+mixture components simultaneously. We then prove the equivalence between
+individual-level and population-level mixture models, and use this property
+to develop a Markov Chain Monte Carlo algorithm for Bayesian estimation
+of the model. We use our approach to analyze functional disability data from
+the NLTCS.
+1. Introduction.
+1.1. Background. Data on functional disability are of widespread policy in-
+terest in the United States, especially with respect to planning Medicare and So-
+cial Security spending for a growing population of elderly adults. The concept of
+functional disability reflects difficulties in performing activities that are considered
+normal for everyday living. These activities are usually divided into two types,
+namely, basic and instrumental activities of daily living (ADL and IADL). ADL
+and IADL outcomes are considered essential in health services research and form
+a cornerstone of geriatric medicine. In this article we present a Bayesian analy-
+sis of functional disability among a sample of elderly individuals in the National
+Long Term Care Survey (NLTCS), using basic and extended Grade of Membership
+(GoM) models for multivariate binary response data.
+Received February 2007; revised June 2007.
+1Supported in part by NIH Grant R01 AG023141-01 to Carnegie Mellon University, and by the
+Center of Statistics and the Social Sciences, University of Washington, under a Seed Grant to Elena
+A. Erosheva.
+Supplementary material available at http://imstat.org/aoas/supplements
+Key words and phrases. Activities of daily living, Bayesian estimation, functional disability,
+grade of membership, latent class, mixed membership, partial membership, variational approxima-
+tion.
+502
+DISABILITY AND GRADE OF MEMBERSHIP 503
+The NLTCS began in 1982 and now extends over six waves through 2004, mak-
+ing it an important source of information on possible changes in disability over
+time among the elderly Americans. The NLTCS data on functional disability have
+been used to generate some major findings, such as a persistent decline in chronic
+disability among the elderly Americans [Manton and Gu (1999) and Manton, Gu
+and Lamb (2006a, 2006b)].
+It is common practice to analyze functional disability data by using totals where
+individual scores are added together for all items or by subsets [Manton and Gu
+(1999)]. Statistically, adherence to the Rasch model (1960) can provide researchers
+with a formal justification for reducing the multivariate data down to such total
+scores. It is often the case, however, that functional disability data have a high
+amount of heterogeneity that is not explainable by the Rasch model. It may be
+possible to circumvent this problem by reducing the set of functional disability
+items under consideration, as was illustrated, for example, in the gerontology liter-
+ature by Spector and Fleishman (1998). This approach, however, obviously ignores
+potentially relevant information contained in the excluded items.
+In this paper we use individual-level mixtures to account for heterogeneity in
+functional disability data measured with a given battery of items without con-
+sidering the issue of item reduction. We contrast the individual-level mixture as-
+sumption with population-level mixture models that assume individuals can be
+members of one and only one subpopulation, such as latent class models [Good-
+man (1974), Lazarsfeld and Henry (1968)]. The central idea of all individual-level
+mixture models is to allow an individual's membership to be a mixture with re-
+spect to population components [Blei, Jordan and Ng (2003), Pritchard, Stephens
+and Donnelly (2000), Woodbury, Clive and Garson (1978)]. A natural example of
+individual-level mixtures is genetic makeup of individuals who have various de-
+grees of ancestry in several subpopulations of origin [Pritchard, Stephens and Don-
+nelly (2000)]. Such admixed individuals do not simply belong to one of the original
+subpopulations with some degree of uncertainty, but their genetic makeup is actu-
+ally composed of genes that originated from different subpopulations. Specifically,
+we use the Grade of Membership (GoM) model introduced in 1978 by Woodbury,
+Clive and Garson (1978) and develop its extension to address the following ques-
+tions: How many mixture categories are in the functional disability data under the
+assumption of mixed membership? What are characteristics of each mixture cate-
+gory? What is the population distribution of the individual membership scores?
+We begin by introducing the NLTCS in Section 2. Next, we describe the GoM
+model and its relationship to latent class models via the fundamental representa-
+tion theorem in Section 3. We use this result to develop a fully Bayesian approach
+in Section 4.1, and describe a variational approximation approach as an alterna-
+tive estimation method in Section 4.2. Section 5 develops the extended mixture
+GoM model and corresponding estimation techniques. Section 6 considers the
+question of dimensionality selection in terms of the optimal number of mixture
+categories. Section 7 describes results from simulation studies. Finally, we present
+504 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+an individual-level mixture analysis of the NLTCS functional disability data and
+provide discussions in Sections 8 and 9.
+2. National Long Term Care Survey functional disability data. The
+NLTCS aims to assess chronic disability in the U.S. Medicare-enrolled popu-
+lation age 65 or older [Corder and Manton (1991)]. The survey began in 1982
+with a screening survey instrument that selected community-dwelling chronically
+disabled (based on basic and instrumental activities of daily living) persons for
+detailed in-home interviews. Once individuals screened-in, the NLTCS followed
+them longitudinally. The second wave of the survey was in 1984, and all subse-
+quent waves occurred in five-year intervals with the most recent wave completed
+in 2004. The NLTCS replenishes its sample at each wave in order to reflect the cur-
+rent U.S. population 65 and older. While additional components have come and
+gone from post-1982 waves of the NLTCS, key disability questions have stayed
+the same. For more information on the NLTCS, see Corder and Manton (1991),
+Manton, Corder and Stallard (1997), Singer and Manton (1998).
+We consider an extract from the NLTCS that contains data on 6 activities
+of daily living (ADL) and 10 instrumental activities of daily living (IADL) for
+community-dwelling elderly from 1982, 1984, 1989 and 1994 survey waves. These
+16 binary functional disability measures are described in detail in Manton, Corder
+and Stallard (1993). The 6 ADL items include basic activities of hygiene and per-
+sonal care (eating, getting in/out of bed, getting around inside, dressing, bathing,
+and getting to the bathroom or using toilet). The 10 IADL items include basic ac-
+tivities necessary to reside in the community (doing heavy housework, doing light
+housework, doing laundry, cooking, grocery shopping, getting about outside, trav-
+elling, managing money, taking medicine and telephoning). Positive responses are
+coded as 1 = disabled, and negative as 0 = healthy. In the NLTCS, positive ADL
+responses mean that during the past week the activity had not been, or was not ex-
+pected to be, performed without the aid of another person or the use of equipment;
+positive IADL responses mean that a person usually could not, or was not going
+to be able to, perform the activity because of a disability of a health problem. For
+a more in-depth discussion, see Manton, Corder and Stallard (1993) and Erosheva
+and White (2006).
+At each wave, the survey sample is representative of the 65 years and older U.S.
+population at that point in time. High follow-up rates and consistency in ADL and
+IADL questions over time make the NLTCS a unique source of data for study-
+ing complex questions such as the dynamics of population changes in disability.
+Manton and Gu (1999) and Manton, Gu and Lamb (2006a, 2006b) used weighted
+total numbers of impaired ADL and IADL to show declines in disability, but the
+important question of "Why?" [Cutler (2001)] still remains open. We believe that
+in order to move forward in our understanding of why disability is declining so
+rapidly and whether the decline can be expected to continue, an important first
+step is to describe heterogeneous multivariate disability manifestations.
+DISABILITY AND GRADE OF MEMBERSHIP 505
+Our ultimate goal is to develop a longitudinal version of the GoM model. Our
+analysis in this paper represents an attempt to learn disability mixture profiles that
+describe the underlying structure of functional disability in the chronically dis-
+abled community-dwelling elderly U.S. population. We make three simplifying as-
+sumptions in this analysis. First, we assume that the nature of the mixture compo-
+nents stays the same over time. For a longitudinal version of the GoM model, keep-
+ing profiles the same over time and allowing the population distribution among
+the profiles to change would allow us to obtain an estimable model. For similar
+reasons, the assumption of time-invariant latent classes is common in latent class
+transition modeling [see Reboussin et al. (1998), e.g.]. In addition, our exploratory
+analysis where we analyzed each wave separately using the GoM model, yielded
+profiles whose characteristics were fairly stable over time, thus confirming that
+the assumption of profile time-invariance is reasonable in our case. Second, we
+assume no inter-dependencies between longitudinal records on the same individ-
+uals. Violations of this assumption may affect efficiency of our estimates but will
+not introduce bias. Third, we ignore the sample weights associated with differen-
+tial probabilities of selection into the NLTCS. In fact, we have yet to understand
+how if at all we could incorporate the weights into the modeling process. We view
+these three assumptions necessary for this first step toward understanding changes
+in disability over time.
+3. The grade of membership (GoM) model and its latent class representa-
+tion. The GoM model originate in the context of medical applications: when a
+diagnosis is uncertain, partial membership reflects this uncertainty through allow-
+ing different disease symptoms to correspond to different stages of the disease.
+GoM applications now cover a wide spectrum of studies, ranging from studying
+depression [Davison et al. (1989)] and schizophrenia [Manton et al. (1994)] to an-
+alyzing complex genotype-phenotype relations [Manton et al. (2004)]; for a recent
+review, see Erosheva and Fienberg (2005). The model remains relatively unfamil-
+iar to statistical audiences, however. Despite a multitude of published large-scale
+GoM applications, there are few statistical publications that explore basic GoM
+properties and demonstrate the model's utility with similar examples [Erosheva
+(2005), Potthoff (2000), Wachter (1999)].
+In particular, the relationship between individual-level and population-level
+mixture models does not appear to be clearly formulated in the literature.
+Singer (1989) describes the GoM model as a new type of model that is not equiva-
+lent to usual mixture models. Likewise, when comparing the GoM and latent class
+models, in their 1994 book, Manton, Woodbury and Tolley (1994) concluded: "la-
+tent class model is nested in the GoM model structure...," but "...if we allow
+latent class model to have more classes, then it is potentially possible to "fit" the
+realized data set as well as with GoM" (page 45). On the other hand, Haberman
+(1995) in his review of Manton et al., suggested that the GoM model is a special
+case of latent class models. He pointed out that a set of constraints imposed upon a
+506 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+latent class model can specify a distribution of manifest variables that is identical
+to that specified by the GoM model.
+In this Section we describe the GoM and latent class models and present the
+fundamental representation theorem of equivalence between individual-level and
+population-level mixture models [Erosheva (2006)].
+GoM and latent class models. Let x = (x1,x2,...,xJ ) be a vector of polyto-
+mous manifest variables, where xj takes on values lj
+ Lj
+= {1,2,...,Lj
+}, j =
+1,2,...,J, and Lj denotes the number of possible outcomes. Let X = J
+j=1
+Lj
+be the set of all possible outcomes for vector x.
+To define the GoM model, let K be the number of mixture components (extreme
+profiles), and let g = (g1,g2,...,gK) be a latent partial membership vector of K
+nonnegative random variables that sum to 1. For discrete data, each extreme profile
+is characterized by a vector of conditional response probabilities, when a given kth
+component of the partial membership vector is 1 and the others are 0:
+kjlj
+= pr(xj
+= lj
+|gk
+= 1), k = 1,2,...,K,
+j = 1,2,...,J,
+(1)
+lj
+= 1,2,...,Lj .
+The set of conditional response probabilities must satisfy the following constraints:
+lj Lj
+kjlj
+= 1, k = 1,2,...,K;j = 1,2,...,J.
+Given partial membership vector g  [0,1]K , the conditional distribution of
+manifest variable xj is given by a convex combination of the extreme profiles'
+conditional response probabilities, that is,
+pr(xj
+= lj
+|g) =
+K
+k=1
+gkkjlj
+, j = 1,2,...,J,lj
+= 1,2,...,Lj .
+(2)
+The local independence assumption states that manifest variables are condition-
+ally independent, given latent variables. Under this assumption, the conditional
+probability of observing response pattern l is
+f GoM(l|g) = pr(x = l|g)
+=
+J
+j=1
+pr(xj
+= lj
+|g) =
+J
+j=1
+K
+k=1
+gkkjlj
+, l  X.
+The local independence assumption is common in latent structure models [Lazars-
+feld and Henry (1968)]; it says that latent variables fully account for associations
+among the observed responses.
+DISABILITY AND GRADE OF MEMBERSHIP 507
+Let us denote the distribution of g by D(g). Integrating out the latent vari-
+able g, we obtain the marginal distribution for response pattern l in the form of an
+individual-level mixture
+f GoM(l) = pr(x = l) = f GoM(l|g)dD(g)
+(3)
+=
+J
+j=1
+K
+k=1
+gkkjlj
+dD(g), l  X.
+Using similar notation, we can derive the K-class population-level mixture (la-
+tent class) model as a special case of the K-profile GoM model by restricting com-
+ponents of the partial membership vector to only take values 0 and 1. Denote the
+restricted version of the membership vector by g and its probability mass func-
+tion by k
+= pr(g
+k
+= 1). Assuming local independence, we see that the marginal
+distribution of the manifest variables under the latent class model simplifies to the
+K-component summation:
+f LCM(l) = pr(x = l) = f LCM(l|g)dD(g)
+(4)
+=
+K
+k=1
+k
+J
+j=1
+kjlj
+, l  X.
+The probability of observing response pattern l is the sum of the probabilities of
+observing l from each of the latent classes, weighted by their relative sizes, k.
+One can visualize the relationship between sets of individual-specific response
+probabilities under the GoM and latent class models with the same number of
+mixture categories using a geometric approach [Erosheva (2005)].
+Fundamental representation theorem. Note that the GoM marginal or integrated
+likelihood in equation (3) does not simplify to a summation of K components.
+This is in contrast to the functional form of the likelihood for a population-level
+mixture of K latent classes in equation (4). If we relax the requirement of equality
+of the number of latent classes and extreme profiles, however, following Haberman
+(1995), we can construct a latent class model such that its marginal distribution of
+manifest variables is exactly the same as that under the GoM model.
+Consider a vector of J polytomous latent variables z = (z1,z2,...,zJ ), each
+taking on values from the set of integers {1,2,...,K}. Vector z here is the latent
+classification variable. Denote by Z = {1,2,...,K}J the set of all possible vec-
+tors z. As before, X = J
+j=1
+Lj is the set of all possible outcomes for vector x.
+Then X × Z is the index set for the cross-classification of the manifest variables x
+and latent classification variables z.
+To obtain a latent class representation of the GoM model, we must find a way to
+interchange the summation and the product operator in equation (3). The following
+lemma provides algebra which allows us to do so.
+508 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+LEMMA 3.1. For any two positive integers J and K, and for any two sets of
+real numbers {ak,k = 1,2,...,K} and {bkj ,k = 1,2,...,K,j = 1,2,...,J},
+J
+j=1
+K
+k=1
+akbkj
+=
+zZ
+J
+j=1
+azj
+bzj j ,
+where z = (z1,z2,...,zJ ) is such that z  Z = J
+j=1
+{1,2,...,K}.
+Define the distribution over latent classes z  Z, conditional on the distribution
+of membership vector g  [0,1]K :
+z
+= ED
+J
+j=1
+gzj
+.
+(5)
+If (g1,g2,...,gK) has a joint distribution D(g) on [0,1]K , such that g1
++ g2
++
+... + gK
+= 1, then z is a probability measure on Z. From the functional form
+of z, it also follows that latent classification variables z1,z2,...,zJ are exchange-
+able.
+To specify the conditional distribution of the manifest variables given the latent
+variables z, we need two additional assumptions. First, assume that xj depends
+only on the jth component of the latent indicator variable z:
+pr(xj
+= lj
+|z) = pr(xj
+= lj
+|z1,z2,...,zJ ) = pr(xj
+= lj
+|zj ),
+(6)
+where zj
+ {1,2,...,K}, and lj
+ {1,...,Lj
+} is the observed value of manifest
+variable xj . In essence, equation (6) postulates that manifest variable xj is directly
+influenced only by the jth component of the latent classification vector z. Second,
+assume that conditional response probabilities in equation (6) are given by
+pr(xj
+= lj
+|zj ) = zj jlj
+, zj
+= 1,2,...,K,
+j = 1,2,...,J,
+(7)
+lj
+= 1,2,...,Lj ,
+where the set of s is the same as the set of conditional response probabilities for
+the GoM model. These structural parameters must also satisfy the constraints:
+Lj
+lj =1
+zj jlj
+= 1, for all z  Z,j  {1,2,...,J}.
+Under the local independence assumption, we obtain the probability of observ-
+ing response pattern l for the latent class model as
+f (l) =
+zZ
+z
+J
+j=1
+zj jlj
+, l  X,
+(8)
+DISABILITY AND GRADE OF MEMBERSHIP 509
+where the probability of latent class z is the expected value of a J-fold product
+of the membership scores z
+= ED( J
+j=1
+gzj
+). Thus, the probability of observing
+response pattern l in equation (8) is the sum of the conditional probabilities of
+observing l from each of the latent classes, weighted by the latent class probabili-
+ties.
+Consider the marginal probability of an arbitrary response pattern l  X for
+the GoM model provided by equation (3). Applying lemma 3.1 with ak
+= gk,
+bkj
+= kjlj
+, and using properties of expectation, we obtain the marginal proba-
+bility:
+f GoM(l) =
+zZ
+ED
+J
+j=1
+gzj
+J
+j=1
+zj jlj
+,
+which is exactly the same as in equation (8). It follows that the GoM model is
+equivalent to a latent class model with a distribution on the latent classes given
+by a functional form of the distribution of membership scores. This equivalence
+statement can be generalized via the following fundamental representation theo-
+rem:
+THEOREM 3.2. Given J manifest variables, any individual-level mixture
+model with K components can be represented as a constrained population-level
+mixture model with KJ components.
+The fundamental representation theorem applies to a wider class of mixed mem-
+bership models introduced by Erosheva (2002).
+4. Estimation algorithms for the standard GoM model.
+4.1. Bayesian estimation algorithm.
+Data augmentation. The fundamental representation theorem leads us naturally
+to a data augmentation approach in the spirit of those described by Tanner (1996).
+In this Section we present the Bayesian estimation algorithm for the GoM model,
+described earlier in Erosheva (2003).
+Denote by x the set of observed responses xij for all subjects. Denote by 
+the set of conditional response probabilities. For the functional disability data,
+kj
+= pr(xj
+= 1|gk
+= 1) is the probability of being disabled on activity j for a
+complete member of extreme profile k. For subject i, augment observed responses
+with realizations of the latent classification variables zi
+= (zi1,...,ziJ ). Denote
+by z the set of latent classifications zij on all items for all individuals. In the fol-
+lowing, we use notation p(·) to refer to both probability density and probability
+mass functions.
+510 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+We assume the distribution of membership scores is Dirichlet with pa-
+rameters . The joint probability model for the parameters and augmented
+data is
+p(x,z,g,,) = p(,) · p(x,z,g|,)
+= p(,)
+N
+i=1
+[p(zi
+|gi)p(xi
+|,zi) · D(gi
+|)],
+where
+p(zi
+|gi) =
+J
+j=1
+K
+k=1
+gzijk
+ik
+,
+p(xi
+|,zi) =
+J
+j=1
+K
+k=1
+xij
+kj
+(1 - kj )1-xij
+zijk ,
+Dir(gi
+|) =
+( k
+k)
+(1)··· (K)
+g1-1
+i1
+···gK -1
+iK
+,
+and latent classification indicators zijk are such that zijk
+= 1, if zij
+= k, and
+zijk
+= 0 otherwise.
+We assume the prior on extreme profile response probabilities  is independent
+of the prior on the hyperparameters . We further assume that the prior distribu-
+tion of extreme profile response probabilities treats items and extreme profiles as
+independent. Thus,
+p(,) = p()
+K
+k=1
+J
+j=1
+p(kj ).
+(9)
+We take p(kj ) to be Beta(1,2), and, for simplicity, in what follows we use
+1
+= 2
+= 1.
+If the hyperparameters  are known, it is possible to obtain complete condi-
+tional distributions and use standard software such as BUGS1 to obtain a posterior
+distribution of the model parameters [Erosheva (2002)]. In reality, the hyperpara-
+meters are unlikely to be known and need to be estimated. Setting hyperparame-
+ters to some fixed values without prior knowledge may bias conclusions and affect
+model choice in individual-level mixture models [see the discussion in Airoldi
+et al. (2007)].
+If we assume that the Dirichlet parameter vector  is unknown, we obtain sam-
+ples from its posterior distribution via a Metropolis­Hastings step within the Gibbs
+sampler. Consider a reparameterization of  = (1,...,K) with 0
+= K
+k=1
+k
+1The Bayesian inference using Gibbs Sampling project software [Spiegelhalter et al. (1996)]. For
+details see http://www.mrc-bsu.cam.ac.uk/bugs/.
+DISABILITY AND GRADE OF MEMBERSHIP 511
+and  = (1,...,K), where k
+= k/0. Then components of vector  reflect
+proportions of the item responses that belong to each mixture category, and 0 re-
+flects the spread of the membership distribution. The closer 0 is to zero, the more
+probability is concentrated near the mixture categories; similarly, the larger 0
+is, the more probability is concentrated near the population average membership
+score.
+We assume that 0 and  are independent since they govern two unrelated qual-
+ities of the distribution of the GoM scores. We also assume that the prior distrib-
+ution on the GoM scores is independent of the prior distribution on the structural
+parameters. The joint distribution of the parameters and augmented data is
+p()p(0)p()
+N
+i=1
+D(gi
+|)
+N
+i=1
+J
+j=1
+K
+k=1
+gikxij
+kj
+(1 - kj )1-xij
+zijk .
+(10)
+In the absence of a strong prior opinion about hyperparameters 0 and , we take
+the prior distribution p() to be uniform on the simplex and p(0) to be a proper
+diffuse gamma distribution.
+Sampling from the posterior distribution.
+· Imputation step: We use a multinomial complete conditional distribution to
+obtain the (m + 1)st draw of latent class indicator variables zij for each i =
+1,...,N, j = 1,...,J:
+z(m+1)
+ij
+ Mult(1,p1,...,pK), pk
+ gikxij
+kj
+(1 - kj )1-xij .
+(11)
+· Posterior step:
+­ Sampling . We use the complete conditional distribution to obtain the
+(m + 1)st draw of conditional response probabilities kj ,k = 1,...,K,j =
+1,...,J:
+(m+1)
+kj
+ Beta 1 +
+N
+i=1
+xij zijk,1 +
+N
+i=1
+(zijk
+- xij zijk) .
+(12)
+­ Sampling g. We use the complete conditional distribution to obtain the (m +
+1)st draw of membership scores gi, i = 1,...,N:
+g(m+1)
+i
+ D 1
++
+J
+j=1
+zij1,...,K
++
+J
+j=1
+zijK .
+(13)
+­ Sampling 0 and . Here we require Metropolis­Hastings steps.
+512 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+Sampling 0. Let the prior p(0) be Gamma(,) with shape parameter  and
+inverse scale parameter . The full conditional distribution for 0, up to a constant
+of proportionality, is
+p(0
+|···)  -1
+0
+exp -  -
+K
+k=1
+k
+N
+i=1
+loggik 0
+(14)
+×
+(0)
+(10)··· (K0)
+N
+,
+where ··· in p(0
+|···) stands for all other variables.
+In order to obtain the (m + 1)st draw of 0 with the Metropolis­Hastings algo-
+rithm, we
+1. Draw a candidate point 
+0
+from a proposal distribution p(
+0
+|(m)
+0
+);
+2. Calculate the proposal ratio
+r0
+=
+p(
+0
+|···)p((m)
+0
+|
+0
+)
+p((m)
+0
+|···)p(
+0
+|(m)
+0
+)
+;
+3. Assign (m+1)
+0
+= 
+0
+with probability min{1,r0
+}, otherwise assign (m+1)
+0
+=
+(m)
+0
+.
+We take the proposal distribution p(
+0
+|(m)
+0
+) to be gamma with the expected
+value set at the value of the last draw, (m)
+0
+, and the shape parameter  > 1. The
+inverse scale parameter for the proposal distribution is then /(m)
+0
+, where  plays
+the role of the tuning parameter for the Metropolis­Hastings step. The proposal
+ratio for the (m + 1)st draw of 0 is the product of the likelihood component and
+the component that accounts for the asymmetric proposal distribution:
+r0
+= rL
+0
+· rA
+0
+,
+where
+rL
+0
+=
+
+0
+(m)
+0
+-1
+exp -  -
+K
+k=1
+k
+N
+i=1
+loggik 
+0
+- (m)
+0
+×
+(
+0
+) (1(m)
+0
+)··· (K(m)
+0
+)
+((m)
+0
+) (1
+0
+)··· (K
+0
+)
+N
+,
+rA
+0
+=
+(m)
+0
+
+0
+2-1
+exp - (m)
+0
+/
+0
+- 
+0
+/(m)
+0
+.
+DISABILITY AND GRADE OF MEMBERSHIP 513
+Sampling . The full conditional distribution for , up to a constant of propor-
+tionality, is
+p(|···)  exp 0
+K
+k=1
+k
+N
+i=1
+loggik
+(0)
+(10)··· (K0)
+N
+,
+(15)
+where ··· in p(|···) stands for all other variables.
+The Metropolis­Hastings sampling algorithm to obtain the (m + 1)st draw of 
+has three steps:
+1. Draw a candidate point  from a proposal distribution p(|(m));
+2. Calculate the proposal ratio
+r
+=
+p(|···)p((m)|)
+p((m)|···)p(|(m))
+;
+3. Assign (m+1) =  with probability min{1,r
+}, otherwise assign (m+1) =
+(m).
+We chose the proposal distribution for  to be Dir(|K(m)
+1
+,...,K(m)
+K
+). The
+proposal distribution is centered at the previous draw and has reasonably small
+variance for each component, (m)
+k
+(1-(m)
+k
+)/(K +1). The proposal ratio for  is
+r
+= exp 0
+K
+k=1
+N
+i=1
+loggik 
+k
+- (m)
+k
+((m)
+1
+0)··· ((m)
+K
+0)
+(
+1
+0)··· (
+K
+0)
+N
+×
+(K(m)
+1
+)··· (K(m)
+K
+)
+(K
+1
+)··· (K
+K
+)
+·
+((m)
+1
+)-1 ···((m)
+K
+)-1
+(
+1
+)(m)-1 ···(
+K
+)(m)-1
+,
+where  is a tuning parameter.
+4.2. Variational approximation. Variational approximation methods provide
+an alternative estimation approach by approximating a joint posterior distribution
+when the likelihood is intractable [see Jordan et al. (1999)]. They assume the model
+parameters are unknown but fixed. For the GoM model, the integrated likelihood
+for an individual
+p(x|,) =
+J
+j=1
+K
+k=1
+gkxj
+kj
+(1 - kj )1-xj D(dg),
+(16)
+does not have a closed form solution (the individual index i is omitted to sim-
+plify the notation). To compute the joint posterior distribution p(g,z|x,,) of
+the GoM scores g = (g1,...,gK) and the latent classifications variables z =
+514 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+(z1,...,zJ ), we consider N independent fully factorized joint distributions, one
+for each individual:
+q(g,z|,) = q(g| )
+J
+j=1
+q(zj
+|j ).
+Here, (,) is a set of free variational parameters, where  = (1,...,K) and 
+is the matrix jk, j = 1,...,J, k = 1,...,K. Assuming q(g| ) = Dir(g| ) and
+q(zj
+|j ) = Mult(1,j1,...,jK), we employ Jensen's inequality to approximate
+the log-likelihood by a lower bound which becomes a function of the variational
+parameters, (,).
+We derive (pseudo) maximum likelihood estimates of the model parameters
+(,) by using an approximate EM algorithm. In the E-step, we obtain values
+of variational parameters (,) that yield the tightest possible lower bound. In the
+M-step, we maximize the lower bound with respect to the parameters of the model,
+(,).
+Given the current estimates of the model parameters (,), the E step consists
+of updates:
+jk
+ xj
+kj
+(1 - kj )1-xj × (k) -
+K
+k=1
+k ,
+(17)
+k
+= k
++
+J
+j=1
+jk.
+(18)
+where (·) is the digamma function.
+Given the current values of the free parameters (,), we find (pseudo) MLE
+of  in a closed form:
+kj
+
+N
+i=1
+ijkxij ,
+where i is the individual index. Since no closed form solution is available for the
+pseudo MLE of , we need to use an iterative method to maximize the lower bound
+with respect to . The gradient and the Hessian for the Newton­Raphson algorithm
+are as follows:
+L
+k
+= N
+K
+k=1
+k
+- (k) +
+N
+i=1
+(ik) -
+K
+k=1
+ik ,
+(19)
+L
+k1
+k2
+= N k1=k2
+· (k1
+) -
+K
+k2=1
+k2
+.
+(20)
+Computations for the variational approximation are simpler and less time-
+consuming than for MCMC, but the quality of approximation depends on a specific
+functional form of the likelihood.
+DISABILITY AND GRADE OF MEMBERSHIP 515
+The C code for our implementation of the estimation algorithms for the GoM
+model is provided as part of supplemental material available at http://imstat.org/
+aoas/supplements.
+5. Extended GoM mixture and its estimation. Although there is no time
+dimension in the basic GoM model, the latent class representation essentially de-
+scribes individuals as stochastic "movers." Here, individuals may move between
+extreme profiles when they respond to different items on the questionnaire. With
+this observation, it is natural to extend the GoM model to incorporate potential
+"stayers," or those individuals that provide item responses in a deterministic fash-
+ion, analogous to longitudinal mover-stayer models [Blumen, Kogan and Hol-
+land (1955)]. In the extended GoM mixture model, one compartment represents
+"movers" determined by the GoM part and other compartments represent different
+kinds of "stayers" determined by specific extreme profiles or by particular cells in
+the contingency table. The extended GoM model can also be seen as a combina-
+tion of latent class and GoM mixture modeling analogous to the extended finite
+mixture model by Muthen and Shedden (1999).
+For our analysis in this paper, we introduce one compartment of "stayers" for
+a specific cell in the table, and leave the question of choosing the number and na-
+ture of compartments open. Our choice of the "stayers" cell was motivated by two
+observations. First, in the functional disability data from the NLTCS, the cell that
+corresponds to the healthy people who report no disabilities is particularly difficult
+to fit with the standard GoM model. Thus, the excess of healthy people can be
+thought of as a set of outliers with respect to the standard GoM model. Second, it
+is known that elderly people move not only from being healthy to being disabled
+but also from being disabled to being healthy [Gill, Hardy and Williams (2002),
+Gill and Kurland (2003), Lynch, Brown and Harmsen (2003), Manton (1988)].
+Therefore, even though the NLTCS participants are initially screened for chronic
+disability, it is reasonable to assume the presence of healthy "stayers" in the data.
+Accordingly, we assume that some proportion of people has zero probability to
+report a functional activity problem at the time of the survey and that everyone
+else has nonzero chances to report a functional disability problem according to
+the basic GoM model. Our specific example of extended GoM mixture model
+can also be thought of as analogous to zero-inflated Poisson regression [Lambert
+(1992)].
+Parameter estimation for the compartmental GoM model would be identical to
+the estimation for the standard GoM model if we knew how many individuals are
+healthy "stayers." Given that the number of healthy "stayers" is not observed, we
+need to modify parameter estimation taking into account a deterministic compo-
+nent.
+More formally, we assume existence of: (1) a deterministic compartment of
+healthy individuals and (2) a stochastic GoM compartment. We denote by  =
+(1,2) the respective weights such that 1
++ 2
+= 1. Assume individuals in the
+516 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+healthy compartment have no disabilities with probability 1. The distribution of
+responses for "movers" is given by the GoM model with parameters ,.
+We further augment the data with compartmental indicators to derive the follow-
+ing modifications for the MCMC sampling algorithm. Let N be the total number of
+individuals in the sample and n(m)
+2
+be the expected value of the all-zero cell count
+for the GoM compartment at the mth iteration. The expected value of the all-zero
+cell count from the healthy compartment, n(m)
+1
+, can be obtained by subtracting
+n(m)
+2
+from the observed all-zero cell count. Denote the number of individuals with
+at least one positive and at least one zero response in their response pattern by nmix.
+The total number of individuals from the GoM compartment at the mth iteration
+is then n(m)
+2
++ nmix. We let the prior distribution for compartmental weights  be
+uniform on the simplex, and update  at the end of the posterior step with
+(m+1)
+1
+= (m)
+1
++
+n(m)
+2
+- n(m+1)
+2
+N
+,
+(21)
+(m+1)
+2
+=
+n(m+1)
+2
++ nmix
+N
+= 1 - (m+1)
+1
+.
+(22)
+We can easily generalize the algorithm to more than two compartments.
+6. Model selection: Choice of dimensionality.
+Choice of dimensionality: Overview. Statistical model selection methods include
+the Pearson's chi-square goodness of fit test [Pearson (1900)], cross-validation
+techniques [Hastie, Tibshirani and Friedman (2001)], penalized likelihood criteria
+such as the Akaike information criterion (AIC) [Akaike (1973)], the Bayesian In-
+formation Criterion (BIC) [Pelleg and Moore (2000), Schwartz (1978)] and Bayes
+factors [Kass and Raftery (1995)], reversible jump MCMC techniques [Green
+(1995)], deviance information criteria (DIC) [Spiegelhalter et al. (2002)] and more
+recent simulation-based analogues to AIC and BIC, called Akaike Information
+Criterion Monte Carlo (AICM) and Bayesian Information Criterion Monte Carlo
+(BICM) [Raftery et al. (2007)], among others.
+Some of these criteria, AIC and BIC in particular, have been criticized as being
+not applicable for assessing the number of mixture components due to violations
+of the regularity conditions [McLachlan and Peel (2000)]. However, in spite of
+this, researchers continue to apply both criteria and to study their performance in
+a mixture context. Findings in population-level mixture models suggest that AIC
+tends to overestimate the correct number of components [Celeux and Soromenho
+(1996)], while BIC shows better results [Leroux (1992), Roeder and Wasserman
+(1997)].
+Questions of dimensionality choice in mixed membership or individual-level
+mixture models have been approached by several authors [Airoldi et al. (2007),
+Blei, Ng and Jordan (2001), Erosheva (2002), Griffiths and Steyvers (2004),
+DISABILITY AND GRADE OF MEMBERSHIP 517
+Pritchard, Stephens and Donnelly (2000)]. With one recent exception [Airoldi et
+al. (2007)], however, comparative performances of different selection criteria were
+not examined. Here, we provide an overview of several computationally feasible
+criteria and present results from a simulation study where we compare their per-
+formance in the context of the GoM model.
+Model selection criteria: Overview. The Pearson chi-square test is one of the
+most common goodness-of-fit tests. It is not easily applicable to large sparse ta-
+bles because of a large number of very small counts and, in the present context,
+because of the way in which the estimation is done, even if sparseness wasn't a
+problem, it wouldn't follow the usual chi-square distribution. We find it instruc-
+tive, nonetheless, to examine deviations between expected and observed counts
+for cells with large observed values via the sum of squared Pearson residuals, see
+Bishop, Fienberg and Holland (1975). We refer to this criterion as the truncated
+sum of squared Pearson residuals (SSPR) criterion or 2
+tr
+.
+To calculate the truncated SSPR criterion, one needs to obtain expected values
+for selected response patterns r = (r1,...,rJ ), where rj
+= 0 or 1. For example,
+using draws from the posterior distribution, (s)
+k
+and (s)
+kj
+, s = 1,...,S, and a draw
+g(s) = (g(s)
+1
+,...,g(s)
+K
+) from Dir((s)), the expected count for response pattern r
+can be computed as
+Expected Count =
+1
+S
+S
+s=1
+J
+j=1
+K
+k=1
+g(s)
+k
+(s)
+kj
+rj 1 - (s)
+kj
+1-rj × N.
+Note that label switching could present a problem for calculating posterior means
+and the model selection criteria based on them [Stephens (2000)].
+For the variational approximation, the expected count for response pattern r can
+be obtained as follows. Let ^
+ and ^
+ be the pseudo MLE obtained via variational
+approximation and let g(s), s = 1,...,S, be draws from Dir(^
+), for some large S
+(e.g., S = 5000). Then, the expected count for response pattern r can be computed
+as above but with ^
+kj in place of (s)
+kj
+and with g(s)
+k
+computed using Dir(^
+).
+A general formulation of the BIC is based on the log-likelihood (x;) and a
+maximum likelihood estimate ^
+:
+BIC = -2 (x; ^
+) + p log(N),
+where p is the number of free parameters in the model and N is the number of data
+points. To obtain the BIC for the GoM model, we need to evaluate the integrated
+log-likelihood (x;) at the maximum likelihood estimate of the parameter vector
+ = (,). Since the GoM integrated likelihood is intractable, we use variational
+methods described in Section 4.1 to obtain an approximation to the BIC:
+BIC = -2 ~(x; ^
+, ^
+) + p log(N),
+518 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+where ^
+ and ^
+ are the (pseudo) maximum likelihood estimates obtained via varia-
+tional approximation and ~(x; ^
+, ^
+) is the lower bound on the log-likelihood. Mod-
+els with larger values of BIC are preferable.
+Bayesian measures of model complexity and fit, namely, DIC, AICM, and
+BICM, are analogous to AIC and BIC but are based solely on posterior simula-
+tion. While these criteria are attractive because of their computational simplicity
+for a given MCMC simulation, they may present other challenges such as choice
+of the parameters in focus [Spiegelhalter et al. (2002)].
+A general formulation of DIC is based on the concepts of Bayesian deviance
+and the effective number of parameters. Bayesian deviance is defined as
+D() = -2 () + 2log(h(x)),
+where () = logp(x|) and h(x) is a function of the data only. Defining the
+effective number of parameters as
+pD
+= D() - D(),
+we compute DIC as follows:
+DIC = D() + 2pD.
+If we focus on GoM parameters  = (g,), we can compute a version of DIC
+directly using S draws from the posterior distribution, g(s)
+ik
+and (s)
+kj
+, s = 1,...,S.
+The two pieces that we need to compute for DIC are
+D(g,) = -2
+N
+i=1
+J
+j=1
+log
+K
+k=1
+gikkj
+xij (1 - kj )1-xij ,
+where gik
+= 1
+S
+S
+s=1
+g(s)
+ik
+, and kj
+= 1
+S
+S
+s=1
+(s)
+kj
+, and,
+D(g,) = -2
+1
+S
+S
+s=1
+N
+i=1
+J
+j=1
+log
+K
+k=1
+g(s)
+ik
+(s)
+kj
+xij 1 - (s)
+kj
+1-xij .
+Models with smaller values of DIC are preferable.
+AICM is a penalized version of the posterior mean of the log-likelihoods
+AICM = 2 () - s2
+()
+,
+that can be obtained using only the draws from the posterior simulation [Raftery
+et al. (2007)]. For the GoM model, the two pieces we need to compute are
+() =
+1
+S
+S
+s=1
+(s) and s2 =
+1
+S
+S
+s=1
+(s) - () 2,
+where  = (g,). Notice that () = -D()/2.
+DISABILITY AND GRADE OF MEMBERSHIP 519
+7. Simulation study. We conducted a simulation study to investigate perfor-
+mance of the MCMC and variational approximation methods with respect to para-
+meter recovery and dimensionality selection. Here, we briefly report main findings
+from this study.
+We selected data generating designs to reflect several important features of func-
+tional disability data. Most noticeably, contingency tables on disability data often
+have a large number of zero or very small observed cell counts and several very
+large cell counts. Large cell counts typically include the all-zero and the all-one
+response patterns.
+We considered 3- and 7-profile data generation scenarios. In the first scenario,
+we generated 5,000 individual responses on 16 binary items using the GoM model
+with K = 3 extreme profiles. We chose the profiles to be considered as "healthy,"
+"disabled" and "intermediate" by their conditional response probabilities. Respec-
+tive proportions of the profiles were 0.7,0.2 and 0.1, and the hyperparameter was
+set at 0
+= 0.25 to reflect the fact that individual responses to most items come
+from one extreme profile.
+In the second scenario, we generated 5,000 individual responses to 10 bi-
+nary items using the GoM model with 7 extreme profiles. We chose conditional
+response probabilities for 4 profiles so that they could be considered as "very
+healthy," "healthy," "disabled" and "very disabled." The other 3 intermediate pro-
+files did not follow the ordering. Profile proportions ranged from 0.05 for one of
+the intermediate profiles to 0.4 for the "healthy" profile, and the hyperparameter
+was set at 0
+= 0.2.
+Under both scenarios, we carried out parameter estimation using the MCMC
+and variational approximation methods for the true values of K. The variational
+methods consistently provided better estimation for the observed count at the all-
+zero pattern, however, the MCMC approach yielded an overall better fit for the sec-
+ond scenario with K = 7. For K = 3, conditional probabilities for the "healthy"
+and "disabled" profiles were recovered very well with both estimation methods.
+For the intermediate profile, the variational approximation consistently overesti-
+mated and the MCMC consistently underestimated the conditional response prob-
+abilities. Parameter recovery was noticeably better for K = 3 than for K = 7.
+This could indicate that the number of items and the sample size in the second
+scenario were too small to provide reliable distinction among different grades of
+membership, given the selected extreme profiles and hyperparameter values. Vari-
+ational estimates of the profiles' proportions were closer to the true values than
+corresponding MCMC estimates under both scenarios. In addition, the MCMC
+estimates of profile proportions had smaller range than the VA estimates.
+For the MCMC method, given a sufficiently long run, the starting values of 
+did not seem to influence the results, up to a relabeling of the extreme profiles. For
+smaller values of K, the posterior means obtained through MCMC simulations
+were very similar for all starting points considered. For this reason we did not
+520 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+TABLE 1
+Choices of optimal K according to different model selection criteria
+Criterion Method K = 3 K = 7
+2
+tr VA 3 7
+2
+tr MCMC 5 7
+BIC VA 2 7
+DIC MCMC 5 9
+AICM MCMC 3 7
+BICM MCMC 2 5
+use several starting points in higher dimensional cases that would have required
+substantial increases of computing time.
+To investigate performance of different fit indices, we fitted the generated data
+sets using both the MCMC and variational methods separately for several values
+of K. For true K = 3, models fitted with K = 2,3,4,5 were considered; for
+true K = 7, models fitted with K = 5,7,9 were considered. Table 1 summarizes
+results of six goodness-of-fit criteria, two of which rely on the variational approx-
+imation method, while the rest rely on the full MCMC calculations. The values
+of 2
+tr
+were calculated for response patterns with observed counts  30 in the first
+case and  40 in the second case.
+We see that 2
+tr
+obtained with the variational method and AICM criteria perform
+well for both data generating scenarios, while BICM underestimates and DIC over-
+estimates the true number of profiles in both cases. The variational approximation
+to BIC underestimates the model complexity for the 3-profile case, while it points
+to the true optimal number of profiles in the 7-profile case.
+8. Analysis of the NLTCS functional disability data. Data on 16 binary
+ADL and IADL items, pooled across four survey waves, 1982, 1984, 1989 and
+1994, form a 216 contingency table.2 The total sample size is 21,574. Item mar-
+ginal frequencies range from 0.1 for difficulty with eating to 0.7 for doing heavy
+housework. About 80% of cells in the contingency table have observed counts that
+are less than 5; 24 cells have observed counts greater than 100. These 24 most
+frequent response patterns account for 42% of the total observations (Table 2).
+From an interpretative standpoint, it is often desirable to have data that satisfy
+latent unidimensionality, as in the well-known Rasch model. We formally tested
+the hypothesis of latent unidimensionality, following the approach of Holland
+and Rosenbaum (1986), using series of Mantel­Haenszel tests to detect negative
+conditional association among the 16 variables. We concluded that no monotone
+2The full table is available for downloading from STATLIB at http://lib.stat.cmu.edu/ under the
+label NLTCS.
+DISABILITY AND GRADE OF MEMBERSHIP 521
+TABLE 2
+Expected cell counts for 24 most frequent response patterns under the basic GoM model with K profiles
+Number of latent profiles K
+n Response pattern Observed 3 4 5 6 7 8 9 10 15
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3853 2569 2055 2801 2889 3093 2941 3269 3016 3031
+2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 216 225 172 177 186 180 180 202 205 187
+3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1107 1135 710 912 993 914 937 1010 944 940
+4 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 188 116 76 113 200 199 181 190 198 201
+5 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 122 64 88 58 199 90 89 116 127 127
+6 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 351 344 245 250 274 274 259 331 303 357
+7 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 206 20 23 116 86 80 137 116 111 149
+8 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 303 200 126 324 255 236 213 273 264 325
+9 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 182 44 71 170 169 162 200 172 187 219
+10 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 108 51 39 162 105 85 117 97 108 116
+11 0 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 106 32 94 94 123 125 133 142 157 136
+12 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 195 219 101 160 46 25 24 25 31 27
+13 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 198 127 111 108 341 170 169 189 200 163
+14 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 196 41 172 90 104 224 214 174 187 160
+15 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 123 96 86 132 131 120 109 95 108 110
+16 0 0 0 0 0 0 1 0 0 0 1 1 1 0 0 0 176 136 162 97 67 167 149 152 167 157
+17 0 0 1 0 0 0 1 0 0 0 1 1 1 0 0 0 120 144 104 41 57 47 96 75 72 80
+18 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 101 127 90 54 41 68 72 70 74 124
+19 0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 102 44 38 22 18 18 85 103 85 61
+20 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 107 88 104 96 84 87 43 37 31 73
+21 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 104 269 239 202 52 50 50 63 53 66
+22 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 164 214 246 272 274 276 224 166 143 115
+23 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 153 291 261 266 250 230 235 189 167 137
+24 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 660 233 270 362 419 418 582 612 474 423
+522 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+unidimensional latent structure model (e.g., one-factor or unidimensional logistic
+item response models) can provide an acceptable fit for the NLTCS data on 16
+ADL/IADL items. Having rejected latent unidimensionality, our next step is to use
+the GoM analysis to determine characteristics and the number of disability profiles
+in the data.
+The most apparent feature of the data is the very large observed count of
+"healthy" people. Almost 18% report no disabilities (Table 2), despite the fact
+that the majority of the NLTCS survey participants had been screened-in earlier
+as chronically disabled. A large fraction of "healthy" respondents includes disabil-
+ity recoveries, as well as survey supplements of the healthy and oldest-old in the
+1994 wave. Since most of the "healthy" individuals have been identified earlier as
+chronically disabled, it is important to incorporate these responses in our model.
+We use the compartmental GoM model to estimate weights of deterministically
+healthy and partially disabled components. In doing so, we allow the extended
+GoM model to fit the observed count for the all-zero pattern. In addition, we ex-
+amine the impact of the introduction of the "healthy" compartment on parameter
+estimates and on model choice.
+8.1. GoM analysis.
+MCMC sampling. We applied the fully Bayesian approach from Section 4 to es-
+timate the posterior distribution of the GoM model parameters with the number of
+extreme profiles ranging from K = 3 to K = 15. Extreme profiles for K = 2 were
+identified as "healthy" and "disabled," making the K = 2 GoM model a monotone
+unidimensional latent structure model. Having rejected latent unidimensionality
+earlier, we only considered results for K = 3 and beyond in the rest of our analy-
+sis.
+We expected individual vectors of membership scores to be dominated by one
+component, hence, we set the prior for 0 to be Gamma(2,10). We chose the
+prior for the relative proportions  to be uniform on the simplex and put uniform
+independent priors on the conditional response probabilities .
+We fit the models sequentially in the order of K. For the GoM model with K
+extreme profiles, we set starting values for  to the estimated conditional response
+probabilities from the latent class model with K classes. We took the posterior
+mean of 0 from the GoM model with K - 1 extreme profiles to be the starting
+value for 0 for the GoM model with K extreme profiles. We chose starting values
+for the hyperparameters  to be equal to the latent class weights estimated from
+the K class model.
+For each value of K, we adjusted the tuning parameters  (for 0) and  (for )
+to reach a compromise between the acceptance rates of the Metropolis­Hastings
+steps and the amount of mixing. The acceptance rates for 0 and  varied respec-
+tively from 11% and 28% in lower dimensions to 5% and 9% in higher dimensions.
+Since the acceptance rates were low, we introduced thinning parameter q and kept
+DISABILITY AND GRADE OF MEMBERSHIP 523
+every qth draw and discarded the rest; q varied from 10 in lower dimensions to
+140 in higher dimensions.
+Choosing the length of a burn-in period did not appear to be a problem with our
+data. The chains generally did not experience long burn-in periods, except when
+starting values for the hyperparameters were very far from the posterior means.
+The burn-in period varied from 10,000 iterations in lower dimensions to 60,000 in
+higher dimensions.
+For each parameter, we monitored univariate convergence via Geweke diagnos-
+tics, and Heidelberger and Welch stationarity and interval halfwidth tests, available
+from the CODA package [Best, Cowles and Vines (1996)]. In addition, we visu-
+ally examined plots of successive iterations. To assess convergence of the mul-
+tivariate posterior, we examined successive values of the log-likelihood with the
+same set of methods. The chains needed far fewer iterations to converge in poste-
+rior means than they needed to converge in distribution for all parameters and the
+log-likelihood.
+We ran all chains long enough to reach acceptable convergence levels. We had
+to consider larger number of iterations for higher values of K to accommodate
+slow convergence of the hyperparameters due to slow mixing of the chains. The
+additional iterations needed to satisfy convergence criteria for hyperparameters
+(after the other parameters have reached convergence) had negligible effect on the
+posterior means of the conditional response probabilities.
+Model selection. Table 2 provides 24 response patterns with observed cell counts
+ 100 and corresponding expected counts obtained using draws from the posterior
+distribution for each K = 3,...,9,10,15. We observe that the model with K = 9
+replicated the marginal pattern abundance best. It is especially evident that models
+with K = 10 and K = 15 did not fit the three largest cell counts as well as the
+9-profile model.
+To select the number of profiles, we used all of the criteria that performed well
+in our simulation study described in Section 6 (the truncated SSPR criterion, the
+variational approximation to the BIC, and the AICM). We also calculated DIC for
+a further comparison, although it overestimated the correct number of profiles in
+the simulation study.
+Table 3 gives values of the truncated SSPR criterion, 2
+tr
+, for three different
+levels of truncation, over cells with observed counts  100,25 and 10. All three
+criteria indicate that the K = 9 model has a better fit in an absolute sense, that is,
+without correcting for differences in the degrees of freedom.
+Figure 1 shows plots of the DIC, the BIC approximation, the AICM and the
+truncated SSPR criterion for the 100 level of truncation. All criteria agree that the
+optimal number of profiles is greater than 7. Recall that in the 7-profile simulation
+study the AICM, the BIC approximation, and the truncated SSPR criterion all
+obtained the correct number of components. For the NLTCS data, these criteria
+point to 7, 10 and 9 profiles, respectively. Although the DIC overestimated the
+524 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+TABLE 3
+Truncated sum of squared Pearson residuals, 2
+tr, for the basic GoM model with K profiles, with
+different levels of truncation
+Number of latent profiles K
+Level 3 4 5 6 7 8 9 10 15
+100 4889 5032 1840 2202 2458 1908 1582 1602 1604
+25 14562 10458 6153 4337 3566 2194 1803 1997 1946
+10 52288 20625 10839 7766 6251 4534 3931 4276 4258
+correct number of profiles in our simulation study, it indicates that 9 profiles is the
+optimal number for the NLTCS functional disability data. The value of K = 9 is
+in agreement with the results from truncated SSPR, but is less than the optimal
+choice of K = 10 identified by BIC.
+We used the following steps to verify that no label switching had occurred in
+the MCMC chains. First, we postulated that label switching occasions should be
+visible as jumps in trace plots of the MCMC iterations when the extreme profiles
+are well separated in the multidimensional space. We found extreme profiles to
+FIG. 1. Goodness-of-fit criteria for the basic GoM model.
+DISABILITY AND GRADE OF MEMBERSHIP 525
+TABLE 4
+Posterior mean estimates for the basic GoM model with 9 profiles
+Extreme profile number (k)
+1 2 3 4 5 6 7 8 9
+^
+k,1 0.001 0.035 0.002 0.005 0.239 0.002 0.738 0.001 0.002
+^
+k,2 0.001 0.071 0.003 0.269 0.891 0.437 0.967 0.001 0.001
+^
+k,3 0.001 0.285 0.001 0.706 0.994 0.875 0.976 0.001 0.004
+^
+k,4 0.009 0.158 0.029 0.076 0.674 0.080 0.970 0.004 0.013
+^
+k,5 0.070 0.550 0.171 0.453 0.974 0.627 0.998 0.039 0.266
+^
+k,6 0.011 0.114 0.026 0.208 0.774 0.317 0.894 0.005 0.026
+^
+k,7 0.008 0.985 0.973 0.607 0.999 0.948 0.999 0.007 0.761
+^
+k,8 < 0.001 0.524 0.019 0.005 0.669 0.034 0.955 < 0.001 0.011
+^
+k,9 0.001 0.909 0.093 0.034 0.864 0.412 0.997 0.001 0.208
+^
+k,10 0.001 0.822 0.014 0.001 0.694 0.067 0.998 0.001 0.055
+^
+k,11 0.002 0.977 0.080 0.077 0.920 0.856 0.995 0.002 0.752
+^
+k,12 0.042 0.692 0.146 0.933 0.950 0.998 0.936 0.076 0.448
+^
+k,13 0.037 0.836 0.109 0.219 0.838 0.847 0.894 0.037 0.849
+^
+k,14 0.012 0.626 0.013 0.002 0.230 0.144 0.908 0.007 0.282
+^
+k,15 0.022 0.489 0.055 0.029 0.345 0.068 0.909 0.010 0.127
+^
+k,16 0.024 0.386 0.021 0.007 0.061 0.027 0.768 0.017 0.099
+^
+k 0.095 0.107 0.111 0.114 0.115 0.114 0.114 0.114 0.114
+^
+0 0.095
+ADL items: (1) eating, (2) getting in/out of bed, (3) getting around inside, (4) dressing, (5) bathing,
+(6) using toilet. IADL items: (7) doing heavy housework, (8) doing light housework, (9) doing laun-
+dry, (10) cooking, (11) grocery shopping, (12) getting about outside, (13) traveling, (14) managing
+money, (15) taking medicine, (16) telephoning.
+be well separated in the multidimensional space for all K < 9. That is, there was
+at least one item for which posterior means were at least two standard deviations
+away from each other for each pair of the profiles (Table 4). We then visually
+monitored chains to identify jumps that could correspond to label permutations
+in the posterior distribution. We observed no jumps for models with K < 9 and
+concluded that no label switching occurred in those chains.
+We weren't able to carry out analogous assessments for the GoM models with
+K = 9 and higher since the profiles were no longer well separated (compare, e.g.,
+profiles k = 1 and 8 in Table 4.3) It is possible that label-switching did occur in
+those cases which would question validity of posterior mean estimates and the
+use of DIC and AICM. However, given that the approximate BIC, which is not
+3Standard deviation estimates are provided as part of supplemental material available at
+http://imstat.org/aoas/supplements.
+526 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+impacted by label switching, indicated K = 10, a choice of an optimal K around
+that value seems reasonable.
+We examined the estimated profiles for K = 7 and K = 9 GoM models. Con-
+trary to our expectations, we did not find the interpretation of the 7-profile model
+to be more appealing from a substantive point of view. Therefore, we report the
+estimated profiles for the 9-profile GoM model that is identified as the optimal
+by truncated SSPR criteria. Table 4 provides posterior means and standard devi-
+ations for the conditional response probabilities, kj
+= pr(xj
+= 1|gk
+= 1); these
+are probabilities of being disabled on activity j for a complete member of ex-
+treme profile k. Estimation via variational methods yielded similar results in terms
+of profile interpretation, although variational estimates of conditional probabilities
+were generally closer to the boundaries of the parameter space.
+Given that the fit of the all-zero pattern is still not very good for the 9-profile
+GoM model, we turn to the extended GoM mixture model, incorporating a "deter-
+ministically" healthy compartment.
+8.2. The extended GoM mixture analysis.
+MCMC sampling. We carried out the extended GoM mixture analysis for K =
+3,...,9,10, as described in Section 5. We chose initial values, ran MCMC sam-
+plers, and determined convergence similarly as in Section 8.1. We set an initial
+value for the weight of the healthy compartment 1 to be a positive fraction that is
+less than the observed proportion of individuals with all-zero responses.
+Model selection. Table 5 provides the expected and observed cell counts for the
+23 most frequent response patterns; we excluded the all-zero pattern since the ex-
+tended GoM mixture fits it precisely. It is difficult to choose among K = 7,8 or 9
+based on the expected counts in Table 5, but the model for K = 8 shows the best fit
+as indicated by truncated SSPR over the differing levels of truncation in Table 6.
+Analogously to the standard GoM model, we computed a version of AICM and
+a version of DIC obtained directly from the MCMC output. The AICM plot in
+Figure 2 picks K = 7 profiles, while the DIC plot in Figure 2 suggests the choice
+of K = 8 profiles for the extended GoM mixture model, which is consistent with
+the SSPR selection. We therefore examine the 8-profile extended GoM mixture
+model.
+Table 7 provides the conditional response probabilities for the 8 profiles that
+we interpret in detail at the end of this section.4 Similarly to results from the stan-
+dard GoM model with 9 profiles, estimated profile weights ^
+k, k = 1,...,K, are all
+close to 1/K. Estimated proportions of the healthy compartment for K = 3,...,10
+range from 14% to around 16% (Table 8). The estimated proportion of determin-
+istically healthy individuals from the 8-profile GoM mixture model is ^
+1
+= 0.15
+with the standard error of 0.006.
+4Standard deviation estimates are provided as part of supplemental material available at
+http://imstat.org/aoas/supplements.
+DISABILITY AND GRADE OF MEMBERSHIP 527
+TABLE 5
+Expected cell counts for 23 most frequent response patterns under extended GoM mixture model
+with K profiles and a healthy compartment
+Number of latent profiles K
+n Response pattern Observed 3 4 5 6 7 8 9 10
+2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 216 77 133 139 151 136 152 201 148
+3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1107 587 661 835 856 799 897 933 845
+4 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 188 142 162 203 204 197 194 258 167
+5 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 122 209 59 118 84 86 113 173 97
+6 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 351 117 195 170 200 213 225 279 212
+7 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 206 14 21 143 184 176 125 94 150
+8 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 303 229 247 253 260 246 255 310 236
+9 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 0 182 56 63 213 230 192 195 156 197
+10 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 108 75 73 122 122 114 98 113 87
+11 0 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 106 56 76 119 120 106 158 125 102
+12 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 195 38 26 38 29 26 36 33 31
+13 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 198 287 139 222 183 183 177 244 148
+14 0 0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 196 107 106 71 191 193 188 164 190
+15 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 123 138 76 115 117 105 96 98 116
+16 0 0 0 0 0 0 1 0 0 0 1 1 1 0 0 0 176 85 121 75 166 142 160 149 169
+17 0 0 1 0 0 0 1 0 0 0 1 1 1 0 0 0 120 119 86 44 38 76 79 66 96
+18 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 101 65 70 45 68 60 73 74 98
+19 0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 102 33 32 15 17 89 108 106 111
+20 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 107 74 99 64 99 41 40 39 40
+21 0 1 1 1 1 1 1 1 1 1 1 1 1 0 1 0 104 89 90 39 57 52 66 71 92
+22 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 164 198 243 218 269 222 189 155 148
+23 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 153 262 240 222 200 241 212 192 172
+24 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 660 223 272 346 359 610 581 556 564
+Comparison of results for the basic and the extended GoM mixture models. The
+optimal dimensionality values identified by truncated SSPR, AICM and DIC cri-
+teria for the extended GoM mixture model are one less than the correspond-
+TABLE 6
+Truncated sum of squared Pearson residuals, 2
+tr, for extended GoM mixture models with K profiles
+and a healthy compartment, with different levels of truncation
+Number of latent profiles K
+Level 3 4 5 6 7 8 9 10
+100 6169 4493 2541 2171 1666 1139 1265 1285
+25 13611 8689 4605 4246 2582 1739 2211 2276
+10 24638 14736 9120 6647 4678 3738 4028 4215
+528 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+FIG. 2. DIC (left) and AICM (right) for the GoM mixture model.
+ing optimal values for the basic GoM model. The presence of the deterministic
+healthy compartment therefore reduces the optimal number of profiles by one in
+the NLTCS disability data.
+The preferred dimensionality choices are K = 9 and K = 8 for the basic GoM
+and extended GoM mixture models, respectively. Comparing DIC values for these
+models, we observe that the extended GoM mixture model provides an improved
+fit to the data. Comparing the estimated conditional response probabilities, we ob-
+serve that all but two "healthy" profiles from the 9-profile basic GoM model match
+seven estimated profiles from the 8-profile GoM mixture model closely (see k = 6
+in Table 7 and k = 7 in Table 4, e.g.). Moreover, the two "healthy" profiles from
+the 9-profile basic GoM model do not differ by much (see k = 1 and k = 8 in
+Table 4); in fact, taking standard errors into account, they are identical.5 The un-
+matched profile from the 8-profile GoM mixture model (k = 1 in Table 7) is the
+new healthy profile.
+To aid interpretation, we compare the profiles' estimated conditional response
+probabilities to the average probabilities for each functional disability item. We
+would like to see by how much the frequency of disability occurrence for each
+profile differs from the average frequency of occurrence of the same functional
+disability in the population as a whole. Relative frequencies for profile k, obtained
+as
+kj /j , j = 1,...,16,
+(23)
+where j is the marginal probability for item j, indicate how frequently each dis-
+ability is observed for a complete member of the extreme profile in relation to the
+population average (Table 9). For example, a complete member of extreme profile
+6 is about seven times more likely to need help with eating than individuals in the
+NLTCS sample need on average (11%).
+5MCMC estimation in our simulation studies identified emerging identical, up to a standard error,
+profiles when the number of fitted profiles was greater than the number of profiles that generated the
+data.
+DISABILITY AND GRADE OF MEMBERSHIP 529
+TABLE 7
+Posterior mean estimates for the extended GoM mixture model with 8 extreme profiles and a
+healthy compartment
+Extreme profile number (k)
+1 2 3 4 5 6 7 8
+^
+k,1 0.004 0.243 0.002 0.008 0.002 0.740 0.034 0.002
+^
+k,2 0.005 0.900 0.448 0.288 0.003 0.970 0.079 0.001
+^
+k,3 0.003 0.996 0.889 0.742 0.001 0.978 0.296 0.005
+^
+k,4 0.025 0.685 0.083 0.081 0.029 0.972 0.158 0.013
+^
+k,5 0.196 0.978 0.634 0.445 0.165 0.998 0.554 0.263
+^
+k,6 0.039 0.783 0.327 0.212 0.024 0.897 0.116 0.024
+^
+k,7 0.101 0.999 0.946 0.604 0.938 0.999 0.982 0.772
+^
+k,8 0.001 0.686 0.032 0.005 0.017 0.956 0.525 0.013
+^
+k,9 0.002 0.873 0.412 0.036 0.088 0.998 0.908 0.221
+^
+k,10 0.002 0.705 0.065 0.001 0.014 0.998 0.820 0.057
+^
+k,11 0.038 0.923 0.858 0.081 0.067 0.995 0.975 0.769
+^
+k,12 0.234 0.949 0.998 0.916 0.146 0.934 0.697 0.444
+^
+k,13 0.180 0.838 0.853 0.212 0.095 0.892 0.833 0.834
+^
+k,14 0.046 0.222 0.141 0.002 0.010 0.909 0.619 0.278
+^
+k,15 0.057 0.343 0.066 0.029 0.053 0.909 0.484 0.122
+^
+k,16 0.066 0.054 0.025 0.005 0.020 0.768 0.379 0.092
+^
+ 0.104 0.120 0.126 0.129 0.130 0.130 0.130 0.130
+^
+0 0.103
+^
+1 0.146
+ADL items: (1) eating, (2) getting in/out of bed, (3) getting around inside, (4) dressing, (5) bathing,
+(6) using toilet. IADL items: (7) doing heavy housework, (8) doing light housework, (9) doing laun-
+dry, (10) cooking, (11) grocery shopping, (12) getting about outside, (13) traveling, (14) managing
+money, (15) taking medicine, (16) telephoning.
+Table 9 shows values for relative probabilities greater than 1 in red ink. Among
+estimated extreme profiles in the 8-profile GoM mixture model, we find one
+healthy profile (k = 1) with all relative frequencies less than the corresponding
+population averages, while all other profiles have at least one activity with relative
+TABLE 8
+Posterior mean estimates and standard deviations of the proportion in the healthy compartment for
+the extended GoM mixture model with K profiles
+K 3 4 5 6 7 8 9 10
+^
+1 0.162 0.159 0.152 0.148 0.152 0.146 0.141 0.154
+SD( ^
+1) 0.0024 0.004 0.0045 0.0054 0.0047 0.0061 0.006 0.0045
+530 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+TABLE 9
+Functional disabilities average frequencies and relative frequencies by profile for the K = 8 GoM
+mixture model and for two healthy profiles from the basic K = 9 GoM model (green labels).
+Relative frequencies greater than 1 are in red
+frequency greater than the population average. In addition, we find that each esti-
+mated profile in the 8-profile GoM mixture model has a unique set of functional
+disabilities with relative frequencies greater than the corresponding population av-
+erages (no two rows in the table have identical placements of values in red ink).
+We can say then that the estimated 8-profile GoM mixture solution defines a set
+of admissible profiles in the terminology of Berkman, Singer and Manton (1989).
+Moreover, taking into account standard errors of the estimates (not shown), we
+notice that all 8 disability profiles are now well separated.
+DISABILITY AND GRADE OF MEMBERSHIP 531
+FIG. 3. Functional disabilities relative frequencies for extreme profile pairs for the K = 8 GoM
+mixture model. Horizontal lines indicate average frequencies in the sample.
+Extreme profiles in black in Table 9 are the seven profiles from the 8-profile
+GoM mixture model that match corresponding profiles from the 9-profile basic
+GoM model closely. The two differing healthy profiles from the basic 9-profile
+GoM model are shown in green ink, and the new healthy profile from the GoM
+mixture model is in blue.
+While Table 9 allows us to view all estimated profiles in relation to one other, it
+is not easy to trace each profile separately on this plot. Pairwise plots in Figure 3
+allow us to view individual profiles in detail. Profile k = 2 exhibits relative con-
+ditional probabilities greater than 1 for all activities except managing money and
+telephoning. Relative probabilities for transferring in/out of bed, dressing, toilet-
+ing, and light housework for this profile are at least three times the corresponding
+averages in the population.
+Profiles k = 3 and k = 4 show patterns of frequencies that are somewhat similar
+to each other, indicating frequent difficulties with mobility activities, with profile 3
+having noticeably higher frequencies on laundry, grocery shopping, and traveling.
+Profile k = 6 is the profile of seriously disabled with most of the disability fre-
+quencies greater than 0.8 and greater than the corresponding average frequencies
+532 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+in the population. For a complete member of this profile, difficulties with each eat-
+ing, dressing, light housework, managing money, taking medicine, and telephoning
+occur at least four times more often than in the NLTCS sample on average. Profile
+k = 5 points to low probabilities for most ADL and IADL items, but has a spike
+at the probability for doing heavy housework. An individual corresponding to this
+profile has difficulties with heavy housework one and a half times more often than
+the average chronically disabled person. This is a significant increase, given that
+the average frequency to experience difficulty with heavy housework is 0.68 in the
+NLTCS sample.
+Profile k = 8 shows disability frequencies that are slightly higher than the aver-
+age for heavy housework, grocery shopping, traveling and managing money. Pro-
+file k = 7 exhibits high frequencies for all IADL items, especially for those with
+significant cognitive components such as cooking, managing money and telephon-
+ing.
+Having the profile interpretations at hand, we recall that they represent extreme
+types of chronically disabled individuals aged 65 and over. Apart from an esti-
+mated 15% of healthy individuals who have no disabilities with probability one,
+each (partially disabled) person in the population can be described through a vec-
+tor of membership scores for the eight estimated profiles. Since the hyperparameter
+estimate ^
+0
+= 0.103 is small, the posterior distribution of grades of membership
+is bathtub-shaped, which means that membership vectors are dominated by one
+component for a majority of individuals. Even though we focus on the population
+parameters in this paper, it is possible to use MCMC output to examine posterior
+distributions for each individual. One could also compute posterior estimates of
+various quantities of interest, such as the percentage of individuals in the sample
+that have membership vectors dominated by one profile (with gk > 0.95, e.g.).
+9. Discussion. Models that allow for specification of continuous latent con-
+structs are increasingly popular among researchers in the social, behavioral, and
+health sciences since many latent variables of interest can be thought of as hav-
+ing fine gradations. When substantive theory justifies distinct latent categories as
+well as continuous latent variables, approaches that describe heterogeneity of indi-
+viduals with respect to those discrete categories often focus on class membership
+probabilities. To give a few examples, Foody et al. (1992) emphasize the utility of
+posterior probabilities of class membership in the area of remote sensing; Muthen
+and Shedden (1999) model the class membership probability as a function of co-
+variates in a study of alcohol dependence; Roeder, Lynch and Nagin (1999) address
+a similar issue by modeling uncertainty in latent class assignments in a criminol-
+ogy case study. The GoM model also addresses the issue of uncertainty in class
+membership, but by using a different approach that directly incorporates degrees
+of membership as model parameters.
+Standard methods of estimating the GoM model described in Manton, Wood-
+bury and Tolley (1994) do not rely on the GoM representation as a discrete
+DISABILITY AND GRADE OF MEMBERSHIP 533
+mixture model and have questionable properties [Haberman (1995)], including
+instability of MLEs due to ridges in the likelihood function which are often
+present. The Bayesian GoM estimation algorithm developed originally in Ero-
+sheva (2002, 2003), on which the present paper is largely based, leans heavily on
+the structure provided by the latent class representation and has several advantages
+over likelihood-based estimation procedures for the GoM model. It is worth em-
+phasizing one more time that the developed latent class representation of the GoM
+model places identical probability structure on observable variables and, hence,
+cannot possibly be distinguished from the continuous mixture GoM model on the
+basis of data [Erosheva (2006)].
+Understanding the latent class representation of the GoM model, and thus view-
+ing it as a special instance of individual-level or mixed membership models, makes
+it easier to establish direct connections with models from other areas. For exam-
+ple, although a clustering model with admixture developed for genetic data by
+Pritchard, Stephens and Donnelly (2000) and the standard GoM model appear to
+be quite different, they are both instances of the more general mixed-membership
+representation. The generalization is flexible enough to accommodate models for
+other data structures such as text documents [Erosheva, Fienberg and Lafferty
+(2004)].
+Our goal for the NLTCS analysis in this paper was to explore the population
+characteristics of disability patterns as measured by the 16 ADL and IADL vari-
+ables. Incorporation of covariates in the GoM modeling would be an obvious next
+step of great interest to social science researchers.
+The preferred number of components identified by statistical criteria represents
+our best guess at the latent dimensionality in the NLTCS data under the GoM
+mixture model with a deterministically healthy compartment. Our choice of di-
+mensionality is based on a number of assumptions, some of which may be worth
+exploring further. In particular, the assumption of local independence for the full
+set of ADL and IADL variables may be questionable. One possible approach to
+relax this assumption suggested by a reviewer is to focus on fitting the GoM mod-
+els separately for the set of ADL and for the set of IADL variables, producing two
+sets of correlated GoM scores. Such a split-GoM model may turn out to be more
+appealing to disability researchers and to produce gains in interpretability. We ex-
+pect to consider this and other forms of model simplification as we work toward
+our ultimate goal of developing a longitudinal version of the GoM model.
+Acknowledgments. The authors would like to thank Matthew Stephens for
+insightful discussions, and Edo Airoldi and Tanzy Love for help in understanding
+the model selection problem.
+REFERENCES
+AIROLDI, E., FIENBERG, S. E., JOUTARD, C. and LOVE, T. (2007). Discovering latent patterns
+with hierarchical Bayesian mixed-membership models. In Data Mining Patterns: New Methods
+534 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+and Applications (P. Poncelet, F. Masseglia and M. Teisseire, eds.) 240­275. Idea Group Inc.,
+Hershey, PA.
+AKAIKE, H. (1973). Information theory and an extension of the maximum likelihood principle.
+In Second International Symposium on Information Theory (B. N. Petrov and F. Csaki, eds.)
+267­281. Akadémiai Kiadó, Budapest. MR0483125
+BERKMAN, L., SINGER, B. and MANTON, K. G. (1989). Black/white differences in health status
+and mortality among the elderly. Demography 26 661­678.
+BEST, N., COWLES, M. K.and VINES, K. (1996). CODA: Convergence diagnosis and output analy-
+sis software for Gibbs sampling output (version 0.30). Technical report, MRC Cambridge, UK.
+BISHOP, Y. M. M., FIENBERG, S. E. and HOLLAND, P. W. (1975). Discrete Multivariate Analysis:
+Theory and Practice. MIT Press, Cambridge, MA. MR0381130
+BLEI, D. M., JORDAN, M. I. and NG, A. Y. (2003). Latent Dirichlet allocation. J. Machine Learning
+Research 3 993­1022.
+BLEI, D. M., NG, A. Y. and JORDAN, M. I. (2001). Latent Dirichlet allocation. Adv. in Neural
+Information Processing Systems 14.
+BLUMEN, J., KOGAN, M. and HOLLAND, P. (1955). The Industrial Mobility of Labor as a Proba-
+bility Process. Cornell Univ. Press, Ithaca, New York.
+CELEUX, G. and SOROMENHO, G. (1996). An entropy criterion for assessing the number of clusters
+in a mixture model. Classification J. 13 195­212. MR1421665
+CORDER, L. S. and MANTON, K. G. (1991). National surveys and the health and functioning of the
+elderly: The effects of design and content. J. Amer. Statist. Assoc. 86 513­525.
+CUTLER, D. M. (2001). Commentary on "changes in the prevalence of chronic disability in the
+United States black and nonblack population above age 65 from 1982 to 1999" by K. G. Manton
+and X. Gu. Proc. Natl. Acad. Sci. 98 6546­6547.
+DAVIDSON, J. R. T., WOODBURY, M. A., ZISOOK, S. and GILLER, E. L. (1989). Classification of
+depression by grade of membership: A confirmation study. Psychological Medicine 19 987­998.
+EROSHEVA, E. A. (2002). Grade of membership and latent structure models with application to
+disability survey data. Ph.D. thesis, Carnegie Mellon Univ.
+EROSHEVA, E. A. (2003). Bayesian estimation of the grade of membership model. In Bayesian Sta-
+tistics 7 (J. M. Bernardo, M. J. Bayarri, J. O. Berger, A. P. Dawid, D. Heckerman, A. F. M. Smith,
+and M. West, eds.) 501­510. Oxford Univ. Press. MR2003194
+EROSHEVA, E. A. (2005). Comparing latent structures of the grade of membership, Rasch and latent
+class models. Psychometrika 70 619­626. MR2272507
+EROSHEVA, E. A. (2006). Latent class representation of the grade of membership model. Technical
+Report 492, Dept. Statistics, Univ. Washington.
+EROSHEVA, E. A. and FIENBERG, S. E. (2005). Bayesian mixed membership models for soft clus-
+tering and classification. In Classification--The Ubiquitous Challenge (C. Weihs and W. Gaul,
+eds.) 11­26. Springer, New York.
+EROSHEVA, E. A., FIENBERG, S. E. and LAFFERTY, J. (2004). Mixed-membership models of
+scientific publications. Proc. Natl. Acad. Sci. 101 (Suppl. 1) 5220­5227.
+EROSHEVA, E. A. and WHITE, T. (2006). Operational definition of chronic disability in the Na-
+tional Long Term Care Survey: Problems and suggestions. Technical report, Dept. Statistics,
+Univ. Washington.
+FOODY, G. M., CAMPBELL, N. A., TRODD, N. M. and WOOD, T. F. (1992). Derivation and
+applications of probabilistic measures of class membership from the maximum-likelihood classi-
+fication. Photogrammetric Engineering and Remote Sensing 58 1335­1341.
+GILL, T. M., HARDY, S. E. and WILLIAMS, C. S. (2002). Underestimation of disability in
+community-living older persons. J. American Geriatric Society 50 1492­1497.
+DISABILITY AND GRADE OF MEMBERSHIP 535
+GILL, T. M. and KURLAND, B. (2003). The burden and patterns of disability in activities of daily
+living among community-living older persons. J. Gerontology 58 70­75.
+GOODMAN, L. A. (1974). Exploratory latent structure analysis using both identifiable and unidenti-
+fiable models. Biometrika 61 215­231. MR0370936
+GREEN, P. J. (1995). Reversible jump Markov chain Monte Carlo computation and Bayesian model
+determination. Biometrika 82 711­732. MR1380810
+GRIFFITHS, T. L. and STEYVERS, M. (2004). Finding scientific topics. Proc. Natl. Acad. Sci. 101
+(Suppl. 1) 5228­5235.
+HABERMAN, S. J. (1995). Book review of "Statistical applications using fuzzy sets," by K. G. Man-
+ton, M. A. Woodbury and H. D. Tolley. J. Amer. Statist. Assoc. 90 1131­1133.
+HASTIE, T., TIBSHIRANI, R. and FRIEDMAN, J. H. (2001). The Elements of Statistical Learning:
+Data Mining, Inference, and Prediction. Springer, New York. MR1851606
+HOLLAND, P. W. and ROSENBAUM, P. R. (1986). Conditional association and unidimensionality in
+monotone latent variable models. Ann. Satist. 14 1523­1543. MR0868316
+JORDAN, M., GHAHRAMANI, Z., JAAKKOLA, T. and SAUL, L. (1999). Introduction to variational
+methods for graphical models. Machine Learning 37 183­233.
+KASS, R. E. and RAFTERY, A. E. (1995). Bayes factors. J. Amer. Statist. Assoc. 90 773­795.
+LAMBERT, D. (1992). Zero-inflated Poisson regression, with an application to defects in manufac-
+turing. Technometrics 34 1­14.
+LAZARSFELD, P. F. and HENRY, N. W. (1968). Latent Structure Analysis. Houghton Mifflin,
+Boston.
+LEROUX, B. G. (1992). Consistent estimation of a mixing distribution. Ann. Statist. 20 1350­1360.
+MR1186253
+LYNCH, S. M., BROWN, S. J. and HARMSEN, K. G. (2003). The effect of altering ADL thresh-
+olds on active life expectancy estimates for older persons. J. Gerontology: Social Sciences 58
+S171­S178.
+MANTON, K. G. (1988). A longitudinal study of functional change and mortality in the United
+States. J. Gerontology: Social Sciences 43 153­161.
+MANTON, K. G., CORDER, L. and STALLARD, E. (1993). Estimates of change in chronic disability
+and institutional incidence and prevalence rate in the U.S. elderly populations from 1982 to 1989.
+J. Gerontology: Social Sciences 48 S153­S166.
+MANTON, K. G., CORDER, L. and STALLARD, E. (1997). Chronic disability trends in elderly
+United States populations: 1982­1994. Proc. Natl. Acad. Sci. 94 2593­2598.
+MANTON, K. G. and GU, X. (2001). Changes in the prevalence of chronic disability in the United
+States black and nonblack population above age 65 from 1982 to 1999. Proc. Natl. Acad. Sci. 98
+6354­6359.
+MANTON, K. G., GU, X., HUANG, H. and KOVTUN, M. (2004). Fuzzy set analyses of genetic
+determinants of health and disability status. Statistical Methods in Medical Research 13 395­408.
+MR2086305
+MANTON, K. G., GU, X. and LAMB, V. L. (2006a). Long-term trends in life expectancy and active
+life expectancy in the United States. Population Development Review 32 81­105.
+MANTON, K. G., GU, X. and LAMB, V. L. (2006b). Change in chronic disability from 1982 to
+2004/2005 as measured by long-term changes in function and health in the U.S. elderly popula-
+tion. Proc. Natl. Acad. Sci. 103 18374­18379.
+MANTON, K. G., WOODBURY, M. A., ANKER, M. and JABLENSKY, A. (1994). Symptom profiles
+of psychiatric disorders based on graded disease classes: An illustration using data from the WHO
+International Pilot Study of Schizophrenia. Psychological Medicine 24 133­144.
+MANTON, K. G., WOODBURY, M. A. and TOLLEY, H. D. (1994). Statistical Applications Using
+Fuzzy Sets. Wiley, New York. MR1269319
+536 E. A. EROSHEVA, S. E. FIENBERG AND C. JOUTARD
+MCLACHLAN, G. J. and PEEL, D. (2000). Finite Mixture Models. Wiley, New York. MR1789474
+MUTHEN, B. and SHEDDEN, K. (1999). Finite mixture modeling with mixture outcomes using the
+EM algorithm. Biometrics 55 463­469.
+PEARSON, K. (1900). On the criterion that a given system of deviations from the probable in the
+case of a correlated system of variables is such that it can be reasonably supposed to have arisen
+from random sampling. Philosophical Magazine Series 50 157­175.
+PELLEG, D. and MOORE, A. W. (2000). X-means: Extending K-means with efficient estimation of
+the number of clusters. International Conference on Machine Learning 17 727­734.
+POTTHOFF, R. G., MANTON, K. G., WOODBURY, M. A. and TOLLEY, H. D. (2000). Dirichlet
+generalizations of latent-class models. J. Classification 17 315­353. MR1814813
+PRITCHARD, J. K., STEPHENS, M. and DONNELLY, P. (2000). Inference of population structure
+using multilocus genotype data. Genetics 155 945­959.
+RAFTERY, A. E., NEWTON, M. A., SATAGOPAN, J. M. and KRIVITSKY, P. N. (2007). Estimating
+the integrated likelihood via posterior simulation using the harmonic mean estimating the inte-
+grated likelihood via posterior simulation using the harmonic mean identity. In Bayesian Statistics
+8 (J. M. Bernardo, M. J. Bayarri, J. O. Berger, A. P. Dawid, D. Heckerman, A. F. M. Smith and
+M. West, eds.). Oxford Univ. Press.
+RASCH, G. (1960). Probabilistic Models for some Intelligence and Attainment Tests. Neisen and
+Lydiche, Copenhagen; expanded English edition (1980), Univ. Chicago Press, Chicago.
+REBOUSSIN, B. A., REBOUSSIN, D. M., LIANG, K. Y. and ANTHONY, J. C. (1998). Latent tran-
+sition modelling of progression of health-risk behavior. Multivariate Behavioral Research 33
+457­478.
+ROEDER, K., LYNCH, K. G. and NAGIN, D. S. (1999). Modeling uncertainty in latent class mem-
+bership: A case study in criminology. J. Amer. Statist. Assoc. 94 766­776.
+ROEDER, K. and WASSERMAN, L. (1997). Practical density estimation using mixtures of normals.
+J. Amer. Statist. Assoc. 92 894­902. MR1482121
+SCHWARTZ, G. (1978). Estimating the dimension of a model. Ann. Statist. 6 461­464. MR0468014
+SINGER, B. (1989). Grade of membership representations: Concepts and problems. In Probabil-
+ity, Statistics, and Mathematics: Papers in Honor of Samuel Karlin 317­334. Academic Press,
+Boston, MA. MR1031295
+SINGER, B. H. and MANTON, K. G. (1998). The effects of health changes on projections of
+health service needs for the elderly population of the United States. Proc. Natl. Acad. Sci. 95
+15618­15622.
+SPECTOR, W. D. and FLEISHMAN, J. A. (1998). Combining activities of daily living with instru-
+mental activities of daily living to measure functional disability. J. Gerontology: Social Sciences
+53 S46­S57.
+SPIEGELHALTER, D., THOMAS, A., BEST, N. and GILKS, W. (1996). BUGS 0.5: Bayesian infer-
+ence using Gibbs sampling manual (version ii). Technical report, MRC Cambridge, UK.
+SPIEGELHALTER, D. J., BEST, N. G., CARLIN, B. P. and VAN DER LINDE, A. (2002). Bayesian
+measures of model complexity and fit. J. Roy. Statist. Soc. Ser. B 64 583­639. MR1979380
+STEPHENS, M. (2000). Dealing with label switching in mixture models. J. Roy. Statist. Soc. Ser. B
+62 795­809. MR1796293
+TANNER, M. A. (1996). Tools for Statistical Inference. Methods for the Exploration of Posterior
+Distributions and Likelihood Functions, 3rd ed. Springer, New York. MR1396311
+WACHTER, K. W. (1999). Grade of membership models in low dimensions. Statistical Papers 40
+439­457.
+DISABILITY AND GRADE OF MEMBERSHIP 537
+WOODBURY, M. A., CLIVE, J. and GARSON, A. (1978). Mathematical typology: A grade of
+membership technique for obtaining disease definition. Computers and Biomedical Research 11
+277­298.
+E. A. EROSHEVA
+DEPARTMENT OF STATISTICS
+UNIVERSITY OF WASHINGTON
+SEATTLE, WASHINGTON 98195-4322
+USA
+E-MAIL: elena@stat.washington.edu
+S. E. FIENBERG
+DEPARTMENT OF STATISTICS
+CARNEGIE MELLON UNIVERSITY
+PITTSBURGH, PENNSYLVANIA 15213-3890
+USA
+E-MAIL: fienberg@stat.cmu.edu
+C. JOUTARD
+GREMAQ - UNIVERSITÉ TOULOUSE 1
+MANUFACTURE DES TABACS
+21 ALLÉE DE BRIENNE
+31000 TOULOUSE
+FRANCE
+E-MAIL: joutard@cict.fr
+

@@ -1,0 +1,1243 @@
+Nursing Research  May/June 2012  Vol 61, No 3, 213­223
+Propensity Score Estimates in Multilevel
+Models for Causal Inference
+Patricia Eckardt
+b Background: Teenage obesity is a national epidemic that re-
+quires school- and community-based initiatives to support
+healthy behaviors of students regarding exercise and nu-
+trition to decrease the prevalence.
+b Objectives: The aim of this study was to demonstrate a meth-
+odology for an estimation of causal effects of the adoption of
+healthy behaviors with a potential outcomes approach within
+a multilevel treatment setting of school program adoption of
+a socially supportive environment.
+b Methods: Propensity score estimates within a multilevel model
+provided causal estimates of the impact of the adoption of
+health habits by students within supportive school environ-
+ments (SSEs) and non-SSEs. A potential outcomes approach
+to causal modeling was shown with a secondary analysis
+of the National Longitudinal Study of Adolescent Health
+study. The student participants consisted of 13,854 adoles-
+cent students, with an accompanying sample of 164 school
+administrators.
+b Results: The effect of healthy eating habits in an SSE was
+a statistically nonsignificant decrease in body mass index
+(BMI). The effect of healthy eating habits in a non-SSE was
+a statistically nonsignificant increase in BMI. The difference
+between the healthy habit practices for students in support-
+ive and nonsupportive schools was a resultant difference in
+BMI of 0.3484.
+b Discussion: The results demonstrate a difference in causal
+effects of eating habits in different school settings. Further
+research regarding causal effects of student habits and
+school programs is indicated.
+b Key Words: adolescent & causal effects estimates & counter-
+factual & hierarchical linear modeling & nutrition & pediatric
+obesity prevention & potential outcomes
+Teenage obesity is a national epidemic (Ben-Sefer,
+Ben-Natan, & Ehrenfeld, 2009). Approximately 17%
+(12.5 million) of children and teens in the United States are
+obese (Ogden, Carroll, Curtin, Lamb, & Flegal, 2010). It has
+been hypothesized that students who follow healthy habits
+regarding exercise and nutrition decrease their chances of
+becoming obese in adulthood (Liou, Liou, & Chang, 2010).
+Some school policymakers and nurses believe that the adop-
+tion of a supportive school environment (SSE) program, one
+that includes increased fruits and vegetables available at the
+cafeteria and a variety of available forms of exercise and re-
+creation, increase opportunities for students to practice healthy
+habits and decrease their chances of developing obesity
+(Cassady, Vogt, Oto-Kent, Mosley, & Lincoln, 2006; Vitale,
+2010). Body mass index (BMI) is the current standard
+measure of obesity in adolescents (Lin & Lam, 2011; Liou
+et al., 2010). However, a standardized BMI z score often is
+considered a more accurate measure of an individual teen's
+obesity (Boylan et al., 2010; Rausch, Perito, & Hametz, 2011).
+Multiple observational studies have examined these hypotheses
+with conflicting results (Liou et al., 2010).
+An observational study, like an experimental study, is
+an empirical study conducted to explain a cause-and-effect
+relationship between two variables (Cochran, 1965; Little &
+Rubin, 2000: Rosenbaum, 2002; Rubin, 1997). In nursing
+literature, the term ``quasi-experimental study'' is used more
+commonly than observational study to describe a study
+that lacks the critical causal element of random assignment
+(Guo & Fraser, 2010). In Clayton, Chin, Blackburn, and
+Echeverria's (2010) prospective quasi-experimental study, a
+difference was found in obesity rates between groups after
+a healthy habits program was offered at school. Fulkerson
+et al. (2010) and Hollar et al. (2010) did not find a signif-
+icant difference in means of postintervention BMI z score
+between groups with healthy habits at home and school in-
+tervention. Randomized and multilevel randomized control
+trials to study the effect of healthy habit interventions on
+adolescents' BMI (de Heer, Koehly, Pederson, & Morera,
+2011) and BMI z score (DeBar et al., 2011; Dzewaltowski
+et al., 2010) were equivocal in findings.
+To estimate the causal effect of students' healthy habits
+on their development of obesity in young adulthood and
+the effect of an SSE on students' practice of healthy habits, a
+multilevel potential outcomes model is required to account
+for the natural nesting of the teenage students within the
+schools they attend. Multilevel models are also known as
+hierarchical models, mixed effect models, and random coef-
+ficient models (Albright, 2007; Albright & Marinova, 2010;
+Laird & Ware, 1982; Muthen & Muthen, 2012; Rasbash,
+Steele, Browne, & Goldstein, 2009; Raudenbush & Bryk,
+2002; Singer, 1998; Singer & Willett, 2003). Multilevel model-
+ing of students within school settings frames the research
+within the socioecological theory by considering social and
+Nursing Research May/June 2012 Vol 61, No 3 213
+Patricia Eckardt, PhD, is Assistant Professor, School of Nursing,
+Stony Brook University, New York.
+DOI: 10.1097/NNR.0b013e318253a1c4
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+environmental factors in which the students are nested nat-
+urally (Maclean et al., 2010). Multilevel modeling also allows
+for variance component estimates to be examined explicitly
+at each level of the proposed model (Albright, 2007; Albright
+& Marinova, 2010; Raudenbush & Bryk, 2002; Singer,
+1998; Singer & Willett, 2003).
+A potential outcomes framework at each level of the
+multilevel model allows for causal inference regarding these
+factors and not simply comparison across groups (Pearl,
+2003, 2010). This framework accounts for the probabilistic
+mechanism of treatment assignment that observational stud-
+ies and most random experiments usually do not. Assign-
+ment to treatment in an observational study is not random,
+although sampling from a population of interest often is;
+whereas assignment to treatment in random experiments is
+assigned randomly, yet sampling from the population of in-
+terest is not a random process (Little & Rubin, 2000). Pro-
+pensity score estimates allow for potential outcomes inference
+by accounting for manipulation of treatment assignment.
+There can be no causal inference without manipulation of
+treatment (Rubin, 1986).
+Rubin's (1974) counterfactual causal model approaches
+causal modeling with a fundamental assumption of poten-
+tial outcomes (Angrist & Pischke, 2008; Rosenbaum, 2002;
+Rubin, 1974). This theory asserts that there is one potential
+outcome associated with each treatment a subject may receive.
+For the following example, Y denotes an individual subject's
+potential outcome and Z denotes treatment assignment. If
+there are two alternate treatments (a binary treatment con-
+dition), then each subject has two potential outcomes repre-
+sented commonly in the potential outcomes literature as
+Y(0) and Y(1). Specifically, Y(0) is the outcome for a subject
+who does not receive the treatment (i.e., Z = 0), whereas
+Y(1) is the outcome if the subject does receive the treatment
+(i.e., Z = 1). However, one never gets to observe both of
+these potential outcomes, as the subject can receive only one
+treatment at a time (Rubin, 2004). Therefore, the causal
+effect Y(1) j Y(0) cannot be estimated for an individual,
+but only an average effect for a group of people.
+In a randomized experiment, the observed outcomes of
+the subjects in the sample can be used to estimate an average
+treatment effect conditioned on treatment assigned. An un-
+biased estimate of the average treatment effect E[Yi
+(1) j
+Yi
+(0)] = E[Yi
+(1)] j E[Yi
+(0)] within an observed population
+sample is the difference in observed outcomes in the two
+distinct treatment groups. Therefore, in a randomized exper-
+iment, if Z stands for treatment assignment, then the aver-
+age treatment effect E[Yi
+(1)] j E[Yi
+(0)] can be estimated as
+E[Yi
+(1)] = E[Yi
+(1)|Zi
+= 1] and E[Yi
+(0)] = E[Yi
+(0)|Zi
+= 0]. One
+can then obtain an unbiased estimate of the average treat-
+ment effect by estimating E[Yi
+(1)] with Y
+j
+Z=1
+and E[Yi
+(0)]
+with Y
+j
+Z=0
+.
+The assumptions of the potential outcomes model are ig-
+norability of treatment assignment and stable unit treatment
+value. Treatment assignment is ignorable when the potential
+outcomes are independent of the treatment variable, as is
+the case with randomized assignment to treatment (Rubin,
+2004). The stable unit treatment value (SUTVA) is the as-
+sumption that there is only one potential outcome for each
+subject associated with the policy or treatment adopted,
+with no effect on an individual subject's potential outcome
+due to the policy or treatment given another subject (Rubin,
+1986). The assumption of SUTVA at the school level is
+plausible because schools in the proposed nationally sam-
+pled data set are located in distinct communities with dif-
+ferent geographic conditions; have various combinations of
+socioeconomic levels, governmental resources, and political
+affiliations in the community profiles; and span the conti-
+nental United States. Here, an assumption that the identities
+and treatment assignments of other schools are uninforma-
+tive about student i's outcomes holds (SUTVA assumption
+at the school level).
+However, Rubin (1990) cautioned that SUTVA becomes
+problematic when treatments are given to children who in-
+teract with one another, as in an observational study wherein
+student-level treatment is nested within school-level program
+adoption. To account for the possible violation of a strict
+interpretation of SUTVA at the student level within a multi-
+level setting, the Hong and Raudenbush (2006) relaxed
+form of SUTVA can be applied. For a binary treatment, let
+zi
+= 1 if student i practices healthy habits and zi
+= 0 if the
+student does not. Then, given N units overall in a school,
+there is a 1 Â N vector of possible treatment assignments
+z = (z1
+, z2
+, ..., zN
+) = (zi
+, z_i
+), wherein z_i
+is the 1 Â (N j 1)
+vector of treatment assignments with zi
+removed, for
+Zi
+2f0; 1g; i ¼ 1; :::; N. Under these set conditions, subject i
+has 2N potential outcomes, Yi
+(z), corresponding to all pos-
+sible treatment assignments of the N subjects.
+A contrast between any two of the 2N potential outcomes
+for a given subject is a causal effect. The SUTVA is a dis-
+tinctive case wherein Yi
+(z) K Yi
+(zi
+, z_i
+) = Yi
+(zi
+), demonstrat-
+ing that an individual student's potential outcome, given all
+other student treatments, remains the same under SUTVA.
+To summarize the school program adoption information in
+a way that will be useful for average causal estimates, the
+impact of z (treatment assignment) on a single subject's po-
+tential outcome can be modeled as operating through zi
+(individual's treatment assignment) as well as through a
+simple function of z_i
+, which will be denoted as v(z), the
+treatment assignments of all other students within an indi-
+vidual's school, except the individual's assignment. This is
+represented as
+^
+Yi
+ðzÞ K ^
+Yi
+ðzi
+; zÀi
+Þ ¼ ^
+Yi
+½zi
+; vðzÞ ð1Þ
+E{Y[z,v(z)] jY[z¶,v(z¶)]} is a generic causal estimand,
+wherein z and z¶ are alternative treatment assignments for
+an individual and z and z¶ are alternative treatment as-
+signments for all individuals within that group (Hong &
+Raudenbush, 2006). For the purposes of the SSE policy, let
+v(z) = 1 if a school is an SSE policy school and v(z) = 0 if
+this is not the case. Now, Y(z,v(z)) can take on four pos-
+sible values: Y(1,1), Y(0,1), Y(1,0), and Y(0,0).
+Therefore, the potential outcomes for an individual
+student i attending a school j, denoted by Yij
+(zij
+, vj
+), could
+take on four values: Yij
+(1,1), Yij
+(0,1), Yij
+(1,0), and Yij
+(0,0).
+For example, Yij
+(1,1) represents the potential outcome of a
+student i who practices healthy habits from an SSE school,
+and Yij
+(1,0) is the potential outcome of a student i who
+practices healthy habits from a non-SSE policy school.
+Through the use of the relaxed form of SUTVA outlined
+above and the propensity score estimates for a potential
+outcomes framework of causal estimates (Rosenbaum &
+214 Propensity Score Estimates in Multilevel Models Nursing Research May/June 2012 Vol 61, No 3
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+Rubin, 1984) outlined in the next section, causal effects of
+treatment on a student-level outcome variable of interest
+can be estimated. This causal modeling methodology allows
+school assignment and peer treatments to affect potential
+outcomes within a framework that accounted for the natural
+nesting of the data and did not violate assumptions required
+for these estimates.
+Supportive school environment policies are not assigned
+at random to schools, and students within schools are not
+assigned at random to be practice of healthy habits, so the
+ignorability of treatment assignment assumption must be
+considered. A propensity score is the conditioning on covar-
+iates of an observed probability for receiving the treatment.
+As such, if there is no hidden bias, then the conditional dis-
+tribution of treatment assignment is uniform and treatment
+assignment is ignorable (Rosenbaum, 2002).
+Let X be a vector of student-level covariates and W be a
+vector of school-level covariates. W includes the school-level
+aggregates of student-level covariates such as the demographic
+makeup of students attending a school. Causal inferences
+are possible if treatment assignments are ignorable within
+levels of covariates (wherein X = x and W = w) for schools
+such that
+E½Yðz; 3ÞjZ ¼ z; V ¼ v; X ¼ x; W ¼ w
+¼ E½Yðz; vÞjX ¼ x; W ¼ w ð2Þ
+In this case, the conditional average causal effect E[Y(z,
+v)|X = x,W = w] j E[Y(z¶, v¶)|X = x, W = w] is equivalent
+to the observed data estimand, E[Y(z,v)|Z = z, V = v, X = x,
+W = w] j E[Y(z¶,v¶)|Z = z¶, V = v¶, X = x, W = w]. The
+conditional average causal effect, being estimable from ob-
+served data, allows causal inference regarding the difference
+between students attending an SSE school versus a non-SSE
+school (Hong & Raudenbush, 2006).
+v(Z) = V was denoted as the random variable that takes
+on values v(z) = v = 0 for non-SSE policy schools or v(z) =
+v = 1 for SSE policy schools; X was assigned to be a vector
+of child-level covariates and W as a vector of school-level
+covariates.
+Let Q be the probability of a school having a supportive
+environment. Conditioning on covariates, schools adopting
+a policy (V = 1 or V = 0) is influenced by W (school-level
+covariates) with a probability Q = Q (W); thus,
+Q ¼ PðV ¼ 1jWÞ ð3Þ
+If the assignment of schools to a zero or non-SSE policy
+is ignorable given the observed school-level pretreatment co-
+variates W, then an unbiased estimate of school j's propensity
+of selecting an SSE policy, Qj
+, can be made as a function of Wj
+.
+Let q be the probability that a student practices healthy
+habits according to the school SSE policy within the school
+that student attends. This could be written as
+q1
+¼ P½Z ¼ 1 j V ¼ 1 and q0
+¼ P½Z ¼ 1jV ¼ 0 ð4Þ
+If student practice or nonpractice of healthy habits, under
+an SSE or a non-SSE policy, is ignorable given the observed
+student-level pretreatment covariates X and the school-level
+covariates W, then student i's propensity of practicing
+healthy habits in school j, denoted by q1ij
+if the school has
+adopted an SSE policy and by q0ij
+otherwise, can be esti-
+mated as functions of Xi
+and Wj
+. Hence q1
+= q1
+(X, W) and
+q0
+= q0
+(X, W), wherein
+q1
+¼ PðZ¼1jV ¼ 1
+; X; WÞ
+q0
+¼ PðZ ¼ 1jV ¼ 0; X; WÞ ð5Þ
+A student's probability of practicing a specific treatment
+(practice of healthy habits or nonpractice of healthy habits)
+under a specific school program (SSE or not) can be expressed
+as P(Z = z, V = v|X, W) = P(Z = z|V = v, X,W)P(V = v|W).
+If these potential outcomes are considered carefully, it is
+clear that not all of the four potential outcomes are defined
+for some of the students. A student who may practice healthy
+habits in an SSE policy school may not have such a propen-
+sity in a non-SSE, and another student may never practice
+healthy habits (even within a school with an SSE policy).
+Monotonicity, described by Angrist (1990), is applied here
+as the assumption that the probability of practicing healthy
+habits in an SSE policy school is always greater than or
+equal to that within a non-SSE policy school. To address
+this natural distinction into subpopulations of students, the
+monotonicity assumption regarding the student level propen-
+sity score estimates (q1
+and q0
+), wherein q1
+denotes a stu-
+dent's probability of practicing healthy habits under an SSE
+policy and q0
+denotes the student's probability of practicing
+healthy habits under a non-SSE policy was applied. As mono-
+tonicity is plausible in this case, three subpopulations of
+students of interest can be identified within the data set,
+noted as Subpopulations A, B, and C. The potential outcomes
+and the causal effects of interest for each of these subpopu-
+lations are listed in Table 1.
+This results in the following causal estimands: The aver-
+age causal effect of practice of healthy habits relative to non-
+practice of healthy habits, conditioned on the covariates (X
+and W), under a non-SSE policy for students in Subpop-
+ulation A (students with propensity of practicing healthy
+habits in a non-SSE school), may be expressed as
+E½YA
+ð1;0ÞÀYA
+ð0;0ÞjX; W ð6Þ
+Also, the average conditional practice of healthy habits ef-
+fect under an SSE policy for students in Subpopulation A and
+those in Subpopulation B. Combining these subpopulations
+(A and B) produces a group of students who have a propensity
+for practicing healthy habits. Denoting this group of students
+as Subpopulation AB (A and B), this estimand is expressed as
+E½YAB
+ð1;1ÞÀYAB
+ð0;1ÞjX; W ð7Þ
+For students in Subpopulation A, the difference between
+Equations (6) and (7) can be considered an estimation of
+the extent to which the causal effect of the individual-level
+practice of healthy habits depends on the school-level practice
+of healthy habits policy. Only one of the two propensity
+scores for every student can be estimated from observed data.
+This will affect the ability to estimate the causal effects de-
+fined in Equations (6) and (7).
+After decomposition of Equation (6) as
+E½YA
+ð1;0ÞÀYA
+ð0;0ÞjV ¼ 1;X; WPðV¼ 1jWÞþ
+E½YA
+ð1;0ÞÀYA
+ð0;0ÞjV ¼ 0; X; WPðV¼ 0 jWÞ ð8Þ
+Nursing Research May/June 2012 Vol 61, No 3 Propensity Score Estimates in Multilevel Models 215
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+it is clear to see that only the second term of this expression
+can be estimated for this population:
+% Z0
+¼ E ½YA
+ð1;0ÞÀYA
+ð0;0ÞjV ¼0; X; W ð9Þ
+wherein %Z0
+is the conditional effect of healthy habits
+practice under a non-SSE policy for students attending non-
+SSE policy schools.
+Following this logic with the estimates of conditional
+average practice of healthy habits effects for students with
+propensity to practice healthy habits subpopulation (AB), if
+Expression (7) was decomposed now as
+E½YAB
+ð1;1ÞÀYAB
+ð0;1ÞjV ¼ 1; X; WPðV ¼ 1jWÞþ
+E½YAB
+ð1;1ÞÀYAB
+ð0;1ÞjV ¼ 0; X; WPðV¼ 0jWÞ ð10Þ
+then the second term, E[YAB
+(1,1) j YAB
+(0,1)|V = 0, X, W],
+cannot be estimated directly from the observational adoles-
+cent health data, but the first term,
+% Z1
+¼ E ½YAB
+ð1;1Þ À YAB
+ð0;1ÞjV ¼1; X; W ð11Þ
+can be estimated. %Z1 is the conditional effect of fol-
+lowing healthy habits under the SSE policy for students at-
+tending SSE policy schools.
+The research questions of interest were as follows: (a)
+What are the causal effects of a student's practice of healthy
+habits in an SSE on the student's BMI? (b) What are the
+causal effects of a student's practice of healthy habits in a
+non-SSE on the student's BMI? The multilevel approach to
+answer these questions accounts for the socioecological in-
+fluence of students nested within schools, and propensity
+score estimation allows for a cause-and-effect estimation if
+assumptions are met.
+Methods
+Sample
+The National Longitudinal Study of Adolescent Health
+(Add Health; http://www.cpc.unc.edu/projects/addhealth/
+data) is a longitudinal study of a nationally representative
+sample of adolescents in Grades 7Y12 in the United States
+that began during the 1994Y1995 school year (Harris &
+Udry, 2009). Data were used on a subsample of subjects
+from Wave I (1994Y1995 school year) and Wave III (2001
+year) and consisted of students sampled from Wave I (n =
+13,854) and school administrators sampled from Wave I
+(n = 164). Protection of human subject rights was insured
+with institutional review board approval and a Sensitive
+Data Security Plan that was developed according to the
+strict guidelines of the Add Health Data Administrator at
+the University of North Carolina at Chapel Hill for the
+National Longitudinal Study of Adolescent Health data
+when stored on an external hard drive.
+Variables
+The treatment variables of interest in this research study
+occurred at the student and school levels. At the school
+level, the adoption of an SSE for healthy habits was the
+treatment of interest. This variable was constructed from
+responses by school administrators regarding school pro-
+grams of nutrition and exercise. At the student level, the
+practice of healthy habits by a student was the treatment
+level variable of interest and was constructed from student
+responses regarding daily eating and exercise habits. The
+Wave I covariates that were hypothesized to affect either of
+the treatment variables at their corresponding level or the
+outcome variable of interest were included in the propen-
+sity score estimates for the assumption of ignorability of
+treatment assignment to hold (Gelman & Hill, 2006).
+These variables at the school level included measures of
+parents' average socioeconomic status, school district avail-
+able resources in dollars and space, teacher and adminis-
+trator demographics, geographic location of school, and
+type of neighborhood (rural, urban, suburban; Table 2). At
+the student level, the covariates used in the propensity score
+estimates included student age, gender, ethnicity, number
+of people in household, club affiliation, measures of self-
+worth, body image, behaviors regarding alcohol and tobacco,
+friends' behaviors regarding alcohol, grades, and parental
+influence regarding teen's choices and daily habits (Table 3).
+q
+TABLE 1. Potential Outcomes for Student Subpopulations and Causal Effects of Interest
+Subpopulation
+Probabilities of practicing
+healthy habits Potential outcomes Causal effects of interest
+A. Students with propensity to practice
+healthy habits in a non-supportive
+school environment
+q1 Q q0 9 0 Y(1,1), Y(0,1), Y(1,0), Y(0,0) E[Y(1,0) j Y(0,0)]
+E[Y(1,1) j Y(0,1)]
+E[Y(1,1) j Y(0,1)]-
+E[Y(1,0) j Y(0,0)]
+B. Students with propensity to practice
+healthy habits only in a supportive
+school environment
+q1 90 and q0
+= 0 Y(1,1), Y(0,1), Y(0,0) E[Y(1,1) j Y(0,1)]
+C. Students without propensity to practice
+healthy habits even in a supportive
+school environment policy school
+q1
+= q0
+= 0 Y(0,1), Y(0,0) E[Y(0,1) j Y(0,0)]
+Note. Y(i,j): Student-level i = {q0
+, did not practice healthy habits; q1
+, practiced healthy habits}. School-level j = {0, not a supportive school environment policy
+school; 1, supportive school environment policy school}.
+216 Propensity Score Estimates in Multilevel Models Nursing Research May/June 2012 Vol 61, No 3
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+Wave III data collected on a subset of students from Wave I
+provided the outcome variable of interest calculated BMI
+from measured height and weight of student participants.
+Analysis
+The causal estimates of interest were obtained using logistic
+regression equations to compute the estimates of Q
+^ , q
+^0
+,
+and q
+^1
+in Excel 2010. To demonstrate the diagnostic prop-
+erties of the propensity score estimates, common axis bar
+graphs were generated with STATA SE 11.
+Q
+^ is each school's conditional propensity of adopting
+an SSE policy given the observed school-level covariates
+(W1
+, ..., Wn
+). Seventeen covariates considered predictive of
+treatment or outcome (Drews et al., 2009) were identified
+and included in the propensity score estimate. On the basis
+of the logit of Q
+^ , the sample of schools were divided into
+five strata. Five subclasses are sufficient to remove at least
+90% of the bias for many continuous distributions
+(Cochran, 1968).
+The estimate of q1
+(the probability of practicing healthy
+habits within an SSE policy school) was estimated using a
+logistic regression model. A total of 65 student-level covari-
+ates considered predictive of treatment or outcome (Liou
+et al., 2010; Power, Bindler, Goetz, & Daratha, 2010) were
+included in the propensity estimate of practice of healthy
+habits, q
+^1
+. In parallel to the estimation of q1
+, q0
+was es-
+timated through a logistic regression model for students
+attending non-SSE policy schools using the same student-
+level covariates. Five strata for the logit of Q
+^ , q
+^0
+also were
+constructed.
+q
+TABLE 2. School-Level Covariates for
+Add Health Data Wave I From School
+Administrator, Student, and Parent Surveys
+Covariate
+School size
+Average class size
+Percentage of new teachers
+Percentage of teachers with masters
+Average mean household income per school
+Percentage of households with subsidized government income
+Percentage of households with English as primary language
+Type of school (public or private)
+Location of school (urban, rural, or suburban)
+Region of school (west, northeast, midwest, or south)
+High dropout rate (93% any year)
+Daily attendance rate (high attendance: 996%; average
+attendance: 90%Y95%; low attendance: 78%Y89%)
+Percentage of parents involved in parent teacher association
+School has academic track
+Diagnostic screenings offered at school
+Immunizations offered at school
+Sexually transmitted infection treatment offered at school
+q
+TABLE 3. Student-Level Covariates for
+Add Health Data Wave I From School
+Administrator, Student, and Parent Surveys
+Covariate Covariate
+Body mass index Wave I Feels close to mother
+Biological sex Feels close to father
+Age Feels close to friends
+Race Has 93 friends who drink alcohol
+91 time/month
+Primary language spoken at home Ever smoked a cigarette
+Born in the United States or not Drinks alcohol 2Y3 times/week
+Number of hours/week watch
+television
+Easy access to alcohol in home
+Number of hours/week play
+videogames
+Easy access to cigarettes in home
+Reported general health Wants to attend college
+Usually eats breakfast Feels safe in neighborhood
+Last time had medical exam Believes will live past 35 years of age
+Last time had a dental exam Plays a team sport
+Reported body image Participates in any after school
+activities
+Diets to lose/maintain weight Generally feels safe at school
+Exercises to lose/maintain weight Generally feels happy at school
+Diets to gain weight Feels just as good as other people
+Exercises to gain weight Parents marital status
+Lifts weights to gain weight Mother works outside home
+Learned about alcohol abuse
+at school
+Total household income
+Learned about drug abuse
+at school
+Household ever received food
+stamps
+Ever skipped a grade Number of people living in residence
+Ever been left back a grade Mother is disabled
+Ever been suspended/expelled Mother's general physical health
+Prior difficulty using limbs Family has medical insurance
+Prior diagnosis of asthma Number cigarette smokers in
+household
+Prior diagnosis of heart
+condition
+Parent perception of marital
+relationship
+Residential mother
+education level
+Student history of weight problems
+Residential mother born in
+the United States or not
+Student history of diabetes
+Residential father education level Mother history of weight problems
+Residential father born in
+the United States or not
+Mother history of diabetes
+Makes own decisions
+regarding diet
+Father history of weight problems
+How many nights/week eats
+dinner with parent
+Father history of diabetes
+Grade in English/Math/Science
+this past year
+Nursing Research May/June 2012 Vol 61, No 3 Propensity Score Estimates in Multilevel Models 217
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+The initial propensity score estimates of Q
+^ , q
+^0
+, and q
+^1
+were examined for balance on covariates within each
+stratum. The goal of balancing is to verify that subclassifi-
+cation on the estimated propensity score removes any initial
+bias on confounders. Balance on covariates was checked
+using multiple two-way analyses of variance, wherein treat-
+ment (SSE school assignment or practice of healthy habits,
+for Q and q, respectively) was one factor, the propensity
+score strata to which the individual was assigned was a second
+factor (coded as a categorical variable with four levels), and
+each of the covariates (or confounders) was a dependent
+variable. These balancing steps were repeated until balance
+was achieved or until no further improvement in balance
+could be made (Yanovitzky, Zanutto, & Hornik, 2005).
+However, reliance on significance testing to check for
+covariate balance is sensitive to sample size (Shadish, Clark,
+& Steiner, 2008).
+The minimum value of the logit of q1
+(constructed from
+the data set) for the practice of healthy habits students
+attending SSE schools was then used as the cutoff point to
+identify students from Subpopulation C (students unlikely
+to practice healthy habits even in an SSE). These students
+were omitted from the causal analysis, because they did not
+have the potential outcomes related to the causal question
+of interest. Students whose logit of q1
+was above the cutoff
+value were considered to belong to Subpopulations A or B
+(students who have a propensity to practice healthy habits)
+and were combined into a subpopulation of AB.
+Similarly, students from non-SSE policy schools whose
+q0
+logit was below the minimum cutoff for any practice of
+healthy habits students were excluded from the sample used
+in the causal estimates, leaving only students from Subpop-
+ulation A (students with a propensity to practice healthy
+habits even in non-SSE policy schools).
+After the initial estimate of causal effects by propensity
+score stratification, the clustering of students within schools
+was modeled with two hierarchical linear models using HLM
+6 software. The resulting models were estimates of %z0
+, a
+causal estimand of the effect of healthy habit practice rel-
+ative to non-healthy habit practice on measured BMI scores
+for the students in Subpopulation A, and %z1
+, a causal estimand
+of effect of student non-healthy habits relative to healthy
+habits on measured BMI scores for the students in Sub-
+population AB in an SSE. These models included an estimate
+of the variation of the practice of healthy habits effect across
+the students and schools by using a hierarchical two-level
+regression model, with student at Level 1 and school at
+Level 2.
+Results
+As shown in a bar graph in Figure 1 representing the
+distribution of schools according to the logit of the Q
+(propensity for adopting SSE), most schools in the sample
+were non-SSE schools (n = 146) and the remaining were
+SSE schools (n = 18). Balance was achieved on over 95% of
+the school-level pretreatment covariates. On the basis of
+the logit of the Q estimate, the sample of schools (n = 164)
+was divided into five strata. The results of the analysis are
+displayed in Table 4. Schools with supportive environ-
+ments had a predicted propensity of a supportive environ-
+ment, with over 40% of the SSE schools in the highest
+predicted stratum. An overall higher logit of the Q estimate
+within stratum for the SSE schools was noted in contrast
+to the non-SSE schools. Schools with a propensity for SSE
+programs had, on average, more English-as-a-primary-
+language households and higher family household incomes.
+The non-SSE schools also had a lower percentage of schools
+with immunization programs and tended to be located in
+rural areas.
+Student propensity for practice of healthy habits within
+a non-SSE school, q0
+, was estimated through a logistic
+regression model for children attending non-SSE schools
+only. In Figure 2, students practicing healthy habits (n =
+6,775) are represented across the upper half of graph and
+the nonpractice of healthy habits students (n = 5,581) is
+represented across the lower half of the graph. On the basis
+of the logit of the q0
+estimate, the sample of students (n =
+12,356) was divided into five strata. The students who
+practiced healthy habits and the students who did not were
+dispersed across all strata in this estimate, with no clear
+concentration of students in either area of the propensity
+strata. Balance was achieved on more than 95% of the
+student-level pretreatment covariates. Students who had
+lower propensity estimates to practice healthy habits were
+more likely to be students born outside of the United States,
+watched more hours of television, ate less meals per week
+with parents, had more friends who drank alcohol
+regularly, and made their own choices regarding time to
+sleep on school nights.
+Student propensity for practice of healthy habits within
+an SSE school, q1
+, was estimated through a logistic
+regression model for children attending SSE schools only.
+Balance was achieved on 95% of the student-level pretreat-
+ment covariates believed to effect the treatment or outcome
+variable. A graph representing the distribution of students
+according to the propensity score estimates of practicing
+healthy habits from an SSE school is presented in Figure 3.
+On the basis of the logit of the q1
+estimate, the sample of
+students (n = 1,495) was divided into five strata. There was
+a higher propensity for students who practiced healthy
+habits to have more frequent medical and dental exams, to
+FIGURE 1. Propensity estimates for supportive school environments
+in school, Q (n = 164).
+218 Propensity Score Estimates in Multilevel Models Nursing Research May/June 2012 Vol 61, No 3
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+eat dinner with their parents, to get more hours of sleep, to
+feel safe in their schools, and to plan on attending college.
+The students who did not practice healthy habits had an
+increased hours of television watched, had an increased
+amount of video games played, reported more asthmatic
+conditions, ate nothing for breakfast often, and had a
+higher report of being left back a grade in school.
+Empirical identification of subpopulations was accom-
+plished by constructing mutually exclusive groups based on
+the estimated value of the logits of students to practice
+healthy habits. The value of j3.341 was used as the cutoff
+point to identify the 20 non-healthy habits students in SSE
+schools belonging to Subpopulation C, because there were
+no practice of healthy habits students with a logit less than
+or equal to j3.341. The minimum value of the logit of
+q
+^0
+(j2.43 ) was used as the cutoff point to identify the
+21 students attending non-SSE schools belonging to Sub-
+population C, bringing the Subpopulation C total sample
+size to 42. The remaining sample size for students in
+Subpopulation AB in SSEs was 1,475, and the sample size
+for students identified as belonging to Subpopulation A in
+nonsupportive schools was 12,335.
+The raw difference in the average BMI score outcome was
+observed across strata for students in Subpopulation AB in
+non-SSE schools, and an estimate of the overall differences in
+BMI was calculated (Table 5). The mean differences in BMI
+were not significant within the strata. The raw difference in
+the average BMI score outcome was observed across strata
+for students in Subpopulation A in SSE schools, and the
+average mean difference was not significant (Table 6).
+The causal estimands of interest %z0
+and %z1
+were then
+obtained with a hierarchical two-level regression model,
+students at Level 1 within school at Level 2 (Tables 7 and 8).
+The raw difference results in BMI outcomes were supported
+with the causal estimates of the effect of practicing healthy
+habits obtained with the hierarchical linear model estimates.
+The causal effect of practicing healthy habits within a non-SSE
+school, %z0
+, for students in Subpopulation A was 0.16 (SE =
+0.14). The causal effect on BMI scores for students from
+Subpopulation AB, practicing healthy habits in SSE schools,
+%z1
+, was j0.18 (SE = 0.39).
+Discussion
+The purpose of this research was to obtain causal estimates
+of the impact of healthy habits on individual students'
+obesity outcomes with a nationally representative observa-
+tional data set to demonstrate a methodology to estimate
+q
+TABLE 4. Within-Stratum Distribution of Schools' Logit of Q Estimate for Propensity to Adopt a
+Supportive School Environment
+SSE school Non-SSE school
+Stratum n M SD n M SD
+Q = 1 4 j16.31 2.95 29 j15.67 3.74
+Q = 2 2 j7.30 0.74 30 j8.21 1.04
+Q = 3 1 j4.58 29 j5.58 0.73
+Q = 4 0 35 j3.29 0.68
+Q = 5 11 0.15 1.34 23 j0.81 1.24
+Note. SSE = supportive school environment.
+FIGURE 2. Propensity estimates for healthy habits in school,
+q0
+(n = 12,356).
+FIGURE 3. Propensity estimates for healthy habits in school,
+q1
+(n = 1,495).
+Nursing Research May/June 2012 Vol 61, No 3 Propensity Score Estimates in Multilevel Models 219
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+causal effects in a multilevel setting. To obtain these causal
+estimates, the distribution of covariates between the units
+of comparison at both school and student levels and the
+natural clustering of students within schools was consid-
+ered in the potential outcome models with a relaxed form
+of SUTVA.
+At the school level of this data, the estimated distribution
+of the logit for adopting an SSE policy allowed for com-
+parison between types of schools. Most schools were non-
+SSE; the SSE-identified schools appear to have a dichotomous
+distribution, with approximately half of the schools profiling
+as private schools with high SES and resources and the other
+half profiling as larger public schools with lower income and
+resources. The private schools have tuition resources, and the
+federally and state funded programs may be funding the
+larger, economically less-advantaged public schools, resulting
+in the emergence of these two profiles of SSE schools.
+At the student level of the sample, there were two
+propensity score estimates obtained empirically, the first
+being q0
+from children attending non-SSE schools. The
+students within the non-SSEs who practiced healthy habits
+did differ from their non-healthy habits practice peers on
+many covariates of interest, but a strong profile did not
+emerge. The second student-level estimate, q1
+, was obtained
+empirically from students who attended SSE schools. The
+students within these schools also differed when compared
+between students who practiced healthy habits and those
+who did not.
+The results, although not statistically significant, sup-
+port the finding that SSE has a positive effect on students
+with a propensity for practicing healthy habits in SSE and
+non-SSE schools. Random assignment to treatment allows
+for causal inference if the sample size is sufficient (Pearl,
+2003). This study had a larger sample size, in both levels of
+the treatment, than previous multilevel randomized control
+trials that studied the effect of exercise and eating habits on
+adolescents' BMI and BMI z scores and unlike the random-
+ized studies accounted for ignorability of treatment assign-
+ment at both levels of the model (DeBar et al., 2011; de Heer
+et al., 2011; Dzewaltowski et al., 2010). The nonsignificant
+findings may be due to low power as the Level 2 sample size
+was only n = 18 for SSE schools. However, one strategic
+advantage of propensity score estimates for causal inference,
+over simple matching and regression techniques, is that it
+provides a one-factor covariate comprised of all other
+hypothesized predictor covariates, allowing for stratification
+q
+TABLE 5. Within-Stratum Distribution of the Body Mass Index Outcome of Students in
+Subpopulation AB in Non-Supportive School Environment Schools
+Attend SSE school Attend non-SSEE school
+Mean difference
+Stratum n M SD n M SD
+1 74 26.81 6.10 111 26.56 6.45 þ0.25
+2 142 25.21 4.78 84 25.49 5.98 j0.28
+3 157 25.87 4.85 55 27.46 6.70 j1.59
+4 106 26.16 5.60 76 25.07 6.37 þ1.09
+5 80 25.57 6.24 60 26.42 6.34 j0.85
+Total 559 25.85 5.38 386 26.24 6.52 j0.39
+Note. SSE = supportive school environment.
+q
+TABLE 6. Within-Stratum Distribution of the Body Mass Index Outcome of Students in
+Subpopulation A in Supportive School Environment Schools
+Attend SSE school Attend non-SSEE school
+Mean difference
+Stratum n M SD n M SD
+1 740 27.90 7.32 1454 27.27 7.04 þ0.63
+2 1051 26.75 6.55 1144 26.48 6.37 þ0.27
+3 1223 25.81 5.60 756 26.49 5.91 j0.68
+4 1221 26.21 5.45 410 26.57 5.92 j0.36
+5 605 26.34 4.96 140 26.23 5.22 þ0.11
+Total 4840 26.50 6.037 3904 26.77 6.47 j0.27
+Note. SSE = supportive school environment.
+220 Propensity Score Estimates in Multilevel Models Nursing Research May/June 2012 Vol 61, No 3
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+on one identified covariate instead of 65 at the student level.
+More importantly, the nonsignificant findings may indicate
+that the causal relationship between the adoption of healthy
+habit behaviors at a student level, whether in an SSE or not,
+may not address the multidimensional influences on obesity
+outcomes fully (Maclean et al., 2010). A dependent measure
+more proximal in time than the 6-year lag BMI used in this
+analysis would add to causal inference estimates. Body mass
+index is not considered by some experts to be the best
+measure for adolescent obesity, so a standardized BMI z
+score may be a more accurate measure of an individual
+teen's obesity (Rausch et al., 2011). However, although BMI
+and BMI z score are the most current measures of childhood
+obesity, these are not direct measures of body fat. Other
+measures such as percentage of body fat and bioelectrical
+impedance analysis are being proposed by some obesity
+researchers as more valid obesity assessment tools (Boylan
+et al., 2010). Alternative or multiple obesity measures should
+q
+TABLE 8. Causal Effect of Healthy Habits in a Supportive School Environment School on Students'
+Body Mass Index Outcome Measure for Students in Subpopulation AB, %
+z1
+Fixed effect Coefficient SE t
+Non-HH students' Propensity Stratum 1 intercept, +0
+26.78 0.87 30.44
+Effect of practicing HH, %z1 j0.18 0.39 j0.45
+Propensity Stratum 2, +2 j1.07 0.63 j1.77
+Propensity Stratum 3, +3
+0.32 0.76 0.43
+Propensity Stratum 4, +4
+0.12 1.04 0.11
+Propensity Stratum 5, +5
+0.29 1.96 j1.55
+Logit q0,
++6
+0.94 1.63 0.58
+Variance (SD)
+Random effect df 22 p
+School-specific effect, uj
+1.001 (1.00) 36.72 G.001
+12
+Student-specific effect, eij
+32.43 (5.69)
+Note. HH = healthy habits.
+q
+TABLE 7. Causal Effect of Healthy Habits in a Non-Supportive School Environment School on
+Students' Body Mass Index Outcome Measure for Students in Subpopulation A, %
+z0
+Fixed effect Coefficient SE t
+Non-HH students' Propensity Stratum 1, intercept +0
+27.07 0.36 74.05
+Effect of practicing HH, %z1
+0.16 0.14 1.15
+Propensity Stratum 2, +2 j0.18 0.28 j0.66
+Propensity Stratum 3, +3 j0.35 0.39 j0.87
+Propensity Stratum 4, +4
+0.29 0.52 0.56
+Propensity Stratum 5, +5
+0.29 1.96 j1.55
+Logit q0,
++6 j0.618 0.52 0.56
+Variance (SD)
+Random effect df 22 p
+School-specific effect, uj
+0.945 (0.97) 329.45 G.001
+114
+Student-specific effect, eij
+37.58 (6.130)
+Note. HH = healthy habits.
+Nursing Research May/June 2012 Vol 61, No 3 Propensity Score Estimates in Multilevel Models 221
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+be considered for further research. A continuous measure-
+ment level of SSE as opposed to a binary assignment may be
+helpful in adding information regarding the causal effect of
+varying levels of SSE on students' BMIs. The results obtained
+with this research cannot be generalized to students in Sub-
+population C. Subpopulation C will require a different causal
+model. Although small (n = 41), this subpopulation needs
+to be considered in healthy habits policy and program
+adoption research to decrease adulthood obesity. A further
+limitation of this research was that most variables at both
+levels were from self-reported survey data, with the exception of
+measured heights and weights for the outcome BMI variable.
+Multilevel modeling can be achieved with multiple types
+of software, such as HLM, Mplus, MLwiN, SAS PROC
+MIXED, STATA, R, and IBM SPSS 19 and 20. Versions of
+HLM, like MLwiN and R, are available for free, an ap-
+pealing consideration when allocating research funding.
+HLM allows for specification of the model at each level
+separately, such as at the student and school levels, and does
+not require the researcher to derive a single equation spec-
+ification (Singer, 1998). This can be quite helpful to the
+nonexpert quantitative researcher by providing explicit
+notation of the theorized variables at each level and avoid-
+ing the common omission of cross-level interactions. HLM
+does derive and display the singular multiple-level equation,
+in addition to the individual-level equations. HLM, like
+MLwiN, does not require command input in syntax, making
+it appealing to many nonstatistician researchers. There are
+manuscripts and books available that provide a thorough
+discussion of the various software products available to model
+multilevel research (Albright, 2007; Albright & Marinova,
+2010; Hong & Raudenbush, 2006; Muthen & Muthen,
+2012; Rasbash et al., 2009; Singer, 1998).
+Multilevel modeling accounts for the natural clustering
+of students within schools and can be used to estimate the
+variance components at each level of the model, allowing
+researchers to examine distinct phenomena and socio-
+ecological factors. However, multilevel modeling without
+a causal framework will not produce cause-and-effect rela-
+tionship answers. The inclusion of propensity score estimates
+at both levels of the model, with a relaxed form of SUTVA at
+the student level, can meet the assumptions required to es-
+tablish a cause and effect relationship.
+Propensity score estimates for causal inference need to
+be used in consideration of potential limitations. Ignorability
+of treatment assignment is an untestable assumption for all
+causal inference modeling and may be violated if an unob-
+served relevant covariate is omitted from the model (Pearl,
+2003, 2010). Sensitivity analysis can provide information
+regarding plausibility of assumptions being tenable, but
+confidence in causal conclusions must be viewed by their
+consistency with findings of other evidence in addition to
+how sensitive the conclusions are to reasonable devia-
+tions. Propensity score estimates, like experimental stud-
+ies, work better with larger samples, as a covariate in a
+small sample may be unbalanced enough between two
+groups to make the samples nonequivalent (Rubin, 1997).
+Balancing can be observed with a variety of methods on ob-
+served covariates only (Yanovitzky et al., 2005 ). The SUTVA
+assumption may not be tenable in multilevel settings. This
+violation can be addressed by a relaxation of SUTVA as done
+in this study. The primary limitation with propensity score
+estimates, as with all causal inference, remains the inability
+to test if a relevant covariate was eliminated from the model
+(Pearl, 2003, 2010; Rubin, 1974, 1997). Convergence of strong
+evidence over multiple studies supports causal conclusions.
+Cause-and-effect relationships in a multilevel setting are
+often the relationships nurse researchers want to test. Various
+constraints of resources, ethics, and political opposition often
+preclude the design of treatment effect studies that meet the
+assumptions for causal inference. Propensity scores can pro-
+vide these estimates in observational settings and can be
+produced with the use of spreadsheet software that has basic
+statistical functions, making a causal modeling approach of
+analysis readily available to most researchers. q
+Accepted for publication February 28, 2012.
+The author thanks the Educational Psychology Department at the
+Graduate Center CUNY for its approval of this study and Dr. David
+Rindskopf, PhD, a distinguished professor at the Graduate Center of
+the City University of New York, for his suggestions in the design of
+this study and in the analysis of the data.
+The author has no funding or conflicts of interest to disclose.
+Corresponding author: Patricia Eckardt, PhD, School of Nursing, Health
+Sciences Center, Level 2, Room 247, Stony Brook University, Stony Brook,
+NY 11794-8240 (e-mail: patricia.eckardt@stonybrook.edu).
+References
+Albright, J. J. (2007). Estimating multilevel models Using SPSS, Stata,
+and SAS. Retrieved from http://www.indiana.edu/~statmath/stat/
+all/hlm/hlm.pdf
+Albright, J. J., & Marinova, D. M. (2010). Estimating multilevel
+models using SPSS, STATA, SAS, and R. Unpublished manu-
+script, Stat/Math Center, Indiana University, Indiana, USA.
+Angrist, J. D. (1990). Lifetime earnings and the Vietnam era draft
+lottery: Evidence from Social Security administrative records.
+American Economic Review, 80, 313Y335.
+Angrist, J. D., & Pischke, J.-S. (2008). Mostly harmless econo-
+metrics: An empiricist's companion. Princeton, NJ: Princeton
+University Press.
+Ben-Sefer, E. E., Ben-Natan, M. M., & Ehrenfeld, M. M. (2009).
+Childhood obesity: Current literature, policy and implications
+for practice. International Nursing Review, 56, 166Y173.
+doi:10.1111/j.1466-7657.2008.00708.x.
+Boylan, M., Du, F., Ming, C., Yoona, C., Esperat, C., Flores, D.,
+I Ochoa, C. (2010). Identification of overweight in young
+children: Is use of body mass index percentiles alone sufficient?
+Texas Public Health Journal, 62, 4Y8.
+Cassady, D., Vogt, R., Oto-Kent, D., Mosley, R., & Lincoln, R.
+(2006). The power of policy: A case study of healthy eating among
+children. American Journal of Public Health, 96, 1570Y1571.
+Clayton, S., Chin, T., Blackburn, S., & Echeverria, C. (2010). Dif-
+ferent setting, different care: Integrating prevention and clinical
+care in school-based health centers. American Journal of Public
+Health, 100, 1592Y1596. doi:10.2105/AJPH.2009.186668.
+Cochran, W. G. (1965). The effectiveness of adjustment by sub
+classification in removing bias in observational studies. Biometrics,
+24, 295Y313.
+Cochran, W. G. (1968). The planning of observational studies
+of human populations (with discussion). Journal of the Royal
+Statistical Society, Series A, 128(24), 134Y155.
+de Heer, H. D., Koehly, L., Pederson, R., & Morera, O. (2011).
+Effectiveness and spillover of an after-school health promotion
+program for Hispanic elementary school children. American
+Journal of Public Health, 101, 1907Y1913.
+222 Propensity Score Estimates in Multilevel Models Nursing Research May/June 2012 Vol 61, No 3
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+DeBar, L. L., Schneider, M., Drews, K. L., Ford, E. G., Stadler, D.
+D., Moe, E. L., I Venditti, E. M. (2011). Student public
+commitment in a school-based diabetes prevention project:
+Impact on physical health and health behavior. BMC Public
+Health, 11, 711.
+Drews, K. L., Harrell, J. S., Thompson, D., Mazzuto, S. L., Ford,
+E. G., Carter, M., I Roullet, J. B. (2009). Recruitment and retention
+strategies and methods in the HEALTHY study. International
+Journal of Obesity, 33, S21YS28. doi:10.1038/ijo.2009.113.
+Dzewaltowski, D., Rosenkranz, R., Geller, K., Coleman, K.,
+Welk, G., Hastmann, T., & Milliken, G. (2010). HOP'N
+after-school project: An obesity prevention randomized con-
+trolled trial. The International Journal of Behavioral Nutrition
+and Physical Activity, 7, 90.
+Fulkerson, J., Rydell, S., Kubik, M., Lytle, L., Boutelle, K., Story,
+M., Hellip; Garwick, A. (2010). Healthy Home Offerings via
+the Mealtime Environment (HOME): Feasibility, acceptability,
+and outcomes of a pilot study. Obesity, 18, S69YS74.
+Gelman, A., & Hill, J. (2006). Data analysis using regression and
+multilevel/hierarchical models. New York, NY: Cambridge
+University Press.
+Guo, S., & Fraser, M. W. (2010). Propensity score analysis, statistical
+methods and applications. Thousand Oaks, CA: Sage.
+Harris, K. M., & Udry, J. R. (2009). National Longitudinal Study of
+Adolescent Health (Add Health), 1994Y2002 [Computer file].
+ICPSR21600-v2. Ann Arbor, MI: Inter-university Consortium
+for Political and Social Research [distributor], 2009-03-11.
+doi:10.3886/ICPSR21600.
+Hollar, D., Messiah, S. E., Lopez-Mitnik, G., Hollar, T. L.,
+Almon, M., & Agatston, A. S. (2010). Effect of a two-year
+obesity prevention intervention on percentile changes in body
+mass index and academic performance in low-income elemen-
+tary school children. American Journal of Public Health, 100,
+646Y653. doi:10.2105/AJPH.2009.165746.
+Hong, G., & Raudenbush, S. W. (2006). Evaluating kindergarten
+retention policy: A case study of causal inference for multi-level
+observational data. Journal of the American Statistical Associ-
+ation, 101, 901Y910.
+Laird, N. M., & Ware, J. H. (1982). Random-effects models for
+longitudinal data. Biometrics, 38, 963Y974.
+Lin, K. W., & Lam, C. (2011). Screening for obesity in children
+and adolescents. American Family Physician, 83, 737Y738.
+Liou, Y. M., Liou, T. H., & Chang, L. C. (2010). Obesity among
+adolescents: Sedentary leisure time and sleeping as determinants.
+Journal of Advanced Nursing, 66, 1246Y1256. doi:10.1111/
+j.1365-2648.2010.05293.x.
+Little, R. J., & Rubin, D. B. (2000). Causal effects in clinical and epi-
+demiological studies via potential outcomes: Concepts and analyt-
+ical approaches. Annual Review of Public Health, 21, 121Y145.
+Maclean, L. M., Clinton, K., Edwards, N., Garrard, M., Ashley,
+L., Hansen-Ketchum, P., & Walsh, A. (2010). Unpacking vertical
+and horizontal integration: Childhood overweight/obesity pro-
+grams and planning, a Canadian perspective. Implementation
+Science, 5, 36. doi:10.1186/1748-5908-5-36.
+Muthen, L. K., & Muthen, B. O. (2012). Mplus user's guide (v. 6).
+Los Angeles, CA: Author. Retrieved from http://www.statmodel
+.com/ugexcerpts.shtml
+Ogden, C. L., Carroll, M. D., Curtin, L. R., Lamb, M. M., &
+Flegal, K. M. (2010). Prevalence of high body mass index in US
+children and adolescents, 2007Y2008. JAMA, 303, 242Y249.
+doi:10.1001/jama.2009.2012.
+Pearl, J. (2003). Statistics and causal inference: A review. Test, 12,
+281Y345. Retrieved from http://www.springer.com/statistics/
+journal/11749
+Pearl, J. (2010). The foundations of causal inference. Sociological Meth-
+odology, 40, 75Y149. doi:10.1111/j.1467-9531.2010.01228.x.
+Power, T. G., Bindler, R. C., Goetz, S., & Daratha, K. B. (2010).
+Obesity prevention in early adolescence: Student, parent, and
+teacher views. Journal of School Health, 80, 13Y19. doi:
+10.1111/j.1746-1561.2009.00461.x.
+Rasbash, J., Steele, F., Browne, W. J., & Goldstein, H. (2009). A
+user's guide to MLwiN, v2.10. Bristol, UK: Centre for Multi-
+level Modeling, University of Bristol. Retrieved from http://
+users.soe.ucsc.edu/~draper/rasbash-etal-2000.pdf
+Raudenbush, S., & Bryk, A. (2002). Hierarchical linear models:
+Applications and data analysis methods (2nd ed.). London, UK:
+Sage Publications.
+Rausch, J., Perito, E., & Hametz, P. (2011). Obesity prevention,
+screening, and treatment: Practices of pediatric providers since
+the 2007 Expert Committee recommendations. Clinical Pedia-
+trics, 50, 434Y441. doi:10.1177/0009922810394833.
+Rosenbaum, P. R. (2002). Observational studies (2nd ed.). New
+York, NY: Springer.
+Rosenbaum, P. R., & Rubin, D. B. (1984). Reducing bias in ob-
+servational studies using sub classification on the propensity
+score. Journal of the American Statistical Association, 79, 516Y552.
+Rubin, D. B. (1974). Estimating causal effects of treatments in
+randomized and nonrandomized studies. Journal of Educa-
+tional Psychology, 66, 688Y701.
+Rubin, D. B. (1986). Comment: Which ifs have causal answers?
+Journal of the American Statistical Association, 81, 961Y962.
+Rubin, D. B. (1990). On the application of probability theory to
+agricultural experiments. Essay on principles. Section 9. Com-
+ment: Neyman (1923) and causal inference in experiments and
+observational studies. Statistical Science, 5, 472Y480.
+Rubin, D. B. (1997). Estimating causal effects from large data sets
+using propensity scores. Annals of Internal Medicine, 127, 757Y763.
+Rubin, D. B. (2004). Basic concepts of statistical inference for
+causal effects in experiments and observational studies. Unpub-
+lished manuscript, Department of Statistics, Harvard Univer-
+sity, Cambridge, MA.
+Shadish, W. R., Clark, M. H., & Steiner, P. (2008). Can non-
+randomized experiments yield accurate answers? A randomized
+experiment comparing random and nonrandom assignments.
+Journal of American Statistical Association, 103, 1334Y1343.
+Singer, J. D. (1998). Using SAS PROC MIXED to fit multilevel
+models, hierarchical models, and individual growth models. Journal
+of Educational and Behavioral Statistics, 24, 322Y354.
+Singer, J. D., & Willett, J. B. (2003). Applied longitudinal data
+analysis: Methods for studying change and event occurrence.
+New York, NY: Oxford University Press.
+Vitale, E. (2010). A school nursing approach to childhood obesity:
+an early chronic inflammatory disease. Immunopharmacology &
+Immunotoxicology, 32, 5Y16. doi:10.3109/08923970903104090.
+Yanovitzky, I., Zanutto, E., & Hornik, R. (2005). Estimating causal
+effects of public health education campaigns using propensity
+score methodology. Evaluation and Program Planning, 28,
+209Y220.
+Nursing Research May/June 2012 Vol 61, No 3 Propensity Score Estimates in Multilevel Models 223
+Copyright @ 2012 Lippincott Williams & Wilkins. Unauthorized reproduction of this article is prohibited.
+

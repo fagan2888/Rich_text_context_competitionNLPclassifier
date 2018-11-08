@@ -1,0 +1,728 @@
+891 Am J Epidemiol 2004;159:891­899
+American Journal of Epidemiology
+Copyright © 2004 by the Johns Hopkins Bloomberg School of Public Health
+All rights reserved
+Vol. 159, No. 9
+Printed in U.S.A.
+DOI: 10.1093/aje/kwh114
+A Repeated Measures Approach for Simultaneous Modeling of Multiple
+Neurobehavioral Outcomes in Newborns Exposed to Cocaine in Utero
+Abhik Das1, W. Kenneth Poole1, and Henrietta S. Bada2
+1 Statistics Research Division, Research Triangle Institute, Rockville, MD.
+2 University of Kentucky Chandler Medical Center, Lexington, KY.
+Received for publication May 22, 2003; accepted for publication October 16, 2003.
+Multiple binary outcomes are encountered frequently in epidemiologic research. This work was motivated by
+the Maternal Lifestyle Study, 1993­1995, where newborns exposed prenatally to cocaine and a comparison
+cohort were examined for the presence of central and autonomic nervous system (CNS/ANS) signs. Thus, each
+infant contributed to multiple, possibly interrelated, binary outcomes that may collectively constitute one
+syndrome (even though specific outcomes that are affected by cocaine are of scientific interest). Because it is
+neither scientifically appropriate nor statistically efficient to fit separate models for each outcome, here we adopt
+a multivariate repeated measures approach to simultaneously model all the CNS/ANS outcomes as a function of
+cocaine exposure and other covariates. This formulation has a number of advantages. First, it implicitly
+recognizes that all the CNS/ANS outcomes may together constitute one syndrome. Second, simultaneous
+modeling boosts statistical efficiency by allowing for correlations among the outcomes, and it avoids multiple
+comparisons. Third, it allows for outcome-specific exposure effects, so that the specific signs that are affected by
+cocaine exposure can be identified.
+binary data; generalized estimating equation; generalized linear mixed model; multiple comparisons; repeated
+measures; simultaneous inference; syndrome
+Abbreviations: CNS/ANS, central and autonomic nervous system; GEE, generalized estimating equation; GLMM, generalized
+linear mixed model.
+Binary outcome measures that indicate the presence or
+absence of certain medical conditions are a widely used tool
+in epidemiologic investigations. Moreover, public health
+studies frequently measure an array of such indicators for
+different medical conditions to make an overall assessment
+about an individual's health status. For instance, overall
+health status in newborns is widely assessed through the
+Apgar score, which is a scale that is derived by eliciting
+answers to a series of categorical questions regarding five
+outcomes (color, reflex irritability, muscle tone, respiratory
+effort, and heart rate). Each of these scales generates a score
+of 0­2, which may be dichotomized according to a hypothe-
+sized threshold for poor outcomes.
+The traditional approach for statistical analyses of such
+binary outcomes is logistic regression, where the probability
+of observing an "event" (i.e., the prevalence of some medical
+condition) is modeled as a function of the principal risk
+factor/treatment of interest and other covariates (1).
+However, the situation where multiple binary outcomes are
+simultaneously assessed on the same individual presents
+some basic methodological problems in that proper statis-
+tical modeling here should account for the following features
+of the data.
+A. Each individual contributes to multiple outcomes.
+Thus, the different outcomes for each individual are
+likely to be correlated.
+B. These multiple outcomes broadly purport to measure
+the same underlying condition or construct.
+C. While the multiple outcomes may be measuring the
+same underlying phenomenon, outcome-specific
+effects (i.e., which specific outcomes are associated
+with the effect of interest) may still be of scientific
+interest in many situations.
+Correspondence to Dr. Abhik Das, Research Triangle Institute, 6110 Executive Boulevard, Suite 420, Rockville, MD 20852-3903 (e-mail:
+adas@rti.org).
+892 Das et al.
+Am J Epidemiol 2004;159:891­899
+Many researchers have attempted to address issues A and
+B by constructing scores that add up the various outcome
+indicators (which can sometimes also be interpreted as the
+total number of adverse medical conditions) and then
+regressing the total score on covariates using linear or
+Poisson regression (2). Others have used latent variable
+models to infer about the underlying, yet unobserved,
+process that these multiple outcomes purport to measure (3).
+However, the principal limitation in both these approaches is
+that, by focusing on the aggregate, they lose the ability to
+discern outcome-specific effects (i.e., which specific
+outcomes are associated with the effect of interest) that may
+be of substantive interest, thus failing to address issue C.
+This is critical, since aggregation of multiple outcomes risks
+combining indicators of distinct processes, which could
+mask subtle relations between specific outcomes and risk
+factors. Moreover, latent variable models generally entail
+strong (often untestable) modeling assumptions that may
+significantly impact analytical findings in ways that may not
+be obviously discernible.
+Individual analyses of each outcome, with separate
+logistic regression models being fitted for each indicator,
+would satisfy issue C but at the expense of issues A and B.
+Specifically, outcomes assessed on the same individual are
+likely to exhibit intracluster correlation, since they are
+subject to shared influences that are particular to that indi-
+vidual (or cluster). If data on these underlying shared influ-
+ences (detailed individual-level information such as genetic
+makeup, environmental exposures, and so on) are available,
+identifying and including these factors as covariates in the
+regression model may account for this clustering to some
+extent. However, in practice, it is highly unlikely that all
+such factors can be identified and measured to the extent that
+intracluster correlation gets reduced to a negligible level.
+Ignoring correlations among the multiple outcomes essen-
+tially wastes valuable information by not exploiting this
+distinctive covariance structure in the data, whereby the
+overall variability in the outcomes can be broken down into
+that between individuals and that within individuals. This
+approach will generally produce inefficient estimates, and
+the loss in precision resulting from not utilizing information
+across the multiple outcomes may be substantial (4).
+A related problem with individual analyses for each
+outcome is that of multiple comparisons. Specifically, fitting
+separate logistic regression models for each individual
+outcome would leave the analysis vulnerable to a multiple
+comparisons problem, whereby performing several tests on
+the same kinds of variables in the same data inflates the type
+I error to magnitudes that are unacceptably higher than the
+nominal significance level.
+In this paper, we adopt a multivariate modeling approach
+to analyze multiple binary outcomes in a statistical frame-
+work that addresses all three issues (A, B, and C) presented
+earlier. Note that a solution already exists for paired binary
+data through the use of bivariate logistic regression models
+(5). However, that methodology is limited to two binary
+outcomes assessed for each individual. Our approach builds
+upon this work and extends to the multiple (i.e., >2)
+outcomes setting, where we borrow from statistical methods
+for longitudinal and repeated measures data to simulta-
+neously model all the outcomes assessed on an individual.
+Thus, we assume that each individual contributes a vector of
+correlated binary outcomes, all of which may be jointly
+influenced by his/her treatment/risk factor status and other
+personal traits.
+There are several advantages to such a repeated measures
+approach. First, it explicitly recognizes that all the outcomes
+for an individual may be correlated. Second, the fact that a
+single model captures all the outcomes underlines that they
+may collectively constitute one overarching condition or
+construct. Third, by simultaneously modeling all the
+outcomes, this approach avoids the multiple comparisons
+problem. Fourth, in spite of the simultaneous modeling
+formulation, by appropriately nesting the effect of interest
+(treatment or principal risk factor) within the multiple
+outcomes, we can test for the outcome-specific effects in
+which we are interested. At the same time, by constructing
+proper linear contrasts, we can test whether such separate
+effects for each outcome are, in fact, supported by the data.
+If not, we may choose to examine a simpler global effect.
+Finally, this technique is statistically more efficient (in terms
+of conserving degrees of freedom and enhancing the power
+to observe significant effects) than fitting separate models
+for each outcome.
+This paper is organized as follows. The next section
+provides a brief background on the public health study that
+motivated this research. Details on the statistical methods
+used to put our multivariate modeling approach into opera-
+tion are presented next, followed by the results of applying
+these methods to actual data from our motivational study.
+Finally, we conclude with some general observations on the
+substantive and methodological implications of this exercise.
+BACKGROUND: THE MATERNAL LIFESTYLE STUDY
+This paper is motivated by data from the Maternal Life-
+style Study, which is a multisite prospective cohort study
+that aims to evaluate the relation between maternal cocaine
+and/or opiate use during pregnancy and the presence of acute
+neonatal complications and long-term adverse neurodevel-
+opmental outcomes in infants (6). The Maternal Lifestyle
+Study is the largest prospective study of its kind to date, with
+11,811 mother-infant dyads enrolled at baseline. Maternal
+cocaine and/or opiate use during the index pregnancy was
+determined for all the enrolled subjects using a combination
+of self-report and subsequent laboratory verification (infant
+meconium toxicology). The 8,351 subjects, for whom
+cocaine/opiate exposure status could be conclusively
+confirmed, are the focus of this paper.
+Newborns in the Maternal Lifestyle Study were examined
+within the first few days after birth for the presence of a
+constellation of abnormal neurobehavioral manifestations,
+known collectively as central and autonomic nervous system
+(CNS/ANS) signs, to determine whether the prevalence of
+such signs was disproportionately higher in children exposed
+prenatally to cocaine (7). The recording of these signs was
+considered clinically meaningful because they comprise the
+manifestations reported with neonatal "abstinence
+syndrome" or neonatal narcotic withdrawal syndrome (8, 9),
+and previous studies have reported that cocaine-exposed
+Repeated Measures for Modeling Multiple Outcomes 893
+Am J Epidemiol 2004;159:891­899
+infants exhibited more stress behavior and central nervous
+system signs, as well as increased tone, motor activity, jerky
+movements, and tremors, than did nonexposed controls (10,
+11).
+The significant feature of CNS/ANS signs that is impor-
+tant for this study is that, essentially, they are a collection of
+several presence/absence type (i.e., binary) outcomes that
+are assessed on the same individual simultaneously. More-
+over, even though there is speculation in the medical litera-
+ture that these signs collectively constitute one syndrome
+(12), researchers are at the same time interested in knowing
+specifically which CNS/ANS signs are associated with
+prenatal cocaine exposure, and whether cocaine and opiates
+differentially affect different sets of signs. This necessitates
+the examination of outcome-specific effects in our study
+while bearing in mind that the various signs from each infant
+are highly interrelated.
+Table 1 presents an association matrix for the different
+CNS/ANS signs, where the pairwise associations between
+these binary outcomes are measured in terms of odds ratios
+that characterize their interrelatedness. The high degree of
+association between these signs demonstrated here (for
+instance, an infant with jitteriness/tremors was 16.6 times
+more likely to manifest with hypertonia, 11.3 times more
+likely to be difficult to console, 9.3 times more likely to be
+irritable, and so on) seems to support the contention that
+these signs may collectively constitute one syndrome. The
+table also shows that data analyses for this study may be
+further complicated by the low prevalence rates for most of
+these signs. (Note that, of the 12 CNS/ANS signs originally
+measured in the study, three (difficult to arouse, hyperalert,
+and hyperactive) had to be dropped because of extremely
+low prevalence, which made meaningful statistical analyses
+impossible.)
+In summary, table 1 demonstrates that the odds ratios,
+which capture the statistical dependence between signs from
+the same child, are in general both substantial in magnitude
+and highly significant. Ignoring this clearly apparent disper-
+sion structure in the data would lead to inefficient estimates
+and inaccurate inferences. These factors underscore the
+necessity of adopting the multivariate modeling/repeated
+measures approach outlined in the previous section for the
+analysis of these data.
+METHODS
+There are several different approaches available for imple-
+menting a multivariate repeated measures approach that
+models clustered binary data, that is, methods that simulta-
+neously model all the binary outcomes elicited from an indi-
+vidual (13). Most of these approaches can be grouped into
+two classes: population-averaged marginal modeling using
+generalized estimating equations (GEEs) (5, 14, 15) and
+cluster-specific hierarchical modeling using generalized
+linear mixed models (GLMMs) (16, 17). In the following
+subsections, we discuss the application of these two methods
+in the context of our study and then seek to justify the
+approach that we finally adopted.
+Population-averaged approach
+Here we would model average CNS/ANS prevalence over
+cocaine-exposed and -unexposed children who share
+common explanatory features, while accounting for correla-
+tion among multiple CNS/ANS outcomes from the same
+child. Note that, if there is heterogeneity in these prevalence
+rates across the different signs, the overall cocaine effect
+would be the average of individual cocaine effects for each
+sign.
+The population-averaged marginal GEE model may be
+expressed as follows. If Yij
+indicates the presence of the jth
+TABLE 1. Prevalence and interrelatedness of central and autonomic nervous system signs (as expressed by odds
+ratios) in newborns, the multisite Maternal Lifestyle Study, 1993­1995
+* p < 0.01.
+ Detroit, Michigan; Memphis, Tennessee; Miami, Florida; and Providence, Rhode Island.
+ Central nervous system sign.
+§ Autonomic nervous system sign.
+Central and autonomic
+nervous system signs
+Prevalence
+(n = 8,351)
+(%)
+Odds ratios
+Irritability
+High-pitched
+cry
+Hypertonia
+Difficult to
+console
+Excessive
+suck
+Poor
+suck
+Nasal
+stuffiness
+Sneezing
+Jitteriness/tremors 7.3 9.3* 11.1* 16.6* 11.3* 8.5* 4.8* 5.0* 4.0*
+Irritability 6.9 27.5* 15.9* 142.9* 17.0* 2.1* 7.4* 2.6*
+High-pitched cry 1.9 14.8* 31.9* 15.3* 3.6* 3.1* 4.9*
+Hypertonia 1.1 27.2* 13.2* 7.0* 0.98 7.4*
+Difficult to console 1.2 14.0* 5.1* 6.5* 2.6*
+Excessive suck§ 1.0 0.3 12.3* 4.0*
+Poor suck§ 2.8 2.5* 2.9*
+Nasal stuffiness§ 1.9 4.8*
+Sneezing§ 3.2
+894 Das et al.
+Am J Epidemiol 2004;159:891­899
+CNS/ANS sign in the ith child, (i = 1, ..., n; j = 1, ..., m) and
+pij
+= Pr(Yij
+= 1), and OR represents "odds ratio," then
+logit(pij
+) = 
+j
++ 1j
+coci
++ 2j
+opii
++ xi
+,
+and
+log[OR(Yij
+, Yik
+)] = , j  k. (1)
+Here, the s are sign-specific log odds, the s are log odds
+ratios, and "coc" and "opi" are indicator variables for
+prenatal cocaine and opiate exposures, respectively, while x
+denotes other subject-level covariates and  is the log odds
+ratio characterizing within-subject dependence between
+signs from the same child. Note that, in this formulation, we
+can easily construct a test for the null hypothesis H0
+: 1j
+= 1
+(H0
+: 2j
+= 2), j = 1, ..., m, that examines whether it is indeed
+reasonable to assume separate cocaine (opiate) effects for
+each sign. Failure to reject this test would indicate that the
+cocaine (opiate) effect is the same for all the CNS/ANS
+signs, and a simpler model reflecting the same may better
+describe the data at hand.
+Interpretation of regression coefficients from this model is
+straightforward. Thus, 1j
+(2j
+) is the average log odds ratio
+for the jth CNS/ANS sign in children exposed to cocaine
+(opiates) relative to children who were not exposed to
+cocaine (opiates). Further, since preliminary exploratory
+analyses indicated a wide range of prevalence rates for the
+different CNS/ANS signs, we incorporated sign-specific
+intercepts in the regression model displayed in equation 1 to
+account for this feature in the data.
+There are several advantages to adopting the above GEE
+modeling approach for our data. First, the population-aver-
+aged marginal modeling formulation in equation 1 provides
+population average estimates of overall trends that are
+important from a public health perspective. Second,
+compared with cluster-specific approaches that generally
+involve multidimensional integration (numerical or other-
+wise) of random effects, the GEE estimation algorithm is
+computationally efficient for relatively large data sets such
+as ours (where n = 8,351 and m = 9). It is also widely imple-
+mented in standard-use statistical packages for correlated
+data analysis, such as SAS (SAS Institute, Inc., Cary, North
+Carolina), SPSS (SPSS, Inc., Chicago, Illinois), STATA
+(Stata Corporation, College Station, Texas), and SUDAAN
+(Research Triangle Institute, Research Triangle Park, North
+Carolina) software (18, 19). Third, note that the model
+depicted in equation 1 uses odds ratios rather than correla-
+tion coefficients to model dependence between signs from
+the same child. This is preferable, since odds ratios provide a
+more natural framework for modeling the within-subject
+dependencies that are induced by the binary responses we
+have in this study (20).
+Cluster-specific approach
+Here, we adjust for multiple outcomes by allowing for
+child-specific regression coefficients, that is, coefficients
+that vary from one child to another. This technique acknowl-
+edges the distinctive characteristics of each child that could
+make his/her responses differ. The cluster-specific approach
+thus uses a flexible modeling formulation that allows each
+child to have his/her own unique CNS/ANS profile, which
+may depend on the child's cocaine exposure status (and
+other covariates).
+A cluster-specific GLMM consists of a two-step hierar-
+chical regression framework, where the first step models the
+prevalence of CNS/ANS signs for a child as a function of
+his/her cocaine and opiate exposure, as well as an overall
+child-specific effect 
+i
+. In the next step, this unobserved
+child-specific effect is related to observed child-level covari-
+ates through a linear regression equation. Given the notation
+developed earlier, this model can thus be written as follows:
+Step I: (Yij
+
+i
+)  Bernoulli(pij
+),
+where
+logit(pij
+) = 
+i
++ 
+j
++ 1j
+coci
++ 2j
+opii
+.
+Step II: 
+i
+= xi
+ + ei
+,
+where
+ei
+ N(0,2). (2)
+Here, the 
+i
+denote cluster (i.e., child)-specific effects that
+are unique for the ith child. The variance for the residual
+error terms ei
+(i.e., 2) reflects natural heterogeneity among
+children in terms of unmeasured characteristics such as indi-
+vidual temperament, genetic makeup, environmental expo-
+sure, and so on. Note that, similar to the GEE model, this
+formulation also allows us to easily test whether separate
+exposure effects are merited for each CNS/ANS sign or
+whether a global effect may suffice.
+Compared with the population-averaged model, there are
+some subtle differences in interpretation for the regression
+coefficients in equation 2. Here, 1j
+(2j
+) may be interpreted
+as the log odds ratio for the jth CNS/ANS sign when a child
+is exposed to cocaine (opiates), relative to when that same
+child is not exposed to cocaine (opiates).
+The principal motivation in adopting this cluster-specific
+approach for our study is that it is more appropriate than
+population-averaged GEE methods for estimating the effects
+of within-cluster covariates, that is, covariates that change
+within the subject (12). This is especially relevant for our
+study, since the sign-specific exposure effects captured by
+1 and 2 (in equation 2) that are our primary focus are
+covariates of this type. Moreover, software that enables the
+fitting of such models is also gradually becoming available
+for general use (21, 22).
+There are other advantages of the cluster-specific
+approach as well. First, it allows for CNS/ANS signs from
+the same child to be interrelated by allowing each child to
+have a different mean prevalence for such signs. Second, the
+incorporation of an additional subject-specific level of vari-
+ability (2) ensures that we allow for regression heteroge-
+neity by accommodating varying regression models across
+children. Third, the multilevel model presented in equation 2
+guards against aggregation bias by breaking down any struc-
+Repeated Measures for Modeling Multiple Outcomes 895
+Am J Epidemiol 2004;159:891­899
+ture in the data into within-child and between-children
+components. Finally, the GLMM formulation provides esti-
+mates that are clinically more meaningful, since they purport
+to make inferences about the individual rather than a popula-
+tion average as in the GEE (23).
+Our approach
+The literature on modeling of longitudinal and repeated
+measures does not present any clear consensus on the rela-
+tive statistical merits of either of the approaches discussed
+above. Given the subtle differences in interpretation between
+estimates derived from the two, either approach may be valid
+depending on the question one is interested in answering.
+Although the cluster-specific approach is considered more
+appropriate for assessing the effects of within-cluster covari-
+ates, at the same time it makes untestable assumptions about
+the effects of cluster-level covariates (12). On the other
+hand, although a marginal modeling approach may not be
+suitable for estimating the within-cluster effects that are of
+interest in this study, it does provide estimates that are more
+robust to model misspecification (especially in terms of the
+correlation structure in the data). However, this comes at a
+price--unlike the GLMM, the GEE model is not strictly
+parametric and hence does not produce a likelihood func-
+tion--which makes it impossible to use traditional likeli-
+hood-based procedures for model selection or to determine
+goodness-of-model fit.
+The competing considerations discussed above present a
+substantial dilemma for us, since within-cluster sign-specific
+exposure effects that are best estimated by cluster-specific
+approaches are the focus of our study, while the population-
+averaged approach provides robust estimates that are more
+intuitively appealing from a public health perspective. In
+light of these concerns and the consequent ambiguities that
+are involved, we decided to apply both approaches to our
+data to enable the answering of different kinds of research
+questions and, simultaneously, to investigate whether these
+two approaches produce different conclusions in this respect.
+RESULTS
+Figures 1­4 present the results from fitting the models
+presented in equations 1 and 2 to our data. Aside from sign-
+specific intercepts and cocaine and opiate effects, potential
+confounders (such as study site, maternal race, socioeco-
+FIGURE 1. Results from simultaneous modeling of multiple central and autonomic nervous system signs in newborns, the multisite (Detroit,
+Michigan, Memphis, Tennessee, Miami, Florida, and Providence, Rhode Island) Maternal Lifestyle Study, 1993­1995. Parameter estimates for
+sign-specific intercepts (presented in an exponentiated form as the odds for each sign) were derived using both the population-averaged gener-
+alized estimating equation (GEE) and the cluster-specific generalized linear mixed model (GLMM) approaches. A horizontal bar placed at
+odds = 0 indexes negligible prevalence. High cry, high-pitched cry; diff console, difficult to console; nasal stuff, nasal stuffiness.
+896 Das et al.
+Am J Epidemiol 2004;159:891­899
+nomic status (Medicare insurance used as a proxy for the
+same), infant gestational age, and prenatal exposure to
+tobacco, alcohol, and marijuana) were also included as cova-
+riates in both these models.
+The GEE model (equation 1) was fitted in SAS version 8.2
+(SAS Institute, Inc.) software using the alternating logistic
+regression algorithm (24) that uses odds ratios rather than
+correlation coefficients to model dependence between signs
+from the same child. This model estimated the odds ratio for
+within-subject dependence (i.e., e) to be 4.2 (95 percent
+confidence interval: 3.8, 4.7), indicating substantial within-
+child (or intracluster) dependence in the data. Further, it
+strongly rejected the possibility of a common global expo-
+sure effect for either cocaine (p < 0.0001) or opiates (p =
+0.009), thus supporting our formulation of separate sign-
+specific effects for each.
+The GLMM presented in equation 2 was fitted using the
+"xtlogit" command in STATA version 7.0 (Stata Corpora-
+tion) software, which estimates the parameters in a GLMM
+using Gaussian quadrature. This approach yielded an esti-
+mated subject-level variability (2) of 2.25 (95 percent confi-
+dence interval: 2.0, 2.6), which again attests to the presence
+of substantial within-child dependence in the data. As in the
+GEE model, the possibility of a common global exposure
+effect was strongly rejected here for both cocaine (p =
+0.0001) and opiates (p < 0.0001), thus supporting our formu-
+lation of separate sign-specific effects for each.
+The results presented in figures 1­4 show that the GEE
+and GLMM approaches produced similar results in most
+cases. However, there are some subtle differences that are
+worth mentioning. The cocaine effects for two central
+nervous system signs (difficult to console and high-pitched
+cry) are statistically significant (i.e., the 95 percent confi-
+dence intervals for the odds ratios exclude the value of 1.0)
+for the GLMM but not for the GEE model (figure 4). More-
+over, compared with the GEE model, the within-cluster (i.e.,
+sign-specific) cocaine/opiate effects estimated by the
+GLMM appear to have consistently higher magnitudes and
+wider confidence limits (figures 3 and 4). Interestingly, this
+pattern seems to be reversed for the other factors included in
+the model (intercepts and cluster/individual-level sociode-
+mographic covariates), where the GEE estimates have
+consistently higher magnitudes and wider confidence limits
+for statistically significant factors (figures 1 and 2).
+These results are largely along expected lines. They bear
+out the assertions made in the literature that, while popula-
+tion-averaged GEE approaches are most appropriate for
+assessing the effects of cluster-level covariates (for these
+FIGURE 2. Results from simultaneous modeling of multiple central and autonomic nervous system signs in newborns, the multisite (Detroit,
+Michigan, Memphis, Tennessee, Miami, Florida, and Providence, Rhode Island) Maternal Lifestyle Study, 1993­1995. Parameter estimates for
+sociodemographic covariates (presented as odds ratios) were derived using both the population-averaged generalized estimating equation
+(GEE) and the cluster-specific generalized linear mixed model (GLMM) approaches. A horizontal bar placed at odds ratio = 1 indexes no effect.
+Gest age, gestational age; tob, tobacco; alc, alcohol; med, medium.
+Repeated Measures for Modeling Multiple Outcomes 897
+Am J Epidemiol 2004;159:891­899
+effects the GLMM yields attenuated estimates and confi-
+dence intervals that are too narrow), within-cluster covari-
+ates are best estimated using cluster-specific GLMM (25). In
+the latter situation, it is the GEE approach that yields attenu-
+ated estimates and confidence intervals that are too narrow.
+This is expected because, by definition, the population-aver-
+aged approach averages individual cocaine/opiate effects
+across subjects, and this generally attenuates the estimated
+effect size (25). Score tests for the GEE model and likeli-
+hood ratio tests for the GLMM indicated substantial cocaine
+and opiate effects overall (p < 0.0001 in all cases), although
+not all signs were significantly, or similarly, affected (figures
+3 and 4). Other significant covariates included study site and
+prenatal exposure to tobacco (figure 2).
+DISCUSSION
+In the largest multisite study of its kind to date, we found
+that prenatal exposures to both cocaine and opiates were
+strongly associated with elevated risk of CNS/ANS manifes-
+tations. These effects were present even after controlling for
+interdependence among multiple signs observed on the same
+child, as well as potential confounders such as race, gesta-
+tional age, socioeconomic status, and prenatal exposures to
+tobacco, alcohol, and marijuana. Moreover, even though
+different signs were found to be differentially associated
+with cocaine and opiate exposure in terms of both magnitude
+and statistical significance, opiate effects, in general, were of
+a larger magnitude than those for cocaine. Further substan-
+tive details on these findings and their clinical and public
+health implications have been discussed at length by Bada et
+al. (7).
+In terms of statistical methodology, we have presented
+here an approach that adapts repeated measures techniques
+used primarily for analyzing longitudinal binary data to
+model multiple clinical outcomes (of the presence/absence
+variety) manifest by the same subject at the same time simul-
+taneously. This formulation recognizes implicitly that all the
+outcomes may be interrelated and could together constitute
+one syndrome. Simultaneous modeling of all the outcomes
+also boosts statistical efficiency and avoids the multiple
+comparisons problem, while allowing for the testing of
+outcome-specific effects, if necessary. There are subtle
+differences in conceptualization and interpretation between
+the population-averaged GEE and the cluster-specific
+GLMM methods that may be used for implementing this
+FIGURE 3. Results from simultaneous modeling of multiple central and autonomic nervous system signs in newborns, the multisite (Detroit,
+Michigan, Memphis, Tennessee, Miami, Florida, and Providence, Rhode Island) Maternal Lifestyle Study, 1993­1995. Parameter estimates for
+sign-specific opiate effects (presented as odds ratios) were derived using both the population-averaged generalized estimating equation (GEE)
+and the cluster-specific generalized linear mixed model (GLMM) approaches. A horizontal bar placed at odds ratio = 1 indexes no effect. High
+cry, high-pitched cry; diff console, difficult to console; nasal stuff, nasal stuffiness.
+898 Das et al.
+Am J Epidemiol 2004;159:891­899
+approach, and either method (or both) may be appropriate,
+depending on the research question(s) being posed. Though
+small in most cases, these differences are borne out by the
+results presented for this study. In sum, outcome-specific
+effects may be reliably estimated from a GLMM, while
+subject-level effects may be best estimated using a GEE
+model.
+The methods described in this paper are applicable in more
+general settings involving multiple outcomes measured
+simultaneously on the same subject. In fact, they are suitable
+for any set of outcomes that can be modeled using the expo-
+nential family of distributions. For example, suppose we had
+continuous, categorical, or count responses instead of the
+binary outcomes that we have dealt with here. Such a situa-
+tion can be modeled in both the population-averaged and
+cluster-specific approaches by suitably altering the logit link
+function for the expected value of the response that is speci-
+fied in equations 1 and 2. For continuous outcomes this
+would be the identity link, for count data it would be the log
+link, and so on. Even for binary outcomes, other links such
+as the probit link may be explored. We do, however, caution
+that the STATA "xtlogit" command we have used to esti-
+mate our GLMM parameters cannot accommodate other link
+functions (such as log or probit) or more complicated corre-
+lation structures (e.g., a three-level hierarchical model with
+multiple binary outcomes nested in individuals nested in
+clinical sites). Other software options would need to be
+explored in such situations. In sum, since investigators in
+public health research frequently measure multiple clinical
+outcomes on the same subject at the same time, we believe
+that the principles underlying the methods described in this
+paper are of significant importance to public health research
+in general.
+ACKNOWLEDGMENTS
+The Maternal Lifestyle Study is supported by the National
+Institute of Child Health and Human Development through
+cooperative agreements U10 HD 27856, U10 HD 21397,
+U10 HD 21385, U10 HD 27904, U01 HD 36790, and U01
+HD 19897, as well as by interagency agreements with the
+National Institute on Drug Abuse, Administration on Chil-
+dren, Youth, and Families, and Center for Substance Abuse
+Treatment.
+FIGURE 4. Results from simultaneous modeling of multiple central and autonomic nervous system signs in newborns, the multisite (Detroit,
+Michigan, Memphis, Tennessee, Miami, Florida, and Providence, Rhode Island) Maternal Lifestyle Study, 1993­1995. Parameter estimates for
+sign-specific cocaine effects (presented as odds ratios) were derived using both the population-averaged generalized estimating equation (GEE)
+and the cluster-specific generalized linear mixed model (GLMM) approaches. A horizontal bar placed at odds ratio = 1 indexes no effect. High
+cry, high-pitched cry; diff console, difficult to console; nasal stuff, nasal stuffiness.
+Repeated Measures for Modeling Multiple Outcomes 899
+Am J Epidemiol 2004;159:891­899
+The following institutions and investigators participated in
+the Maternal Lifestyle Study: University of Miami: Dr.
+Charles Bauer (principal investigator); Wayne State Univer-
+sity: Dr. Seetha Shankaran (principal investigator); Univer-
+sity of Tennessee: Dr. Henrietta Bada (principal
+investigator); Brown University: Dr. Barry Lester (principal
+investigator); Research Triangle Institute: Dr. W. K. Poole
+(principal investigator); National Institute of Child Health
+and Human Development: Dr. Linda Wright (program
+officer); National Institute on Drug Abuse: Dr. Vincent
+Smeriglio (program officer); Administration on Children,
+Youth, and Families: Dr. Penny Maza (program officer); and
+Center for Substance Abuse Treatment: Dr. Loretta Finnegan
+(program officer).
+REFERENCES
+1. McCullagh P, Nelder J. Generalized linear models. London,
+United Kingdom: Chapman and Hall, 1989.
+2. Stewart AL, Ware JE. Measuring functioning and well-being:
+the Medical Outcomes Study approach. Durham, NC: Duke
+University Press, 1992.
+3. Bandeen-Roche K, Miglioretti DL, Zeger SL, et al. Latent vari-
+able regression for multiple outcomes. J Am Stat Assoc 1997;
+92:1375­86.
+4. Liang KY, Zeger SL. Regression analysis for correlated data.
+Annu Rev Public Health 1993;14:43­68.
+5. Fitzmaurice GM, Laird NM, Zahner GE, et al. Bivariate logistic
+regression analysis of childhood psychopathology ratings using
+multiple informants. Am J Epidemiol 1995;142:1194­203.
+6. Bauer CR, Shankaran S, Bada HS, et al. The Maternal Lifestyle
+Study: drug exposure during pregnancy and short-term mater-
+nal outcomes. Am J Obstet Gynecol 2002;186:487­95.
+7. Bada H, Bauer CR, Shankaran S, et al. Central and autonomic
+nervous systems (CNS/ANS) signs associated with in-utero
+cocaine/opiate exposure. Arch Dis Child 2002;87:106­12.
+8. Rosen TS, Pippenger CE. Pharmacologic observations on the
+neonatal withdrawal syndrome. J Pediatr 1976;88:1044­8.
+9. Zelson C, Rubio E, Wasserman E. Prenatal narcotic addiction
+10 year observation. Pediatrics 1971;48:178­89.
+10. Napiorkowski B, Lester BM, Freier C, et al. Effects of in utero
+substance exposure on infant neurobehavior. Pediatrics 1996;
+98:71­5.
+11. Oro AS, Dixon SD. Perinatal cocaine and methamphetamine
+exposure: maternal and neonatal correlates. J Pediatr 1987;111:
+571­8.
+12. Roberts RJ. Fetal and infant intoxication. In: Drug therapy in
+infants: pharmacologic principles and clinical experience. Phil-
+adelphia, PA: WB Saunders, 1984:322­83.
+13. Neuhaus JM. Statistical methods for longitudinal and clustered
+designs with binary responses. Stat Methods Med Res 1992;1:
+249­73.
+14. Legler J, Lefkopoulou M, Ryan L. Efficiency and power of
+tests for multiple binary outcomes. J Am Stat Assoc 1995;90:
+680­93.
+15. Liang KY, Zeger SL. Longitudinal data analysis using general-
+ized linear models. Biometrika 1986;73:13­22.
+16. Breslow NE, Clayton DG. Approximate inference in general-
+ized linear mixed models. J Am Stat Assoc 1993;88:9­25.
+17. Stiratelli R, Laird N, Ware JH. Random effects models for
+serial observations with binary response. Biometrics 1984;40:
+961­71.
+18. Hardin JW, Hilbe JM. Generalized estimating equations. Boca
+Raton, FL: Chapman & Hall/CRC, 2003.
+19. Horton NJ, Lipsitz SR. Review of software to fit generalized
+estimating equation (GEE) regression models. Am Stat 1999;
+53:160­9.
+20. Lipsitz SR, Laird NM, Harrington DP. Generalized estimating
+equations for correlated binary data: using the odds ratio as a
+measure of association. Biometrika 1991;78:153­60.
+21. Zhou XZ, Perkins AJ, Hui SL. Comparisons of software pack-
+ages for generalized linear multilevel models. Am Stat 1999;
+53:282­90.
+22. Brown H, Prescott R. Applied mixed models in medicine. New
+York, NY: John Wiley and Sons, 1999.
+23. Diggle PJ, Liang KY, Zeger SL. Analysis of longitudinal data.
+New York, NY: Oxford University Press, 1994.
+24. Carey V, Zeger SL, Diggle P. Modelling multivariate binary
+data with alternating logistic regressions. Biometrika 1993;80:
+517­26.
+25. Neuhaus JM, Kalbfleisch JD, Hauck WW. A comparison of
+cluster-specific and population-averaged approaches for ana-
+lyzing correlated binary data. Int Stat Rev 1991;59:25­35.
+

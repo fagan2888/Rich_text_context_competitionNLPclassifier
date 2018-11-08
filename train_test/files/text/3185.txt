@@ -1,0 +1,3118 @@
+Currency Portfolios
+and Currency Exchange
+in a Search Economy
+Ben Craig
+(Federal Reserve Bank of Cleveland)
+Christopher J.Waller
+(University of Kentucky)
+Discussion paper 15/01
+Economic Research Centre
+of the Deutsche Bundesbank
+November 2001
+The discussion papers published in this series represent
+the authors' personal opinions and do not necessarily reflect the views
+of the Deutsche Bundesbank.
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+P.O.B. 10 06 02, 60006 Frankfurt am Main, Federal Republic of Germany
+Telephone (0 69) 95 66-1
+Telex within Germany 4 1 227, telex from abroad 4 14 431, fax (0 69) 5 60 10 71
+Internet: http://www.bundesbank.de
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address, or by fax No. (0 69) 95 66-30 77
+Reproduction permitted only if source is stated.
+ISBN 3­933747­90­2
+Abstract
+We develop a dual currency search model to study equilibrium currency exchange and the
+determination of nominal exchange rates. Agents hold portfolios consisting of two distinct
+currencies. We study equilibria in which the two currencies are identical and equilibria in
+which the two currencies differ according to their relative purchasing power risk. We use
+numerical methods to solve for the steady-state distributions of currency portfolios,
+nominal exchange rates and value functions. When one of the currencies is 'risky',
+equilibria exist in which the safe currency trades for multiple units of the risky currency
+with the observed ratio being the nominal exchange rate. However, due to the decentralized
+trading environment, we obtain a steady state distribution of nominal exchange rates. The
+mean and variance of the nominal exchange rate distribution are based on the fundamentals
+of the model and change in predictable ways when the fundamentals change.
+Zusammenfassung
+Wir entwickeln ein Modell mit zwei Währungen, um das Gleichgewicht beim Austausch
+der Währungen und die nominalen Wechselkurse zu bestimmen. Die Wirtschaftssubjekte
+halten Portfolios, die aus den zwei verschiedenen Währungen bestehen. Wir untersuchen
+Gleichgewichte, in denen die zwei Währungen identische Eigenschaften haben und
+Gleichgewichte, in denen sich die zwei Währungen hinsichtlich ihres Kaufkraftrisikos
+unterscheiden. Es werden numerische Methoden verwendet, um die Verteilungen der
+Währungsportfolios, der nominalen Wechselkurse und der Wertfunktionen im langfristigen
+Gleichgewicht zu bestimmen. Wenn eine der Währungen risikobehaftet ist, dann existieren
+Gleichgewichte, in denen die sichere Währung gegen mehrere Einheiten der
+risikobehafteten Währung gehandelt wird. Das Austauschverhältnis ist der nominale
+Wechselkurs. Da der Handel dezentral erfolgt, ergibt sich eine Gleichgewichtsverteilung
+der Wechselkurse. Der Mittelwert und die Varianz dieser Verteilung hängt von den
+Fundamentalfaktoren des Modells ab. Wenn sich die Fundamentalfaktoren ändern, dann
+ändert sich diese Verteilung in vorhersehbarer Weise.
+Contents
+1. Introduction 1
+2. Literature Review of Search Models 3
+3. The Search Environment 4
+3.1 Preferences and Costs of Production 5
+3.2 Media of Exchange and Currency Portfolios 5
+3.3 Aggregate Money Stocks 5
+3.4 Government Behavior 6
+3.5 Matching Process 6
+3.6 Bargaining 7
+3.7 Value Functions 8
+3.8 Bargaining 9
+3.9 The Distribution of Portfolios 10
+3.10 Equilibrium 12
+4. Numerical Methods 12
+5 Numerical Results 14
+5.1 "Small" Portfolios 14
+5.2 "Large" Portfolios 18
+5.2.1 N = N, No Making Change Trades 18
+5.2.2 Changes in Search Frictions 24
+5.2.3 N = 10, Making Change Trades 25
+5.2.4 Very Large Portfolios N = 15, No Making Change Trades 30
+6 Conclusions 33
+7 References 34
+List of Tables and Figures
+Table 1a: Small Economy with Differing Risk of Domestic Currency
+Confiscation 15
+Table 1b: Characteristics of a Small Economy with Differing Currency Risk 16
+Table 2: Medium Economy with Differing Currency Risk 19
+Table 3: Currency Market Exchange Rates for a Medium Economy 22
+Table 4: Medium Economy with Differing Search Frictions 24
+Table 5: Medium Economy with and without "Making Change" in Goods Trades 27
+Table 6: Transaction Patterns for a Foreign Currency Rich Buyer 28
+Table 7 Medium ,,Making Change" Economy with Differing Currency Risk 29
+Table 8: Currency Market Exchange Rates for a
+Medium "Making Change" Economy 30
+Table 9: Large Portfolio Economy with Differing Currency Risk 31
+Table 10: Currency Market in Large Portfolio Economy
+with Differing Currency Risk 32
+Table A1 Transaction Patterns for a Poor Seller 36
+Table A2 Transaction Patterns for a Foreign Currency Rich Seller 37
+Table A3 Transaction Patterns for a Domestic Currency Rich Seller 38
+Figures
+Figure 1: Value Functions for a Medium Sized Economy,
+Differing Domestic Currency Risk 18
+Figure 2: Price Distributions for Purchases by One Unit of Riskless Foreign Currency 20
+Figure 3: Price Distributions for Purchases by One Unit of Risky Domestic Currency 21
+Figure 4: Value Functions with and without "Making Change" in Goods Trades 26
+­ 1 ­
+Currency Portfolios and Currency Exchange in a
+Search Economy*
+1 Introduction
+In many developing and transitional economies a `safe' foreign currency like the US-Dollar
+or the DMark circulates as a medium of exchange alongside the `risky' domestic currency,
+which is subject to unexpected losses of purchasing power. This phenomenon is often
+called ,,dollarization." Furthermore, there is active domestic currency exchange at well-
+defined nominal exchange rates. At first glance, the existence of these two trading patterns
+may not appear to be unusual but it actually creates a puzzle: if both currencies are
+accepted as media of exchange, then why are currencies exchanged? Currency exchange
+seems to be economically `wasteful' in such a situation. Consequently, it must be the case
+that agents are heterogeneous in some dimension such that trading currencies is welfare
+improving for each of them. Since the home currency is risky, a natural explanation for
+why agents trade currencies is that they are balancing the risk exposure of their currency
+portfolios. Agents holding large amounts of the risky home currency may be willing to give
+up multiple units in return for a unit of the safe foreign currency, while agents with large
+amounts of safe currency are willing to increase their risk exposure by accepting the risky
+currency if the price is right. In this situation, the nominal exchange rate measures the
+relative price of altering the risk exposure of one's currency portfolio. Our objective is to
+develop a model that has multiple media of exchange and active currency trading that
+allows us to examine how changes in domestic currency risk affect the behavior of the
+economy and nominal exchange rates.
+In this paper we present a model of decentralized exchange with two currencies circulating
+as media of exchange in order to study currency exchange. To do so, we use a monetary
+search model of indivisible money and divisible goods as in Trejos and Wright (1995) and
+Shi (1995) but in which agents are allowed to hold portfolios of currencies as in Camera
+and Corbae (1999) and Green and Zhou (1998). We adopt a decentralized money search
+model to study the phenomenon described above because: i) money has a fundamental role
+as a medium of exchange, ii) agents are willing to accept and hold both currencies even
+though one is `dominated in rate of return', iii) agents will have different trading histories
+due to decentralized trading which causes some agents to have unbalanced currency
+* We would like to thank Gabriel Camera, Randy Wright, Rob Reed, Dean Corbae, Ed Green, John Duffy
+and participants at several seminars and conferences for their comments on our work. Some of the work
+on this paper was completed while Ben Craig was a visiting scholar at the Bundesbank.
+­ 2 ­
+portfolios, and iv) currency exchange will occur in equilibrium as agents rebalance their
+portfolios.
+In our decentralized environment, agents are assumed to meet at random and trade
+bilaterally. They use currency to buy goods and services and/or the other currency. When
+agents meet and trade currencies, the nominal exchange rate is the ratio of the quantities of
+currencies exchanged. To provide agents with an incentive to engage in currency exchange,
+we allow the two currencies to differ by their expected rates of return and purchasing
+power 'risk'- the dollar is assumed to be safe while holders of the domestic currency are
+subject to random losses of purchasing power. As a result, agents face incentives to
+diversify their currency portfolios to avoid the currency risk on the domestic currency.
+Due to the bilateral nature of trades in this economy, the law of one price does not hold
+since prices are match specific. Hence, there is an equilibrium distribution of prices. The
+same applies to nominal exchange rates ­ observed exchange rates are match specific and
+so we obtain an equilibrium distribution of nominal exchange rates. In short, the law of
+one exchange rate also fails to hold. This latter result is consistent with the casual empirical
+observation that exchange rates are not identical at a point in time across trading locations.
+We thus are able to study how fundamental changes in currency risk affects: 1) the real
+exchange rate, 2) the mean nominal exchange rate, 3) the cross-sectional variance of the
+nominal exchange rate distribution, 4) the extent to which the dollar is used in goods
+exchange (dollarization), and 5) the volume of currency trading. However, due to the
+complexity of the model, we must resort to numerical methods to study the equilibrium
+behavior of the economy and address these issues. Nevertheless, most of our numerical
+results are very intuitive and consistent with what one would expect to happen when there
+is a change in the relative risk of the currencies.
+In our benchmark model, currencies have the same risk and relative money supplies per
+capita. In this case, the currencies are identical with respect to the payoffs received from
+holding them. Once we introduce currency risk on the domestic currency, we find that the
+value of the domestic currency as a medium of exchange falls ­ the risk acts as a 'tax' on
+the domestic currency. Furthermore, agents now have an incentive to diversify their
+portfolios by trading multiple units of the risky currency for a unit of the safe currency if
+the opportunity arises. At an appropriate exchange rate, sellers of the safe currency are
+compensated for accepting the risky currency. The nominal exchange rate observed in
+different matches depends on the relative portfolio positions of the currency traders who
+are paired together. Hence, we observe a distribution of nominal exchange rates. Not
+surprisingly, we find that increasing the riskiness of the domestic currency leads to a
+depreciation of the domestic currency relative to the foreign currency (the mean of the
+­ 3 ­
+distribution shifts). More surprising is that the increase in currency risk can increase or
+decrease the variance of the nominal exchange rate distribution ­ if the risk is initially low,
+an increase in currency risk will increase the variance of the distribution; if risk is high
+initially, the opposite occurs. We also find that once the domestic currency risk is
+sufficiently large, 'dollarization' occurs as more and more traders use dollars to buy goods
+since sellers are willing to produce more goods for dollars. Finally, by arbitrarily shutting
+down currency exchange, we are able to see how the existence of a currency market affects
+average welfare in the economy.
+The rest of the paper is organized as follows. In Section 2, we present a brief review of the
+literature on dual currency search models. In Sections 3 we describe the economic structure
+of the model and the bargaining environment and the definition of a stationary equilibrium.
+Section 4 contains a description of our numerical procedures. Section 5 contains the results
+of our numerical analysis. Finally, Section 6 summarizes our findings and suggestions for
+future research.
+2 Literature Review of Search Models
+The search theoretic model of money has become the dominant framework for studying
+monetary theory in the last few years. Until recently, a major drawback of the search
+theoretic framework has been the underlying assumption that agents can only hold one unit
+of currency at a time. This inventory restriction on money is imposed for analytical
+tractability. More recent work by Molico (1996), Green and Zhou (1998), Camera and
+Corbae (1999) and Taber and Wallace (1999) has relaxed the inventory assumption and
+these authors have studied monetary equilibrium when agents are allowed to hold multiple
+units of currency. These models have been used to study equilibrium price distributions,
+divisibility, and the welfare effects of changing the money stock.
+All of the models listed above study economies in which only one currency circulates. In
+order to study nominal exchange rates, two or more currencies are needed. There are many
+papers in the search literature that look at dual currency issues.1 Kiyotaki and Wright
+(1993) look at the coexistence of two currencies in a one-country model and how differing
+degrees of acceptability affect their relative values. Matsuyama, Kiyotaki and Matsui
+(1993) look at a two-country model with indivisible goods and money to study
+international currency equilibria. Trejos and Wright (1996a, 2000) extend the model to the
+1 See Craig and Waller (2000) for a brief survey of the search literature on dual currency economies.
+­ 4 ­
+case of divisible goods and look at implied real exchange rates. Currency exchange does
+not occur in either model due to the one-unit inventory restrictions on money holdings. Li
+and Wright (1998) and Soller-Curtis and Waller (2000) examine how government polices
+affect the use of one currency over another and also its relative purchasing power.
+Kocherlakota and Krueger (1999) study the more fundamental question of why it may be
+socially optimal for more than one fiat currency to exist.
+In none of the aforementioned models does currency exchange arise. Zhou (1997)
+introduces tastes shocks into the Matsuyama, Kiyotaki and Matsui model to generate
+currency exchange but, due to the one-unit inventory restrictions on money holdings, the
+nominal exchange rate is arbitrarily fixed at 1:1. Waller and Curtis (2001) extend Trejos
+and Wright (2000) to show how currency restrictions can generate currency exchange but
+again the nominal exchange rate is 1:1. Thus, the inventory constraint prevents us from
+studying equilibrium determination of nominal exchange rates at values other than 1:1.
+However, relaxing the unit-inventory constraint requires the equilibrium determination of
+the distribution of money holdings across agents, which is a complicated analytical
+problem. Shi and Head (2000) circumvent this problem by modeling nations as a set of
+households each of which has a continuum of worker/shoppers. At the end of each period
+all money balances are pooled within the household and redistributed evenly to all
+shoppers in the household. This eliminates aggregate uncertainty and distribution issues.
+They show that if new domestic currency transfers go to domestic households, then
+currency exchange can occur between shoppers from two countries in an attempt to re-
+balance portfolios. The model we develop in this paper compliments the work of Shi and
+Head; whereas they look at a two-country model where aggregation generates a degenerate
+distribution of money holdings, we construct a one-country model where the distribution of
+money holdings is determined endogenously and is not degenerate.
+3 The Search Environment
+Our model is a standard random matching monetary model with divisible, non-storable
+goods in which goods prices are determined via bilateral bargaining. There is a continuum
+of agents uniformly distributed on the unit circle. Agents specialize in the production and
+consumption of goods. An agent located at point i on the unit circle is assumed to produce
+good i but consume goods in the interval (i, i + x]. For x < 1/2, double coincidences of
+wants cannot occur and thus barter trades do not arise. This restriction on x greatly
+simplifies the model and will be maintained throughout the paper. Hence a trading
+equilibrium requires the existence of a medium of exchange. Given the matching process
+­ 5 ­
+described below, x is the probability that a buyer meets a seller who produces a good in the
+buyer's desired consumption interval.
+3.1 Preferences and Costs of Production
+Agents are assumed to receive utility u(q) from consumption of q units of their desired
+good and incur a utility loss of c(q) from producing q units of their good. Both u(q) and
+c(q) are continuous, twice differentiable with u' > 0, c' > 0, u''  0, and c''  0 with at least
+one of the inequalities holding with strict inequality. Also assume that u(0) = c(0) = 0 with
+u'(0) > c'(0) and there is a positive value of q, q , such that u(q ) = c(q ). For the
+remainder of the paper we will assume that the cost function is linear and given by c(q) =
+q.
+3.2 Media of Exchange and Currency Portfolios
+In our economy, two fiat currencies can circulate as media of exchange. Let currency f
+denote the foreign currency (dollars) and currency h denote the home currency. One or
+both of the currencies are allowed to circulate in trade. Following Camera and Corbae
+(1999) we assume that agents are able to hold up to N total units of currency at zero storage
+cost. These N units can be held in any combination of home and foreign currency and the
+support of N is given by the set N={0,1,2,...,N}. Consequently, agents are able to hold
+portfolios of currencies whose support is the simplex S1 = {ni
+jt
+N: ni
+ft
++ ni
+ht
+ N} where
+ni
+jt
+denotes the units of currency j = h,f held by individual i at time t. An individual's
+portfolio at time t is thus an ordered pair (ni
+ft
+,ni
+ht
+) on S1.
+3.3 Aggregate Money Stocks
+Let mt
+(nf
+,nh
+) denote the proportion of the population holding currency portfolio (nf
+,nh
+) at
+time t. The per-capita foreign money stock is then given by
+(1) å å
+=
+-
+=
+=
+N
+n
+n
+N
+n
+h
+f
+t
+h
+f
+f
+f
+h
+n
+n
+m
+n
+M
+0 0
+)
+,
+(
+while the per-capita home money stock is given by
+(2) å å
+=
+-
+=
+=
+N
+n
+n
+N
+n
+h
+f
+t
+h
+h
+h
+f
+f
+n
+n
+m
+n
+M
+0 0
+)
+,
+( .
+In a stationary steady state, mt
+(nf
+,nh
+) = m(nf
+,nh
+) for all t, nf
+and nh
+.
+­ 6 ­
+3.4 Government Behavior
+We distinguish the two currencies by their respective purchasing power risk. Purchasing
+power risk is modeled as in Li (1995). We assume that there is an atomless government
+that consumes goods but does not produce goods. Its main purpose is to confiscate and
+issue units of the domestic currency. Upon meeting a private agent, the government
+confiscates all of their home currency holdings with probability 0  µ  1. Thus,
+confiscation corresponds to a random loss of purchasing power. We refer to this potential
+loss of purchasing power as currency risk. We interpret µ = 0 as corresponding to the case
+where the domestic currency's purchasing power risk is zero. We assume that the
+government destroys the confiscated currency. In order to have a stationary equilibrium
+with a positive stock of home currency in circulation, we need an inflow of the home
+currency to offset the outflow of currency arising through confiscation. We do this in the
+following manner. If the government does not confiscate an agent's domestic currency, then
+with probability 0    1, he makes a take-it-or-leave it offer of 1 unit of domestic
+currency for some quantity of goods to all agents holding N-1 units of currency or less.2 In
+equilibrium, these offers are accepted and so the government agent issues a new unit of
+currency. Obviously, if µ = 0, then  = 0 for a steady state to exist. While clearly stylistic,
+we think this formulation captures the idea that for some reason ­ political, financial, or
+arising from `bad' policy actions ­ the domestic currency in developing currencies is prone
+to sudden losses of purchasing power.
+3.5 Matching Process
+Agents meet at random according to a Poisson process with arrival rate . With probability
+x, a single coincidence of wants occurs and one of the agents becomes a seller and the other
+a buyer. The buyer and seller may hold both currencies but trade requires that the buyer
+hold at least 1 unit of currency and that the seller hold less than N units of currency. When
+a single coincidence of wants occurs there are two possible types of trades: 1) the buyer
+gives money (foreign, domestic, or some of both) to the seller for some amount of goods,
+and 2) the buyer gives the seller one currency and the seller gives the buyer goods and
+some of the opposite currency. For example, a buyer could give the seller 3 units of
+2 Government agents are assumed to like all goods. We could have modeled the government agents as
+using confiscated currency to buy goods rather than destroying it. However, this would have required us
+to solve for the distribution of portfolio holdings held by government agents in steady state. Therefore,
+modeling the government's behavior as we have greatly simplifies the numerical routines.
+­ 7 ­
+foreign currency and receive in return some goods and 1 unit of the domestic currency. We
+refer to these latter types of trades as `making change' trades. We examine these types of
+trades later in the paper.3
+When no coincidence of wants occurs, traders may still gain from trade via a pure financial
+transaction. Since the domestic currency is 'risky', traders may decide to diversify their
+portfolios by trading currencies. For example, a trader with some dollars and no home
+currency may meet a trader with many units of home currency and no dollars. By swapping
+dollars for home currency, the home currency trader gets rid of some of the risky currency
+and acquires some units of the safe currency. If the dollar trader gets enough rubles per
+dollar, he will be willing to take on a greater risk position in order to increase his total
+currency holdings. The amount that they trade will determine the nominal exchange rate.
+In general, the nominal exchange rate that occurs will be a function of the composition of
+the traders' current portfolios and the underlying trading values of the current portfolios.
+As a result, the nominal exchange rate occurring in these financial trades will vary across
+matches.
+3.6 Bargaining
+When a single coincidence of wants occurs, we assume that the buyer makes a take-it-or-
+leave-it offer to the seller. As a result, the buyer will offer a trade of goods for currency
+such that he extracts the entire trading surplus from the seller. The seller is indifferent
+between accepting and rejecting this offer and thus accepts the offer.4 The buyer's offer, d,
+is a pair of foreign and home currency transfers d = (df
+,dh
+) in return for goods. If df
+> 0 and
+dh
+= 0, the buyer offers to pay with the foreign currency while the reverse is true if df
+= 0
+and dh
+> 0. If both are greater than zero, than the buyer offers to pay the seller with a
+mixed bundle of foreign and home currency in return for goods. These are 'money for
+goods' trades. If df
+> 0, dh
+< 0, the buyer offers df
+units of foreign currency in return for
+goods and dh
+units of domestic currency. If the inequalities are reversed, the buyer offers
+domestic currency units in return for goods and units of the foreign currencies. When df
+>
+(<) 0, dh
+< (>) 0, we call these 'making change' trades since in most of these trades the
+buyer is giving the seller a valuable currency and receiving goods and some `change' back
+in the form of the less valuable currency. These types of trades help overcome the
+3 These types of trades can create belief equilibria in which one currency is viewed as more valuable than
+the other for non-fundamental reasons. As a result currency trades will occur even though nothing
+distinguishes the currency but their color.
+4 Since q is continuous, the buyer can offer to take an infinitesimally smaller amount of q to induce the
+seller to accept the offer.
+­ 8 ­
+indivisibility of money and allow agents to trade smaller quantities of goods in a single
+coincidence match. Finally, we assume that the government agent who decides to issue a
+unit of currency also makes a take-it-or-leave-it offer to the seller.
+When a single coincidence of wants does not occur a currency swap may be beneficial to
+both parties. Thus, let )
+,
+,
+,
+( i
+h
+i
+f
+h
+f
+f
+n
+n
+n
+n
+y denote the quantity of the currency f acquired by
+currency trader with portfolio (nf
+,nh
+) from an arbitrary currency trader i holding portfolio
+)
+,
+( i
+h
+i
+f
+n
+n in return for giving up )
+,
+,
+,
+( i
+h
+i
+f
+h
+f
+h
+n
+n
+n
+n
+y units of currency h. If 0
+<
+f
+y , then
+0
+>
+h
+y , which means the (nf
+,nh
+) trader is giving up currency f for currency h.
+3.7 Value Functions
+In a stationary steady-state, the returns to search for an agent with money holdings (n1
+,n2
+) is
+)
+,
+(
+)]
+,
+(
+))
+,
+,
+,
+(
+),
+,
+,
+,
+(
+(
+))
+,
+,
+,
+(
+(
+[
+)
+,
+(
+s
+h
+s
+f
+h
+f
+s
+h
+s
+f
+h
+f
+h
+h
+s
+h
+s
+f
+h
+f
+f
+f
+s
+h
+s
+f
+n n
+h
+f
+h
+f
+n
+n
+m
+n
+n
+V
+n
+n
+n
+n
+d
+n
+n
+n
+n
+n
+d
+n
+V
+n
+n
+n
+n
+q
+u
+x
+n
+n
+rV
+s
+f
+s
+h
+-
+-
+-
++
+= å å
+
+ 
+
+
+))
+,
+,
+,
+(
+(
+[
+h
+f
+n n
+b
+h
+b
+f
+n
+n
+n
+n
+q
+c
+x
+b
+f
+b
+h
+å å
+
+ 
+
+-
++ 
+(3) )
+,
+(
+)]
+,
+(
+))
+,
+,
+,
+(
+),
+,
+,
+,
+(
+( b
+h
+b
+f
+h
+f
+h
+f
+b
+h
+b
+f
+h
+h
+h
+f
+b
+h
+b
+f
+f
+f
+n
+n
+m
+n
+n
+V
+n
+n
+n
+n
+d
+n
+n
+n
+n
+n
+d
+n
+V -
++
++
++
+)]
+,
+(
+))
+,
+,
+,
+(
+),
+,
+,
+,
+(
+(
+{[
+)
+2
+1
+(
+h
+f
+k
+h
+k
+f
+h
+f
+h
+h
+k
+h
+k
+f
+h
+f
+f
+f
+K
+n K
+n
+n
+n
+V
+n
+n
+n
+n
+y
+n
+n
+n
+n
+n
+y
+n
+V
+x
+k
+f
+k
+h
+-
+-
++
+-
++ å å
+ 
+
+)]
+,
+(
+)
+1
+,
+(
+)
+,
+(
+(
+[
+)
+1
+(
+)]
+0
+,
+(
+)
+,
+(
+[
+h
+f
+h
+f
+s
+h
+s
+f
+f
+h
+f
+n
+n
+V
+n
+n
+V
+n
+n
+q
+c
+n
+V
+n
+n
+V -
++
++
+-
+-
++
+-
+- 
+µ
+
+µ
+where  denotes the set of feasible sellers,  denotes the set of feasible buyers and K
+denotes the set of feasible currency traders. The first summation term of (3) is the expected
+payoff from being a buyer and trading the currency bundle
+( )
+,
+,
+,
+(
+),
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+h
+s
+h
+s
+f
+h
+f
+f
+n
+n
+n
+n
+d
+n
+n
+n
+n
+d ) for the quantity )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+n
+n
+n
+n
+q from a seller with
+portfolio )
+,
+( s
+h
+s
+f
+n
+n . The second summation term is the expected payoff from being a seller
+and producing )
+,
+,
+,
+(
+h
+f
+b
+h
+b
+f
+n
+n
+n
+n
+q for a buyer who pays a currency bundle
+( )
+,
+,
+,
+(
+),
+,
+,
+,
+(
+h
+f
+b
+h
+b
+f
+h
+h
+f
+b
+h
+b
+f
+f
+n
+n
+n
+n
+d
+n
+n
+n
+n
+d ). The third double summation term captures the
+return from currency exchange with another trader holding portfolio )
+,
+( k
+h
+k
+f
+n
+n . The last line
+is the expected loss of running into a government agent and having the domestic currency
+confiscated and the expected gain of selling )
+,
+(
+h
+f
+n
+n
+q to the government agent for a unit of
+the domestic currency.
+­ 9 ­
+3.8 Bargaining
+When a single coincidence match occurs, the buyer makes a take-it-or-leave-it offer to the
+seller. This offer is a triplet (q,df
+,dh
+) that satisfies
+(4)
+))
+,
+,
+,
+(
+(
+)
+,
+(
+))
+,
+,
+,
+(
+),
+,
+,
+,
+(
+(
+.
+.
+)]
+,
+(
+))
+,
+,
+,
+(
+),
+,
+,
+,
+(
+(
+))
+,
+,
+,
+(
+(
+[
+max
+2
+1
+,
+,
+s
+h
+s
+f
+h
+f
+h
+f
+s
+h
+s
+f
+h
+f
+h
+h
+s
+h
+s
+f
+h
+f
+f
+f
+h
+f
+s
+h
+s
+f
+h
+f
+h
+h
+s
+h
+s
+f
+h
+f
+f
+f
+s
+h
+s
+f
+h
+f
+d
+d
+q
+n
+n
+n
+n
+q
+c
+n
+n
+V
+n
+n
+n
+n
+d
+n
+n
+n
+n
+n
+d
+n
+V
+t
+s
+n
+n
+V
+n
+n
+n
+n
+d
+n
+n
+n
+n
+n
+d
+n
+V
+n
+n
+n
+n
+q
+u
+
+-
++
++
+-
+-
+-
++
+and the constraint that df
+and dh
+are feasible transfers of currency given the buyer's and
+seller's portfolios. When a trade actually occurs, the buyer's offer extracts the full surplus
+from the seller such that the constraint in (4) is satisfied with equality. This is possible
+because q is a continuous variable. As pointed out by Camera and Corbae, in general, there
+will be matches with a single coincidence of wants but no offer can be made which
+satisfies (4). Since the value functions are concave in money holdings, a 'rich' seller
+(someone holding lots of currency) may not be willing to give up enough of the good for
+another unit of currency from a 'poor' buyer (someone with little money). The high price of
+the good makes the buyer willing to wait for a better deal than to trade now. Since the
+seller receives no surplus when a goods trade occurs, the second double summation term in
+(3) will be zero. As a result, the quantity traded only depends on the seller's currency
+holdings. Furthermore, the payoff from selling to the government agent for a unit of
+domestic currency is also zero. When a trade does occur, the monetary price observed in
+the match is difficult to calculate in more than one currency is exchanged for goods. In
+trades in which only one currency or the other changes hands, then the monetary price
+observed in the match is simply )
+,
+(
+/ s
+h
+s
+f
+i
+i
+n
+n
+q
+d when currency i is traded for goods.
+Since agents without any currency units can only be sellers and sellers receive zero net
+surplus from trade, the returns to search for an agent without any currency units is
+(5) 0
+)
+0
+0
+( =
+,
+rV .
+When potential currency swaps exist, we assume that agents resort to symmetric Nash
+bargaining to determining the quantity of currencies exchanged. The quantities traded
+(yf
+,yh
+) solve
+(6) )]
+,
+(
+)
+,
+(
+[
+)]
+,
+(
+)
+,
+(
+[
+max
+,
+i
+h
+i
+f
+h
+i
+h
+f
+i
+f
+h
+f
+h
+h
+f
+f
+y
+y
+n
+n
+V
+y
+n
+y
+n
+V
+n
+n
+V
+y
+n
+y
+n
+V
+h
+f
+-
++
+-
+-
+-
++
+­ 10 ­
+subject to the constraints that the proposed portfolio changes are feasible. The discreteness
+of the currency units means that the first-order condition to this problem will not be
+satisfied in general. In this case we choose the value that yields the highest surplus (which
+can be zero). A problem with indivisible currencies is that there are possible currency
+trades, which are beneficial to both sides but cannot be consummated due to the
+discreteness of the currencies. For example, trading 3 units of the risky currency for 2 units
+of the safe currency may not be enough compensation for the safe currency trader and a 2:1
+trade may be too costly for the risky currency trader. It is possible that if they could trade
+1.84 units of the risky currency for a unit of safe currency, a Pareto improving currency
+trade could occur. But if their portfolios are such that no combination of their currencies
+yields a ratio of 1.84, a trade does not occur. Consequently, in our model, some potentially
+Pareto improving currency trades do not occur due to the indivisibility the currencies. As a
+result, currency exchange is welfare improving in our model but incomplete.5
+3.9 The Distribution of Portfolios
+Let Ft
+(nf
+,nh
+) denote the probability at time t that an individual agent has a portfolio that is
+smaller than or equal to (nf
+,nh
+). Thus, Ft
+(nf
+,nh
+) is given by
+(7) åå
+= =
+=
+f
+n
+a
+nh
+b
+t
+h
+f
+t
+b
+a
+m
+n
+n
+F
+0 0
+)
+,
+(
+)
+,
+(
+A stationary distribution of portfolios has Ft
+(nf
+,nh
+) = F(nf
+,nh
+) for all t, nf
+and nh
+.
+At each point in time there are flows of agents into and out of each portfolio state. In
+steady state, the flows of agents out of a particular portfolio state must be matched by an
+inflow of agents into that portfolio state. Writing down these flow equations for each
+possible portfolio state is complicated. Nevertheless, it is relatively easy to describe what
+5 The discreteness of the currencies could be overcome through the use of lotteries as in Berentsen,
+Molico and Wright (2000). Using lotteries, the traders could choose two possible currency trades that
+straddle each trader's threat point and then choose a probability such that the expected nominal exchange
+rate satisfies both traders' incentive compatibility constraints. As a result, both traders expect to gain
+from the currency trade ex ante but ex post one of them would lose. On average however, welfare would
+increase. With regards to the nominal exchange rate distribution, we would observe a wider range of
+exchange rates and increased variance in the nominal exchange rate distribution as a result of the
+lotteries. Due to the complexity of the computation algorithm needed to do this for all possible currency
+trades, we do not pursue this modeling strategy. Consequently, while we will show that currency
+exchange raises average welfare, it should be remembered that our calculations underestimate the true
+value of currency exchange to society since our currency market is incomplete.
+­ 11 ­
+happens regarding matches at time t. For a given portfolio state (nf
+,nh
+), agents with this
+portfolio who are either buyers, sellers or currency traders move out. The inflows into this
+state are buyers from larger portfolio states, sellers from smaller portfolio states, and
+currency traders. In steady state, the inflows must equal the outflows of agents for each
+portfolio state.
+Agents may meet another private agent or the government. In meetings with private
+agents, there is either a single coincidence of wants or no-coincidence of wants. Each
+single coincidence match involves a trade of money for goods and a flow into a new
+currency holding state and a flow out of the old currency state for both seller and buyer.
+For a transaction that involves the buyer paying )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+f
+n
+n
+n
+n
+d and )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+h
+n
+n
+n
+n
+d to
+use the notation above, the proportions )
+,
+(
+h
+h
+f
+f
+d
+n
+d
+n
+m -
+- and )
+,
+(
+h
+s
+h
+f
+s
+f
+d
+n
+d
+n
+m +
++ both
+increase by the amount ),
+,
+(
+)
+,
+( s
+h
+s
+f
+h
+f
+n
+n
+m
+n
+n
+m because of the new currency holdings. The old
+proportions, )
+,
+(
+h
+f
+n
+n
+m and ),
+,
+( s
+h
+s
+f
+n
+n
+m are decreased by the same amount. Matches without
+a single coincidence of wants do not cause a change in portfolio positions unless there is a
+currency trade. When currency exchange occurs, the traders portfolio state changes and so
+the flow equations for each portfolio position must account for these pure currency trades.
+A steady-state equilibrium is achieved when the flows out of a given currency state are
+equal to the flows into it.
+Meeting the government either involves no action, an outflow of currency or an inflow of
+currency. With regards to the inflows and outflows of the domestic currency, the
+government meets an agent at state (nf
+,nh
+) with probability  and confiscates nh
+units of
+their domestic currency holdings with probability µ. Thus, the total outflow of domestic
+currency per capita is given by
+å å
+-
+=
+-
+=
+1
+0 1
+)
+,
+(
+N
+n
+n
+N
+n
+h
+h
+f
+f
+f
+h
+n
+n
+n
+m
+µ
+If confiscation does not occur and nf
++nh
+<N, then with probability  the agent receives 1
+unit of the domestic currency in return for producing goods for the government. Thus, the
+inflow of currency per capita is given by
+å å
+-
+=
+-
+-
+=
+-
+1
+0
+1
+0
+)
+,
+(
+)
+1
+(
+N
+n
+n
+N
+n
+h
+f
+f
+f
+h
+n
+n
+m
+
+µ
+ .
+In steady state, this outflow of the domestic currency must be equal to the inflow of
+domestic currency so
+­ 12 ­
+(8) å å
+-
+=
+-
+=
+1
+0 1
+)
+,
+(
+N
+n
+n
+N
+n
+h
+h
+f
+f
+f
+h
+n
+n
+n
+m
+µ = å å
+-
+=
+-
+-
+=
+-
+1
+0
+1
+0
+)
+,
+(
+)
+1
+(
+N
+n
+n
+N
+n
+h
+f
+f
+f
+h
+n
+n
+m
+
+µ .
+Note that the left-hand side of this expression reduces to µMh
+while the right-hand side
+reduces to (1-µ)(1-N
+) where N
+is the measure of agents holding portfolios of size N
+(regardless of the portfolio composition). Thus we have
+(9) µMh
+= (1-µ)(1-N
+)
+Since N
+is determined by the probability flow conditions, this extra equation requires that
+one of the three parameters, µ,  and Mh
+must be determined endogenously. Under the
+buyer-take-all bargaining assumption, the parameters  and Mh
+do not appear in the value
+functions so for computational ease we let one of these two parameters vary in our
+numerical model while we fix µ. We fix Mh
+and let  be determined endogenously in order
+to keep per capita money stocks constant.
+3.10 Equilibrium
+We can define a stationary equilibrium as a set of functions V (nf
+,nh
+), )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+n
+n
+n
+n
+q ,
+)
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+f
+n
+n
+n
+n
+d , )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+h
+n
+n
+n
+n
+d , )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+f
+n
+n
+n
+n
+y , )
+,
+,
+,
+( s
+h
+s
+f
+h
+f
+h
+n
+n
+n
+n
+y , F(nf
+,nh
+) such
+that (1)-(8) are satisfied.
+In general it is not possible to solve this model analytically. Consequently, in order to study
+the steady state properties of this model we must resort to numerical methods.
+4 Numerical Methods
+Our numerical strategy is as follows:
+1. Starting from an arbitrary initial distribution and set of value functions, find a steady-
+state equilibrium for a given set of parameter values when the currency risk is zero.
+2. Using the steady-state values under identical currencies as the initial values, increase the
+amount of domestic currency risk from zero. Find the new steady-state equilibrium
+values.
+3. Repeat.
+More formally, numerical solution of the system of equations follows a classic fixed-point
+procedure. With assumed initial value functions, V0
+, currency exchange functions, df0
+and
+­ 13 ­
+dh0
+, and probability distributions, M0
+= (M0f
+,M0f
+), we recursively calculate the economy
+where:
+df,t+1
+dh,t+1
+= argMax(for the buyer){Feasible Bargain Conditions (Vt
+,Mt
+)}
+Mt+1
+= Implied new Probability Distribution (d1,t+1
+d2,t+1
+,Mt
+)
+Vt+1
+= Value from the Search Conditions (df,t+1
+dh,t+1
+,Mt+1
+)
+and where convergence is achieved if the maximum difference between df,t+1
+dh,t+1
+, Mt+1
+,
+Vt+1
+, and df,t
+dh,t
+, Mt
+, Vt
+is under a specified tolerance. (In general the results did not differ
+for a wide range of tolerances.) The search conditions were rewritten in the numerical
+work to ensure a contraction mapping was as likely as possible. Under most initial
+conditions that we tried, the routine converged. In addition, we took the maximum
+operation globally for the bargaining conditions over all feasible bargains, which is allowed
+by the discrete number of currency units. Thus, we did not need to strongly specify local
+conditions in order to achieve an optimum.
+With regards to the initial conditions, our default is a uniform probability distribution over
+money holdings and value functions, which are skewed such that the risky currency is more
+valuable than the safe currency. This is done to ensure that the numerical results were not
+driven by the choice of initial value functions. When conducting our steady-state
+comparative static analysis, we use the previous equilibrium as the initial condition to try
+and ensure that our new equilibrium lies in the neighborhood of the previous equilibrium.
+Since we cannot solve the model analytically, we do not have a benchmark solution to
+compare our numerical results to. However, for µ=0, the two currencies are identical, hence
+we can choose parameter values that yield the Camera-Corbae (1999) solution where
+buyers only spend one unit of currency when trading. Consequently, we choose parameter
+values that yield the equilibrium transaction pattern (df
+= 1,dh
+= 0) or (df
+= 0,dh
+= 1) as our
+initial steady-state equilibrium.
+It should be noted that this equilibrium transaction pattern does not allow for making
+change trades, which can exist here even if both currencies are identical except for color.
+Aiyagari, Wallace and Wright (1996) show that equilibria exist such that one currency is
+believed to be more valuable even though the two currencies are fundamentally identical.
+In these equilibria, making change trades are optimal in single coincidence matches. In
+order to see how this type of belief equilibrium affects our results, we conduct two
+numerical experiments in the large portfolio economy considered below. We first study the
+model without making change trades to see how `fundamentals' affect the behavior of the
+economy. We then allow making change trades to occur and compare them to the `no
+­ 14 ­
+making change' equilibrium. Although the initial trading patterns are very different, we
+show that the steady state comparative static results are qualitatively the same across both
+economies.
+5 Numerical Results
+5.1 "Small" Portfolios
+In this section we explore the behavior of equilibria when N =2 and both currencies are
+fully acceptable in trade. Furthermore, no making change trades are allowed. This is the
+easiest example to study and it provides some basic insight for N>2.6 In these simulations,
+we examine equilibria in which there is no currency risk on either currency and we only
+consider trades in which currency trades for goods. We then introduce currency risk to see
+how the equilibrium is affected. No currency exchange occurs in this case since 2:1 is the
+only currency exchange possible and thus exchange cannot make both parties better off.
+This is because a currency trade would merely involve trading places so there cannot be
+mutual gains from exchange. While helpful in understanding how the model works, this
+case is not interesting in terms of our ultimate pursuit, which is generating equilibrium
+currency exchange. As a benchmark, we initially set the currency risk to zero on the
+domestic currency, which requires setting µ==0.7
+Letting u(q) = q , Table 1a below shows the equilibrium solutions for the value functions, the
+portfolio distribution and the quantities traded for the N=2 economy for four different values of the
+confiscation probability µ.
+6 Camera, Craig and Waller (2001) provide analytical conditions for existence and uniqueness of this
+equilibrium and determine when (df
+=1,dh
+=0) or (df
+=0,dh
+=1) is the optimal strategy.
+7 While this benchmark is intuitively appealing as a starting point, it is characterized by a fundamental
+indeterminacy ­ there are an infinite number of portfolio distributions that support the same equilibrium
+value functions when the currencies are identical. The source of this problem is that buyers holding both
+currencies are indifferent as to which currency they use to buy goods. Thus, there are an infinite number
+of mixed strategies that can be used to make this decision. While this has no effect on the equilibrium
+value functions or quantities traded, the mixed strategy adopted fundamentally affects the flows of agents
+into different portfolio states.
+­ 15 ­
+Table 1 a
+Small Economy with Differing Risk of Domestic Currency
+Confiscation
+Parameter Values: N=2, M1
+=M2
+=2/3,  = .5, =1, x = .45, r=.1
+µ=0 µ=0.10 µ=0.15 µ=0.25
+=0 =0.152 =0.245 =0.466
+V(0,0) 0 0 0 0
+V(1,0) 0.375 0.387 0.393 0.400
+V(0,1) 0.375 0.187 0.139 0.085
+V(2,0) 0.632 0.653 0.662 0.673
+V(1,1) 0.632 0.487 0.458 0.433
+V(0,2) 0.632 0.285 0.204 0.118
+m(0,0) 0.18086 0.18035 0.18717 0.18988
+m(1,0) 0.15248 0.16894 0.13922 0.14168
+m(0,1) 0.15248 0.13702 0.15310 0.14523
+m(1,1) 0.37470 0.31788 0.22745 0.21955
+m(2,0) 0.06975 0.08992 0.15000 0.15272
+m(0,2) 0.06975 0.10588 0.14306 0.15094
+f
+q
+00
+0.375 0.387 0.393 0.400
+f
+q
+01
+0.257 0.300 0.318 0.347
+f
+q
+10
+0.257 0.266 0.269 0.273
+h
+q
+00
+0.375 0.187 0.139 0.085
+h
+q
+01
+0.257 0.098 0.064 0.032
+h
+q
+10
+0.257 0.100 0.064 0.032
+where j
+ik
+q is the quantity produced by a seller with portfolio (i,k) for currency j.8
+From Table 1a we see that the law of one price does not hold in this decentralized
+environment. This is the key result in Camera and Corbae (1999). Since the marginal value
+of an addition unit of money is falling, `rich' sellers, i.e., those at (1f
+,0) and (0,1h
+), will not
+produce as much as `poor' sellers, those at (0,0). Thus, we get price dispersion in
+equilibrium. What is new is that we now have price dispersion across currencies as well
+8 The distribution in the first column of Table 1a was obtained by having the buyers at portfolio state
+(1f
+,1h
+) spend the dollar on sellers with probability .5. This is the reason for the symmetry of the
+distribution.
+­ 16 ­
+when currency risk is not zero. For the rich sellers, we see that as the risk on the domestic
+currency increases, sellers holding a unit of home currency will give up far more to acquire
+a dollar (nearly 40% more) than sellers already holding a dollar (only 6% more). What is
+also interesting is that as risk increases, the simple variance of the dollar price of goods
+across matches falls while the variance of the home currency price of goods across matches
+rises. Thus, currency risk alters the relative amounts of price dispersion across currencies.
+It is important to note that as shown by Camera and Corbae, as search frictions (r/x) go to
+zero, price dispersion goes to zero, for a particular currency. The same will be true here,
+except that when µ>0 there will still be price differences across currencies.
+Looking at the value functions we see that, not surprisingly, as the home currency's risk
+rises, the value of holding dollar-weighted portfolios increases and the value of holding
+home currency denominated portfolios falls dramatically ­ a five fold increase in the
+probability of loss reduces the value of the (0,2h
+) portfolio to less than 1/5 of its initial
+value. Since the dollar buys more goods, the value of holding a dollar portfolio rises while
+the value of a home currency portfolio falls.
+With regards to the portfolio distribution, we see that the biggest change in the distribution
+occurs in the marginal distribution of agents at with 2-unit portfolios. The increasing risk
+on the domestic currency is associated with fewer diversified portfolios and more
+undiversified portfolios. Finally, as the risk on the home currency increases, the quantity of
+goods given up for a unit of home currency also falls across all sellers. Increasing the risk
+on the domestic currency reduces sellers' willingness to accept it in trade at a given
+monetary price. Thus to induce sellers to accept it, buyers ask them to produce a lower
+quantity of goods.
+Table 1b reports the economic data for these economies:
+Table 1b
+Characteristics of a Small Economy with Differing Currency Risk
+Economic Data for N= 2, Risky Economy
+µ=0 µ=0.1 µ=0.15 µ=0.25
+=0 =0.152 =0.245 =0.466
+Percentage of matches with goods trade: 35.90% 35.88% 35.08% 34.76%
+Percentage of goods trades involving:
+Currency f (Dollars) only: 41.49% 42.51% 52.64% 63.44%
+Currency h (Home) only: 58.51% 57.49% 47.36% 36.56%
+Expected welfare: 0.439 0.335 0.309 0.285
+Expected production: 0.054 0.038 0.038 0.042
+­ 17 ­
+From Table 1b we see several interesting results. First, although with x = .45, 90% of all
+matches have a single coincidence of wants, roughly 35% of those matches actually lead to
+an exchange of goods. The reason is that in many of those matches, the buyer has no
+money or the seller is unable to produce because the inventory constraint on money
+holdings binds. Second, `dollarization' occurs as the domestic currency risk rises.
+Dollarization rises for two reasons: 1) agents resort to using dollars when buying goods
+rather than home currency, 2) more matches occur between buyers with dollars and sellers
+with no money. By examining the transaction patterns associated with each economy we
+found that in the first column, the buyer at (1f
+, 1h
+) uses domestic currency to buy from
+sellers at (0,0) and at (1f
+, 0). He uses the dollar to buy from sellers at (0,1h
+), i.e., those
+already holding a unit of the domestic currency. In column two, the spending behavior of
+the (1f
+, 1h
+) buyer is exactly the same as column one, so any changes in dollarization are due
+to changes in the probabilities of matches occurring. However, in column three, the
+(1f
+, 1h
+) buyer stops spending the home currency on the (0,1h
+) seller and switches to dollars
+instead. Finally, in column four, the (1f
+, 1h
+) buyer is using dollars in trade with all three
+sellers. Thus, the change in the transaction pattern of the (1f
+, 1h
+) buyer in columns three and
+four are responsible for the large increases in dollarization that are observed.9
+Not surprisingly, average welfare is falling steadily as risk on the domestic currency
+increases and the value functions associated with holding home currency declines. Average
+production falls initially and then rises but this simply is due to the fact that there are more
+home currency trades occurring with sellers at (0,0) who in turn are willing to produce the
+largest quantity of goods for a unit of currency. Thus, although the model cannot be solved
+analytically, the results above are appealing in the sense that they are consistent with what
+we believe will happen (and observe happening) if there is a dramatic change in the relative
+returns and relative risk of the two currencies.
+While the N=2 economy is very useful for understanding the basic mechanics of our
+economy, it does not allow currency exchange to occur. Consequently, we do not have
+nominal exchange rates nor can we look at the welfare gains from having a currency
+market. To examine these issues we need to examine larger portfolio economies.
+9 Camera, Craig and Waller (2001) show that this transaction pattern arises because the net surplus from
+trade u(q)-c(q) is not monotonically increasing in q. If it were monotonically increasing, then the (1,1)
+buyer would always spend the dollar on all sellers when µ>0. Note also that the average of the
+production reported in Table 1a is considerably higher than expected production in Table 1b because the
+reported matches in the first table are the high production matches. Most matches result in small or no
+production.
+­ 18 ­
+5.2 'Large' Portfolios
+5.2.1 N = 10, No Making Change Trades
+We now set N=10 and see how currency risk affects the economy and to study currency
+exchange. Since we cannot solve the model analytically, we do not have a benchmark
+model to guide us as to what parameter values we should start with for simulations. As
+before, we choose our parameter values such that we get the equilibrium transaction pattern
+(df
+=1,dh
+=0) or (df
+=0,dh
+=1) as our initial steady-state equilibrium. However, we do not
+impose this transaction pattern in our numerical routine. We merely choose appropriate
+parameters and let the model run to see if that transaction pattern is generated in
+equilibrium. The Camera Corbae equilibrium was the only one we found for those
+parameter values when µ=0. Furthermore, in this section, we prevent making change trades
+from happening.
+Figure 1: Value Functions for a Medium Sized Economy,
+0 2 4 6 8 10
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+Home
+Foreign
+Value Functions µ
+µ
+µ
+µ=0
+0 2 4 6 8 10
+0
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+Home
+Foreign
+Value Functions µ
+µ
+µ
+µ=.01
+0 3 6 9
+0
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+Home
+Foreign
+Value Functions µ
+µ
+µ
+µ=.05
+0 2 4 6 8 10
+0
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+Home
+Foreign
+Value Functions µ
+µ
+µ
+µ=.10
+­ 19 ­
+Figure 1 contains the value functions for four differnet values of µ. The value functions are
+concave in money holdings and in the case of µ = 0, the value functions are symmetric
+across portfolio size. As the risk on the domestic currency increases, the value of holding a
+portfolio with home currency falls while holding a dollar weighted portfolio rises. Thus,
+the pattern observed in the N=2 economy prevails here as well. The concavity of the value
+functions also means that the quantities given up by `rich' sellers will be less than for
+`poor' sellers just as in the N=2 case. Consequently, we have equilibrium price dispersion
+within a currency and across currencies.
+The economic data for these parameterizations of the economy are contained in Table 2:
+Table 2
+Medium Economy with Differing Currency Risk
+Economic Data for N = 10, Risky Economies
+Parameter Values: N =10, M1
+=M2
+=3.33,  = .15, =1, x = .45, r=.1
+µ=0.01 µ=0.05 µ=0.10
+=0.041 =0.124 =0.466
+Percentage of matches with trade: 35.97% 36.08% 35.02%
+Percentage of goods trades involving:
+Currency f (dollars) only: 35.23% 36.57% 39.53%
+Currency h (home) only: 64.77% 63.43% 60.29%
+Expected welfare: 2.01 1.89 1.77
+Expected production: 0.0628 0.059 0.055
+Expected dollar price per unit of output: 7.83 6.38 5.29
+Expected home price per unit of output: 9.63 13.65 23.44
+Implied real exchange rate: 1.23 2.14 4.43
+(Units of home currency per dollar)Table 2
+Other than the use of dollars in exchange, the data show a similar pattern as in the N=2
+case. Dollarization again increases with an increase in domestic currency use as agents
+switch to using dollars when a trading opportunity arises. An increase in the domestic
+currency risk again leads to a reduction in welfare and production. It also leads to a
+decline in the dollar price of goods, a rise in the home currency price of goods and an
+increase in the implied real exchange rate. Finally, it should be pointed out the percentage
+of dollars only trades and home currency only trades does not add up to 100% in the last
+column since there are a small number of trades in which the buyer gives up some of both
+currencies in exchange for goods.
+Inspection of the buyers' spending patterns (contained in the appendix) with sellers
+holding portfolios (0,0), (0,7h
+) and (7f
+,0) shows that when µ = 0, agents only spend one
+­ 20 ­
+unit of currency in all matches with sellers. However, as risk increases, buyers holding
+home currency weighted portfolios begin dumping home currency on poor sellers and they
+also begin to spend more than one unit of the home currency. The largest number of home
+currency units spent in these simulations is 3. Buyers tend to dump rubles on rich sellers
+holding lots of dollars. However, buyers with dollar-weighted portfolios begin spending
+dollars on poor sellers since they get much more for a dollar compared to a unit of home
+currency and because the marginal value of that dollar is smaller to them. The (0,7h
+)
+sellers conduct most of their trades in dollars since they are willing to give up a large
+quantity of goods to get a dollar rather than another unit of home currency. Sellers with
+lots of dollars, those at (7f
+,0), are mainly paid in units of the home currency since the
+relative price that they offer for a unit of home currency is much better than that offered by
+(0,7h
+) sellers.
+The price distribution across sellers based on receiving one dollar is given in Figure 2:
+Figure 2: Price Distributions for Purchases by One Unit of Riskless Foreign
+Currency
+df
+=1
+We can see that when there is no home currency risk, the price charged by sellers is
+increasing in portfolio size and symmetric across portfolios of a given size. Once risk
+begins to increase, the price charged by sellers holding units of domestic currency begins to
+fall with sellers holding very risky portfolios, (0,9h
+), giving the best price among the richest
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Home
+Foreign
+Price Distributions: df =1, µ
+µ
+µ
+µ=0
+0 1 2 3 4 5 6 789
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Home
+Foreign
+Price Distributions: df =1, µ
+µ
+µ
+µ=.01
+0 1 2 3456789
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Home
+Foreign
+Price Distributions: df =1, µ
+µ
+µ
+µ=.1
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Home
+Foreign
+Price Distributions: df =1, µ
+µ
+µ
+µ=.05
+­ 21 ­
+sellers for acquiring a unit of the safe currency. By flatting out the price distribution,
+domestic currency risk reduces the amount of dollar price dispersion.
+Figure 3 below shows the price distribution across sellers when buyers spend one unit of
+the risky domestic currency.
+Figure 3: Price Distributions for Purchases by One Unit of Risky Domestic Currency
+dh
+=1
+It is clear that as the domestic currency risk increases, the price of goods increases across
+all sellers. Rich sellers holding a large amount of domestic currency units offer the worst
+price since they already are saddled with a large amount of risky currency. Rich sellers
+holding lots of dollars offer the best prices for a unit of domestic currency since their
+currency portfolios have relatively little risk exposure.10 Unlike the dollar price
+distribution, increasing domestic currency risk does not flatten the home currency price
+distribution but instead increases the degree of price dispersion.
+10 The jaggedness at the top of the distribution in the last two figures is the result of approximation error
+and rounding off.
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+Home
+Foreign
+Price Distributions: dh =1, µ
+µ
+µ
+µ=0
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+Home
+Foreign
+Price Distributions: dh =1, µ
+µ
+µ
+µ=.01
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+10
+20
+30
+40
+50
+60
+70
+Home
+Foreign
+Price Distributions: dh =1, µ
+µ
+µ
+µ=.1
+0 1 2 3 4 5 6 7 8 9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+5
+10
+15
+20
+25
+30
+35
+Home
+Foreign
+Price Distributions: dh =1, µ
+µ
+µ
+µ=.05
+­ 22 ­
+In this economy, we now have currency exchange occurring between agents. The nominal
+exchange rate data corresponding to Table 2 are:
+Table 3
+Currency Market Exchange Rates for a Medium Economy
+Nominal
+Exchange Rate
+Conditional
+Probability
+(Home per Dollar) 1 2 3
+µ = 0.01 µ = 0.05 µ = 0.10
+5:4 = 1.25 0.397
+4:3 = 1.33 0.587
+3:2 = 1.50 0.023
+5:3 = 1.67
+2:1 0.663 0.046
+5:2 = 2.50 0.028
+3:1 0.308 0.371
+4:1 0.001 0.454
+5:1 0.122
+6:1 0.007
+7:1 0.000
+Size of Currency
+Market
+0.16% 2.24% 1.48%
+Mean 1.305 2.325 3.674
+Stand. Deviation 0.05 0.46 0.77
+The conditional probability gives the percentage of all currency trades that occur at a
+given nominal exchange rate.11
+There are several interesting results from Table 3. First, we see that there are several
+observed nominal exchange rates in each economy, ranging from 3 observed exchange
+rates when the risk is relatively low and up to 6 observed exchange rates when the
+currency risk is relatively high. As it did with equilibrium quantities traded, the
+decentralized nature of the trading environment generates an equilibrium distribution of
+nominal exchange rates rather than a single exchange rate. Thus decentralization not only
+breaks down the law of one price, it also breaks down the law of one nominal exchange
+11 If a cell shows 0.000 it means some matches produced currency exchange at this exchange rate but these
+matches occurred with probabilities near zero. A blank cell denotes no observed trades at the
+corresponding exchange rate.
+­ 23 ­
+rate. Second, despite the number of different exchange rates observed in economies 1 and
+2, the overwhelming majority of currency trades occur at one or two exchange rates. Thus
+for the first two economies, we see that a little over 95% of all currency trades occur at
+two exchange rates. However, this is not true for economy 3; a considerable mass of
+trades occurs at multiple exchange rates.
+From these comparative static results we find not surprisingly, that the home currency
+depreciates against the dollar as its currency risk increases (the mean of the distribution
+shifts). More interestingly, the cross-sectional variance of the nominal exchange rate also
+increases as the currency risk on the home currency increases. Hence, greater currency risk
+is not only associated with a lower exchange value of the domestic currency but also
+greater instability in the exchange value of the domestic currency. This pattern was found
+for every simulation that we have done. The only time we have observed a decrease in the
+variance is when the home currency becomes so risky that the required nominal exchange
+rate to induce currency exchange starts bumping up against the maximum possible
+exchange rate (N:1). Once this happens, the variance of the nominal exchange rate
+distribution starts to decline. With regards to the variance of the exchange rate
+distribution, it should be noted that the exchange rate distribution is driven by the price
+distribution. Thus as search frictions go to zero, the price distribution for a given currency
+collapses to a single price. This implies that the nominal exchange rate distribution would
+also collapse to a single exchange rate. Therefore, the degree of dispersion in the observed
+nominal exchange rates is a function of how severe the search frictions are ­ when trading
+is easy, nominal exchange rates will have a small variance and when trading is difficult,
+the variance in observed exchange rates will be larger.
+The size of the currency 'market' shows the percentage of all meetings that end in currency
+exchange. For the economies above, this number is very small and has its maximum
+value around 2.25%. This is not surprising since pure currency trades can only occur when
+a single coincidence match does not occur and with x = .45; this means 90% of all
+meetings have a single coincidence of wants. As a result, only 10% of all meetings result
+in no coincidence of wants. Therefore, when the size of the currency market is 1% this
+means that 10% of all feasible currency trade meetings result in currency exchange. It is
+interesting to note that as the currency risk on the ruble increases, the size of the currency
+market increases but then declines. This is not too surprising; as risk increases from a low
+level, there are incentives to exchange currencies to reallocate risk. However, once risk
+becomes too large, it becomes harder to induce agents to accept the risky currency even at
+relatively high nominal exchange rates. As a result, the volume of currency trading falls.
+­ 24 ­
+Currency exchange is quite small in economy 1 and the range of observed exchange rates
+is small. This is due to the upper bound on money holdings and the indivisibility of
+currency. With N=10, the lowest possible exchange rate that can be observed is 9:8 or
+1.125.12 So we can see that in economy 1, we are bumping up against this constraint. If
+we relaxed the upper bound on money holdings or allowed divisibility of currency, we
+would observe exchange rates below 1.125 in economy 1 and a larger currency market.
+5.2.2 Changes in Search Frictions
+In this section we examine how changes in the probability of a single coincidence match
+affects the equilibrium behavior of the economy. In Table 4 below, we vary the probability
+of a single coincidence match starting from the high-risk economy, µ=.1, in Table 2
+above:
+Table 4
+Medium Economy with Differing Search Frictions
+Parameter Values: N=10, Mf
+=Mh
+=3.3,  = .15, =1, x = .45, r=.1, µ=.1
+x=.45 x=.40 x=.35
+Percentage of matches with trade: 35.02% 31.18%
+27.00%
+Percentage of goods trades involving:
+Currency f (Dollars) only: 39.53 46.74 52.74
+Currency h (Home) only: 60.29 52.07 42.28
+Expected welfare: 1.77 1.61 1.42
+Expected production: 0.055 0. 046 0.038
+Expected dollar price per unit of output 5.29 5.96 7.13
+Expected home price per unit of output 23.44 31.72 46.35
+Implied Real Exchange Rate 4.43 5.32 6.50
+(Units of home currency per dollar)
+Size of Currency Market 1.48% 1.86% 1.48%
+The first column of Table 4 is the last column of Table 2. We see that as matching becomes
+more difficult, agents increasingly use the 'safe' currency as the main medium of exchange.
+This is because as matching becomes difficult, agents want to get as much consumption as
+possible when the opportunity arises and so they start using the more valuable currency. As
+a result, this alone causes a depreciation of the home currency against the dollar in terms of
+relative purchasing power. From Table 4 we also see that after an intial increase in the
+12 This is because no trade at 10:9 will occur because one trader would have to hold more than 10 units or
+the traders would simply be trading places and this would not satisfy the incentive compatibility
+constraints on exchange.
+­ 25 ­
+currency market size due to a greater opportunity for currency trade to occur, the
+percentage of currency trades actually falls when matching becomes extremely difficult.
+This is largely due to the greater unwillingness to give up dollars in return for the home
+currency. Not surprisingly, average production and welfare also decrease.
+5.2.3 N=10, Making Change Trades
+In this section we allow agents to engage in making change trades. If the foreign currency
+is more valuable than the home currency, then buyers holding dollars may prefer to receive
+a smaller quantity of goods if they also receive some units of the domestic currency as
+`change'. This arises because of the indivisibility of money; if buyers have to spend the
+entire dollar they get more than they actually want. Consequently, they would like to spend
+a fraction of a dollar but it is not possible. Thus, receiving some units of the weak currency
+from the seller lowers the amount of goods they need to acquire for giving up a dollar. At
+the same time, these types of trades allow agents constrained by the inventory constraint to
+produce since they can acquire a dollar by producing goods and giving a unit of the home
+currency as change, thereby maintaining the size of their currency portfolio. While these
+types of trades are clearly beneficial, they create the possibility that one currency is viewed
+as being more valuable even though there is nothing fundamentally different about the two
+currencies. This was demonstrated by Aiyagari, Wallace and Wright (1996). If such a belief
+equilibrium exists, then agents will engage in making change trades and direct currency
+trades in order to alter their currency holdings. Consequently, when currency risk does exist
+on one currency it is difficult to disentangle how much of the differences in values is due to
+differences in beliefs versus differences in fundamentals. In order to control for this, we
+first examine the N=10 economy with making change trades and no currency risk. We then
+introduce currency risk and do steady state comparative static analysis.
+Figure 4 and Table 5 compares the results for the N=10 economies when making change
+trades are prevented and then allowed. In both economies there is no currency risk and the
+parameter values are exactly the same.
+­ 26 ­
+Figure 4
+Value Functions with and without "Making Change" in Goods Trades
+In Figure 4, we see that the value of holding dollars is greater than the value of holding the
+same size portfolio with domestic currency. Comparing the two value function graphs
+shows that the value of dollar portfolios increase substantially and the value of home
+currency increases slightly in the making change equilibrium. Thus, even though there is
+nothing fundamentally different about the two currencies, if agents believe that the dollar is
+more valuable, that belief can be supported in equilibrium.13
+Table 5 compares the basic economic data across the two economies.
+13 The figure shows an assymetry due to alowing the participants to make change. As is well known, these
+equilibria choose one currency or the other to be the lower valued change, and thus the outcomes are not
+symetric.
+0 2 4 6 8 10
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+3.50
+Home
+Foreign
+Value Functions No MC µ
+µ
+µ
+µ=0
+0 2 4 6 8 10
+0
+2
+4
+6
+8
+10
+0.00
+0.50
+1.00
+1.50
+2.00
+2.50
+3.00
+3.50
+Home
+Foreign
+Value Functions MC µ
+µ
+µ
+µ=0
+­ 27 ­
+Table 5
+Medium Economy with and without "Making Change" in Goods Trades
+Economic Data for N= 10, No Currency Risk Economies (µ = 0)
+Parameter Values: N=10, M1
+=M2
+=3.33,  = .15, =1, x = .45, r=.1
+No Change Trades Allowed Change Trades Allowed
+Percentage of matches with trade: 70.70% 88.88%
+Percentage of goods trades involving:
+Currency f (dollars) only: 50% 9.80%
+Currency h (home) only 50% 47.41%
+Any dollars traded 50% 52.59%
+Any home traded 50% 90.02%
+Expected welfare: 2.02 2.57
+Expected production: 0.063 0.051
+Size of the currency market: 0% 0.0025%
+Table 5 reveals several interesting results. First, more goods trades occur in the making
+change equilibrium than the no change equilibrium. This is not surprising since more
+possible trades can be achieved. Furthermore, the fraction of dollar only trades falls
+dramatically while the number of goods trades involving any exchange of the home
+currency soars to 90%. This is result of all agents being able to be sellers in this economy
+regardless of whether the inventory constraint is binding. Agents holding 10 units of money
+can engage in trades that alter the composition of their currency holdings without
+increasing its size. quantity and gets change back from the dollar in the form of a unit of
+home currency.
+Average welfare goes up when change trades are allowed. This is because more trades are
+occurring hence consumption is occurring more frequently per period of time. Furthermore,
+since some buyers are able to obtain quantities that are closer to their most desired amount,
+their welfare goes up. It is interesting that welfare rises despite the fact that average
+production falls. Production falls because some buyers are now engaging in smaller trades
+than before. This occurs for two reasons. First, many of the trades in the no change
+equilibrium involve buyers buying quantities that are `too large' because of the
+indivisibility of money. Thus, rather than buying a dollar's worth of goods and receiving no
+change, a buyer now spends a dollar, receives a smaller and more desirable. Second, the
+richest sellers are now trading small quantities in making change trades, which lowers the
+average amount of production in the economy. Finally, a direct currency market exists now
+where agents can engage in pure currency trades when no coincidence of wants occurs.
+This currency trade is simply exploiting differences in the marginal valuations of the
+­ 28 ­
+portfolios as opposed to altering the risk exposure of one's portfolio. In this example, only
+1 nominal exchange rate is observed which is 2 units of home for one dollar.
+Finally, an analysis of specific transaction patterns for particular buyers and sellers reveals
+a very different transaction pattern. The transaction patterns for a (10f
+,0h
+) buyer with all
+sellers are shown in Table 6 across the two economies. When change trades are not
+permitted, the parameterization yields the Camera-Corbae equilibrium in which (df
+,dh
+) =
+(1,0) or (0,1).). The letter f in each cell means that this buyer spends one dollar on any
+seller he meets (in this case agents holding 10 units of currency cannot sell). However,
+once making change trades are allowed, the transaction pattern for this buyer changes
+dramatically.
+Table 6
+Transaction Patterns for a Foreign Currency Rich Buyer
+(10f, 0h) Buyer with all Sellers
+No Making Change
+Foreign denotes foreign currency holdings of a seller
+Home denotes home currency holdings of a seller
+µ
+µ
+µ
+µ =0
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 f f f f f f f f f f ---
+1 f f f f f f f f f ---
+2 f f f f f f f f ---
+3 f f f f f f f ---
+4 f f f f f f ---
+Foreign 5 f f f f f ---
+(dollars) 6 f f f f ---
+7 f f f ---
+8 f f ---
+9 f ---
+10 ---
+Making Change
+µ
+µ
+µ
+µ =0
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 2f 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 3f, -3h 3f, -3h 2f, -2h 2f, -2h
+1 2f 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 3f, -3h 3f, -3h 3f, -3h 3f, -3h
+2 2f 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 3f, -3h 3f, -3h 3f, -3h
+3 f 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 3f, -3h
+4 f 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h 2f, -h
+Foreign 5 f 2f, -h 2f, -h 2f, -h 2f, -h 3f, -3h
+(dollars) 6 f 2f, -h 2f, -h 2f, -h 3f, -3h
+7 f 2f, -h 2f, -h 3f, -3h
+8 f 2f, -h 2f, -2h
+9 f f, -h
+10 ---
+­ 29 ­
+For example, now this buyer spends two dollars on a (0,0) seller but one dollar on a (8f
+,0)
+seller. More interestingly, this buyer engages in making change trades with nearly every
+other seller he meets. In some trades he gives up two dollars in order to receive goods plus
+a unit of the home currency (2f, -h) while in some others he gives up two dollars for goods
+and two units of home (2f, -2h) or 3dollars for goods and 3 units of home currency (3f,-
+3h). Thus, trading bundles of money and goods is the preferred trading strategy overall for
+this buyer. The problem with these trades of course is determining what the `price' of the
+good is since two different currencies are involved in most trades. Thus, it is difficult to
+think about price dispersion in this environment.
+Table 7 shows how increasing currency risk on the home currency affects the performance
+of the making change economy.
+Table 7
+Medium ,,Making Change" Economy with Differing Currency Risk
+Economic Data for N= 10, Risky Economies
+Parameter Values: N=10, M1
+=M2
+=3.33,  = .15, =1, x = .45, r=.1
+µ=0.0001 µ=0.005 µ=0.01 µ=0.05
+=0.0003 =0.0178 =0.037 =0.211
+Percentage of matches with trade: 89.5% 89.62% 89.46% 88.52%
+Percentage of goods trades involving:
+Currency f (dollars) only: 9.88% 8.57% 8.65% 9.05%
+Currency h (home) only: 43.12% 37.56% 38.59% 42.48%
+Any dollars traded 56.88% 62.44% 61.41% 57.52%
+Any home traded 90.12% 91.43% 91.36% 90.96%
+Expected welfare: 2.63 2.62 2.60 2.44
+Expected production: 0.0413 0.0413 0.0447 0.0655
+Size of the currency market: 0.019% 0.11% 0.074% 0%
+Compared to the `no change trades' economy, for the most, the qualitative behavior is the
+same, although the quantitative changes are quite different. The percentage of trades that
+involve dollars only falls initially and then rises as before. The percentage of trades
+involving both currencies rises initially and then falls. This is because as risk increases,
+agents want to diversify portfolios via making change trades. However, once the risk gets
+sufficiently high, agents resort to the use of a single currency in goods trade. Welfare falls
+as it does in the no change economy. Surprisingly, average production actually increases
+as risk increases. This is because the quantity given up by sellers in making change trades
+rises as the value of the dollar increases relative to the home currency. Although the
+volume of trading in the currency market is much smaller than in the no change economy,
+­ 30 ­
+the pattern is the same as before ­ it initially rises, then falls and eventually shuts down
+completely when the home currency risk is too large.
+Table 8 shows the behavior of nominal exchange rates in this economy.
+Table 8
+Currency Market Exchange Rates for a
+Medium "Making Change" Economy
+Nominal
+Exchange Rate
+Conditional
+Probabilities
+(Home per dollar) 1
+1
+1
+1 2
+2
+2
+2 3
+3
+3
+3 4
+4
+4
+4
+µ
+µ
+µ
+µ = 0 µ
+µ
+µ
+µ = 0.0001 µ
+µ
+µ
+µ = 0.005 µ
+µ
+µ
+µ = 0.01
+2:1 1.00
+3:1 1.00
+4:1 .373
+5:1 .627 .415
+6:1 .315
+7:1 .270
+Size of Currency
+Market
+0.0025% 0.019% 0.11% 0.074%
+Mean 2 3 4.627 5.856
+Stand. Deviation 0 0 .484 .815
+The qualitative results are the same as before ­ an increase in domestic currency risk
+causes the home currency to depreciate and the variance of the nominal exchange rate
+distribution to increase then decrease. The main quantitative difference is the reduction in
+the number of observed exchange rates, which is the result of having agents diversify their
+currency portfolios via making change trades as opposed to pure currency trades.
+5.2.4 Very Large Portfolios N = 15, No Making Change Trades
+In this section we increase the inventory constraint to N=15. With N=15 there are 136
+different portfolio states, 120 potential sellers and a minimum of 220 prices. Despite the
+substantial increase in portfolio states, the same basic patterns occur here as when N=10.
+We also examined the case of N=15 when agents are allowed to engage in making change
+trades. The results displayed the same patterns as in the N=10 case and are thus not
+presented here.
+­ 31 ­
+Table 5 shows the economic data for the no change trade economy when we varied the
+degree of domestic currency risk:
+Table 9
+Large Portfolio Economy with Differing Currency Risk
+Parameter Values: N=15, Mf
+=Mh
+=5,  = .15, =1, x = .45, r=.1
+µ=.03 µ=.05 µ=.1
+Percentage of matches with trade: 40.21 39.40 37.40
+Percentage of goods trades using:
+Currency f (dollars) only: 51.57 52.91 54.84
+Currency h (home) only: 37.88 37.90 34.91
+Expected welfare: 2.25 2.17 2.02
+Expected production: 0.052 0.053 0.052
+Expected dollar price: 10.53 9.04 7.79
+Expected home price: 22.56 31.61 62.87
+Implied real exchange rate: 2.14 3.50 7.66
+Table 9 shows that increasing the degree of currency risk causes the frequency of goods
+trading to fall. Welfare also falls, while the average production increases. Production
+increases because fewer trades are occurring with rich sellers (since they are having their
+currency confiscated), hence the average quantity traded per match rises. Again, as in the
+case with N=10, the home price of goods increases while the dollar price of goods falls.
+Consequently, the implied real exchange rate between the two currencies shows a
+dramatic depreciation of the home currency. With regards to the degree of dollarization
+that occurs, we see a similar pattern as in the N=10 case. Initially, the percentage of dollar
+only trades falls while the percentage of trades involving goods for a bundle of the two
+currencies increases. In short, buyers now start to give up some home and foreign currency
+units rather than using dollars only. This is consistent with idea that at low levels of risk,
+buyers start dumping the home currency on sellers. However, as the currency risk rises,
+buyers increasing resort to using dollars since the quantities purchased with the home
+currency fall dramatically. Thus for sufficiently high levels of risk, currency competition
+kicks in and dollarization occurs.
+Table 10 shows the nominal exchange rate distributions for the risky economies:
+­ 32 ­
+Table 10
+Currency Market in Large Portfolio Economy
+with Differing Currency Risk
+Nominal
+Exchange
+Rate
+Conditional
+Probability
+(Home per Dollar) 1
+1
+1
+1 2
+2
+2
+2 3
+3
+3
+3
+µ
+µ
+µ
+µ=.03 µ
+µ
+µ
+µ=.05 µ
+µ
+µ
+µ=.1
+3:2 = 1.5 0.012
+5:3 = 1.67 0.001
+2 0.427 0.078
+7:3 = 2.33 0.003
+5:2 = 2.5 0.120 0.039
+8:3 = 2.67 0.000
+3 0.430 0.368 0.050
+7:2 = 3.5 0.000 0.013
+4 0.007 0.330 0.149
+9:2 = 4.5 0.000
+5 0.000 0.149 0.228
+6 0.023 0.205
+7 0.000 0.188
+8 0.000 0.115
+9 0.048
+10 0.016
+11 0.000
+12 0.000
+Size of Currency
+Market
+1.11% 1.07% 0.41%
+Mean 2.5 3.61 5.95
+Stand. Deviation 0.492 0.927 1.617
+From Table 6 we see that the number of exchange rates observed increases significantly
+when the inventory restriction is loosened. We now observe 10 nominal exchange rates
+across these economies. However, as in the case with N=10, most of the mass is
+distributed over a couple of nominal exchange rates until the currency risk gets very large.
+As before, an increase in currency risk leads to a nominal depreciation of the home
+currency against the dollar and a significant increase in the variance of the nominal
+exchange rate. The standard deviation is over 3 times larger in the high-risk economy
+than the low risk economy. The currency market is most active when the currency risk is
+low; as risk increases, the volatility of the exchange rate and the risk associated with
+holding home currency, leads to a reduction in activity in the 'financial' market. Thus,
+greater risk and uncertainty leads to a reduction in financial market trading volume.
+­ 33 ­
+As a final exercise, we artificially closed down currency exchange in order to see what the
+welfare effects were from having the ability to trade currencies to arbitrage risk. In general
+we found that the existence of the currency market led to a 1% point increase in welfare.
+While not dramatic, this is in part due to the small size of the currency market and in part
+to the ability of agents to simply use bundles of currency to trade for goods. For a few
+parameterizations (particularly when N is small) we found much more dramatic effects on
+welfare ­ as much as a 4% point increase in welfare. Thus, the welfare effects of currency
+exchange appear to be important but small in our model.
+6 Conclusions
+In this paper we have developed an analyzed a model that generates currency exchange in
+an economy even though both currencies are accepted as media of exchange. As a result
+we are able to obtain equilibrium nominal exchange rates based on a model in which
+money is essential. Thus, starting from first principles, we can study how currency risk
+affects the exchange value of two distinct currencies in a single economy. We have also
+contributed to the growing literature involving the distribution of money and prices in
+search theoretic model. We have shown that monetary equilibria exist in which both
+currencies circulate as media of exchange. New aspects of our work that have not been
+studied in previous work are the issue of portfolio diversification, the endogenous
+determination of nominal exchange rates and the role of risk aversion in portfolio choice.
+Our comparative static analysis revealed sensible predictions regarding how the values of
+currencies change after various changes in policy regimes. They also revealed some
+surprising results regarding the behavior of the nominal exchange rate distributions that
+need to be explored further. We have also been able to study the issues of dollarization and
+currency substitution from first principles without having to resort to artificial restrictions
+on which currency is used as a medium of exchange. Dollarization is the natural outcome
+of optimizing agents in the face of risky domestic currencies. Consequently, it is a market
+response to bad government policy rather than a regime dictated by the government.
+Further work in this area is needed to understand the consequences of dollarization and
+what governments can do to prevent it. One additional easy extension to our work is to
+allow agents to trade in several different foreign currencies. This would allow one to
+analyze the effect of a new intenational currency competitor such as the Euro and the
+Dollar on countries with weak currencies.
+­ 34 ­
+References
+Aiyagari, S. Rao, Neil Wallace and Randall Wright, "Coexistence of Money and Interest -
+bearing Securities," Journal of Monetary Economics, 37, (1996), pp. 397-419.
+Berentsen, Alexander, Miquel Molico and Randall Wright, "Indivisibilities, Lotteries and
+Monetary Exchange," Unpublished working paper, University of Pennsylvania, (2000).
+Camera, Gabriele and Dean Corbae, "Money and Prices," International Economic Review,
+40, (1999), pp. 985 ­1008.
+Camera, Gabriele, Ben Craig and Christopher Waller, "Dollarization via Currency
+Substitution," Unpublished working paper, University of Kentucky, (2001).
+Craig, Ben and Christopher J. Waller, "Dual Currency Economies as Multiple Payment
+Systems," Federal Reserve Bank of Cleveland Review, 36,1,Quarter 1 (2000).
+Curtis, Elisabeth and Christopher Waller, "A Search Theoretic Model of Legal and Illegal
+Currency," Journal of Monetary Economics, 45, (2000), pp. 155-84.
+Green, Edward and Ruilin Zhou, "A Rudimentary Random-Matching Model with Divisible
+Money and Prices," Journal of Economic Theory, 81, (1998), pp. 252-71.
+Head, Allen and Shiyoung Shi, ""Search, Inflation, and Exchange Rates," Unpublished
+working paper, Queens University, (2000).
+Karenken, John and Neil Wallace, "On the Indeterminacy of Equilibrium Exchange Rates,"
+Quarterly Journal of Economics, 96, (1981), pp. 207-222.
+Kiyotaki, N., and R. Wright, "A Search-Theoretic Approach to Monetary Economics," The
+American Economic Review, 83, (1993), pp. 63-77.
+Kocherlakota, Narayana and Thomas Krueger, "A Signalling Model of Multiple
+Currencies," Review of Economic Dynamics, 2, (1999) pp. 231-244.
+Matsuyama, Kiminori, Noburhiro Kiyotaki and Akihiko Matsui, "Towards a Theory of
+International Currency," Review of Economic Studies, 60, (1993), pp. 283-307.
+­ 35 ­
+Molico, Miguel, "The Distribution of Money and Prices in Search Equilibrium,"
+Unpublished working paper, University of Pennsylvania, (1996).
+Li, Victor, "The Optimal Taxation of Fiat Money in Search Equilibrium," International
+Economic Review, (1995), 36, 927-42.
+Li, Yiting and Randall Wright, "Government Transaction Policy, Media of Exchange and
+Prices," Journal of Economic Theory, 1998, 81(2), 290-313.
+Shi, Shouyong, ,,Money and Prices: A Model of Search and Bargaining," Journal of
+Economic Theory, 1995, 67(2), 467-496.
+Taber, Alexander and Neil Wallace, "The Divisibility of Money and Welfare in a Matching
+Model," International Economic Review, 40, (1999), pp. 961­984.
+Trejos, Alberto and Randall Wright, "Search, Bargaining, Money and Prices," Journal of
+Political Economy, 103, (1995), pp. 118-141.
+____________________. "Search Theoretic Models of International Currency," Federal
+Reserve Bank of St. Louis Review, 78, (May/June 1996a), pp. 117-132.
+____________________. "International Currency," Unpublished working paper,
+Northwestern University, (2000).
+Waller, Christopher and Soller-Curtis, Elizabeth, ,,Currency Restrictions, Government
+Transaction Policies and Currency Exchange," Unpublished working paper, University
+of Kentucky, (2001).
+Zhou, Ruilin. "Currency Exchange in a Random Search Model," Review of Economic
+Studies, 64, (1997), pp. 289-310.
+­ 36 ­
+Table A1
+Transaction Patterns for a Poor Seller
+Buyer's transaction pattern with a (0,0) seller
+$ denotes spending 1 unit of foreign currency
+Numerals denote number of home currency units spent
+Foreign denotes buyer's foreign currency, Home denotes buyer's home currency holdings
+µ
+µ
+µ
+µ =0
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 1 1
+1 $ 1 1 1 1 1 1 1 1 1
+2 $ 1 1 1 1 1 1 1 1
+3 $ 1 1 1 1 1 1 1
+4 $ 1 1 1 1 1 1
+Foreign 5 $ 1 1 1 1 1
+6 $ 1 1 1 1
+7 $ 1 1 1 Prices
+8 $ 1 1 df=1 1.70
+9 $ 1 dh=1 1.70
+10 $
+µ
+µ
+µ
+µ =.01
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 2 2
+1 $ 1 1 1 1 1 1 1 1 2
+2 $ 1 1 1 1 1 1 1 2
+3 $ 1 1 1 1 1 1 2
+4 $ 1 1 1 1 1 2
+Foreign 5 $ 1 1 1 1 2
+6 $ 1 1 1 2
+7 $ 1 1 2 Prices
+8 $ 1 2 df=1 1.67
+9 $ 1, $ dh=1 1.77
+10 $ dh=2 2.00
+µ
+µ
+µ
+µ =.05
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 2 2 2
+1 $ 1 1 1 1 1 1 2 2 2
+2 $ 1 1 1 1 1 2 2 2
+3 $ 1 1 1 1 2 2 2
+4 $ 1 1 1 2 2 2
+Foreign 5 $ 1 1 2 2 2
+6 $ 1 1 2 2
+7 $ 1 2 2 Prices
+8 $ 1 2 df=1 1.57
+9 $ 1, $ dh=1 2.06
+10 $ dh=2 2.41
+µ
+µ
+µ
+µ =.10
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 2 2 2 3
+1 $ 1 1 1 1 1 2 2 2 3
+2 $ 1 1 1 1 2 2 2 2
+3 $ 1 1 1 2 2 2 3
+4 $ 1 1 2 2 2 3
+Foreign 5 $ 1 1 2 2 3 Prices
+6 $ 1 2 2 3 df=1 1.59
+7 $ 1 2 3 dh=1 2.45
+8 $ 1, $ 2 dh=2 2.99
+9 $ 1, $ dh=3 3.59
+10 $
+­ 37 ­
+Table A2
+Transaction Patterns for a Foreign Currency Rich Seller
+Buyer's transaction pattern with a (7f,0h) seller
+$ denotes spending 1 unit of foreign currency
+Numerals denote number of home currency units spent
+Foreign denotes buyer's foreign currency, Home denotes buyer's home currency holdings
+µ
+µ
+µ
+µ =0
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 1 1
+1 $ 1 1 1 1 1 1 1 1 1
+2 $ 1 1 1 1 1 1 1 1
+3 $ 1 1 1 1 1 1 1
+4 $ 1 1 1 1 1 1
+Foreign 5 $ 1 1 1 1 1
+6 $ 1 1 1 1
+7 $ 1 1 1 Prices
+8 $ 1 1 df=1 9.26
+9 $ $ dh=1 9.26
+10 $
+µ
+µ
+µ
+µ =.01
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 1 1
+1 $ 1 1 1 1 1 1 1 1 1
+2 $ 1 1 1 1 1 1 1 1
+3 $ 1 1 1 1 1 1 1
+4 $ 1 1 1 1 1 1
+Foreign 5 $ 1 1 1 1 1
+6 $ 1 1 1 1
+7 $ 1 1 1 Prices
+8 $ $ 1 df=1 8.98
+9 $ $ dh=1 10.32
+10 $
+µ
+µ
+µ
+µ =.05
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 2 2
+1 $ 1 1 1 1 1 1 1 2 2
+2 $ 1 1 1 1 1 1 2 2
+3 $ 1 1 1 1 1 2 2
+Foreign 4 $ 1 1 1 1 2 2
+5 $ 1 1 1 2 2
+6 $ 1 1 2 2
+7 $ $ $ 2 Prices
+8 $ $ $ df=1 9.06
+9 $ $ dh=1 17.76
+10 $ dh=2 20.82
+µ
+µ
+µ
+µ =.10
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 2 2 2 2
+1 $ 1 1 1 1 1 1 2 2 2
+2 $ 1 1 1 1 1 2 2 2
+3 $ 1 1 1 1 2 2 2
+Foreign 4 $ 1 1 1 2 2 2
+5 $ 1 1 2 2 2
+6 $ $ $ 2 2
+7 $ $ $ $ Prices
+8 $ $ $ df=1 9.28
+9 $ $ dh=1 31.76
+10 $ dh=2 37.81
+­ 38 ­
+Table A3
+Transaction Patterns for a Domestic Currency Rich Seller
+Buyer's transaction pattern with (0f,7h) seller
+$ denotes spending 1 unit of foreign currency
+Numerals denote number of home currency units spent
+Foreign denotes buyer's foreign currency, Home denotes buyer's home currency holdings
+µ
+µ
+µ
+µ =0
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 1 1
+1 $ $ $ $ $ $ $ $ $ 1
+2 $ $ $ $ $ $ $ $ $
+3 $ $ $ $ $ $ $ $
+4 $ $ $ $ $ $ $
+Foreign 5 $ $ $ $ $ $
+6 $ $ $ $ $
+7 $ $ $ $
+8 $ $ $ Prices
+9 $ $ df=1 9.26
+10 $ dh=1 9.26
+µ
+µ
+µ
+µ =.01
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 1 1
+1 $ $ $ $ $ $ 1 1 1 1
+2 $ $ $ $ $ $ $ $ $
+3 $ $ $ $ $ $ $ $
+4 $ $ $ $ $ $ $
+Foreign 5 $ $ $ $ $ $
+6 $ $ $ $ $
+7 $ $ $ $
+8 $ $ $ Prices
+9 $ $ df=1 7.02
+10 $ dh=1 10.83
+µ
+µ
+µ
+µ =.05
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 1 1 2 2
+1 $ $ $ 1 1 1 1 1 2 2
+2 $ $ $ $ $ $ $ $ 2
+3 $ $ $ $ $ $ $ $
+4 $ $ $ $ $ $ $
+Foreign 5 $ $ $ $ $ $
+6 $ $ $ $ $
+7 $ $ $ $ Prices
+8 $ $ $ df=1 3.96
+9 $ $ dh=1 20.94
+10 $ dh=2 21.98
+µ
+µ
+µ
+µ =.10
+0 1 2 3 4 5 6 7 8 9 10 Home
+0 --- 1 1 1 1 1 1 2 2 2 3
+1 $ $ $ 1 1 1 2 2 2 3
+2 $ $ $ $ $ $ $ $ 2
+3 $ $ $ $ $ $ $ $
+4 $ $ $ $ $ $ $
+Foreign 5 $ $ $ $ $ $
+6 $ $ $ $ $ Prices
+7 $ $ $ $ df=1 2.98
+8 $ $ $ dh=1 35.79
+9 $ $ dh=2 40.27
+10 $ dh=3 44.03
+The following papers have been published since 2000:
+February 2000 How Safe Was the ,,Safe Haven"?
+Financial Market Liquidity during
+the 1998 Turbulences Christian Upper
+May 2000 The determinants of the euro-dollar
+exchange rate ­ Synthetic fundamentals Jörg Clostermann
+and a non-existing currency Bernd Schnatz
+July 2000 Concepts to Calculate Equilibrium
+Exchange Rates: An Overview Ronald MacDonald
+August 2000 Kerinflationsraten: Ein Methoden-
+vergleich auf der Basis westdeutscher
+Daten * Bettina Landau
+September 2000 Exploring the Role of Uncertainty
+for Corporate Investment Decisions
+in Germany Ulf von Kalckreuth
+November 2000 Central Bank Accountability and
+Transparency: Theory and Some Sylvester C.W. Eijffinger
+Evidence Marco M. Hoeberichts
+November 2000 Welfare Effects of Public Stephen Morris
+Information Hyung Song Shin
+November 2000 Monetary Policy Transparency, Public
+Commentary, and Market Perceptions
+about Monetary Policy in Canada Pierre L. Siklos
+* Available in German only.
+- 39 -
+November 2000 The Relationship between the Federal
+Funds Rate and the Fed's Funds Rate
+Target: Is it Open Market or Open
+Mouth Operations? Daniel L. Thornton
+November 2000 Expectations and the Stability Problem George W. Evans
+for Optimal Monetary Policies Seppo Honkapohja
+January 2001 Unemployment, Factor Substitution, Leo Kaas
+and Capital Formation Leopold von Thadden
+January 2001 Should the Individual Voting Records Hans Gersbach
+of Central Banks be Published? Volker Hahn
+January 2001 Voting Transparency and Conflicting Hans Gersbach
+Interests in Central Bank Councils Volker Hahn
+January 2001 Optimal Degrees of Transparency in
+Monetary Policymaking Henrik Jensen
+January 2001 Are Contemporary Central Banks
+Transparent about Economic Models
+and Objectives and What Difference
+Does it Make? Alex Cukierman
+February 2001 What can we learn about monetary policy Andrew Clare
+transparency from financial market data? Roger Courtenay
+March 2001 Budgetary Policy and Unemployment Leo Kaas
+Dynamics Leopold von Thadden
+March 2001 Investment Behaviour of German Equity
+Fund Managers ­ An Exploratory Analysis
+of Survey Data Torsten Arnswald
+- 40 -
+April 2001 Der Informationsgehalt von Umfrage-
+daten zur erwarteten Preisentwicklung
+für die Geldpolitik * Christina Gerberding
+May 2001 Exchange rate pass-through
+and real exchange rate
+in EU candidate countries Zsolt Darvas
+July 2001 Interbank lending and monetary policy Michael Ehrmann
+Transmission: evidence for Germany Andreas Worms
+September 2001 Precommitment, Transparency and
+Montetary Policy Petra Geraats
+September 2001 Ein disaggregierter Ansatz zur Berechnung
+konjunkturbereinigter Budgetsalden für
+Deutschland: Methoden und Ergebnisse * Matthias Mohr
+September 2001 Long-Run Links Among Money, Prices, Helmut Herwartz
+and Output: World-Wide Evidence Hans-Eggert Reimers
+November 2001 Currency Portfolios and Currency Ben Craig
+Exchange in a Search Economy Christopher J. Waller
+* Available in German only.
+- 41 -
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Visitors should
+prepare a research project during their stay at the Bundesbank. Candidates must hold a
+Ph D and be engaged in the field of either macroeconomics and monetary economics,
+financial markets or international economics. Proposed research projects should be from
+these fields. The visiting term will be from 3 to 6 months. Salary is commensurate with
+experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+- 42 -
+

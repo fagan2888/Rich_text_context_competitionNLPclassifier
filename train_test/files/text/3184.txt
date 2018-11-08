@@ -1,0 +1,2015 @@
+Discussion Paper
+Deutsche Bundesbank
+No 14/2013
+Restructuring counterparty credit risk
+Claudio Albanese
+(Global Valuation Ltd)
+Damiano Brigo
+(Imperial College)
+Frank Oertel
+(University of Southampton)
+Discussion Papers represent the authors` personal opinions and do not
+necessarily reflect the views of the Deutsche Bundesbank or its staff.
+Editorial Board: Klaus Düllmann
+Heinz Herrmann
+Christoph Memmel
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978­3­86558­909­5 (Printversion)
+ISBN 978­3­86558­910­1 (Internetversion)
+Non-technical summary
+Whenever a defaultable entity enters into a financial transaction, it sustains a cost of
+carry to compensate counterparties for its potential inability to meet future contractual
+obligations. The compensation mechanism for counterparty credit risk is captured by a
+protection contract contingent to the default arrival time and to the exposure at default
+(EAD). In the particular case of debt transactions, the cost of carry of the contingent
+default protection liability is the cost of funds above the riskless rate. In the case of
+derivative contracts, the cost of carry of default protection is either captured by a credit
+valuation adjustment (CVA), or by the cost of posting collateral, or a combination thereof.
+In the past two decades, financial markets witnessed the implementation of different
+standards for valuation of counterparty credit risk. The evolution of these standards was
+driven by a desire to achieve a consistent valuation, an objective still not fully achieved
+in Basel III regulatory documents and ISDA Master Agreements. The current standards
+for bilateral credit valuation adjustments are also plagued by various paradoxes related to
+own default risk (debit valuation adjustments, DVA) accounting which encourages anti-
+economical behaviour by incentivising firms with poor credit policies and penalising firms
+with good credit policies. Moreover, these paradoxes place an insurmountable limitation
+to the ability of replicating dynamically the price process of derivative transactions, a
+serious problem that hampers the role of banks as financial intermediaries.
+Our first proposal regarding a logically and financially consistent valuation framework
+for CVA and DVA involves an inclusion of a first-to-default clause in default protection
+contracts. This modification however represents a substantial deviation from the unilat-
+eral CVA (UCVA) specification in Basel III. To remedy in part, we introduce the new
+notion of a portable CVA (PCVA) which is logically and financially consistent and also
+very close to the UCVA.
+We next deviate from bilateral contracts and consider three counterparty credit risk
+mitigation structures based on margin lending and full collateralisation. We conclude
+that the quadri-partite structure is the most promising one, whereby two margin lenders
+provide hypothecs to ensure full collateralisation at all times to cover the open mark-to-
+market value of derivative transactions. These structures do not require a bank to carry
+out CVA trading, and hence would eliminate a source of significant market risk. Moreover,
+conditional counterparty spread volatility risk is transferred to the counterparty. Pure
+default risk is retained by the margin lenders that can securitise it in a straightforward
+manner without being hampered by CVA volatility risk. We continue by introducing a
+penta-partite structure which is a variation of the quadri-partite structure above with
+the inclusion of a central counterparty. In the penta-partite case, we conclude that,
+if a replication strategy between non-defaultable entities exists, then this strategy can
+be implemented also by a defaultable structurer until its default time and the cost of
+replication is the risk-free fair value, independently of the credit quality of the structurer.
+We finish our paper with a short illumination of the case where finite liquidity is
+included.
+Nicht-technische Zusammenfassung
+Immer dann, wenn ein ausfallgef¨
+ahrdetes Institut eine finanzielle Transaktion aus¨
+ubt,
+muss es seinem Gesch¨
+aftspartner (Kontrahenten) Haltekosten zwecks Kompensation eines
+zuk¨
+unftig m¨
+oglichen Risikos der Nichterf¨
+ullung der eigenen vertraglichen Verpflichtungen
+zahlen. Ein Ausgleich des Ausfallrisikos von Kontrahenten in mechanisierter Gestalt wird
+in Form eines Schutzvertrags erm¨
+oglicht, der von dem Ausfallszeitpunkt des Kontrahen-
+ten und der Forderungsh¨
+ohe (
+"
+Exposure at Default (EAD)") abh¨
+angt. Im Spezialfall eines
+klassischen Kreditgesch¨
+afts werden diese Haltekosten durch die Kosten der Finanzierung
+oberhalb des risikolosen kurzfristigen Zinssatzes abgebildet. Bei Finanztransaktionen mit
+Derivaten werden die Haltekosten zur Abdeckung eines m¨
+oglichen Ausfalls durch eine Kre-
+ditbewertungsanpassung (
+"
+credit valuation adjustment (CVA)") oder durch die Kosten
+der Hinterlegung von Sicherheiten erfasst, beziehungsweise durch deren Verkn¨
+upfung.
+In den letzten zwei Jahrzehnten wurden unterschiedliche Ans¨
+atze zur Bewertung des
+Kontrahentenausfallrisikos in den Finanzm¨
+arkten umgesetzt. Die Entwicklung dieser An-
+s¨
+atze wurde von dem Wunsch angetrieben, eine global einheitliche Bewertung zu realisie-
+ren; eine Zielsetzung, die weder durch die regulatorischen Basel III-Dokumente noch durch
+die ISDA Master Agreements bewerkstelligt wurde. Das gegenw¨
+artige Richtmaß bez¨
+uglich
+der bilateralen Kreditbewertungsanpassung wird zudem noch durch unterschiedliche Para-
+doxien belastet, die sich im Zusammenhang mit dem eigenen Ausfallrisiko und einer damit
+verbundenen Bilanzierung der
+"
+Schuldenbewertungsanpassung" (
+"
+debit valuation adjust-
+ment (DVA)") ergeben. Dadurch wird ein anti-¨
+okonomisches Verhalten erzeugt, da aus-
+fallbehaftete Institute durch DVA noch weiter ermutigt werden, risikobehaftete Gesch¨
+afte
+zu betreiben und die nicht (oder nur schwach) ausfallgef¨
+ahrdeten Institute stark benach-
+teiligt werden. Dar¨
+uber hinaus erzeugen diese Paradoxien eine un¨
+uberwindliche H¨
+urde
+bez¨
+uglich einer dynamischen Replikation des Preisprozesses derivativer Finanzpositionen,
+durch die die Rolle von Banken in Ihrer Aktion als Finanzintermedi¨
+are stark behindert,
+wenn nicht sogar ganz verhindert wird.
+Unser erster Vorschlag eines in sich logisch und auch finanzierungsm¨
+aßig konsisten-
+ten Rahmenwerks zur Bewertung von CVA und DVA bezieht eine
+"
+Erstausfallsklausel"
+mit in die Ausfallschutzvertragsstruktur ein. Diese Modifikation stellt jedoch eine signi-
+fikante Abweichung von der Spezifizierung eines nur unilateralen CVA (UCVA) in Basel
+III dar. Um diesen Sachverhalt teilweise zu mildern, stellen wir den neuen Begriff der
+portablen Kreditbewertungsanpassung (
+"
+portable CVA (PCVA)") vor, der logisch und fi-
+nanzierungsm¨
+aßig konsistent ist und zudem eine hinreichend gute Approximation an das
+UCVA darstellt.
+Als N¨
+achstes weichen wir von bilateralen Vertr¨
+agen ab und betrachten drei weitere
+kontrahentenausfallrisikomindernde Modelle, die auf der Bereitstellung eines Kredits von
+Sicherheitsleistungen und vollst¨
+andiger Besicherung basieren. Wir werden dabei erkennen,
+dass der vielversprechendste Vorschlag durch ein Vierparteiensystem gegeben wird; ein
+Ansatz, bei dem zwei Teilnehmer Sicherheitsleistungen in Form von Hypotheken als Kredit
+vergeben, um dadurch jederzeit eine vollst¨
+andige Besicherung von noch unbestimmten
+Mark-to-Market-Werten derivativer Finanztransaktionen zu gew¨
+ahrleisten. Mittels dieses
+Ansatzes w¨
+urde ein Finanzinstitut nicht mehr dazu verpflichtet mit CVA zu handeln, so
+dass dadurch ein signifikanter Anteil des Marktrisikos verschwinden w¨
+urde. Zudem w¨
+urde
+"
+bedingtes Kontrahentenspreadrisiko" und das Volatilit¨
+atsrisiko auf den Kontrahenten
+¨
+ubertragen. Das reine Ausfallrisiko tragen die Kreditgeber der Sicherheitsleistungen, die
+es auf einfache Art und Weise verbriefen k¨
+onnen, ohne dabei jedoch durch das CVA-
+Volatilit¨
+atsrisiko behindert zu werden.
+Im folgenden Schritt f¨
+uhren wir ein F¨
+unfparteiensystem ein - eine Variante des oberen
+Ansatzes des Vierparteiensystems, bei dem ein zentraler Kontrahent als Clearingstelle
+mit einbezogen wird. W¨
+urde im Falle des F¨
+unfparteiensystems ein replizierendes Portfolio
+zwischen zwei nicht-ausfallgef¨
+ahrdeten Instituten existieren, so k¨
+onnte dieses replizieren-
+de Portfolio auch durch ein ausfallgef¨
+ahrdetes Institut bis zu seinem Ausfallszeitpunkt
+implementiert werden, wobei dann die Kosten der Replikation durch einen
+"
+fairen", risi-
+koneutralen Preis gegeben werden - unabh¨
+angig von der Bonit¨
+atsqualit¨
+at des implemen-
+tierenden Instituts.
+Zum Schluss unserer Arbeit beleuchten wir kurz denjenigen Fall, bei dem eine nur
+begrenzt verf¨
+ugbare Liquidit¨
+at mit eingeschlossen wird.
+Restructuring Counterparty Credit Risk
+Claudio Albanese
+Global Valuation Ltd
+London, UK
+Damiano Brigo
+Imperial College
+London, UK
+Frank Oertel
+University of Southampton
+Southampton, UK
+Abstract
+We introduce an innovative theoretical framework for the valuation and replication
+of derivative transactions between defaultable entities based on the principle of
+arbitrage freedom. Our framework extends the traditional formulations based on
+credit and debit valuation adjustments (CVA and DVA).
+Depending on how the default contingency is accounted for, we list a total of ten
+different structuring styles. These include bi-partite structures between a bank and
+a counterparty, tri-partite structures with one margin lender in addition, quadri-
+partite structures with two margin lenders and, most importantly, configurations
+where all derivative transactions are cleared through a central counterparty (CCP).
+We compare the various structuring styles under a number of criteria includ-
+ing consistency from an accounting standpoint, counterparty risk hedgeability, nu-
+merical complexity, transaction portability upon default, induced behaviour and
+macro-economic impact of the implied wealth allocation.
+Keywords: Counterparty credit risk, CVA, DVA, margin lending, securitisation,
+Basel III, CCP, clearing, collateral, OTC
+JEL classification: C51, C54, C63, E51, G01, G32, G33
+Contact address: Claudio Albanese, Global Valuation Ltd, 9 Devonshire Square, London, UK. E-
+Mail: claudio.albanese@global-valuation.com. Damiano Brigo, Department of Mathematics, Imperial
+College, 180 Queen's Gate, London, UK. E-Mail: damiano.brigo@imperial.ac.uk. Frank Oertel, School of
+Mathematics, University of Southampton, Highfield, Southampton, UK. E-Mail: f.p.oertel@soton.ac.uk
+(corresponding author). We thank Carla di Mauro, Fernanda D'Ippoliti, Giacomo Pietronero, Hansj¨
+org
+Schmidt and Gary Wong for comments and discussions. This paper was submitted to appear in the
+Deutsche Bundesbank Discussion Paper Series. We are thankful to an anonymous referee for the careful
+work and useful comments. Discussion Papers represent the authors' personal opinions and do not
+necessarily reflect the views of the Deutsche Bundesbank or the Federal Financial Supervisory Authority
+(BaFin) or their staff.
+Bundesbank Discussion Paper No 14/2013
+1 Introduction
+Whenever a defaultable entity enters into a financial transaction, it sustains a cost of
+carry to compensate counterparties for its potential inability to meet future contractual
+obligations. The compensation mechanism for counterparty credit risk is captured by a
+protection contract contingent to the default arrival time and to the exposure at default.
+In the particular case of debt transactions, the cost of carry of the contingent default
+protection liability is the cost of funds above the riskless rate. In the case of derivative
+contracts, the cost of carry of default protection is either captured by a credit valuation
+adjustment (CVA), or by the cost of posting collateral, or a combination thereof.
+A number of different structuring styles for counterparty credit risk have so far been
+proposed and several market standards have emerged. Nevertheless, renewed efforts to
+arrive at a stable market standard are still under way, particularly as counterparty credit
+risk management is an element of key importance to the financial reforms enacted on the
+wake of the 2007 banking crisis.
+Traditionally, counterparty credit risk has been retained on banks' balance sheets along
+with the risk implied by the CVA mark-to-market volatility. The CVA risk is transferred
+internally within banks from business desks to CVA desks by transacting a Contingent
+Credit Default Swap (CCDS). A CCDS offers (to the protection buyer) protection against
+default of a reference entity, the nominal being given by the valuation of a reference
+portfolio at time of default. The valuation of the CVA for derivative books is described in
+Albanese, Bellaj, Gimonet, and Pietronero (2011) while individual CCDS contracts are
+analysed in Brigo and Pallavicini (2008).
+An open market for CCDS contracts never established itself. The Financial Times
+reported, back in 2008 in Cookson (2008), that
+Rudimentary and idiosyncratic versions of these so-called contingent credit
+default swaps (CCDS) have existed for five years, but they have been rarely
+traded due to high costs, low liquidity and limited scope.
+As a consequence, counterparty credit risk has traditionally been managed with bilateral
+structures, whereby two parties agree to bear each other counterparty credit risk, being
+remunerated each by a price adjustment.
+In intuitive terms, if both parties B and C (say a bank and a corporate) have a relevant
+default probability, the following happens. B, having a choice, would trade the relevant
+portfolio with a default-free counterparty rather than with C. Therefore, in order to
+trade with default risky C, B requires a reduction in the price of the trade from C to be
+compensated for the additional default risk of C. This reduction is the credit valuation
+adjustment (CVA(B, C)) B measures on C. However, seen from the point of view of C,
+this is an increase in the price C has to pay to enter the trade, because of C's own default
+risk. Hence from C's point of view this is a debit valuation adjustment, or DVA(C, B),
+that increases the price of the trade.
+On the other hand, B may default too. Hence, C will require a discount in price as
+well, the CVA(C, B) seen by C on B. This second CVA, when seen by B's point of view,
+will be a DVA(B, C) increase in price to be paid to C, making the price higher to B
+itself. We will see that CVA(B, C) = DVA(C, B) and CVA(C, B) = DVA(B, C). This is
+clarified later on in the paper. Overall, when B computes the price of the trade, B will
+1
+add to the trade price
+DVA(B, C) - CVA(B, C) = CVA(C, B) - CVA(B, C).
+When C computes the price of the trade, C will add
+DVA(C, B) - CVA(C, B) = CVA(B, C) - CVA(C, B)
+which is the opposite of the adjustment added by B. In this sense there is agreement on
+the price.
+This is equivalent to a contractual exchange of mutual default protection without the
+intervention of third parties, remunerated at each other CVA. However, as we discuss in
+this paper, the move towards central counterparty clearing (CCP) in OTC markets opens
+new venues for counterparty credit risk transfer through multi-party arrangements.
+1.1 From unilateral CVA and CCDS to bilateral CVA
+Prior to 2007, counterparty credit risk was accounted for in terms of the so called unilateral
+CVA (or UCVA), a valuation methodology which stems from the modeling premise that
+the party carrying out the valuation is default free, when it typically is not. See for
+example Brigo and Masetti (2005) for the general framework under netting, and Brigo
+and Pallavicini (2007), Brigo and Bakkar (2009), Brigo and Chourdakis (2009), Brigo,
+Morini, and Tarenghi (2011) for applications of this framework to various asset classes.
+Clearly if both parties are defaultable and each pretends to be default free in doing the
+calculation, each will try to have a reduction in price equal to the CVA. B will ask for a
+reduction equal to CVA(B, C), whereas C will ask for a reduction equal to CVA(C, B).
+What they should do is agree to have an adjustment (possibly positive or negative) equal
+to CVA(B, C)-CVA(C, B) and the opposite from C. This would be a bilateral valuation
+adjustment on which the two parties would agree and where, as in a swap, the total value
+of the trade to B is the opposite of the total value of the trade to C.
+The unilateral adjustment UCVA is faulty as the valuation is asymmetric between the
+two parties and breaks the basic accounting principle according to which a liability for
+one party (such as default protection sold to the counterparty) represents an asset for the
+counterparty itself. Only monetary authorities are in a position to evade this accounting
+principle, which we refer to as money conservation. Accounting standards such as FAS 156
+and 157 remedied the inconsistency by prescribing that banks have to mark a unilateral
+debit valuation adjustment (UDVA) which is equal in amount to the unilateral CVA
+balance sheet entry realised by the counterparty but sits on the opposite side of the
+double entry ledger (cf. equation (2.1)). The CVA and DVA thus give contributions of
+opposite signs to the portfolio net asset value (NAV).
+This reflects "money conservation" and applies to all forms of CVA including unilateral
+CVA and the other variants described below such as first-to-default CVA and portable
+CVA. In the unilateral case, the combination
+BCVA := UCVA - UDVA (1.1)
+defines the so called bilateral CVA, see for instance Picoult (2005). The omission of the
+UDVA term is justified only when one of the two parties in the trade can be considered
+2
+as being default-free, an assumption that was easily granted to a number of financial
+institutions prior to 2007.
+While restoring money conservation, accounting for the DVA introduced another valu-
+ation inconsistency as close-out conditions ignored the UDVA and the loss of UDVA upon
+counterparty default was not properly priced and accounted for. Indeed, if prior to the
+default of say C, B used to mark to market its trade with C by adding its DVA(B, C),
+now that C has gone, the liquidators of C will ask B to pay the mark to market of the
+trade without B's DVA(B, C) = CVA(C, B), so that the value of the trade to B since
+pre-default days has decreased exactly by B's unilateral DVA(B, C). To lessen the im-
+pact of the inconsistency, in 2009 the ISDA modified the wording of the close-out rule in
+the Credit Support Annex (CSA) portion of master swap agreements, see ISDA (ISDA).
+Under the new rule, the unilateral DVA (which is the UCVA for the other side) is recov-
+erable through the liquidation process on the same footing and with the same seniority
+and recovery rate of the mark-to-market valuation of the underlying transaction. Since
+the UDVA is not recoverable entirely but only in part, this modification roughly halves
+the impact of the mispricing and accounting inconsistency, without however eliminating
+it entirely.
+In this paper, we consider a number of alternative contractual specifications which
+instead are fully consistent from an accounting viewpoint and correctly price the possible
+loss of a fraction of DVA.
+1.2 First-to-default CVA and First-to-default DVA
+The first consistent structures introduced historically are bilateral versions of the CVA and
+DVA which include a first-to-default contingency clause and are denoted with FTDCVA
+and FTDDVA. According to this clause, upon defaulting an entity is relieved of all the
+liabilities resulting from the default protection contracts it sold derivative counterparties
+on their own default risk. The first-to-default clause appears in Duffie and Huang (1996),
+Bielecki and Rutkowski (2002) and was made explicit in Brigo and Capponi (2008) in
+the case of an underlying CDS. See also Brigo and Morini (2011) and Brigo and Morini
+(2010). It was considered in the case of interest rate portfolios in Brigo, Pallavicini, and
+Papatheodorou (2011) and also appears in Gregory (2009). In this context, the paper
+Brigo, Capponi, Pallavicini, and Papatheodorou (2011) extends the bilateral theory to
+collateralisation and re-hypothecation and Brigo, Capponi, and Pallavicini (2011) shows
+cases of extreme contagion where even continuous collateralisation does not eliminate
+counterparty risk.
+The first-to-default CVA is consistent from an accounting standpoint. However, this
+definition does not come without shortcomings. One problem is that, if the credit of
+the computing party is low, the FTDCVA can be substantially lower than the UCVA.
+At default, the first-to-default CVA even vanishes. These material discrepancies between
+the first-to-default CVA and the unilateral CVA contemplated in the Basel III accord
+have undesirable side effects, such as for instance giving a competitive advantage to those
+financial institutions which are the slowest at endorsing the banking reform. In Watt
+(2011), we read
+"I would say the top 10 banks in the market are all aware of this, are discussing
+it between themselves and are making the appropriate pricing changes", says
+3
+Christophe Coutte, global co-head of flow fixed income and currencies at
+Soci´
+et´
+e G´
+en´
+erale Corporate and Investment Banking (SG CIB) in London.
+"However, there are many smaller, regional banks that are not fully charg-
+ing for the extra CVA capital in derivatives transactions. As we've prudently
+stepped up our prices, the tier-two and tier-three firms have filled the gap
+we've left. They weren't competing before because they couldn't offer enough
+liquidity or the tightest bid-offer spreads, but now they can."
+A second problem is that the first-to-default CVA is unhedgeable since, to hedge it,
+a bank would have to short its own credit, an impossible trade. This aggravates the
+already serious problem of unhedgeability of the unilateral DVA term as it appears in the
+definition of the BCVA. A bank who is foreseeing a dramatic increase in its own credit
+quality may fear that DVA will decrease dramatically. We have seen that the typical
+DVA gains in the market have been of the order of magnitude of billions, see for example
+Brigo (2011). Hence banks try to prepare for the opposite moves by trying to hedge DVA,
+and they tend to do that by proxying, see again Brigo (2011) and Brigo, Morini, and
+Pallavicini (2013) for the details and references.
+Finally, if the first-to-default CVA is used for pricing while the unilateral CVA is
+used to determine capital requirements, the material mismatch between the two makes
+it difficult to optimise risk management strategies. Furthermore, if a bank charges the
+FTDCVA to clients but then has to provision a higher amount given by the UCVA, the
+difference needs to be provisioned either by separate fundraising or from Tier 1 capital.
+1.3 Basel III
+The Basel III accord prescribes that banks should compute unilateral CVA by assuming
+independence of exposure and default. The advanced framework allows banks to imple-
+ment the effect of wrong way risk (i. e., the risk that occurs when the bank's exposure
+to its counterparty is adversely correlated with the credit quality of that counterparty)
+in the calculation of their exposures by using own models, while under the standardised
+approach the Basel III accord accounts for the effect by means of a one-size-fits-all mul-
+tiplier. Examples in Brigo and Pallavicini (2007), Brigo and Bakkar (2009), Brigo and
+Chourdakis (2009), Brigo et al. (2011) indicate that the actual multiplier (the so called
+"alpha" multiplier) is quite sensitive to model calibration and market conditions and that
+the advanced framework is more risk sensitive.
+Interestingly, the Basel III accord chooses to ignore the UDVA in the calculation for
+capital adequacy requirements. Although consideration of the UDVA needs to be included
+for accounting consistency, no such principle exists as far as capital requirements are
+concerned.
+1.4 Portable CVA
+Due to the variety of possible different definitions of CVA (unilateral CVA, bilateral CVA,
+first-to-default CVA) combined with boundary conditions such as risk free or replacement
+closeouts and the option to use either exact or approximate treatment of wrong way risk,
+there appears to be material discrepancies in CVA valuation across financial institutions.
+This was pointed out recently in the article Watt (2011). The most significant discrepancy
+4
+is between UCVA and FTDCVA. Both are used in the industry for valuation, while only
+the former is endorsed for regulatory purposes in Basel III.
+In this paper, we introduce consistent structures called portable CVA and DVA (or
+PCVA and, respectively, PDVA), defined so that, upon counterparty default, the PDVA
+reduces exactly to the unilateral DVA by definition. These structures have not been
+discussed previously in the literature and are introduced here because we find them in-
+teresting from the point of view of facilitating novations in case of a default of clearing
+members clearing their OTC trades through a CCP.
+Looking at the point of view of B for example, portable CVA is obtained when party B
+marks to market the position by subtracting from its fair value calculation the discounted
+value of the DVA of C that B would be liable to pay upon defaulting, in case B defaults
+prior to C. This is a definition that places portable CVA right in between unilateral CVA
+and first to default CVA. It addresses the inconsistencies of UCVA in a less dramatic way
+than full-fledged FTDCVA. This is rather subtle to appreciate and Section 5 provides the
+details.
+From a quantitative standpoint, the difference between UCVA and PCVA is minimal.
+The portable CVA assessed by an entity converges to the unilateral CVA whenever the
+credit-worthiness of the entity is perfect. Portable CVA and portable DVA are bilateral
+structures in that they are contingent on the credit process of both parties. They are also
+more conservative than the unilateral structures in the sense that PCVA  UCVA.
+As we discuss in Section 5, an approximate upper bound for the difference between
+the portable CVA and the unilateral CVA is given by the product between UDVA and the
+probability of default. Unlike the situation in the case of the FTDCVA, this difference is
+nearly immaterial in most circumstances.
+1.5 CVA VaR and periodic resets
+The CVA, i. e., the price of default protection contracts exchanged by parties in unsecured
+derivative transactions, needs to be marked-to-market on a daily basis and is thus volatile.
+The management of CVA volatility risk is crucial to mitigate the CVA VaR capital
+charge. A proposal is to trade long dated swaps with an embedded obligation for both
+parties to restructure the trade to equilibrium periodically while exchanging a payment
+to settle the mark-to-market difference at the reset date. However, this sort of modified
+swap is not economically equivalent to the original long-dated swaps.
+A not very practical but conceptually interesting alternative is to structure CVA and
+DVA so that they are reset periodically to equilibrium leading to a floating rate variant
+of CVA and DVA. As a simple example, let's consider the case of a bilateral transaction
+between the default-free bank B and the defaultable counterparty C. Instead of charging
+CVA upfront at the start date for the entire maturity of the transaction, the bank may
+require a CVA payment at the start date for protection over the first 6 months period.
+After 6 months, the bank would require a CVA payment for protection for a further six
+months period and so on, up to the final maturity of the trade.
+The benefit of having periodic resets would be that this would mitigate the volatility of
+the CVA by forcing it periodically to equilibrium. However, the difficulty in implementing
+such a structure is that fixing the CVA premium in future semi-annual protection windows
+would be subject to model risk and could be the cause of legally unresolvable controversy
+5
+Figure 1: General quadri-lateral scheme including as special cases bilateral arrangements
+(just B and C), tri-lateral arrangements (such as A, B and C) and quadri-lateral arrange-
+ments with all four. The margin lenders A and D post collateral.
+between the two parties. Although there is no regulatory framework surrounding this case
+yet, there is also no precedent (to our knowledge) of bilateral contracts with contingent
+fixings which are influenced by one of the two parties' discretionary decisions regarding
+modeling choices.
+A more robust implementation of the floating rate CVA paradigm from the viewpoint
+of financial stability and mitigation of systemic risk involves having third parties intervene
+competitively in the valuation process. The floating rate structures in the next subsection
+includes the case of full collateralisation and gives examples of such solutions where fixings
+are controlled by offer and demand.
+1.6 Full collateralisation and margin lending
+New classes of structuring styles emerge whenever one introduces the notion of full collat-
+eralisation and margin lending, see also Albanese, Pietronero, and White (2011), Albanese
+and Pietronero (2011) and Albanese, D'Ippoliti, and Pietronero (Albanese et al.). Full
+collateralisation is known to be a very effective remedy to reduce counterparty risk. Be-
+cause of the existence of gap risk and to counteract the volatility of mark-to-market
+valuations, one actually requires haircuts and overcollateralisation schemes to reduce the
+risk to almost nil, see again Brigo et al. (2011).
+The incentive towards full collateralisation is built into the regulatory framework it-
+self. The recent article Watt (2011) reports that uncollateralised trades are expected to
+consume up to four times more capital under Basel III. The same article reports of the
+case of Lufthansa, saying
+"The airline's Cologne-based head of finance, Roland Kern, expects its earn-
+ings to become more volatile - not because of unpredictable passenger numbers,
+interest rates or jet fuel prices, but because it does not post collateral in its
+derivatives transactions."
+6
+Traditionally, the CVA is typically charged by the structuring bank B either on an
+upfront basis or by the sake of being built into the structure as a fixed coupon stream.
+Margin lending instead is predicated on the notion of floating rate CVA payments with
+periodic resets and is designed in such a way to transfer the credit spread volatility risk
+and the mark-to-market volatility risk from the bank to the counterparties. We may
+explain this more in detail by looking at Figure 1.
+Collateral is most effectively allocated by margin lenders not by transfering the own-
+ership of qualifying collateral assets, but in the form of hypothecs on qualifying collateral.
+A hypothec is a contract written on underlying assets that transfers neither the ownership
+nor the possession of the assets, but simply a lien contingent to specific default events
+occurring.
+The counterparty C is concerned about the amount of collateral she may have to
+post periodically in order to trade derivatives with bank B. To avoid posting collateral,
+C enters into a margin lending transaction. C pays periodically (say semi-annually) a
+floating rate CVA to the margin lender A (`premium' arrow connecting C to A). In turn,
+the margin lender A distributes the premium to investors according to a seniority hierarchy
+(`premium' arrow connecting A to the investors). In exchange for this premium, the
+investors provide the margin lender A with transferable hypothecs to qualifying collateral
+assets over a six-months period (`collateral' arrow connecting the investors to A). In turn,
+A passes the hypothecs to a custodian (`collateral' arrow connecting A to the custodian)
+to meet collateral calls from the counterparty B. If C defaults within the semi-annual
+period, B has a claim to the hypothec posted at the custodian and A apportions the
+loss to its investors in increasing order of seniority, e.g. first to the equity investor, then
+to the mezzanine, then to the senior, then to the super-senior, etc. In this fashion, A
+provides protection to B on its derivative exposure with respect to C (`protection' arrow
+connecting the custodian to B) and the default risk is transferred to the investors of the
+margin lender on whose collateral the hypothecs had been written.
+At the end of the six months period, the protection contract needs to be renewed, thus
+forcing a reset to an updated premium that keeps the structure at equilibrium. At the
+end of the period, the margin lender has no residual obligation and may decide whether to
+bid for a renewal or abstain from it. In turn, C may opt to renew the protection contract
+with the same margin lender or another or even to syndicate the required coverage across
+a number of margin lenders. Thanks to the periodic resets, the counterparty C is bearing
+the CVA volatility risk, whereas B is not exposed to it. This is in stark contrast to the
+situation which could happen in the case of traditional upfront or fixed rate CVA charges.
+The various structuring styles that can be devised for margin lending are predicated
+on the separation between default risk on one side, market risk and spread volatility risk
+on the other. As a consequence, these structures are in general multi-lateral. A tri-lateral
+structure involves only one margin lender and only one party that posts full collateral.
+In a quadri-lateral structure, collateral posting obligations are symmetric and there are
+two lenders, one for the buy-side party and one for the sell-side party. The margin lender
+for the sell-side party takes up concentrated bank risk and is likely to be distinct from
+the margin lender specialised in non-banks. Structuring can also be penta-lateral in case
+there is a central counterparty (CCP) that stands as a universal counterparty to both
+sides. The presence of a CCP favors the novation process but still requires a market
+infrastructure to facilitate margin lending. From a contractual viewpoint, multi-party
+7
+structures still consist of a series of two-party contracts, hence there are no complexities
+associated to multi-party legal agreements.
+In this paper, we first consider three examples of structures with margin lending: a
+quadri-lateral one with daily resets, a quadri-lateral one with periodic resets over longer
+time intervals and a tri-lateral one also with periodic resets. All these structures are
+consistent from an accounting standpoint and the principle of arbitrage freedom.
+Being based on floating CVA payments that reset periodically and are proportional to
+the counterparty's conditional credit spreads and open exposure, quadri-lateral structures
+remedy the unhedgeability issue that plague all the various forms of bilateral CVA by ef-
+fectively ensuring that CVA volatility risk is absorbed by the party that is responsible for
+generating it. Default risk instead is passed on to the investors who finance the margin
+lenders. We suggest this structuring style gives rise to a more resilient market infras-
+tructure than the traditional one based on bilateral long-term CVA and DVA structures
+which are left to the bank to hedge. If in addition CCPs are present, the effectiveness
+of margin lending benefits of the greater degree of netting which reduce the carry cost of
+derivative replication strategies, see Figure 2.
+1.7 Macro-economic impact
+The traditional CVA and DVA bilateral structures are based on the mutual exchange
+of long-term default protection contracts. This effectively embeds credit exposures in
+each and every derivative transaction. Given the size of global derivative markets, the
+embedded credit optionality effectively transfers wealth on a global scale with a substantial
+macro-economic impact.
+All participants in derivative markets, by transacting interest rate swaps or FX op-
+tions or any other derivative, credit-linked or not, have acquired automatically credit
+protection on themselves and sold credit protection on their counterparties. This implies
+that whenever an entity's credit worsens, it receives a subsidy from its counterparties in
+the form of a DVA credit protection asset which can be monetised by the entity's bond
+holders upon their own default. In fact, the acquired protection on itself by the defaulted
+entity mitigates the carry cost of derivative positions and ultimately does not drain cash
+as rapidly as would happen otherwise as the entity approaches default. Whenever an
+entity's credit improves instead, it is effectively taxed as its DVA depreciates. Wealth is
+thus transfered from the equity holders of successful companies to the bond holders of
+failing ones, the transfer being mediated by banks acting as financial intermediaries and
+implementing the traditional CVA/DVA mechanics.
+Rewarding failing firms with a cash subsidy may be a practice of debatable merit as
+it skews competition. But rewarding failing firms with a DVA asset is without question
+suboptimal from an economic standpoint: the DVA asset they receive is paid in cash
+from their counterparties. However, it cannot be invested and can only be monetised by
+bond holders upon default. The portion that is not monetised by bond holders, ends up
+sitting as a CVA reserve on banks' balance sheets. Either way, these capitals are largely
+sterilised.
+Margin lending structures reverse the macro-economic vicious circles engendered by
+CVA/
+DVA mechanics by effectively eliminating long term counterparty credit risk insurance and
+8
+avoiding the wealth transfer that benefits the bond holders of defaulted entities. This has
+several effects: (i) it accelerates the default of failing firms by extracting cash payments
+proportional to their credit spread and the fair value of the positive derivative exposure,
+(ii) it reduces recovery rates without damaging derivative counterparties but only bond
+holders of the defaulted entities, (iii) it gives an incentive to failing firms to orderly unwind
+their derivative position as they approach default, (iv) it reduces the carrying costs for
+derivatives trades to those more successful firms whose spreads tighten and gives them a
+competitive advantage by strengthening their ability to hedge.
+The impact of monetary and government policy in times of crisis is also radically
+different. Prior to the crisis, banks used to set aside a CVA reserve which is just the
+expected level of loss due to counterparty credit risk. Losses in excess of the CVA were
+not budgeted for and fell back to the banks' treasury departments. When the crisis
+arrived, the firms whose credit deteriorated had DVA claims that overwhelmed banks
+and forced governments to intervene with major cash injections. These funds selectively
+benefited failing firms whose DVA gains were the highest. High quality names with
+relatively tighter credit spreads instead did not draw any benefit. The government policy
+of providing subsidies in terms of DVA financing perhaps inadvertently favoured only the
+bond holders of defaulted entities who monetised the subsidy at the time of recovery.
+Perhaps unsurprisingly, this policy did not prove to be a particularly efficient allocation
+of resources and was unable to help reverting the economic recessionary phase.
+The Basel III accord improves on the pre-crisis situation by allowing for CVA VaR
+charges which effectively raise the bar for capital adequacy and strengthen provisioning
+strategies. More importantly, the Basel III accord also offers the alternative of full col-
+lateralisation which solves the problem of counterparty credit risk at the root (except in
+cases of extreme contagion), thus eliminating the anti-economical DVA subsidies to the
+bond holders of bankrupt firms. However, full collateralisation raises the spectrum of
+heightened liquidity risk unless a robust and extensive market infrastructure for margin
+lending is established.
+Assuming an infrastructure for margin lending extensive enough to cover the entire
+scope of derivative markets, a systemic financial crisis could still be caused by a mismatch
+between offer and demand in the hypothecs market. This would happen if margin lenders
+cannot provision sufficient hypothec capital buffers from investors to lend to participants
+in derivative markets so that they can meet their collateral posting obligations in full. The
+existence of a fully developed market infrastructure for margin lending would help averting
+a systemic crisis by providing a new tool for monetary authorities to inject liquidity
+temporarily in the form of short-term, super-senior hypothec financing to margin lenders.
+This sort of intervention would still be an exceptional occurrence, but would arguably be
+less intrusive from a macro-economic standpoint than quantitative easing and the heavy
+injection of government funding into the banking system. While a crisis could be mitigated
+by granting super-senior hypothecs, it would still lead to a widening of credit spreads and
+extract wealth from failing firms in the form of insurance premia, thus accelerating or
+even triggering defaults and ultimately reducing recovery rates on defaulted debt, to the
+detriment of debt holders.
+We foresee margin lenders in OTC markets to be financial intermediaries negotiating
+hypothecs. While on the asset side there are insurance wraps on netting sets created
+through full collateralisation by hypothecs to qualifying collateral, on the liability side on
+9
+Figure 2: Multi-party scheme involving a central counterparty.
+the balance sheet of margin lenders there are investors providing transferable hypothecs to
+qualifying collateral of which they retain ownership. The hypothec notes issued by margin
+lenders will arguably be ranked by seniority and be similar to a securitisation structure
+intermediate between a cash and synthetic CDO. Similarly to synthetic CDOs, hypothec
+tranche payments do not include riskless interest rates but are only based on credit spreads
+as the beneficial owners of the assets underlying hypothecs are receiving interest payments
+independently. However, similarly to a cash CDO, hypothecs are fully collateralised and
+unlevered. Unlike both traditional synthetic and cash CDOs, we envisage hypothecs to be
+short term instruments with maturities of about 6 months as their objective is to ensure
+that CVA volatility risk is not transferred as with standard CVA/DVA structuring, but
+rests with the originating counterparty.
+The CDO market played a trigger role in the crisis started in 2007 in part because
+of the inadequate, over-simplistic and non-rigorous local valuation methodologies such as
+the one-factor Gaussian copula model which did not take advantage of modern comput-
+ing technologies, see for instance Brigo, Pallavicini, and Torresetti (2010). The insistence
+on bilateral CVA structuring with the consequent large scale wealth transfer and anti-
+economical misallocations are similarly not due to a conscious policy decision. Instead,
+they derive from the use of inadequate and simplistic methodologies that are not techno-
+logically current and only allow the valuation of linear risk metrics which are indifferent to
+credit-credit correlations across counterparties such as the traditional forms of CVA. Mov-
+ing toward margin lending will thus require a wave of renewal and a realignment between
+mathematical modeling and computing technologies along with rigorous and consistent
+global valuation methodologies.
+1.8 Organisation of the paper
+The paper is organised as follows. Section 2 contains definitions and axioms that ac-
+ceptable counterparty credit risk structures need to satisfy. Section 3 reviews the three
+historical standards for counterparty credit risk that dominated in the periods prior to
+2007, between 2007 and 2009 and post 2009. All three standards are inconsistent from
+the accounting and valuation standpoint. As we explain, inconsistencies have gradually
+been recognised and reduced through time but were not entirely eliminated. In Section
+10
+4, we discuss the first-to-default CVA, the first fully consistent structure that has been
+proposed. In Section 5, we introduce two alternative forms of portable CVA. In Section 6,
+we discuss collateralised transactions based on a market infrastructure for margin lending.
+Each of the Sections 3, 4, 5 and 6 includes a comparison in terms of consistency from
+an accounting and valuation standpoint, hedgeability, numerical complexity, portability
+upon default, induced behaviour and macro-economic impact. In Section 7, we discuss
+dynamic replication and in Section 8 we consider the case of finite liquidity. Section 10
+concludes.
+Finally, we would like to point out that this is not meant to be a fully rigorous
+mathematical paper. We believe the mathematics to be sound but we have not formalised
+it fully as our objective is to provide an informal introduction. We will formalise the
+framework in full technical and rigorous detail in future work.
+2 Definitions and axioms
+For the probabilistic setup and our use of arbitrage freedom we refer to the appendix.
+Consider two defaultable entities B and C, exchanging stochastic cash flows from time
+0 and up to the future final time T. Let B
+and C
+be the stopping times for default of
+B and C respectively. Also, let Rt
+(B) and Rt
+(C) be the recovery rates in case B and C
+default at time t, respectively. Finally, let rt
+be the risk-free rate and let's agree to work
+under the risk neutral measure for pricing.
+According to the Fundamental Theorem of Finance (cf. e. g. de Finetti (1931), Del-
+baen and Schachermayer (1994), Harrison and Pliska (1981)) there is no arbitrage if and
+only if all market transactions between any pair of non-defaultable entities, i. e., entities
+where B
+= C
+=  with probability one, are valued as the discounted expectation of
+future cash flows under a globally defined valuation measure. Therefore, in the default-
+free case, we denote the related fair value to B by Mt
+(B) = -Mt
+(C). We assume this
+fair value has been obtained through the risk neutral valuation formula as an expectation
+of future discounted cash flows under one and the same globally calibrated measure used
+across all instruments (cf. e.g. Bielecki and Rutkowski (2002), Definition 8.1.2.). We also
+assume that there is a final maturity T <  such that no cash flows occur after time T,
+i. e., Mt
+(B) = Mt
+(C) = 0 t > T
+The process rt
+is the short-term interest rate and is assumed to be adapted to the
+market filtration at time t. Similarly, Et
+denotes expectation conditional on the same
+filtration1.
+Let Vt
+(B) and Vt
+(C) denote the fair values to parties B and C respectively of the trans-
+action. Defaultable transactions are not directly covered by the Fundamental Theorem
+since the life of a valuation agent is limited by its own default arrival time.
+In Brigo (2005) the case of the CDS options market model is analysed, where equiv-
+alence of measures is restored through a complicated approach based on a restricted fil-
+tration which takes out the default singularity when taking expectations, see also Morini
+and Brigo (2011) for the multi-name version of the same technique.
+We can nevertheless avoid such technicalities and reduce the problem of fair valu-
+ation to the Fundamental Theorem by decomposing a defaultable transaction in terms
+1Mathematical modeling of filtration and processes will be made explicit in a subsequent paper.
+11
+of an economically equivalent portfolio of hypothetical transactions exchanged between
+two hypothetical non-defaultable entities and which explicitly includes default protection
+contracts on B and C. This is similar, in the bilateral case, to B and C buying protec-
+tion through contingent CDS from default-free parties to perfectly hedge the respective
+unilateral CVA's with respect to C and B.
+Definition 2.1 In case at least one of the two parties B or C is defaultable and there are
+no collateral posting provisions ensuring a 100% safe level of overcollateralisation, i. e., if
+the recovery rate on the fair value of a derivative transaction is not one by construction,
+then the transaction is called uncollateralised. If B and C are obligated to post full
+collateral as a guarantee through a margin lender with a safe buffer of overcollateralisation
+that is safe with probability 1, the transaction is collateralised. We use this extreme
+notion of collateralisation to simplify exposition but the assumption can be relaxed.
+If only two parties B and C are involved and they exchange protection with each other,
+the transaction is called bilateral. If in addition C buys protection on its own default
+from a margin lender A while still B buys protection on its own default from C, the
+transaction is tri-lateral. If B buys protection from a margin lender D and C buys
+protection from a margin lender A, the transaction is quadri-lateral. Finally, if there
+is a central counterparty (CCP) that stands as the counterparty to all trades as in Figure
+2, the transaction is penta-lateral.
+Remark 2.2 In a traditional bilateral transaction one may be used to CVA and DVA
+terms being calculated in a standard way. Such terms are equivalent to the positions
+mentioned above in the following sense.
+The CVA term B charges to C is given by the loss given default fraction of the residual
+exposure measured by B at default of the counterparty C if such exposure is positive. This
+is the loss faced by B upon default of C. If C does not pay such loss to B, this is like
+saying that B is condoning such loss to C, or in other terms B is selling protection to
+C on the traded portfolio contingent on C's own default. This would be like B offering
+a contingent CDS to C, offering protection against default of C to C and referencing
+the traded portfolio between B and C. A similar analogy holds for the DVA term and C
+selling protection to B against B's own default.
+We now move to analyse more in detail the axioms that CVA and DVA price processes
+should satisfy. In the following we are not referring to a particular formulation of CVA
+or DVA, unless explicitly mentioned. We are rather writing down the requirements that
+any sensible definition of CVA and DVA should satisfy.
+2.1 Uncollateralised bilateral transactions
+If the transaction is bilateral and uncollateralised, then party B sells to party C default
+protection on C contingent to an amount specified by a close-out rule. Vice versa on
+the default of B, party C sells protection to B on the default of C.
+In formulas:
+Vt
+(B) = Mt
+(B) - CVAt
+(B, C) + DVAt
+(B, C),
+Vt
+(C) = Mt
+(C) - CVAt
+(C, B) + DVAt
+(C, B), (2.1)
+12
+where
+· Mt
+(B) is the mark to market to B in case both B and C are default-free;
+· CVAt
+(B, C) is the value of default protection that B sells to C contingent on the
+default of C, as assessed by B at t.
+· DVAt
+(B, C) is the value of default protection that C sells to B contingent on the
+default of B, as assessed by B at t.
+· Similar definitions extend in case we exchange B and C, i. e. B  C.
+The above two valuation formulas reflect the decomposition of the trade as a sum of
+a riskless derivative transaction and reciprocal default protection contracts. For all the
+specific definitions of CVA or DVA that we examine below, we require that the valuation
+is decomposed as in the both equations (2.1).
+It will occasionally be helpful to write (2.1) exactly at a default time. For instance, in
+the scenarios where B
+< C
+, we write
+DVAB
+(C, B) - CVAB
+(C, B) = VB
+(C) - MB
+(C) (2.2)
+In order for the valuation of an uncollateralised, bilateral transaction to be fully consis-
+tent, the axioms (A1
+), (B1
+) below must be valid along with one of the close-out conditions
+below, either (C1
+) or (C2
+):
+(A1
+) Discounted martingale condition until default: The process CVAt
+(B, C) is defined
+for all t  B
+ C
+and satisfies the equation
+CVAt
+(B, C) = Et
+e- BC
+t
+rsdsCVABC
+(B, C) . (2.3)
+(B1
+) Money conservation until default:
+CVAt
+(B, C) = DVAt
+(C, B), (2.4)
+DVAt
+(B, C) = CVAt
+(C, B), (2.5)
+for all t  B
+ C
+.
+(C1
+) Risk-free close-out rule: If B
+< C
+, then
+VB
+(C) = -(MB
+(C))- + RB
+(B)(MB
+(C))+ = MB
+(C) - (1 - RB
+(B))(MB
+(C))+ .
+(2.6)
+Here a+ := max{a, 0}, a- := a+ - a = (-a)+ for all reals a. VB
+(C) is interpreted
+as the value to C of the transaction at the time when B defaults. Consequently, due
+to (2.2) we can recast (2.6) as follows:
+CVAB
+(C, B) = (1 - RB
+(B))(MB
+(C))+ + DVAB
+(C, B). (2.7)
+Similar conditions with B  C also hold.
+13
+(C2
+) Replacement close-out rule: If B
+< C
+, then
+VB
+(C) = -(MB
+(C) + DV AB
+(C, B))- + RB
+(B)(MB
+(C) + DVAB
+(C, B))+.
+(2.8)
+= MB
+(C) + DV AB
+(C, B) - (1 - RB
+(B))(MB
+(C) + DV AB
+(C, B))+ .
+Equivalently (due to (2.2)) we have that
+CVAB
+(C, B) = (1 - RB
+(B))(MB
+(C) + DV AB
+(C, B))+. (2.9)
+Similar conditions with B  C also hold.
+In condition (C2
+), notice that the amount (1-RB
+(B))(MB
+(C)+DVAB
+(C, B))+ can
+be interpreted as the novation cost, i. e., the loss amount to C deriving from the default
+of B and assuming that the same derivative transaction is novated with a default-free
+counterparty at time B
+. A similar financially motivated interpretation is not available
+in the case of a risk-free close-out as in (C1
+) as this rule does not reflect correctly the
+novation cost to the surviving party.
+2.2 Collateralised quadri-lateral transactions with high frequency
+resets
+Collateralised transactions are best interpreted as transactions which reset periodically
+in time whereby C buys default insurance from a margin lender A and B buys default
+insurance from a margin lender D. See Figure 1.
+The case of high frequency time resets on short periods t is mathematically the
+simplest, although not quite realistic as very frequent credit spread resets would imply
+major liquidity risk. We assume here that there is no jump in the risk free valuation M
+of the contract when default happens. This is not the case for Credit Default Swaps as
+underlying instruments under a variety of models, see for example Brigo et al. (2011). In
+our case, though, we assume there are no jumps and there is no instantaneous contagion
+and as a consequence the contractual structures are designed in such a way to periodically
+reset valuations with (equidistant) period t > 0 at the following equilibrium levels
+(i = 0, 1, . . . , n = T
+t
+}):
+Vit
+(A) = 0 (2.10)
+Vit
+(B) = Mit
+(B), (2.11)
+Vit
+(C) = Mit
+(C), (2.12)
+Vit
+(D) = 0. (2.13)
+To achieve this objective the margin lender A secures in a segregated custodian account
+a sufficient amount of collateral to guarantee that the amount (Mt
+(C))- is paid to B in
+case C defaults at t, thus offsetting the counterparty credit risk that C would otherwise
+pose to B. In return, C pays to A a stream of premia payments t
+(A, C) with period
+t. Symmetrically, B pays a cash flow stream t
+(D, B) to D so to ensure that C is
+immunised from the risk of default of B.
+In the case of this structure, the arbitrage free valuation axiom reads as follows:
+14
+Figure 3: tri-lateral scheme whereby the counterparty C posts collateral to the bank B
+by borrowing the collateral from the margin lender A.
+(A2
+) Discounted martingale condition until default:
+Et
+[Vt
+(A) + 1t<C <t+t
+(1 - RC
+(C))(MC
+(C))- + t
+(A, C)] = 0, (2.14)
+Et
+[Vt
+(D) + 1t<B<t+t
+(1 - RB
+(B))(MC
+(B))- + t
+(D, B)] = 0. (2.15)
+for all t < B
+ C
+. Here, Vt
+(A)  Vt+t
+(A) - Vt
+(A) and we neglect discounting
+as is legitimate in the asymptotic limit t  0.
+2.3 Collateralised tri-lateral transactions with periodic resets
+The tri-lateral case is described in Fig. 3 and correponds to a situation where the coun-
+terparty C has the obligation to post collateral in full to the bank B, while the bank B
+does not have a similar obligation.
+If resets are periodic and occur at times Ti
+, i = 0, 1, 2, . . . , n, the fair value of the
+position to the margin lenders is zero only at the reset dates Ti
+. However, the margin
+lender A sells default protection to C, a contract whose value is CVAt
+(A, C). Similarly,
+D sells default protection to B.
+Vt
+(A) = e
+t
+Ti
+rsdsTi
+(A, C) - CVAt
+(A, C), (2.16)
+Vt
+(B) = Mt
+(B) + DVAt
+(B, C), (2.17)
+Vt
+(C) = Mt
+(C) - CVAt
+(C, B) + DVAt
+(C, A), (2.18)
+(2.19)
+(A3
+) Discounted martingale conditions until default: For all t  [Ti
+, Ti+1
+], the CVA terms
+satisfy the equation
+CVAt
+(A, C) = Et
+[e- C
+t
+rsds1C <B
+1C <Ti+1
+(1 - RC
+(C))(MC
+(C))-], t < C
+(2.20)
+CVAt
+(C, B) = Et
+[e- B
+t
+rsds(1 - RB
+(B))(MB
+(B))-], t < B
+(2.21)
+15
+and the premium received by A from C is computed so that
+Ti
+(A, C) = CVATi
+(A, C), (2.22)
+(B1
+) Money conservation until default:
+CVAt
+(A, C) = DVAt
+(C, A), (2.23)
+CVAt
+(C, B) = DVAt
+(B, C), (2.24)
+for all t < B
+ C
+,
+2.4 Collateralised quadri-lateral and penta-lateral transactions
+with periodic resets
+The quadri-lateral case is described in Figure 1 and correponds to a situation where both,
+the counterparty C and the bank B have a contractual obligation to post collateral in full
+to each other.
+In the case of periodic resets at times Ti
+, i = 0, 1, 2, . . . , n, the fair value of the position
+to the margin lenders is zero only at the reset dates Ti
+. However, the margin lender A sells
+default protection to C, a contract whose value is CVAt
+(A, C) at t. In return, A obtains
+from C premium payments Ti
+(A, C) at times Ti
+, i = 0, 1, . . . , n. Similarly, D sells default
+protection to B and receives periodic premium payments Ti
+(D, B) at Ti
+, i = 0, 1, . . . , n.
+Assuming t  [Ti
+, Ti+1
+],
+Vt
+(A) = e
+t
+Ti
+rsdsTi
+(A, C) - CVAt
+(A, C), (2.25)
+Vt
+(B) = Mt
+(B) + DVAt
+(B, D), (2.26)
+Vt
+(C) = Mt
+(C) + DVAt
+(C, A), (2.27)
+Vt
+(D) = e
+t
+Ti
+rsdsTi
+(D, B) - CVAt
+(D, B) (2.28)
+(A4
+) Discounted martingale conditions until default: For all t  [Ti
+, Ti+1
+] the CVA terms
+satisfy the equation
+CVAt
+(A, C) = Et
+[e- C
+t
+rsds1C <B
+1C <Ti+1
+(1 - RC
+(C))(MC
+(C))-], t < C
+(2.29)
+CVAt
+(D, B) = Et
+[e- B
+t
+rsds1B<C
+1B<Ti+1
+(1 - RB
+(B))(MB
+(B))-], t < B
+(2.30)
+and the premia are computed so that
+Ti
+(A, C) = CVATi
+(A, C), (2.31)
+Ti
+(D, B) = CVATi
+(D, B) (2.32)
+(B2
+) Money conservation until default:
+CVAt
+(A, C) = DVAt
+(C, A), (2.33)
+CVAt
+(D, B) = DVAt
+(B, D), (2.34)
+for all t < B
+ C
+.
+16
+The penta-lateral case where a CCP provides a clearing service is described in Fig.
+2. If the CCP accepts segregated collateral posted at custodian accounts for variation
+margin this case is economically equivalent to the quadri-lateral case above. In case the
+CCP insists on receiving variation margin in cash instead (as is the case for instance
+with the LCH) then one requires an additional intermediary that provides a collateral
+transformation service, i. e., issues a revolving line of credit backed by the segregated
+collateral.
+3 Inconsistent structures for uncollateralised trans-
+actions
+Prior to FAS 156-157, standard structuring of counterparty credit revolved around incon-
+sistent formulas that did not satisfy the conditions in the previous section. The standard
+was to consider the unilateral CVA defined as follows:
+UCVAt
+(B, C) = Et
+e- C
+t
+rsds(MC
+(C))-(1 - RC
+(C)) , t < C
+(3.1)
+while the UDVA term was set to zero. In this case, the discounted martingale condition
+(A1
+) is satisfied by construction. The risk-free close-out rule (C1
+) is also satisfied since,
+in case B
+< C
+, we have that
+UCVAB
+(C, B) = (1 - RB
+(B))(MB
+(C))+ (3.2)
+and UDVAB
+(C, B) = 0. By the same token, also condition (C2
+) is trivially satisfied as
+the UDVA is zero. However, the money conservation condition (B1
+) is not satisfied in
+this case.
+After FAS 156-157, the standard changed to include the UDVA, i. e.
+UDVAt
+(B, C) = UCVAt
+(C, B) (3.3)
+and accordingly B  C. This modified definition satisfies condition (B1
+) but compromises
+the validity of (C1
+) and (C2
+) as the DVA term is now non-zero.
+Notice that the close-out condition (C1
+) fails because of a mismatch equal to
+UDVAB
+(C, B) between the right hand sides of equation (3.2) and equation (2.7).
+In 2009, the ISDA introduced the replacement close-out condition in (C2
+) with the
+intent to replace the risk-free close-out condition (C1
+) that prevailed until then, thus
+reducing the mismatch to
+(1 - RB
+(B)) (MB
+(C) + UDVAB
+(C, B))+ - (MB
+(C))+ . (3.4)
+Notice however that this mismatch is still non-zero and the accounting inconsistency was
+not entirely eliminated: the impact of the loss of DVA upon default was reduced by a
+factor equal to the loss-given-default 1-RB
+(B), but still this loss was not properly valued
+and accounted for.
+Besides all being plagued by one inconsistency or another, these three heritage struc-
+tures have the following characteristics:
+(i) Hedgeability:
+17
+­ The UDVA terms are problematic as hedging their variation would involve a
+party selling protection on itself, an impossible feat. The practice of hedging
+by proxying, namely selling protection on a name that is strongly correlated,
+can partly reduce spread risk but exacerbates jump to default risk and systemic
+risk. Indeed, if the name on which protection is sold actually defaults, the seller
+who was hedging her DVA needs to make the protection payment, and this
+could push the seller herself into a worse credit situation and closer to default.
+For example, back in 2008, a hypothetical top investment bank that had been
+highly correlated with Lehman Brothers and who had decided to hedge her
+DVA by selling protection on Lehman would have been in deep troubles. For
+informal comments on DVA hedging see for example Brigo (2011).
+­ The UCVA variability instead can in principle be hedged, assuming the ability
+to accurately value sensitivities and to assess gap risk. For an example on the
+assessment of the pricing component of gap risk see for example Brigo et al.
+(2011).
+(ii) Numerical complexity: Valuing the UCVA involves modeling only one credit dynam-
+ically along with all market factors affecting the derivative portfolio. The UCVA is
+not sensitive to credit correlations, unless the underlying portfolio contains credit
+instruments. In particular, UCVA is not sensitive to default correlation between B
+and C. However, the UCVA is sensitive to credit-market correlations.
+(iii) Portability: The structures with replacement close-out are relatively more portable
+than the structures with risk-free close-out. However, since there is a mismatch in
+condition (C2
+) and the loss of UDVA is not correctly priced and hedged dynami-
+cally, a novation transaction in case of default involves a net unhedged loss for the
+surviving party.
+(iv) Induced behaviour: As the credit of one party deteriorates, its UDVA raises and the
+party can realise a gain. On the other hand, as the credit of one party improves,
+its UDVA lowers and the party needs to realise a balance sheet loss. This effect
+rewards credit degradation and is an incentive on banks not to have a top credit
+rating as achieving a high rating would force to realise accounting losses.
+(v) Macro economic impact: The forced mutual sale of default protection embedded in
+all derivative transactions, implicit in the CVA and DVA practices, is a mechanism
+to transfer wealth from the equity holders of profitable companies with good credit
+to the bond holders of companies with bad credit. This is a consequence of the
+earlier point (iv).
+(vi) Bank capitalisation: Substantial bank capital needs to be allocated to UCVA re-
+serves. In absence of collateral capital also needs to be allocated to compensate for
+UCVA volatility which is reflected in the UCVA VaR capital charge in Basel III.
+Finally, there is a third charge against default risk due to the presence of substantial
+gap risk and hedging inefficiencies, as we hinted at above.
+By definition, the UCVA is the expected loss due to defaults and the loss distribution
+is highly skewed and very fat tailed. Hence, a UCVA provisioning strategy gives
+18
+risk to systematic small gains for the UCVA desk and occasional large losses which
+are apportioned unexpectedly to banks' treasury departments.
+4 First-to-default CVA
+First-to-default clauses appear in Duffie and Huang (1996), Bielecki and Rutkowski (2002)
+and are made explicit for CVA and DVA calculations in Brigo and Capponi (2008), Brigo
+et al. (2011), Brigo et al. (2011), Brigo et al. (2011), Brigo and Morini (2011), see also
+Gregory (2009).
+In the first-to-default bilateral structure, the CVA and DVA are defined as follows:
+FTDCVAt
+(B, C) = FTDDVAt
+(C, B) = Et
+1C <B
+e- C
+t
+rsds(MC
+(C))-(1 - RC
+(C))
+(4.1)
+for all t < C
+, and B  C. If B
+< C
+we have that FTDCVAB
+(B, C) = FTDDVAB
+(C, B) =
+0. Hence, conditions (C1
+) and (C2
+) are actually equivalent in this case and they are both
+satisfied. (To avoid confusion this claim is not in contradiction with what is stated in
+Brigo and Morini (2011): in Brigo and Morini (2011), the first-to-default bilateral CVA
+is shown to be inconsistent under a replacement closeout rule which is different from the
+rule we consider in this paper, in that the payout is expressed in terms of unilateral DVA).
+The FTDCVA structure is consistent from a valuation standpoint. Other characteris-
+tics include the following:
+(i) Hedgeability: Unlike the unilateral CVA in the previous section, the first-to-default
+CVA of one entity is sensitive to the entity's own distance to default and decreases
+with this distance tending to zero in the limit where the entity itself defaults.
+Since the FTDCVA is typically much larger than the FTDDVA of a bank, the
+non-hedgeability issue is potentially highly problematic, more so than the already
+worrisome unhedgeability of the UDVA in the unilateral case.
+(ii) Numerical complexity: The FTDCVA is sensitive to credit correlations between B
+and C as these have an impact on the first-to-default clause. Hence a fully correlated
+credit-market simulation is necessary.
+(iii) Portability: The structures are less portable than in the unilateral case with replace-
+ment close-out rules as the first-to-default DVA is null in case the default of one
+of the two entities occurs. Hence, a novation against a non-defaulted counterparty
+entails a loss equal to the DVA of the surviving entity.
+(iv) Induced behaviour: As the credit of one party deteriorates and approaches default
+while the credit of the counterparty stays stable its FTDCVA goes to zero but not
+its FTDDVA. Hence, the valuation of a derivative transaction raises and ends up
+above the risk free level. In particular, entities approaching default benefit from
+entering derivative transactions.
+(v) Macro economic impact: The wealth transfer from the equity holders of successful
+companies to the bond holders of defaulted entities is more pronounced than in the
+19
+standard inconsistent structures in the previous section because of the wrong-sign
+sensitivity of the FTDCVA to the credit of the assessing entity.
+(vi) Bank capitalisation: Currently, the Basel III accord insists on using the unilateral
+CVA as a metric to determine capital requirements. The possibly large discrepancy
+between the first-to-default CVA and the unilateral CVA is problematic when the
+former is used for valuation purposes as it generates conflicting priorities for risk
+management. Moreover, the FTDCVA collected from clients is not sufficient to
+provision UCVA capital.
+In a hypothetical scenario where the regulators were to endorse the FTDCVA for
+regulatory purposes, banks with higher credit worthiness would be forced to allocate
+more capital than banks with lower credit worthiness and would be less competitive.
+In the limit of a bank approaching default capital allocation requirements would
+tend to nil. Finally, as one goes through the credit cycle bank reserve requirements
+would be anti-cyclical, i. e., lower during recessionary periods in a higher credit
+spread environment and higher otherwise.
+5 Portable CVA
+The unilateral process UCVA(B, C) does not provide a consistent definition of CVA as it
+does not take into account the closeout conditions under neither (C1
+) nor (C2
+). A way to
+avoid this inconsistency is to resort to full fledged bilateral CVA, i. e., the first-to-default
+CVA we have seen earlier. However, we may also eliminate the inconsistency with a less
+dramatic change than going from UCVA to FTDCVA, as follows.
+Let us start with the risk free closeout (C1
+). How can we depart as little as possible
+from unilateral CVA while having condition (C1
+) satisfied? Consider equation (2.7) for
+(C1
+), and notice that it can be rewritten in terms of unilateral CVA, in scenarios where
+B
+< C
+, as
+CVAB
+(C, B) = UCVAB
+(C, B) + DVAB
+(C, B).
+This holds at time B
+. If we try and write the analogous equation at time t, then we
+obtain the following definition of CVA, which implies that party B subtracts from its fair
+value calculation the discounted value of the DVA of C that B would be liable to pay
+upon defaulting, in case B defaults prior to C. We thus introduce the portable CVA as
+the following process:
+PCVAt
+(C, B) := UCVAt
+(C, B) + t
+(C, B), t < B
+(5.1)
+where
+t
+(C, B) := Et
+1B<C
+e- B
+t
+ruduUDVAB
+(C, B) (5.2)
+to satisfy the risk-free close-out condition in (C1
+). The important difference with FTD-
+CVA is that here we have a UCVA term where we do not check who defaults first.
+Under the replacement close-out, the reasoning is analogous. We start from equation
+(2.9) and add and subtract UCVAB
+(C, B) from the right hand side. We obtain, in
+scenarios where B
+< C
+,
+CVAB
+(C, B) = UCVAB
+(C, B)+ (MB
+(C) + UDVAB
+(C, B))+-(MB
+(C))+ (1-RB
+(B)).
+20
+At this point the most obvious version of this equation at time t is obtained as in (5.1)
+where, this time,  is defined as
+t
+(C, B) = Et
+1B<C
+e- B
+t
+rudu (MB
+(C) + UDVAB
+(C, B))+ - (MB
+(C))+ (1 - RB
+(B)) .
+(5.3)
+Again, the important difference with FTDCVA is that here we have a UCVA term where
+we do not check who defaults first. Similar equations apply to the case B  C.
+One can double-check that conditions (C1
+) and (C2
+) are indeed satisfied because, in
+case C
+< B
+, we have B
+(C, B) = 0 in both cases, so that
+PDVAB
+(C, B)  PCVAB
+(B, C) = UCVAB
+(B, C)  UDVAB
+(C, B). (5.4)
+Notice that under both (C1
+) and (C2
+) we have that t
+(C, B)  0. Hence,
+PCVAt
+(B, C)  UCVAt
+(B, C) (5.5)
+for all t, the equality being attained only at the stopping time B
+.
+As a ballpark estimate of order of magnitude and neglecting correlations between credit
+and market risk, the difference t
+(C, B) between the portable CVA and the unilateral CVA
+is equal to the product between UDVA and the probability of default in case the UDVA
+and the default arrival time are uncorrelated. Due to the triangular inequality, in general
+the difference t
+(C, B) is smaller than this amount. This estimate indicates that the
+difference t
+(C, B) is relatively immaterial in most circumstances.
+To conclude, this structuring style has the following properties:
+(i) Hedgeability: The portable CVA is larger than or equal to the unilateral CVA and
+it is equal to the unilateral CVA in two opposite limits: when the entity's credit-
+worthiness tends to infinity (i. e., in the non-defaultable limit) and when the entity
+defaults. Similarly to the first-to-default bilateral structure FTDCVA, the sensitiv-
+ity with respect to the credit of the entity assessing the PCVA could have the wrong
+sign for hedgeability. However, this sensitivity is quantitatively much smaller as it
+derives only from the term t
+(C, B), whose order of magnitude is roughly given by
+the product between the DV At
+(C, B) and the probability to default before time t.
+(ii) Numerical complexity: The exact evaluation of portable CVA is more complex than
+the valuation of UCVA as it involves a nested simulation. However, approxima-
+tion schemes can be devised to avoid the nested simulation and marginalise the
+computational impact of moving from UCVA to PCVA.
+(iii) Portability: The structure is nearly as portable as the unilateral case with replace-
+ment close-out rules as the portable DVA is equal to the UDVA upon counterparty
+default and the PDVA of the surviving entity against a novation counterparty does
+not deviate much from the UDVA.
+(iv) Induced behaviour: The portable CVA and PDVA are slightly larger than the unilat-
+eral CVA and UDVA. The incentive to enter into derivative transactions as default
+nears that is caused by the FTDCVA structure is absent in this case.
+21
+(v) Macro economic impact: Similar to the standard case, just marginally better because
+of the consistency from an accounting standpoint.
+(vi) Bank capitalisation: Both the PCVA and the PCVA VaR capital charges are slightly
+more conservative than those corresponding to the unilateral CVA. As a conse-
+quence, if a bank collects PCVA from a counterparty, then it can use these funds to
+fulfill in full the UCVA capital adequacy obligation.
+6 Collateralised transactions and margin lending
+Valuation formulas in the tri-lateral and quadri-lateral cases are not ambiguous as the
+ones for the uncollateralised structures above. In fact, the valuation formulas have already
+been given as part of the risk neutrality conditions in Section 2.
+The margin lenders A and D can procure hypothecs on qualifying collateral and place
+it in segregated accounts. A would typically lend to several counterparties C and obtain
+funding from various investors in tranches ranked by seniority. A tranche is characterised
+by an attachment level L and a hypothec amount N. If in a (small) time interval t
+the transaction covered by the hypothec suffers losses in excess of L, the investor will
+sustain these losses up to a maximum amount of N. In the quadri-lateral case the fair
+premium ("CVA tranche spread") to which an investor of the lender A is entitled is valued
+as follows:
+V (A, L, N) =
+E i0
+e-
+Ti+1
+0
+rsds XA,[L,L+N]
+(Ti+1
+) - XA,[L,L+N]
+(Ti
+)
+E i0
+e-
+Ti+1
+0
+rsds(Ti+1
+- Ti
+) N - XA,[L,L+N]
+(Ti+1
+)
+, (6.1)
+where
+XA,[L,L+N]
+(t) := min
+CA
+(MC
+(C))-(1 - RC
+(C))1C t
+, L + N - L
++
+,
+0  t  T, and C  A denotes that the sum is over all the counterparties served by A. A
+similar equation holds for B  C and A  D.
+In the tri-lateral case where C is insured as opposed to B the formula is different as
+it includes the DVA of B:
+V (A, L, N) =
+E i0
+e-
+Ti+1
+0
+rsds YA,[L,L+N]
+(Ti+1
+) - YA,[L,L+N]
+(Ti
+)
+E i0
+e-
+Ti+1
+0
+rsds(Ti+1
+- Ti
+) N - YA,[L,L+N]
+(Ti+1
+)
+, (6.2)
+where
+YA,[L,L+N]
+(t) := min
+CA
+(-MC
+(C)+DV AC
+(B, C))+(1-RC
+(C))1C t
+, L+N -L
++
+for all 0  t  T.
+The comparison between the case of collateralised transactions with margin lending
+and the previous uncollateralised structures reveals striking differences. In the quadri-
+lateral case we have that:
+22
+(i) Hedgeability: One should distinguish between intra-period hedging and inter-period
+hedging. On an inter-period basis, since collateralised transactions reset, B and C
+are short their own credit. As a consequence, B and C can hedge their inter-period
+volatility by buying protection on themselves. On an intra-period basis instead,
+B and C are long a protection contract on themselves and this sensitivity is not
+hedgeable. However, the intra-period risk can be reduced by reducing the length of
+the reset period itself.
+The margin lenders A and D are exposed to default risk and to gap risk. They can
+hedge default risk by securitisation, while gap risk requires model driven strategies
+to allocate sufficient capital buffers made up of hypothecs and emergency revolving
+lines of credit in case a buffer overshoot event occurs. In the uncollateralised case
+instead, the ability to securitise is severely limited by the necessity to manage CVA
+volatility.
+With collateralised structuring, the market risk caused by changes in fair value
+adverse to C stays with C. Also the risk originating from the volatility of the credit
+spread of C stays with C. The same can be said about B. Only the default risk for
+B and C are transferred to the margin lenders A and D.
+In a scenario where B is the structuring bank, B is left with replication risk and
+the risk on its own spread volatility. The two sources of risk are quite separate and
+can be hedged individually. As we discuss in the next section, the spread volatility
+risk suffered by B in the course of dynamic replication can actually be eliminated
+in a penta-lateral structure whereby the replication portfolio is cleared within the
+same netting set of the replication target. In the case of uncollateralised structures
+instead, CVA hedging is best performed within the trading book, a task which is
+very complex, delicate and error prone.
+(ii) Numerical complexity: Securitisation requires the joint simulation of credit and
+market factors and the calculation of cumulative loss distributions. This task is just
+marginally more complex than the calculation of first-loss FTDCVA.
+(iii) Portability: collateralised contracts are portable by construction.
+(iv) Induced behaviour: Since B and C are short their own credit, if their credit improves
+they are rewarded with lower insurance payments while if their credit degrades they
+are subject to higher insurance payments. In particular, in case their credit degrades
+or there is an adverse move in the fair value of the transaction, they have an incentive
+to unwind or otherwise reduce their exposure. This behaviour mitigates systemic
+risk.
+(v) Macro economic impact: As compared to the uncollateralised structures considered
+above, the collateralised ones avoid entirely the transfer of wealth from the equity
+holders of successful companies to the debt holders of defaulted companies, thus
+rewarding successful firms.
+(vi) Bank capitalisation: The CVA and CVA VaR charges are avoided entirely because
+the credit based derivative exposures have been replaced by asset based hypothecs.
+Banks do not need to provision CVA capital and do not need to hedge the CVA
+23
+and DVA. Bank capital requirements are reduced but their counterparty risk is also
+massively reduced. Systemic risk would only resurface in case of a breakdown in the
+margin lending market infrastructure, a situation that liquidity provision facilities
+could be arranged to prevent.
+In the tri-lateral case, the same remarks apply but with the following few exceptions
+and differences:
+(i) Hedgeability: B still has a long term DVA term that entails an unhedgeable credit
+exposure to the spread of B itself.
+(ii) Numerical complexity: The same considerations in the quadri-lateral case apply here
+also.
+(iii) Portability: If C defaults, the contract is portable from B's standpoint. If B defaults,
+the contract is still portable as the DVA on the balance sheet of C is short term
+and it is against the margin lender A, not B.
+(iv) Induced behaviour: B would behave as in the case of unilateral CVA while C would
+behave as in the case of quadri-lateral margin lending.
+(v) Macro economic impact: If the derivative exposures of buy-side firms were fully col-
+lateralised by tri-lateral margin lending agreements, there would still be no transfer
+of wealth from the equity holders of successful companies to the bond holders of
+defaulted ones. There would however be a transfer of wealth from successful banks
+to defaulted ones.
+(vi) Bank capitalisation: The same considerations in the quadri-lateral case apply here
+also.
+7 Derivative replication by defaultable counterpar-
+ties
+An initial analysis of the problem of replication of derivative transactions under collater-
+alisation but without default risk and in a purely classical Black and Scholes framework
+has recently been considered in Piterbarg (2010). The fundamental impact of collateral-
+isation on default risk and on CVA and DVA has been instead analysed in the already
+cited Brigo et al. (2011) and Brigo et al. (2011). These works look at CVA and DVA
+gap risk under several collateralisation strategies, with or without re-hypothecation, as
+a function of the margining frequency, with wrong way risk and with possible instanta-
+neous contagion. Minimum thresholds amounts and minimum transfer amounts are also
+considered. The fundamental funding implications in presence of default risk have been
+considered in Morini and Prampolini (2011), see also Castagna (2011).
+In this section, we address this question from the angle adopted in this paper, i. e., we
+analyse transactions at the structuring level, resolve the defaultability features by express-
+ing them as embedded options and ultimately make use of the Fundamental Theorem of
+Finance. The Fundamental Theorem does not assume replicability but makes only the
+24
+much weaker hypothesis of absence of arbitrage. However, in the particular case where
+replication is possible, the valuation does coincide with the cost of replication.
+Let's consider a derivative transaction for which, in case it is struck between two
+non-defaultable entities, there exists a perfect replication strategy for it. Having made
+this hypothesis, we then suppose that the same transaction is actually struck between two
+entities which can possibly default, a bank B and a client C, and we ask the question: can
+the counterparty risk agreement be structured in such a way that the bank has available
+a strategy of perfect replication up to the stopping time of first default? If so, what is
+the cost of replication?
+If the counterparty credit risk structure is inconsistent as in the three cases in Section
+3, then there are multiple prices for the same payoff and the Fundamental Theorem does
+not apply. Inconsistent structures are a non-starter as the possibility of replication itself
+is an ill posed question.
+In the remaining 6 structures discussed above, a fairly priced derivative transaction
+between defaultable entities is replicated by a portfolio of transactions between non-
+defaultable entities. The portfolio includes mutual default protection contracts whose
+valuation is given by the CVA and DVA. Notice that from this viewpoint, the CVA and
+DVA are not empirical adjustments which invalidate the Fundamental Theorem and thus
+require an entirely new theoretical framework for Finance not based on the principle of
+arbitrage freedom. From the viewpoint we have adopted, the Fundamental Theorem still
+applies also to the defaultable case, just as long as the CVA and DVA are interpreted
+themselves as the fair value of financial contracts. Hence, replication is possible if and
+only if the entire portfolio including the risk-free transactions and the CVA and DVA
+protection contracts can be replicated by the defaultable entities.
+A necessary condition for replication is that the portfolio containing the risk-free
+transaction and the CVA and DVA terms for the structurer B can be replicated at least in
+principle by a non-defaultable entity. This condition is necessary but not sufficient since
+a defaultable entity has at its disposal a reduced set of replication strategies as compared
+to non-defaultable entities. Particularly limiting is the fact that, if B is defaultable, then
+B cannot sell credit protection on itself.
+The impossibility for an entity to sell protection on itself is a fundamental obstruction
+to replicability that applies in particular to the bilateral first-to-default CVA structure in
+Section 4 and the portable CVA structure in Section 5. In this case, due to the wrong
+sign of the dependency of both the CVA and the DVA on the credit of the structurer, the
+combined CVA-DVA term cannot be replicated by a defaultable structurer.
+Similar considerations apply to the tri-lateral structure in Section 6, where the struc-
+turer B is also affected by a DVA term he himself cannot hedge.
+The quadri-lateral structure in Section 6 does not have an issue with DVA unhedge-
+ability. However, unless the replication target and the hedging instruments are covered
+under a single overarching netting agreement, collateral posting obligations do not net
+and give rise to non-zero carry costs to a defaultable replicating entity.
+To resolve the netting issue, the structure we can envisage that is most appropriate for
+replication purposes is a penta-lateral variation to the quadri-lateral structure. See Figure
+2 for an illustration. In the penta-lateral case, the CCP is a central counterparty and B is
+a structuring bank that engages in the replication of an exotic derivative custom designed
+for a particular client C. In case a dynamic replication strategy for the given transaction
+25
+between non-defaultable entities exists, then the same strategy is also available to B at
+the condition that B clears through the same CCP both the exotic derivative transaction
+and the replicating portfolio. In this case, the net value to B of the exotic derivative and
+corresponding hedges is zero and so is the DVA and the collateral funding cost.
+Notice that:
+· B can replicate dynamically only up to the time of its default or the maturity date
+of the transaction,
+· the replication cost to B is precisely equal to the risk-free value of the transaction,
+even if B is defaultable and its cost of funding has a non-vanishing spread,
+· if counterparty C chooses not to replicate with positions within the same netting
+set, it has a non-vanishing carry cost for the derivative replication strategy due to
+collateral posting obligations.
+In case there are hedge slippages, then B may possibly need to post collateral and
+sustain the corresponding cost of carry. Furthermore, a CVA and DVA term will emerge
+on the balance sheet of B. The combination of these three effects results in net costs that
+B needs to transfer to the client ex-ante and price it as part of the structuring fee. Once
+received, this portion of fee needs to be set aside and provisioned as a risk reserve without
+being reflected in the fair valuation of the transaction.
+8 The case of finite liquidity
+There are two situations that would lead to losses over and above the open mark to
+market value at time of default: the case where the fair value process has a jump at time
+of default and the case whereby at least some of the derivative transactions in a netting
+set are not liquid and there is an extended close-out period to novate transactions over
+which the fair value may change. In both cases, if C's defaults prior to B the transaction
+may be novated or unwound by B at time C
+not at the fair value Mt
+(B) but at the higher
+level Mt
+(B) + LC
+(B) where LC
+(B)  0 is a random variable giving the price correction
+deriving from the novation process.
+Under a risk-free close-out rule, if MC
+(B) > 0, B recovers the amount (1-RC
+)MC
+(B),
+while if MC
+(B) < 0 then B pays this amount to C. Either way, novation costs are non-
+negative, i. e., LC
+(B)  0. Also, under a replacement close-out, the novation cost is the
+same.
+In the case of bilateral transactions, the close-out rules are modified as follows in the
+presence of liquidity corrections:
+(C1
+) Risk-free close-out rule: If B
+< C
+, then
+VB
+(C) = -(MB
+(C))- + RB
+(B)(MB
+(C))+ - LB
+(C). (8.1)
+Here, VB
+(C) is interpreted as the value to C of the transaction at the time when B
+defaults. Equivalently, we can recast these equations as follows:
+CVAB
+(C, B) = (1 - RB
+(B))(MB
+(C))+ + DVAB
+(C, B) + LB
+(C). (8.2)
+Similar conditions with B  C also hold. Equivalence of the two formulas is ob-
+tained by
+26
+(C2
+) Replacement close-out rule: If B
+< C
+, then
+VB
+(C) = -(MB
+(C) + DVAB
+(C, B))- + RB
+(B)(MB
+(C) + DVAB
+(C, B))+ - LB
+(C).
+(8.3)
+Equivalently, we have that
+CVAB
+(C, B) = (1 - RB
+(B))(MB
+(C) + DVAB
+(C, B))+ + LB
+(C). (8.4)
+Similar conditions with B  C also hold.
+In multi-lateral structures with margin lending, liquidation costs would typically be
+partially borne by the margin lender up to a pre-assigned haircut level HC
+(B), and
+partly by either the novating party B or the CCP that is responsible for losses in excess
+of MC
+(B) + HC
+(B). Losses in excess of the haircut engender a CVA and DVA term
+which tends to zero as the haircut level tends to infinity. To keep things simple, in the
+following formulas we assume that HC
+(B) =  and pretend the margin lender absorbs
+all the losses. Under this simplifying assumption, we have that:
+(A2
+) Secured quadri-lateral transactions with high frequency resets:
+Et
+[Vt
+(A) + 1t<C <t+t
+(1 - RC
+(C))(MC
+(C)- + LC
+(C)) + C
+(A, C)] = 0
+(8.5)
+and (A, C)  (D, B), for all t < B
+ C
+;
+(A4
+) Secured quadri-lateral transactions with periodic resets: For all t  [Ti
+, Ti+1
+], the
+CVA satisfies the equation
+CVAt
+(A, C) = Et
+[e- C
+t
+rsds1C <B
+1C <Ti+1
+(1 - RC
+(C))(MC
+(C)- + LC
+(C))]
+(8.6)
+and (A, C)  (D, B). Premia are still computed so that
+Ti
+(A, C) = CVATi
+(A, C) (8.7)
+and (A, C)  (D, B).
+Having made these modifications in the close-out conditions, the corrected CVA and
+DVA which account for liquidity gaps are defined accordingly as discounted martingales
+consistently with the applicable stopping time conditions, i. e., either (8.2), or (8.4) or
+(8.6).
+As an example of how liquidity considerations may impact valuation, consider the case
+of two treasury bonds which, after a given valuation date entail precisely identical future
+cash flows. Suppose also that one of the two bonds is on-the-run and highly liquid while
+the other bond is off-the-run and illiquid. Suppose that B and C exchange a repurchase
+agreement on a long-short combination in these two bonds, i. e., B has the obligation
+to repurchase the on-the-run bond from C while C has the obligation to repurchase the
+off-the-run bond from B.
+27
+The framework in this paper allows one to determine the fair value of the transaction
+to either B or C in accordance with the Fundamental Theorem of Finance, i. e., in an
+arbitrage free fashion. To do so, one needs to account for the cost of carry of transactions
+of finite liquidity. More specifically, when valueing a transaction one should also specify
+the time horizon over which the transaction will be held and add the expected carry cost.
+In case C wishes to value a strategy whereby the transaction is held until maturity or
+until either B or C default, the net cost is
+Et
+BC
+t
+Es
+1s<C <s+ds
+(1 - RC
+(C))LC
+(B, C) . (8.8)
+Hence, the strategy to holding a direct REPO in an off-the-run bond and an inverse
+REPO in an equivalent on-the-run bond has a positive arbitrage free cost to C. The total
+expected cost to C is zero if one includes the putative gain that C would make in case
+of its own default. The opposite strategy has a zero cost to B assuming that C posts
+collateral in full through a margin lender. The strategy of the margin lender has zero fair
+value at equilibrium.
+9 Bank funding strategies
+Segregated collateral cannot directly be used as a source of funding for the bank. If
+re-hypothecation was allowed, then the investors would inherit bank credit risk. This is
+inefficient from the clearing standpoint as CCPs require variation margin to be posted
+in cash. It is also inefficient from the point of view of the bank that would favour fully
+fungible cash collateral that can be re-hypothecated.
+Both problems can be solved by using segregated collateral to secure overnight cash
+REPO agreement of a slightly new kind. See Fig. 4 for an illustration. The upgrade
+strategy involves re-writing the CSA agreement between B and C in such a way the
+counterparty C posts segregated collateral to cover both initial and variation margin on
+a netting set of OTC transactions with bank B. Furthermore, C writes a `transferable
+novation guarantee' to B stating that upon the default of B, the counterparty C is obliged
+to settle the variation margin to B in cash.
+The margin lender A takes up the commitment to post initial and variation margin on
+behalf of C in segregated form by handing over a hypothec to C which then C transfers
+over to bank B. The hypothec references assets in a pool which are liquidated upon
+default of C. The margin lender does not take any bank risk. Upon default of B, the
+margin lender A still makes available the hypothecs to C so that C can transfer them
+over to another bank during the novation process. The only instance when A liquidates
+assets is when C defaults.
+The liquidity provider L is asked to provide overnight funding to bank B in an amount
+equal to the variation margin posted by C on any given day. B pays to L funding costs
+appropriate for a fully secured line of credit (i. e., a line of credit not subject to bank
+credit risk).
+The overnight funding line by L is secured by two layers of protection: the novation
+guarantee written by the counterparty C and the hypothecs written by the margin lender
+A. To explain why the revolver is fully secured, one needs to analyse various scenarios.
+28
+· In case neither the counterparty C nor the bank B default prior to the termination
+of the margin lending contract, then the cash line is renewed overnight every day
+until maturity.
+· In case the counterparty C defaults prior to maturity and prior to bank B, then
+the margin lender liquidates assets in the investors' pool in an amount equal to the
+variation margin and pays L in full. In addition, the margin lender A liquidates
+assets in the pool up to a maximum amount equal to the initial margin in order to
+cover for gap risk and make B whole.
+· In case the bank B defaults prior to maturity and not after the counterparty C, then
+the novation guarantee written by C and held by the liquidity provider L, entitles
+L to demand payment of the variation margin in full from counterparty C. At this
+point there are two sub-cases:
+­ In case C pays the variation margin in cash as required, then the overnight
+cash line by L is closed with no loss to L and the investors in the margin lender
+A don't suffer losses.
+­ In case C fails to pay the variation margin, then the lender L raises a failure
+to pay condition on C and counterparty C defaults. Since default of C is a
+materiality condition for the margin lender A and L holds the hypothec, A
+liquidates assets in the investors' pool in amounts sufficient to cover for the
+variation margin and closes the revolver without losses to the lender L.
+There are issues about timing that should be carefully accounted for. For instance,
+upon the default of B, the overnight lender L may need to grant a grace period to C in
+order to be refunded of the variation margin in full. In case of bank default, one should
+also ensure that the margin lending protection is extended beyond the date at which L
+may potentially have to ask to liquidate the segregated collateral. This is just an example
+of a subtlety due to timings, but we think this sort of mechanics can be nailed down
+with some work. It is important to notice that the availability of cash collateral allows
+facilitates clearing at CCPs. In turn, CCP clearing facilitates the novation process and
+streamlines the recovery of the overnight cash line by the liquidity provider and decreases
+the probability that a bank default could trigger a counterparty default.
+In conclusion, a bank can benefit from having segregated collateral posted to cover
+variation margin for funding purposes. The presence of these assets would allow the bank
+access to low cost cash funding at fully secured rates, i. e., rates that are indifferent to the
+bank's own credit spread and unsecured funding costs.
+10 Conclusions
+We have reviewed 10 different structuring styles for counterparty credit risk sensitive
+transactions. In our analysis, we reduce to the Fundamental Theorem of Finance by
+interpreting the CVA and DVA terms as prices of embedded contractual obligations con-
+tingent to the event of default. As such, the various different definitions of CVA and DVA
+are precisely identified as corresponding to different contractual structures.
+29
+Figure 4: Upgrade scheme of segregated collateral into overnight cash.
+In the past two decades, financial markets witnessed the implementation of three
+separate standards. The evolution of these standards was driven by a desire to achieve a
+consistent valuation, an objective still not fully achieved in Basel III regulatory documents
+and ISDA Master Agreements. The current standard is also plagued by various paradoxes
+related to DVA accounting which encourages anti-economical behaviour. Moreover, these
+paradoxes place an insurmountable limitation to the ability of replicating dynamically the
+price process of derivative transactions, an impossibility that hampers the role of banks
+as financial intermediaries.
+The first proposal for a consistent valuation framework for CVA and DVA involves
+including a first-to-default clause in default protection contracts. This modification of the
+standard however represents a substantial deviation from the unilateral CVA specification
+in Basel III. To remedy in part, we introduce a new notion of portable CVA which is
+consistent and also very close to unilateral CVA.
+We next consider three structures based on margin lending and full collateralisation.
+We conclude that the quadri-lateral structure whereby two margin lenders provide hy-
+pothecs to ensure full collateralisation at all times to cover the open mark-to-market of
+derivative transactions is promising. These structures do not require a bank to carry out
+CVA trading as market risk and counterparty spread risk are transferred to the coun-
+terparty. Pure default risk is retained by the margin lenders that can securitise it in a
+straightforward fashion without being hampered by CVA volatility.
+Finally, we consider the problem of dynamic replication for derivative transactions
+between defaultable entities. We introduce a penta-lateral structure which is a variation
+of the quadri-lateral structure above with the addition of a central counterparty. In the
+penta-lateral case, we conclude that, if a replication strategy between non-defaultable
+entities exists, then this strategy can be implemented also by a defaultable structurer
+until its default time and the cost of replication is the risk-free fair value, independently
+30
+of the credit quality of the structurer.
+For more detailed references on consistent global valuation, on DVA accounting con-
+troversies, on Basel III, on the ISDA Master agreements and closeout protocols, on Col-
+lateralisation, Wrong Way Risk, Gap risk, DVA hedging, the first-to-default clause, and
+examples across asset classes we refer to the CVA FAQ Brigo (2011).
+A Probabilistic Framework and Absence of Arbitrage
+We denote by B
+and C
+respectively the default times of the bank and counterparty. We
+fix the portfolio time horizon T  R+, in that all default-free cash flows will be assumed to
+be zero after T, and fix the risk neutral pricing model (, G, Q), with a filtration (Gt
+)tR+
+such that B
+and C
+are G-stopping times. Given that all cash flows go to zero after
+T, we can limit ourselves to the finite stopping times min{B
+, T} and min{C
+, T} for all
+practical purposes.
+We denote by Et
+the conditional expectation under Q given Gt
+, and by Ei
+the condi-
+tional expectation under Q given the stopped filtration Gi
+. We exclude the possibility of
+simultaneous defaults, assuming that Q(B
+= C
+) = 0.
+The pivotal theoretical result for asset valuation is the Fundamental Theorem of Fi-
+nance, formulated in 1931 by Bruno de Finetti de Finetti (1931), see also Albanese and Li
+(2009) for a modern account. The mathematical expression of the principle of arbitrage
+freedom can be stated as a set of linear inequalities. The Fundamental Theorem indi-
+cates how to find all solutions to these equations and how to express them via transition
+probabilities which can be estimated, or implied, from market prices. This framework
+has been formulated under a discrete setup, and the notions of replication and hedging
+strategy play no role in the related characterisation of arbitrage freedom. The evolution
+of this result has been considered for example by Dalang, Morton, and Willinger (1990),
+up to the most modern results on arbitrage free theory such as Delbaen and Schacher-
+mayer (1994). It is debatable whether the continuous framework is really needed or adds
+clarity for a realistic representation of no arbitrage conditions in actual markets, see also
+Albanese and Li (2009) and Albanese, Gimonet, and White (2010) for a related discus-
+sion. Nonetheless, for the mainstream purposes of this paper, we stick to the standard
+continuous time version of arbitrage freedom as formulated for example in Harrison and
+Kreps (1979) and Harrison and Pliska (1981), and specialised to the credit context in
+Bielecki and Rutkowski (2002), to which we refer for more details on arbitrage freedom
+under default risk.
+References
+Albanese, C., T. Bellaj, G. Gimonet, and G. Pietronero (2011). Coherent Global Mar-
+ket Simulations and Securitization Measures for Counterparty Credit Risk. SC2008
+November 2008, Austin, Texas 11-1, 1­20.
+Albanese, C., F. D'Ippoliti, and G. Pietronero. In the margins. Willmott Magazine 2011.
+31
+Albanese, C., G. Gimonet, and S. White (2010). Global Valuation and Dynamic Risk
+Management. To appear on "Illiquid Asset Valuation", Risk Publications, Edited by
+Eric Takigawa.
+Albanese, C. and H. Li (2009). Monte Carlo Pricing Using Operator Methods and Measure
+Changes. SSRN http://ssrn.com/abstract=1484556.
+Albanese, C. and G. Pietronero (August, 2011). A redesign for central clearing. Credit
+Flux, 16.
+Albanese, C., G. Pietronero, and S. White (April 18, 2011). Optimal fund-
+ing strategies for counterparty credit risk liabilities. Available at SSRN:
+http://ssrn.com/abstract=1844713.
+Bielecki, T. and M. Rutkowski (2002). Credit Risk: Modeling, Valuation and Hedging.
+Springer Finance, Berlin.
+Brigo, D. (2005). Market models for cds options and callable floaters. Risk Magazine,
+January issue, 89.
+Brigo, D. (2011). Counterparty Risk FAQ: Credit VaR, PFE, CVA, DVA, closeout,
+netting, collateral, re-hypothecation, WWR, Basel, funding, CCDS and margin lending.
+available at arXiv.org, http://arxiv.org/abs/1111.1331.
+Brigo, D. and I. Bakkar (2009). Accurate counterparty risk valuation for energy-
+commodities swaps. Energy Risk March, 5.
+Brigo, D. and A. Capponi (2008). Bilateral counterparty risk with application to CDSs.
+Available at arXiv.org, http://arxiv.org/abs/0812.3705, short version published later in
+2010 in Risk Magazine.
+Brigo, D., A. Capponi, and A. Pallavicini (2011). Arbitrage-free bilateral counterparty
+risk valuation under collateralization and re-hypothecation with application to cds.
+under revision for publication in Mathematical Finance.
+Brigo, D., A. Capponi, A. Pallavicini, and V. Papatheodorou (2011). Collateral margin-
+ing in arbitrage-free counterparty valuation adjustment including re-hypotecation and
+netting. available at arXiv.org, http://arxiv.org/abs/1101.3926.
+Brigo, D. and K. Chourdakis (2009). Counterparty risk for credit default swaps: Impact
+of spread volatility and default correlation. International Journal of Theoretical and
+Applied Finance 12 (07), 1007­1026.
+Brigo, D. and M. Masetti (2005). Risk neutral pricing of counterparty risk. Pykhtin, M.
+(Editor), Counterparty Credit Risk Modeling: Risk Management, Pricing and Regula-
+tion, Risk Books.
+Brigo, D. and M. Morini (2010). Rethinking counterparty default. Credit flux 114, 18­19.
+Brigo, D. and M. Morini (2011). Dangers of bilateral counterparty risk: the fundamental
+impact of closeout conventions. Available at arXiv.org, http://arxiv.org/abs/1011.3355.
+32
+Brigo, D., M. Morini, and A. Pallavicini (Forthcoming, 2012-2013). Counterparty Credit
+Risk, Collateral and Funding, with pricing cases from all asset classes. Wiley, Chich-
+ester.
+Brigo, D., M. Morini, and M. Tarenghi (2011). Equity return swap valuation under
+counterparty risk. In: T. Bielecki, D. Brigo and F. Patras (Editors), Credit Risk
+Frontiers: Sub-prime crisis, Pricing and Hedging, CVA, MBS, Ratings and Liquidity,
+Wiley, 457­484.
+Brigo, D. and A. Pallavicini (2007). Counterparty risk under correlation between default
+and interest rates. Numerical Methods for Finance (Editors: Miller, J., Edelman, D.,
+and Appleby, J.), Chapman Hall.
+Brigo, D. and A. Pallavicini (2008). Counterparty risk and contingent CDS under corre-
+lation. Risk Magazine, February issue.
+Brigo, D., A. Pallavicini, and V. Papatheodorou (2011). Arbitrage-free valuation of bilat-
+eral counterparty risk for interest-rate products: impact of volatilities and correlations.
+International Journal of Theoretical and Applied Finance 14 (6), 773­802.
+Brigo, D., A. Pallavicini, and R. Torresetti (2010). Credit Models and the Crisis: A
+Journey into CDOs, Copulas, Correlations and Dynamic Models. Wiley, Chichester.
+Castagna, A. (2011). Funding, liquidity, credit and counterparty risk: Links and implica-
+tions. Available at http://ssrn.com/abstract=1855028.
+Cookson, R. (2008). Banks come up with new tool to deal with counterparty risk. Fi-
+nancial Times, April 10.
+Dalang, R., A. Morton, and W. Willinger (1990). Equivalent martingale measures and
+no-arbitrage in stochastic securities market models. Stoch. Stoch. Rep. 29 (2), 185­201.
+de Finetti, B. (1931). Sul Significato Soggettivo della Probabilita. Fondamenta Mathe-
+maticae, 298­329.
+Delbaen, F. and W. Schachermayer (1994). A General Version of the Fundamental The-
+orem of Asset Pricing. Mathematische Annalen, 463­520.
+Duffie, D. and M. Huang (1996). Swap rates and credit quality. Journal of Finance 51,
+921­950.
+Gregory, J. (2009). Being two-faced over counterparty credit risk. Risk Magazine 22,
+86­90.
+Harrison, J. M. and D. M. Kreps (1979). Martingales and arbitrage in multiperiod secu-
+rities markets. Journal of Economic Theory, 381­408.
+Harrison, J. M. and S. R. Pliska (1981). Martingales and Stochastic Integrals in the
+Theory of Continuous Trading. Stochastic Processes and their Applications, 215­260.
+33
+ISDA. ISDA close-out amount protocol. available at
+www.isda.org/isdacloseoutamtprot/docs/isdacloseoutprot-text.pdf .
+Morini, M. and D. Brigo (2011). No-armageddon measure for arbitrage-free pricing of
+index options in a credit crisis. Mathematical Finance 21 (4), 573­593.
+Morini, M. and A. Prampolini (March, 2011). Risky Funding: A Unified Framework for
+Counterparty and Liquidity Charges. Risk Magazine.
+Picoult, E. (2005). Calculating and Hedging Exposure, Credit Value Adjustment and
+Economic Capital for Counterparty Credit Risk. Counterparty Credit Risk Modelling,
+(Editor: Pykhtin, M.), Risk Books.
+Piterbarg, V. (February, 2010). Funding Beyond Discounting: Collateral Agreements and
+Derivatives Pricing. Risk Magazine, 97.
+Watt, M. (October, 2011). Corporates fear cva charge will make hedging too expensive.
+Risk Magazine.
+34
+

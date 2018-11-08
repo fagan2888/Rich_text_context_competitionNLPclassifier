@@ -1,0 +1,1492 @@
+American Journal of Epidemiology
+Published by Oxford University Press on behalf of the Johns Hopkins Bloomberg School of Public Health 2010.
+Vol. 171, No. 8
+DOI: 10.1093/aje/kwq002
+Advance Access publication:
+March 17, 2010
+Practice of Epidemiology
+A Hardy-Weinberg Equilibrium Test for Analyzing Population Genetic Surveys
+With Complex Sample Designs
+Ramal Moonesinghe*, Ajay Yesupriya, Man-huei Chang, Nicole F. Dowling, Muin J. Khoury,
+and Alastair J. Scott for the CDC/NCI NHANES III Genomics Working Group
+* Correspondence to Dr. Ramal Moonesinghe, Office of Minority Health and Health Disparities, 4770 Buford Highway, Mailstop E-67,
+Atlanta, GA 30341 (e-mail: rmoonesinghe@cdc.gov).
+Initially submitted May 1, 2009; accepted for publication January 5, 2010.
+Testing for deviations from Hardy-Weinberg equilibrium is a widely recommended practice for population-based
+genetic association studies. However, current methods for this test assume a simple random sample and may not
+be appropriate for sample surveys with complex survey designs. In this paper, the authors present a test for Hardy-
+Weinberg equilibrium that adjusts for the sample weights and correlation of data collected in complex surveys. The
+authors perform this test by using a simple adjustment to procedures developed to analyze data from complex
+survey designs available within the SAS statistical software package (SAS Institute, Inc., Cary, North Carolina).
+Using 90 genetic markers from the Third National Health and Nutrition Examination Survey, the authors found that
+survey-adjusted and -unadjusted estimates of the disequilibrium coefficient were generally similar within self-
+reported races/ethnicities. However, estimates of the variance of the disequilibrium coefficient were significantly
+different between the 2 methods. Because the results of the survey-adjusted tests account for correlation among
+participants sampled within the same cluster, and the possibility of having related individuals sampled from the
+same household, the authors recommend use of this test when analyzing genetic data originating from sample
+surveys with complex survey designs to assess deviations from Hardy-Weinberg equilibrium.
+complex survey design; design effect; genetic association studies; Hardy-Weinberg equilibrium
+Abbreviations: DA, design adjusted; HWD, Hardy-Weinberg disequilibrium; HWE, Hardy-Weinberg equilibrium; NHANES (III),
+(Third) National Health and Nutrition Examination Survey; RS, Rao-Scott; SRS, simple random sample.
+Increases in the availability of genetic data have resulted
+in a growing number of studies attempting to characterize
+genetic susceptibility to common complex diseases. How-
+ever, few genetic associations reported as significant are
+replicated in multiple studies. Departures from Hardy-
+Weinberg equilibrium (HWE) in control populations may
+indicate systematic genotyping errors and other biases that
+could lead to lack of replication (1­3). Therefore, testing
+HWE of marker genotype frequencies has been widely rec-
+ommended as a crucial step in any population-based genetic
+association study (4).
+Several methods have been developed to test HWE in
+simple random samples (SRSs). Emigh (5) compares vari-
+ous tests for the goodness of fit of a population with HWE
+with respect to their power and the accuracy of their distri-
+butional approximations. Several exact tests for HWE have
+been proposed (6­8). Bayesian approaches to HWE tests
+have been discussed recently (9­11). Still, the most com-
+mon way to test for departures from HWE is through a
+goodness-of-fit v2 test (12).
+When data are expensive to collect for a population-based
+genetic association study, it can be cost-efficient to sample
+in 2 or more stages. Whittemore and Halpern (13) described
+multistage sampling in genetic epidemiology and used ge-
+netic studies of US blacks and of prostate cancer to examine
+some design issues involved in multistage sampling. Scott
+and Wild (14) examined logistic regression models in case-
+control studies in which controls (and possibly cases) were
+obtained by using a complex sampling plan involving mul-
+tistage sampling. It is important to investigate the proper
+932 Am J Epidemiol 2010;171:932­941
+analytic method when analyzing data from complex multi-
+stage surveys.
+Selection of samples in surveys rarely involves just sim-
+ple random sampling. Instead, more complex sampling
+schemes are usually used, involving, for example, stratifica-
+tion and multistage sampling. Point estimates and the vari-
+ance of population parameters are impacted by the value of
+each observation's analysis weight, adjustments for selec-
+tion probabilities, and other survey design features such as
+stratification and clustering. Hence, the assumption of sim-
+ple random sampling can yield biased point estimates and/or
+an underestimation of the variance of the point estimates if
+the complex sampling design is ignored.
+In this paper, we derive and present an appropriate test for
+deviations in HWE in the analysis of population-based ge-
+netic data obtained from sample surveys with complex sur-
+vey designs. We compare this method with results from
+goodness-of-fit v2 tests that assume an SRS by using data
+from the National Health and Nutrition Examination Survey
+(NHANES).
+MATERIALS AND METHODS
+Test for HWE
+Suppose n individuals are genotyped at a biallelic (Aa)
+marker. We are interested in some basic properties of this
+marker, such as genotype frequency, allele frequency,
+100(1 À a) % confidence intervals of these frequencies,
+and whether it is in HWE.
+Let Yij
+¼ 1 if the jth allele of a marker of the ith individual
+is A; Yij
+¼ 0 otherwise (j ¼ 1, 2, and i ¼ 1, 2, . . ., n). Let Wi
+be the sample weight assigned to the ith individual and n1
+,
+n2
+, and n3
+denote the genotype frequencies of AA, Aa, and
+aa, respectively. The weighted allele frequency for the allele
+A is then given by
+^
+PA
+¼
+P
+n
+i¼1
+P
+2
+j¼1
+WiYij
+2
+P
+n
+i¼1
+Wi
+¼
+2
+P
+n1
+i¼1
+Wi
+þ
+P
+n2
+i¼1
+Wi
+2
+P
+n
+i¼1
+Wi
+:
+The impact of departures from simple random sampling
+on the precision of the estimated frequency can be measured
+by the design effect that represents the combined effect of
+stratification, clustering, unequal selection probabilities, and
+weighting adjustments for nonresponse and noncoverage.
+This statistic can be calculated as
+deff ¼ VarDA
+À
+^
+P
+Á
+VarSRS
+À
+^
+P
+Á
+;
+where VarDA
+ð ^
+PÞ is the variance of ^
+P induced by the complex
+sample design (design adjusted (DA)) and VarSRS
+ð ^
+PÞ is the
+variance of ^
+P that would have been obtained from an SRS of
+the same size. If HWE is assumed, the design-based vari-
+ance estimator of ^
+PA
+, VDA
+ð ^
+PA
+Þ can be calculated by using
+the SURVEYFREQ procedure in SAS software (SAS Insti-
+tute, Inc., Cary, North Carolina). The Taylor series lineari-
+zation approach is used to approximate the estimated
+variance in the SURVEYFREQ procedure (15).
+Let PAA
+, PAa
+, and Paa
+be the population frequencies of
+genotypes AA, Aa, and aa, respectively, and PA
+be the pop-
+ulation frequency of the A allele. Let QA
+¼ 1 ­ PA
+. We want
+to test the null hypothesis that the population represented by
+our sample is in HWE (i.e., H0
+: PAA
+¼ P2
+A
+, PAa
+¼ 2PA
+QA
+,
+and Paa
+¼ Q2
+A
+) versus the alternative hypothesis that the
+population is in Hardy-Weinberg disequilibrium (HWD).
+We test HWE by using a goodness-of-fit v2 test. For samples
+large enough, the expected values for the 3 estimated geno-
+typic counts are given in Table 1.
+The goodness-of-fit v2 statistic is
+QP
+¼
+n
+^
+N
+X
+genotypes
+ðObserved À ExpectedÞ2
+Expected
+:
+Rao and Scott (16, 17) studied the impact of design ef-
+fects on standard v2 and likelihood ratio tests for estimated
+proportions in one-way and multiway tables. They showed
+that the test statistic is asymptotically distributed as
+a weighted sum of independent v2
+1
+variables and that the
+weights are the eigenvalues of a generalized design-effects
+matrix. Their analyses showed that survey design can have
+a substantial impact on the type 1 error. For one-way tables,
+the SURVEYFREQ procedure in SAS software provides
+a design-based goodness-of-fit test when null proportions
+are specified using the first-order and second-order correc-
+tions given by Rao and Scott. The Rao-Scott (RS) v2 test
+statistic is computed as QRS
+¼ QP
+=d, where d is a design
+correction that requires knowledge of variance estimates (or
+design effects) for only individual cells in the goodness-of-
+fit test statistic. For a one-way table with k cells, QRS has
+a v2 distribution with (k À 1) degrees of freedom. The
+computation of QRS
+using the SURVEYFREQ procedure
+in SAS software is given in Appendix 1 (18). We derive
+the design correction for the v2 test to test for HWE from
+first principles.
+Let DA
+¼ PAA
+À P2
+A
+. DA
+is defined as the disequilibrium
+coefficient (12). Testing for HWE is equivalent to testing
+the hypothesis H0
+: DA
+¼ 0 versus H1
+: DA
+6¼ 0. With
+^
+DA
+¼ ^
+PAA
+À ^
+P2
+A
+and expected values based on the null hy-
+pothesized frequencies, the one-way frequency table is
+given in Table 2.
+Under this scenario,
+QHW
+P
+¼
+n
+^
+N
+X
+genotypes
+ðObserved À ExpectedÞ2
+Expected
+¼
+n ^
+D2
+A
+P2
+A
+ð1 À PA
+Þ2
+and QHW
+RS
+¼ QHW
+P
+
+dHW.
+Table 1. Observed and Expected Genotypic Counts When Hardy-
+Weinberg Equilibrium Holds
+Genotype
+AA Aa aa
+Observed no. ^
+N1
+¼
+P
+n1
+i¼1
+Wi
+^
+N2
+¼
+P
+n2
+i¼1
+Wi
+^
+N3
+¼
+P
+n3
+i¼1
+Wi
+Expected no.a ^
+N ^
+P2
+A
+2^
+N ^
+PA
+^
+QA
+^
+N ^
+Q2
+A
+a ^
+N ¼ ^
+N1
+þ ^
+N2
+þ ^
+N3
+.
+A HWE Test for Complex Survey Designs 933
+Am J Epidemiol 2010;171:932­941
+Under the null hypothesis, QHW
+RS
+has a v2 distribution with
+1 degree of freedom.
+The design correction dHW is given by
+dHW
+¼
+À
+1 þ ^
+PA
+ÁÀ
+1 À 2 ^
+PA
+Á
+Deff0
+À
+^
+PAA
+Á
+þ 2
+À
+1 À 2 ^
+PA
+À
+1 À ^
+PA
+ÁÁ
+Deff0
+À
+^
+PAa
+Á
+þ
+À
+2 ^
+PA
+À 1
+ÁÀ
+2 À ^
+PA
+Á
+Deff0
+À
+^
+Paa
+Á
+;
+where Deff0
+ð ^
+PAA
+Þ, Deff0
+ð ^
+PAa
+Þ, and Deff0
+ð ^
+Paa
+Þ are the de-
+sign effects for proportions ^
+PAA
+, ^
+PAa
+, and ^
+Paa
+, respectively,
+based on the null hypothesized values (Appendix 2). The
+design correction is simply the design effect of the estimate
+of the disequilibrium coefficient. For an SRS design,
+Deff0
+ð ^
+PAA
+Þ ¼ Deff0
+ð ^
+PAa
+Þ ¼ Deff0
+ð ^
+Paa
+Þ ¼ 1, which leads
+to dHW
+¼ 1, as expected.
+It might be worthwhile to note that QHW
+RS
+is just ^
+D2
+A
+=Vð ^
+DA
+Þ
+with Vð ^
+DA
+Þ given by the last equation in Appendix 2. There-
+fore, QHW
+RS
+can be calculated even if only the variances of the
+cell proportions are known, as is often the case. Since we
+used the SURVEYFREQ procedure in SAS and substituted
+our design correction for the design correction in the pro-
+cedure, we expressed the design correction as a function of
+design-effects estimates of genotype frequency.
+Application to NHANES III: US population-based survey
+with complex design
+NHANES is a nationally representative survey of the US
+population conducted by the National Center for Health
+Statistics. Genetic data are available through the National
+Center for Health Statistics on 7,159 participants from phase
+2 of the Third National Health and Nutrition Examination
+Survey (NHANES III). Linkage of the NHANES III pheno-
+type data with this genetic information provides the oppor-
+tunity to conduct a vast array of outcome studies designed to
+investigate the association of a wide variety of health factors
+with genetic variation (19, 20).
+The initial stage of sampling in the NHANES III design
+consisted of stratifying and selecting primary sampling
+units, which are counties or groups of counties in the United
+States. The primary sampling units were assigned to a par-
+ticular stratum based on health and demographic informa-
+tion such as age, sex, and ethnicity and are selected with
+probability proportional to population size. After the pri-
+mary sampling units were selected, they were subsampled
+successively in terms of census enumeration districts, clus-
+ters of households, households, eligible persons, and, finally,
+sample persons. Specific populations including young chil-
+dren, older persons, non-Hispanic blacks, and Mexican
+Americans were oversampled. Multiple sample persons
+could be selected from the same household. Each sampled
+person was assigned the inverse of his or her selection prob-
+ability as the sampling weight. The final analysis weights
+incorporated the selection probabilities and include adjust-
+ments for nonresponse. The nonresponse-adjusted weights
+were further poststratified by age, gender, and race/ethnicity
+to account for noncoverage and to bring the final national
+estimates in line with population counts (21).
+We examined 90 variants in 50 genes that may play a role
+in the etiology of several diseases or conditions of public
+health significance. In this study, we considered the 3 major
+self-reported race/ethnic populations in the United States:
+non-Hispanic white, non-Hispanic black, and Mexican
+American. To explore the effect of differential sampling
+from multiple ethnic populations, we also considered these
+3 race/ethnicity groups combined. We removed any variants
+with expected frequencies of less than 5 for each genotype
+under the null hypothesis to avoid potential problems asso-
+ciated with v2 approximation, yielding 72, 68, 70, and 75
+variants for non-Hispanic whites, non-Hispanic blacks,
+Mexican Americans, and the combined race/ethnicity
+group, respectively. The expected frequency was calculated
+by multiplying the effective sample size by the genotype
+frequency. The effective sample size is the sample size di-
+vided by the design correction for the genotype frequency
+under the null hypothesis. To determine the origin and ex-
+tent of differences between the DA HWE tests that adjusted
+for the NHANES III complex survey design with HWE tests
+conducted by assuming an SRS, we examined the differ-
+ences in minor allele frequencies, HWD coefficients, and
+variances of the HWD coefficient.
+RESULTS
+The DA and SRS minor allele frequencies were not so
+different in any of the populations. However, the range was
+largest for the combined race/ethnicity group (combined--
+median: 0.0041, range: À0.152, 0.1021) compared with the
+separate races/ethnicities (non-Hispanic whites--median:
+0.0006, range: À0.0111, 0.0142; non-Hispanic blacks--
+median: 0.0007, range: À0.0062, 0.0073; Mexican
+Americans--median: 0.0002, range: À0.0132, 0.0139)
+(Figure 1).
+The differences between the DA and SRS HWD coeffi-
+cients followed a pattern similar to that for the differences
+between the minor allele frequencies. The combined popu-
+lation had the largest range (non-Hispanic whites--median:
+0.0006, range: À0.0046, 0.0079; non-Hispanic blacks--
+median: À0.0001, range: À0.0039, 0.0057; Mexican
+Americans--median: À0.00003, range: À0.0101, 0.0067;
+combined--median: À0.0016, range: À0.034, 0.0106).
+The majority of differences between the DA variance
+estimates and variance estimates calculated by assuming
+an SRS design were greater than zero in all of the popula-
+tions (Figure 1). We found that the design correction varied
+from 0.64 to 3.45 with a median value of 1.44 for
+Table 2. Difference Between Observed and Expected Genotypic
+Counts When Hardy-Weinberg Equilibrium Holds
+Genotype
+AA Aa aa
+Observed no.a ^
+N1
+¼ ^
+N ^
+PAA
+^
+N2
+¼ 2^
+N ^
+PAa
+^
+N3
+¼ ^
+N ^
+Paa
+Expected no.a ^
+N ^
+P2
+A
+2^
+N ^
+PA
+^
+QA
+^
+N ^
+Q2
+A
+Observed ­ expecteda ^
+N ^
+DA
+À2^
+N ^
+DA
+^
+N ^
+DA
+a ^
+N ¼ ^
+N1
+þ ^
+N2
+þ ^
+N3
+.
+934 Moonesinghe et al.
+Am J Epidemiol 2010;171:932­941
+non-Hispanic whites, from 0.47 to 2.61 with a median value
+of 1.18 for non-Hispanic blacks, from 0.35 to 3.30 with
+a median value of 1.34 for Mexican Americans, and from
+0.72 to 14.45 with a median value of 2.68 for the combined
+race/ethnicity group compared with each race/ethnicity
+group. The coefficients of variation of weights for non-
+Hispanic whites, non-Hispanic blacks, and Mexican
+Americans were 75.7, 45.9, and 60.7, respectively, whereas
+the coefficient of variance for the 3 combined race/ethnicity
+groups was 132.1.
+The discrepancy between P values from DA v2 tests and
+from SRS v2 tests was higher for the combined group com-
+pared with the separate populations (Figure 1). Figure 2
+shows scatter plots of P values obtained from the DA
+and SRS v2 tests for HWE for non-Hispanic whites, non-
+Hispanic blacks, Mexican Americans, and all 3 race/
+ethnicity groups combined. The Spearman coefficients of
+correlation between DA and SRS P values were 0.49,
+0.73, 0.74, and 0.69 for non-Hispanic whites, non-Hispanic
+blacks, Mexican Americans, and the combined group,
+respectively.
+We assumed a level of significance of a ¼ 0.05 for the
+HWE tests. Genetic variants with significant DA test results
+but nonsignificant SRS results, or vice versa, for non-
+Hispanic whites, non-Hispanic blacks, Mexican Americans,
+and the combined groups are presented in Tables 3­6. All 4
+markers in Table 3 resulted in HWE for the SRS test and
+HWD for the DA test. Fifty percent of the markers tested in
+Tables 4 and 5 resulted in HWE for the SRS test and HWD
+for the DA test. Of the 22 markers shown in Table 6, 18 were
+in HWD for the SRS test and HWE for the DA test.
+DISCUSSION
+In this paper, we present a method of testing HWE of
+genetic data obtained from large-scale population surveys
+that incorporate design features such as clustering, stratifi-
+cation, and unequal weights. We found, within ethnic pop-
+ulations, that our DA method provides similar estimates of
+HWD coefficients but different estimates of the variance of
+the HWD coefficients compared with the unadjusted
+method. The test statistics derived from the 2 methods were
+not significantly different in general, but, in a few cases,
+different conclusions were possible. Choosing the results
+of the SRS test would not be appropriate in these situations
+because these results could be biased. Regarding the
+Figure 1. Differences in minor allele frequencies (MAF), Hardy-Weinberg disequilibrium (HWD) coefficients, variance of HWD coefficients, and P
+values between the design-adjusted (DA) and simple random sample (SRS) goodness-of-fit test. Com, combined; MA, Mexican American; NHB,
+non-Hispanic black; NHW, non-Hispanic white.
+A HWE Test for Complex Survey Designs 935
+Am J Epidemiol 2010;171:932­941
+combined population, we found that both the HWD coeffi-
+cient and variance differed between the methods, yielding
+significant differences in P values. Hence, all analyses of
+HWE need to incorporate sample weights and the cluster
+design to avoid misinterpretation of results.
+In a recent paper, Li and Graubard (22) derived a test for
+HWE for complex sample designs by extending the standard
+Pearson v2 test to a quadratic test statistic that converges in
+distribution to a linear combination of independently iden-
+tically distributed v2 random variables. The coefficients of
+the linear combination are eigenvalues (generalized design
+effects) of a generalized design matrix. The first-order RS
+adjustment corrects the asymptotic expectation of the Pear-
+son statistic by dividing the test statistic by the mean of the
+unknown eigenvalues. As shown in Appendix 1, the SUR-
+VEYFREQ procedure estimates this mean as a function of
+the design-effect estimates of the cell proportions. In our
+method, we directly derived the approximate variance of
+Figure 2. Comparison of P values obtained from design-adjusted (DA) and simple random sample (SRS) goodness-of-fit tests for Hardy-
+Weinberg equilibrium for A) non-Hispanic whites, B) non-Hispanic blacks, C) Mexican Americans, and D) all 3 race/ethnicity groups combined.
+Table 3. Genetic Variants That Have a Significant DA Test Result and a Nonsignificant SRS-based Test Result for
+non-Hispanic Whites
+Variant
+Sample
+Size
+SRS
+MAF
+DA
+MAF
+Design
+Correction
+SRS x2 Test
+Statistic
+DA x2 Test
+Statistic
+SRS
+P Value
+DA
+P Value
+RS1143623
+(IL1B-09)
+2,553 0.27419 0.2849 1.06687 0.09315 4.05995 0.76021 0.043912
+RS1982073
+(TGFB1-01)
+2,580 0.39554 0.38466 1.11168 3.69649 8.95267 0.05453 0.002771
+RS361525
+(TNF-04)
+2,580 0.05543 0.05759 1.48911 3.64068 7.90103 0.05638 0.004941
+RS731236
+(VDR-01)
+2,621 0.39031 0.38104 0.97062 2.35951 5.4372 0.12452 0.019712
+Abbreviations: DA, design adjusted; MAF, minor allele frequency; SRS, simple random sample.
+936 Moonesinghe et al.
+Am J Epidemiol 2010;171:932­941
+the disequilibrium coefficient and then expressed the design
+correction as a function of the design-effect estimates of
+genotype frequency (Appendix 2). Li and Graubard also
+examined the accuracy of type I error for the minor allele
+frequencies and the number of degrees of freedom for esti-
+mating the covariance matrix that affect the asymptotic dis-
+tribution. The degrees of freedom for the variance estimates
+can be rather small in some situations and thus using an F
+distribution instead of a v2 distribution works much better,
+as noted by Thomas and Rao (23).
+To our knowledge, NHANES is the first survey with a na-
+tional probability sample design to make population genetic
+Table 4. Genetic Variants That Have a Significant DA Test Result and a Nonsignificant SRS-based Test Result for
+non-Hispanic Blacks
+Variant
+Sample
+Size
+SRS
+MAF
+DA
+MAF
+Design
+Correction
+SRS x2 Test
+Statistic
+DA x2 Test
+Statistic
+SRS
+P Value
+DA
+P Value
+RS17033
+(ADH1B-05)
+1,983 0.06556 0.06886 2.04383 5.63837 0.60586 0.01757 0.43635
+RS2740574
+(CYP3A4-02)
+1,973 0.35656 0.35977 0.78473 4.72747 3.0101 0.02968 0.08275
+RS2243250
+(IL4-01)
+1,988 0.35941 0.36044 1.60461 4.67857 2.96803 0.03054 0.08493
+RS1126643
+(ITGA2-01)
+1,995 0.29073 0.2962 0.86825 2.18732 5.2004 0.13915 0.02258
+RS1208
+(NAT2-01)
+1,976 0.38436 0.38273 1.0353 3.64309 4.57592 0.0563 0.03242
+RS1799930
+(NAT2-08)
+1,987 0.28309 0.27971 1.52494 4.30104 2.25384 0.03809 0.13328
+RS1799983
+(NOS3-01)
+1,979 0.12759 0.13106 0.91475 2.75324 6.72757 0.09706 0.00949
+RS2070744
+(NOS3-11)
+1,997 0.15273 0.15143 0.75106 3.34888 8.7921 0.06725 0.00303
+RS1001581
+(XRCC1-23)
+1,994 0.36785 0.36674 0.99246 1.61095 4.7698 0.20436 0.02896
+Abbreviations: DA, design adjusted; MAF, minor allele frequency; SRS, simple random sample.
+Table 5. Genetic Variants That Have a Significant DA Test Result and a Nonsignificant SRS-based Test Result for
+Mexican Americans
+Variant
+Sample
+Size
+SRS
+MAF
+DA
+MAF
+Design
+Correction
+SRS x2 Test
+Statistic
+DA x2 Test
+Statistic
+SRS
+P Value
+DA
+P Value
+RS1229984
+(ADH1B-02)
+1,997 0.05734 0.05454 0.34759 2.17854 11.3665 0.13995 0.00075
+RS1042713
+(ADRB2-01)
+2,012 0.41725 0.41754 0.72123 2.22763 15.6747 0.13556 0.00008
+RS1800871
+(IL10-01)
+1,996 0.38853 0.38099 0.86537 5.41428 3.2626 0.01997 0.07088
+RS1800872
+(IL10-02)
+1,989 0.38612 0.37927 1.24439 4.51289 1.5081 0.03364 0.21943
+RS2243248
+(IL4-02)
+1,995 0.11955 0.12042 1.03095 4.97631 3.3562 0.0257 0.06695
+RS11003125
+(MBL2-11)
+1,986 0.48615 0.49039 0.61979 0.59943 4.3774 0.43879 0.03642
+RS1801394
+(MTRR-01)
+2,006 0.26271 0.26077 2.17738 4.0929 0.2536 0.04306 0.61458
+RS2070744
+(NOS3-11)
+2,009 0.24764 0.25134 1.48019 6.81555 3.5963 0.00904 0.05791
+RS10517
+(NQO1-15)
+1,993 0.06999 0.06505 0.50318 1.67786 4.3932 0.19521 0.03608
+RS1982073
+(TGFB1-01)
+2,006 0.48455 0.49734 0.73455 2.59522 10.032 0.10719 0.00154
+RS731236
+(VDR-01)
+2,062 0.234 0.23803 0.72136 1.48039 4.7746 0.22371 0.02888
+Abbreviations: DA, design adjusted; MAF, minor allele frequency; SRS, simple random sample.
+A HWE Test for Complex Survey Designs 937
+Am J Epidemiol 2010;171:932­941
+data available to researchers for analysis. Therefore, allele
+frequencies, genotype frequencies, and associations be-
+tween disease and genetic variants are unbiased estimates
+of the respective population parameters. For example, gene
+variant databases such as the International HapMap Project
+(http://www.hapmap.org) and the SNP500Cancer Database
+(http://snp500cancer.nci.nih.gov) are convenience samples
+and may not well represent the target populations (24, 25).
+Population-based estimates obtained from the NHANES III
+survey may help in estimating the US population that ben-
+efits from genomic-based tools, such as risk factor reduc-
+tion; disease screening efforts; or diagnostic tests, drugs, or
+other preventive or therapeutic interventions.
+There have been discussions about whether the sampling
+design must be considered in the analysis of survey data
+from large-scale health surveys. Some guidelines are pro-
+vided for when to use sample weights and the features of the
+sample design in the analysis of survey data (26, 27). There
+are several reasons to take into account the sampling design
+in testing for HWE. First, the HWE test examines whether
+Table 6. Genetic Variants That Have a Significant DA Test Result and a Nonsignificant SRS-based Test Result for
+All 3 Race/Ethnicity Groups Combined
+Variant
+Sample
+Size
+SRS
+MAF
+DA
+MAF
+Design
+Correction
+SRS x2 Test
+Statistic
+DA x2 Test
+Statistic
+SRS
+P Value
+DA
+P Value
+RS17033
+(ADH1B-05)
+6,546 0.14352 0.09619 3.30191 84.0162 3.26314 <0.00001 0.07085
+CS3 (CBS-A) 6,634 0.13024 0.10252 1.28429 19.2444 2.5989 0.00001 0.10694
+RS2472299
+(CYP1A1-81)
+6,502 0.30844 0.29408 2.17262 3.552 9.38943 0.05947 0.00218
+RS1057910
+(CYP2C9-01)
+6,587 0.04099 0.0588 1.74484 4.722 3.15768 0.02978 0.07557
+RS1800790
+(FGB-01)
+6,574 0.13637 0.17392 2.47273 8.4412 0.00045 0.00367 0.98304
+RS2243248
+(IL4-02)
+6,544 0.11033 0.08819 1.13597 10.1855 0.01378 0.00142 0.90656
+RS1805015
+(IL4R-05)
+6,528 0.22143 0.18323 1.47335 16.6996 2.17859 0.00004 0.13994
+RS11003125
+(MBL2-11)
+6,489 0.34073 0.34349 5.63858 85.8332 3.03771 <0.00001 0.08135
+RS7096206
+(MBL2-12)
+6,563 0.16502 0.20789 3.20942 11.1589 0.80699 0.00084 0.36901
+RS1800469
+(MGC4093-03)
+6,591 0.33993 0.31326 3.48069 10.6258 2.09685 0.00112 0.1476
+RS1801131
+(MTHFR-01)
+6,572 0.22801 0.28681 3.71405 12.4364 3.50174 0.00042 0.0613
+RS1041983
+(NAT2-05)
+6,571 0.37133 0.36546 2.39437 8.7445 0.10395 0.00311 0.74714
+RS1799930
+(NAT2-08)
+6,572 0.26407 0.30861 2.04206 6.3492 0.00322 0.01174 0.95477
+RS1799983
+(NOS3-01)
+6,518 0.22622 0.29272 3.91872 6.2886 0.62103 0.01215 0.43066
+RS2070744
+(NOS3-11)
+6,585 0.27434 0.35212 2.66737 29.9528 2.10065 <0.00001 0.14724
+RS1800566
+(NQO1-01)
+6,519 0.24643 0.20412 1.89389 6.8019 0.01177 0.00911 0.91359
+RS689453
+(NQO1-08)
+6,489 0.06203 0.07344 2.67823 5.5425 0.14813 0.01856 0.70033
+RS361525
+(TNF-04)
+6,580 0.0519 0.05559 2.67393 0.1022 7.51465 0.74916 0.00612
+RS731236
+(VDR-01)
+6,789 0.30896 0.35933 1.87878 2.7111 5.8414 0.09965 0.01565
+RS1799782
+(XRCC1-03)
+6,531 0.08728 0.0573 2.69923 14.1928 1.82113 0.00016 0.17718
+RS25487
+(XRCC1-01)
+6,564 0.27041 0.32903 5.05789 11.4193 0.13261 0.00073 0.71574
+RS25489
+(XRCC1-02)
+6,527 0.06228 0.0444 0.72137 9.6848 0.07123 0.00186 0.78955
+Abbreviations: DA, design adjusted; MAF, minor allele frequency; SRS, simple random sample.
+938 Moonesinghe et al.
+Am J Epidemiol 2010;171:932­941
+the population represented by the sample is in HWE. As-
+suming the sample is selected by using an SRS design does
+not result in testing HWE for the target population. Second,
+some correlation is likely among participants sampled
+within the same cluster, such as the selection of multiple
+individuals in a household in the NHANES III sample. The
+number of individuals selected in a household in the sample
+ranged from 1 to 11 with an average of 1.6, and some of
+them may be related. When the v2 goodness-of-fit test for
+HWE is used on samples with related individuals, the type I
+error could be greatly inflated.
+When calculating the variance for DA estimates, the first
+2 stages of the sample design--strata and primary sampling
+units--are considered. When there are more related people
+in households within a primary sampling unit, the intraclass
+correlation that measures the internal homogeneity for the
+primary sampling units, and consequently the variance of
+DA, increases. This increase in variance is taken into ac-
+count in the design correction. A test for HWE suitable for
+any samples with related individuals has been proposed
+(28). However, our method does not require prior knowl-
+edge of the pedigree structure and can account for the cor-
+relation among the sampled members whether they are
+related or not.
+Tests of HWE may be used to examine the associations
+between genetic variants and diseases. For example, Lee
+(29) proposed scanning the genome for disease-susceptible
+genes by testing for deviations from HWE in a gene bank of
+affected individuals under the assumption that the source
+population from which the cases arise is in HWE. Chen
+and Chatterjee (30) proposed an alternative analytic strategy
+to assess the association between a binary disease outcome
+and a genetic marker by comparing the observed genotype
+frequencies of cases with the expected genotype frequencies
+of controls, assuming HWE. Song and Elston (31) derived
+an HWD trend test by calculating the difference between the
+HWE test statistic for cases and controls to fine-map
+a disease-susceptible locus.
+Methods to appropriately analyze genetic data from stud-
+ies involving complex survey designs, such as the proposed
+genome-wide association studies of NHANES III and the
+National Children's Study (www.nationalchildrensstudy.
+gov), will be needed in the near future. The HWE test pro-
+posed in this paper represents an essential step in addressing
+that need.
+ACKNOWLEDGMENTS
+Author affiliations: Office of Minority Health and Health
+Disparities, Centers for Disease Control and Prevention,
+Atlanta, Georgia (Ramal Moonesinghe); Office of Public
+Health Genomics, Centers for Disease Control and Preven-
+tion, Atlanta, Georgia (Ajay Yesupriya, Man-huei Chang,
+Nicole F. Dowling, Muin J. Khoury); and Department of
+Statistics, The University of Auckland, Auckland, New
+Zealand (Alastair J. Scott).
+The findings and conclusions in this report are those of
+the author(s) and do not necessarily represent the views of
+the Centers for Disease Control and Prevention/Agency for
+Toxic Substances and Disease Registry.
+Conflict of interest: none declared.
+REFERENCES
+1. Salanti G, Amountza G, Ntzani EE, et al. Hardy-Weinberg
+equilibrium in genetic association studies: an empirical eval-
+uation of reporting, deviations, and power. Eur J Hum Genet.
+2005;13(7):840­848.
+2. Hosking L, Lumsden S, Lewis K, et al. Detection of geno-
+typing errors by Hardy-Weinberg equilibrium testing. Eur
+J Hum Genet. 2004;12(5):395­399.
+3. Trikalinos TA, Salanti G, Khoury MJ, et al. Impact of viola-
+tions and deviations in Hardy-Weinberg equilibrium on pos-
+tulated gene-disease associations. Am J Epidemiol. 2006;
+163(4):300­309.
+4. Kocsis I, Gyo
+¨rffy B, Ne
+´meth E, et al. Examination of Hardy-
+Weinberg equilibrium in papers of Kidney International: an
+underused tool. Kidney Int. 2004;65(5):1956­1958.
+5. Emigh TH. A comparison of tests for Hardy-Weinberg equi-
+librium. Biometrics. 1980;36(4):627­642.
+6. Chapco W. An exact test of the Hardy-Weinberg law. Bio-
+metrics. 1976;32(1):183­189.
+7. Guo SW, Thompson EA. Performing the exact test of Hardy-
+Weinberg proportion for multiple alleles. Biometrics. 1992;
+48(2):361­372.
+8. Wigginton JE, Cutler DJ, Abecasis GR. A note on exact tests
+of Hardy-Weinberg equilibrium. Am J Hum Genet. 2005;
+76(5):887­893.
+9. Shoemaker J, Painter I, Weir BS. A Bayesian characterization
+of Hardy-Weinberg disequilibrium. Genetics. 1998;149(4):
+2079­2088.
+10. Ayres KL, Balding DJ. Measuring departures from Hardy-
+Weinberg: a Markov chain Monte Carlo method for estimating
+the inbreeding coefficient. Heredity. 1998;80(pt 6):769­777.
+11. Montoya-Delgado LE, Irony TZ, de B Pereira CA, et al. An
+unconditional exact test for the Hardy-Weinberg equilibrium
+law: sample-space ordering using the Bayes factor. Genetics.
+2001;158(2):875­883.
+12. Weir BS. Genetic Data Analysis II. Sunderland, MA: Sinauer
+Associates, Publishers; 1996.
+13. Whittemore AS, Halpern J. Multi-stage sampling in genetic
+epidemiology. Stat Med. 1997;16(1-3):153­167.
+14. Scott AJ, Wild CJ. The analysis of multi-stage case-control
+studies. In: Skinner CJ, Chambers R, eds. Analysis of Complex
+Surveys. New York, NY: John Wiley and Sons; 2003:109­122.
+15. Wolter KM. Introduction to Variance Estimation. New York,
+NY: Springer-Verlag; 1985.
+16. Rao JNK, Scott AJ. The analysis of categorical data from
+complex sample surveys: chi-squared tests for goodness of fit
+and independence in two-way tables. J Am Stat Assoc. 1981;
+76(374):221­230.
+17. Rao JNK, Scott AJ. On simple adjustments to chi-square tests
+with sample survey data. Ann Stat. 1987;15(1):385­397.
+18. SAS Institute, Inc. SAS/STAT 9.1 User Guide. Cary, NC: SAS
+Institute, Inc; 2004.
+19. NHANES III Genetic Data. Hyattsville, MD: National Center
+for Health Statistics, Centers for Disease Control and
+Prevention; 2007. (http://www.cdc.gov/nchs/nhanes/genetics/
+genetic.htm). (Accessed February 19, 2010).
+20. Chang MH, Lindegren ML, Butler MA, et al. Prevalence in the
+United States of selected candidate gene variants: Third
+A HWE Test for Complex Survey Designs 939
+Am J Epidemiol 2010;171:932­941
+National Health and Nutrition Examination Survey, 1991­
+1994. Am J Epidemiol. 2009;169(1):54­66.
+21. Ezzati T, Khare M. Nonresponse adjustments in a national
+health survey. Proceedings of the Survey Research Methods
+Section of the American Statistical Association. 1992;339­344.
+22. Li Y, Graubard BI. Testing Hardy-Weinberg equilibrium and
+homogeneity of Hardy-Weinberg disequilibrium using com-
+plex survey data. Biometrics. 2009;65(4):1096­1104.
+23. Thomas DR, Rao JNK. Small-sample comparisons of level
+and power for simple goodness-of-fit statistics under cluster
+sampling. J Am Stat Assoc. 1987;82(398):630­636.
+24. International HapMap Consortium. A haplotype map of the
+human genome. Nature. 2005;437(7063):1299­1320.
+25. Packer BR, Yeager M, Burdett L, et al. SNP500Cancer:
+a public resource for sequence validation, assay development,
+and frequency analysis for genetic variation in candidate
+genes. Nucleic Acids Res. 2006;34(Database issue):D617­
+D621.
+26. Lemeshow S, Letenneur L, Dartigues JF, et al. Illustration of
+analysis taking into account complex survey considerations:
+the association between wine consumption and dementia in the
+PAQUID Study. Personnes Ages Quid. Am J Epidemiol. 1998;
+148(3):298­306.
+27. Korn EL, Graubard BI. Epidemiologic studies utilizing sur-
+veys: accounting for the sampling design. Am J Public Health.
+1991;81(9):1166­1173.
+28. Bourgain C, Abney M, Schneider D, et al. Testing for Hardy-
+Weinberg Equilibrium in samples with related individuals.
+Genetics. 2004;168(4):2349­2361.
+29. Lee WC. Searching for disease-susceptibility loci by testing
+for Hardy-Weinberg disequilibrium in a gene bank of affected
+individuals. Am J Epidemiol. 2003;158(5):397­400.
+30. Chen J, Chatterjee N. Exploiting Hardy-Weinberg Equilibrium
+for efficient screening of single SNP associations from case-
+control studies. Hum Hered. 2007;63(3-4):196­204.
+31. Song K, Elston RC. A powerful method of combining mea-
+sures of association and Hardy-Weinberg disequilibrium for
+fine-mapping in case-control studies. Stat Med. 2006;25(1):
+105­126.
+APPENDIX 1
+For one-way tables, the RS (16, 17) v2 statistic provides
+a design-based goodness-of-fit test for specified null pro-
+portions with the ``TESTP¼'' option in the SURVEYFREQ
+procedure in SAS software. Under the null hypothesis, the
+RS v2 statistic approximately follows a v2 distribution with
+(C À 1) degrees of freedom for a table with C levels. The RS
+v2 QRS
+is computed as QRS
+¼ QP
+/d, where d is the design
+correction for one-way tables and QP
+is given by
+QP
+¼ ðn= ^
+NÞ
+X
+C
+À
+^
+N
+C
+À EC
+Á2
+=EC
+;
+where n is the total sample size, ^
+N is the estimated overall
+total, ^
+NC
+is the estimated total for level C, and EC
+is the
+expected total for level C under the null hypothesis. For
+specified null proportions, the expected total for level C is
+given by EC
+¼ ^
+NP0
+C
+, where P0
+C
+is the null proportion for
+level C.
+The design correction uses the null hypothesis propor-
+tions specified with the ``TESTP¼'' option. The design
+correction is computed as
+d ¼
+X
+C
+À
+1 À P0
+C
+Á
+Deff0
+ð ^
+PC
+Þ=ðC À 1Þ;
+where Deff0
+À
+^
+PC
+Á
+¼ Var
+À
+^
+PC
+Á
+VarSRS
+À
+P0
+C
+Á
+¼ Var
+À
+^
+PC
+Á
+ÈÀ
+1 À f
+Á
+P0
+C
+À
+1 À P0
+C
+ÁÀ
+n À 1
+ÁÉ
+, ^
+PC
+is the proportion esti-
+mate for table level C, f is the overall sampling fraction, n is
+the number of observations in the sample, Varð ^
+PC
+Þ is the
+design-based variance of ^
+PC
+, and VarSRS
+À
+P0
+C
+Á
+is the
+variance of the hypothesized proportion, P0
+C
+, for an SRS
+of identical sample size.
+For a stratified cluster sample design, define the
+following:
+h ¼ 1, 2, . . ., H is the stratum number with a total of H strata;
+i ¼ 1, 2, . . ., nh
+is the cluster number within stratum h, with
+a total of nh
+sample clusters in stratum h; j ¼ 1, 2, . . ., mhi
+is
+the unit number within cluster i of stratum h, with a total of
+mhi
+sample units from cluster i of stratum h; and Whij
+is the
+sampling weight for unit j in cluster i of stratum h. Then,
+n ¼
+P
+H
+h¼1
+P
+nhi
+i¼1
+mhi
+is the total number of observations in the
+sample.
+Let dhij
+À
+C
+Á
+¼ 1 if observation (hij) is in column C; 0
+otherwise. The estimates ^
+NC
+and ^
+N are given below.
+^
+NC
+¼
+X
+H
+h¼1
+X
+nh
+i¼1
+X
+mhi
+j¼1
+dhij
+À
+C
+Á
+Whij
+^
+N ¼
+X
+H
+h¼1
+X
+nh
+i¼1
+X
+mhi
+j¼1
+Whij
+APPENDIX 2
+The null hypothesized proportions for the HWE test
+are given by PAA
+¼ ^
+P2
+A
+, PAa
+¼ 2 ^
+PA
+ð1 À ^
+PA
+Þ, and Paa
+¼
+ð1 À ^
+PA
+Þ2
+. We express the allele frequency for the
+A allele, ^
+PA
+, as a function of the genotype frequencies:
+^
+PA
+¼ ^
+PAA
+þ 0:5 ^
+PAa
+¼
+1 þ ^
+PAA
+À ^
+Paa
+2
+:
+Because ^
+DA
+¼ ^
+PAA
+À ^
+P2
+A
+¼ ^
+PAA
+À
+
+1 þ ^
+PAA
+À ^
+Paa
+2
+2
+,
+@ ^
+DA
+@ ^
+PAA
+¼ 1 À
+
+1 þ ^
+PAA
+À ^
+Paa
+2
+
+¼ 1 À ^
+PA
+;
+@ ^
+DA
+@ ^
+PAa
+¼ 0;
+and
+@ ^
+DA
+@ ^
+Paa
+¼
+
+1 þ ^
+PAA
+À ^
+Paa
+2
+
+¼ ^
+PA
+.
+Let V ¼ (vij
+/n), i ¼ 1, 2, 3; j ¼ 1, 2, 3 be the variance
+covariance matrix of ð ^
+PAA
+; ^
+PAa
+; ^
+Paa
+Þ for a general survey
+940 Moonesinghe et al.
+Am J Epidemiol 2010;171:932­941
+design in which n is the sample size. Then, from Taylor
+series linearization, n
+Vð ^
+DA
+Þ %
+À
+1 À ^
+PA
+0 ^
+PA
+Á
+2
+4
+v11 v12 v13
+v12 v22 v23
+v13 v23 v33
+3
+5
+0
+@
+1 À ^
+PA
+0
+^
+PA
+1
+A
+¼
+À
+1 À ^
+PA
+Á2
+v11
+þ 2 ^
+PA
+
+1 À ^
+PA
+
+v13
+þ ^
+P2
+A
+v33
+:
+Because ^
+P1
+þ ^
+P3
+¼ 1 À ^
+P2, v11
+þ 2v13
+þ v33
+¼ v22
+and nVð ^
+DA
+Þ % ð1 À 2 ^
+PA
+Þð1 À ^
+PA
+Þv11
+þ ^
+PA
+ð1 À ^
+PA
+Þv22
+þ
+^
+PA
+ð2 ^
+PA
+À 1Þv33
+.
+The design effects for proportions ^
+PAA
+, ^
+PAa
+, and ^
+Paa
+are
+given by
+Deff0
+ð ^
+PAA
+Þ ¼
+v11
+v01
+, Deff0
+ð ^
+PAa
+Þ ¼
+v22
+v02
+, and Deff0
+ð ^
+Paa
+Þ ¼
+v33
+v03
+, where v01
+/n, v02
+/n, and v03
+/n are the variances of ^
+PAA
+,
+^
+PAa
+, and ^
+Paa
+for SRS designs based on the null hypothesized
+proportions. Finally, using the fact that v01
+¼ ^
+P2
+A
+
+1 À ^
+P2
+A
+
+,
+v02
+¼ 2 ^
+PA
+ð1 À ^
+PA
+Þð1 À 2 ^
+PA
+ð1 À ^
+PA
+ÞÞ, and v03
+¼
+ð1 À ^
+PA
+Þ2
+ð1 À ð1 À ^
+PA
+Þ2
+Þ, and the variance of ^
+DA
+under
+the null hypothesis for an SRS, nVsrs
+ð ^
+DA
+Þ ¼ ^
+P2
+A
+
+1 À ^
+P2
+A
+
+,
+the design correction, dHW
+, is given by
+dHW
+¼
+Vð ^
+DA
+Þ
+Vsrs
+ð ^
+DA
+Þ
+¼ ð1 þ ^
+PA
+Þð1 À 2 ^
+PA
+ÞDeff0
+ð ^
+PAA
+Þ
+þ 2ð1 À 2 ^
+PA
+ð1 À ^
+PA
+ÞÞDeff0
+ð ^
+PAa
+Þ
+þ ð2 ^
+PA
+À 1Þð2 À ^
+PA
+ÞDeff0
+ð ^
+Paa
+Þ:
+A HWE Test for Complex Survey Designs 941
+Am J Epidemiol 2010;171:932­941
+

@@ -1,0 +1,1091 @@
+Rational inattention: a research agenda
+Christopher A.Sims
+(Princeton University)
+Discussion Paper
+Series 1: Economic Studies
+No 34/2005
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Heinz Herrmann
+Thilo Liebig
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-1
+Telex within Germany 41227, telex from abroad 414431, fax +49 69 5601071
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Reproduction permitted only if source is stated.
+ISBN 3­86558­090­4
+Non-technical summary
+Implications of rational inattention
+The majority of macro models currently in use assume that the market players
+have rational expectations and can process information immediately and without
+restrictions. These assumptions are justified, first, in that they make the models
+easier to solve. Second, the Lucas critique negates certain forms of limited rational
+expectations. Rational expectations and the unrestricted ability to process
+information also imply, however, that prices and market players' behaviour adapt
+quickly and without error to new information. Yet this does not match what is
+generally observed in reality. At the same time, numerous empirical studies show
+that market players' expectations are not rational in many cases.
+Recently, theories have been developed that model imperfect information and
+deviations from rational expectations or cost-inducing information procurement
+and processing and study their implications. This includes, for example, learning
+literature (eg Sargent (1993), Evans und Honkapohja (2001)), robust control
+literature (eg Hansen and Sargent (2001), Giannoni (1999)) and behavioural
+economics literature (eg Laibson (1997), Benábou and Tirole (2001)). This paper
+is a contribution to this corpus of literature and adopts another way of modelling
+imperfect information of market players. It assumes that the market players have
+limited capacities to process information if shocks hit the economy and the market
+players receive and analyse signals. In this work the author makes use of the
+coding theory developed by engineering science. This is based on the idea that
+information initially flows through a "channel" before it reaches the market players.
+Depending on the degree of capacity to process information, it may then be
+fraught with errors which, in turn, influence the decisions of the market players.
+The advantage of this approach over the more psychological approaches in some
+of the recent literature is that it develops predictions about deviations from perfect
+optimizing behavior from a minimal set of assumptions, without reliance on
+possibly controversial psychological detail. Its advantage over approaches that
+simply postulate "measurement error" in people's observations is that the form of
+observation errors is predicted by the theory, from the structure of people's
+optimization problems.
+Nichttechnische Zusammenfassung
+Implikationen rationaler Unaufmerksamkeit
+Die Mehrzahl der gegenwärtigen Makromodelle nimmt an, dass die Marktteilnehmer
+rationale Erwartungen haben und Informationen sofort und ohne Einschränkungen
+verarbeiten können. Diese Annahmen werden zum einen dadurch gerechtfertigt, dass
+so die Modelle einfacher zu lösen sind. Zum anderen verneint die Lucas Kritik
+bestimmte Formen begrenzter rationaler Erwartungen. Rationale Erwartungen und die
+unbegrenzte Fähigkeit, Informationen zu verarbeiten, implizieren aber auch, dass
+Marktteilnehmer und Preise schnell und ohne Fehler neue Informationen verarbeiten.
+Das trifft in der Realität aber im allgemeinen nicht zu. Gleichzeitig zeigen viele
+empirische Untersuchungen, dass die Erwartungen der Marktteilnehmer oft nicht
+rational sind.
+In neuerer Zeit sind Theorien entwickelt worden, die unvollständige Informationen und
+Abweichungen von rationalen Erwartungen modellieren oder auch die Beschaffung
+kostenträchtiger Informationen und die die sich daraus ergebenden Implikationen
+studieren. Dazu gehört z. B. die Literatur über das Lernen (siehe Sargent, 1993 und
+Evans und Honkapohja, 2001), die Literatur zur robusten Steuerung (siehe Hansen und
+Sargent, 2001, Giannoni, 1999) und die Literatur zum ökonomischen Verhalten (siehe
+Laibson, 1997, Benabou und Tirole, 2001). Dieses Papier ist ein Beitrag zu dieser
+Literatur; es beschreitet aber einen anderen Weg, um unvollständige Informationen von
+Marktteilnehmer abzubilden. Es nimmt an, dass die Marktteilnehmer begrenzte
+Fähigkeiten haben, Informationen zu verarbeiten, wenn Schocks die Volkswirtschaft
+treffen und die Marktteilnehmer Signale empfangen und verarbeiten. In dieser Arbeit
+verwendet der Verfasser die Kodierungstheorie der Ingenieurswissenschaften. Sie
+basiert auf der Idee, dass Informationen zunächst durch einen Kanal fließen, bevor sie
+beim Marktteilnehmer ankommen. Je nachdem welche Kapazität zur Verfügung steht,
+um Informationen zu verarbeiten, kann sie mit Fehlern belastet sein, die dann die
+Entscheidungen der Marktteilnehmer beeinflussen.
+Der Vorteil dieses Ansatzes gegenüber einigen mehr psychologischen Ansätzen
+besteht darin, dass er Voraussagen über die Abweichungen vom perfekten
+optimierenden Verhalten macht und dabei mit einer geringen Anzahl von Annahmen
+auskommt und nicht auf psychologische Details angewiesen ist, die möglicherweise
+umstritten sind. Der Vorteil gegenüber der einfachen Annahme von Messfehlern in den
+Beobachtungen besteht darin, dass die Form des Beobachtungsfehlers von der Theorie
+erklärt werden und von der Struktur des Optimierungsproblems der Menschen
+abgeleitet werden kann.
+RATIONAL INATTENTION
+RATIONAL INATTENTION: A RESEARCH AGENDA
+CHRISTOPHER A. SIMS
+ABSTRACT. The literature applying information-theoretic ideas to economics has
+so far considered only Gaussian uncertainty. Ex post Gaussian uncertainty can be
+justified as optimal when the associated optimization problem is linear-quadratic,
+but the literature has often assumed Gaussian uncertainty even where it cannot
+be justified as optimal. This paper considers a simple two-period optimal saving
+problem with a Shannon capacity constraint and non-quadratic utility. It derives
+an optimal ex post probability density for wealth in two leading cases (log and lin-
+ear utility) and lays out a general approach for handling other cases numerically. It
+displays and discusses numerical solutions for other utility functions, and consid-
+ers the feasibility of extending this paper's approaches to general non-LQ dynamic
+programming problems. The introduction of the paper discusses approaches that
+have been taken in the existing literature to applying Shannon capacity to eco-
+nomic modeling, making criticisms and suggesting promising directions for fur-
+ther progress.
+I. INTRODUCTION
+In a pair of earlier papers1 I have argued for modeling the observed inertial re-
+action of economic agents to external information of all kinds as arising from an
+inability to attend to all the information available, and for treating that inability as
+arising from finite Shannon capacity. Shannon capacity is a measure of information
+flow rate that is inherently probabilistic. It uses the reduction in the entropy of a
+probability distribution as the measure of information flow. The entropy of a dis-
+tribution is a global measure of the uncertainty implied by the distribution, relative
+to some base distribution. Because of this dependence on the base, the entropy of a
+distribution is not uniquely defined, but if we consider the joint distribution of two
+random vectors or variables, the expected reduction in entropy of one of the two
+achieved by observing the other of the two, the mutual information implied by
+the joint distribution, is uniquely defined, independent of any base. This measure
+Date: August 18, 2005.
+This research was supported in part by NSF grant SES-0350686. The paper was originally pre-
+pared for and presented at the Deutsche Bundesbank Spring Conference, May 2005.
+1(Sims, 2003, 1998). The earlier paper contains an appendix arguing that Shannon capacity makes
+sense as a model of inattention. The later one gives explicit solutions for some simple economic
+models with a linear-quadratic structure.
+c 2005 by Christopher A. Sims. This document may be reproduced for educational and research
+purposes, so long as the copies contain this notice and are retained for personal use or distributed
+free.
+1
+RATIONAL INATTENTION 2
+of mutual information can be derived from a few reasonable axioms, but it is per-
+vasive less because of its axiomatic appeal than because has proved to be exactly
+the concept appropriate for studying information flows in physical communica-
+tion channels. A Shannon "channel" is a set of possible inputs, a set of possible
+outputs, and a conditional distribution for outputs given inputs. From these ele-
+ments, it is possible to calculate a tight upper bound for the mutual information
+between inputs and outputs, which is called the channel's capacity. It is the mea-
+sure of information flow we use in characterizing modems or internet connections
+in bits per second or bytes per second. Shannon showed that no matter what we
+might wish to send through the channel, whether music, text, or spreadsheets, and
+no matter what the physical nature of the channel -- wires, optical cables, radio
+transmission, or a messenger service -- it is possible to send information through
+the channel at a rate arbitrarily close to capacity.
+Economists, particularly macroeconomists, have recognized the need to account
+for the inertia in observed economic behavior and have modeled it with a variety of
+devices -- menu costs, adjustment costs, information delay, implementation delay,
+etc. As my two earlier papers argued, these mechanisms can match the observed
+pattern -- slow, smooth cross-variable responses, combined with less smooth id-
+iosyncratic randomness -- only by postulating elaborate inertial schemes that are
+both difficult to connect to observation or intuition and critically important in mak-
+ing model behavior realistic. One appeal of the rational inattention idea (that is,
+of modeling agents as finite-capacity channels) is that it can in principle explain
+the observed patterns of inertial and random behavior by a mechanism with many
+fewer free parameters. Another is that it fits well with intuition; most people every
+day encounter, or could very easily encounter, much more information that is in
+principle relevant to their economic behavior than they actually respond to. The
+notion that this is because their are limits to "attention", and that such limits might
+behave like finite Shannon capacity, is intuitively appealing.
+II. RECENT DEVELOPMENTS IN THE LITERATURE
+A number of recent papers in macroeconomics and finance have used information-
+theoretic ideas (Ma´
+ckowiak and Wiederholt, 2005; Luo, 2004; Mondria, 2005; Moscarini,
+2004; Van Nieuwerburgh and Veldkamp, 2004a,b; Peng and Xiong, 2005; Peng, 2005).
+While these papers develop some valuable insights, it is worth noting that they
+have made assumptions, to allow tractable modeling, that are hard to defend and
+can lead to anomalous results. Some of these limitations are common to all or
+nearly all of the papers.
+II.1. Not allowing fully endogenous choice of the form of uncertainty. It is cen-
+tral to the idea of modeling individuals as capacity-constrained that the nature,
+2
+RATIONAL INATTENTION 3
+not just the quantity of their uncertainty about external signals (prices, income,
+wealth, asset yields, etc.) is subject to choice. The power of information theoretic
+ideas arises from the fact that the available joint stochastic processes for channel
+input and channel output are, to an arbitrarily good approximation, limited only
+by the capacity of the channel, not by its physical nature. In a model of an opti-
+mizing agent, the agents' objective function will therefore determine the stochastic
+process for the joint behavior of actions and external signals. The articles cited in
+the previous paragraph, with the partial exception of Luo's, postulate directly a
+simple parameteric form for this joint process, without deriving that form from
+the model's objective function.
+To be more specific, the papers all assume Gaussian prior uncertainty about a
+state variable and Gaussian posterior (after information flow) uncertainty. Fur-
+thermore, in some cases they assume that the prior and posterior uncertainty is
+over a random vector and is i.i.d., either over the elements of the vector itself or
+over a set of factors that generate the distribution of the vector. (Luo and Mondria
+do consider endogenous choice of posterior covariance structure.) It is true that
+Gaussian posterior uncertainty can be shown to be optimal when the loss function
+is quadratic, but only Luo's paper considers cases of pure quadratic loss. Even if
+the loss function is quadratic, it is not generally optimal for a capacity-constrained
+agent to have i.i.d. posterior uncertainty across the same variables or factors that
+were a priori i.i.d. As we will see in some examples below, standard forms of utility
+functions in an economic model generate strongly non-Gaussian forms of optimal
+posterior uncertainty.
+II.2. Back-door information flows. Several of the papers develop market equilib-
+ria, and to avoid complications assume that market prices are observed without
+error. But in these equilibria market prices are information-carrying random vari-
+ables. Assuming they can be observed without error amounts to assuming un-
+bounded information-processing capacity.2 Counter-intuitive results can emerge
+when we assume perfect observation of prices combined with capacity-constrained
+observation of some other source of information.
+II.3. Distinguishing human information use, costly external information trans-
+mission and costly investigation. The models in Sims (2003) and those presented
+below in this paper are motivated by the idea that information that is freely avail-
+able to an individual may not be used, because of the individual's limited infor-
+mation processing capacity. That capacity is unitary, allocatable to control many
+2An infinitely long sequence of digits can carry an infinite amount of information. Such a se-
+quence, with a decimal point in front of it, is a real number. So if I can transmit an arbitrary real
+number without error in finite time, I have an infinite-capacity channel.
+3
+RATIONAL INATTENTION 4
+dimensions of uncertainty the individual faces. The "price" of this information is
+the shadow price of capacity in the individual's overall optimization problem.
+Individuals or firms may also choose Shannon capacities of periodical subscrip-
+tions, telephone lines, internet connections, and other "wiring" that brings in in-
+formation from the outside world. For a financial firm with a large staff constantly
+active in many markets, the wiring costs of information may indeed be more im-
+portant, or at least comparable to, the costs of mapping information, once it is
+on the premises, into human action. However for most individuals, wiring costs
+are likely to be small relative to the costs associated with human information pro-
+cessing. In any case the costs of the two kind of information will generally be quite
+distinct, on a per-bit basis. One can't replace the human decision-making that links
+prices, incomes and wealth to real actions with a fiber-optic cable.
+Both wiring and internal human information processing are reasonably mea-
+sured in bits, with costs linear, or at least smooth, in bits. There is another kind
+of "information", however, whose cost is different, and probably usually not well
+measured in bits. In the stock market, an individual investor has a vast amount
+of information about individual stocks available at practically no or trivial cost, in
+newspapers and on the internet. It is likely that he does not use all this information,
+due to limited information processing capacity. But it is also possible to develop
+information through costly investigation -- interviewing experts in a firm's tech-
+nical area, conducting surveys of consumers to determine their reactions to the
+company's product, etc. The CEO of a drug company might contemplate approv-
+ing a clinical trial to determine whether or not a new drug is an improvement on
+existing treatments, approving a focus group investigation of which of two pack-
+ages is most preferred by consumers, or stepping outside to see if it's raining. Each
+of these three actions would (if the answers had 50-50 probability in advance) yield
+one bit of information. But it is no help to decision making to think of them as bits
+limited by a capacity constraint.
+Several of the finance-oriented papers cited above consider at least some models
+in which uncertainty about an asset's yield is quantified as the standard deviation
+of its distribution, and information costs are quantified as bits, measured by re-
+duction in the log of the standard deviation. But this is only appropriate if the
+information is thought of as freely available, with only wiring costs or human ca-
+pacity costs preventing it from being known with certainty. In asset markets this
+is almost never the case. Sophisticated, continuously trading investors have un-
+certainty that is dominated by information that is not freely available, and less
+sophisticated investors, who do fail to use instantly all freely available informa-
+tion, do not have the option of reducing the log standard error of their uncertainty
+about yields to arbitrarily low levels according to a linear cost schedule.
+4
+RATIONAL INATTENTION 5
+While failure to make these distinctions does not necessarily make a model unin-
+teresting, it can make a model's interpretation difficult. Especially in highly liquid
+financial markets, It is probably important to recognize that wiring capacity and
+human information-processing capacity have different costs. It is certainly impor-
+tant to to distinguish information about asset returns that is freely available but
+costly to act upon from information that can be obtained only through costly in-
+vestigation.
+III. MOVING BEYOND THE LQ GAUSSIAN CASE
+For some purposes linear-quadratic Gaussian (LQG) models may give reason-
+able approximations. Luo (2004) applies information-theoretic ideas to optimiza-
+tion problems with linearized first order conditions as are commonly used recently
+in macroeconomic modeling. The idea is that if uncertainty is fairly small, lin-
+ear approximations to the model's FOC's may be quite accurate, so that the LQG
+framework remains an adequate approximation even with capacity constraints.
+While this is an idea worth pursuing, because it yields insights and is tractable,
+there is reason to worry about its range of applicability. If rational inattention is
+to explain much of observed inertia in behavior, people must be using a small
+part of their capacity to monitor economic variables. But in this case information-
+processing based uncertainty will be large, and this in itself will tend to undermine
+the accuracy of the local LQG approximation. Also, there are many interesting is-
+sues, like the interaction of finite capacity with the degree of risk aversion that is
+investigated below, that cannot be studied in an LQG framework.
+In this section, therefore, we show that moving beyond the LQG framework is
+feasible. We consider several variations on a simple two-period saving problem.
+The problem is so simple that the information flows we will be looking at are un-
+realistically low. Nonetheless it is interesting to see that the model provides some
+insights into behavior, is computationally manageable, and suggests that a more
+interesting fully dynamic version might be feasible.
+The problem is
+max
+f 0<c<w
+log c · (w - c) f (c, w) dw dc (1)
+subject to
+f (c, w)  0 (2)
+0<c<w
+f (w, c) dc = g(w) (3)
+5
+RATIONAL INATTENTION 6
+0<c<w
+log f (c, w) · f (c, w) dw dc
+-
+
+0
+log
+
+c
+f (c, w) dw ·
+
+c
+f (c, w) dw dc
+-
+
+0
+log g(w) · g(w) dw   . (4)
+The expression (1) is a standard assertion that we are maximizing expected utility,
+where that is the sum of the expected utility of current consumption, log c, and that
+of next period's consumption, log(w - c). (We could include a gross interest rate
+greater than one and a discount factor less than one without changing anything
+important.) What is unusual is that the "choice variable" with respect to which we
+maximize is not current consumption c, but the joint pdf of c with wealth w. The
+constraint (2) recognizes that f = 0 puts us at the boundary of feasible values for
+probability densities. The constraint (3) tells us that the marginal distribution of
+wealth is fixed, so all that is available for choice is f (c, w)/g(w), the conditional pdf
+of c given w. The information constraint is (4). The last term in (4) is the entropy of
+the marginal distribution of w, the next to last term is the entropy of the marginal
+distribution of c, and their sum is what the entropy of c and w's joint distribution
+would be if they were independent. The first term is minus the entropy of the
+actual joint distribution determined by f. The the three terms together form the
+mutual information between c and w. This is also the expected reduction in the
+entropy of the w distribution from observing c, and also the expected reduction in
+the entropy of the c distribution from observing w.
+The first order condition for the problem is
+log c · (w - c)
+=  1 + log f (c, w) - 1 - log
+
+c
+f (c, w) dw + µ(w) + (c, w) . (5)
+Here µ is the Lagrange multiplier on (3) and (c, w) is a stand-in for the fact
+that when f = 0, the FOC's do not have to hold. (Since at f = 0 we will have
+log f = -, no finite value of (c, w) makes the FOC hold when log(c · (w - c)) is
+finite, but the non-convexity of the constraint set means that solutions on the f = 0
+boundary can nonetheless occur at such c, w values.) If we let q(w | c) denote the
+conditional pdf of w given c,  = 1/, and (w) = e-µ(w), this expression can, at
+points where f > 0, be rearranged as
+q(w | c) = (w)c(w - c) . (6)
+The function  must, according to (6), make the integral of the right-hand side with
+respect to w one, regardless of the value of c. One  that works (the only one?) is a 
+6
+RATIONAL INATTENTION 7
+proportional to w-2-1. With this choice of , if we rewrite in terms of v = w/c - 1,
+the integral becomes
+
+c
+0w-2-1c(w - c) dw = 0
+
+0
+(v + 1)-2-1c-2-1cvcc dv . (7)
+Since the terms in c cancel, the integral does not depend on c, and by choosing 0
+properly we can make the integral one.
+The form of the integrand in (7) is proportional to that of an F(2 + 2, 2) density.
+Normalized to have constant spread, this does approach normality as  = 1/ ap-
+proaches infinity, i.e. as the shadow price of information in utility units approaches
+zero. The peak is at (2 - 1/( - 1))c, the mean at (2 + 1/( - 1))c, for  > 1. The
+distribution is more tightly concentrated around w = 2c the larger is  = 1/.
+In other words, as the shadow price  on the information constraint declines, we
+come closer and closer to the certainty solution.
+Figure 1 shows a contour map of the pdf of w | c for a case where  = .5. Note
+that the conditional distribution of w | c in this case is centered roughly at 2c, as
+we expect. The solid line on the figure shows the value of c that would be chosen
+under certainty, w/2, and the dotted line shows c = w, which is the lower bound
+on w for a given c.
+Figure 2 displays these conditional densities in a different way. Each line shows
+q(w | c) for a different value of c between zero and .5. These are all of course
+truncated, scaled F densities. They have all been scaled to integrate to 1 over the
+(0, 1) interval, to make them comparable to numerically derived densities we will
+show below.
+As is true for the LQ case, we find here that the form of the distribution for
+w conditional on available information at decision time is invariant to g(w), the
+marginal pdf for w before information flow, so long as the density has full support.
+This is not to say that the conditional distribution itself is invariant to g. If g has
+high entropy, then with a given  it will not be possible to reduce entropy much,
+ will be large, and the  parameter that determines how close c is to w/2 will be
+small. But there is a single parameter, , that controls all the possible variation in
+the form of the distribution of w | c when f has full support.
+The first-order conditions need not hold at points where the joint pdf f (c, w) is
+zero. Obviously if g(w) is zero over some range, f (c, w) must also be zero over the
+corresponding range of w values. Even where g(w) has the whole non-negative
+real line as its support, it is possible for p(c) to emerge as zero over some set of
+c values and indeed even possible for the marginal distribution of c to emerge as
+discrete. If the conditional distributions of c given w has, over any set of w's with
+non-zero probability, discrete weight on points that do not have discrete weight
+in the marginal distribution of c, this would imply an infinite information flow.
+7
+RATIONAL INATTENTION 8
+0.0
+0.2
+0.4
+0.6
+0.8
+0.1 0.2 0.3 0.4 0.5
+0.2
+0.4
+0.6
+0.8
+1.0
+p(w|c),  = 1  = 0.5, unbounded g(w)
+C
+W
+FIGURE 1.
+But so long as any c values getting discrete weight in the conditional distributions
+also have discrete weight in the marginal, the information flow is finite. Of course
+at discrete values of c that have non-zero probability, the first-order conditions of
+the problem hold, so for these c's, as for any others with positive density value,
+we expect q(w | c) to take on the form we derived above, over its support. It is
+possible, though, for q(w | c) to have less then full support. This obviously allows
+deviation from the F distribution we derived above, but of a particular form, since
+it must have the shape of an F density over its support.
+While the distribution of w | c is easy to characterize here, it is not easy (for
+me, anyway) to characterize the distribution of c | w, even in the case where the
+marginal on w is assumed to have the same scaled-F form as the post-observation
+distribution for savings, or to find a form for the marginal of c that, together with
+the known form for w | c, implies that the marginal for w is a scaled F. However
+this is just a very simple example. Fully dynamic models are likely to generate
+distributions complicated enough to require numerical methods for solution in
+any case.
+8
+RATIONAL INATTENTION 9
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6 0.8
+p(w|c), log utility,  = 0.5, unbounded g
+w2
+pgcg1l.5Cont[1, ]
+FIGURE 2.
+We can see an analytic solution for one other simple special case: where the util-
+ity function is linear and the c < w constraint is maintained.3 If the utility function
+is undiscounted, so U(c, w) = c + w - c = w, the problem has the trivial solution
+c = 0, with no information at all used. The problem is a little more interesting if
+utility is discounted, so U = c + (w - c) with 0 <  < 1. For any U, the FOC's
+take the same form as (5), but with U(c, w) replacing the log function on the left of
+the equality. For this linear case, the analog of (6) is
+q(w | c) = v(w)e(w+(1-)c) (8)
+By choosing v(w) proportional to e-w, we get this in a form that, when integrated
+from c to  w.r.t. w, gives a constant value. The implied form for the conditional
+pdf of u = w - c given c is (1 - )e-(1-)u. Here we can note that as  increases
+(so information is flowing more freely) the solution converges toward c = w, which
+is the optimum without uncertainty. It is also interesting that c and w are implied
+3Without the c < w constraint, and with discounting, agents who can borrow at zero interest
+will obviously push c to infinity.
+9
+RATIONAL INATTENTION 10
+to be independent conditional on any rectangle inside the w > c region. These risk-
+neutral agents waste no capacity on matching c to w itself, except as it contributes
+toward knowing where the w = c boundary is.
+In the model with log utility, capacity-constrained agents have expected wealth,
+given their consumption, that exceeds the level corresponding to the deterministic
+solution w = 2c. The higher are information costs (the lower is capacity), the longer
+is the tail on the w | c distribution and the larger the excess E[w | c] - 2c. There
+is an effect that seems to go in the opposite direction, of course: the mode of the
+w | c distribution falls further below the deterministic value as information costs
+increase. However when data are aggregated across many individuals in different
+circumstances, we would expect the expectation result to dominate. We thus see a
+"precautionary savings due to information costs" effect.
+But notice that the model with linear utility produces the opposite result. These
+risk-neutral agents who discount the future, while facing a gross rate of return of
+1, are constrained from consuming all their wealth in the first period only by their
+uncertainty about what what that total wealth is. Relaxing their capacity constraint
+produces less saving.
+With quadratic utility, the left-hand side of (5) is quadratic. Normalizing the
+utility function to U(c, w) = c - 1
+2
+c2 + (w - c) - 1
+2
+(w - c)2 leads to the analog of (6)
+as
+q(w | c) = v(w)e(w-(c2+(w-c)2)/2) . (9)
+If we drop the c < w constraint and also the c > 0 constraint, the right-hand-side
+of (9) as a function of w is proportional to a Gaussian pdf with variance 1/, with
+only the mean of the distribution dependent on c. Hence we can make the right-
+hand-side's integral one by choosing v(w) to be constant. It is then easy to verify
+that if the exogenously specified marginal pdf for w, g(w), is Gaussian, the joint
+pdf for c and w is Gaussian. Observe that whatever g(w) we start with, so long
+as it allows a solution with f > 0 everywhere, the conditional distribution of w
+is Gaussian. Thus if this problem were part of a recursive scheme, all the joint
+distributions of successive c's and w's after the first period would be Gaussian.
+However, this result depends crucially on there being no c < w or c > 0 re-
+striction. With these restrictions, despite the form of (9), the dependence of limits
+of integration on c will require at least a non-constant v(w), and possibly some
+regions of f = 0.
+So we can conclude from these examples:
+· A hard budget constraint is not incompatible with a finite rate of informa-
+tion flow. The conditional distribution of c | w can be confined to the (0, w)
+interval, even though observation of neither c nor w ever gives perfect in-
+formation about the other variable. An agent behaving this way would be
+10
+RATIONAL INATTENTION 11
+making decisions that only imperfectly determine c, based on his imperfect
+knowledge of w. For example, writing checks or using credit cards and oc-
+casionally finding that the account is overdrawn, or getting to the checkout
+counter of the grocery store and realizing he will have to put a few things
+back, or buying $10 worth of gasoline without figuring out in advance how
+many gallons that will be.
+· Uncertainty arising from information processing can easily be quite non-
+normal, even when exogenous shocks are small. In this example, there are
+no exogenous shocks. Normality is a good approximation only when the
+information constraint is not having a strong effect.
+· A capacity constraint can have powerful implications for savings behavior.
+This accords with the facts that most people only vaguely aware of their
+net worth, are little-influenced in their current behavior (at least if under
+50) by the status of their retirement account, and can be induced to make
+large changes in savings behavior by minor "informational" changes, like
+changes in default options on retirement plans.
+IV. SOME MODELS THAT REQUIRE A COMPUTATIONAL APPROACH
+I have no recipe for exhaustively identifying cases like log utility, linear utility,
+and quadratic utility without borrowing constraints, in which an analytic solution
+for q(w | c) is obtainable. Indeed I have the impression that such cases are very
+rare. So it is worthwhile to look at some examples of commonly used U(x, y)
+functions and see how hard it is to compute solutions.
+For an f > 0 solution, the first-order conditions and the constraint that the mar-
+ginal pdf for w be the given g(w) lead to the pair of equations
+eU(c,w)v(w)dw = 1 , all c, (10)
+h(c)eU(c,w)v(w)dc = g(w) , all w , (11)
+which have to be solved for v and h, where h is the marginal pdf of c. This is
+a recursive linear system. It looks like we could discretize it, solve the resulting
+simple linear system from (10) for v, then use those results in (11) to create another
+simple linear equation system to solve for h. This approach does not work.
+Each of these equations is what is known as a Fredholm integral equation of type
+1, which are notoriously ill-conditioned except in special cases. In other words, a
+v that makes the norm of the vector of discrepancies between right and left hand
+sides of (10) nearly zero, can differ from the true solution in v-space by a large
+amount. Furthemore, it is not going to be uncommon for there to be regions of
+11
+RATIONAL INATTENTION 12
+c, w space with f (c, w) = 0 in the solution. If one knew where these were, (10-
+11) could be used on the remaining c, w values. But in general we will not know
+where they are, and searching over all the possible combinations of such regions is
+prohibitively complicated.
+An approach that I have found to work is simply to discretize f itself and maxi-
+mize the Lagrangian
+U(c, w) f (c, w) dc dw - H(W, C) - µ(w) f (c, w) dc - g(w) . (12)
+with  fixed at some positive number. Here H(W, C) is the mutual information
+between w and c in their joint distribution, the same object that appears on the left-
+hand side of the information constraint (4). This can work because points at which
+f = 0 simply drop out of both the information constraint and the expected utility.
+I have imposed f > 0 by maximizing over log f as the parameter vector. This
+means of course that the parameters corresponding to f (c, w) = 0 values are ill-
+determined, but gradient-based search methods (at least my own, csminwel.R,
+which is what I used) still perform well, converging nicely for the f (c, w) > 0
+values and leaving log f extremely negative at points where clearly f (c, w) = 0.
+The discretized solutions below all are based on using an equi-spaced grid with
+16 c values ranging from .01 to .5 and 31 w values ranging from .02 to 1. The
+marginal pdf g for w is given in each case as g(w) = 2w. There are then 31 adding-
+up constraints, and 8 × 15 = 120 zero constraints on points where c > w, leaving
+31 × 16 - 120 - 31 = 345 free parameters. The specific normalization I used was an
+unconstrained 15 × 31 matrix  of parameters, with the entry fij of the discretized
+f determined as gj exp i-1,j
+)/(1 + ¯
+) for i > 1 and as gj/(1 + ¯
+) for i = 1, and
+with ¯
+ = i
+exp(ij
+).
+Though for some problems 345 parameters would be so many as to raise compu-
+tational difficulties, here there seems to be no trouble with them. Using interpreted
+(in the R language4) code and numerical derivatives, convergence is achieved in
+about 450 iterations, with each iteration taking about 1.5 seconds (making the
+whole computation take about 11 minutes) on a 3GHz Pentium 4 running Linux.
+They could be made much faster using analytic derivatives, which would not be
+hard to program, and probably also by using compiled code. A more sophisticated
+algorithm could also help. We know the solution should be smooth on its support
+and should have a density with respect to some product measure on c, w space.
+Parameterizing the solution to reflect this knowledge should enable accurate ap-
+proximations with many fewer free parameters.
+4Available at http://lib.stat.cmu.edu/R/CRAN/
+12
+RATIONAL INATTENTION 13
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7
+p(w|c), log utility,  = 0.5, triangle g
+w2
+pgcg1l.5u[1, ]
+FIGURE 3.
+Figure 3 shows the same kind of plot as Figure 2 -- q(w | c) densities with
+various values of c, log utility, and  = .5. The difference is that here, instead of
+showing the theoretical densities for the case where the q s (and hence necessarily
+also g) have unbounded support, we show the numerically computed densities for
+our case of a linearly increasing density with support [0, 1]. The lines on the two
+plots should not match exactly, because one shows a discretized approximation to
+the solution for continuously distributed c and w, while the other shows an exact
+solution for discretely distributed c and w. Nonetheless these conditional pdf's do
+match up, roughly. Note that in Figure 3 there are fewer lines shown, because the
+discreteness and the bounded support for g mean that c does not have full support
+even in [0, .5], as can be seen from Figure 4. In fact, with this degree of information
+constraint, the solution sets c to .4 with probability .72.
+To see the effects of varying degrees of risk aversion, consider calculations for
+the same triangular g(w), but with utility given by the CRRA form
+U(c, w) =
+c1- + w1-
+1 - 
+. (13)
+13
+RATIONAL INATTENTION 14
+0.0 0.1 0.2 0.3 0.4 0.5
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7
+pdf of c,  = 1,  = 0.5, triangle g(w)
+C
+p(c)
+FIGURE 4.
+The values of  in the two examples we consider have been adjusted so that the
+information flow (.88 bits and .85 bits), is about the same for the two cases ( = .5
+and  = 2, respectively) considered, so the differences in results are attributable
+to the differences in the risk aversion parameters. Of course if the model were
+formulated with an actual opportunity cost of information, in consumption goods
+units, the solution with lower risk aversion would most likely imply a choice of
+lower information flow.
+Shaded plots of the joint densities of c and w are shown in Figures 5 and 6. Both
+solutions show discretization, with several values of c receiving zero probability.
+The  = .5 solution puts probability .70 on the highest value of c, which is .37.
+The  = 2 solution also puts probability .70 on its highest c value, but the value
+is slightly lower -- .34. The low risk-aversion solution shows a more discretized
+distribution of c at lower values of w, and puts substantially more probability on
+c values close to the c = w line. This is as would be expected. The  = 2 utility
+function goes to minus infinity as w - c  0 or c  0. It therefore makes it
+worthwhile to be well informed about low wealth values, so that c is not forced
+14
+RATIONAL INATTENTION 15
+0.0 0.1 0.2 0.3 0.4 0.5
+0.2 0.4 0.6 0.8 1.0
+p(c,w), triangle g(w)  = 0.5  = 0.03
+C
+W
+FIGURE 5.
+too close to zero, and also to keep the probability of choosing c close to w (and
+hence w - c small) low.
+With these non-log utility functions, we expect to see deviations from the F form
+of q(w | c). Plots analogous to Figures 2 and 3 for these two non-log utility exam-
+ples are shown in Figures 5 and 8. The high-risk-aversion plot shows narrow finite
+support for q(w | c) at low values of c, and then very flat tails on the pdf's as we
+move to higher c values. The lower-risk-aversion plot shows more of a right tail
+and less narrow support at the low c values, and thin tails at higher c values except
+for the highest, which in both plots is the one with the most weight. These results
+make sense, with the higher risk aversion solution trading higher probability of
+choosing a modest value of c when wealth is in fact high for a lower probability of
+a mismatch between c and w when wealth is low.
+The fact that discreteness in the distribution of c and finite support, varying with
+c, in q(w | c) show up in both these standard cases, despite a continuous marginal
+distribution for w, implies that any numerical approach to solution of rational inat-
+tention models must allow for these possibilities. They are not an artifact of the
+15
+RATIONAL INATTENTION 16
+0.0 0.1 0.2 0.3 0.4 0.5
+0.2 0.4 0.6 0.8 1.0
+p(c,w), triangle g(w)  = 2  = 1
+C
+W
+FIGURE 6.
+triangular g(w). That g(w) was chosen to bring out the differences with degree
+of risk aversion, but the discreteness of the c distribution showed up with every g
+I considered, including standard Beta, F, and Gamma pdf's that peaked below .3
+and were small or zero at w = 1.
+While the discreteness will be a challenge for programmers, it may help the the-
+ory rationalize observed patterns of behavior. Actual choices by individuals in
+response to external information often do seem to have a discrete character.
+V. OTHER POINTS ON THE RESEARCH FRONTIER
+V.1. On to a fully dynamic non-LQG model. Here is the Bellman equation for a
+dynamic programming problem with Shannon capacity as a constraint, the current
+pdf g of w as the state variable, and f (c, w) as the control:
+V(g) = max
+f (·,·)
+U(c) f (c, w) dc dw +  V h(·; c, w) f (w | c) dw f (c, w) dc dw
+(14)
+16
+RATIONAL INATTENTION 17
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6
+p(w|c),  = 0.5,  = 0.03, triangle g
+W
+p(w|c)
+FIGURE 7.
+subject to
+f (c, w) dc = g(w), all w (15)
+f (c, w)  0, all c, w (16)
+H(C, W)   . (17)
+The function h maps the current c, w pair into a conditional density for next pe-
+riod's w. In usual models, it is specified indirectly in the form of an equation like
+wt = (wt-1, ct-1, t) together with a specification that t has a certain pdf and
+is independent of wt-1 and ct-1. The constraint connecting f (c, w) to f (c | w) has
+been left implicit. This problem is in the form of a standard dynamic programming
+problem, except that the state and control variables are both in principle infinite-
+dimensional. But, extending the approach taken above to a two-period problem, I
+believe computing solutions to such problems should be feasible. Economists are
+already succeeding in calculating solutions to equilibrium models with infinite-
+dimensional state spaces.
+17
+RATIONAL INATTENTION 18
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6
+p(w|c),  = 2,  = 1, triangle g
+W
+p(w|c)
+FIGURE 8.
+Note the occurrence of f (w | c) in the argument of the value function on the
+right-hand side in (14). This reflects the fact that the agent must allow some "noise"
+to affect the choice of c in the current period, but can use the noisy observation that
+entered determination of c to update beliefs about next period's w.
+V.2. Rational inattention models of general equilibrium. The work cited earlier
+by van Niewerburgh and Veldkamp and by Mondria includes calculation of mar-
+ket equilibrium with capacity constraints. As already noted in section II, though,
+these models assume costless and perfect observation of market prices, which is
+both contrary to the notion of finite-capacity agents and a source of anomalous re-
+sults. This modeling choice by these authors is not an easily corrected oversight.
+Modeling a market equilibrium with agents who do not know exactly what prices
+are requires being explicit about aspects of market microstructure that are not stan-
+dard parts of the economic theory toolbox and about which we have few stylized
+facts or modeling conventions to guide us.
+A model populated by capacity-constrained agents will not simply balance sup-
+ply and demand via a price mechanism. Agents will not have perfect knowledge
+18
+RATIONAL INATTENTION 19
+of prices, indeed may have only a very rough idea of what they are, as they take
+decisions that affect economic exchange and production. Inventories, retailers,
+wholesalers, demand deposits, cash, and credit cards, are all devices that allow
+agents to make transactions in which quantities and price are known and cho-
+sen only approximately. Few of our models have explicit roles for retailers and
+wholesalers, our models of inventory behavior are only modestly successful, and
+microfounded models of money that connect to data are non-existent. The idea of
+Shannon capacity may be of some help in modeling these phenomena, but they
+are inherently difficult, long-standing problems, so realistic general equilibrium
+models with capacity-constrained agents may not emerge for some time.
+V.3. Macro modeling. Since a standard approach to general equilibrium mod-
+eling with rational inattention will not emerge soon, applying rational attention
+to the representative agent equilibrium models that now constitute mainstream
+macro will also take some time. In the meantime, though, we can see even from
+simple linear-quadratic examples that there are implications for current modeling
+practice. In the linear-quadratic framework, rational inattention behavior is a con-
+strained special case of the behavior of an agent who observes state variables with
+error. While there are some examples of such models in the macroeconomic litera-
+ture (Lucas, 1973; Woodford, 2001), the rational inattention idea should encourage
+us to pay more attention to such models. The objection that there is no physical
+interpretation for the observation error such models postulate is answered by the
+rational inattention framework, and the RI framework gives us some guidance as
+to reasonable properties for the observation error, even when we cannot derive it
+analytically.
+V.4. Public and private information models. Recently, following the paper by
+Morris and Shin (2002), there have been a number of papers considering models
+with public and private information (Hellwig, 2004; Angeletos and Pavan, 2004).
+This work raises interesting questions and arrives at conflicting conclusions about
+the value of "transparency", depending on assumptions about externalities that
+are difficult to calibrate against an actual economy. But for all the diversity in the
+conclusions from this literature, it is all formulated on the assumption that there
+are private information sources with exogenously given attributes and a public in-
+formation source whose stochastic character we can imagine controlling. From a
+rational inattention perspective, this is a strange setup. Capacity-limited agents
+will act as if observing the state of the economy with error even if some public
+authority announces it exactly. The amount of the error will depend both on the
+stochastic properties of the state itself and of any noise in public signals about it. If
+private signals carry a lot of information about privately important variables, in-
+formation they contain about an aggregate state may be ignored or reacted to very
+19
+RATIONAL INATTENTION 20
+slowly and erraticly5. Before these abstract models are applied to policy debates
+about transparency in monetary policy, they need to be tied closely enough to real
+economies that we can judge which of their conflicting conclusions might be cor-
+rect, and this should include consideration of how their conclusions are affected
+by rational inattention.
+VI. IMPLICATIONS FOR MONETARY POLICY
+Rational inattention may have far-reaching implications for macroeconomics
+and monetary policy generally, once its implications are fully worked out. In the
+meantime, though, it may shed some light on transparency in monetary policy.
+For a capacity-limited agent, it is necessary to take actions that respond to the true
+state of the economy at a low information transmission rate. This means that reac-
+tions to the state are either delayed and smoothed, with added idiosyncratic error,
+or they are discretized and randomly timed. A central bank may provide the pub-
+lic with a heavily filtered view of its actions or judgments, on the assumption that
+the public cannot take in the full detail and complexity of its actions and the think-
+ing behind them. In the US, this takes the form of discretized, somewhat randomly
+timed policy actions (changes in the Federal Funds rate) together with a brief para-
+graph rationalizing the action. The paragraph occasionally changes the wording of
+a phrase or two, and the market often reacts strongly to these changes. If enough
+market participants take this simple, discrete sequence of changes in wording as
+a free, low-bit-rate summary of an important state variable, it is unsurprising that
+markets respond discretely to these changes in wording. Even market specialists,
+who know the true state with high precision, will pay attention to the noise in the
+Fed signal because of its effects on other agents.
+If this is what is going on currently, what would be the effect of the Fed's issuing
+a much more detailed inflation report, like those issued periodically by inflation-
+targeting banks? A naive extrapolation might suggest that since the Fed now pro-
+vides very little information, which generates overreaction, overreaction would be
+much worse if the Fed proved much more information. But this is unlikely. Mar-
+ket participants who need a low-bit-rate summary of the state (of the economy, or
+of the Fed's policy stance) would still look for it, but there would not be a unique
+low-bit-rate summary in the Fed's own statements. Market participants who need
+to devote most of their attention elsewhere will still respond noisily and with de-
+lay to Fed statements, but the noise will come from other sources, probably many
+other sources, instead of mainly from the Fed's own efforts to provide a filtered
+5See Ma´
+ckowiak and Wiederholt (2005) for a model with local and aggregate signals related to
+pricing decisions and responded to with capacity constraints.
+20
+RATIONAL INATTENTION 21
+signal. If there are enough other semi-public filterers of monetary news (TV, news-
+papers, investment clubs, lunchtable conversation), the signal processing noise in
+them may partially cancel out at the aggregate level. But even if not, the Fed would
+no longer be itself responsible for generating unnecessary market fluctuations.
+There are other, in my view even stronger, arguments for transparency in mon-
+etary policy. But a rational inattention perspective does help us understand why
+it can be that economies where central banks publish detailed inflation reports do
+not seem to have as much of a problem with overreaction to those reports as the
+Fed does with overreaction to its single paragraphs.
+VII. CONCLUSION
+Abstract and single-agent models incorporating rational inattention are already
+providing us with some useful insights. There is still a long and interesting road
+ahead, though, before we can build models incorporating these insights that can
+be matched to observed data, either at the macro or micro level.
+REFERENCES
+ANGELETOS, G.-M., AND A. PAVAN (2004): "Transparency of Information and Co-
+ordination in Economies with Investment Complementarities," American Eco-
+nomic Review, 94.
+HELLWIG, C. (2004): "Heterogeneous Information and the Benefits of Trans-
+parency," Discussion paper, UCLA.
+LUCAS, ROBERT E., J. (1973): "Some International Evidence on Output-Inflation
+Tradeoffs," American Economic Review, 63(3), 326­334.
+LUO, Y. (2004): "Consumption Dynamics, Asset Pricing, and Welfare Effects under
+Information Processing Constraints," Discussion paper, Princeton University.
+MA ´
+CKOWIAK, B., AND M. WIEDERHOLT (2005): "Optimal Sticky Prices under Ra-
+tional Inattention," Discussion paper, Humboldt University Berlin.
+MONDRIA, J. (2005): "Financial Contagion and Attention Allocation," Discussion
+paper, Princeton University.
+MORRIS, S., AND H. S. SHIN (2002): "The Social Value of Public Information,"
+American Economic Review, 92, 1521­1534.
+MOSCARINI, G. (2004): "Limited Information Capacity as a Source of Inertia," Jour-
+nal of Economic Dynamics and Control, pp. 2003­2035.
+PENG, L. (2005): "Learning with Information Capacity Constraints," Journal of Fi-
+nancial and Quantitative Analysis, 40(2), 307­329.
+PENG, L., AND W. XIONG (2005): "Investor Attention, Overconfidence and Cate-
+gory Learning," Discussion paper, Princeton University.
+SIMS, C. A. (1998): "Stickiness," Carnegie-rochester Conference Series On Public Pol-
+icy, 49(1), 317­356.
+21
+RATIONAL INATTENTION 22
+(2003): "Implications of Rational Inattention," Journal of Monetary Econom-
+ics, 50(3), 665­690.
+VAN NIEUWERBURGH, S., AND L. VELDKAMP (2004a): "Information Acquisition
+and Portfolio Under-Diversication," Discussion paper, Stern School of Business,
+NYU.
+(2004b): "Information Immobility and the Home Bias Puzzle," Discussion
+paper, Stern School of Business, NYU.
+WOODFORD, M. (2001): "Imperfect Common Knowledge and the Ef-
+fects of Monetary Policy," Discussion paper, Princeton University,
+http://www.princeton.edu/~woodford/.
+DEPARTMENT OF ECONOMICS, PRINCETON UNIVERSITY
+E-mail address: sims@princeton.edu
+22
+23
+The following Discussion Papers have been published since 2004:
+Series 1: Economic Studies
+1 2004 Foreign Bank Entry into Emerging Economies:
+An Empirical Assessment of the Determinants
+and Risks Predicated on German FDI Data Torsten Wezel
+2 2004 Does Co-Financing by Multilateral Development
+Banks Increase "Risky" Direct Investment in
+Emerging Markets? ­
+Evidence for German Banking FDI Torsten Wezel
+3 2004 Policy Instrument Choice and Non-Coordinated Giovanni Lombardo
+Monetary Policy in Interdependent Economies Alan Sutherland
+4 2004 Inflation Targeting Rules and Welfare
+in an Asymmetric Currency Area Giovanni Lombardo
+5 2004 FDI versus cross-border financial services: Claudia M. Buch
+The globalisation of German banks Alexander Lipponer
+6 2004 Clustering or competition? The foreign Claudia M. Buch
+investment behaviour of German banks Alexander Lipponer
+7 2004 PPP: a Disaggregated View Christoph Fischer
+8 2004 A rental-equivalence index for owner-occupied Claudia Kurz
+housing in West Germany 1985 to 1998 Johannes Hoffmann
+9 2004 The Inventory Cycle of the German Economy Thomas A. Knetsch
+10 2004 Evaluating the German Inventory Cycle
+Using Data from the Ifo Business Survey Thomas A. Knetsch
+11 2004 Real-time data and business cycle analysis
+in Germany Jörg Döpke
+24
+12 2004 Business Cycle Transmission from the US
+to Germany ­ a Structural Factor Approach Sandra Eickmeier
+13 2004 Consumption Smoothing Across States and Time: George M.
+International Insurance vs. Foreign Loans von Furstenberg
+14 2004 Real-Time Estimation of the Output Gap
+in Japan and its Usefulness for
+Inflation Forecasting and Policymaking Koichiro Kamada
+15 2004 Welfare Implications of the Design of a
+Currency Union in Case of Member Countries
+of Different Sizes and Output Persistence Rainer Frey
+16 2004 On the decision to go public: Ekkehart Boehmer
+Evidence from privately-held firms Alexander Ljungqvist
+17 2004 Who do you trust while bubbles grow and blow?
+A comparative analysis of the explanatory power
+of accounting and patent information for the Fred Ramb
+market values of German firms Markus Reitzig
+18 2004 The Economic Impact of Venture Capital Astrid Romain, Bruno
+van Pottelsberghe
+19 2004 The Determinants of Venture Capital: Astrid Romain, Bruno
+Additional Evidence van Pottelsberghe
+20 2004 Financial constraints for investors and the
+speed of adaption: Are innovators special? Ulf von Kalckreuth
+21 2004 How effective are automatic stabilisers?
+Theory and results for Germany and other Michael Scharnagl
+OECD countries Karl-Heinz Tödter
+25
+22 2004 Asset Prices in Taylor Rules: Specification, Pierre L. Siklos
+Estimation, and Policy Implications for the Thomas Werner
+ECB Martin T. Bohl
+23 2004 Financial Liberalization and Business
+Cycles: The Experience of Countries in Lúcio Vinhas
+the Baltics and Central Eastern Europe de Souza
+24 2004 Towards a Joint Characterization of
+Monetary Policy and the Dynamics of
+the Term Structure of Interest Rates Ralf Fendel
+25 2004 How the Bundesbank really conducted Christina Gerberding
+monetary policy: An analysis based on Andreas Worms
+real-time data Franz Seitz
+26 2004 Real-time Data for Norway: T. Bernhardsen, Ø. Eitrheim,
+Challenges for Monetary Policy A.S. Jore, Ø. Røisland
+27 2004 Do Consumer Confidence Indexes Help
+Forecast Consumer Spending in Real Time? Dean Croushore
+28 2004 The use of real time information in Maritta Paloviita
+Phillips curve relationships for the euro area David Mayes
+29 2004 The reliability of Canadian output Jean-Philippe Cayen
+gap estimates Simon van Norden
+30 2004 Forecast quality and simple instrument rules - Heinz Glück
+a real-time data approach Stefan P. Schleicher
+31 2004 Measurement errors in GDP and Peter Kugler
+forward-looking monetary policy: Thomas J. Jordan
+The Swiss case Carlos Lenz
+Marcel R. Savioz
+26
+32 2004 Estimating Equilibrium Real Interest Rates Todd E. Clark
+in Real Time Sharon Kozicki
+33 2004 Interest rate reaction functions for the euro area
+Evidence from panel data analysis Karsten Ruth
+34 2004 The Contribution of Rapid Financial
+Development to Asymmetric Growth of
+Manufacturing Industries: George M.
+Common Claims vs. Evidence for Poland von Furstenberg
+35 2004 Fiscal rules and monetary policy in a dynamic
+stochastic general equilibrium model Jana Kremer
+36 2004 Inflation and core money growth in the Manfred J.M. Neumann
+euro area Claus Greiber
+37 2004 Taylor rules for the euro area: the issue Dieter Gerdesmeier
+of real-time data Barbara Roffia
+38 2004 What do deficits tell us about debt?
+Empirical evidence on creative accounting Jürgen von Hagen
+with fiscal rules in the EU Guntram B. Wolff
+39 2004 Optimal lender of last resort policy Falko Fecht
+in different financial systems Marcel Tyrell
+40 2004 Expected budget deficits and interest rate swap Kirsten Heppke-Falk
+spreads - Evidence for France, Germany and Italy Felix Hüfner
+41 2004 Testing for business cycle asymmetries
+based on autoregressions with a
+Markov-switching intercept Malte Knüppel
+1 2005 Financial constraints and capacity adjustment
+in the United Kingdom ­ Evidence from a Ulf von Kalckreuth
+large panel of survey data Emma Murphy
+27
+2 2005 Common stationary and non-stationary
+factors in the euro area analyzed in a
+large-scale factor model Sandra Eickmeier
+3 2005 Financial intermediaries, markets, F. Fecht, K. Huang,
+and growth A. Martin
+4 2005 The New Keynesian Phillips Curve
+in Europe: does it fit or does it fail? Peter Tillmann
+5 2005 Taxes and the financial structure Fred Ramb
+of German inward FDI A. J. Weichenrieder
+6 2005 International diversification at home Fang Cai
+and abroad Francis E. Warnock
+7 2005 Multinational enterprises, international trade,
+and productivity growth: Firm-level evidence Wolfgang Keller
+from the United States Steven R. Yeaple
+8 2005 Location choice and employment S. O. Becker,
+decisions: a comparison of German K. Ekholm, R. Jäckle,
+and Swedish multinationals M.-A. Muendler
+9 2005 Business cycles and FDI: Claudia M. Buch
+evidence from German sectoral data Alexander Lipponer
+10 2005 Multinational firms, exclusivity, Ping Lin
+and the degree of backward linkages Kamal Saggi
+11 2005 Firm-level evidence on international Robin Brooks
+stock market comovement Marco Del Negro
+12 2005 The determinants of intra-firm trade: in search Peter Egger
+for export-import magnification effects Michael Pfaffermayr
+28
+13 2005 Foreign direct investment, spillovers and
+absorptive capacity: evidence from quantile Sourafel Girma
+regressions Holger Görg
+14 2005 Learning on the quick and cheap: gains James R. Markusen
+from trade through imported expertise Thomas F. Rutherford
+15 2005 Discriminatory auctions with seller discretion:
+evidence from German treasury auctions Jörg Rocholl
+16 2005 Consumption, wealth and business cycles: B. Hamburg,
+why is Germany different? M. Hoffmann, J. Keller
+17 2005 Tax incentives and the location of FDI: Thiess Buettner
+evidence from a panel of German multinationals Martin Ruf
+18 2005 Monetary Disequilibria and the Dieter Nautz
+Euro/Dollar Exchange Rate Karsten Ruth
+19 2005 Berechnung trendbereinigter Indikatoren für
+Deutschland mit Hilfe von Filterverfahren Stefan Stamfort
+20 2005 How synchronized are central and east
+European economies with the euro area? Sandra Eickmeier
+Evidence from a structural factor model Jörg Breitung
+21 2005 Asymptotic distribution of linear unbiased J.-R. Kurz-Kim
+estimators in the presence of heavy-tailed S.T. Rachev
+stochastic regressors and residuals G. Samorodnitsky
+22 2005 The Role of Contracting Schemes for the
+Welfare Costs of Nominal Rigidities over
+the Business Cycle Matthias Pastian
+23 2005 The cross-sectional dynamics of German J. Döpke, M. Funke
+business cycles: a bird's eye view S. Holly, S. Weber
+29
+24 2005 Forecasting German GDP using alternative Christian Schumacher
+factor models based on large datasets
+25 2005 Time-dependent or state-dependent price
+setting? ­ micro-evidence from German
+metal-working industries ­ Harald Stahl
+26 2005 Money demand and macroeconomic Claus Greiber
+uncertainty Wolfgang Lemke
+27 2005 In search of distress risk J. Y. Campbell,
+J. Hilscher, J. Szilagyi
+28 2005 Recursive robust estimation and control Lars Peter Hansen
+without commitment Thomas J. Sargent
+29 2005 Asset pricing implications of Pareto optimality N. R. Kocherlakota
+with private information Luigi Pistaferri
+30 2005 Ultra high frequency volatility estimation Y. Aït-Sahalia,
+with dependent microstructure noise P. A. Mykland, L. Zhang
+31 2005 Umstellung der deutschen VGR auf Vorjahres-
+preisbasis ­ Konzept und Konsequenzen für die
+aktuelle Wirtschaftsanalyse sowie die ökono-
+metrische Modellierung Karl-Heinz Tödter
+32 2005 Determinants of current account developments
+in the central and east European EU member
+states ­ consequences for the enlargement of Sabine Herrmann
+the euro erea Axel Jochem
+33 2005 An estimated DSGE model for the German
+economy within the euro area Ernest Pytlarczyk
+34 2005 Rational inattention: a research agenda Christopher A. Sims
+30
+Series 2: Banking and Financial Studies
+1 2004 Forecasting Credit Portfolio Risk A. Hamerle,
+T. Liebig, H. Scheule
+2 2004 Systematic Risk in Recovery Rates ­
+An Empirical Analysis of US Corporate Klaus Düllmann
+Credit Exposures Monika Trapp
+3 2004 Does capital regulation matter for bank Frank Heid
+behaviour? Evidence for German savings Daniel Porath
+banks Stéphanie Stolz
+4 2004 German bank lending during F. Heid, T. Nestmann,
+emerging market crises: B. Weder di Mauro,
+A bank level analysis N. von Westernhagen
+5 2004 How will Basel II affect bank lending to T. Liebig, D. Porath,
+emerging markets? An analysis based on B. Weder di Mauro,
+German bank level data M. Wedow
+6 2004 Estimating probabilities of default for
+German savings banks and credit cooperatives Daniel Porath
+1 2005 Measurement matters ­ Input price proxies
+and bank efficiency in Germany Michael Koetter
+2 2005 The supervisor's portfolio: the market price
+risk of German banks from 2001 to 2003 ­ Christoph Memmel
+Analysis and models for risk aggregation Carsten Wehn
+3 2005 Do banks diversify loan portfolios? Andreas Kamp
+A tentative answer based on individual Andreas Pfingsten
+bank loan portfolios Daniel Porath
+4 2005 Banks, markets, and efficiency F. Fecht, A. Martin
+31
+5 2005 The forecast ability of risk-neutral densities Ben Craig
+of foreign exchange Joachim Keller
+6 2005 Cyclical implications of minimum capital
+requirements Frank Heid
+7 2005 Banks' regulatory capital buffer and the
+business cycle: evidence for German Stéphanie Stolz
+savings and cooperative banks Michael Wedow
+8 2005 German bank lending to industrial and non-
+industrial countries: driven by fundamentals
+or different treatment? Thorsten Nestmann
+9 2005 Accounting for distress in bank mergers M. Koetter, J. Bos, F. Heid
+C. Kool, J. Kolari, D. Porath
+10 2005 The eurosystem money market auctions: Nikolaus Bartzsch
+a banking perspective Ben Craig, Falko Fecht
+11 2005 Financial integration and systemic Falko Fecht
+risk Hans Peter Grüner
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Visitors should
+prepare a research project during their stay at the Bundesbank. Candidates must hold a
+Ph D and be engaged in the field of either macroeconomics and monetary economics,
+financial markets or international economics. Proposed research projects should be from
+these fields. The visiting term will be from 3 to 6 months. Salary is commensurate with
+experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+32
+

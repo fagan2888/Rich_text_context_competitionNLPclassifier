@@ -1,0 +1,3378 @@
+Dynamic Q-investment functions
+for Germany using
+panel balance sheet data
+and a new algorithm for the
+capital stock at replacement values
+Andreas Behr
+(University of Frankfurt)
+Egon Bellgardt
+(University of Frankfurt)
+Discussion paper 23/02
+Economic Research Centre
+of the Deutsche Bundesbank
+September 2002
+The discussion papers published in this series represent
+the authors' personal opinions and do not necessarily reflect the views
+of the Deutsche Bundesbank.
+Deutsche Bundesbank, Wilhelm-Epstein-Strasse 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 95 66-1
+Telex within Germany 4 1 227, telex from abroad 4 14 431, fax +49 69 5 60 10 71
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax No. +49 69 95 66-30 77
+Reproduction permitted only if source is stated.
+ISBN 3­935821­29­8
+Abstract
+The paper explores the investment behaviour of German firms in the context of the Q-
+approach, which plays a dominant role in empirical investment research. The analysis is
+based on the Deutsche Bundesbank's corporate balance sheet statistics. The panel data set
+contains some 2,300 German firms' balance sheet data covering the years 1988-1998.
+While the Q-theory is mainly applied on the basis of stock market data, which facilitates
+the exploitation of market expectations and the calculation of average Q, the direct
+forecasting approach (Chirinko 1993) suggested by Abel and Blanchard (1986) and
+extended to panel data by Gilchrist and Himmelberg (1995, 1998) enables the Q-theory to
+be applied to non-quoted firms which are by far the majority in Germany.
+One of the key variables when using balance sheet data, which has attracted much detailed
+research, is firms' net capital stock at replacement costs. The challenge is to transform
+historical cost data, depreciated at non-economic, tax-oriented depreciation rates, into
+unreported and probably unknown economically meaningful data at actual replacement
+values. We suggest a complex procedure for calculating reliable replacement values of a
+firm's capital stock.
+To calculate Q we follow two different operationalisation strategies. First we estimate
+average Q based on balance sheet data by forecasting the present value of future profits
+using a VAR model. Second, we estimate marginal Q following the approach suggested by
+Gilchrist and Himmelberg. We compare the results from two different estimation
+techniques for dynamic investment models, GMM and direct bias correction.
+The results show that marginal as well as average Q influence investment significantly.
+When classifying the firms by size, we find that smaller firms react more strongly to Q
+and, to a lesser extent, to lagged investment.
+JEL-code: C33, C81, G31,D24
+Keywords: investment, Q, capital stock, replacement costs, VAR, dynamic panel data
+Zusammenfassung
+Die vorliegende Arbeit untersucht das Investitionsverhalten deutscher Unternehmen im
+Rahmen der Q-Theorie, die eine der dominierenden Investitionstheorien darstellt.
+Grundlage der geschätzten Investitionsfunktionen ist die Unternehmensbilanzstatistik der
+Deutschen Bundesbank. Der Paneldatensatz umfasst über 2300 Unternehmen und den
+Zeitraum 1988 bis 1998.
+Die übliche Verwendung von Aktienkursen zur Berechnung des durchschnittlichen Q
+beschränkt die Anwendung der Q-Theorie auf börsennotierten Unternehmen. Die explizite
+Modellierung eines Prognosemodells (direct forecasting appraoch, Chirinko (1993)) in
+Anlehnung an Arbeiten von Abel and Blanchard (1986) und Gilchrist and Himmelberg
+(1995, 1998) ermöglicht die Anwendung auch für nicht börsennotierte Unternehmen, die in
+Deutschland eindeutig dominieren.
+Eine zentrale Größe der Analyse des Investitionsverhaltens auf der Grundlage von
+Unternehmensbilanzdaten ist der Kapitalstock der Unternehmen zu Wiederbeschaffungs-
+kosten anstelle des bilanziellen Nettoanlagevermögens zu historischen Anschaffungs-
+kosten. In der Arbeit wird ein komplexer Algorithmus zu einer möglichst exakten
+Schätzung vorgeschlagen.
+Zur Berechnung von Q werden zwei unterschiedliche Operationalisierungsstrategien
+verfolgt. Zum einen wird in Anlehnung an Abel und Blanchard das durchschnittliche Q
+über eine Schätzung des Marktwertes des Eigenkapitals mittels eines Vektor-
+Autoregressiven-Modells für Paneldaten ermittelt. Zum anderen wird auf dem Ansatz von
+Gilchrist and Himmelberg beruhend eine Abschätzung des marginalen Q vorgenommen.
+Die Ergebnisse der Q-Investitionsfunktionen werden für zwei alternative Schätztechniken,
+GMM und eine direkte Biaskorrektur, verglichen.
+Es zeigt sich, dass sowohl das durchschnittliche als auch das marginale Q die Investitionen
+in signifikantem Ausmaß beeinflussen. Die Analyse für Größenklassen zeigt, dass im
+wesentlichen kleinere Unternehmen in stärkerem Maße auf Q und in geringerem Maße auf
+zeitlich verzögerte Investitionen reagieren.
+Contents
+1. Introduction 1
+2. Theoretical considerations 2
+3. The data source 4
+4. The capital stock at replacement costs: A new algorithm 4
+4.1. A short review of the literature 5
+4.2. A new algorithm 9
+4.3. A comparison of the different approaches 15
+4.4. Estimates of the capital stock 16
+5. The Calculation of Q 19
+5.1. An Overview of empirical work using the direct forecasting approach 19
+5.2. The Calculation of Q using firm-level balance sheet data 22
+6. Empirical Results 27
+6.1. Descriptive evidence 27
+6.2. Estimated Q-investment functions 29
+6.3. Results for classes of firm size 31
+7. Conclusion 32
+Appendix 34
+References 40
+List of Tables
+Figure 1: The retirement function for average lifetimes of 5 and 10 years 11
+Figure 2: Distribution of errors for the different algorithms 16
+Figure 3: Sum of calculated capital stocks at replacement values 17
+Figure 4: Level and dispersion of the capital stock 17
+Figure 5: Estimates by proportional expansion through sales 18
+Figure 6:Kernel-density estimations for the estimated Qs 27
+Figure 7: Kernel regression: I/K = f(I/K -1) 28
+Figure 8: Kernel regression: I/K = f(Qa) 28
+Figure 9: Kernel regression: I/K = f(Qm) 28
+List of Figures
+Table 1: Descriptive statistics of the estimated Qs 27
+Table 2: Descriptive statistics for class sizes 31
+Table 3: Average Q investment functions for class sizes 32
+Table 4: Marginal Q investment functions for class sizes 32
+-1-
+DynamicQ-investmentfunctionsforGermanyusingpanelbalancesheet
+dataandanewalgorithmforthecapitalstockatreplacementvalues*
+1. Introduction
+The determinants of firms' investment spending have been the focus of academic research
+for several decades. Improving the foundations of investment theory as well as the policy
+implications is a most interesting objective. Investment spending is known to be very
+volatile and therefore one of the driving forces of macroeconomic activity.
+In empirical research on investment several approaches have been used (see for an
+overview Chirinko 1993). One important approach are so called Q models (Tobin 1969).1
+Q models of investment are attractive in several respects. Theoretically the Q-model can be
+derived explicitly from an optimization problem which the firm faces when deciding about
+new investments.2 Under quite strong assumptions, a linear relationship can be derived
+between the ratio of investment to the capital stock and a measure of Q. Theoretically Q is
+a sufficient statistic for determining the investment decision if the capital market is
+perfect.3
+When using balance sheet data for an empirical analysis of firms' investment decisions
+researchers face the problem of non-adequate concepts for several variables. The
+measurement concepts underlying the balance sheet data often do not match the economic
+meaning that interests the researcher. One of the key variables which has attracted much
+detailed research is firms' net capital stock at replacement costs. The challenge is to
+transform historical cost data depreciated at non-economic, tax-oriented depreciation rates
+into unreported and probably unknown economically meaningful data at actual
+replacement values. First of all, therefore, we use a complex procedure for calculating
+reliable replacement values of a firm's capital stock.4
+The second problem is that no stock prices are available for non-quoted firms, which
+makes it impossible to follow the usual approach when applying the Q-theory of using
+stock market data to calculate the market value of equity. The problem is circumvented by
+using a vector-autoregressive approach (VAR) for panel data to estimate the present
+values of the future returns on capital in order to calculate Q. This direct forecasting
+approach, as Chirinko (1993) named it, is based on a VAR forecasting model and was first
+suggested by Abel and Blanchard (1986) for aggregate times series. This approach was
+extended in the context of the Q-theory by Gilchrist and Himmelberg (1995, 1998) to panel
+* We would like to thank Heinz Herrmann for his support and helpful comments.
+1 In the following we use the upper case symbol Q throughout the text indicating all different measures,
+whether they are based on share prices or on values gained by direct forecasting systems.
+2 Von Kalckreuth (2001) analysed investment behaviour in Germany on the basis of an implicit (user
+cost) model with the same data set used in this paper.
+3 But see Caballero/Leahy (1996) for the case of fixed costs of capital stock adjustment.
+4 See Hayashi (1997) for a discussion of the biases resulting from the use on non-adequate measures of
+the capital stock.
+-2-
+data. The advantage of this direct forecasting approach is that it enables the Q-theory to be
+applied to non-quoted firms as well.
+In our study we follow two different operationalisation strategies. First we estimate an
+average Q comparable to Tobin's Q by forecasting future profits using a VAR-model along
+the lines of Abel and Blanchard. Second, we estimate marginal Q following the approach
+suggested by Gilchrist and Himmelberg, which is based on a restrictive formulation of the
+underlying production process.
+The results show a very strong influence of the calculated average as well as marginal Q on
+investment for a large panel of German firms. Therefore, we find that the Q-theory is well
+suited for application to non-quoted firms on the basis of balance sheet data using a direct
+forecasting approach.
+2. Theoretical considerations
+The economic models of business fixed investment can broadly be classified into two
+classes of models.5 The distinguishing feature is whether or not the models explicitly take
+account of the process of adjustment of the capital stock. In both classes of models the
+optimal level of the firms capital stock results as the solution of the profit maximization
+problem. But where the class of older models (Jorgensen (1963, 1971)) does not explain
+the optimal path of adjustment of the actual capital stock to the optimal one, the second
+class of models explicitly derives the optimal evolution of the capital stock from the
+underlying optimization problem. The difference therefore can be seen in the step from the
+static problem of optimal factor demand to dynamic investment models. This step can be
+performed either by ad hoc specifications or by an explicit derivation of the adjustment
+path undertaken in the investment models based on the Q-theory .
+Naturally, this advantage is achieved by making strong assumption about the costs of
+adjusting the capital stock, which leads to a rationalization of the observed slow
+adjustment. In most cases the costs of adjustment are assumed to be strictly convex in the
+amount of investment what implies increasing marginal costs. Therefore deviations
+between the actual and the optimal capital stock will be reduced through a sequence of
+smaller investments rather than through a one-time large change in the capital stock. The
+costs of adjustment can be thought of as installation costs or costs caused by the
+disruptions of the production process when new investment is undertaken.
+In the following the Q-model including an explicit formulation of the adjustment costs is
+illustrated. In the basic Q-model the firm faces the following maximization problem:
+
+=
+
+=
++
++
+0
+|
+j
+t
+j
+t
+j
+t
+t E
+V 
+5 See Blundell/Bond/Meghir (1995).
+-3-
+The firm is assumed to maximize the expected value of the sum of discounted profits t
+
+given the state of information  at time t.
+The discount factor between period t and period t + j is denoted by j
+t+
+ and is assumed to
+be the product of the single-period discount rates:
+( )
+
+=
+-
++
++ +
+=
+j
+i
+i
+t
+j
+t r
+1
+1
+1
+ , j = 1, 2, 3, ..., .
+The profit t
+ is the difference between sales and costs of production taking into account
+the adjustment costs and the cost of investment:
+( ) ( )
+[ ]
+t
+I
+t
+t
+t
+t
+t
+t
+t
+t
+t I
+p
+L
+w
+K
+I
+G
+L
+K
+F
+p -
+-
+-
+= ,
+,
+
+The output is given by the amount of production F minus the lost output G caused by
+adjusting the capital stock. The firm is assumed to be producing on the basis of the given
+capital stock Kt while other factors of production Lt, mainly labour, are assumed to be
+adjusted instantaneously. The function of adjustment cost G is assumed to be strictly
+convex in investment and to be additively separable from the gross production function.
+If asset markets are efficient in the sense that assets are valued at the expected present
+value of the associated income streams, then the value of the firm's capital stock Vt is the
+stock market value of the firm when abstracting from other assets beside the capital stock.
+The maximization problem the firm faces can therefore be expressed as a dynamic
+programming problem.
+Using the first-order derivatives of the maximization problem it can be shown that, in
+equilibrium, the ratio of the shadow value to the replacement cost (which includes the
+adjustment costs) of an additional unit of capital should be one.
+Assuming that markets are competitive, the firm is a price taker in all markets, and the
+ratio of the shadow value of capital in period t to the price of a unit of investment is known
+as marginal Q.
+To derive a linear relation between marginal Q and investment, some rather restrictive
+assumptions have to be made concerning the adjustment cost function. If a quadratic
+adjustment cost function is assumed for mathematical convenience (Summers 1981), it can
+be shown that marginal adjustment costs increase linearly with the rate of investment and
+that the rate of investment is a linear function of marginal Q.
+So far only marginal Q has been analysed. Following Hayashi (1982) it is also possible to
+derive a linear relation between average Q and investment. To derive a simple relation
+between marginal Q and average Q it is necessary to assume, besides perfect capital and
+product markets, that the production function ( )
+t
+t L
+K
+F , and the adjustment cost function
+-4-
+( )
+t
+t K
+I
+G , are homogeneous of degree one in their arguments. In other words, it is assumed
+that the production function has constant returns to scale.
+3. The data source
+The empirical analysis is based on the Deutsche Bundesbank' corporate balance sheet
+statistics.6 This data base covers about 50,000 to 70,000 enterprises each year, which
+represent about 4% of the total number of enterprises in Germany. In the context of its
+rediscount lending operations the Bundesbank collects the financial statements of firms
+using trade bills to assess the creditworthiness of bill-presenting firm.7
+Because the sample is biased towards larger enterprises, it covers about 75% of the total
+turn-over of the corporate sector in western Germany. The period covered by our sample is
+from 1987 to 1998.
+Starting with a very large data set the number of observations decreases considerably
+through incomplete balance sheets, outlier control and balancing. In particular, the need to
+use the detailed schedule of fixed asset movements (Anlagespiegel) in order to apply our
+algorithm for calculating the capital stock at replacement costs shrinks the available data to
+2,303 firms included in the final estimations.8
+The theoretical concept of the Q-theory of investment is microeconomic. Hence the use of
+firm-level data seems the natural way to apply an empirical test of the theory. But using
+individual balance sheet accounts has some caveats: the sample is not random and the data
+include noise from individual irregularities. Nevertheless, the theory seems to be better
+applicable to individual firm data. What leads to severe problems in using the balance
+sheet for economic analysis is the fact that the majority of the data (85%) is based on tax
+balance sheets. Therefore, the figures represented in the balance sheets accord with the
+legal descriptions as defined in tax law and differ from the theoretical concepts in several
+ways.9 To overcome these problems as far as possible, great efforts are made in the
+measurement procedures; they are described in the following sections.
+4. The capital stock at replacement costs: A new algorithm
+The most prominent approaches for this transformation are the ones proposed by
+Lindenberg/Ross (1981), the NBER-approach (Hall et.al. (1988)) and the algorithm
+suggested by Lewellen/Badrinath (1997). In this paper we suggest an alternative algorithm
+which, according to our understanding and the results of a comparison based on Monte
+Carlo simulations, is almost comparable to the precise results of the algorithm by Lewellen
+and Badrinath but has considerable lower data requirements.
+6 For an overview of empirical work based on this data base see Stöss (2001).
+7 See Deutsche Bundesbank (1998) and von Kalckreuth (2001), p. 9.
+8 For details about the data source and cleaning procedures see the appendix.
+9 See Deutsche Bundesbank (1998) and von Kalckreuth (2001).
+-5-
+In the following section we sketch the aforementioned approaches and try to show the core
+idea as well as the data requirements for the implementation, before we present our own
+approach. The next section contains a Monte Carlo simulation intended to compare the
+outcomes of the different approaches with our own suggested algorithm.
+4.1. A short review of the literature
+4.1.1. Lindenberg und Ross (1981)
+The algorithm by Lindenberg and Ross starts from year t = 1 where the book value at
+historical costs less accumulated depreciation is taken as an approximation for the
+unknown net capital stock at replacement values. At the beginning of period t = 1 we have
+(in the following K* denotes capital stock at replacement costs while K denotes the book
+value)
+t
+t K
+K =
+* .
+In the following periods the capital stock is updated taking into account the depreciation
+rate ( , book rate), price changes (i) and the technical process ( ) as well as gross
+investment (It):
+t
+t
+t I
+i
+K
+K +
++
+-
++
+= -
+)
+1
+(
+)
+1
+)(
+1
+(
+*
+1
+*
+
+
+.
+The capital stock contains fixed assets as well as inventories. The procedure described
+above is applied to fixed assets. With respect to inventories two cases are distinguished:
+- When using FIFO (First-In-First-Out) the valuation of the stock is rather close to
+replacement costs and the book values remain unadjusted.
+- When using LIFO (Last-In-First-Out) greater discrepancies will occur. In this case the
+book values of inventories will be adjusted using a procedure close to the one described
+above and the parameter settings 0
+=
+ and 0
+=
+ .
+4.1.2. "NBER-approach" by Hall et al (1988)
+While inventories are treated with a technique similar to the approach of Lindenberg and
+Ross the NBER-approach adjusts the book value of fixed assets for price changes. Central
+to the algorithm is the assumption about the average age a of the existing capital stock.
+Thus if a =4, the adjustment of the book value takes into account the price changes of
+capital goods,  , for the last 4 years. In general the estimated capital stock in period t is
+given by
+
+=
++
+-
++
+=
+a
+j
+j
+t
+t
+t K
+K
+1
+1
+* )
+1
+(  .
+-6-
+It is evident that the quality of the estimation hinges on the correctness of a . The average
+age is calculated using historical balance sheet data for depreciation D:
+(1) Calculation of average age in period t:
+t
+t
+t
+D
+D
+a = =1
+
+
+.
+(2) The average lifetime nt for capital goods in period t is given by:
+t
+g
+t
+t
+D
+K
+n = ,
+where g
+t
+K denotes the gross capital stock (no depreciation subtracted) at historical
+costs in period t.
+(3) The estimated lifetimes are smoothed over five periods:
+=
+=
+-
+4
+0
+*
+5
+1
+j
+j
+t
+t n
+n .
+(4) The final estimate of the average age is given by adjusting the preliminary estimate at
+with the ratio of smoothed lifetime to lifetime calculated for period t:
+t
+t
+t n
+n
+a
+a
+*
+= .
+4.1.3. Lewellen and Badrinath (1997)
+Compared to the two algorithms described above, the approach suggested by Lewellen and
+Badrinath is more complex. The basic idea is to disaggregate the actual capital stock into
+the years of purchase in the first step and the price adjustment for the different vintages in
+the second step. Like the a in the NBER-approach, this approach contains a magical
+number as well. This time the key number for the quality of the procedure's results is the
+longest lifetime of capital goods n
+~ . Assuming that number is correct, the actual capital
+stock contains investment goods of the last n
+~ vintages It:
+=
+-
+-
+=
+)
+1
+~
+(n
+t
+t
+g
+t I
+K
+
+ .
+To estimate n
+~ we start with 1
+~ =
+n and increase n
+~ until the following inequality holds:
+-7-
+<
+
+-
+=
+-
+-
+=
+n
+t
+t
+g
+t
+n
+t
+t
+I
+K
+I
+~
+)
+1
+~
+(
+
+
+
+ .
+If
+g
+t
+n
+t
+t
+K
+I <
+-
+-
+=
+)
+1
+~
+(
+
+ ,
+the difference between cumulative investment and the gross capital stock at historical costs
+0
+)
+1
+~
+(
+>
+-
+-
+-
+=
+n
+t
+t
+g
+t I
+K
+
+
+is added to the oldest still-living vintage of investment.
+Now we are interested in the share 
+g
+~ of the vintage 
+I that is still contained (not fully
+depreciated) in period t. Given the period of purchase  under the assumption of linear
+depreciation for n
+~ periods, the still-living share of the vintage is given as
+n
+t
+n
+g ~
+2
+1
+)
+(
+2
+~
+2
+~ -
+-
+-
+=
+
+ , t
+n
+t ...,
+,
+1
+~ +
+-
+=
+ .
+Summing the parts, the replacement value of the net capital stock for period t (starting
+point) can be estimated as:
+-
+-
+=
+=
+)
+1
+~
+(
+* ~
+n
+t
+t
+t
+t P
+P
+g
+I
+K
+ 
+
+ .
+Adjustment routines
+The algorithm leads to estimates of cumulative depreciations of the capital goods which
+are still contained in the capital stock. These estimates *
+t
+DK might differ from the book
+values of cumulative depreciations t
+DK . This possible discrepancy will be eliminated via
+the following adjustment routine.
+The estimates of cumulative depreciations of still-living capital goods are given by
+)
+~
+1
+(
+)
+1
+~
+(
+*
+
+
+ g
+I
+DK
+n
+t
+t
+t
+-
+=
+-
+-
+=
+.
+These estimates are contrasted with the book value of cumulative depreciations of still-
+living goods:
+t
+g
+t
+t K
+K
+DK -
+= .
+-8-
+If we have
+*
+t
+t DK
+DK > ,
+the difference
+*
+t
+t DK
+DK - ,
+will be added to the oldest vintage still living .
+If we have
+*
+t
+t DK
+DK < ,
+all estimated depreciations will be adjusted (diminished) by the following ratio:
+*
+t
+t
+DK
+DK
+.
+This adjustment routine guarantees the equality of estimated and balance sheet data for the
+net capital stock at historical costs.
+4.1.4. Critique
+The Lindenberg-Ross-approach is rather simple and easy to implement. But it is obvious
+that the quality of the estimated capital stock at actual prices will increase over time. The
+quality of the initial estimate will be rather poor owing to overly fast depreciation of book
+values because of tax considerations and the neglecting of capital goods price changes. The
+updating of the capital stock might also be biased because book depreciation rates probably
+overstate economic depreciation rates. Our own empirical estimates will show that initially
+the book value amounts on average to only 40% of the economically meaningful
+replacement value.10
+As in the approach taken by Lindenberg and Ross, in the NBER-approach it is assumed
+that book depreciations equal economic depreciations. Especially for German accounting
+data, there will be major discrepancies because in general the tax-oriented depreciation
+rates will exceed the economic rates. The calculations of average age and average lifetime
+ignore the fact that the stock of fixed assets in a period t is a composition of several
+investment vintages.
+The approach taken by Lewellen and Badrinath is by far the most complex of the three
+discussed. By taking into account the age structure of the still-living capital stock, the price
+10 One solution often applied in empirical work is to leave out several years at the beginning of the
+period covered. While that avoids using the worst estimates at the beginning of the estimation period,
+there will still be a strongly decreasing measurement error over time.
+-9-
+adjustment can be expected to be rather precise. The main disadvantage of this approach
+can be seen in the rather high data requirements. To estimate the capital stock for period t
+the investment data for the n
+~ -1 years preceding year t have to be given. Taking into
+consideration the rather long lifetime of structures, this data requirements will hardly ever
+be met when working with micro balance sheet data. Finally, the assumption of an equal
+lifetime of all capital goods seems to be rather oversimplifying.
+4.2. A new algorithm
+4.2.1. The basic idea
+The basic idea of the new algorithm which we propose is to split the actual capital stock
+into two additive components. The first component contains the vintages which are still
+alive and already belonged to the capital stock at the beginning of the first year in the data
+set. We will add the subscript "old" to indicate this component. (In our data set this was the
+year 1987.) The second component consists of the capital goods which were acquired
+during the years covered by the data set and still belong to the capital stock. This
+component will be indicated by the subscript "new". For these two components we apply
+different adjustment procedures to transform the book values at historical costs and tax-
+driven depreciations into economically meaningful net capital stock figures at replacement
+costs. The final estimate of the capital stock will therefore be
+*
+*
+,
+*
+new,t
+t
+old
+t K
+K
+K +
+= .
+Let us first consider the "new" component. For this component the investment at actual
+prices for period t is covered in the available data set. Each vintage leaves the capital stock
+according to the retirement function commonly employed in the classical perpetual-
+inventory procedure. In addition, each year the capital stock is revalued so as to take
+account of the price development of capital goods.
+Now let us look at the "old" part of the capital stock. The crucial point is to disaggregate
+the existing capital stock at the beginning of the first year covered by the data set t0 into its
+vintages. If this is achieved in a plausible way, each vintage leaves the capital stock in line
+with the retirement function in the same way as the vintages of the "new" capital stock.
+Besides this disaggregation into the different vintages, a second disaggregation is the
+important separation into structures and equipment. These two components are
+characterized by very different life-times which are associated with very different
+depreciations as well as different price changes.
+As the depreciations given in the balance sheet data are mainly driven by tax
+considerations, their use would lead to a severe underestimation of the life time of capital
+goods. Therefore we use sectoral data for depreciation rates and capital goods' lifetimes
+which we assume will be closer to economic reality. Since the data set does not contain
+any price information, we also use sectoral price data. Both sectoral data sets are
+disaggregated into structures and equipment. The inventories are not revalued. Given that
+-10-
+most firms employ the First-In-First-Out valuation scheme, we take the book values as
+beeing sufficiently close to replacement values. In this case (FIFO) there will only be
+minor differences between book values and replacement values. In the next section of the
+paper we will formalize the algorithm and present further details.
+4.2.2. The disaggregation of the first period's capital stock into different vintages
+The detailed schedule of fixed asset movements (Anlagenspiegel) contains information
+concerning the sum of all past investment still in stock at historical costs (gross capital
+stock at historical costs, g
+t
+K ).
+Disaggregation into structures and equipment
+In our starting period t0 we disaggregate the value of the capital stock ( g
+t
+K
+0
+) into structures
+and equipment based on the respective shares of structures and equipment in the balance
+sheets:
+0
+0
+0
+,
+0 t
+j
+t
+g
+t
+j
+g
+t K
+K
+K
+K 
+= , j=1,2 (structures, equipment),
+with:
+j
+g
+t
+K ,
+0
+accumulated still-living investment at historical costs, typ j
+g
+t
+K
+0
+accumulated still-living investment at historical costs (Anlagenspiegel), aggregate
+j
+t
+K
+0
+net capital stock at historical costs (balance sheet), typ j
+0
+t
+K net capital stock at historical costs (balance sheet), aggregate
+In the following all calculations are performed at the disaggregated level for structures and
+equipment separately. To improve readability we leave out the subscript j.
+Sectoral adjustment in year t0
+We do not make the counterfactual assumption of equality between historical cost data and
+actual replacement values. This procedure would lead to a severe underestimation of the
+net capital stock at actual replacement values. Instead we use sectoral data supplied by the
+Federal Statistical Office (Statistisches Bundesamt) to adjust for the discrepancies
+stemming from the different depreciation methods and price schemes.
+The starting point is the firm level balance sheet value adjusted for the sectoral ratio for
+year t0:
+-11-
+s
+h
+g
+t
+s
+r
+t
+g
+t
+t
+K
+K
+K
+K
+,
+,
+,
+*
+0
+0
+0
+0
+
+= ,
+s
+h
+g
+t
+K ,
+,
+0
+gross capital stock at historical costs in sector s,
+s
+r
+t
+K ,
+0
+net capital stock at replacement values in sector s
+adjustment takes into account the different price scheme as well as the difference between
+gross and net capital stock. It is obvious that the adjusted values in the initial year t0 will be
+the closer to the true value the more the structure of firm i's capital stock resembles the
+structure of the capital stock in sector s in terms of both goods and age.
+4.2.3. The retirement of the investment vintages
+We disaggregate a vintage t into parts of different lifetime n. n denotes the part of a
+vintage with lifetime n (it retires after being n years in stock) and N is the maximum
+lifetime. In the course of its maximum lifetime N the vintage will retire completely.
+Therefore we have
+1
+1
+=
+=
+N
+n
+n
+
+and
+=
+=
+N
+n
+n
+t
+t I
+I
+1
+ .
+For determining the retirement ratios n we use the gamma function, which is also used by
+the Federal Statistical Office:
+n
+n
+n e
+n
+n
+n
+n
+
+-
+
+
+
+=
+=
+9
+8
+9
+9
+!
+8
+9
+)
+,
+(
+
+ .
+This gamma function tells us which part of a fixed asset with average lifetime n retires at
+the age of n years.
+-12-
+Figure 1: The retirement function for average lifetimes of 5 and 10 years
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0 5 10 15 20
+ n
+n
+years
+5
+=
+n
+years
+10
+=
+n
+For the individual firm i the average lifetime n of the sector the firm belongs to is used.11
+It is It is worth noting at this point that average lifetimes for structures and equipment
+differ considerably. These will be taken into account at the sectoral level.
+In the next step we calculate linear depreciations of the vintage 0
+t
+
+ in period k:
+n
+j
+N
+n
+n
+k I
+D ,
+1
+,
+
+
+
+ 
+=
+=
+,
+with
+n lifetime
+N maximum lifetime
+j age (=k-+1) of vintage  in period k
+n
+j,
+ depreciation rate, taking the half-year rule into account (hence we assume fixed
+assets join the firm in the middle of the year)
++
+>
++
+=
+
+<
+=
+=
+1
+if
+0
+1
+if
+1
+if
+1
+if
+5
+,
+0
+1
+5
+,
+0
+,
+n
+j
+n
+j
+n
+j
+j
+n
+n
+n
+n
+j
+
+Accumulating these depreciations from starting period t0 until actual period t results in
+11 Attempts to estimate the average lifetime for firm i individually would require very long time series,
+especially for structures, which usually will not be available in micro panel data sets.
+-13-
+
+=
+=
+= =
+=
+t
+k
+n
+j
+N
+n
+n
+t
+k
+k
+t I
+D
+DK
+
+
+
+
+ 
+ ,
+1
+,
+, , j = k-+1.
+The price changes will be taken into consideration by using sectoral price indices Pt/P
+where period t is the actual year and  is the year the investment took place.
+The replacement value of the capital stock less depreciation at the beginning of period t is
+the sum of the still-living investment adjusted for price changes:
+( )
+-
+=
+=
+t
+t
+t
+t
+t
+new P
+P
+DK
+I
+K
+0
+,
+*
+,
+ 
+
+ .
+4.2.4. Disaggregation of the capital stock at the beginning of the initial year into its
+vintages and retirements
+The initial estimate of the capital stock is disaggregated into its vintages of investment
+separately for structures and equipment. To achieve this disaggregation several
+assumptions are necessary:
+- the retirement function is stable over time,
+- investment in the prior years has taken place evenly,
+- the capital goods depreciate linearly over time.
+These assumptions imply:
+- what shares of investment vintages still belong to the capital stock, and
+- the average lifetime of the vintages.
+Let us denote the oldest vintage still belonging to the capital stock with 0. Then summing
+the depreciations and taking into account the price adjustment 1
+0
+/ -
+t
+t P
+P we obtain the
+replacement value less depreciation of the capital goods still living in year t0 at the end of
+year t:
+1
+1
+,
+*
+1
+,
+*
+,
+0
+0
+0
+0
+-
+-
+-
+=
+- -
+=
+t
+t
+t
+N
+t
+old
+t
+t
+old
+t
+old P
+P
+DK
+K
+K
+
+ .
+The calculation of the depreciations
+The counterpart to the retirement function is the survival function. This function tells us
+which part of the fixed asset is not retired yet at its age of n years:
+-14-
+>
+-
+=
+=
+-
+- 1
+if
+1
+if
+1
+1
+1 n
+a
+g
+n
+g
+n
+n
+n .
+Using the survival function, the age structure of the gross capital stock at the beginning of
+the initial year t0 (or at the end of year 1
+0
+-
+t ) can be derived.
+Let
+=
+=
+N
+n
+n
+g
+G
+1
+,
+then the share of the gross capital stock at the end of period t0-1 from investment taking
+place at year 0
+t
+<
+ with age j = t0- is given by
+G
+gj
+.
+Hence the total value of investment vintage 0
+t
+<
+ still alive in the period 1
+0
+-
+t at
+replacement costs of the year 1
+0
+-
+t can be estimated as
+G
+g
+K
+K t
+t
+t
+
+
+-
+-
+- 
+= 0
+*
+1
+0
+*
+,
+1
+0
+.
+Since
+G
+G
+g N
+j
+j
+j
+
+
+ +
++
++
+= + ...
+1
+this figure can be disaggregated into fractions with different lifetimes j:
+
+=
+-
+=
+-
+-
+N
+t
+j
+j
+t
+t G
+K
+K
+
+ 
+0
+*
+1
+0
+*
+,
+1
+0
+.
+The depreciations of vintage 0
+t
+<
+ in period k are
+n
+j
+N
+n
+n
+t
+old
+k G
+K
+D ,
+1
+*
+1
+0
+,
+
+
+
+
+=
+=
+-
+,
+j = k-+1 age of vintage  in period k.
+The cumulative depreciations of vintage 0
+t
+<
+ from starting period t0 until actual period t
+-15-
+are
+
+=
+=
+= =
+-
+=
+t
+k
+n
+j
+N
+n
+n
+t
+t
+k
+old
+k
+old
+t G
+K
+D
+DK
+
+
+
+ 
+ ,
+1
+*
+1
+0
+,
+, , j = k-+1.
+These estimated depreciations are valued at replacement costs of the year 1
+0
+-
+t . The final
+adjustment using the price relation 1
+0
+/ -
+t
+t P
+P leads to the estimation at replacement costs of
+year t.
+4.3. A comparison of the different approaches
+In this section of the paper we run a Monte-Carlo simulation to assess the performance of
+the algorithms by Lindenberg/Ross, the NBER approach, the algorithm proposed by
+Lewellen/Badrinath and our own proposed alternative algorithm.
+- The average lifetime n of fixed assets is 10 years, evenly distributed between 5 and 15
+years.
+- Each firm has a specific average lifetime i
+n of its fixed assets and a specific retirement
+function.
+- The retirement rates in
+ of fixed assets with lifetimes n = 5, 6, ..., 15 for firm i are
+drawn at random. They will be held constant over the whole simulation period. The
+average lifetime of the firms fixed assets is then given by
+
+=
+=
+15
+5
+n
+in
+i n
+n  .
+- We set book depreciations equal to economic depreciations, so there is no need to
+correct non-economic, tax-oriented depreciations. (Note that this assumption has to be
+made in the approaches by L/R, NBER and L/W, while in our algorithm we make use
+of an adjustment procedure in the initial year to correct for differences and apply an
+economic meaningful linear depreciation scheme.)
+A. Equal investment throughout all years, price increases randomly drawn from a
+uniform distribution between 0 and 10 % per year.
+B. Random draws from the empirical data (Bilanzstatistik/VGR)
+According to this procedure, the true capital stock at replacement values is generated for a
+period of 70 years. We assume that the data available to the researcher start at period 21
+(=t0).
+-16-
+Figure 2: Distribution of errors for the different algorithms (estimation period 30 to 50,
+age of firms at initial estimation is 20 years, 1000 firms)
+scenario A scenario B
+-20 -10 0 10 20
+error in %
+our approach
+L/R
+NBER
+L/B
+-20 -10 0 10 20
+error in %
+our approach
+L/B
+NBER
+L/R
+Notes: L/R = Lindenberg and Ross, L/B = Lewellen/Badrinath. We use kernel-density estimates (triangular
+kernel, bandwidth 1 %).
+It can be seen from the simulation results that the algorithm we propose performs rather
+well. The results show that our algorithm is outperformed by the algorithm suggested by
+Lewellen/Baldrinath. But it should be remembered that their approach requires investment
+to be known at least 10 years before the first capital stock can be calculated. Therefore
+their approach, even having the smallest error, cannot be applied in most empirical cases.
+Comparing the algorithm which we propose with the two approaches having similar data
+requirements, we find that the errors for the new algorithm are rather small.
+4.4. Estimates of the capital stock
+4.4.1. The capital stock at replacement costs for the Bundesbank data file
+If we summarize the results, we find that the ratio of the capital stock at replacement costs
+to balance sheet values at historical costs is on average 2.5. There is a strong increase in
+the capital stock at replacement values by about 25% between 1987 and 1993. In the
+following years up to 1998 the capital stock is almost stationary.
+-17-
+Figure 3: Sum of calculated capital stocks at replacement values
+0
+50
+100
+150
+200
+250
+87 89 91 93 95 97
+year
+bill. DM
+If we estimate median and quartiles it is apparent that the distribution of the capital stocks
+of individual firms is extraordinary skewed. The median of the capital stock in our data
+base is about 10 million DM.
+Figure 4: Level and dispersion of the capital stocks
+0
+5
+10
+15
+20
+25
+30
+35
+40
+87 89 91 93 95 97
+mill. DM
+year
+median
+75 %-quantil
+25 %-quantil
+-18-
+4.4.2. A comparison with official sectoral data
+For calculating sectoral capital stocks based on the individual balance sheet data, we
+expand the sectoral estimates proportionally by the ratio of the sum of sales to the sectoral
+sales figures.
+Figure 5: Estimates by proportional expansion through sales
+0
+200
+400
+600
+800
+1000
+87 88 89 90 91 92 93 87 88 89 90 91 92 93 87 88 89 90 91 92 93
+VGR own approach
+bill. DM
+manufacturing construction
+commerce
+year
+The comparison with official sectoral data (national accounts) shows that for
+manufacturing and construction the estimates based on the individual balance sheet data
+resemble the aggregate data reasonably well. Only for the wholesale/retail trade sector do
+the balance sheet-based figures underestimate the sectoral data noticeably. When assessing
+the results it should be borne in mind that no information concerning the sectoral level of
+capital stocks was used in the calculations. Only sectoral price changes and sectoral ratios
+of different price concepts were used for adjusting the book values as well as the sales
+coverage ratio of our data base. We therefore conclude that the algorithm used for
+estimating the capital stock at replacement values based on given historical cost data from
+firm-level balance sheets performs rather well.
+-19-
+5. The Calculation of Q
+While the advantage of average Q based on stock prices is the exploitation of market
+expectations there are several serious drawbacks to this conventional approach. First,
+market expectations can be rather poor. The recent slump in technology shares, which lost
+about 90% of their value within one year, may serve as an example of the noisiness of
+share prices. The second drawback is that only a small fraction of an economy's firms is
+quoted on stock markets. Finally, it is marginal Q that is theoretically relevant for the
+firm's investment decision and not average Q, except under special conditions concerning
+production technology.
+In this chapter we outline our approach to calculating measures of Q using balance sheet
+data. Both measures of Q we calculate are based on balance sheet data using a vector-
+autoregressive forecasting procedure. By estimating market values of equity, we first
+calculate average Q values comparable to the conventional Q measures based on stock
+markets. In a second approach following Gilchrist and Himmelberg (1995, 1998) we
+estimate marginal Q-values based on strong assumptions about firms' production
+technology. After giving a brief overview of related work, the estimation procedure as well
+as empirical results are presented.
+5.1. An Overview of empirical work using the direct forecasting approach
+In the following overview we concentrate on empirical papers which adopt the direct
+forecasting approach. An extensive overview of empirical studies using stock market data
+was already provided by Hubbard (1998). We start with the influential paper by Abel and
+Blanchard (1986), which introduced the method of vector autoregression into the context
+of Q-models. Even though it only used aggregated data, the paper laid the fundamental
+basis for the following extensions to panel data by Gilchrist and Himmelberg (1995, 1998).
+The paper by Bontempi et al (2001) follows Gilchrist and Himmelberg by applying the
+approach to a large panel data set of non-quoted Italian firms.
+5.1.1. Abel/Blanchard (1986)
+Abel and Blanchard base their approach on the Q-theory of investment. Instead of using
+the conventional stock market-based average Q, they estimate Q through forming
+expectations on future returns based on lagged variables.12 The authors use a VAR model
+to make use of the time series information contained in their macroeconomic data set.
+Marginal Q is estimated as the discounted sum of expected future profits.13 The
+expectations of the unknown marginal profits and the unknown discount factors are each
+estimated as linear combinations of an observable vector Z which evolves according to a
+12 See Abel/Blanchard (1986), p. 249.
+13 Thereby Abel and Blanchard treat the future discount rate as an unknown random variable. In this
+case the estimation of the unknown marginal Q requires taking into account the product of random
+variables.
+-20-
+vector-autoregressive process. As the information set 1
+-
+t includes only lagged values of
+Z, the estimated Q is a beginning-of-period marginal profit of investment.14
+Variables used to estimate the VAR are, besides the returns on equity and debt, the ratio of
+labor cost to the capital stock, the sales/capital stock ratio, the stock market valuation of
+capital, average Q, the manufacturing price inflation, and the investment ratio.
+In the estimated investment functions, only lagged values of the estimated marginal Q
+series have any explanatory power for investment, whereas the parameter of current Q is
+insignificantly negative. If added to the investment equation, lagged sales appear to have a
+significant positive influence on investment.
+The performance of marginal Q in explaining the investment ratio is relatively poor. The
+authors present a list of possible causes of the poor results: the aggregation problems, the
+assumption of homogeneity of capital, the assumption of perfect capital markets and the
+negligence of liquidity constraints.
+5.1.2. Gilchrist/Himmelberg (1995, 1998)
+Following Abel and Blanchard (1986), the authors estimate a set of vector-autoregressive
+forecasting equations using a subset of balance sheet information. The forecasts of the
+VAR model are used to construct the expected value of marginal Q conditional on the
+observed fundamentals. The expected value of marginal Q is called fundamental Q.15
+The unobservable marginal profit of capital is proxied by a measure of realized profits in
+relation to the existing capital. This approximation holds under strong assumptions
+concerning the production technology.16
+The VAR model is estimated separately for a priori liquidity constrained and unconstrained
+firms to allow for differences in the forecasting scheme. The authors do not use firm-
+specific depreciation rates nor time-varying interest rates. The fixed value assumed for
+depreciation is 15% and the fixed value assumed for the interest rate is 6%.
+Tobin's Q based on share prices leads to much lower parameter estimates compared to
+fundamental Q. Adding cash flow as a further explanatory variable leads to a significant
+cash flow sensitivity for both Q specifications. When the sample is grouped a priori, only
+the constrained firms show a significant cash flow sensitivity. Controlling for cash flow
+through the incorporation in the forecasting system does not alter the findings of the
+previous literature.
+14 Abel and Blanchard use quarterly data on US manufacturing for the period 1948:2 to 1979:3. The
+VAR model is estimated using 5 or 7 variables following a fourth-order vector-autoregressive process.
+15 In the 1998 paper Gilchrist and Himmelberg extend the approach, analyzing in a first step the
+dynamics of firms' investment behaviour using a VAR model for panel data. See
+Gilchrist/Himmelberg (1998).
+16 See Gilchrist/Himmelberg (1995), p. 550.
+-21-
+Even if the authors find Tobin's Q a poor proxy for investment opportunities, the results of
+the literature using Tobin's Q are confirmed. The fundamental Q seems to be superior,
+leading to higher parameter estimates. Because cash flow is explicitly included in the
+forecasting model, the authors interpret an additional sensitivity of cash flow as evidence
+of the existence of capital market imperfections.
+5.1.3. Bontempi et al (2001)
+Bontempi et al base their analysis on the fundamental distinction between equipment and
+structures.17 These two components of the capital stock are characterized by different rates
+of depreciation and a different tax treatment. The usual aggregation of equipment and
+structures is criticized because this aggregation rests on the counterfactual assumption of
+perfect substitutability. Further, the authors assume that equipment and structures show
+different adjustment costs.18
+The results show that equipment reacts strongly and significantly to Q, whereas structures
+do not respond to Q.19 Some of the regressions have to be interpreted with care because
+the Sargan test fails to reject the validity of the instruments. When testing for different
+forms of adjustment costs, the authors find that the assumption of convex adjustment costs
+does not hold for structures. This implies a fixed component in the adjustment costs. When
+estimating separate equations for purchases and sales of investment goods, the results show
+that only equipment responds significantly to Q, with purchases reacting much more
+strongly than sales.
+In a further step Bontempi et al explore the possibility of interrelated adjustment costs. It is
+therefore assumed that the level of structures influences the adjustment costs of equipment
+and vice versa, and that the adjustment cost function is linearly homogeneous. The
+estimated investment functions now include, besides the Q-measures for equipment and
+structures, the ratio of the two components of the capital stock as well as the product of Q
+and the measure of the capital stock's structure. For this investment equations Q is
+significant for structures as well as for equipment, while the structure of the capital stock is
+never significant and the combined effect only sometimes. Based on these results, the
+authors conclude that the two capital goods seem to be complements in their adjustment
+costs.20
+17 See Bontempi et. al. (2001), p. 2.
+18 The authors use a large database including balance sheets and income statements of more than 52,000
+Italian manufacturing firms. The final estimates are base on a balanced panel of 1,539 firms.
+19 See Bontempi et. al. (2001), p. 16.
+20 See Bontempi et. al. (2001), p. 23.
+-22-
+5.2. The Calculation of Q using firm-level balance sheet data
+We use the following definition of marginal Q stated by Hayashi (1982) as the starting
+point: "Remember that Q, which we call marginal Q, is the ratio of the market value of an
+additional unit of capital to its replacement cost."21
+As marginal Q is not observed, one way to overcome this problem followed extensively in
+the empirical literature is to use stock market data to measure unobservable expectations.
+Since in Germany only the smallest share of an economy's firms is quoted on stock
+markets, the concept of using stock market data to study firms' investment behaviour
+excludes the majority of firms from an empirical investigation.22 When using accounting
+data it is therefore necessary to apply alternative concepts to find measures that proxy for
+the expectations about future profits or future marginal profitabilities of capital. In the
+following two concepts for measuring the firm's investment profitabilities, average Q and
+marginal Q, are illustrated.
+5.2.1. Calculating Tobin's Q (average Q)
+The approach used in this paper is based on the formula used by several authors23 to
+calculate Tobin's Q for firm i at period t as the ratio of the market value of equity (
+it
+V ) plus
+the market value of outstanding debt ( )
+it
+D minus the replacement value of all remaining
+assets besides the capital stock ( )
+it
+N to the replacement value of the capital stock (
+it
+K ):
+it
+it
+it
+it
+it K
+N
+D
+V
+Q
+-
++
+=
+When using balance sheet data in the empirical analysis, no market values of equity and
+debt are available in the data source and they therefore have to be estimated. The approach
+used in this paper is to estimate market values of equity based on a VAR-forecasting model
+as was suggested by Abel and Blanchard (1986). This approach was extended to panel
+data by Gilchrist and Himmelberg (1995, 1998).
+The VAR-model we estimate contains three variables, pre-tax profits (PTP), sales (S) and
+cash flow (CF). The use of pre-tax profits instead of the theoretically more appealing after
+tax profits is inevitable because the apparent tax rate often shows implausible values and
+enormous variance. This is due to the fact that the data base contains firms of different
+legal status and no information about the firms' dividend policy. In our final estimates we
+make use of the forecasts based on a VAR containing one lag, but we obtained comparable
+results when using two lags.
+21 Hayashi (1982), p. 214.
+22 Beside the argument of data availability, the empirical results using stock market data have been
+rather disappointing, see e.g. the overview in Chirinko (1993).
+23 See e.g. Erickson/Whited (2000a) p. 1034.
+-23-
+The equations of the VAR model using one lag can be written as
+it
+t
+i
+t
+i
+t
+i
+i
+it x
+a
+x
+a
+x
+a
+d
+x 1
+1
+,
+3
+13
+1
+,
+2
+12
+1
+,
+1
+11
+1
+1
+
++
++
++
++
+= -
+-
+-
+it
+t
+i
+t
+i
+t
+i
+i
+it x
+a
+x
+a
+x
+a
+d
+x 2
+1
+,
+3
+23
+1
+,
+2
+22
+1
+,
+1
+21
+2
+2
+
++
++
++
++
+= -
+-
+-
+it
+t
+i
+t
+i
+t
+i
+i
+it x
+a
+x
+a
+x
+a
+d
+x 3
+1
+,
+3
+33
+1
+,
+2
+32
+1
+,
+1
+31
+3
+3
+
++
++
++
++
+= -
+-
+-
+The equations of the VAR do not contain time dummies because we are interested in
+expected values conditioned on lagged values and fixed firm effects and not conditioned
+on specific time effects.24
+As the usual LSDV estimator is known to be biased, one of the various other available
+approaches has to be followed, taking into account the problems of dynamic panel data
+estimation.25 When applying a direct bias correction to estimate the dynamic equations
+containing fixed effects, all variables j are measured as deviations from their firm-
+individual means and therefore the equations do not contain firm-specific effects:
+=
+-
+=
+T
+t
+jit
+jit
+jit x
+T
+x
+x
+1
+1
+~
+Alternatively the dynamic equations can be estimated using a GMM approach. In this case
+differencing leads to the elimination of the firm-specific effects:
+jit
+t
+ji
+j
+t
+ji
+j
+t
+ji
+j
+jit x
+a
+x
+a
+x
+a
+x 
+
++
+
++
+
++
+
+=
+ -
+-
+- 1
+,
+3
+1
+,
+2
+1
+,
+1
+In the following we drop the tilde (the difference operator respectively) to ease readability.
+In short notation the system of (seemingly) unrelated equations can be written as
+it
+t
+i
+it Ax
+x +
+= -1
+,
+Assuming a stationary process for each point of time t, the one-period-ahead forecast can
+be estimated by
+[ ]
+t
+i
+it
+t
+i
+t
+i E ,
+1
+,
+1
+,
+^
+|
+^ x
+A
+x
+x
+x =
+= +
++
+The two-period-ahead forecast can be estimated using the one-period-ahead forecast
+[ ]
+1
+,
+2
+,
+2
+, ^
+^
+|
+^ +
++
++ =
+= t
+i
+it
+t
+i
+t
+i E x
+A
+x
+x
+x
+24 When time effects are included forecasts have to build upon special assumptions concerning the
+unknown future time effects.
+25 See Nickell (1981).
+-24-
+and so on.26
+Using these forecasts, the discounted value of future profits at time t can be calculated as
+follows, where it is assumed that profit is the first of the three variables used in the VAR27:
+[ ] 
+
+
+  ,
+1
+,
+1
+, | t
+it
+t
+i
+t
+i x
+E
+V
+
+=
++
+= x
+
+=
++
+=
+1
+,
+,
+1
+,
+^
+^
+
+
+
+ t
+t
+i
+t
+i x
+V
+with
+
+
+
+
+
+)
+1
+(
+1
+,
+,
+t
+t
+r
++
+= .
+We use the capital market interest rate (Umlaufsrendite festverzinslicher Wertpapiere
+inländischer Emittenten) as a measure of the opportunity costs to discount future profits.
+For each year the firm faces its forecasting problem, we use the actual term structure of
+capital market interest rates for 1 to 9 years maturity. For discounting even further
+forecasts the interest rate with a maturity of 9 years is used. In this respect we differ from
+earlier approaches (Gilchrist and Himmelberg 1995, 1998 and Bontempi et. al. 2001),
+which for simplicity assume a fixed interest rate for all years and for all maturities.
+The estimated discounted value of future profits t
+i
+V ,
+^ is taken as part of the nominator to
+calculate firm and year-specific average Q:
+it
+it
+it
+it
+a
+it
+K
+N
+D
+V
+Q
+-
++
+=
+^
+5.2.2. Calculating marginal Q
+So far we have estimated average Qa using the estimated market value of equity.28 To
+calculate marginal (fundamental) Qm we follow a similar approach using the described
+Panel-VAR-technique. To calculate fundamental Qm we first have to find a proxy for the
+marginal profitability of capital ( it
+MPK ). Following Gilchrist and Himmelberg (1998) we
+use a measure based on a Cobb-Douglas-Production technology where capital is seen as a
+quasi fixed factor of production:
+
+
+ M
+L
+CK
+Y =
+26 This formulation of the forecast process does not take into account the existence of individual fixed
+effects. Either these effects have to be cancelled out by some data transformation (averaging or
+differencing) or they have to be estimated explicitly. See the Appendix for further details.
+27 In our calculation we stop after 200 forecasting periods instead of using an indefinite forecast horizon.
+28 From a theoretical point of view a marginal Q is more appropriate, see Gilchrist/Himmelberg (1998).
+-25-
+with
+Y output
+K capital stock
+L labour
+M intermediates
+
+
+ ,
+, elasticities of production
+Allowing for economies of scale
+
+
+
+ +
+=
++
++ 1 ,
+the firm faces the following maximization problem:
+F
+MV
+LW
+YP -
+-
+-
+=
+
+with
+ profit
+P output price
+W wage
+V price of intermediates
+F fixed costs
+subject to the Cobb-Douglas production function
+F
+MV
+LW
+P
+M
+L
+AK -
+-
+-
+= 
+
+
+ .
+The marginal profitability of capital is given by
+( )
+K
+F
+MV
+LW
+P
+M
+L
+AK
+K 
+-
+-
+-
+
+=
+
+ 
+
+
+
+Allowing for non-perfect competition, the MPK can be written as
+Y
+K
+Y
+Y
+P
+P
+K
+Y
+
+
+
+
++
+
+
+=
+K
+Y
+P
+P
+Y
+Y
+P
+P
+K
+Y
+
+
+
+
++
+
+
+=
+K
+Y
+P
+P
+K
+Y
+
+
++
+
+
+= -1
+
+)
+1
+( 1
+-
++
+
+
+= 
+P
+K
+Y
+)
+1
+( 1
+1 -
+- +
+= 
+ YP
+K
+K
+S
+K
+S
+
+
+ =
++
+= - )
+1
+( 1
+-26-
+with
+ price-elasticity of demand
+S sales
+Therefore, the unknown MPK is proportional to the sales-to-capital-stock ratio. To
+estimate the unknown parameter  we assume that on average the MPK equals the user
+costs of capital (U), which we measure as the sum of the apparent interest rate (ri) and the
+rate of depreciation (di). Using the sectoral calculation of  including all years and all
+firms belonging to sector j
+( )
+1
+)
+( 1
+)
+( 1
+____
+^
+-
+ =
+ =
+
++
+=
+=
+j
+j N
+j
+I
+i
+T
+t it
+N
+j
+I
+i
+T
+t
+i
+i
+j
+j
+j
+K
+S
+d
+r
+K
+S
+U
+
+the firm and year-specific marginal profitability of capital is estimated as
+it
+j
+it
+K
+S
+MPK 
+
+^
+Marginal Q is then calculated as the present value of estimated future marginal
+profitabilities of capital
+( ) 
+= +
+
+=
+
+=
+1
+,
+,
+,
+1
+,
+,
+,
+^
+
+
+
+
+
+
+ 
+
+ t
+i
+t
+i
+j
+t
+i
+it
+m
+t
+i K
+S
+MPK
+E
+Q
+with
+
+
+
+
+
+
+)
+1
+(
+)
+1
+(
+,
+,
+,
+t
+i
+t
+i
+r
+d
++
++
+=
+where the market interest rate for the relevant maturity and firm specific depreciation rates
+are used.29 The estimated VAR model with one lag includes the estimated MPK, the cash
+flow (CF) and the operating income (OI), both measured as the ratio to the capital stock.
+29 While Gilchrist and Himmelberg (1995) assume a constant value for all firms and all years we take
+the individual depreciation rates, resulting mainly from different ratios of structure to equipment for
+individual firms, as well as the interest term strucuture into account.
+-27-
+6. Empirical Results
+6.1. Descriptive evidence
+The following table contains some descriptive statistics for the estimated average and
+marginal Q. From the table as well as from the graph containing kernel-density estimations
+for the two Qs, it can be seen that average Q exhibits on average a higher level and greater
+variance.30 While the average Q is somewhat higher than the expected equilibrium value,
+the estimated marginal Q values are somewhat too low.
+Table 1: Descriptive statistics of the estimated Qs
+Q n X Median Q25%
+Q75%
+ Skewn.
+Average Q 23,030 1.38 0.96 0.43 1.86 1.61 2.08
+Marginal Q 23,030 0.63 0.51 0.34 0.78 0.45 2.20
+Figure 6:Kernel-density estimations for the estimated Qs
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+-1 -0.5 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6
+Average Q
+Marginal Q
+Q
+Note: The kernel used was triangular with a bandwidth of 0.25.
+Before estimating the dynamic investment equations using the two different measures of Q
+we take a non-parametric approach to see whether we can find any indication of a linear
+relation in the bivariate case. We estimate three non-parametric regressions explaining the
+investment ratio by its lagged value, average and marginal Q respectively.
+30 To control for outliers we drop the upper and lower 0.5% quantils for both (average and marginal) Q-
+measures.
+-28-
+Figure 7: Kernel regression: I/K = f(I/K -1)
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+-0.2 0 0.2 0.4 0.6 0.8 1 1.2 1.4 1.6
+Lag(I/K)
+I/K
+Note: The non-parametric regression includes the 500 nearest neighbours at each data point. The kernel used was triangular.
+Figure 8: Kernel regression: I/K = f(Qa)
+0.08
+0.10
+0.12
+0.14
+0.16
+0.18
+0.20
+0.22
+0.24
+0.26
+-2 -1 0 1 2 3 4 5 6 7 8 9 10 11
+Q
+I/K
+Note: The non-parametric regression includes the 500 nearest neighbours at each data point. The kernel used was triangular.
+Figure 9: Kernel regression: I/K = f(Qm)
+0.08
+0.10
+0.12
+0.14
+0.16
+0.18
+0.20
+0.22
+0 0.2 0.4 0.6 0.8 1 1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2
+Q
+I/K
+Note: The non-parametric regression includes the 500 nearest neighbours at each data point. The kernel used was triangular.
+-29-
+The non-parametric regression indicates a positive and fairly linear relation between
+investment and the Q measures for positive Q-values, while the figure for lagged
+investment might indicate a saturation point.
+6.2. Estimated Q-investment functions
+The investment functions are estimated using a bias-corrected estimator to take into
+account the resulting bias when using the lagged endogenous variable.31 We also applied
+GMM-estimation techniques to estimate the dynamic investment function. But when
+comparing the two estimation techniques we prefer the direct bias correction method for
+two reasons. First, when analyzing different estimator simulation studies (Kiviet (1995),
+Judson and Owen (1999), Hansen (2001)) find a corrected LSDV estimator superior
+compared to GMM-estimators.
+Second, as is usually the case when using large micro data files containing mainly cross-
+section information, the correlations of the data are rather low in almost all respects.
+Therefore, the use of differences instead of levels considerably reduces the amount of
+information contained in the data used for estimation. Instrumental estimation is known to
+be problematic when instruments are rather weak.32 When instruments are weak, the
+results are extremely sensitive to the choice of instruments, leading to a large number of
+degrees of freedom for the researcher. We therefore regard it as an advantage of the bias
+correction approach that it restricts these facilities.33
+Average Q:
+030
+,
+23
+070
+.
+0
+121
+.
+0 1
+)
+95
+.
+35
+(
+1
+)
+38
+.
+18
+(
+=
++
++
+= -
+-
+
+n
+Q
+K
+I
+a
+K
+I a
+i
+Marginal Q:
+030
+,
+23
+299
+.
+0
+051
+.
+0 1
+)
+62
+.
+27
+(
+1
+)
+23
+.
+7
+(
+=
++
++
+= -
+-
+
+n
+Q
+K
+I
+a
+K
+I m
+i
+We find both measures of Q to be highly significant.34 In both equations the lagged
+investment ratio is highly significant as well. Comparing the parameters, we find that the
+parameter of marginal Q is four times the parameter of average Q. But it has to be taken
+into account that average Q has a standard deviation almost four times the standard
+31 See the appendix for details about the estimation procedure.
+32 When instrumenting the difference of Q by the lagged difference of Q we loose about 99% of the
+information contained in the difference of Q!
+33 A comparison of the results using GMM-methods is given in the appendix.
+34 These results confirm the significant influence of Q on German firms investment spending found
+when using sectoral data, see Behr/Bellgardt (1998, 2000). For results for German firms using stock
+market data see Audretsch/Elston (2002).
+-30-
+deviation of marginal Q. The parameter of average Q is at the upper bound of the interval
+of parameters found in empirical studies using stock market data rather than the direct
+forecasting approach.35 The higher parameter of marginal Q is closer to the theoretical
+expectations about its value when trying to interpret the parameter as the capital stock
+adjustment cost parameter. However, because of the dependence of the parameter value on
+the standard deviation of the Q measure, the parameter should be interpreted with care.
+Whited (1992) discusses the problems of inferring adjustment cost parameters from the Q-
+parameter in detail.
+Even if the simple variance decomposition does not hold exactly in the context of the
+dynamic panel data estimation, the share of explained variance is still a useful indicator of
+the explanatory power of the estimated equation. It turns out that average Q (5%) explains
+a slightly larger part of investment compared to marginal Q (4%).
+As marginal and average Q were measured quite differently, one might ask whether the
+information is rather redundant, or whether the two measures are independent of one
+another. As shown by Hayashi (1982), the two measures can be interchanged only in the
+case of perfect competition and linear homogeneous technology.
+Therefore, comparing the two different measures can also be seen as an indirect test of the
+combined hypothesis of the production function and the adjustment cost function of the
+capital stock being linearly homogeneous and of perfect competition. Of course, the
+comparison is based on the operationalisation of both concepts and therefore depends
+strongly on the adequacy of the operationalisation procedure. The following shows the
+estimated dynamic investment function containing marginal as well as average Q.
+030
+,
+23
+306
+.
+0
+070
+.
+0
+044
+.
+0 1
+)
+21
+.
+29
+(
+1
+)
+21
+.
+37
+(
+1
+)
+49
+.
+6
+(
+=
++
++
++
+= -
+-
+-
+
+n
+Q
+Q
+K
+I
+a
+K
+I m
+a
+i
+We find that both measures of Q contain valuable and largely independent information
+explaining the investment behaviour of firms. According to the t-values, average Q does
+explain partially a somewhat larger amount of the investment compared to marginal Q.
+Together both measures of investment profitability explain about 10% of the variation of
+investment according to the naive measure of residual sum of squares divided by total sum
+of squares. The finding of fairly independent information in the two different measures of
+Q casts doubt on the theoretical assumptions of perfect competition and linear homogenous
+technology, which would make the use of the two measures interchangeable.
+35 See e.g. Whited (1992).
+-31-
+6.3. Results for classes of firm size
+In this section of the paper we analyse the investment behavior of four classes of firm size.
+The following table contains descriptive measures for these four classes of firm size.36
+As can be seen, the investment ratio decreases with firm size from 16.6 % in the smallest
+class of firms to only 11.8 % in the class containing the largest firms. While marginal Q
+also decreases from 0.7 for the smallest firms to only 0.6 in the class of the largest firms,
+there is no such evidence for average Q.
+Table 2: Descriptive statistics for class sizes
+Averages, standard deviation in parentheses
+All
+class 1
+(smallest)
+class 2 class 3 class 4
+(largest)
+n 23,030 5,760 5,760 5,760 5,750
+( )
+1
+, -
+t
+i
+K
+I 0.138 0.166 0.141 0.129 0.118
+(0.17) (0.21) (0.18) (0.16) (0.11)
+m
+t
+i
+Q 1
+, - 0.631 0.714 0.611 0.595 0.604
+(0.45) (0.54) (0.42) (0.41) (0.42)
+a
+t
+i
+Q 1
+, - 1.379 1.335 1.396 1.418 1.366
+(1.61) (1.63) (1.64) (1.58) (1.57)
+TA 151.795 4.529 12.543 31.915 558.901
+(1172.22) (3.6) (8.17) (22.4) (2298.35)
+Next we estimate dynamic investment functions for the four different size-classes using a
+direct bias correction estimation method. The following table contains the results. It can be
+seen that the firms belonging to different classes exhibit strong differences in their
+investment behaviour. The influence of the lagged investment ratio increases from 0.05 for
+the class of smallest to 0.23 for the class of largest firms and is significantly different from
+0 in all classes. Of course, it has to be borne in mind that the smaller the capital stock the
+less continuous will the investment process of a firm be according to pure aggregation
+effects. For larger firms the aggregation will smooth out such discontinuities. The
+parameter for average Q almost halves from 0.092 for the smallest firms to only 0.040 for
+36 The variable used to classify firms according to size is total assets (TA, balance sheet total) in 1988,
+the year prior to the estimation period. Because only the balance sheet total is observable for lenders
+and outsiders, we do not correct the balance sheet total for the capital stock at replacement values. The
+grouping according to the balance sheet total corrected for the revaluation of the capital stock leads to
+no major changes in the results.
+-32-
+the largest firms. Therefore it can be stated that the larger the firms the more its investment
+ratio is influenced by its past investment behaviour and the less it takes the profitability,
+measured by average Q, into account.
+When using marginal Q the findings for the different size classes are similar concerning
+the increasing influence of lagged investment for increasing firm size. For marginal Q
+there is less evidence of decreasing influence with firm size compared to average Q. Each
+of the four different size classes show a strong and significant reaction to marginal Q.
+Table 3: Average Q investment functions for class sizes
+All
+class 1
+(smallest)
+class 2 class 3 class 4
+(largest)
+n 23,030 5,760 5,760 5,760 5,750
+( )
+1
+, -
+t
+i
+K
+I 0.121 0.054 0.142 0.172 0.231
+(18.38) (4.19) (10.77) (12.78) (17.91)
+a
+t
+i
+Q 1
+, - 0.070 0.092 0.073 0.064 0.040
+(35.95) (21.10) (16.83) (17.67) (15.26)
+Table 4: Marginal Q investment functions for class sizes
+All
+class 1
+(smallest)
+class 2 class 3 class 4
+(largest)
+n 23030 5760 5760 5760 5750
+( )
+1
+, -
+t
+i
+K
+I 0.051 -0.008 0.049 0.102 0.178
+(7.23) (-0.61) (3.52) (7.23) (13.16)
+m
+t
+i
+Q 1
+, - 0.299 0.276 0.360 0.297 0.237
+(27.62) (12.19) (16.50) (13.88) (12.79)
+7. Conclusion
+In this paper we have analyzed the investment behaviour of German firms within the
+framework of the Q-theory. Facing two severe problems of non-adequate capital stock
+balance sheet data and non-available stock market data, alternative measures were applied.
+Transforming the balance sheet figures of the capital stock less depreciations at historical
+costs into meaningful figures at replacement values was accomplished using a new
+algorithm. The disaggregation into structures and equipment, the disaggregation into
+-33-
+vintages and the existence of different capital goods' lifetimes is taken into account.
+Since anonymous individual firm balance sheet data were used, no stock market measure
+of Q is available. The data basis contained roughly 2,000 firms covering the twelve years
+for the period 1987 to 1998. By following the approach of Abel and Blanchard and
+Gilchrist and Himmelberg, measures of Q were derived making use of a vector-
+autoregressive model to forecast future profitability directly. Two different measures of Q,
+marginal and average Q were derived. Both, a direct bias correction method and the GMM
+approach, were applied to estimate the investment functions. Given the loss of information
+when turning to differenced variables, as also because simulation results favour a direct
+bias correction procedure, the direct bias correction method was preferred to the GMM
+approach.
+The estimation results of dynamic investment equations show that the Q measures
+influence the firm's fixed investment spending significantly. When comparing the two Q-
+proxies, the average Q slightly outperforms marginal Q. This outcome might be due to the
+strong assumptions concerning the production technology underlying the calculation of
+marginal Q which are perhaps not met in reality.
+When analyzing the investment behaviour in four different classes of firm size, we find
+that larger firms react less strongly to Q and more strongly to lagged investment.
+-34-
+Appendix
+A. Sectors included in the analysis
+No. Sector n
+1 Manufacture of food products and beverages 112
+2 Manufacture of textiles 79
+3 Manufacture of textile products 19
+4 Manufacture of wood and wood products 78
+5 Manufacture of pulp, paper and paper products 58
+6 Publishing and Printing 44
+7 Manufacture of chemicals and chemical products 85
+8 Manufacture of rubber and plastic products 128
+9 Manufacture of other non-metallic mineral products 105
+10 Manufacture of basic metals 89
+11 Manufacture of fabricated metal products, except
+machinery and equipment
+132
+12 Manufacture of machinery and equipment n.e.c. 240
+13a Manufacture of electrical machinery and apparatus n.e.c. 96
+13b Manufacture of medical, precision and optical instruments 26
+14 Manufacture of motor vehicles, trailers and semi-trailers 52
+15 Construction 109
+16 Wholesale trade and commission trade 559
+17 Retail trade, Transport 292
+-35-
+B. The Estimated Vector-Autoregressive Models for Panel Data
+Average Q Forecasting Equations
+left-hand side variables
+right-hand side PTP CF S
+variables PTP 0.858 0.145 1.444
+(111.42) (17.57) (37.05)
+CF -0.007 -0.019 -0.138
+(-2.81) (-6.73) (-10.25)
+S -0.005 0.024 0.996
+(-3.93) (19.01) (165.87)
+PTP Pre-Tax-Profits, CF Cash Flow, S Sales.
+Marginal Q Forecasting Equations
+left-hand side variables
+right-hand side MPK CFK OIK
+variables MPK 0.839 0.446 -0.146
+(154.36) (10.27) (-5.71)
+CFK -0.003 -0.01 -0.015
+(-8.99) (-4.03) (-10.42)
+OIK -0.024 0.217 0.743
+(-16.1) (18.01) (105.06)
+MPK Marginal Profitability of Capital, CFK Cash Flow divided by the adjusted capital
+stock, OIK Operational Income divided by the adjusted capital stock.
+-36-
+C. Details of the estimation technique
+A direct bias correction procedure
+The procedure is based on Kiviet (1995) and Hansen (2001). The basic idea is to estimate
+the asymptotical bias of the least-squares-dummy-variable-model through a plug-in
+method. In the following 
+^ denotes the LSDV-estimator of the lagged endogenous
+variable, 
+^ the estimated vector of the remaining explanatory variables. The  refers to
+de-meaned variables.
+The term
+1
+1
+1
+^
+1
+lim
+-
+-
+-
+
+
+ 
+y
+NT
+p
+N
+is approximated by
+1
+1
+^
+^ -
+-
+ 
+
+NT
+and ( )
+( )
+( )
+-
+
+-
+-
+-
+-
+T
+T
+T 1
+1
+1
+1
+1
+2 
+
+
+by ( )
+( )
+( )
+-
+
+-
+-
+-
+-
+T
+T
+T 1
+1
+1
+1
+1
+^ 2 
+
+
+with 
+ ^
+^ 1
+1
+, X
+y
+t
+i
+-
+= -
+- and
+( )
+1
+1
+^
+-
+- 
+
+= y
+X
+X
+X
+ .
+Now we search for the parameter  , using a grid-search, which minimizes the quadratic
+difference between asymptotic and estimated bias:
+[ ]2
+^
+:
+^ as
+i
+B
+Bias
+Min
+c
+-
+
+
+( )
+( )
+( )
+( )
+2
+1
+^
+1
+1 1
+1
+1
+1
+^
+^
+^
+:
+^
+2
+-
+
+-
+-
+
+-
+-
+-
+-
+-
+- T
+T
+NT
+Min
+T
+c
+
+
+
+
+
+
+
+
+
+
+The estimated bias-corrected parameter c
+
+^ is used to approximate c
+
+^ :
+( ) ( ) ( )
+
+
+
+ -
+
+
+-
+=
+-
+
+
+-
+-
+
+
+
+
+^
+lim
+lim
+^
+lim 1
+1
+N
+N
+N
+p
+y
+X
+X
+X
+p
+p
+( )
+c
+c
+
+
+
+
+ ^
+^
+^
+^
+^ -
++
+=
+-37-
+D. GMM and LSDV Estimates
+GMM
+1
+, -
+t
+i
+K
+I
+d a
+t
+i
+dQ 1
+, -
+m
+t
+i
+dQ 1
+, - Sargan AR(2) n
+0.128 0.031 111 1.92 20727
+(13.60) (5.70) [0.049] [0.054]
+0.084 0.229 115.4 2.13 20727
+(5.64) (5.92) [0.027] [0.033]
+0.081 0.028 0.187 145 1.92 20727
+(6.00) (5.22) (5.16) [0.208] [0.054]
+t-values in parentheses. Both GMM equations are estimated in differences, only lagged values of the right hand side variables are used as
+GMM instruments. Lagged investment and Qs were instrumented using GMM instruments. The upper and lower 0.1% quantiles of the Q
+values where eliminated to prevent the equations being influenced by outliers. t-values are shown below parameters in parentheses. The
+p-values for the Sargan-Test for overidentifying restrictions and the test for second-order autocorrelation are shown in brackets below
+the statistics.
+LSDV
+030
+,
+23
+069
+.
+0
+022
+.
+0 1
+)
+06
+.
+36
+(
+1
+)
+35
+.
+6
+(
+=
++
++
+=
+-
+-
+
+n
+Q
+K
+I
+a
+K
+I a
+i
+030
+,
+23
+352
+.
+0
+054
+.
+0 1
+)
+72
+.
+32
+(
+1
+)
+82
+.
+7
+(
+=
++
+-
+=
+-
+-
+-
+
+n
+Q
+K
+I
+a
+K
+I m
+i
+030
+,
+23
+355
+.
+0
+070
+.
+0
+054
+.
+0 1
+)
+12
+.
+34
+(
+1
+)
+35
+.
+37
+(
+1
+)
+97
+.
+7
+(
+=
++
++
+-
+=
+-
+-
+-
+-
+
+n
+Q
+Q
+K
+I
+a
+K
+I m
+a
+i
+-38-
+E. The data source
+The data set after calculating the capital stock using the detailed schedule of fixed asset
+movements leaves us with 3,169 firms and 11 years to start with.
+To prevent outliers biasing the results we drop the upper and lower 0.5 % of the
+observations of the following nine variables:
+- ratio of aggregated investment to the aggregated capital stock
+- ratio of investment in equipment to the capital stock of equipment
+- ratio of investment in structures to the capital stock of structures
+- ratio of pre-tax profits to the capital stock
+- ratio of sales to the capital stock
+- ratio of cash flow to the capital stock
+- ratio of operating income to the capital stock
+- marginal Q
+- average Q.
+The balancing of the data after eliminating the outliers leaves 2,303 firms in the sample.
+Owing to lags, the period available covers 10 years, 1989-1998.
+Throughout the analysis we use (with one exception) all variables at nominal values. The
+reason for doing so is the use of ratios in the investment equation:
+a
+t
+i
+i Q
+K
+I
+a
+K
+I
+1
+,
+2
+1
+1 -
+-
+
++
++
+= 
+
+By dividing through the capital stock, the resulting ratios contain the relevant information
+for the investor according to our understanding. We do not see a ratio of, for examples ales
+at prices of year t-k to the capital stock at prices of year t-k as constituting a relevant piece
+of information for the investor. By the same reasoning, we do not envisage an investor
+deciding about investment at prices of year t-k divided by the capital stock at prices of year
+t-k.
+-39-
+F. The forecasting procedure
+For ease of presentation, we dropped the individual firm dummy variables in the text. The
+forecasting procedure takes these dummy variables into account:
+i
+t
+i
+it d
++
+= -1
+,
+^
+^ x
+A
+x
+[ ]
+i
+i
+t
+i
+it d
+d +
++
+= -2
+,
+^
+^ x
+A
+A
+x
+[ ]
+[ ]
+i
+i
+i
+t
+i
+it d
+d
+d +
++
++
+= -3
+,
+^
+^ x
+A
+A
+A
+x
+[ ]
+[ ]
+[ ]
+i
+i
+i
+i
+t
+i
+it d
+d
+d
+d +
++
++
++
+= -4
+,
+^
+^ x
+A
+A
+A
+A
+x
+-
+=
+- +
+=
+1
+0
+,
+^
+^
+s
+l
+l
+i
+s
+t
+i
+s
+it d A
+x
+A
+x
+where
+( ) ( )
+i
+t
+i
+i
+i
+t
+i
+it d
+u
+d
+E
+E +
+=
++
++
+= -
+- 1
+,
+1
+, ^
+^ x
+A
+x
+A
+x
+-40-
+References
+Abel, Andrew B./Blanchard, Olivier J. (1986), The Present Value of Profits and Cyclical
+MovementsinInvestment,Econometrica54,March,p.249-274.
+Alesina, A./Ardagna S./Perotti R./Schiantarelli F. (1999), Fiscal Policy, Profits, and
+Investment,NBERWorkingPaperNo.7207.
+Arellano, Manuel/Bond, Steven (1991), Some Tests of Specifications for Panel Data:
+MonteCarloEvidenceandanApplicationtoEmploymentEquations,TheReviewof
+EconomicStudies,Vol.58,April,p.277-298.
+Audretsch, David B./Elston, Julie A. (2002), Does firm size matter? Evidence on the
+impactofliquidityconstraintsonfirminvestmentbehaviorinGermany,International
+JournalofIndustrialOrganization,Vol.20,No.1,p.1-17.
+Behr,Andreas/Bellgardt,Egon(1998),SektoraleInvestitionsentwicklungundLiquiditäts-
+einfluss,KreditundKapital,Vol.31,p.28-62.
+Behr, Andreas/Bellgardt, Egon (2000), Investitionsverhalten und
+Liquiditätsrestringiertheit,JahrbücherfürNationalökonomieundStatistik,Vol.220,
+No.3,p.257-283.
+Blundell, Richard/Bond, Stephen/Meghir, Costas (1995), Econometric Models of
+CompanyInvestment,inMátyás,L./Sevestre,P.(1995),p.685-710.
+Blundell, Richard/Bond, Stephen (1998), Initial conditions and moment restrictions in
+dynamicpaneldatamodels,JournalofEconometrics87,p.115-143.
+Bontempi,Elenaet.al.(2001),CapitalHeterogeneity:DoesitMatter?Fundamental Qand
+InvestmentonaPanelofItalianFirms,unpublishedWorkingPaper.
+Caballero, Ricardo J./Leahy, John V. (1996), Fixed Costs: The Demise of Marginal q,
+NBERWorkingPaper5508,March1996.
+Chirinko, Robert S. (1993), Business Fixed Investment Spending: Modeling Strategies,
+Empirical Results, and Policy Implications, Journal of Economic Literature, Vol.
+XXXI,p.1875-1911.
+Deutsche Bundesbank (1998), The Methodological Basis of the Deutsche Bundesbank's
+CorporateBalanceSheetStatistics,MonthlyReport,October,p.49-64.
+Doornik,JurgenA./Arellano,Manuel/Bond,Stephen(2001),PanelDataEstimationUsing
+DPDforOx,mimeo.
+Franzosi,A.(1999),InvestmentDeterminants:EmpiricalEvidencefromaPanelofItalian
+Firms,QuadernidiriceraIRSN.44.
+-41-
+Gilchrist, Simon/Himmelberg, Charles P. (1995), Evidence on the Role of Cash Flow for
+Investment, Journal of Monetary Economics, Vol. 36, December, p. 541-572.
+Gilchrist, Simon/Himmelberg, Charles P. (1998), Investment, Fundamental and Finance,
+NBER Working Paper 6652.
+Hall, B. H./Cummins, C./Laderman, E. S./Mundy J. (1988), The R&D Masterfile
+Documentation, NBER Working Paper No. t00272.
+Hansen, Gerd (2001): A bias-corrected least squares estimator of dynamic panel models,
+Allgemeines Statistisches Archiv, Vol. 85, p. 127-140.
+Hayashi, Fumio (1982), Tobin's Marginal q and Average q: A Neoclassical Interpretation,
+Econometrica, Vol. 50, No. 1, p. 213-224.
+Hayashi, Fumio (1997), The Main Bank System and Corporate Investment: An Empirical
+Reassessment, Unpublished Working Paper.
+Hubbard, Glenn (1998), Capital-Market Imperfections and Investment, Journal of
+Economic Literature, Vol. 36, March, p. 193-225.
+Jorgenson, Dale W. (1963), Capital Theory and Investment Behavior, American Economic
+Review, Vol. 53, No. 2, p. 247-259.
+Jorgenson, Dale W. (1971), Econometric Studies of Investment Behavior: A Survey, in:
+Journal of Economic Literature, Vol. IX, p. 1111 - 1147.
+Judson, Ruth A./Owen Ann L. (1999), Estimating dynamic panel data models: a guide for
+macroeconomics, Economics Letters, Vol. 65, p. 9-15.
+Kalckreuth, Ulf von (2001), The Monetary Transmission in Germany: New Perspectives
+on Financial Constraints and Investment Spending, Discussion Paper 19/01, Economic
+Research Centre of the Deutsche Bundesbank.
+Kiviet, Jan F. (1995): On bias, inconsistency and efficiency of various estimators in
+dynamic panel data models, Journal of Econometrics, Vol. 68, p. 53-78.
+Lewellen, Wilbur G./Badrinath, S.G. (1997), On the measurement of Tobin's q, Journal of
+Financial Economics, Vol. 44, p. 77-122.
+Lindenberg, Eric B./Ross, Stephen A. (1981), Tobin's q Ratio and Industrial Organization,
+Journal of Business, Vol. 54, p. 1 - 32.
+Nickell, Stephen (1981), Biases in Dynamic Models with Fixed Effects, Econometrica,
+Vol. 49, Issue 6, p. 1417-1426.
+Stöss, Elmar (2001), Deutsche Bundesbank's Corporate Balance Sheet Statistics and Areas
+-42-
+of Application, Schmollers Jahrbuch, Vol. 121, p. 131-137.
+Tobin, James (1969), A General Equilibrium Approach to Monetary Theory, Journal of
+Money, Credit, and Banking, Vol. 1, p. 15-29.
+Whited, Toni M. (1992), Debt, Liquidity Constraints, and Corporate Investment: Evidence
+from Panel Data, The Journal of Finance, Vol. XLVII, No. 4, p. 1425 - 1460.
+The following papers have been published since 2001:
+January 2001 Unemployment, Factor Substitution, Leo Kaas
+and Capital Formation Leopold von Thadden
+January 2001 Should the Individual Voting Records Hans Gersbach
+of Central Banks be Published? Volker Hahn
+January 2001 Voting Transparency and Conflicting Hans Gersbach
+Interests in Central Bank Councils Volker Hahn
+January 2001 Optimal Degrees of Transparency in
+Monetary Policymaking Henrik Jensen
+January 2001 Are Contemporary Central Banks
+Transparent about Economic Models
+and Objectives and What Difference
+Does it Make? Alex Cukierman
+February 2001 What can we learn about monetary policy Andrew Clare
+transparency from financial market data? Roger Courtenay
+March 2001 Budgetary Policy and Unemployment Leo Kaas
+Dynamics Leopold von Thadden
+March 2001 Investment Behaviour of German Equity
+Fund Managers ­ An Exploratory Analysis
+of Survey Data Torsten Arnswald
+April 2001 The information content of survey data
+on expected price developments for
+monetary policy Christina Gerberding
+May 2001 Exchange rate pass-through
+and real exchange rate
+in EU candidate countries Zsolt Darvas
+-43-
+July 2001 Interbank lending and monetary policy Michael Ehrmann
+Transmission: evidence for Germany Andreas Worms
+September 2001 Precommitment, Transparency and
+Montetary Policy Petra Geraats
+September 2001 Ein disaggregierter Ansatz zur Berechnung
+konjunkturbereinigter Budgetsalden für
+Deutschland: Methoden und Ergebnisse * Matthias Mohr
+September 2001 Long-Run Links Among Money, Prices, Helmut Herwartz
+and Output: World-Wide Evidence Hans-Eggert Reimers
+November 2001 Currency Portfolios and Currency Ben Craig
+Exchange in a Search Economy Christopher J. Waller
+December 2001 The Financial System in the Thomas Reininger
+Czech Republic, Hungary and Poland Franz Schardax
+after a Decade of Transition Martin Summer
+December 2001 Monetary policy effects on
+bank loans in Germany:
+A panel-econometric analysis Andreas Worms
+December 2001 Financial systems and the role of banks M. Ehrmann, L. Gambacorta
+in monetary policy transmission J. Martinez-Pages
+in the euro area P. Sevestre, A. Worms
+December 2001 Monetary Transmission in Germany:
+New Perspectives on Financial Constraints
+and Investment Spending Ulf von Kalckreuth
+December 2001 Firm Investment and Monetary Trans- J.-B. Chatelain, A. Generale,
+mission in the Euro Area I. Hernando, U. von Kalckreuth
+P. Vermeulen
+* Available in German only.
+-44-
+January 2002 Rent indices for housing in West Johannes Hoffmann
+Germany 1985 to 1998 Claudia Kurz
+January 2002 Short-Term Capital, Economic Transform- Claudia M. Buch
+ation, and EU Accession Lusine Lusinyan
+January 2002 Fiscal Foundation of Convergence
+to European Union in László Halpern
+Pre-Accession Transition Countries Judit Neményi
+January 2002 Testing for Competition Among
+German Banks Hannah S. Hempell
+January 2002 The stable long-run CAPM and
+the cross-section of expected returns Jeong-Ryeol Kim
+February 2002 Pitfalls in the European Enlargement
+Process ­ Financial Instability and
+Real Divergence Helmut Wagner
+February 2002 The Empirical Performance of Option Ben R. Craig
+Based Densities of Foreign Exchange Joachim G. Keller
+February 2002 Evaluating Density Forecasts with an Gabriela de Raaij
+Application to Stock Market Returns Burkhard Raunig
+February 2002 Estimating Bilateral Exposures in the
+German Interbank Market: Is there a Christian Upper
+Danger of Contagion? Andreas Worms
+March 2002 The pass-through from market interest rates
+to bank lending rates in Germany Mark A. Weth
+-45-
+February 2002 The long-term sustainability of public
+finance in Germany ­ an analysis based
+on generational accounting Bernhard Manzke
+April 2002 Dependencies between European
+stock markets when price changes
+are unusually large Sebastian T. Schich
+May 2002 Analysing Divisia Aggregates
+for the Euro Area Hans-Eggert Reimers
+May 2002 Price rigidity, the mark-up and the
+dynamics of the current account Giovanni Lombardo
+June 2002 An Examination of the Relationship
+Between Firm Size, Growth, and
+Liquidity in the Neuer Markt Julie Ann Elston
+June 2002 Monetary Transmission in the
+New Economy: Accelerated Depreci-
+ation, Transmission Channels and Ulf von Kalckreuth
+the Speed of Adjustment Jürgen Schröder
+June 2002 Central Bank Intervention and
+Exchange Rate Expectations ­
+Evidence from the Daily
+DM/US-Dollar Exchange Rate Stefan Reitz
+June 2002 Monetary indicators and policy rules
+in the P-star model Karl-Heinz Tödter
+July 2002 Real currency appreciation in acces-
+sion countries: Balassa-Samuelson and
+investment demand Christoph Fischer
+August 2002 The Eurosystem's Standing Facilities
+in a General Equilibrium Model of the
+European Interbank Market Jens Tapking
+August 2002 Imperfect Competition, Monetary Policy
+and Welfare in a Currency Area Giovanni Lombardo
+-46-
+August 2002 Monetary and fiscal policy rules in a
+model with capital accumulation and
+potentially non-superneutral money Leopold von Thadden
+September 2002 Dynamic Q-investment functions for
+Germany using panel balance sheet data
+and a new algorithm for the capital stock Andreas Behr
+at replacement values Egon Bellgardt
+-47-
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Visitors should
+prepare a research project during their stay at the Bundesbank. Candidates must hold a
+Ph D and be engaged in the field of either macroeconomics and monetary economics,
+financial markets or international economics. Proposed research projects should be from
+these fields. The visiting term will be from 3 to 6 months. Salary is commensurate with
+experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+D - 60431 Frankfurt
+GERMANY
+-48-
+

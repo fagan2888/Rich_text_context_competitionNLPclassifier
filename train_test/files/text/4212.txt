@@ -1,0 +1,734 @@
+Article
+Blur Unblurred--A Mini
+Tutorial
+Hans Strasburger
+Institute of Medical Psychology, Ludwig-Maximilians-Universita
+¨t,
+Mu
+¨nchen, Germany; Department of Medical Psychology and Medical
+Sociology, Georg-August University, Go
+¨ttingen, Germany
+Michael Bach and Sven P. Heinrich
+Section for Functional Vision Research, Eye Center at Medical Center,
+University of Freiburg, Freiburg im Breisgau, Germany; Faculty of
+Medicine, University of Freiburg, Freiburg im Breisgau, Germany
+Abstract
+Optical blur from defocus is quite frequently considered as equivalent to low-pass filtering. Yet that
+belief, although not entirely wrong, is inaccurate. Here, we wish to disentangle the concepts of
+dioptric blur, caused by myopia or mis-accommodation, from blur due to low-pass filtering when
+convolving with a Gaussian kernel. Perhaps surprisingly--if well known in optometry--the
+representation of a blur kernel (or point-spread function) for dioptric blur is, to a good
+approximation and disregarding diffraction, simply a cylinder. Its projection onto the retina is
+classically referred to as a blur circle, the diameter of which can easily be deduced from a light-
+ray model. We further give the derivation of the relationship between the blur-disk's diameter and
+the extent of blur in diopters, as well as the diameter's relation to the near or far point, and finally
+its relationship to visual acuity.
+Keywords
+blur, acuity, accommodation, spurious resolution, diopters, optometry, optics
+Date received: 30 November 2017; accepted: 24 February 2018
+Introduction
+A while ago we were wondering whether the low signal amplitudes in fMRI retinotopic
+mapping and visual evoked potential (VEP) recording from a psychiatric patient could be
+due simply to a severe lack of correct optical accommodation. Blur reduces retinal contrast
+(at higher spatial frequencies), which, in turn, should decrease evoked signal amplitude (in
+VEPs: Strasburger, Murray, & Remky, 1993; Strasburger, Scheidler, & Rentschler, 1988; in
+fMRI: Boynton, Demb, Glover, & Heeger, 1999). Yet a direct test would be more meaningful.
+Corresponding author:
+Hans Strasburger, Abt. fu
+¨r Medizinische Psychologie, Universita
+¨t Go
+¨ttingen, Waldweg 37, 37073 Go
+¨ttingen, Germany.
+Email: strasburger@uni-muenchen.de
+Creative Commons CC BY: This article is distributed under the terms of the Creative Commons Attribution 4.0 License
+(http://www.creativecommons.org/licenses/by/4.0/) which permits any use, reproduction and distribution of the work without
+further permission provided the original work is attributed as specified on the SAGE and Open Access pages (https://us.sage-
+pub.com/en-us/nam/open-access-at-sage).
+i-Perception
+2018 Vol. 9(2), 1­15
+! The Author(s) 2018
+DOI: 10.1177/2041669518765850
+journals.sagepub.com/home/ipe
+And since inserting plus lenses in our fMRI stimulus goggles would also blur any fixation mark
+and thus impede fixation, the question arose what the appropriate kernel for digital blurring of
+the stimulus images would be.
+Optical blur from defocus is often considered as equivalent to low-pass filtering (e.g.,
+McAnany, Alexander, Lim, & Shahidi, 2011; Meinecke & Kehrer, 2007; Petrova, Z
+ anete,
+Cikmac
+ s, & Kassaliete, 2017; Wood, 1983). Yet that belief, although not entirely wrong, is
+inaccurate. So, here in this short, tutorial-like note we wish to disentangle dioptric blur,
+caused by myopia or mis-accommodation, from blur by low-pass filtering including
+convolution with a Gaussian kernel. Perhaps surprisingly--if well known in
+optometry--the blur kernel (or point-spread function [PSF]) for dioptric blur is (to a good
+approximation and disregarding diffraction) simply a cylindrical disk. Its projection onto the
+retina is classically referred to as a blur circle (see Figure 2(a) which is discussed later), the
+diameter of which can be easily deduced from a light-ray model. The derivation is given later,
+where we further derive the relationship between the blur-disk's diameter and the extent of
+blur in diopters, and the diameter's relation to the near or the far point. Finally, we explore
+the relationship of defocus to visual acuity based on an empirical approach by Blendowske
+(2015). Note from the outset that we only consider defocus here, not blur in general. The
+actual PSF is a superposition of the PSF from defocus with the PSFs from diffraction,
+astigmatism, higher order aberrations--which all depend on pupil diameter--and the
+idealized, needle-like PSF. It looks, in particular at low levels of mis-accommodation, very
+different from a cylinder. Examples, for 200 eyes, are shown in Watson (2015, p. 15), based
+on Thibos, Hong, Bradley, and Cheng (2002).
+The role of the blur disk for blur, myopia, and accommodation has long been known.
+Jurin (1738) uses it in his Essay on distinct and indistinct vision when he describes ways to
+degrade the retinal image, from perfectly distinct (meaning perfectly in focus) to imperfectly
+distinct, meaning somewhat out of focus but perceptually still appearing as distinct. One of
+the methods used by Jurin was simply to bring the stimulus closer to the eye than
+accommodation would allow, such that the retinal image is out of focus.1 Figure 1 is an
+example from Jurin's essay where the observer looks at a ring stimulus, fixating a point (c) on
+the ring's outer circumference. The pencil of rays emanating from that point will be dissipated
+into a circle of dissipation (Jurin's term for the blur disk), drawn, in the figure, into the
+stimulus (Jurin, 1738; Figure 2; here Figure 1).2 Jurin performs calculations with the radius
+of dissipation; he argues, for example, that the penumbra in a certain example has twice the
+thickness of the radius, and he describes how to measure the radius on that basis
+Figure 1. (a) Example of a circle of dissipation from insufficient accommodation in Jurin (1738, Figure 2).
+The circle, with center c, originates at the border of a ring stimulus with center C. (b) Jurin was aware of the
+eye's basic anatomy, as shown by his sketch of the eye (Jurin, 1738, Figure 51).
+2 i-Perception 9(2)
+perceptually.3,4 He does not actually derive the size of the radius, however, even though he is
+aware of the role of the pupil size and lens curvature. Jurin had a good understanding of the
+eye's anatomy and optics (Figure 1(b); cf. Strasburger & Wade, 2015; Wade, 2004).
+To set dioptric blur apart from other kinds of blur, Figure 2 shows several types of a PSF5
+that underlie various kinds of blur. The cylindrical PSF in Figure 2(a) is a simplified version
+of what happens optically; the exponential in Figure 2(b) is an illustration of a two-
+dimensional (2D) low-pass analog to the simplest low-pass filter in the time domain (it has
+no natural counterpart in 2D); and the Gaussian in Figure 2(c) is typically used for modeling
+low-pass filtering in the neural pathway, or, respectively, a difference of Gaussians for
+bandpass filtering (Daugman, 1980; Malik & Perona, 1990; Rose, 1979).
+Spurious Resolution
+The importance of choosing the proper type of blur becomes obvious when considering
+spurious resolution. This is a phenomenon long known in optical instrumentation
+(Hotchkiss, Washer, & Rosberry, 1951; Smith, 1982b); it may be illustrated by applying
+dioptric blur to a frequency sweep pattern, like the one in Figure 3(a), where spatial
+frequency increases from left to right. For a given defocus, grating contrast first decreases
+with increasing spatial frequency (as expected) reaching zero contrast at a certain spatial
+frequency (Figure 3(b)). With spatial frequency increasing further, however, the grating
+becomes visible again albeit with inverted phase. This is followed by another zero-crossing
+of contrast, followed by another spatial frequency interval with nonzero contrast and the
+original phase preserved. Such alternation of reversed and preserved phase continues up to
+the cut-off frequency of the optical system. Consequently, high spatial frequencies are
+detectable under dioptric blur, both psychophysically and when used as a stimulus for
+objective acuity testing (Bach, Waltenspiel, & Schildwa
+¨ chter, 1989; Heinrich, Lu
+¨ th, &
+Bach, 2015; Smith, 1982b). This is the case even when the PSF is much wider than the
+period of the grating. High-acuity results, obtained with periodic patterns like sine-wave
+gratings, must thus not be taken at face value. Gaussian blur, in contrast, cannot evoke
+spurious resolution because the Fourier transform of a Gaussian remains a Gaussian and
+is always positive.
+Dioptric blur is not unique in its ability to induce spurious resolution (Harding, 1977;
+Koenderink, 1984); Gaussian blur, however, is unique in avoiding spurious resolution
+(Koenderink, 1984). It is also obvious that the effect is not limited to gratings as in
+Figure 2. Various point-spread functions (PSFs) that lead to blur. (a) Slightly simplified PSF for defocus
+resulting from inaccurate accommodation or myopia. Note that the actual PSF on the retina is a superposition
+of that with influences from other factors. (b) PSF for a 2D low-pass filter in analogy to a first-order time-
+domain low pass. (c) A Gaussian PSF.
+Strasburger et al. 3
+Figure 3(a), and related phenomena even occur with nonperiodic stimulus types, such as
+optotypes (Figure 4; see also Thorn & Schwartz, 1990; Wolf & Angerstein, 1978). The likely
+difference, however, between the effect on gratings (measuring resolution acuity) and the
+effect on optotypes (measuring recognition acuity; Heinrich & Bach, 2013; Strasburger &
+Rentschler, 1996) appears to be that, while the orientation of the grating can still be judged
+under the regimen of spurious resolution, the observer cannot make sense of the patchy
+image of the optotype that results from the phase shifts associated with spurious
+resolution (Bach et al., 1989; cf. Yellott & Yellott, 2007). However, there may be enough
+information left in the dioptrically blurred letter stimuli to allow for differentiation between
+letters after sufficient practice (Heinrich, Kru
+¨ ger, & Bach, 2011). The role of spurious
+resolution in reading is not yet clear (Chung, Jarvis, & Cheung, 2007). To avoid spurious
+resolution, artificial pupils with Gaussian aperture have been proposed (Fry, 1953).
+The above points illustrate that the choice of the proper blur kernel is of practical relevance
+when dioptric blur-related vision impairments are considered. The considerable qualitative
+difference between blur obtained with different blur kernels, as illustrated in Figure 4, also
+demonstrates the limitations of those approaches that attempt to combine multiple sources of
+blur into one equivalent Gaussian blur kernel (e.g., Coppens & van den Berg, 2004).
+More generally, different visual impairments are associated with different kinds of image
+degradation. Myopia is closely related to dioptric blur. Cataract, on the other hand, involves
+e
+c
+n
+a
+n
+i
+m
+u
+L
+Space
+in phase reversed phase in phase
+(a)
+(b)
+Figure 3. Illustration of spurious resolution. Top: The effect of defocus on a frequency-sweep sine-wave
+grating. The original grating (thin line) was convolved with a constant kernel of fixed diameter (represented by
+the disk in the upper left). The resulting defocused grating exhibits zero crossings of the envelope that
+separate segments that are in-phase with the original grating from segments with reversed phase. Bottom:
+The contrast transfer factor (i.e., real part of the optical transfer function) for a defocused periodic sinusoidal
+grating. At about 0.5 D of defocus the image contrast is zero. With higher spatial frequency, however, the
+grating reappears with inverted phase and lower contrast. From Bach et al. (1989; Figure 2). Note that the
+contrast transfer factor as used here is not directly related to the contrast transfer function, which is
+commonly defined for square wave gratings (Boreman, 2001).
+4 i-Perception 9(2)
+wide-angle scattering (de Wit, Franssen, Coppens, & van den Berg, 2006; de Waard, IJspeert, van
+den Berg, & de Jong, 1992; Elliott, Bullimore, Patla, & Whitaker, 1996). Amblyopic vision,
+although appearing blurred to the subject, is not validly simulated by blur kernels altogether,
+as it appears to be associated with perceptual distortions and image fragmentation (Piano, Bex,
+& Simmers, 2015; Sireteanu, Ba
+¨ umer, Sa
+^ rbu, & Iftime, 2007; Sireteanu, Lagre
+` ze, &
+Constantinescu, 1993). This is the likely reason why there is a dissociation in amblyopia
+between optotype acuity and grating acuity (or pattern acuity), both as measured
+psychophysically (Bach, Strahl, Waltenspiel, & Kommerell, 1990; Friendly, Jaafar, & Morillo,
+1990; Gwiazda, 1992; Kushner, Lucchese, & Morton, 1995) or in objective acuity tests based on
+pattern VEPs (Heinrich, Bock, & Bach, 2016; Wenner, Heinrich, Beisse, Fuchs, & Bach, 2014).
+r
+u
+l
+b
+n
+a
+i
+s
+s
+u
+a
+G s
+u
+l
+u
+m
+i
+t
+s
+l
+a
+n
+i
+g
+i
+r
+O
+s
+u
+c
+o
+f
+e
+D
+s
+s
+a
+p
+-
+w
+o
+l
+"
+r
+e
+d
+r
+o
+-
+t
+s
+r
+i
+F
+"
+Defocus
+Gauss
+"First-order"
+low-pass
+Figure 4. Effect of blur on Sloan letters. Top row: original, unblurred letters, together with point-spread-
+function profiles (right) for the lower rows. FWHMs of the three PSFs are equal. Note that PSF amplitudes
+are necessarily different since their volume needs to be normalized to unity (light is neither added nor lost).
+Second row: letters with dioptric blur simulated by using a disk with a diameter equal to the letter height as
+blur kernel. The effect of spurious resolution is so strong that the blurred letters look quite unlike their
+original. Third row: PSF with exponential drop-off (analogous to a first-order low-pass filter). Energy is spread
+over a wide spatial range, such that amplitude is rather low. Bottom row: letters with simulated Gaussian blur.
+For display, blurred images were increased in contrast to enhance the visibility of structures. Isolumes for all
+three patterns represent luminance steps of 7 percentage points (white ¼ 100%). The gray scale
+representation of the PSF in the right column uses a different scale than the blurred images.
+Strasburger et al. 5
+Returning to dioptric blur, is a geometrical approximation of the dioptric PSF sufficient or
+is a wave-optics approach required? As Yellott and Yellott (2007) illustrate, the answer to
+that depends, to a large degree, on the relative effects of defocus and diffraction, with the
+latter being related to pupil size. Various higher order aberrations (see, for instance,
+Schaeffel, 2006) and the Stiles-Crawford effect (Stiles & Crawford, 1933) may also come
+into play. However, as Artal (2014) points out, in eyes with normal optics, the amount of
+higher order aberrations and visual acuity are not related; it may even be that the normal
+pattern of aberrations provides the best performance (Artal et al., 2004). Defocus is further
+the main source of degradation in the retinal images in most persons; the relative impact of
+aberrations on image quality is comparable only for amounts of defocus below 0.25 D (Artal,
+2014, pp. 351­352). Thus higher order aberrations are not pursued here.
+Equations that relate the blur-disk diameter to defocus like the one given below have been
+derived or cited earlier (Smith, 1982a, Equations (10) and (15); Dehnert, Bach, & Heinrich,
+2011; Jacobs, Smith, & Chan, 1989; Ravikumar, Sarver, & Applegate, 2012; Smith, 1991). In
+Figure 5, we present an intuitive approach, slightly different to that in, for example, Smith,
+1982a6 or Atchison and Smith (2000).
+Blur-Disk Diameter and Pupil Diameter
+Unlike the case for the Gaussian, the dioptric blur-disk's diameter is reasonably well defined
+since the luminance-times-blur-disk volume is (approximately) cylindrical (Figure 2(a)).
+Under a few simplifying assumptions its diameter depends--in a surprisingly
+straightforward way--on defocus and pupil diameter: The blur-disk diameter b, in
+degrees of visual angle, is (as will be derived later) given by
+b ¼
+180
+
+10À3pmmD, or, simply b ¼ 0:057pmmD; ð1Þ
+b
+p
+f df
+N
+P
+Figure 5. Simplified ray-path calculation of the blur-disk diameter from pupil diameter, assuming thin lenses
+and disregarding aberration and diffraction.
+p ¼ Effective pupil diameter; f ¼ focal length of the optical system (cornea and lens) within the eye; df ¼ focal
+length error; b ¼ blur-disk diameter; P ¼ principal point; N ¼ nodal point.
+6 i-Perception 9(2)
+where pmm
+is the pupil diameter in mm, and D is defocus in diopters (D). The equation allows
+straightforward calculation of the blur kernel. This is well known (Atchison & Smith, 2000,
+pp. 82­84; Smith, 1982a), but here is a simplified derivation for convenience:
+Figure 5 shows the enveloping rays from a far-away point source in a myopic eye, that is,
+an eye in which the focus lies before the retina (by a distance df ). Disregarding the differences
+in the optic media within the eye and with a few further definitions--
+Focal length in the vitreous body (m): f (approximately 22.3 mm ¼ 2.23 Â 10À2 m)
+Accommodation error of focal length (m): df
+Accommodation error (Diopters ¼ mÀ1): D
+Distance of the retina (m): f þ df
+Effective pupil diameter (m): p
+Retinal blur-disk diameter (m): b
+Refractive index: n (approximately 1.336; Le Grand, 1968, p. 49)
+--we have, by the definition of refractive power (in Diopters),
+D ¼
+n
+f þ df
+À
+n
+f
+; ð2Þ
+which, on a common denominator, is
+D ¼ À
+n df
+f ð f þ df Þ
+: ð2aÞ
+By the Intercept Theorem we have
+Àb=df ¼ p=f; ð3Þ
+which, when solved for the blur-disk diameter b, results in
+b ¼ Àp
+df
+f
+: ð4Þ
+For converting the linear blur-disk diameter b on the retina from meters to visual angle in
+radians, note that the angular size is to be taken from the eye's back nodal point (N in the
+figure and blue dashed lines), whose distance from the retina is dN
+¼ 16.68 mm (Le Grand,
+1968, p. 49). The value of (fþdf), on the other hand, is measured from the back principal
+point (P) which is at a distance of dP
+¼ 22.29 mm from the retina. The ratio of these two
+values is the refractive index, n ¼ 1.336 (also Le Grand, 1968, p. 49):
+dP
+=dN
+¼ n ð5Þ
+Since we assume paraxial approximations (i.e., small angles and thus tan ' ¼ ') we have,
+by definition,
+brad
+¼
+b
+dN
+¼
+b
+dP
+n ¼
+b
+f þ df
+n ð6Þ
+Inserting Equation (4),
+brad ¼ Àp
+df
+f
+n
+f þ df
+ð7Þ
+Strasburger et al. 7
+and Equation (2a), we arrive at
+brad
+¼ pD: ð8Þ
+This is almost the desired equation except that the pupil diameter refers to a size within the
+eye which is not readily available. The size p of the pupil as seen from the outside, called the
+entrance pupil, is slightly larger than the actual size, since the physical pupil is seen through
+the cornea, that is, through a magnifying lens. However, since the lens is close to the nodal
+point, the enlargement is small and we will neglect it here. Thus, the size of the blur disk on
+the retina, in radians, is given to a good approximation by the above equation (Equation 8),
+where p is the size of the entrance pupil, that is, the size as seen from the outside, and D is
+defocus in the air. It is a linear relationship between angular blur-disk diameter and defocus,
+with the slope given by the pupil diameter.
+Often, we are in a situation where we do not know the accommodation error in diopters
+but do know by how much an image is too near or too far from the eye. Following James
+Jurin's example, find your personal near point and then, gradually, move the object closer.
+Or, if you are myopic, take off your glasses and move the object a little farther away than
+your far point. The image (from the well-focused case) will then, effectively, be convolved by
+a blur disk, the linear size bstim
+of which is given by
+bstim ¼ p
+dfoc À dstim
+dstim
+
+
+
+
+
+
+
+ ; ð9Þ
+where p, as before, is effective pupil diameter, dfoc
+is the distance of the focal plane (e.g., the
+near point), and dstim
+is the distance of the stimulus. Like Equation (3), this follows directly
+from the Intercept Theorem (similar triangles), now applied, however, to the exterior space
+instead of to the interior of the eye (cf. Smith, 1982b, p. 15; Equation 16).
+Examples
+Figure 6 shows the linear relationship of Equation (1) (or, with rescaling, of Equation (8)) for
+a quick look at what blur-disk diameter to expect at a certain defocus for an adult subject.
+Workplace progressive addition lenses, for example, with half a diopter undercorrection for
+far vision, would thus give a blur disk of approximately 0.1 ¼ 60 visual angle, disregarding
+other factors. Note that with less than about ¼ D defocus, factors other than defocus become
+more prominent in determining blur (Artal, 2014).
+As a further example, let us consider the near point for an observer with a natural
+lens--the closest distance for an object to appear in focus with a given accommodation
+capability (Figure 7). With proper accommodation, no dioptric blur occurs; this results in
+constant acuity as long as distance is large enough to be within the range of accommodation.
+That acuity along the blue segment is referred to as the distance acuity, here set to a value
+equivalent to the acuity achieved with a blur circle of 1 arcmin diameter. Proximal to the limit
+of accommodation, dioptric blur increases and degrades acuity (solid red line). When the near
+point is determined by deciding when the approaching target starts appearing blurred, the
+just-noticeable difference in blur (indicated by gray shading above the blue line) results in a
+small additional shift in the subjective near point. The dashed red line represents the blur-
+circle diameter in the case of a fixed focal length, for example in a person with a monofocal
+intraocular lens, assumed to be in-focus at 50 cm. This also approximates the situation when
+wearing single-vision reading glasses in advanced presbyopia with little or no residual
+8 i-Perception 9(2)
+2.0
+1.5
+1.0
+0.5
+0.0
+-0.5
+-1.0
+Blur circle diameter [log arcmin]
+0.9
+0.7
+0.5
+0.3
+0.1
+Distance [m]
+2
+3 1.5
+4 1.2
+Accommodation demand [D]
+Distance acuity
+Figure 7. The subjective near point of accommodation (black circle) for an observer with natural lens,
+derived from the blur-circle (PSF) diameter (left ordinate) in a simplified model. Moving along the solid blue
+trajectory in the graph from right to left corresponds to an approaching target. With proper accommodation,
+no dioptric blur occurs (blue line); acuity in this condition would be referred to as the distance acuity.
+Proximal to the limit of accommodation (here assumed to be at 2D as in a typical 50-year-old emmetropic
+observer), dioptric blur increases and degrades acuity (solid red line). The dashed red line represents the
+blur-circle diameter in the case of a fixed focal length, as in a person with a monofocal intraocular lens,
+assumed to be in-focus at 50 cm.
+0,0
+0,4
+0,8
+1,2
+1,6
+0 2 4 6 8
+Defocus (D)
+Blur Disk Diameter (°)
+Figure 6. Blur-disk diameter versus defocus; an example for Equation (1), with pupil size set at 3.34 mm.
+That pupil size is the one expected for a 40-year-old subject watching a field of 28 diameter at 100 cd/m2
+luminance (following Watson & Yellot, 2012).
+Strasburger et al. 9
+accommodation. Computations were performed for a pupil size of 5 mm. In reality, the
+transition between distance acuity and blur-affected near acuity is less abrupt than
+depicted, as the switch between the two operating ranges is not sudden.
+Visual Acuity and Defocus
+Let us finally turn to a question that will quickly arise in the context of blur: How is acuity
+affected by defocus? Acuity will obviously be best when blur is minimal (see Artal, 2014, for a
+qualification of that assertion), so a better question is how much is acuity reduced by defocus?
+Let vbc
+denote the visual decimal acuity achieved with the best correction in place, and v the
+acuity with blur present. We are then seeking how the degradation factor v/vbc
+depends on
+defocus, that is, on the spherical error, which we have called D above. Here, Blendowske
+(2015) has derived a surprisingly simple empirical relationship for the reduction of acuity:
+v=vbc
+¼
+1
+1 þ D2
+; ð10Þ
+where v/vbc
+is visual acuity (decimal or Snellen fraction) relative to the best-corrected case,
+and D is the spherical error in diopters (Figure 8). Blendowske's equation (which in his
+publication also includes cylindrical refractive errors which we omit here) was inspired by
+Raasch (1995), who had fit a second-order polynomial to a large set of empirical data with
+natural pupil sizes, relating acuity to (spherical and cylindrical) refractive error. Blendowske
+extended that data set to include even more published data, in particular data for small
+refractive errors, again with natural pupils of diameters in the range from 2 to 5 mm.
+It turned out that, by estimating relative rather than absolute acuity, Blendowske obtained
+his much simpler Equation (10), which (unlike Raasch's equation or the Equations (1) or (8)
+above) also works well for low refractive errors, down to zero diopters. Note that the
+0%
+20%
+40%
+60%
+80%
+100%
+0 1 2 3 4
+Defocus (D)
+Relative acuity, vrel
+= v / vbc
+Figure 8. Effect of defocus on relative acuity, according to Blendowske's (2015) empirical model,
+Vrel
+¼ V/Vbc
+¼ 1/(1þD2).
+10 i-Perception 9(2)
+equation is based on empirical data, not on physical modeling, and thus naturally includes
+the influences of higher order aberrations and diffraction. Note further that pupil size,
+although it influences acuity, does not appear in the equation. Nevertheless, the fit to the
+data is very good, also at small values of D, with a regression standard error of 0.046 log
+units; residual error mostly stemmed from not controlling for pupil size. As a practical
+example, mis-accommodation by ½, 1, 2, or 3 D in a subject having 1.0 decimal acuity
+will degrade that to a value of 0.8, 0.5, 0.2, or 0.1, respectively.
+For small values of defocus the equation simplifies further, to
+v=vbc % 1 À D2 for small D 6% error below ½ D
+ð Þ: ð11Þ
+Since the graphs for the (empirical) Equations (10) and (11) have a ½horizontal tangent at
+zero diopters, there is rather little change of acuity with blur for small blur values (<¼ D), a
+familiar finding in everyday practice.
+Visual acuity (as measured with grating stimuli) is essentially determined by the high-
+frequency end of the contrast sensitivity function (effects of blur also extend to other parts
+of the contrast sensitivity function of course). This is quantified by the corresponding
+modulation transfer function (see, for instance, Smith, 2000, Figure 11.16 on p. 378).
+Conclusion
+We have illustrated and discussed choosing the proper blur kernel to simulate visual
+degradation. In the case of defocus, this is a simple disk. Different blur kernels may
+produce qualitatively different images. In particular, Gaussian blur does not introduce
+spurious resolution and related effects and is thus fundamentally different from the blur
+that is associated with typical optical problems. The blur-disk's diameter, except for small
+values of defocus, is proportional to defocus in diopters and pupil size; its linear size in a
+stimulus is proportional to the stimulus' relative distance from the near or far point.
+Degradation of visual acuity from its best-corrected value is related to defocus blur by
+a simple (inverse) second-order equation in a wide range of defocus including small
+values.
+Acknowledgements
+We thank Ralph Blendowske, Torsten Wu
+¨ stenberg, Beau Watson, and Werner Eisenbarth for critical
+comments on the manuscript, and Nick Wade for language corrections. Special thanks go to David
+Atchison who helped us find an error in our derivations and an anonymous reviewer who suggested a
+further simplification.
+Declaration of Conflicting Interests
+The authors declared no potential conflicts of interest with respect to the research, authorship, and/or
+publication of this article.
+Funding
+The authors disclosed receipt of the following financial support for the research, authorship, and/or
+publication of this article: Publication charges were borne by the Open Access Funds of Go
+¨ ttingen
+University.
+Strasburger et al. 11
+Notes
+1. ``. . .bring the book by degrees so near, as that the letters of the smallest print now begin to appear a
+little confused,. . . Here, it is manifest from the less distinct appearance of the smaller print, that at
+this distance the rays of each pencil [of rays] are not accurately united in a sensible [i.e., sensitive]
+point of the Retina. . .'' (Jurin, 1738, p. 116)
+2. ``17.. . . the rays of each pencil issuing from the object cannot be united but at a point beyond the
+Retina; consequently, the rays of each pencil will occupy a circular space upon the Retina.. . . [L]et
+the circle. . . represent that circular space upon the Retina, which is taken up by one of the extreme
+pencils of rays issuing from the object. This circle fghc we shall call the circle of dissipation, because
+the rays of a pencil, instead of being collected into the central point c, are dissipated all over this
+circle: And the radius of this circle. . . we shall for the same reason call the radius of dissipation.''
+(Jurin, 1738, p. 117)
+3. ``Upon white paper draw the circumference of a circle with a strong black line and place the paper by
+guess about the farthest distance at which your eye can see an object distinctly [Jurin assumes a
+myopic person here]. Then retiring gradually farther from the paper, observe at what distance the
+white circle. . . appears equal in breath to the penumbra on either side of it. At that distance the radius
+of dissipation is nearly equal to half the radius of the true image of the circle.'' (Jurin, 1738, p. 131)
+4. Jurin (incorrectly) believed that accommodation works symmetrically, accommodating distances
+both nearer to and farther from what he calls a natural distance of 33 in.:
+137.. . . Whence it is reasonable to conclude, that the natural distance is such, as that no
+greater change of conformation is required to reduce it to the least distance, than to increase
+it to the greatest distance at which we can see distinctly. (Jurin, 1738, p. 141)
+5. A point-spread function is the 2D equivalent of an impulse-response function. It allows an easy
+derivation of the resulting image, that is, here the blurred image: According to the Convolution
+Theorem, the blurred image is simply the convolution of the point-spread function with the original
+image.
+6. A few misprints in Smith (1982a) hinder the understanding of Derivation no. 1 presented there (the
+derivation inside the eye, corresponding to the one here): (1) It should be dl0 instead of fl0 on the
+right side in Equation (4), so that Equation (3) can be inserted in it. (2) The sign of the
+accommodation level L0
+in Equation (6a) is incorrect and the equation should be (Fe
+)R
+¼ Fe
+þ L0
+instead. The term then cancels with the denominator in Equation (5). (3) The power of the relaxed
+eye (Fe
+)R
+is said (a few lines further down) ``to be equivalent to'' the distance of the back nodal point
+from the retina, N0F0. This is shorthand for saying that one is the inverse of the other, that is,
+(Fe
+)R
+¼ 1/N0F0. Typically, however, the power of the relaxed eye (Fe
+)R
+is considered as taken from
+the back principal point H0, not the back nodal point N0: (Fe
+)R
+¼ n0/H0F0. Yet the ratio of the two
+distances equals the refractive index, that is, H0F0/N0F0 ¼ n0, so the two assertions are equivalent.
+ORCID iD
+Hans Strasburger http://orcid.org/0000-0001-7156-5111.
+References
+Artal, P. (2014). Optics of the eye and its impact in vision: A tutorial. Advances in Optics and Photonics,
+6, 340­367.
+Artal, P., Chen, I., Ferna
+´ ndez, E. J., Singer, B., Manzanera, S., & Williams, D. R. (2004). Neural
+compensation for the eye's optical aberrations. Journal of Vision, 4, 281­287.
+Atchison, D. A., & Smith, G. (2000). Optics of the Human Eye. Oxford, England: Butterworth-
+Heinemann.
+Bach, M., Strahl, P., Waltenspiel, S., & Kommerell, G. (1990). Amblyopia: Reading speed in
+comparison with visual acuity for gratings, single Landolt Cs and series Landolt Cs. Fortschritte
+der Ophthalmologie: Zeitschrift der Deutschen Ophthalmologischen Gesellschaft, 87, 500­503.
+12 i-Perception 9(2)
+Bach, M., Waltenspiel, S., & Schildwa
+¨ chter, A. (1989). Detection of defocused gratings--Spurious
+resolution, a pitfall in the determination of visual acuity based on preferential looking or VEP.
+In J. J. Kulikowski, C. M. Dickinson, & I. J. Murray (Eds.), Seeing contour and color (pp. 562­565).
+Oxford, England: Pergamon Press.
+Blendowske, R. (2015). Unaided visual acuity and blur: A simple model. Optometry and Vision Science,
+92, e121­e125.
+Boreman, G. D. (2001). Modulation transfer function in optical and electro-optical systems. Bellingham,
+WA: SPIE.
+Boynton, G. M., Demb, J. B., Glover, G. H., & Heeger, D. J. (1999). Neuronal basis of contrast
+discrimination. Vision Research, 39, 257­269.
+Chung, S. T. L., Jarvis, S. H., & Cheung, S.-H. (2007). The effect of dioptric blur on reading
+performance. Vision Research, 47, 1584­1594.
+Coppens, J. E., & van den Berg, T. J. T. P. (2004). A new source of variance in visual acuity. Vision
+Research, 44, 951­958.
+Daugman, J. D. (1980). Two-dimensional spectral analysis of cortical receptive field profiles. Vision
+Research, 20, 847­856.
+de Waard, P. W. T., IJspeert, J. K., van den Berg, T. J. T. P., & de Jong, P. T. V. M. (1992). Intraocular
+light scattering in age-related cataracts. Investigative Ophthalmology and Visual Science, 33, 618­625.
+de Wit, G. C., Franssen, L., Coppens, J. E., & van den Berg, T. J. (2006). Simulating the straylight
+effects of cataracts. Journal of Cataract & Refractive Surgery, 32, 294­300.
+Dehnert, A., Bach, M., & Heinrich, S. P. (2011). Subjective visual acuity with simulated defocus.
+Ophthalmic and Physiological Optics, 31, 625­631.
+Elliott, D. B., Bullimore, M. A., Patla, A. E., & Whitaker, D. (1996). Effects of cataract simulation on
+clinical and real-world vision. British Journal of Ophthalmology, 80, 799­804.
+Friendly, D. S., Jaafar, M. S., & Morillo, D. L. (1990). A comparative study of grating and recognition
+visual acuity testing in children with anisometropic amblyopia without strabismus. American Journal
+of Ophthalmology, 110, 293­299.
+Fry, G. A. (1953). Targets and testing procedures for the measurement of visual acuity without glasses.
+American Journal of Optometry and Archives of American Academy of Optometry, 30, 22­37.
+Gwiazda, J. E. (1992). Detection of amblyopia and development of binocular vision in infants and
+children. Current Opinion in Ophthalmology, 3, 735­740.
+Harding, G. (1977). Optimum spread functions in linear tomography. Physics in Medicine and Biology,
+22, 747­759.
+Heinrich, S. P., & Bach, M. (2013). Resolution acuity versus recognition acuity with Landolt-style
+optotypes. Graefe's Archive for Clinical and Experimental Ophthalmology, 251, 2235­2241.
+Heinrich, S. P., Bock, C. M., & Bach, M. (2016). Imitating the effect of amblyopia on VEP-based acuity
+estimates. Documenta Ophthalmologica, 133, 183­187.
+Heinrich, S. P., Kru
+¨ ger, K., & Bach, M. (2011). The dynamics of practice effects in an optotype acuity
+task. Graefe's Archive for Clinical and Experimental Ophthalmology, 249, 1319­1326.
+Heinrich, S. P., Lu
+¨ th, I., & Bach, M. (2015). Event-related potentials allow for optotype-based objective
+acuity estimation. Investigative Ophthalmology and Vision Science, 56, 2184­2191.
+Hotchkiss, R. N., Washer, F. E., & Rosberry, F. W. (1951). Spurious resolution of photographic lenses.
+Journal of the Optical Society of America, 41, 600­601.
+Jacobs, R. J., Smith, G., & Chan, C. D. C. (1989). Effect of defocus on blur thresholds and on
+thresholds of perceived change in blur: Comparison of source and observer methods. Optometry
+and Vision Science, 66, 545­553.
+Jurin, J. (1738). An essay on distinct and indistinct vision. In R. Smith (Ed.), A compleat system of
+opticks in four books, viz. a popular, a mathematical a mechanical, and a philosophical treatise (pp.
+115­171). Cambridge, England: Published by the author.
+Koenderink, J. J. (1984). The structure of images. Biological Cybernetics, 50, 363­370.
+Kushner, B. J., Lucchese, N. J., & Morton, G., V. (1995). Grating visual acuity with Teller
+cards compared with Snellen visual acuity in literate patients. Archives of Ophthalmology, 113,
+485­493.
+Strasburger et al. 13
+Le Grand, Y. (1968). Light, colour and vision (J. W. T. Walsh, R. W. G. Hunt, & F. R. W. Hunt,
+Trans.). London, England: Chapman and Hall.
+Malik, J., & Perona, P. (1990). Preattentive texture discrimination with early vision mechanisms.
+Journal of the Optical Society of America A, 7, 923­932.
+McAnany, J. J., Alexander, K. R., Lim, J. I., & Shahidi, M. (2011). Object frequency characteristics of
+visual acuity. Investigative Ophthalmology & Visual Science, 52, 9534­9538.
+Meinecke, C., & Kehrer, L. (2007). A central performance drop with luminance stimuli requiring spatial
+integration. Perception & Psychophysics, 69, 923­929.
+Petrova, A., Z
+ anete, L., Cikmac
+ s, P., & Kassaliete, E. (2017). Effect of cycloplegia on blur perception
+thresholds as measured by source method. Proceedings of the Latvian Academy of Sciences. Section
+B, 71, 347­351.
+Piano, M. E., Bex, P. J., & Simmers, A. J. (2015). Perceptual visual distortions in adult amblyopia and
+their relationship to clinical features. Investigative Ophthalmology and Visual Science, 56, 5533­5542.
+Raasch, T. W. (1995). Spherocylindrical refractive errors and visual acuity. Optometry & Vision Science,
+72, 272­275.
+Ravikumar, A., Sarver, E. J., & Applegate, R. A. (2012). Change in visual acuity is highly correlated
+with change in six image quality metrics independent of wavefront error and/or pupil diameter.
+Journal of Vision, 12, 11.
+Rose, D. (1979). Mechanisms underlying the receptive field properties of neurons in cat visual cortex.
+Vision Research, 19, 533­544.
+Schaeffel, F. (2006). Processing of information in the human visual system. In A. Hornberg (Ed.),
+Handbook of machine vision (pp. 1­33). Weinheim, Germany: Wiley-VCH.
+Sireteanu, R., Ba
+¨ umer, C. C., Sa
+^ rbu, C., & Iftime, A. (2007). Spatial and temporal misperceptions in
+amblyopic vision. Strabismus, 15, 45­54.
+Sireteanu, R., Lagre
+` ze, W.-D., & Constantinescu, D. H. (1993). Distortions in two-dimensional visual
+space perception in strabismic observers. Vision Research, 33, 677­690.
+Smith, G. (1982a). Angular diameter of defocus blur discs. American Journal of Optometry &
+Physiological Optics, 59, 885­889.
+Smith, G. (1982b). Ocular defocus, spurious resolution and contrast reversal. Ophthalmic and
+Physiological Optics, 2, 5­23.
+Smith, G. (1991). Relation between spherical refractive error and visual acuity. Optometry and Vision
+Science, 68, 591­598.
+Smith, W. J. (2000). Modern optical engineering (3rd ed.). New York, NY/San Francisco, CA: McGraw-
+Hill.
+Stiles, W. S., & Crawford, B. H. (1933). The luminous efficiency of rays entering the eye pupil at
+different points. Proceedings of the Royal Society of London B, 112, 428­450.
+Strasburger, H., Murray, I., & Remky, A. (1993). Sustained and transient mechanisms in the steady-
+state visual evoked potential. Onset presentation compared to pattern reversal. Clinical Vision
+Sciences, 8, 211­234.
+Strasburger, H., & Rentschler, I. (1996). Contrast-dependent dissociation of visual recognition and
+detection field. European Journal of Neuroscience, 8, 1787­1791.
+Strasburger, H., Scheidler, W., & Rentschler, I. (1988). Amplitude and phase characteristics of the
+steady-state visual evoked potential. Applied Optics, 27, 1069­1088.
+Strasburger, H., & Wade, N. J. (2015). James Jurin (1684­1750): A pioneer of crowding research?
+Journal of Vision, 15, 1­7.
+Thibos, L. N., Hong, X., Bradley, A., & Cheng, X. (2002). Statistical variation of aberration structure
+and image quality in a normal population of healthy eyes. Journal of the Optical Society of America
+A, 19, 2329­2348.
+Thorn, F., & Schwartz, F. (1990). Effects of dioptric blur on Snellen and grating acuity. Optometry and
+Vision Science, 67, 3­7.
+14 i-Perception 9(2)
+Wade, N. J. (2004). Visual neuroscience before the neuron. Perception, 33, 869­889.
+Watson, A. B. (2015). Computing human optical point spread functions. Journal of Vision, 15, 1­25.
+Watson, A. B., & Yellott, J. I. (2012). A unified formula for light-adapted pupil size. Journal of Vision,
+12, 1­16, http://www.journalofvision.org/content/12/10/12
+Wenner, Y., Heinrich, S. P., Beisse, C., Fuchs, A., & Bach, M. (2014). Visual evoked potential-based
+acuity assessment: Overestimation in amblyopia. Documenta Ophthalmologica, 128, 191­200.
+Wolf, M., & Angerstein, W. (1978). Spurious resolution and transfer function. Physics in Medicine and
+Biology, 23, 525­526.
+Wood, I. C. J. (1983). Stereopsis with spatially-degraded images. Ophthalmic and Physiological Optics,
+3, 337­340.
+Yellott, J. I., & Yellott, J. W. (2007). Correcting spurious resolution in defocused images. Proceedings of
+SPIE-IS&T Electronic Imaging: Human Vision and Electronic Imaging XII, 6492, article 6492O. doi:
+10.1117/12.698240.
+How to cite this article
+Strasburger, H., Bach M., & Heinrich, S. P. (2018). Blur unblurred ­ A mini tutorial. i-Perception,
+9(2), 1­15. doi: 10.1177/2041669518765850
+Strasburger et al. 15
+

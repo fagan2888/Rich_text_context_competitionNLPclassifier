@@ -1,0 +1,8589 @@
+A hierarchical Archimedean copula
+for portfolio credit risk modelling
+Natalia Puzanova
+Discussion Paper
+Series 2: Banking and Financial Studies
+No 14/2011
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Klaus Düllmann
+Frank Heid
+Heinz Herrmann
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­7­ (Printversion)
+ISBN 978-3­86558­7­ (Internetversion)
+Abstract
+I introduce a novel, hierarchical model of tail dependent asset returns which can be partic-
+ularly useful for measuring portfolio credit risk within the structural framework. To allow
+for a stronger dependence within sub-portfolios than between them, I utilise the concept of
+nested Archimedean copulas, but modify the nesting procedure to ensure the compatibility
+of copula generators by construction. This makes sampling straightforward. Moreover, I pro-
+vide details on a particular specification based on a gamma mixture of powers. This model
+allows for lower tail dependence, resulting in a more conservative credit risk assessment than
+a comparable Gaussian model. I illustrate the extent of model risk when calculating VaR or
+Expected Shortfall for a credit portfolio.
+Keywords: Portfolio Credit Risk, Nested Archimedean Copula, Tail Dependence, Hierar-
+chical Dependence Structure
+JEL Classification: C46, C63, G21
+Non-technical summary
+There is a growing consensus among researchers, practitioners and regulators that Gaussian
+models of asset returns lead to a systematic underestimation of tail risk when applied to a
+credit portfolio or portfolio credit derivatives. This is due to the fact that such models cannot
+properly account for the tendency of large negative asset returns to occur simultaneously ­
+the property of the joint distribution of asset returns called in statistical terms lower tail
+dependence. Therefore, the probability of joint default events and, in turn, extreme portfolio
+losses is underestimated. It follows that an extensive utilisation of Gaussian models in risk
+management can be seen as one of the determinants of a massive capital shortfall in the
+financial sector during the recent crisis. To address this issue, I elaborate a novel model of
+tail dependent asset returns exploiting the concept of nested Archimedean copulas.
+The modelling approach presented in this paper has a number of technical merits which
+provide it with a beneficial flexibility. I specify two dependence levels ­ sub-portfolios and the
+whole portfolio ­ although the model can be extended to incorporate more than two levels.
+This hierarchial dependence structure allows for a stronger dependence within appropriately
+specified sub-portfolios (e.g. comprising obligors from a particular industry sector) than
+between them. This is a desirable property because companies in the same sector usually
+exhibit stronger dependence. The degree of dependence between the companies operating
+in different industry sectors is, however, lower but not zero because of the influence of a
+common macroeconomic environment. The model is also flexible enough for differentiated
+treatment of different sub-portfolios, making it possible to cope with concentration risk.
+Another advantage is that I avoid by construction built-in parameter restrictions which are
+otherwise common in the specification of nested Archimedean copulas.
+From a computational point of view, the model benefits from a straightforward sampling
+procedure involving only uniformly and gamma distributed variables. The corresponding
+pseudo-random number generators are, in fact, standard in mathematical and statistical
+packages.
+Apart from the technical features described, the suggested model could have implications
+for risk controlling and banking regulation and, on a large scale, for financial stability. Because
+this model takes account of the tail dependence of asset returns, its implementation would
+result in a more conservative assessment of portfolio credit risk and, consequently, higher
+economic and regulatory capital requirements. Therefore, the model is able to counter the
+systematic underestimation of credit risk in the banking sector ­ one of the basic causes of
+the recent financial turmoil.
+Nichttechnische Zusammenfassung
+Sowohl im akademischen Bereich als auch unter den Fachleuten der Finanzbranche und
+Regulierern wird vermehrt die Meinung vertreten, dass die auf Normalverteilungsannah-
+men beruhenden Modelle sich nicht zur Risikomessung von Kreditportfolien oder portfo-
+liobasierten Kreditderivaten eignen. Solche Modelle ber¨
+ucksichtigen ausschließlich lineare
+Korrelationen zwischen den Firmenwerten der Schuldner. Sie sind nicht in der Lage, die
+tendenziell gemeinsam auftretenden extremen Firmenwertverluste mehrerer Schuldner zu
+erkl¨
+aren, die zur H¨
+aufung von Kreditausf¨
+allen in einem Portfolio f¨
+uhren ("lower tail de-
+pendence"). Wenn die Wahrscheinlichkeit gemeinsamer Kreditausf¨
+alle untersch¨
+atzt wird, so
+wird auch das Risiko unerwartet hoher Portfolioverluste und der korrespondierende Kapitalbe-
+darf untersch¨
+atzt. Daher kann eine verbreitete Anwendung von Kreditportfoliomodellen mit
+gemeinsam normalverteilten Risikofaktoren als einer der Gr¨
+unde f¨
+ur die massive Kapitalun-
+terdeckung w¨
+ahrend der j¨
+ungsten Finanzkrise identifiziert werden. Im vorliegenden Papier
+wird ein stochastisches Modell f¨
+ur Firmenwertrenditen vorgestellt, das die Abh¨
+angigkeit der
+unteren Verteilungsflanken ber¨
+ucksichtigt. Das Modell basiert auf dem Konzept verschachtel-
+ter Archimedischer Copulas.
+Der hier vorgestellte Ansatz weist eine Reihe technischer Vorteile auf, die dem Modell einer-
+seits Flexibilit¨
+at verleihen und andererseits seine Umsetzung erleichtern. Ich spezifiziere zwei
+Abh¨
+angigkeitsebenen: die untere Subportfolio-Ebene und die obere Portfolioebene. Diese hi-
+erarchische Abh¨
+angigkeitsstruktur hat den Vorteil, dass die Firmenwertrenditen von Schuld-
+nern, die ein und demselben Subportfolio zugewiesen sind, st¨
+arker voneinander abh¨
+angen
+als die Firmenwertrenditen von Schuldnern aus unterschiedlichen Subportfolien. Wenn die
+Subportfolien zum Beispiel nach Industriesektoren gebildet werden, so ist f¨
+ur die im gleichen
+Sektor t¨
+atigen Unternehmen die Firmenwertentwicklung hochgradig gleichgerichtet. Dagegen
+ist die gegenseitige Abh¨
+angigkeit von Unternehmen aus verschiedenen Sektoren schw¨
+acher,
+weil sie nur auf das gemeinsame makro¨
+okonomische Umfeld zur¨
+uckzuf¨
+uhren ist. Das Modell
+ist flexibel genug, um sektorale Unterschiede in der St¨
+arke der Anh¨
+angigkeit abzubilden.
+Das vorgeschlagene Verschachtelungsprozedere sieht von jeglichen Parameterrestriktionen
+ab, die sonst bei der Konstruktion hierarchischer Archimedischer Copulas ¨
+ublich sind. Es
+gew¨
+ahrleistet dar¨
+uber hinaus eine einfache Implementierung. So sind f¨
+ur den in diesem Papier
+n¨
+aher betrachten Spezialfall nur gamma- und gleichverteilte Zufallszahlen f¨
+ur die Copula-
+Simulation erforderlich. Die Generatoren f¨
+ur solche Pseudozufallszahlen sind standardm¨
+aßig
+in mathematischen und statistischen Software implementiert.
+Von den technischen Vorz¨
+ugen abgesehen, k¨
+onnen aus Anwendung des vorgestellten Port-
+foliomodells Lehren f¨
+ur die Bereiche Risikocontrolling und Bankenregulierung gezogen wer-
+den. Damit einhergehende, konservative Einsch¨
+atzung unerwarteter Portfolioverluste w¨
+urde
+in einem h¨
+oheren ¨
+okonomischen und regulatorischen Kapitalbedarf resultieren, was letztlich
+einen stabilisierenden Effekt auf das gesamte Finanzsystem haben k¨
+onnte.
+Contents
+1. Introduction 1
+2. Portfolio setting 2
+3. The hierarchical Archimedean copula model 3
+3.1. Derivation of the copula . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+3.2. Properties of the copula . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+3.3. Sampling algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4. Application to test portfolios 13
+4.1. Test portfolios . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.2. Parameter calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+4.3. Results of the simulation study . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+5. Conclusions 17
+References 19
+A. Derivation of the HAC from the mixture representation 20
+List of Figures
+1. Contour plots of the independence and maximum copulas . . . . . . . . . . . . 9
+2. Contour plots of Clayton and CG copulas . . . . . . . . . . . . . . . . . . . . 9
+3. Scatter plots of Clayton and CG copulas . . . . . . . . . . . . . . . . . . . . . 11
+4. Pairwise scatter plots of HAC . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+5. Tail dependence for Clayton and CG copulas . . . . . . . . . . . . . . . . . . . 12
+6. The tail function of portfolio loss . . . . . . . . . . . . . . . . . . . . . . . . . 16
+7. Comparison of VaR for the Gaussian and HAC models . . . . . . . . . . . . . 17
+List of Tables
+1. Structure of the small test portfolio . . . . . . . . . . . . . . . . . . . . . . . . 13
+2. Model parameters used in the simulation . . . . . . . . . . . . . . . . . . . . . 14
+3. Comparison of VaR and ES for different settings . . . . . . . . . . . . . . . . . 18
+4. Parameter sensitivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+A Hierarchical Archimedean Copula
+for Portfolio Credit Risk Modelling1
+1. Introduction
+Interdependent default events, when defaults of different counterparties tend to occur simul-
+taneously, pose major challenges for an adequate assessment of credit risk in banks' lending
+portfolios. A prerequisite for estimation of the associated extreme losses is, therefore, a
+portfolio model capable of capturing dependence between rare events. Under the structural
+approach for credit risk modelling, a firm's failure results from the asset value of the firm
+falling below the value of its outstanding debt. Due to this direct link between the default
+and asset value of a firm, interdependent default events can be modelled based on the joint
+distribution of asset values or, equivalently, asset returns. Consequently, the tail dependence
+properties of the joint distribution of asset returns would determine how frequently low-
+probability events, such as the simultaneous defaults of several obligors, can actually occur.
+This would eventually affect the amount of portfolio unexpected loss and the capital buffer
+required as protection against losses.
+The above chain of reasoning demonstrates that using portfolio credit risk models with
+incorporated tail dependence can be crucial for a single bank's ability to remain solvent as
+well as for the sustainability of an entire banking sector. In spite of that, Gaussian dependence
+structures have been widely used by practitioners and regulators. Owing to a zero lower tail
+dependence coefficient, a Gaussian model generates joint defaults far too infrequently, leading
+to a systematic underestimation of portfolio credit risk and capital requirements and, in turn,
+endangering banks' solvency.
+To address this issue, I put forward a novel model of asset returns which can be used for
+assessing portfolio credit risk under the structural approach. This model utilises the concept
+of nested Archimedean copulas.
+Archimedean copulas have been actively used in the portfolio risk modelling literature
+because they possess a simple explicit representation which can be easily extended to an
+arbitrary number of dimensions. An important feature of various Archimedean copulas is
+that they allow for tail dependence which does not have to be symmetric. A drawback,
+however, is the copula's invariance with respect to permutations of its arguments. The latter
+1Natalia Puzanova, Deutsche Bundesbank, Department of Financial Stability, Wilhelm-Epstein-Str. 14,
+60431 Frankfurt/Main, Germany, e-mail: natalia.puzanova@bundesbank.de.
+1
+feature is likely to be far too restrictive in a portfolio context, but can be overcome by a
+nesting procedure, as utilised in this paper.
+The nested Archimedean copula described in this paper has two major advantages in terms
+of portfolio credit risk modelling: the lower tail dependence and the hierarchical dependence
+structure. The first feature takes account of clustering default events. The latter allows for
+stronger default dependence within appropriately specified sub-portfolios (e.g. comprising
+obligors from a particular industry sector) than between them.2 It is a desirable property
+because companies in the same sector usually exhibit stronger dependence. The degree of
+dependence between the companies operating in different industry sectors is, however, lower
+but not zero because of the influence of the common macroeconomic environment. The
+magnitude of dependence parameters can also vary from one sub-portfolio to another so that
+the model can cope with concentration risk.
+Regarding related literature, I refer to Embrechts et al. (2003), McNeil (2008) and Hofert
+and Scherer (2011) for more information on Archimedean copulas, nesting procedures and
+compatibility conditions as well as on using nested copulas for credit risk assessment. In
+the paper at hand, I modify the nesting procedure in a way which ensures by construction
+the compatibility of copula generators and removes the usual restrictions on copula parame-
+ters. From a computational point of view, this redefined nesting procedure makes sampling
+straightforward. The work presented in this paper was part of my doctoral thesis published
+in (Puzanova, 2010). In parallel to that work Hering et al. (2010) developed a probabilistic
+model for construction nested Archimedean copulas using L´
+evy subordinators. I refer to the
+latter paper for more general theoretical results on the redefined nesting procedure.
+The remainder of the paper is structured as follows: section 2 outlines the credit portfolio
+setting used in the paper. Section 3 presents the hierarchical Archimedean copula model.
+In section 4, I apply this model to two hypothetical test portfolios in order to judge the
+model risk compared with a benchmark Gaussian specification. Finally, I summarise the
+main results and draw conclusions in section 5.
+2. Portfolio setting
+I first define target variables which quantify credit risk at the portfolio level. In the tradition
+of the default-only credit risk models, I look at the distribution of the potential portfolio
+losses at a one-year risk horizon, whereby the losses can only materialise when one or more
+borrowers go bankrupt. The portfolio loss, denoted PL, is a random variable which can be
+defined as the sum over the individual losses Li
+on every single exposure in the portfolio
+(one borrower - one exposure). A loss variable Li
+equals zero when the ith borrower survives
+2I specify two dependence levels ­ sub-portfolios and the whole portfolio ­ although the model can be
+extended to incorporate more than two levels.
+2
+beyond the risk horizon. Otherwise, when the borrower defaults on its obligations, Li
+equals
+the expected amount of loss given default LGDi
+, i.e., the exposure to this borrower minus
+the expected recovery. For the sake of convenience, I normalise the maximum total loss to
+unity so that an individual LGDi
+is given as a percentage of the total portfolio LGD.
+The event of a borrower i's default is determined in the tradition of structural credit risk
+models by the standardised returns on the borrower's market value of asset Ri
+dropping below
+the default threshold defined by the borrower's one-year probability of default PDi
+. The
+default threshold equals F-1
+Ri
+(PDi
+), F-1
+Ri
+being the quantile function of the random variable
+Ri
+. The portfolio setting can be summarised as follows:
+PL :=
+n
+i=1
+Li
+=
+n
+i=1
+LGDi
+· 1
+1
+-,F-1
+Ri
+(PDi)
+(Ri
+), (2.1)
+where 1
+1A
+(X) denotes an indicator function:
+1
+1A
+(X) =
+
+
+
+1 for X  A,
+0 otherwise.
+With regard to the distribution of the portfolio loss variable PL, I am looking for the
+Value at Risk at a pre-specified confidence level q (V aRq
+) and for the Expected Shortfall
+(ESq
+). VaR is commonly used in risk management and controlling as a measure of portfolio
+credit risk, although it is incoherent (not sub-additive in general). It quantifies the minimum
+portfolio loss in the worst (1 - q) × 100 per cent of cases. V aRq
+(PL) equals the value of the
+quantile function of the random variable PL:
+V aRq
+(PL) := F-1
+PL
+(q) (2.2)
+ES is a coherent risk measure which quantifies the expected portfolio loss in the worst (1-q)×
+100 per cent of cases. ESq
+(PL) equals the conditional tail expectation beyond the q-quantile
+of the portfolio loss distribution augmented by a discontinuity adjustment:
+ESq
+(PL) := E PL | PL  V aRq
+(PL) +V aRq
+(PL)·
+1 - q - Pr {PL  V aRq
+(PL)}
+1 - q
+. (2.3)
+3. The hierarchical Archimedean copula model
+In this section, I derive a probabilistic model for asset returns utilising nested Archimedean
+copulas. I also give details on a particular specification based on a two-fold Gamma mixture
+of powers. I specify the hierarchical dependence structure in subsection 3.1 and investigate
+its properties in subsection 3.2. Subsequently, I provide an appropriate sampling algorithm
+in subsection 3.3.
+3
+3.1. Derivation of the copula
+The portfolio dependence structure should be flexible enough to cope with sub-portfolios
+which exhibit different dependence properties. Within the scope of Archimedean copulas,
+this aim can be achieved by utilising a nesting procedure so that the resulting hierarchcal
+Archimedean copula (HAC) would have the following general form
+Cp Csp1 u11
+, . . . , u1n1
+, . . . , Cspm um1
+, . . . , umnm
+.
+This is a copula model with two hierarchy levels. The copulas Cspj with j = 1, . . . , m at
+the lower level of the hierarchy represent dependence functions of distinct groups of obligors.
+There are m such groups or sub-portfolios each containing nj
+obligors with m
+j=1
+nj
+= n.
+Those copulas specify the within-group dependence properties. At the top, portfolio level
+of the hierarchy, the copula Cp joins the sub-portfolios. This copula determines dependence
+properties between distinct groups of obligors. The copula argument uji
+is defined in terms
+of the probability-integral transform uji
+:= FRji
+(Rji
+= xji
+) for the asset return of the obligor
+i in the sub-portfolio j.
+The model should meet the following general requirements. For the purpose of portfolio
+risk modeling, it is crucial that the copula allows for lower tail dependence. Moreover, the
+between-group dependence should logically be less strong than the within-group dependence.
+For the sake of flexibility, the nesting procedure should not pose any technical restrictions on
+the parameters of the copulas Cspj .
+According to Joe (1997, p. 86 ff.), an Archimedean copula arises from a mixture of powers.
+The corresponding representation for the joint cumulative distribution function (cdf) of the
+asset return vector R is given by:
+FR
+(x) =
+
+0
+
+0
+Gzsp1
+11
+(x11
+) · · · Gzsp1
+1n1
+(x1n1
+) dMZsp1
+|Zp
+(zsp1
+| zp
+) × . . . (3.1)
+×
+
+0
+Gzspm
+m1
+(xm1
+) · · · Gzspm
+mnm
+(xmnm
+) dMZspm
+|Zp
+(zspm
+| zp
+) dMZp
+(zp
+).
+Zp
+is the positive mixing variable at the portfolio level. Its cdf is denoted by MZp
+. Zspj
+represents a sub-portfolio-specific positive mixing variable, which depends by construction on
+Zp
+. The cdf of Zspj
+conditional on Zp
+is denoted by MZspm
+|Zp
+.
+If, for instance, the sub-portfolios represent the different industry sectors that the borrowing
+companies are operating in, the economic interpretation of the mixing variables could be
+as follows: Zspj
+represents all the market and macroeconomic information relevant for the
+companies operating in sector j. This information is partly sector-specific3 and not relevant
+for other sectors. However, in part, it is common for all sectors, such as information about
+3This part of the information flow will be represented by the random variable Yspj
+later in this text.
+4
+the general economic environment. This part of the information is represented by the random
+variable Zp
+.
+The two-fold mixture given in (3.1) determines the dependence structure of the asset return
+vector. The asset returns are mixtures of powers with mixing variables Zspj
+. Thus, conditional
+on a realisation of Zspj
+, j = 1, . . . , m, the returns are mutually independent. The sector-
+specific random variables Zspj
+are themselves mixtures with the common mixing variable Zp
+.
+Thus, conditional on a realisation of Zp
+, the asset returns of the obligors in the different
+sub-portfolios are independent, but those in the same sub-portfolio are not.
+Because in the credit portfolio context only the dependence structure (i.e. copula) of the
+asset return vector is of interest, we do not have to specify the cdfs Gji
+exactly. Suffice it
+to say that, according to Marshall and Olkin (1988), cdfs Gji
+as implicitly defined by (3.1)
+always exist.4
+The HAC corresponding to the mixture representation (3.1) has the form:
+Cp Csp1 u11
+, . . . , u1n1
+, . . . , Cspm um1
+, . . . , umnm
+= p
+-1
+p
+ sp1
+-1
+sp1
+(u11
+) + · · · + -1
+sp1
+(u1n1
+) + . . . (3.2)
++ -1
+p
+ spm
+-1
+spm
+(um1
+) + · · · + -1
+spm
+(umnm
+) .
+Here, -1
+p
+serves as the generator of the outer copula Cp and -1
+spj
+serves as the generator of
+an inner copula Cspj .
+Appendix A provides details on the HAC derivation from the general mixture of powers.
+In this section, I derive a particular HAC model by defining all M(·)
+in (3.1) as gamma cdfs.
+This leads to a relatively simple copula function with lower tail dependence. However, it
+might be an interesting topic for further research to use other positive mixing variables and
+to compare the dependence properties of the resulting models. Another possible extension is
+to define more than two hierarchy levels.
+Because I specify all mixing distributions in (3.1) as gamma cdfs, I only need to know the
+Laplace transform (LT) of a gamma random variable in order to derive an explicit formula
+for the HAC in (3.2). First, I identify the inverse outer generater p
+as the LT of the gamma
+variable Zp with mean 1 and variance p
+:
+p
+() = 1 + p
+-1/p . (3.3)
+Second, I identify the inverse inner generator spj
+as the LT of the random variable Zspj
+.
+4These cdfs are given by Gji
+(xji
+) = exp --1
+spj
+FRji
+(xji
+) , where spj
+denotes the Laplace transform of
+Zspj
+. In general, the Laplace transform of a positive random variable X is given by  = E exp{-X} =
+exp - with  denoting the corresponding Laplace exponent.
+5
+Since the conditional distribution of this random variable is the gamma cdf MZspm
+|Zp
+and
+the unconditional distribution is a mixture over MZspm
+|Zp
+with the mixing variable also being
+gamma-distributed, I refer to the unconditional distribution of Zspj
+as Compound Gamma
+(CG). It is the distribution of a gamma subordinator, say Yspj
+, evaluated at a random, gamma-
+distributed time given by Zp
+. The gamma random variable Yspj
+has mean 1, variance spj
+and LT
+Yspj
+= 1 + spj
+-1/spj . (3.4)
+According to Sato (1999, p. 201), I can derive the LT of Zspj
+as follows:
+spj
+() = p
+- ln Yspj
+= 1 +
+p
+spj
+ln 1 +  spj
+-1/p
+. (3.5)
+Finally, I check that function (3.2) with p
+and spj
+defined in (3.3) and (3.5) is a proper
+copula. This is only the case when the compound function
+w() := -1
+p
+ spj
+() (3.6)
+satisfies the nesting condition of being in the class L
+n
+. This class of functions is specified by
+Joe (1997, p. 88 f.) as:
+L
+n
+= f : [0, )  [0, ) | f(0) = 0, f() = , (-1)k-1f(k)  0, k = 1, . . . , n .
+Because a L´
+evy subordinator evaluated at a random time given by another L´
+evy subordinator
+is also a L´
+evy subordinator, the copula generators involved are compatible with each other
+by construction. The compound function w() is just the Laplace exponent of a L´
+evy sub-
+ordinator and, thus, belongs to class L
+n
+(see Hering et al., 2010, Theorem 2.3). This result
+can also be verified by looking at the derivatives of w  - ln Yspj
+which are given by
+w(k)() = (-1)k-1(k - 1)!k-1
+spj
+1 + spj
+-k
+for k  N.
+The equation above implies that (-1)k-1w(k) > 0   N holds.
+The explicit representation of the HAC, obtained from (3.2) by putting in (3.3) and (3.5),
+is given by:
+Cp Csp1 u11
+, . . . , u1n1
+, . . . , Cspm um1
+, . . . , umnm
+= 1 + p
+m
+j=1
+1
+spj
+ln 1 - nj
++
+nj
+i=1
+exp
+spj
+p
+u-p
+ji
+- 1
+-1/p
+. (3.7)
+This nested portfolio copula produces two interesting special cases of marginal copulas.
+6
+The first special case is the nj
+-variate Archimedean copula of asset returns assigned to a
+sub-portfolio j
+Cspj (uj1
+, . . . , ujnj
+) = spj
+-1
+spj
+(uj1
+) + · · · + -1
+spj
+(ujnj
+)
+= 1+
+p
+spj
+ln 1-nj
++
+nj
+i=1
+exp
+spj
+p
+u-p
+ji
+-1
+-1/p
+. (3.8)
+I term this Archimedean copula compound gamma due to the fact that the inverse generator
+of the copula is the LT of a CG random variable. The second special case is the copula of
+asset returns assigned to different sub-portfolios:
+Cp(u1i
+, . . . , umi
+) = p
+-1
+p
+(u1i
+) + · · · + -1
+p
+(umi
+)
+= 1 - m +
+m
+j=1
+u-p
+ji
+-1/p
+, (3.9)
+which turns out to be a Cook-Johnson copula (or Clayton copula in a two-dimensional case).
+It is worth to mention that the nesting procedure put forward in this subsection is different
+from the commonly used one. For instance, Embrechts et al. (2003) and McNeil (2008)
+among others suggest, first, to take some known generator functions, nest them as in (3.2)
+and, second, to proof, whether the inner generators are compatible with the outer generater
+and, if so, under which parameter restrictions. Apart from the initial uncertainty as to
+whether the resulting function will be a proper copula or not and the parameter restrictions
+that must be satisfied, this common procedure makes implementation difficult. In fact, we
+either do not know the conditional distribution of Zspj
+at all or this distribution is difficult
+to sample from. By contrast, I use a nesting procedure which, on the one hand, ensures that
+the compound function (3.6) is actually in L
+n
+without any parameter restrictions. On the
+other hand, I am free to choose a distribution for the conditional random variable Zspj
+| Zp
+which is easy to sample from. This feature is especially favorable with regard to the model's
+implementation. In the particular example elaborated in this subsection the random variable
+Zspj
+conditional on a realisation Zp
+= zp
+is gamma-distributed with mean zp
+, variance zp
+spj
+and the following LT:
+exp -zp-1
+p
+ spj
+() = zp
+Yspj
+() = 1 + spj
+-zp/spj . (3.10)
+3.2. Properties of the copula
+Concerning its algebraic properties, the hierarchical Archimedean copula (3.7) is only par-
+tially exchangeable in its arguments whereby the marginal copulas (3.8) and (3.9) are fully
+permutation-symmetric in their arguments.
+7
+Regarding their dependence properties, all Archimedean copulas (ordinary or nested) are
+larger than the independence copula in the sense of concordance ordering.5 It means that the
+random variables involved are positively dependent.
+Moreover, it is ensured by construction that dependence within sub-portfolios is stronger
+that dependence between them. According to corollary 4.4.4 in Nelsen (1999, p. 110), the
+inner copulas are then larger than the outer copula (in the sense of concordance ordering) if
+the compound function w defined in (3.6) is concave. w is given by w = - ln Yspj
+which is
+the Laplace exponent of the random variable Yspj
+and, thus, a concave function so that the
+required condition holds.
+It follows from the above result that Kendall's tau and other measures of concordance,
+defined in Nelsen (1999, p. 136f.), are greater for the inner copulas than for the outer copula.
+It holds:
+p
+< min spj j=1,...,m
+.
+The outer Cook-Johnson copula is positively ordered, that is it exhibits stronger dependence
+for larger parameter values p
+, as shown in Nelsen (1999, p. 111) for the two-dimensional
+case. For a fixed value of the parameter p
+, the inner CG copula is also positively ordered
+with respect to sp
+. To show that for the two-dimensional case, I use the corollary 4.4.6 in
+Nelsen (1999, p. 111). According to that corollary, if -1
+sp1
+/ -1
+sp2
+is nondecreasing on
+(0, 1) for a fixed p
+, then Csp1  Csp2 . The derivative of the inverse function of the CG LT
+is given by
+-1
+spj
+() = --p-1 exp
+spj
+p
+-p - 1 .
+It follows that
+-1
+sp1
+()
+-1
+sp2
+()
+= exp
+1
+p
+-p - 1
+sp1
+-sp2
+.
+This function is nondecreasing for a negative power, that is for sp1
+< sp2
+. It follows, that
+for a fixed value of p
+the CG family is positively ordered with respect to the parameter sp
+.
+To illustrate dependence properties implied by the HAC model and to attain some feeling
+for the parameter sensitivity, I use information provided by contour and scatter plots for the
+two-dimensional inner (CG) and outer (Clayton) copulas.
+Because of the positive dependence, the contour lines of the copulas under consideration lie
+between those of the independence copula and those of the maximum copula (the copula of
+comonotone random variables): cf. Figure 1. Figure 2 illustrates that the magnitude of the
+positive dependence is the greater, the larger the variance of the mixing variables: the contour
+lines converge to those of the maximum copula. For a particular value of p
+, dependence is
+stronger in the case of the CG copula (i.e. within a sub-portfolio) than for the Clayton
+5That is, an Archimedean copula is always greater that the independence copula evaluated for the same set
+of arguments: CArchimedean C.
+8
+copula (i.e. between sub-portfolios) due to the amplifying effect of the sub-portfolio-specific
+parameter sp
+.
+,QGHSHQGHQFH 0D[LPXP
+Figure 1: Contour plots of the independence and maximum copulas.
+(a) p
+= 1 (b) sp
+= 0.5, p
+= 1
+(c) p
+= 1.5 (d) sp
+= 1, p
+= 1.5
+Figure 2: Contour plots of Clayton (left-hand side) and CG (right-hand side) copulas for
+different parameter values.
+9
+With regard to the lower tail dependence, we can clearly see clusters of low-probability
+realisations in the lower left-hand corners of a unit square in Figure 3. These scatter plots were
+obtained by simulation using the algorithm provided in the next subsection. The magnitude
+of lower tail dependence increases with rising values of variance parameters. Again, the sub-
+portfolio-specific parameter sp
+has an amplifying effect so that the tail dependence within a
+sub-portfolio is stronger then the tail dependence between asset returns of obligors belonging
+to different sub-portfolios. A stronger within-sector dependence of the large negative asset
+returns can also be inferred from the pairwise scatter plots in Figure 4. The figure shows
+realisations from a four-dimensional Archimedean copula with two hierarchy levels and two
+sub-portfolios.
+The property of lower (upper) tail dependence of two random variables describes the prob-
+ability that extremely small (large) realisation of both variables occur simultaneously. The
+general and Archimedean-copula-specific lower and upper tail dependence coefficients are
+given as (cf. Joe, 1997, p. 103):
+L
+= lim
+u0
+C(u, u)
+u
+ lim
+
+(2)
+()
+,
+U
+= lim
+u1
+1 - 2u + C(u, u)
+1 - u
+ 2 - 2lim
+0
+ (2)
+ ()
+.
+The lower tail dependence coefficient for the two-dimensional outer (Clayton) copula is
+given by L
+= 2-1/p so that lower tail dependence is increasing in the parameter. For the
+two-dimensional inner (CG) copula, no explicit expression can be obtained L
+. But, because
+of the result Cp  Csp, it holds that L
+is greater for the inner copula that for the outer
+copula (cf. Hering et al., 2010). Moreover, because for a given value of p
+the CG family
+is positively ordered with respect to sp
+, the lower tail dependence within a sub-portfolio is
+stronger for rising values of sp
+.
+Regarding the upper tail dependence, it is pointed out by Hering et al. (2010) that if both
+mixing variables used in the mixture of powers have finite mean, then there is no upper tail
+dependence between and within sub-portfolios.
+I illustrate the parameter sensitivity of the tail dependence by means of a graphic represen-
+tation in Figure 5. For u  0 the coefficients converge to values greater than zero indicating
+positive lower tail dependence. It is greater for the CG copula. For u  1 the upper tail
+dependence coefficients converge to zero for both Clayton and CG copulas regardless of the
+magnitude of the variance parameters.
+10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6 0.8 1.0
+
+ =
+= 1
+u1
+u2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6 0.8 1.0
+
+ =
+= 0.5,
+, 
+ =
+= 1
+u1
+u2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6 0.8 1.0
+
+ =
+= 1.5
+u1
+u2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.0 0.2 0.4 0.6 0.8 1.0
+0.0 0.2 0.4 0.6 0.8 1.0
+
+ =
+= 1,
+, 
+ =
+= 1.5
+u1
+u2
+Figure 3: Scatter plots of 1,000 realisations of Clayton (left-hand side) and CG (right-hand
+side) copulas for different parameter values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.0 0.4 0.8
+0.0 0.4 0.8
+(a) u11 and u12
+0.0 0.4 0.8
+0.0 0.4 0.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(b) u21 and u22
+0.0 0.4 0.8
+0.0 0.4 0.8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(c) u11 and u22
+Figure 4: Pairwise scatter plots of 1,000 realisations of a four-dimensional HAC with two
+sub-portfolios. Parameter values used are: sp1
+= 0.25, sp2
+= 0.5 and p
+= 0.8.
+11
+     
+     
+VS = , S = 
+X
+&OD\WRQ
+&*
+&(X, X)
+X
+ -   X + &(X, X)
+ - X
+     
+     
+VS = , S = 
+X
+Figure 5: A graphical representation of the tail dependence coefficients for Clayton and Com-
+pound Gamma (CG) copulas for different parameterisations.
+3.3. Sampling algorithm
+I will conclude this section by providing a sampling algorithm for the hierarchical Archimedean
+copula defined in (3.7). It goes as follows:
+· Generate Zp
+from the gamma distribution with mean 1 and variance p
+.
+· Generate Zspj
+| Zp
+, j = 1, . . . , m from the independent gamma distributions with mean
+Zp
+and variance Zp
+· spj
+.
+· Generate variables Xji
+, j = 1, . . . , m, i = 1, . . . , nj
+from the uniform distribution on the
+interval [0, 1].
+· The realisations from the HAC are given by
+Uji
+= p
+
+
+
+-
+ln Zp
+Yspj
+- ln Xji
+/(Zspj
+| Zp
+)
+Zp
+
+
+
+.
+The sampling is particularly easy because we know by construction the distribution of the
+conditional random variable Zspj
+| Zp
+: see (3.10). It was not the case in other papers on
+nested Archimedean copulas, which I have mentioned in the introductory section.
+Having elaborated the theoretical background, I move to an application example in the
+next section.
+12
+4. Application to test portfolios
+In order to judge the model risk which arises from neglecting tail dependence in a credit
+portfolio context, I apply the HAC model introduced in the previous section to two test
+portfolios and compare the results with the outcomes of a Gaussian model. I describe two
+test portfolios in subsection 4.1. In subsection 4.2, I calibrate the parameters of the HAC
+and the benchmark Gaussian model. The final results are discussed in subsection 4.3.
+4.1. Test portfolios
+The stylised portfolios used in this section are adopt from Puzanova et al. (2009). The smaller
+portfolio is comprised of 100 credit exposures as summarised in Table 1. 65% of the portfolio
+LGD is attributed to investment garde (IG) borrowers and 35% to speculative grade (SG)
+borrowers according to Moody's rating grades/categories. In each rating category, 80% of
+the total LGD is evenly distributed among 20% of the largest debtors. The remaining 20%
+of the LGD in each rating category is evenly distributed among the remaining debtors. The
+second, larger portfolio comprised of 1,000 credit exposures has exactly the same PD-LGD
+structure as in Table 1 and is obtained from the small portfolio by subdividing each credit
+exposure into 10 parts.
+Table 1: Structure of the small test portfolio
+Rating category PD(%) Share in the total Total # of
+portfolio LGD(%) debtors
+IG: Aa 0.064 35 10
+IG: A 0.077 15 10
+IG: Baa 0.301 15 25
+SG: Ba 1.394 15 25
+SG: B 4.477 15 25
+SG: C 14.692 5 5
+Note: Rating categories and corresponding probabilities of default (PD) were obtained from
+Moody's (2006, p. 33). IG indicates investment grade ratings and SG indicates speculative
+grade ratings.
+4.2. Parameter calibration
+In order to assess the model risk evoked by different tail properties of different asset re-
+turn distributions, I consider a model with a Gaussian correlation structure and calibrate
+dependence parameters of the HAC model in a way that ensures the same linear correlation.
+The obligors in the portfolio are grouped into two sub-portfolios according to their rating
+grade: sub-portfolio 1 ­ investment garde (IG), sub-portfolio 2 ­ speculative grade (SG). I
+13
+Table 2: Model parameters used in the simulation
+Model Parameters Estimates
+Gauss sp1
+0.0321
+sp2
+0.1212
+p
+0.0144
+HAC sp1
+0.0214
+sp2
+0.1309
+p
+0.0175
+Note: The correlation parameters used in the simulation for the Gaussian model are set follow-
+ing Puzanova and Siddiqui (2005). The model parameters for the hierarchical Archimedean
+copula (HAC) are calibrated accordingly in order to maintain the same linear correlation
+structure.
+denote the within-group linear correlation by spj
+, j = 1, 2 and the between-group linear
+correlation by p
+. For the purposes of an illustrative example, I take the estimates of the
+within-group correlation from Puzanova and Siddiqui (2005) and set the between-group cor-
+relation to an arbitrarily chosen value which is smaller than the minimum of the within-group
+correlation coefficients. Numerical values of the correlation coefficients are given in the upper
+panel of Table 2.
+The overall Gaussian copula of asset returns has the correlation matrix given by:
+
+
+
+
+
+
+
+
+
+
+
+
+1 · · · sp1
+p
+· · · p
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+sp1
+· · · 1 p
+· · · p
+p
+· · · p
+1 · · · sp2
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+p
+· · · p
+sp2
+· · · 1
+
+
+
+
+
+
+
+
+
+
+
+
+. (4.1)
+In order to calibrate the dependence parameters of the HAC model, I use the following
+representation of the Pearson's correlation coefficient:
+X,Y
+=
+1
+0
+1
+0
+CX,Y
+(u, v) - uv dF-1
+X
+(u)dF-1
+Y
+(v) (4.2)
+for two random variables X and Y .
+I put the two-dimensional portfolio-level copula in form (3.9) in combination with Gaussian
+marginal cdfs onto the right-hand side and the between-group correlation coefficient p
+onto
+the left-hand side of the equation (4.2). Then I solve the equation numerically for the copula
+parameter p
+. Subsequently, I substitute the copula on the right-hand side of (4.2) with the
+14
+bivariate copula in form (3.8) for the sub-portfolio j and the correlation coefficient on the
+left-hand side with spj
+and solve for spj
+. The results are given in the lower panel of Table 2.
+4.3. Results of the simulation study
+This subsection reports the results of a simulation study for the test portfolios and model
+settings described previously. In each setting, I run a Monte Carlo simulation for portfolio loss
+distribution, repeating the simulation loop s = 1.5×107 times in order to achieve more precise
+results. I first generate the probability-integral transforms for both models in question.6 I do
+this by sampling asset returns from a multivariate normal distribution with the correlation
+matrix (4.1) and computing Ui
+= FRi
+(Ri
+) for the Gaussian model. For the HAC model I
+sample Ui
+directly according to the algorithm in section 3.3. Then I calculate the default
+indicators as
+Di
+:= 1
+1
+0,PDi
+(Ui
+). (4.3)
+For each of the s simulation loops, I calculate portfolio loss as:
+PLk =
+n
+i=1
+LGDi
+· Dk
+i
+, k = 1, . . . , s.
+After s simulation runs have been completed, I compute Monte Carlo estimators for the
+portfolio loss distribution, VaR and ES for each model setting. The estimators are given by:
+^
+FPL
+(xq
+)  ^
+q =
+1
+s
+s
+k=1
+1
+1(0,xq]
+(PLk),
+V aRq
+(PL) = inf x  [0, 1] : ^
+FPL
+(x)  q = PLs
+s·q
+,
+ESq
+(PL) =
+s
+k=1
+PLk 1
+1
+V aRq(PL),1
+(PLk)
+s
+k=1
+1
+1
+V aRq(PL),1
+(PLk)
++ V aRq
+(PL)
+1 - ^
+q - 1
+s
+s
+k=1
+1
+1
+V aRq(PL),1
+(PLk)
+1 - ^
+q
+.
+Here, PLs
+s·q
+represents the order statistic of the sample (PL1, . . . , PLs) which is either of
+order s · q or of a larger order next to it.
+Figure 4.3 demonstrates that the loss distribution based on the HAC setting has a much
+more heavier tail than the distribution based on the Gaussian setting, which is in line with the
+presence of lower tail dependence although the linear correlation is the same. The difference
+is more pronounced in the case of the larger portfolio because the more debtors are in the
+6In this representation, the sub-portfolio subscripts are omitted for convenience.
+15
+
+
+
+
+
+  
+  
+!
+$%#
+(a) Smaller portfolio
+
+
+
+
+
+  
+  
+(b) Larger portfolio
+Figure 6: Log-lin graphs of the simulated portfolio loss tail function for two different model
+settings: Gaussian and hierarchical Archimedean copula (HAC).
+portfolio, the more combinations of joint defaults are possible and the dependence of rare/tail
+events has a greater effect.
+As to the measures of portfolio tail risk, the simulation results on VaR and ES at different
+confidence levels are presented in Table 3. In all cases, the tail risk figures within the Gaussian
+setting are considerably lower than those within the HAC setting. The difference becomes
+more distinct, the further into the tail we go. Again, the risk of VaR/ES underestimation if
+the assumption of zero lower tail dependence coefficient is wrong is considerably higher for the
+larger portfolio, as illustrated in Figure 7. For the same linear correlation of asset returns, the
+model risk might be very pronounced when true joint distribution of underlying risk factors
+exhibits lower tail dependence. According to the values at risk marked in the figure for the
+larger test portfolio, the 99.99%-VaR within the Gaussian setting lies next to the 99%-VaR
+within the HAC framework for the portfolio. That is, according to the Gaussian model, losses
+of about 10% of the total portfolio LGD and greater are supposed to occur once every 10,000
+years. However, they would occur as often as once a century according to the HAC setting.
+The results presented above demonstrate that the tail dependence properties of the under-
+lying joint distribution of asset returns influence to a great extent the tail behaviour of the
+portfolio loss distribution. Dependence parameters of the HAC model affect the probability
+of joint borrower defaults and therefore the portfolio tail risk. Table 4 clarifies this issue with
+an example. Thereby, a simplified model setting is considered with the same sub-portfolio-
+specific parameters for both IG and SG rating grades (spj
+= sp
+). The simulation results for
+the VaR of the smaller portfolio at different confidence levels demonstrate the impact of the
+increasing parameter values on the VaR.
+16
+
+
+
+
+-PTTMFWFM
+
+ 
+
+ 
+ !"#
+  
+  !"#
+Figure 7: Comparison of the Value at Risk (VaR) of the larger portfolio at two different confi-
+dence levels for the Gaussian and hierarchical Archimedean copula (HAC) settings.
+The probability distributions for both models under consideration are shown and
+the corresponding VaR values are marked by vertical lines.
+5. Conclusions
+This paper introduces a novel model for asset returns based on the concept of nested Ar-
+chimedean copulas. The model takes account of tail dependence and, therefore, can be
+very useful for the purposes of portfolio credit risk assessment. It exhibits a hierarchical
+dependence structure which means that it allows for a stronger dependence within specified
+sub-portfolios or sectors than between them.
+The hierarchical Archimedean copula (HAC) framework presented has a number of techni-
+cal merits which provide it with a beneficial simplicity and flexibility. Because it is ensured
+by construction that the resulting function is a proper copula, there is no need any more to
+check compatibility conditions or parameter restrictions for the nested copula. The sampling
+from the HAC becomes straightforward.
+Apart from the technical features described, the suggested model might have far-reaching
+implications for risk controlling and banking regulation and, on a large scale, for financial
+stability. Its implementation would result in a far more conservative assessment of portfolio
+credit risk and, consequently, higher economic and regulatory capital requirements. Therefore,
+the model is able to counter the systematic underestimation of credit risk in the banking sector
+­ one of the basic causes of the recent financial turmoil.
+17
+Table 3: Comparison of VaR and ES for different settings
+V aRq
+ESq
+q Gauss HAC Gauss HAC
+Smaller portfolio
+0.9900 0.0955 0.1210 0.1221 0.1514
+0.9950 0.1055 0.1415 0.1335 0.1712
+0.9990 0.1455 0.1875 0.1634 0.2129
+0.9995 0.1665 0.2080 0.1921 0.2330
+0.9999 0.1985 0.2485 0.2176 0.2725
+Larger portfolio
+0.9900 0.0615 0.0950 0.0734 0.1214
+0.9950 0.0695 0.1125 0.0814 0.1386
+0.9990 0.0880 0.1530 0.1010 0.1781
+0.9995 0.0960 0.1695 0.1105 0.1930
+0.9999 0.1135 0.2065 0.1256 0.2269
+Note: VaR and expected shortfall (ES) at different confidence levels q estimated by sim-
+ulation for various parameter settings and two different models: Gaussian and hierarchical
+Archimedean copula (HAC). Results are given for two test portfolios containing 100 and 1,000
+credit exposures respectively.
+Table 4: Parameter sensitivity
+V aR0.99
+V aR0.999
+p
+sp
+= 0.2 sp
+= 0.5 sp
+= 0.9 sp
+= 0.2 sp
+= 0.5 sp
+= 0.9
+0.01 0.1350 0.1990 0.2540 0.2215 0.3185 0.3490
+0.05 0.1535 0.2175 0.2630 0.2735 0.3470 0.3500
+0.10 0.1725 0.2345 0.2855 0.3170 0.3500 0.3505
+Note: Parameter sensitivity of Value at Risk at different confidence levels (V aRq
+) with respect
+to the dependence parameters of the hierarchical Archimedean copula model. Only the smaller
+portfolio containing 100 credit exposures is considered.
+18
+References
+P. Embrechts, F. Lindskog, and A. McNeil. Modelling Dependence with Copulas and Applica-
+tions to Risk Management. In S.T. Rachev, editor, Handbook of Heavy Tailed Distributions
+in Finance, pages 329­384. North-Holland: Amsterdam, 2003.
+C. Hering, M. Hofert, J.-F. Mai, and M. Scherer. Constructing Nested Archimedean Copulas
+with L´
+evy Subordinators. Journal of Multivariate Analysis, 101(6):1428­1433, 2010.
+M. Hofert and M. Scherer. CDO Pricing with Nested Archimedean Copulas. Quantitative
+Finance, 11(5):775­787, 2011.
+H. Joe. Multivariate Models and Dependence Concepts. Chapman & Hall/CRC: London,
+1997.
+A.W. Marshall and I. Olkin. Families of Multivariate Distributions. Journal of the American
+Statistical Association, 83(403):843­841, 1988.
+A. McNeil. Sampling Nested Archimedean Copulas. Journal of Statistical Computation and
+Simulation, 78(6):567­581, 2008.
+Moody's. Default and Recovery Rates of Corporate Bond Issuers, 1920-2005. Special Com-
+ment, Moody's Investors Service, Global Credit Research, January 2006.
+R.B. Nelsen. An Itroduction to Copulas. Springer Verlag: New York, 1999.
+N. Puzanova. Kreditrisiken der Banken: Neue Portfoliomodelle zur konservativen Bemessung
+des Eigenkapitalbedarfs. Verlag Dr. Kova
+c: Hamburg, 2010.
+N. Puzanova and S. Siddiqui. Default Dependence Among Corporate Bond Issuers: Empirical
+Evidence from Time Series Data. Applied Financial Economics Letters, 1(5):297­302, 2005.
+N. Puzanova, S. Siddiqui, and M. Trede. Approximate Value-at-Risk Calculation for Hetero-
+geneous Loan Portfolios: Possible Enhancements of the Basel II Methodology. Journal of
+Financial Stability, 5(4):374­392, 2009.
+K.-I. Sato. L´
+evy Processes and Infinitely Divisible Distributions. Cambridge University Press:
+Cambridge, 1999.
+19
+A. Derivation of the HAC from the mixture representation
+In this appendix I explain in detail the derivation of the HAC given in (3.2) starting from
+the mixture representation given in (3.1). Beginning with the inner integrals in (3.1), we can
+write:
+
+0
+Gzspj
+j1
+(xj1
+) · · · Gzspj
+jnj
+(xjnj
+) dMZspj
+|Zp
+(zspj
+| zp
+)
+=
+
+0
+exp zspj
+ln Gj1
+(xj1
+) + · · · + ln Gjnj
+(xjnj
+) dMZspj
+|Zp
+(zspj
+| zp
+)
+= Zspj
+|Zp
+ln -Gj1
+(xj1
+) - · · · - ln Gjnj
+(xjnj
+) (A.1)
+= Zspj
+|Zp
+-1
+spj
+FRj1
+(xj1
+) + · · · + -1
+spj
+FRjnj
+(xjnj
+) , (A.2)
+whereby I use the definition of a Laplace transform (LT) in row (A.1) and the definition of
+Gji
+in row (A.2): cf. footnote 4.
+spj|p
+denotes the LT of the random variable Zspj
+conditional on Zp
+. It is linked to the LT
+of the unconditional random variable Zspj
+as follows:
+spj
+() = E e-Zspj = E E e-Zspj | Zp
+=
+
+0
+
+0
+e-zspj dMZspj
+|Zp
+(zspj
+| zp
+) dMZp
+(zp
+)
+=
+
+0
+spj|p
+( | zp
+) dMZp
+(zp
+). (A.3)
+When Zspj
+| Zp
+is an infinitely divisible random variable implying
+spj|p
+( | zp
+) = zp
+spj|p=1
+()  zp
+Yspj
+(), (A.4)
+the expression in row (A.3) can be given as follows:
+spj
+() =
+
+0
+zp
+Yspj
+() dMZp
+(zp
+)
+=
+
+0
+exp zp
+ln Yspj
+() dMZp
+(zp
+)
+= p
+- ln Yspj
+; (A.5)
+cf. (3.5). Solving (A.5) for Yspj
+results in
+Yspj
+= exp --1
+p
+ spj
+() ; (A.6)
+cf. (3.10). Combining (A.2), (A.4) and (A.6), the initial mixture of powers representation (3.1)
+20
+can be rewritten as:
+FR
+(x) =
+
+0
+exp -zp
+-1
+p
+ sp1
+-1
+sp1
+FR11
+(x11
+) + · · · + -1
+sp1
+FR1n1
+(xjn1
+) + · · ·
++-1
+p
+ spm
+-1
+spm
+FRm1
+(xm1
+) + · · · + -1
+spm
+FRmnm
+(xmnm
+) dMZp
+(zp
+)
+= p
+-1
+p
+ sp1
+-1
+sp1
+FR11
+(x11
+) + · · · + -1
+sp1
+FR1n1
+(xjn1
+) + · · ·
++-1
+p
+ spm
+-1
+spm
+FRm1
+(xm1
+) + · · · + -1
+spm
+FRmnm
+(xmnm
+) . (A.7)
+The representation (A.7) for the joint cdf of asset returns Rji
+implies the copula (3.2)
+representation for the corresponding probability-integral transforms Uji
+:= FRji
+(Rji
+).
+21
+22
+The following Discussion Papers have been published since 2010:
+Series 1: Economic Studies
+01 2010 Optimal monetary policy in a small open
+economy with financial frictions Rossana Merola
+02 2010 Price, wage and employment response Bertola, Dabusinskas
+to shocks: evidence from the WDN survey Hoeberichts, Izquierdo, Kwapil
+Montornès, Radowski
+03 2010 Exports versus FDI revisited: C. M. Buch, I. Kesternich
+Does finance matter? A. Lipponer, M. Schnitzer
+04 2010 Heterogeneity in money holdings Ralph Setzer
+across euro area countries: Paul van den Noord
+the role of housing Guntram Wolff
+05 2010 Loan supply in Germany U. Busch
+during the financial crises M. Scharnagl, J. Scheithauer
+06 2010 Empirical simultaneous confidence Òscar Jordà, Malte Knüppel
+regions for path-forecasts Massimiliano Marcellino
+07 2010 Monetary policy, housing booms Sandra Eickmeier
+and financial (im)balances Boris Hofmann
+08 2010 On the nonlinear influence of Stefan Reitz
+Reserve Bank of Australia Jan C. Ruelke
+interventions on exchange rates Mark P. Taylor
+09 2010 Banking and sovereign risk S. Gerlach
+in the euro area A. Schulz, G. B. Wolff
+10 2010 Trend and cycle features in German
+residential investment before and after
+reunification Thomas A. Knetsch
+23
+11 2010 What can EMU countries' sovereign
+bond spreads tell us about market
+perceptions of default probabilities Niko Dötz
+during the recent financial crisis? Christoph Fischer
+12 2010 User costs of housing when households face Tobias Dümmler
+a credit constraint ­ evidence for Germany Stephan Kienle
+13 2010 Extraordinary measures in extraordinary times ­
+public measures in support of the financial Stéphanie Marie Stolz
+sector in the EU and the United States Michael Wedow
+14 2010 The discontinuous integration of Western
+Europe's heterogeneous market for
+corporate control from 1995 to 2007 Rainer Frey
+15 2010 Bubbles and incentives: Ulf von Kalckreuth
+a post-mortem of the Neuer Markt in Germany Leonid Silbermann
+16 2010 Rapid demographic change and the allocation
+of public education resources: evidence from
+East Germany Gerhard Kempkes
+17 2010 The determinants of cross-border bank flows
+to emerging markets ­ new empirical evidence Sabine Herrmann
+on the spread of financial crisis Dubravko Mihaljek
+18 2010 Government expenditures and unemployment: Eric Mayer, Stéphane Moyen
+a DSGE perspective Nikolai Stähler
+19 2010 NAIRU estimates for Germany: new evidence
+on the inflation-unemployment trade-off Florian Kajuth
+20 2010 Macroeconomic factors and Claudia M. Buch
+micro-level bank risk Sandra Eickmeier, Esteban Prieto
+24
+21 2010 How useful is the carry-over effect
+for short-term economic forecasting? Karl-Heinz Tödter
+22 2010 Deep habits and the macroeconomic effects
+of government debt Rym Aloui
+23 2010 Price-level targeting C. Gerberding
+when there is price-level drift R. Gerke, F. Hammermann
+24 2010 The home bias in equities P. Harms
+and distribution costs M. Hoffmann, C. Ortseifer
+25 2010 Instability and indeterminacy in Michael Krause
+a simple search and matching model Thomas Lubik
+26 2010 Toward a Taylor rule for fiscal policy M. Kliem, A. Kriwoluzky
+27 2010 Forecast uncertainty and the
+Bank of England interest rate decisions Guido Schultefrankenfeld
+01 2011 Long-run growth expectations M. Hoffmann
+and "global imbalances" M. Krause, T. Laubach
+02 2011 Robust monetary policy in a
+New Keynesian model with imperfect Rafael Gerke
+interest rate pass-through Felix Hammermann
+03 2011 The impact of fiscal policy on
+economic activity over the business cycle ­ Anja Baum
+evidence from a threshold VAR analysis Gerrit B. Koester
+04 2011 Classical time-varying FAVAR models ­ S. Eickmeier
+estimation, forecasting and structural analysis W. Lemke, M. Marcellino
+25
+05 2011 The changing international transmission of Sandra Eickmeier
+financial shocks: evidence from a classical Wolfgang Lemke
+time-varying FAVAR Massimiliano Marcellino
+06 2011 FiMod ­ a DSGE model for Nikolai Stähler
+fiscal policy simulations Carlos Thomas
+07 2011 Portfolio holdings in the euro area ­
+home bias and the role of international, Axel Jochem
+domestic and sector-specific factors Ute Volz
+08 2011 Seasonality in house prices F. Kajuth, T. Schmidt
+09 2011 The third pillar in Europe:
+institutional factors and individual decisions Julia Le Blanc
+10 2011 In search for yield? Survey-based C. M. Buch
+evidence on bank risk taking S. Eickmeier, E. Prieto
+11 2011 Fatigue in payment diaries ­
+empirical evidence from Germany Tobias Schmidt
+12 2011 Currency blocs in the 21st century Christoph Fischer
+13 2011 How informative are central bank assessments Malte Knüppel
+of macroeconomic risks? Guido Schultefrankenfeld
+14 2011 Evaluating macroeconomic risk forecasts Malte Knüppel
+Guido Schultefrankenfeld
+15 2011 Crises, rescues, and policy transmission Claudia M. Buch
+through international banks Cathérine Tahmee Koch
+Michael Koetter
+16 2011 Substitution between net and gross settlement Ben Craig
+systems ­ A concern for financial stability? Falko Fecht
+26
+17 2011 Recent developments in quantitative models
+of sovereign default Nikolai Stähler
+18 2011 Exchange rate dynamics, expectations,
+and monetary policy Qianying Chen
+19 2011 An information economics perspective D. Hoewer
+on main bank relationships and firm R&D T. Schmidt, W. Sofka
+20 2011 Foreign demand for euro banknotes Nikolaus Bartzsch
+issued in Germany: estimation using Gerhard Rösl
+direct approaches Franz Seitz
+21 2011 Foreign demand for euro banknotes Nikolaus Bartzsch
+issued in Germany: estimation using Gerhard Rösl
+indirect approaches Franz Seitz
+22 2011 Using cash to monitor liquidity ­ Ulf von Kalckreuth
+implications for payments, currency Tobias Schmidt
+demand and withdrawal behavior Helmut Stix
+23 2011 Home-field advantage or a matter of Markus Baltzer
+ambiguity aversion? Local bias among Oscar Stolper
+German individual investors Andreas Walter
+27
+Series 2: Banking and Financial Studies
+01 2010 Deriving the term structure of banking Stefan Eichler
+crisis risk with a compound option Alexander Karmann
+approach: the case of Kazakhstan Dominik Maltritz
+02 2010 Recovery determinants of distressed banks: Thomas Kick
+Regulators, market discipline, Michael Koetter
+or the environment? Tigran Poghosyan
+03 2010 Purchase and redemption decisions of mutual Stephan Jank
+fund investors and the role of fund families Michael Wedow
+04 2010 What drives portfolio investments of
+German banks in emerging capital markets? Christian Wildmann
+05 2010 Bank liquidity creation and Berger, Bouwman
+risk taking during distress Kick, Schaeck
+06 2010 Performance and regulatory effects of
+non-compliant loans in German synthetic
+mortgage-backed securities transactions Gaby Trinkaus
+07 2010 Banks' exposure to interest rate risk, their
+earnings from term transformation, and
+the dynamics of the term structure Christoph Memmel
+08 2010 Completeness, interconnectedness and
+distribution of interbank exposures ­
+a parameterized analysis of the stability
+of financial networks Angelika Sachs
+09 2010 Do banks benefit from internationalization? C. M. Buch
+Revisiting the market power-risk nexus C. Tahmee Koch, M. Koetter
+28
+10 2010 Do specialization benefits outweigh Rolf Böve
+concentration risks in credit portfolios Klaus Düllmann
+of German banks? Andreas Pfingsten
+11 2010 Are there disadvantaged clienteles
+in mutual funds? Stephan Jank
+12 2010 Interbank tiering and money center banks Ben Craig, Goetz von Peter
+13 2010 Are banks using hidden reserves Sven Bornemann, Thomas Kick
+to beat earnings benchmarks? Christoph Memmel
+Evidence from Germany Andreas Pfingsten
+14 2010 How correlated are changes in banks' net
+interest income and in their present value? Christoph Memmel
+01 2011 Contingent capital to strengthen the private
+safety net for financial institutions:
+Cocos to the rescue? George M. von Furstenberg
+02 2011 Gauging the impact of a low-interest rate Anke Kablau
+environment on German life insurers Michael Wedow
+03 2011 Do capital buffers mitigate volatility Frank Heid
+of bank lending? A simulation study Ulrich Krüger
+04 2011 The price impact of lending relationships Ingrid Stein
+05 2011 Does modeling framework matter?
+A comparative study of structural Yalin Gündüz
+and reduced-form models Marliese Uhrig-Homburg
+06 2011 Contagion at the interbank market Christoph Memmel
+with stochastic LGD Angelika Sachs, Ingrid Stein
+29
+07 2011 The two-sided effect of financial
+globalization on output volatility Barbara Meller
+08 2011 Systemic risk contributions: Klaus Düllmann
+a credit portfolio approach Natalia Puzanova
+09 2011 The importance of qualitative risk
+assessment in banking supervision Thomas Kick
+before and during the crisis Andreas Pfingsten
+10 2011 Bank bailouts, interventions, and Lammertjan Dam
+moral hazard Michael Koetter
+11 2011 Improvements in rating models
+for the German corporate sector Till Förstemann
+12 2011 The effect of the interbank network
+structure on contagion and common shocks Co-Pierre Georg
+13 2011 Banks' management of the net interest Christoph Memmel
+margin: evidence from Germany Andrea Schertler
+14 2011 A hierarchical Archimedean copula
+for portfolio credit risk modelling Natalia Puzanova
+
+
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a PhD and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+

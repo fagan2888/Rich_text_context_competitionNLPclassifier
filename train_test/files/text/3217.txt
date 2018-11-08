@@ -1,0 +1,1810 @@
+Evaluating macroeconomic risk forecasts
+Malte Knüppel
+Guido Schultefrankenfeld
+Discussion Paper
+Series 1: Economic Studies
+No 14/2011
+Discussion Papers represent the authors' personal opinions and do not necessarily reflect the views of the
+Deutsche Bundesbank or its staff.
+Editorial Board: Klaus Düllmann
+Frank Heid
+Heinz Herrmann
+Karl-Heinz Tödter
+Deutsche Bundesbank, Wilhelm-Epstein-Straße 14, 60431 Frankfurt am Main,
+Postfach 10 06 02, 60006 Frankfurt am Main
+Tel +49 69 9566-0
+Telex within Germany 41227, telex from abroad 414431
+Please address all orders in writing to: Deutsche Bundesbank,
+Press and Public Relations Division, at the above address or via fax +49 69 9566-3077
+Internet http://www.bundesbank.de
+Reproduction permitted only if source is stated.
+ISBN 978-3­86558­7­ (Printversion)
+ISBN 978-3­86558­7­ (Internetversion)
+Abstract:
+Macroeconomic risk assessments play an important role in the forecasts of many
+institutions. A risk forecast is related to the potential asymmetry of the forecast
+density. In this work, we investigate how the optimality of such risk forecasts can
+be tested. We nd that the Pearson mode skewness outperforms the standard
+third-moment-based skewness as a measure of asymmetry. We consider problems
+of the tests likely to be encountered in practice and try to oer remedies where
+possible. In general, tests for macroeconomic risk forecast optimality tend to have
+at best moderate power given the empirically available small sample sizes.
+Keywords: Forecast evaluation; asymmetric densities, skewness
+JEL-Classication: E37, C12, C53
+Non-technical summary
+Many central banks supplement their macroeconomic forecasts with an assess-
+ment of future risks, where a risk implies an asymmetry of the forecast density.
+Put dierently, the presence of an upward risk commonly implies that outturns
+greater than the point forecast have a probability of more than 50%. Accordingly,
+the presence of a downward risk means that outturns less than the point forecast
+have a probability of more than 50%.
+In this work, we investigate how macroeconomic risk forecasts can be evaluated.
+A typical problem of these evaluations is the small sample size of currently available
+risk forecasts. As a start, we nd that an evaluation should not be based on the
+standard measure of asymmetry for probability density functions (the skewness),
+because an alternative measure, the Pearson mode skewness, allows a markedly
+more precise evaluation in small samples.
+We also consider several problems to be encountered in practice and try to
+oer remedies where possible. For example, if the width of the forecast density,
+i.e. the dispersion of the forecast errors is systematically over- or underestimated,
+a certain test for the optimality of risk forecasts tends to yield misleading results.
+However, a modication of this test leads to correct results.
+A general conclusion of the investigations presented is that tests for the op-
+timality of macroeconomic risk forecasts cannot be expected to be very powerful
+given the mostly very small sample sizes which are currently available. So, it is
+not unlikely that no statistical evidence against the optimality of risk forecasts can
+be found, even if optimality is not present, i.e. if the asymmetry of the forecast
+density is not predicted correctly.
+Nicht-technische Zusammenfassung
+Viele Zentralbanken versehen ihre makroökonomischen Prognosen mit Ein-
+schätzungen über zukünftige Risiken, wobei ein Risiko eine Asymmetrie der Prog-
+nosedichte impliziert. Das heißt, dass das Vorliegen eines Aufwärtsrisikos das
+Auftreten von Werten oberhalb der Punktprognose mit einer Wahrscheinlichkeit
+von mehr als 50% bedeutet. Entsprechend liegt ein Abwärtsrisiko vor, wenn das
+Auftreten von Werten unterhalb der Punktprognose eine Wahrscheinlichkeit von
+mehr als 50% besitzt.
+In der vorliegenden Arbeit wird geprüft, wie solche makroökonomischen Risiko-
+prognosen evaluiert werden können. Ein typisches Problem solcher Evaluatio-
+nen ist durch die kleinen Stichprobenumfänge der derzeit verfügbaren Risikoprog-
+nosen gegeben. Es zeigt sich zunächst, dass eine Evaluation von Risikoprognosen
+nicht auf Grundlage des Standardmaßes für die Asymmetrie einer Wahrschein-
+lichkeitsdichte (der Schiefe) erfolgen sollte, da ein alternatives Maß, die Pear-
+sonsche Modusschiefe, in kleinen Stichproben eine deutlich genauere Evaluation
+ermöglicht.
+Viele der in der Praxis auftretenden Probleme bei der Evaluation von Risiko-
+prognosen werden untersucht und, soweit möglich, Lösungsvorschläge unterbreitet.
+So kann zum Beispiel das Problem beobachtet werden, dass ein bestimmter Test
+für die Optimalität von Risikoprognosen zu falschen Ergebnissen führt, falls die
+Breite der Prognosedichte, also die Streuung der zukünftigen Prognosefehler sys-
+tematisch über- oder unterschätzt wird. Eine Modikation des Tests sorgt jedoch
+dafür, dass er wieder korrekte Ergebnisse liefern kann.
+Aus den durchgeführten Untersuchungen kann die Schlussfolgerung gezogen
+werden, dass von den Optimalitätstests für makroökonomische Risikoprognosen
+wegen der derzeit verfügbaren, häug nur kleinen Stichprobenumfänge keine beson-
+ders hohe Güte erwartet werden kann. Das bedeutet, dass es nicht unwahrschein-
+lich ist, dass keine statistische Evidenz gegen die Optimalität einer Risikoprognose
+gefunden wird, selbst wenn diese Optimalität nicht vorliegt, wenn also die Asym-
+metrie der Prognosedichte nicht korrekt vorhergesagt wird.
+Contents
+1 Introduction 1
+2 How to Measure the Forecast Risk? 3
+3 Testing the Optimality of Macroeconomic Risk Forecasts in Prac-
+tice 9
+3.1 Varying Asymmetry . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.2 Unknown Mode and Standard Deviation . . . . . . . . . . . . . . . 13
+3.3 Direction-of-Risk Forecasts . . . . . . . . . . . . . . . . . . . . . . . 17
+3.4 An Alternative Test for Risk Forecast Optimality? . . . . . . . . . . 21
+4 Conclusion 23
+A Appendix: Correlation of ^
+l
+and l
+27
+Evaluating Macroeconomic Risk Forecasts1
+1 Introduction
+Many central banks and other institutions such as the Bank of England or the IMF
+complement their macroeconomic forecasts by assessments of risks. In general,
+these risk forecasts are related to possible asymmetries of forecast densities, as
+described in Knüppel & Schultefrankenfeld (2011). In Figure 1, two examples of
+forecast densities implying upside or downside risks to the forecast can be found.2
+Both densities are asymmetric, so that mean and mode do not coincide.
+As noted by Leeper (2003), it would actually be important to verify whether
+macroeconomic risk assessments contain valuable information. Since the forecast
+of the central tendency is often a mode forecast3, realizations above [below] the
+central tendency should be observed more often in the presence of an upward
+[downward] risk. If it turns out that this is not the case, the risk forecasts are not
+informative.
+In this work, we attempt to identify methods which are suitable for the evalu-
+1Authors: Malte Knüppel and Guido Schultefrankenfeld, Deutsche Bundesbank, Research
+Centre, Wilhelm-Epstein-Straße 14, D-60431 Frankfurt am Main, Germany. Corresponding au-
+thor: malte.knueppel@bundesbank.de. The authors would like to thank Heinz Herrmann and
+Karl-Heinz Tödter for very helpful comments and discussions. This paper represents the authors'
+personal opinions and does not necessarily re ect the views of the Deutsche Bundesbank.
+2To be more precise, a risk is usually dened as an important event which, in case of its
+occurrence, would lead to a change of the central forecast. For example, the risk of an oil supply
+plunge would constitute an upward risk to the in ation forecasts. Of course, there might be
+several dierent risks to a forecast. If the upward [downward] risks dominate, it is often said
+that the balance of risks is tilted to the upside [downside]. Instead of using the expression
+"balance of risks", in this work we simply speak of upward or downward risks.
+3This fact might be surprising, but many central banks and other institutions indeed explicitly
+state that their published point forecasts refer to the mode of the forecast density or, equivalently,
+to the most likely outcome. See Knüppel & Schultefrankenfeld (2011) for a survey.
+1
+0 2 4 6 8
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+forecast from Feb 2002 for 1st quarter of 2004
+1.5 2 2.5 3 3.5
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+forecast from May 1998 for 2nd quarter of 1998
+mean
+mode
+mode
+mean
+Figure 1: Two of the Bank of England's density forecasts for in ation. The forecast
+in the left panel implies an upward risk (mean A mode), the one in the right panel
+a downward risk (mean ? mode).
+ation of risk forecasts, focusing on tests for risk forecast optimality. Risk forecasts
+can be regarded as point forecasts, because the asymmetry of a density is usually
+summarized by a single parameter. While there is a vast literature concerning the
+evaluation of point forecasts, we are not aware of any work which focuses on the
+specic nature of macroeconomic risk forecast evaluation.
+Macroeconomic risk forecast evaluation has to deal with several issues. First, a
+choice has to be made concerning the parameter which is supposed to measure the
+asymmetry of the density forecast. Also, it has to be considered how the corre-
+sponding parameter re ecting the asymmetry of the true forecast density could be
+measured. Moreover, evaluations of macroeconomic risk forecasts typically have
+to deal with the small sample sizes of risk forecasts. In addition, the risks that are
+forecast are usually not very large, either. Finally, many institutions do not quan-
+tify the risk, i.e= the asymmetry of the forecast density, but only give the direction
+2
+of the risk. That is, these institutions state that there is an upward or downward
+risk to their forecasts, or that the risks are balanced, but they do not reveal the
+magnitude of the forecast risks. Due to small samples and only moderate asym-
+metries of the forecast densities, the power of tests for risk forecast optimality can
+be expected to be rather low, amplifying the importance of power considerations.
+Therefore, this study focuses on a careful analysis of the power properties of these
+tests.
+In what follows, we are concerned with the partial optimality of forecasts,
+where partial optimality is dened as in Diebold & Lopez (1996). As mentioned
+by Diebold & Lopez (1996), the original concept of partial optimality refers to
+optimality conditional on the information set being used by the forecaster and
+goes back to Brown & Maital (1981).4 When we speak of optimality in this study,
+we always mean partial optimality with respect to the information set that is given
+by the independent variable(s) of a certain regression.
+2 How to Measure the Forecast Risk?
+In principle, the optimality of quantitative risk forecasts can be investigated in
+a similar way as the optimality of conditional mean forecasts. That is, in the
+regression
+~
+u =  + ^
+u + %> (1)
+where ^
+u is the risk forecast and ~
+u is the realized risk, the joint null hypothesis
+ = 0>  = 1 can be tested. If the risk forecasts are not optimal, the null hypothesis
+4Therefore, it would actually seem more plausible to speak of conditional optimality instead
+of partial optimality.
+3
+should be rejected.
+The major question here is how to measure risk. Since, in macroeconomic
+forecasting, the balance of risks is related to the skewness of the forecast density,
+measures of skewness are natural candidates for the measurement of risk. In what
+follows, we consider the third standardized moment (henceforth standard skew-
+ness) and the Pearson mode skewness of the density forecast. While the standard
+skewness measure is more familiar to statisticians, the Pearson mode skewness
+is more directly related to many macroeconomic forecasts by institutions which
+quantify risks in terms of the mean-mode dierence. Interestingly, as described in
+Knüppel & Schultefrankenfeld (2011), these institution mostly focus on the mode
+as measure of the central tendency of their forecasts. Both measures of skewness
+are standardized. This is an advantage if the volatility of the forecast variable
+changes over time, or if the risk forecasts for dierent variables or dierent fore-
+cast horizons are to be analyzed simultaneously, for example in a panel study.
+Suppose that the parameters of the forecast density are known. Denote the
+expectation of the variable of interest by  and the corresponding mode by p=
+Then, using standard skewness as the measure of risk, the forecast risk ^
+u for the
+random variable \> henceforth denoted by ^
+> is given by
+^
+u = ^
+ 
+H
+£
+(\ )3
+¤
+3
+>
+where  denotes the standard deviation of \ , the variable to be forecast. The
+4
+realized risk ~
+u of observation |5, henceforth denoted by ~
+> is then given by
+~
+u = ~
+ 
+(| )3
+3
+=
+Employing the denition of the Pearson mode skewness gives the forecast risk
+^
+u> henceforth denoted by ^
+!>
+^
+u = ^
+! 
+H [\ ] p
+
+=
+ p
+
+>
+and the corresponding realized risk of observation |, henceforth denoted by ~
+!>
+~
+u = ~
+! 
+| p
+
+=
+Both measures of realized risk depend on a location parameter, just as the usual
+measure of the realized forecast error which would be given by (| ). In addition,
+both measures depend on the standard deviation of the forecast variable.
+A choice of the risk measure to be employed might be based on the power prop-
+erties of tests for the optimality of risk forecasts in small samples. We attempt to
+nd out which risk measure implies a larger power of the tests. To this end, we
+conduct a Monte Carlo study using the two-piece normal distribution (henceforth
+tpn distribution) as described, among others, by Wallis (2004). We use this type
+of distribution because it is employed by several institutions which publish macro-
+economic risk forecasts, like the Bank of England or the International Monetary
+5We apply the usual notation where upper case letters denote random variables and the
+corresponding lower case letters denote their realizations.
+5
+Fund.6 The density of a tpn-distributed variable | is given by
+i (|) =
+;
+A
+?
+A
+=
+D exp
+³
+(|3p)2
+22
+1
+´
+if |  p
+D exp
+³
+(|3p)2
+22
+2
+´
+if |  p>
+with D = 2
+I
+2(1+2)
+. Its expectation , variance 2, and third central moment
+equal
+H [|] =  = p +
+r
+2
+
+(2
+1
+) (2)
+H
+£
+(| )2
+¤
+= 2 =
+
+1
+2
+
+¶
+(2
+1
+)2 + 1
+2
+H
+£
+(| )3
+¤
+=
+r
+2
+
+(2
+1
+)
+
+4
+
+1
+¶
+(2
+1
+)2 + 1
+2
+¶
+=
+In what follows, without loss of generality, we will restrict the analyses to the case
+of a zero mode, i.e= to the case
+p = 0=
+We consider tpn-distributed variables which, in addition, fulll the restrictions
+2 = 1 (3)
+2
+= 1
+where  is varied from 1 to 4.7 A standard normal distribution is obtained when
+ equals 1, and the more  diers from 1, the more asymmetric is the resulting
+6The densities displayed in Figure 1 are densities of the two-piece normal distribution. Yet,
+there are of course many other types of distribution that could also be used. Classes of poten-
+tially asymmetric distributions can be found inter alia in Ramberg & Schmeiser (1974), Todd
+C. Headrick & Sheng (2008) or Knüppel & Tödter (2007).
+7In principle, we could also consider values 0    1.
+6
+density.
+For each > we simulate Q tpn-distributed variables and estimate the parame-
+ters 
+and !
+in the equations
+~
+l
+= 
+^
+l
++ %>l (4)
+~
+!l
+= !
+^
+!l
++ %!>l
+for l = 1> 2> = = = > Q by OLS where %>l and %!>l are iid and have an expectation
+of zero. So, in contrast to equation (1), we assume that  equals zero, which
+simplies the following study.
+While  is varied from 1 to 4 with increments of 0=25, we assume that the risk
+forecaster forecasts  = 2 for all Q variables. Using (2) and (3) it can be shown
+that  = 2 implies
+^
+l
+=
+s
+2
+(3 2)3
+2
+( + 4)  0=50
+^
+!l
+=
+s
+2
+s
+3 2
+ 0=52
+for l = 1> 2> = = = > Q. For the calculation of ~
+l and ~
+!l
+, we use, for each , the true
+values of the mode p = 0> the mean , and the variance 2> so that ~
+l and ~
+!l
+are
+determined by
+~
+l
+=
+(|l
+)3
+
+= (|l
+)3
+~
+!l
+=
+|l
+p
+
+= |l
+7
+ 1=00 1=25 1=50 1=75 2=00 2=25 2=50 2=75 3=00 3=25 3=50 3=75 4=00
+l
+= H [~
+l
+] 0=00 0=18 0=31 0=42 0=50 0=56 0=62 0=66 0=69 0=72 0=75 0=77 0=79
+!l
+= H
+h
+~
+!l
+i
+0=00 0=18 0=32 0=43 0=52 0=59 0=66 0=71 0=76 0=80 0=83 0=86 0=89
+Table 1: Expected standard skewness and Pearson mode skewness depending on
+.
+for l = 1> 2> = = = > Q. Thus, for each , the equations to be estimated become
+(|l
+)3 = 
+· 0=50 + %>l
+|l
+= !
+· 0=52 + %!>l
+=
+The null hypotheses for optimal forecasts are given by 
+= 1 and !
+= 1. The
+forecasts are optimal only if  = 2. We use a w-test with a nominal size of 5%.
+Of course, the estimators ^
+
+and ^
+!
+are not w-distributed, because %>l and %!>l as
+well as |l are not normally distributed, but the w-test should work well at least
+asymptotically. The expected values of ~
+l and ~
+!l
+, l and !l
+, are shown in Table
+1. Interestingly, both measures of skewness are quite similar for given values of 
+unless  becomes large.
+The power curves of the optimality tests are plotted in Figure 2.8 Obviously,
+the optimality test based on standard skewness performs extremely badly for small
+sample sizes. The power curve for Q = 20 is essentially at, equalling about 0.15
+for all values of  considered. For Q = 40 and Q = 100> the curves are downward
+sloping also in the range 2    4. Even for Q = 1000, the test appears to
+reject slightly more often at  = 2=25 than at  = 2 and only reaches a rejection
+probability of about 40% for  = 4. Only for Q = 5000 the test seems to be
+8They are based on simulations with 10,000 observations for each point of each power curve.
+8
+unbiased, although this conclusion might change if a ner grid for  was used.
+In contrast to that, the optimality test based on the Pearson mode skewness
+works reasonably well in small samples. For Q = 20, its power is not very large,
+reaching up to about 60% if the density is standard normal, i.e= if  = 1. However,
+its size is close to 5%, although %!>l is not normally distributed. For Q = 40, the
+power at  = 1 increases to about 90%, and for Q = 100 to 100%. In both cases
+the test has approximately the correct size. For Q = 1000 and Q = 5000> the
+power is large for all  6= 2 considered and the empirical size is close to 5%.
+These results show that tests for the optimality of risk forecasts based on the
+standard skewness are not useful in small samples. Optimality tests based on the
+Pearson mode skewness, however, seem to yield fairly satisfactory results even in
+small samples. In what follows, skewness will refer to the Pearson mode skewness,
+not to the standard measure of skewness based on third moments.
+3 Testing the Optimality of Macroeconomic Risk
+Forecasts in Practice
+The examples given above show that the Pearson mode skewness is a more promis-
+ing measure of asymmetry than the standard skewness if risk forecast optimality is
+to be tested. However, the examples in the previous section are highly stylized for
+several reasons. For example,  and hence the value of the Pearson mode skewness
+^
+! does not vary within the sample. Moreover, mode and standard deviation are
+known to the forecaster. In addition, the risk forecasts are quantitative, whereas in
+practice, many institutions only publish the direction of the forecast risk. There-
+9
+1 1.5 2 2.5 3 3.5 4
+0
+0.2
+0.4
+0.6
+0.8
+1
+standard skewness
+true value of parameter 
+rejection probability
+1 1.5 2 2.5 3 3.5 4
+0
+0.2
+0.4
+0.6
+0.8
+1
+Pearson mode skewness
+true value of parameter 
+rejection probability
+N = 20
+N = 40
+N = 100
+N = 1000
+N = 5000
+N = 20
+N = 40
+N = 100
+N = 1000
+N = 5000
+Figure 2: Rejection probabilities of two tests for risk forecast optimality with
+nominal size equal to 5%= The null hypothesis is  = 2.
+10
+fore, in what follows we will study the size and power of the optimality tests under
+more realistic conditions.
+Another problem likely to be encountered in practice is given by the serial
+correlation of realized risks at least for forecast horizons larger than one. This
+problem can be addressed by using Newey & West (1987) standard errors. As this
+approach is well-known, we will not elaborate on this issue.
+3.1 Varying Asymmetry
+Instead of assuming that the true skewness ! as well as the forecast skewness ^
+! are
+xed for all l = 1> 2> ===> Q, we will now assume that they are uniformly distributed
+over the interval
+£
+¯
+!> ¯
+!
+¤
+. Given a tpn-distribution, the largest possible value for
+¯
+! equals 1=32=9 However, such a large value is rather unlikely to be encountered
+in practice, since it would imply a folded normal distribution, meaning that the
+realization is going to be larger than the mode with certainty. The absolute values
+for ^
+! found in the sample of risk forecasts by central banks studied in Knüppel
+& Schultefrankenfeld (2011) do not exceed 0=5. Moreover, the number of non-zero
+risk forecasts in that sample hardly exceeds 30 per forecast horizon, so that we
+will focus on samples of that size.
+In the following Monte Carlo simulations, we consider two cases. In the rst
+case, the true risks !l
+are independent of the risk forecasts ^
+!l
+, so that the risk
+forecasts have no information content. In the second case, the risk forecasts are
+optimal, i.e. !l
+= ^
+!l
+holds. For both cases, we simulate Q tpn-distributed vari-
+9The exact number is given by max
+¡
+¯
+!
+¢
+=
+q
+2@
+1 2@
+=
+11
+ables10 and estimate the parameter  in the equation
+~
+!l
+= ^
+!l
++ %!>l (5)
+with l = 1> 2> = = = > Q as above in equation (4). However, in contrast to the sim-
+ulations above, here in general ^
+!l
+6= ^
+!m
+holds for l 6= m. If the risk forecasts are
+optimal, ~
+!l
+is drawn from a tpn-distribution with skewness equal to ^
+!l
+where the
+parameter ^
+!l
+is drawn from a uniform distribution over the interval
+£
+¯
+!> ¯
+!
+¤
+= If
+the risk forecasts have no information content, ~
+!l
+is drawn from a tpn-distribution
+with skewness !l
+, where !l
+is drawn from a uniform distribution over the interval
+£
+¯
+!> ¯
+!
+¤
+> and ^
+!l
+is drawn independently from the same distribution.11
+We test the hypotheses of no information content ( = 0) and of optimal risk
+forecasts ( = 1) at a level of signicance of 5% and for various values of Q, but
+focusing on Q = 30. We do so for ve distinct values of ¯
+!> ranging from 0=25
+to 1=32. The rejection probabilities, based on 10,000 simulations12, are displayed
+in Table 2. Apparently, the optimality tests have the correct size. Their power,
+however, can be quite low if the largest possible value of the true and the forecast
+risks is low. When Q = 30, with ^
+!l
+coming from the interval [ 0=25> 0=25]> (and in
+the case  = 0 with !l
+coming from the same interval,) the wrong null is rejected
+only in 12% of all simulations. In case that ¯
+! equals 0.5, this number increases
+to slightly more than 30%. Only if the interval includes more extreme values of
+10Given a value for !l
+and  = 1, the corresponding values of 1 and 2 can be calculated as
+1
+=
+q¡
+1 3
+8
+
+¢
+!2
+l
++ 1
+q
+1
+8
+!l
+and 2
+=
+q¡
+1 3
+8
+
+¢
+!2
+l
++ 1 +
+q
+1
+8
+!l
+11Alternatively, in case of no information content, !l
+could be drawn from a symmetric dis-
+tribution. Using the standard normal distribution, we nd results which are similar to those
+reported below.
+12This holds for all following Monte Carlo simulations as well.
+12
+ = 0  = 1
+¯
+! Q K0:  = 0 K0:  = 1 K0:  = 0 K0:  = 1
+0=25 30 0=05 0=12 0=12 0=05
+0=50 30 0=05 0=31 0=32 0=05
+0=75 30 0=05 0=56 0=63 0=05
+1=00 30 0=05 0=74 0=88 0=05
+1=32 30 0=05 0=88 0=99 0=05
+0=50 50 0=05 0=49 0=52 0=06
+0=50 100 0=05 0=78 0=81 0=05
+0=50 200 0=05 0=97 0=98 0=05
+Table 2: Size and power of tests for optimality of risk forecasts. Skewness is
+uniformly distributed over interval
+£
+¯
+!> ¯
+!
+¤
+. The nominal size of the tests is 5%.
+Rejection probabilities are based on 10,000 simulations.
+skewness the power of the tests increases to more satisfactory levels, reaching
+almost 100% if the forecasts are optimal and ¯
+! equals 1.32. Given ¯
+! = 0=5, one
+needs about 200 observations to reach a comparable power.
+3.2 Unknown Mode and Standard Deviation
+In practice, additional complications arise from the fact that the mode p as well
+the standard deviation  of the forecast density are potentially time-varying and
+unknown. Therefore pl and l have to be predicted themselves. So a risk forecast
+actually consists of three elements: the forecast mode, the dierence between the
+forecast mean and forecast mode, and the forecast standard deviation.
+So the question arises how problems with forecasting the mode or the standard
+deviation aect the results of tests for risk forecast optimality. Suppose, for exam-
+ple, that the forecaster optimally forecasts the dierence between the mode and
+the mean as well as the standard deviation, but the mode forecasts are biased. If,
+13
+in this case, a test for risk forecast optimality would reject the null of optimality
+due to the biased mode forecast, its result would be misleading.
+Denote the mode forecast by ^
+pl, the mean forecast by ^
+l
+and the standard
+deviation forecast by ^
+l. The equation used in order to test for risk forecast
+optimality is then given by
+|l
+^
+pl
+^
+l
+=  + 
+^
+l
+^
+pl
+^
+l
++ %l
+= (6)
+Assume that the forecast mode and the forecast standard deviation are related to
+the true mode pl and standard deviation l according to
+^
+l
+= d
++ l
++ x>l (7)
+^
+pl
+= dp
++ pl
++ xp>l
+where x>l and xp>l are iid zero-mean error terms with nite variances x
+and
+xp
+.13 If d and dp equal zero, the forecasts of mode and standard deviation are
+unbiased.
+Suppose that the forecast standard deviation ^
+l is equal to the true standard
+deviation l and substitute for ^
+pl on the left-hand side of equation (6). This yields
+|l
+pl
+l
+dp
+l
+=  + 
+^
+l
+^
+pl
+l
++ %l
++
+xp>l
+l
+=
+Note that we do not need to substitute for ^
+pl on the right-hand side of equation
+(6), because (^
+l
+^
+pl
+) @l
+= (^
+l
+^
+pl
+) @^
+l correctly measures the risk forecast.
+Assuming, for the sake of simplicity, that l
+=  holds, this equation implies that
+13In addition, the support of x>l must be bounded from below such that min (^
+l
+) A 0 holds.
+14
+the estimators for  and  in equation (6) converge to
+solp (^
+) =
+dp
+
++ 
+solp
+³
+^
+
+´
+= =
+Now suppose that the forecast mode ^
+pl is equal to the true mode pl and substitute
+for ^
+l on the left-hand side of (6). This gives
+|l
+pl
+d
++ l
++ x>l
+=  + 
+^
+l
+pl
+^
+l
++ %l
+=
+Again, we we do not need to substitute for ^
+l on the right-hand side of (6), because
+(^
+l
+pl
+) @^
+l
+= (^
+l
+^
+pl
+) @^
+l correctly measures the risk forecast. Using the linear
+approximation
+|l
+pl
+d
++ l
++ x>l
+
+|l
+pl
+l
+
+1
+d
+l
+x>l
+l
+¶
+(8)
+and assuming that l
+=  holds, it follows that
+solp (^
+)  
+³
+1
+d
+
+´
+(9)
+solp
+³
+^
+
+´
+ 
+³
+1
+d
+
+´
+=
+So if d
+A 0, both estimates will be biased towards zero, and if d
+? 0, both
+estimates will be biased away from zero. Yet, if  is close to zero, the bias will
+tend to be negligible for the estimate ^
+.
+Given these results, a careful analysis of risk forecasts should rstly check for
+bias in the forecasts of mode and standard deviation. Unfortunately, without
+further assumptions it is unfeasible to evaluate the bias of mode forecasts. One
+15
+might assume that the risks are balanced on average, so that H
+£
+l
+3pl
+
+¤
+= 0 holds,
+implying H [l
+] = H [pl
+]. In this case, one could test for the bias of mode forecasts
+in the same way as for the bias of mean forecasts.14 If one is unwilling to make the
+assumption of balanced risks on average, one might just focus on the bias of the
+standard deviation and concentrate on tests of hypotheses about .15 Of course,
+a potential bias of the risk forecasts given by  6= 0 will remain undetected in this
+case.
+If the forecasts of mode and standard deviation are unbiased, the main dier-
+ence with respect to the results of the Monte Carlo simulations conducted above is
+mostly a loss of power. Results of Monte Carlo simulations where mode and stan-
+dard deviation are unknown are presented in Table 3. The parameter ¯
+x denotes
+the limits of the interval ( ¯
+x
+> ¯
+x
+) of the uniform distribution from which x is
+drawn. xp is drawn from a normal distribution. The true standard deviation is
+given by l
+= 1 and the true mode by pl
+= 0. Moreover, as in most simulations
+above, Q = 30 and ¯
+! = 0=5.
+The results conrm the considerations from above. Tests about  can suer
+14If the standard deviation can vary, one would need the additional assumption that (l
+pl
+)
+and l are independent, because then H
+h
+l
+pl
+l
+i
+= 1
+H[l]
+H [l
+pl
+] holds, so that H
+h
+l
+pl
+l
+i
+= 0
+continues to imply H [l
+pl
+] = 0.
+Otherwise, H
+h
+l
+pl
+l
+i
+= 0 would still imply H
+h
+pl
+l
+i
+= H
+h
+l
+l
+i
+. So one could test the hypothesis
+H
+h
+pl
+l
+i
+= 0= However, note that the standard test for the bias of a mean forecast should actually
+be based on the regression |l
+l
+l
+l
+=  + %l instead of |l
+l
+=  + %l. Yet, it is always
+the latter equation that is employed. This approach could be justied if l hardly varies or
+if heteroskedasticity-consistent standard errors are used. In any case, it does not seem too
+problematic to use the regression |l
+pl
+=  + %l as well for testing the bias of mode forecasts
+in case of balanced risks.
+15Another possible but even more restrictive assumption would be given by the constancy of
+the mode, i.e. by p = pl. In this case, kernel density estimation would be needed to estimate
+p.
+16
+ = 0>  = 0  = 0>  = 1
+K0 is K0 is
+dp
+xp
+d
+¯
+x
+^
+ ^
+  = 0  = 1 ^
+ ^
+  = 0  = 1
+0 0 0 0 0=00 0=01 0=05 0=31 0=00 1=00 0=31 0=04
+0=3 0 0 0 0=30 0=00 0=05 0=31 0=30 1=01 0=32 0=05
+0 0=5 0 0 0=00 0=01 0=05 0=25 0=00 0=99 0=26 0=05
+0 0 0=3 0 0=00 0=00 0=05 0=47 0=00 0=77 0=31 0=08
+0 0 0 0=25 0=00 0=01 0=05 0=29 0=00 1=02 0=30 0=05
+0=3 0=5 0 0=25 0=31 0=01 0=05 0=25 0=31 1=01 0=25 0=05
+Table 3: Size and power of test for optimality of risk forecasts if mode and standard
+deviation are unknown. Skewness is uniformly distributed over interval [ 0=5> 0=5].
+Sample size Q equals 30. The nominal size of the tests is 5%. Rejection probabil-
+ities are based on 10,000 simulations.
+from size distortions if d
+6= 0, because then solp
+³
+^
+
+´
+6= .16
+3.3 Direction-of-Risk Forecasts
+If risk forecasts are only qualitative, i.e. only the direction of the risk is forecast
+but not its magnitude, it is nevertheless possible to conduct tests for forecast
+optimality. In this case, the realized and the forecast risks are categorical variables.
+Even if the risk forecasts are quantitative, a transformation of quantitative risks
+(interval variables) to qualitative risks (categorical variables) might be interesting
+if the focus rather lies on the direction of the risks.
+Actually, in the case of qualitative risk forecasts, there are only two possible
+outcomes: success (direction of forecast risk equals direction of realized risk) and
+failure (direction of forecast risk diers from direction of realized risk). Therefore,
+one could use tests based on the binomial distribution. However, in empirical
+applications one is most likely going to be confronted with the problem of serial
+16Note that ^
+ on average equals 0=77, diering slightly from the value 0=70 implied by equation
+(9), because the latter result is based on an approximation.
+17
+correlation. This problem can be addressed more easily if the categorical variables
+are analyzed in a regression context.17
+Recode the realized and forecast risks according to
+~
+$l
+=
+;
+A
+?
+A
+=
+1 if ~
+!l
+A 0
+0 if ~
+!l
+ 0
+> (10)
+and
+^
+$l
+=
+;
+A
+?
+A
+=
+1 if ^
+!l
+A 0
+0 if ^
+!l
+ 0
+= (11)
+Then tests for forecast optimality can be based on the regression
+~
+$l
+=  + $
+^
+$l
++ %$>l
+= (12)
+Obviously, if the risk forecasts have no information content, $
+equals zero. If the
+risk forecasts are optimal, $
+is larger than zero but, in contrast to > it is not
+equal to one in general. This is due to the fact that, even if the forecast density
+is strongly skewed, there is still a positive probability mass on each side of the
+mode.18 However, necessary (though not su!cient) conditions for risk forecast
+optimality could be tested using one-sided tests. If the risk forecasts are optimal,
+the null hypothesis $
+ 0 should be rejected, whereas the null hypothesis $
+ 0
+should not. Note that optimal forecasts do not imply  = 0=
+We use the same Monte Carlo simulation design as for the results in Table 2 in
+order to obtain information about the rejection probabilities. That is, we simulate
+17See Pesaran & Timmermann (2009).
+18Only in the special case of a folded normal distribution, i.e. the case ! = ±
+q
+2@
+1 2@
+, optimal
+risk forecasts would always correctly predict the direction of the realized risk.
+18
+~
+!l
+and ^
+!l
+as in Section 3.1, and we construct the variables ~
+$l and ^
+$l according
+to equations (10) and (11). Then we estimate equation (12) and test hypotheses
+about $
+. The results are displayed in Table 4. Here, the sample size Q always
+equals 30, and the nominal size of the tests is again 5%.
+If the risk forecasts have no information content, $
+equals zero and the null
+hypotheses about $
+($
+= 0, $
+ 0, $
+ 0) have the correct size. If the
+risk forecasts are optimal, $
+is positive, but can be close to zero if ¯
+! is small.
+Consequently, the null hypothesis $
+= 0 can hardly be rejected if ¯
+! is small. The
+power of the test only marginally exceeds its nominal size if ¯
+! = 0=25.
+The results show that it is preferable to conduct tests for risk forecast optimality
+based on quantitative risk forecasts if available. For example, according to Table 2
+the power of the test for  = 0 if  = 1 is 33% if ¯
+! = 0=5= This is considerably larger
+than the 13% attained with qualitative risk forecasts and the test for $
+= 0.
+If  = 1, the one-sided test for $
+ 0 of course rejects more often than the
+test for $
+= 0, but its power is not very large either. For example, it rejects in
+22% of the simulations if ¯
+! = 0=5. Given  = 1, the one-sided test for $
+ 0
+hardly ever rejects even if ¯
+! is small.
+The 95% condence intervals for the estimate of $
+interestingly include neg-
+ative values unless ¯
+! is very large. This implies that, even if the risk forecasts are
+optimal, it is not unlikely to observe more failures than successes of the qualitative
+risk forecasts in small samples.
+One might expect that the fact that mode and standard deviation are unknown
+further reduces the power of the tests if qualitative risk forecasts are analyzed.
+This, however, is not always the case. If the realized risks are transformed to
+19
+ = 0  = 1
+K0 is K0 is
+¯
+! $
+$
+= 0 $
+ 0 $
+ 0 $
+$
+= 0 $
+ 0 $
+ 0 95% CI for ^
+$
+0=25 0 0=05 0=05 0=05 0=08 0=06 0=11 0=02 ( 0=28> 0=43)
+0=50 0 0=05 0=05 0=05 0=16 0=13 0=22 0=01 ( 0=20> 0=50)
+0=75 0 0=05 0=05 0=05 0=24 0=25 0=38 0=00 ( 0=13> 0=59)
+1=00 0 0=05 0=05 0=05 0=33 0=43 0=56 0=00 ( 0=02> 0=66)
+1=32 0 0=05 0=05 0=05 0=45 0=72 0=82 0=00 (0=11> 0=75)
+Table 4: Size and power of tests for optimality of risk forecasts. Skewness is
+uniformly distributed over interval
+£
+¯
+!> ¯
+!
+¤
+. Sample size Q equals 30. The nominal
+size of all tests is 5%. CI stands for condence interval.
+categorical variables according to
+~
+$l
+=
+;
+A
+?
+A
+=
+1 if |l3 ^
+pl
+^
+l
+A 0
+0 if |l3 ^
+pl
+^
+l
+ 0
+and the forecast risks according to equation (11), the fact that the standard devi-
+ation is unknown and thus has to be forecast is not problematic. This is because
+in the case of categorical variables, only the sign of (|l
+^
+pl
+) @^
+l matters. This
+sign does obviously not depend on the forecast of ^
+l. The mode forecast, however,
+can aect the size and the power of the tests for forecast optimality.
+Several results of Monte Carlo simulations can be found in Table 5. Here xp is
+drawn from a normal distribution. The true standard deviation is given by l
+= 1
+and the true mode by pl
+= 0. Moreover, Q = 30 and ¯
+! = 0=5. The eects of mode
+forecast errors on ^
+$
+are non-linear in case of categorical variables.19 In general,
+it seems that only large deviations from dp
+= 0 and xp
+= 0 have a noticeable
+19For example, with known mode, i.e. dp
+= 0 and xp
+= 0, $
+in equation (12) equals 0=16.
+With dp
+= 0=6, the estimate of $
+hardly changes, decreasing to 0=15= With dp
+= 1=2, the
+estimate of $
+drops to 0=11 and with dp
+= 1=8 to 0=05.
+20
+ = 0>  = 0  = 0>  = 1
+$
+= 0 K0 is $
+= 0=16 K0 is
+dp
+xp
+^
+$
+$
+= 0 ^
+$
+$
+= 0 95% CI for ^
+$
+0 0 0=00 0=05 0=16 0=13 ( 0=20> 0=52)
+0=3 0 0=00 0=05 0=15 0=14 ( 0=20> 0=50)
+0=6 0 0=00 0=05 0=15 0=14 ( 0=17> 0=47)
+1=2 0 0=00 0=03 0=11 0=11 ( 0=12> 0=35)
+1=8 0 0=00 0=01 0=05 0=02 ( 0=08> 0=21)
+0 0=5 0=00 0=05 0=15 0=13 ( 0=21> 0=50)
+0 2=0 0=00 0=05 0=08 0=07 ( 0=28> 0=45)
+0=3 0=5 0=00 0=05 0=15 0=12 ( 0=20> 0=48)
+Table 5: Size and power of test for optimality of categorical risk forecasts if modes
+and standard deviations are unknown. Skewness is uniformly distributed over the
+interval [ 0=5> 0=5]. Sample size Q equals 30. The nominal size of all tests is 5%.
+CI stands for condence interval.
+eect on the size and power of tests for risk forecast optimality if qualitative risk
+forecasts are analyzed.20
+3.4 An Alternative Test for Risk Forecast Optimality?
+One might think that an alternative way of testing the optimality of risk forecasts
+would be given by using a standard test for mean forecast optimality, i.e. testing
+the null hypothesis  = 0 and  = 1 in the regression |l
+= +^
+l
++%l, where %l is
+an error term. This alternative test could work, because, if the null hypothesis is
+true, this implies that (|l
+pl
+) @l
+= (^
+l
+pl
+) @l
++ %l
+@l holds, independently
+of the properties of the forecasts ^
+pl and ^
+l. So this test might seem preferable if
+one wants to circumvent problems arising from forecasting pl and l
+= However,
+20In the most extreme case, dp can deviate so strongly from zero that the dependent variable
+becomes a constant, because one would always observe a downward risk if dp is very large or an
+upward risk if dp is very small.
+21
+it turns out that strong deviations from risk forecast optimality can easily remain
+undetected by standard tests of forecast optimality.
+Consider the following case: Suppose that ^
+pl
+= pl and that ^
+l
+= l. Suppose
+further that the risk forecasts are given by ^
+l
+^
+pl
+=  (l
+pl
+). So if  A 1, the
+magnitude of risk is overestimated, whereas if 0   ? 1, the magnitude of risk is
+underestimated. This implies that the mean forecast, given by ^
+l
+= ^
+pl
++(^
+l
+^
+pl
+),
+equals
+^
+l
+= ^
+pl
++  (l
+pl
+) = (1 ) pl
++ l
+=
+For the sake of simplicity, also assume that H [pl
+] = H [l
+] = 0. The condition
+H [pl
+] = H [l
+] implies that the (unscaled) risks are balanced on average.
+Even if  strongly diers from 1, i.e if the risk forecasts are strongly non-
+optimal, it might be very di!cult to detect that ^
+l
+6= l
+. Firstly, since H [pl
+] =
+H [l
+] holds, H [^
+l
+] = H [l
+] holds as well. Secondly, the correlation between
+^
+l
+and l
+can be very large even if  strongly diers from 1. Assuming that
+Fry [pl
+> l
+pl
+] = 0, the correlation equals
+H [^
+l
+l
+]
+q
+H
+£
+^
+2
+l
+¤
+H [2
+l
+]
+=
+2
+p
++ 2
+3p
+q¡
+22
+3p
++ 2
+p
+¢ ¡
+2
+3p
++ 2
+p
+¢ (13)
+where 2
+p
+denotes the variance of the mode and 2
+3p
+denotes the variance of the
+unscaled risk, i.e. the variance of the dierence between mode and mean.21 If
+2
+3p
+is small compared to 2
+p
+, this correlation will be close to 1 even if  strongly
+diers from 1.
+As an example, consider the in ation nowcasts of the Bank of England stud-
+21See Appendix A for details.
+22
+ied in Knüppel & Schultefrankenfeld (2011).22 The variance of the unscaled risk
+forecasts, i.e. of the mean-mode dierence equals 0=0022, whereas the variance of
+the mode forecasts equals 0=4704. Assuming that these values are good estimates
+of the true variances of mode and unscaled risk, the variance of the mode is more
+than 200 times larger than the variance of the unscaled risk. Even if the risk
+forecasts contain no information, so that  = 0, the correlation between between
+^
+l
+and l
+would equal 0=9975= When testing the null hypothesis  = 0 and  = 1
+in the regression |l
+=  + ^
+l
++ xl in such a case, one will need an extremely large
+number of observations to obtain an acceptable power of the test. With Q = 30,
+the power of the test is virtually identical to its size.23
+4 Conclusion
+In this work, we have investigated several issues arising when evaluating macroeco-
+nomic risk forecasts, focusing on tests for the optimality of these forecasts. Such
+tests are confronted with the problems of small samples, at best moderate risks
+(i.e. asymmetries) and potentially only categorical instead of quantitative risk
+forecasts. Although all simulation results presented rest on certain assumptions
+like the tpn-distribution of the densities and the uniform distribution for the risks,
+they nevertheless clearly show that one should not expect too much power of the
+optimality tests for risk forecasts. However, they also give guidance in order for
+the tests to have the correct size and as much power as possible under the given
+circumstances.
+22For these nowcasts, the assumption ^
+pl
+= pl might be a good approximation to the more
+realistic relation ^
+pl
+= pl
++ xp>l, because the variance of the mode forecasts is much larger than
+the variance of the forecast density. The latter can be thought of as a proxy for H
+£
+x2
+p>l
+¤
+.
+23Results of Monte Carlo simulations are available on request.
+23
+We nd that the asymmetry of the risk forecasts should not be measured by the
+standard coe!cient of skewness, because the power of the test would be extremely
+low in this case. Instead, the Pearson mode skewness is preferable yielding much
+larger power in small samples. The asymmetry of the true density then has to
+be measured using the forecasts of mode and standard deviation. This can cause
+problems in terms of power loss if these forecasts are imprecise and in terms of
+size distortions if these forecasts are biased.
+In order to evaluate the bias of the mode forecasts, potentially problematic
+assumptions are required. If these assumptions are to be avoided, tests for risk
+forecast optimality can still be conducted if the null hypothesis of the test is modi-
+ed. That is, from the composite null hypothesis about the constant and the slope
+parameter, one can exclude the hypothesis about the constant and concentrate
+on the slope parameter only, because the estimate of the slope parameter remains
+unaected by a potential bias of the mode forecasts.
+If the risk forecasts are available on a categorical basis only, the tests suer
+from a further loss in power. However, they are not aected by the potential
+impreciseness of the forecast standard deviation.
+Considering the relation of standard tests for mean forecast optimality and risk
+forecast optimality, one might think that the results of these standard tests contain
+information about risk forecast optimality. While this is true in principle, we nd
+that in practice the results of these standard tests should not be interpreted in
+terms of risk forecast optimality.
+In order to tackle the problem of potentially low power, risk forecasts could pos-
+sibly better be evaluated in a panel setup. This may be feasible if the risk forecasts
+for a certain variable are, for example, available for several forecast horizons.
+24
+References
+Brown, B. W. & Maital, S. (1981), `What do economists know? an empirical study
+of experts' expectations', Econometrica 49, 491--504.
+Diebold, F. X. & Lopez, J. A. (1996), Forecast evaluation and combination, in
+G. S. M. und C. R. Rao, ed., `Handbook of Statistics', Vol. 14, Elsevier, chap-
+ter 8, pp. 241--268.
+Knüppel, M. & Schultefrankenfeld, G. (2011), `How informative are central bank
+assessments of macroeconomic risks?', mimeo.
+Knüppel, M. & Tödter, K.-H. (2007), `Quantifying risk and uncertainty in macro-
+economic forecasts', Deutsche Bundesbank Discussion Paper Series 1: Economic
+Studies 25.
+Leeper, E. M. (2003), `An in ation reports report', NBER Working Paper 10089.
+Newey, W. K. & West, K. D. (1987), `A simple, positive semi-denite, het-
+eroskedasticity and autocorrelation consistent covariance matrix', Econometrica
+55(3), 703--708.
+Pesaran, M. H. & Timmermann, A. (2009), `Testing dependence among serially
+correlated multicategory variables', Journal of the American Statistical Associ-
+ation 104(485), 325--337.
+25
+Ramberg, J. S. & Schmeiser, B. W. (1974), `An approximate method for gen-
+erating asymmetric random variables', Communications of the ACM Volume
+17(2), 78--82.
+Todd C. Headrick, R. K. K. & Sheng, Y. (2008), `Parametric probability densities
+and distribution functions for tukey g-and-h transformations and their use for
+tting data', Applied Mathematical Sciences 2(9), 449 -- 462.
+Wallis, K. F. (2004), `An assessment of bank of england and national institute
+in ation forecast uncertainties', National Institute Economic Review 189, 64--
+71.
+26
+A Appendix: Correlation of ^
+l
+and l
+As stated in the text, suppose that ^
+pl
+= pl and that ^
+l
+= l, and that the risk
+forecasts are given by ^
+l
+3 ^
+pl
+l
+= l
+3pl
+l
+. This implies that the mean forecast, given
+by ^
+l
+= ^
+pl
++ l
+^
+l
+3 ^
+pl
+l
+, equals
+^
+l
+= ^
+pl
++  (l
+pl
+) =
+Using the denition !l
+= l
+3pl
+l
+, the true mean is given by
+l
+= pl
++ l
+!l
+=
+Because of the non-restrictive assumption H [^
+l
+] = H [l
+] = 0, the correlation of
+^
+l
+and l
+equals
+H [^
+l
+l
+]
+q
+H
+£
+^
+2
+l
+¤
+H [2
+l
+]
+=
+H [((1 ) pl
++ l
+) l
+]
+q
+H
+£
+((1 ) pl
++ l
+)2
+¤
+H [2
+l
+]
+=
+In addition, because of H [pl
+] = H [l
+] and using the additional assumption
+that the (unscaled) risk forecasts are uncorrelated with the mode forecasts, i.e.
+Fry [pl
+> l
+!l
+] = Fry [pl
+> l
+pl
+] = 0, one obtains the expression
+H [^
+l
+l
+]
+q
+H
+£
+^
+2
+l
+¤
+H [2
+l
+]
+=
+H
+£
+p2
+l
++  (l
+pl
+)2
+¤
+q
+H
+£
+2 (l
+pl
+)2 + p2
+l
+¤
+H
+£
+(l
+pl
+)2 + p2
+l
+¤=
+Using the denitions 2
+p
+= H [p2
+l
+] and 2
+3p
+= H
+£
+(l
+pl
+)2
+¤
+gives equation (13).
+The assumption Fry [pl
+> l
+pl
+] = 0 could be problematic if, for example,
+downwards risks tend to prevail when the mode is above its average. However, ac-
+27
+cording to the Bank of England data used in Knüppel & Schultefrankenfeld (2011),
+at least the correlation of the forecast modes and unscaled risks Fruu [ ^
+pl
+> ^
+l
+^
+pl
+]
+is close to zero, ranging between 0=18 and 0=15, depending on the forecast horizon.
+Moreover, as long as the variance ratio 2
+p
+@2
+3p
+is large, the eect of a non-zero
+covariance Fry [pl
+> l
+pl
+] on the correlation of ^
+l
+and l
+is very limited.
+28
+29
+The following Discussion Papers have been published since 2010:
+Series 1: Economic Studies
+01 2010 Optimal monetary policy in a small open
+economy with financial frictions Rossana Merola
+02 2010 Price, wage and employment response Bertola, Dabusinskas
+to shocks: evidence from the WDN survey Hoeberichts, Izquierdo, Kwapil
+Montornès, Radowski
+03 2010 Exports versus FDI revisited: C. M. Buch, I. Kesternich
+Does finance matter? A. Lipponer, M. Schnitzer
+04 2010 Heterogeneity in money holdings Ralph Setzer
+across euro area countries: Paul van den Noord
+the role of housing Guntram Wolff
+05 2010 Loan supply in Germany U. Busch
+during the financial crises M. Scharnagl, J. Scheithauer
+06 2010 Empirical simultaneous confidence Òscar Jordà, Malte Knüppel
+regions for path-forecasts Massimiliano Marcellino
+07 2010 Monetary policy, housing booms Sandra Eickmeier
+and financial (im)balances Boris Hofmann
+08 2010 On the nonlinear influence of Stefan Reitz
+Reserve Bank of Australia Jan C. Ruelke
+interventions on exchange rates Mark P. Taylor
+09 2010 Banking and sovereign risk S. Gerlach
+in the euro area A. Schulz, G. B. Wolff
+10 2010 Trend and cycle features in German
+residential investment before and after
+reunification Thomas A. Knetsch
+30
+11 2010 What can EMU countries' sovereign
+bond spreads tell us about market
+perceptions of default probabilities Niko Dötz
+during the recent financial crisis? Christoph Fischer
+12 2010 User costs of housing when households face Tobias Dümmler
+a credit constraint ­ evidence for Germany Stephan Kienle
+13 2010 Extraordinary measures in extraordinary times ­
+public measures in support of the financial Stéphanie Marie Stolz
+sector in the EU and the United States Michael Wedow
+14 2010 The discontinuous integration of Western
+Europe's heterogeneous market for
+corporate control from 1995 to 2007 Rainer Frey
+15 2010 Bubbles and incentives: Ulf von Kalckreuth
+a post-mortem of the Neuer Markt in Germany Leonid Silbermann
+16 2010 Rapid demographic change and the allocation
+of public education resources: evidence from
+East Germany Gerhard Kempkes
+17 2010 The determinants of cross-border bank flows
+to emerging markets ­ new empirical evidence Sabine Herrmann
+on the spread of financial crisis Dubravko Mihaljek
+18 2010 Government expenditures and unemployment: Eric Mayer, Stéphane Moyen
+a DSGE perspective Nikolai Stähler
+19 2010 NAIRU estimates for Germany: new evidence
+on the inflation-unemployment trade-off Florian Kajuth
+20 2010 Macroeconomic factors and Claudia M. Buch
+micro-level bank risk Sandra Eickmeier, Esteban Prieto
+31
+21 2010 How useful is the carry-over effect
+for short-term economic forecasting? Karl-Heinz Tödter
+22 2010 Deep habits and the macroeconomic effects
+of government debt Rym Aloui
+23 2010 Price-level targeting C. Gerberding
+when there is price-level drift R. Gerke, F. Hammermann
+24 2010 The home bias in equities P. Harms
+and distribution costs M. Hoffmann, C. Ortseifer
+25 2010 Instability and indeterminacy in Michael Krause
+a simple search and matching model Thomas Lubik
+26 2010 Toward a Taylor rule for fiscal policy M. Kliem, A. Kriwoluzky
+27 2010 Forecast uncertainty and the
+Bank of England interest rate decisions Guido Schultefrankenfeld
+01 2011 Long-run growth expectations M. Hoffmann
+and "global imbalances" M. Krause, T. Laubach
+02 2011 Robust monetary policy in a
+New Keynesian model with imperfect Rafael Gerke
+interest rate pass-through Felix Hammermann
+03 2011 The impact of fiscal policy on
+economic activity over the business cycle ­ Anja Baum
+evidence from a threshold VAR analysis Gerrit B. Koester
+04 2011 Classical time-varying FAVAR models ­ S. Eickmeier
+estimation, forecasting and structural analysis W. Lemke, M. Marcellino
+32
+05 2011 The changing international transmission of Sandra Eickmeier
+financial shocks: evidence from a classical Wolfgang Lemke
+time-varying FAVAR Massimiliano Marcellino
+06 2011 FiMod ­ a DSGE model for Nikolai Stähler
+fiscal policy simulations Carlos Thomas
+07 2011 Portfolio holdings in the euro area ­
+home bias and the role of international, Axel Jochem
+domestic and sector-specific factors Ute Volz
+08 2011 Seasonality in house prices F. Kajuth, T. Schmidt
+09 2011 The third pillar in Europe:
+institutional factors and individual decisions Julia Le Blanc
+10 2011 In search for yield? Survey-based C. M. Buch
+evidence on bank risk taking S. Eickmeier, E. Prieto
+11 2011 Fatigue in payment diaries ­
+empirical evidence from Germany Tobias Schmidt
+12 2011 Currency blocs in the 21st century Christoph Fischer
+13 2011 How informative are central bank assessments Malte Knüppel
+of macroeconomic risks? Guido Schultefrankenfeld
+14 2011 Evaluating macroeconomic risk forecasts Malte Knüppel
+Guido Schultefrankenfeld
+33
+Series 2: Banking and Financial Studies
+01 2010 Deriving the term structure of banking Stefan Eichler
+crisis risk with a compound option Alexander Karmann
+approach: the case of Kazakhstan Dominik Maltritz
+02 2010 Recovery determinants of distressed banks: Thomas Kick
+Regulators, market discipline, Michael Koetter
+or the environment? Tigran Poghosyan
+03 2010 Purchase and redemption decisions of mutual Stephan Jank
+fund investors and the role of fund families Michael Wedow
+04 2010 What drives portfolio investments of
+German banks in emerging capital markets? Christian Wildmann
+05 2010 Bank liquidity creation and Berger, Bouwman
+risk taking during distress Kick, Schaeck
+06 2010 Performance and regulatory effects of
+non-compliant loans in German synthetic
+mortgage-backed securities transactions Gaby Trinkaus
+07 2010 Banks' exposure to interest rate risk, their
+earnings from term transformation, and
+the dynamics of the term structure Christoph Memmel
+08 2010 Completeness, interconnectedness and
+distribution of interbank exposures ­
+a parameterized analysis of the stability
+of financial networks Angelika Sachs
+09 2010 Do banks benefit from internationalization? C. M. Buch
+Revisiting the market power-risk nexus C. Tahmee Koch, M. Koetter
+34
+10 2010 Do specialization benefits outweigh Rolf Böve
+concentration risks in credit portfolios Klaus Düllmann
+of German banks? Andreas Pfingsten
+11 2010 Are there disadvantaged clienteles
+in mutual funds? Stephan Jank
+12 2010 Interbank tiering and money center banks Ben Craig, Goetz von Peter
+13 2010 Are banks using hidden reserves Sven Bornemann, Thomas Kick
+to beat earnings benchmarks? Christoph Memmel
+Evidence from Germany Andreas Pfingsten
+14 2010 How correlated are changes in banks' net
+interest income and in their present value? Christoph Memmel
+01 2011 Contingent capital to strengthen the private
+safety net for financial institutions:
+Cocos to the rescue? George M. von Furstenberg
+02 2011 Gauging the impact of a low-interest rate Anke Kablau
+environment on German life insurers Michael Wedow
+03 2011 Do capital buffers mitigate volatility Frank Heid
+of bank lending? A simulation study Ulrich Krüger
+04 2011 The price impact of lending relationships Ingrid Stein
+05 2011 Does modeling framework matter?
+A comparative study of structural Yalin Gündüz
+and reduced-form models Marliese Uhrig-Homburg
+06 2011 Contagion at the interbank market Christoph Memmel
+with stochastic LGD Angelika Sachs, Ingrid Stein
+35
+07 2011 The two-sided effect of financial
+globalization on output volatility Barbara Meller
+08 2011 Systemic risk contributions: Klaus Düllmann
+a credit portfolio approach Natalia Puzanova
+09 2011 The importance of qualitative risk
+assessment in banking supervision Thomas Kick
+before and during the crisis Andreas Pfingsten
+
+Visiting researcher at the Deutsche Bundesbank
+The Deutsche Bundesbank in Frankfurt is looking for a visiting researcher. Among others
+under certain conditions visiting researchers have access to a wide range of data in the
+Bundesbank. They include micro data on firms and banks not available in the public.
+Visitors should prepare a research project during their stay at the Bundesbank. Candidates
+must hold a PhD and be engaged in the field of either macroeconomics and monetary
+economics, financial markets or international economics. Proposed research projects
+should be from these fields. The visiting term will be from 3 to 6 months. Salary is
+commensurate with experience.
+Applicants are requested to send a CV, copies of recent papers, letters of reference and a
+proposal for a research project to:
+Deutsche Bundesbank
+Personalabteilung
+Wilhelm-Epstein-Str. 14
+60431 Frankfurt
+GERMANY
+
